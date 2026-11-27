@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<div class="graph-container">
+  <svg viewBox="0 0 680 600" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+    <line id="ax-x" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="ax-y" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="dash-v0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-h0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-v1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-h1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+
+    <line id="ray0" stroke="#888" stroke-width="1.4"/>
+    <line id="ray1" stroke="#555" stroke-width="1.4"/>
+
+    <line id="dom1" stroke="#D85A30" stroke-width="1.4" stroke-dasharray="6 3"/>
+
+
+    <path id="conB" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+
+    <path id="con0" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="con1" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-dasharray="8 4" stroke-linecap="round"/>
+
+
+    <line id="shift" stroke="#1D9E75" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <circle id="pt-0" r="5" fill="#000"/>
+    <circle id="pt-1" r="5" fill="#000"/>
+    <line id="tick-x0" stroke="black" stroke-width="1"/>
+    <line id="tick-y0" stroke="black" stroke-width="1"/>
+    <line id="tick-x1" stroke="black" stroke-width="1"/>
+    <line id="tick-y1" stroke="black" stroke-width="1"/>
+  </svg>
+  <div id="labels"></div>
+</div>
+<script>
+
+const ox = 80, oy = 530, k = 60;
+function P(x, y) { return [ox + x * k, oy - y * k]; }
+function set(id, a) { const e = document.getElementById(id); for (const q in a) e.setAttribute(q, a[q]); }
+function path(id, f, x0, x1, ymax) {
+  const pts = [];
+  for (let i = 0; i <= 400; i++) {
+    const x = x0 + (x1 - x0) * i / 400, y = f(x);
+    if (y < 0 || y > ymax) continue;
+    const [sx, sy] = P(x, y); pts.push(sx.toFixed(1) + ',' + sy.toFixed(1));
+  }
+  set(id, {d: 'M' + pts.join(' L')});
+}
+function seg(id, x1, y1, x2, y2) { const [a, b] = P(x1, y1), [c, d] = P(x2, y2); set(id, {x1: a, y1: b, x2: c, y2: d}); }
+set('ax-x', {x1: ox, y1: oy, x2: 640, y2: oy});
+set('ax-y', {x1: ox, y1: oy, x2: ox, y2: 40});
+
+
+const c = 2.75, L = 4;
+const conB = x => c * x / (1 + (x / L) * (x / L));
+
+const X0 = 7, Y0 = conB(X0);
+
+const X1 = 4.6, Y1 = conB(X1);
+const a0 = Y0 / (X0 * X0), a1 = Y1 / (X1 * X1);
+const con0 = x => a0 * x * x, con1 = x => a1 * x * x;
+const s0 = Y0 / X0, s1 = Y1 / X1;
+const t = 0.3, sd = s1 / (1 + t);
+
+path('con0', con0, 0, 9.3, 7.9);
+path('con1', con1, 0, 9.3, 7.9);
+const xBe = 8.9;
+path('conB', conB, 0, xBe, 7.9);
+
+const r0e = 8.6, r1e = 6.4;
+seg('ray0', 0, 0, r0e, s0 * r0e);
+seg('ray1', 0, 0, r1e, s1 * r1e);
+const dA = 2.9, dB = 5.8;
+seg('dom1', dA, Y1 + sd * (dA - X1), dB, Y1 + sd * (dB - X1));
+
+const [e0x, e0y] = P(X0, Y0), [e1x, e1y] = P(X1, Y1);
+set('pt-0', {cx: e0x, cy: e0y}); set('pt-1', {cx: e1x, cy: e1y});
+set('dash-v0', {x1: e0x, y1: e0y, x2: e0x, y2: oy}); set('dash-h0', {x1: ox, y1: e0y, x2: e0x, y2: e0y});
+set('dash-v1', {x1: e1x, y1: e1y, x2: e1x, y2: oy}); set('dash-h1', {x1: ox, y1: e1y, x2: e1x, y2: e1y});
+set('tick-x0', {x1: e0x, x2: e0x, y1: oy, y2: oy + 4}); set('tick-x1', {x1: e1x, x2: e1x, y1: oy, y2: oy + 4});
+set('tick-y0', {x1: ox - 4, x2: ox, y1: e0y, y2: e0y}); set('tick-y1', {x1: ox - 4, x2: ox, y1: e1y, y2: e1y});
+
+
+const ya = 0.8;
+const xa = Math.sqrt(ya / a0);
+const sl = 2 * a0 * xa;
+let nx = -sl, ny = 1; const nn = Math.hypot(nx, ny); nx /= nn; ny /= nn;
+let lam = 0; for (; lam < 6; lam += 0.002) { const x = xa + lam * nx, y = ya + lam * ny; if (y >= con1(x)) break; }
+const gap = 0.13;
+const [sa, sb] = P(xa + gap * nx, ya + gap * ny), [ta, tb] = P(xa + (lam - gap) * nx, ya + (lam - gap) * ny);
+set('shift', {x1: sa, y1: sb, x2: ta, y2: tb});
+
+const VBW = 680, VBH = 600;
+const pw = v => (v / VBW * 100).toFixed(1) + '%', ph = v => (v / VBH * 100).toFixed(1) + '%';
+const X = x => P(x, 0)[0], Y = y => P(0, y)[1];
+const labels = [
+  {tex:'X',  left: 644, top: oy - 14, size:17},
+  {tex:'Y',  left: ox - 8, top: 36, size:17, align:'right'},
+  {tex:'\\text{CON}^A_0', left: X(Math.sqrt(7.9 / a0)) - 8, top: 34, size:16, color:'#0F6E56', align:'right'},
+  {tex:'\\text{CON}^A_1', left: X(Math.sqrt(7.9 / a1)) - 8, top: 34, size:16, color:'#0F6E56', align:'right'},
+  {tex:'\\text{CON}^B', left: X(xBe) + 6, top: Y(conB(xBe)) - 12, size:16, color:'#534AB7'},
+  {tex:'\\text{tramo elástico}', left: X(0.5), top: Y(5.85), size:13, color:'#534AB7'},
+  {tex:'\\text{tramo inelástico}', left: X(7.35), top: Y(3.55), size:13, color:'#534AB7'},
+  {tex:'\\text{RRI}_0^*', left: X(r0e) + 6, top: Y(s0 * r0e) - 14, size:16, color:'#555'},
+  {tex:'\\text{RRI}_1^*', left: X(r1e) + 6, top: Y(s1 * r1e) - 14, size:16, color:'#555'},
+  {tex:'p_X^*/[(1+t)\\,p_Y^*]', left: X(dB) + 6, top: Y(Y1 + sd * (dB - X1)) - 12, size:15, color:'#D85A30'},
+  {tex:'\\text{(desprotección)}', left: X(dB) + 6, top: Y(Y1 + sd * (dB - X1)) + 12, size:13, color:'#D85A30'},
+  {tex:'t > 0', left: sa + 6, top: sb + 3, size:14, color:'#1D9E75'},
+  {tex:'0', left: e0x + 9, top: e0y + 12, size:16, color:'#000'},
+  {tex:'1', left: e1x + 9, top: e1y + 9, size:16, color:'#000'},
+  {tex:'X_0', left: e0x, top: oy + 6, size:15, center:true},
+  {tex:'X_1', left: e1x, top: oy + 6, size:15, center:true},
+  {tex:'Y_0', left: ox - 7, top: e0y - 12, size:15, align:'right'},
+  {tex:'Y_1', left: ox - 7, top: e1y - 12, size:15, align:'right'}
+];
+const box = document.getElementById('labels');
+labels.forEach((l, i) => {
+  const el = document.createElement('div');
+  el.className = 'katex-label'; el.id = 'lbl-' + i;
+  box.appendChild(el);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = pw(l.left); el.style.top = ph(l.top);
+  el.style.fontSize = (l.size || 16) + 'px';
+  el.style.color = l.color || 'black';
+  if (l.center) el.style.transform = 'translateX(-50%)';
+  if (l.align === 'right') el.classList.add('right-of-axis');
+  if (l.bg) { el.style.background = 'white'; el.style.padding = '0 2px'; }
+});
+</script>
+</body>
+</html>

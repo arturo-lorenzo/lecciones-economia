@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+      <clipPath id="discA"><circle id="cA" /></clipPath>
+    </defs>
+    <g id="g"></g>
+  </svg>
+</div>
+<script>
+
+
+
+
+const VBW = 680, VBH = 560;
+const NS = 'http://www.w3.org/2000/svg', G = document.getElementById('g');
+function el(tag, at, parent) { const e = document.createElementNS(NS, tag); for (const k in at) if (at[k] !== null) e.setAttribute(k, at[k]); (parent || G).appendChild(e); return e; }
+const OX = 120, OY = 460, U = 45;
+const XE = OX + 440;
+const gx = u => OX + u * U, gy = v => OY - v * U;
+function line(u1, v1, u2, v2, at) { return el('line', Object.assign({x1: gx(u1).toFixed(1), y1: gy(v1).toFixed(1), x2: gx(u2).toFixed(1), y2: gy(v2).toFixed(1)}, at)); }
+
+const a = [6, 5.4], b = [3.5, 3.15];
+const N = [a[0], b[1]];
+const rA = a[1] - N[1], rB = a[0] - b[0];
+const dab = Math.hypot(a[0] - b[0], a[1] - b[1]);
+const ua = [(b[0] - a[0]) / dab, (b[1] - a[1]) / dab];
+const coreFrom = dab - rB, coreTo = rA;
+const dC = 0.55 * coreFrom + 0.45 * coreTo;
+const P1 = [a[0] + ua[0] * dC, a[1] + ua[1] * dC];
+const at = d => [a[0] + ua[0] * d, a[1] + ua[1] * d];
+
+
+el('line', {x1: OX, y1: OY, x2: XE, y2: OY, stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+el('line', {x1: OX, y1: OY, x2: OX, y2: 60, stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+
+
+const cA = document.getElementById('cA');
+cA.setAttribute('cx', gx(a[0])); cA.setAttribute('cy', gy(a[1])); cA.setAttribute('r', rA * U);
+el('circle', {cx: gx(b[0]), cy: gy(b[1]), r: rB * U, fill: '#888', 'fill-opacity': 0.13, 'clip-path': 'url(#discA)'});
+
+
+const slope0 = a[1] / a[0], slopeN = N[1] / N[0];
+line(0, 0, 8.9, 8.9 * slope0, {stroke: '#888', 'stroke-width': 1.4});
+line(0, 0, 9.6, 9.6 * slopeN, {stroke: '#888', 'stroke-width': 1.4});
+
+
+el('line', {x1: gx(P1[0]), y1: gy(P1[1]), x2: gx(P1[0]), y2: OY, stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'});
+el('line', {x1: gx(P1[0]), y1: gy(P1[1]), x2: OX, y2: gy(P1[1]), stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'});
+
+
+el('circle', {cx: gx(a[0]), cy: gy(a[1]), r: rA * U, fill: 'none', stroke: '#534AB7', 'stroke-width': 2.2});
+el('circle', {cx: gx(b[0]), cy: gy(b[1]), r: rB * U, fill: 'none', stroke: '#1D9E75', 'stroke-width': 2.2});
+
+
+line(a[0], a[1], b[0], b[1], {stroke: '#888', 'stroke-width': 2.2});
+const lk = at(2.85);
+el('line', {x1: OX + 105, y1: 196, x2: gx(lk[0]) - 2, y2: gy(lk[1]) - 2, stroke: '#888', 'stroke-width': 0.8});
+const c1 = at(coreFrom), c2 = at(coreTo);
+line(c1[0], c1[1], c2[0], c2[1], {stroke: '#D85A30', 'stroke-width': 8, 'stroke-linecap': 'round', opacity: 0.22});
+
+
+line(a[0], 0, a[0], 8.6, {stroke: '#534AB7', 'stroke-width': 2.2});
+line(0, b[1], 9.5, b[1], {stroke: '#1D9E75', 'stroke-width': 2.2});
+
+
+[a[0], P1[0]].forEach(u => el('line', {x1: gx(u), y1: OY, x2: gx(u), y2: OY + 4, stroke: 'black', 'stroke-width': 1}));
+[b[1], P1[1]].forEach(v => el('line', {x1: OX - 4, y1: gy(v), x2: OX, y2: gy(v), stroke: 'black', 'stroke-width': 1}));
+
+
+el('circle', {cx: gx(a[0]), cy: gy(a[1]), r: 4, fill: '#888'});
+el('circle', {cx: gx(b[0]), cy: gy(b[1]), r: 4, fill: '#888'});
+el('circle', {cx: gx(N[0]), cy: gy(N[1]), r: 5, fill: '#000'});
+el('circle', {cx: gx(P1[0]), cy: gy(P1[1]), r: 5, fill: '#000'});
+
+const labels = [
+  {id: 'lx', tex: 'M^{s,A}', x: XE + 6, y: OY, anchor: 'lm', size: 17},
+  {id: 'ly', tex: 'M^{s,B}', x: OX - 8, y: 58, anchor: 'rt', size: 17},
+  {id: 'lo', tex: 'O', x: OX - 8, y: 466, anchor: 'rt', size: 16},
+  {id: 'lRA', tex: 'R^A', x: gx(a[0]), y: gy(8.6) - 5, anchor: 'cb', color: '#534AB7', size: 16},
+  {id: 'lRB', tex: 'R^B', x: gx(9.5) + 6, y: gy(b[1]), anchor: 'lm', color: '#1D9E75', size: 16},
+  {id: 'lE0', tex: 'E_{A/B,0}', x: gx(8.9) + 6, y: gy(8.9 * slope0), anchor: 'lm', color: '#888', size: 16},
+  {id: 'lEN', tex: 'E_{A/B,N}', x: gx(9.6) + 6, y: gy(9.6 * slopeN), anchor: 'lm', color: '#888', size: 16},
+  {id: 'lCIA', tex: '\\text{CI}^A', x: gx(a[0] - rA * 0.866) - 4, y: gy(a[1] + rA * 0.5) - 4, anchor: 'rb', color: '#534AB7', size: 16},
+  {id: 'lCIB', tex: '\\text{CI}^B', x: gx(b[0]), y: gy(b[1] - rB) + 5, anchor: 'ct', color: '#1D9E75', size: 16},
+  {id: 'la', tex: 'a', x: gx(a[0]) - 6, y: gy(a[1]) - 5, anchor: 'rb', color: '#888', size: 16},
+  {id: 'lb', tex: 'b', x: gx(b[0]), y: gy(b[1]) + 7, anchor: 'ct', color: '#888', size: 16},
+  {id: 'l0', tex: '0\\;(N)', x: gx(N[0]) + 7, y: gy(N[1]) + 6, anchor: 'lt', color: '#000', size: 16},
+  {id: 'l1', tex: '1', x: gx(P1[0]) + 7, y: gy(P1[1]) + 5, anchor: 'lt', color: '#000', size: 16},
+  {id: 'lMA1', tex: "M^{s',A}", x: gx(a[0]) + 5, y: 467, anchor: 'ct', size: 16},
+  {id: 'lMAs', tex: 'M^{s*,A}', x: gx(P1[0]) - 5, y: 467, anchor: 'ct', size: 16},
+  {id: 'lMB1', tex: "M^{s',B}", x: OX - 8, y: gy(b[1]), anchor: 'rm', size: 16},
+  {id: 'lMBs', tex: 'M^{s*,B}', x: OX - 8, y: gy(P1[1]), anchor: 'rm', size: 16},
+  {id: 'lcc', tex: '\\text{curva de contratos}', x: OX + 30, y: 192, anchor: 'lb', color: '#888', size: 14},
+];
+const TX = {l: '0', c: '-50%', r: '-100%'}, TY = {t: '0', m: '-50%', b: '-100%'};
+const C = document.querySelector('.graph-container');
+labels.forEach(l => {
+  const e = document.createElement('div'); e.className = 'katex-label'; e.id = l.id; C.appendChild(e);
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = (l.x / VBW * 100).toFixed(2) + '%';
+  e.style.top = (l.y / VBH * 100).toFixed(2) + '%';
+  e.style.color = l.color || 'black';
+  e.style.fontSize = (l.size || 16) + 'px';
+  const an = l.anchor || 'lt';
+  e.style.transform = 'translate(' + TX[an[0]] + ',' + TY[an[1]] + ')';
+  if (l.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+});
+</script>
+</body>
+</html>

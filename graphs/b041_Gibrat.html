@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: none; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 460">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="48" y1="360" x2="313" y2="360" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="48" y1="360" x2="48"  y2="115" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <path id="flog" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <line id="dmoda"  stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line id="dmedia" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+
+    <line x1="368" y1="360" x2="633" y2="360" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="368" y1="360" x2="368" y2="115" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <path id="fnorm" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <line id="dzero" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+    <g id="ticks"></g>
+  </svg>
+
+  <div class="katex-label" id="lbl-tL"></div>
+  <div class="katex-label" id="lbl-tR"></div>
+  <div class="katex-label" id="lbl-fD"></div>
+  <div class="katex-label" id="lbl-D"></div>
+  <div class="katex-label" id="lbl-oL"></div>
+  <div class="katex-label" id="lbl-moda"></div>
+  <div class="katex-label" id="lbl-media"></div>
+  <div class="katex-label" id="lbl-fg"></div>
+  <div class="katex-label" id="lbl-g"></div>
+  <div class="katex-label" id="lbl-zero"></div>
+
+<script>
+
+
+
+
+
+
+
+const mu = 1.2, sg = 0.7;
+const flog = D => Math.exp(-((Math.log(D)-mu)**2)/(2*sg*sg)) / (D*sg*Math.sqrt(2*Math.PI));
+const moda  = Math.exp(mu - sg*sg);
+const media = Math.exp(mu + sg*sg/2);
+const sgg = 1.3;
+const fnorm = g => Math.exp(-g*g/(2*sgg*sgg)) / (sgg*Math.sqrt(2*Math.PI));
+
+
+
+
+
+const Y0 = 360, SL = 980, SR = 735;
+function lx(D) { return 48 + D * 25.46; }
+function rx(g) { return 501 + g * 31.5; }
+const VBW = 680, VBH = 460;
+
+function seg(id,x1,y1,x2,y2){const e=document.getElementById(id);
+  e.setAttribute('x1',x1);e.setAttribute('y1',y1);e.setAttribute('x2',x2);e.setAttribute('y2',y2);}
+
+
+(function() {
+  const pts = [];
+  for (let i = 0; i <= 400; i++) {
+    const D = 0.12 + (i/400) * (9.7 - 0.12);
+    pts.push(lx(D).toFixed(1) + ',' + (Y0 - flog(D)*SL).toFixed(1));
+  }
+  document.getElementById('flog').setAttribute('d', 'M' + pts.join(' L'));
+})();
+
+
+(function() {
+  const pts = [];
+  for (let i = 0; i <= 400; i++) {
+    const g = -4 + (i/400) * 8;
+    pts.push(rx(g).toFixed(1) + ',' + (Y0 - fnorm(g)*SR).toFixed(1));
+  }
+  document.getElementById('fnorm').setAttribute('d', 'M' + pts.join(' L'));
+})();
+
+seg('dmoda',  lx(moda),  Y0 - flog(moda)*SL,  lx(moda),  Y0);
+seg('dmedia', lx(media), Y0 - flog(media)*SL, lx(media), Y0);
+seg('dzero',  rx(0),     Y0 - fnorm(0)*SR,     rx(0),     Y0);
+
+const ticksG = document.getElementById('ticks');
+function tick(x){const t=document.createElementNS('http://www.w3.org/2000/svg','line');
+  t.setAttribute('x1',x);t.setAttribute('y1',Y0);t.setAttribute('x2',x);t.setAttribute('y2',Y0+4);
+  t.setAttribute('stroke','black');t.setAttribute('stroke-width','1');ticksG.appendChild(t);}
+tick(lx(moda)); tick(lx(media)); tick(rx(0));
+
+const pct = (v, t) => (v / t * 100).toFixed(2) + '%';
+
+const labels = [
+  {id:'lbl-tL', tex:'\\text{Distribución de tamaños}', x: 180.5, y: 60, ax: 0.5, ay: 0, color:'#888', size: 15},
+  {id:'lbl-tR', tex:'\\text{Distribución de tasas de crecimiento}', x: 501, y: 60, ax: 0.5, ay: 0, color:'#888', size: 15},
+
+  {id:'lbl-fD', tex:'f(T)', x: 48, y: 109, ax: 0.5, ay: 1, color:'black', size: 17},
+  {id:'lbl-D',  tex:'T',    x: 319, y: 360, ax: 0, ay: 0.5, color:'black', size: 17},
+  {id:'lbl-oL', tex:'O',    x: 42, y: 366, ax: 1, ay: 0, color:'black'},
+
+  {id:'lbl-moda',  tex:'\\text{moda}',  x: lx(moda),  y: 368, ax: 0.5, ay: 0, color:'black', size: 15},
+  {id:'lbl-media', tex:'\\text{media}', x: lx(media), y: 368, ax: 0.5, ay: 0, color:'black', size: 15},
+
+  {id:'lbl-fg', tex:'f(g_T)', x: 368, y: 109, ax: 0.5, ay: 1, color:'black', size: 17},
+  {id:'lbl-g',  tex:'g_T',    x: 639, y: 360, ax: 0, ay: 0.5, color:'black', size: 17},
+  {id:'lbl-zero', tex:'0', x: rx(0), y: 368, ax: 0.5, ay: 0, color:'black'},
+];
+
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  if (!el) return;
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = pct(l.x, VBW);
+  el.style.top = pct(l.y, VBH);
+  el.style.fontSize = (l.size || 16) + 'px';
+  el.style.whiteSpace = 'nowrap';
+  el.style.transform = `translate(${-100*l.ax}%, ${-100*l.ay}%)`;
+  if (l.color) el.style.color = l.color;
+});
+</script>
+</div>
+</body>
+</html>

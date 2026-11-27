@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+  .katex-label .katex { font-size: 1em; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 963" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+
+    <line x1="135" y1="440" x2="555" y2="440" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="135" y1="440" x2="135" y2="50" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="dep" stroke="#D85A30" stroke-width="2.2"/>
+    <path id="sf" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <g id="guides-top"></g>
+    <line id="push" stroke="#378ADD" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <g id="dots-top"></g>
+
+    <line x1="135" y1="890" x2="555" y2="890" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="135" y1="890" x2="135" y2="500" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="nd" stroke="#D85A30" stroke-width="2.2"/>
+    <path id="g" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <g id="guides-bot"></g>
+    <g id="gap"></g>
+    <g id="dyn"></g>
+    <g id="dots-bot"></g>
+  </svg>
+</div>
+<script>
+const VBW = 680, VBH = 963, NS = 'http://www.w3.org/2000/svg';
+
+
+const a = 0.55, al = 0.3, B = 2.0, c = 3.5, w = 0.6, nd = 0.45;
+const sf = k => a * Math.pow(k, al) * (1 + B / (1 + Math.exp(-(k - c) / w)));
+const gk = k => sf(k) / k;
+
+const roots = [];
+{ let prev = gk(0.05) - nd;
+  for (let k = 0.06; k < 8; k += 0.002) { const v = gk(k) - nd; if (prev * v < 0) {
+      let lo = k - 0.002, hi = k; for (let i = 0; i < 40; i++) { const m = (lo + hi) / 2; ((gk(lo) - nd) * (gk(m) - nd) < 0) ? hi = m : lo = m; }
+      roots.push((lo + hi) / 2); } prev = v; } }
+const [kT, kU, kD] = roots;
+const KMAX = 8.0;
+const OX = 135, XE = OX + 420;
+const X = k => OX + k * 48.75;
+const Yt = y => 440 - y * 100;
+const Yb = g => 890 - g * 440;
+function mk(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); document.getElementById(parent).appendChild(e); return e; }
+function path(id, fn, Y, k0, k1, ymin) {
+  const p = []; for (let i = 0; i <= 400; i++) { const k = k0 + (k1 - k0) * i / 400; const y = Y(fn(k)); if (y >= ymin) p.push(X(k).toFixed(1) + ',' + y.toFixed(1)); }
+  document.getElementById(id).setAttribute('d', 'M' + p.join(' L'));
+}
+function setL(id, x1, y1, x2, y2) { const e = document.getElementById(id); e.setAttribute('x1', x1); e.setAttribute('y1', y1); e.setAttribute('x2', x2); e.setAttribute('y2', y2); }
+
+path('sf', sf, Yt, 0.004, KMAX, 50);
+setL('dep', X(0), Yt(0), X(KMAX), Yt(nd * KMAX));
+[kT, kU, kD].forEach(k => {
+  mk('line', {x1: X(k), y1: Yt(sf(k)), x2: X(k), y2: 440, stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'}, 'guides-top');
+  mk('line', {x1: X(k), y1: 440, x2: X(k), y2: 444, stroke: 'black', 'stroke-width': 1}, 'guides-top');
+  mk('line', {x1: X(k), y1: Yb(nd), x2: X(k), y2: 890, stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'}, 'guides-bot');
+  mk('line', {x1: X(k), y1: 890, x2: X(k), y2: 894, stroke: 'black', 'stroke-width': 1}, 'guides-bot');
+});
+
+[[kT, true], [kU, false], [kD, true]].forEach(([k, st]) => {
+  mk('circle', {cx: X(k), cy: Yt(sf(k)), r: 5, fill: st ? '#000' : '#fff', stroke: '#000', 'stroke-width': 1.6}, 'dots-top');
+  mk('circle', {cx: X(k), cy: Yb(nd), r: 5, fill: st ? '#000' : '#fff', stroke: '#000', 'stroke-width': 1.6}, 'dots-bot');
+});
+
+const kPush = kU + 0.75;
+setL('push', X(kT) + 6, 420, X(kPush), 420);
+
+path('g', gk, Yb, 0.55, KMAX, 505);
+setL('nd', X(0), Yb(nd), X(KMAX), Yb(nd));
+
+function setDyn(xa, xb, y) {
+  const n = Math.max(2, Math.round(Math.abs(xb - xa)/45)), pts = [];
+  for (let i = 0; i <= n; i++) pts.push((xa + (xb - xa)*i/n).toFixed(1) + ',' + y);
+  mk('polyline', {points: pts.join(' '), fill: 'none', stroke: '#5a5a5a', 'stroke-width': 1.2, 'stroke-dasharray': '5 4', 'marker-mid': 'url(#arrow)', 'marker-end': 'url(#arrow)'}, 'dyn');
+}
+const dyn = [[0.35, kT - 0.25], [kU - 0.25, kT + 0.25], [kU + 0.25, kD - 0.25], [KMAX - 0.2, kD + 0.25]];
+dyn.forEach(([k0, k1]) => setDyn(X(k0), X(k1), 878));
+
+function argmaxGap(k0, k1, sgn) { let kb = k0, vb = -1; for (let k = k0; k <= k1; k += 0.005) { const v = sgn * (gk(k) - nd); if (v > vb) { vb = v; kb = k; } } return kb; }
+const kPos = argmaxGap(kU + 0.1, kD - 0.1, 1), kNeg = argmaxGap(kT + 0.1, kU - 0.1, -1);
+function brace(k) {
+  const x = X(k), y1 = Yb(gk(k)), y2 = Yb(nd), A = {stroke: '#444', 'stroke-width': 1};
+  mk('line', Object.assign({x1: x, y1: y1, x2: x, y2: y2}, A), 'gap');
+  mk('line', Object.assign({x1: x - 4, y1: y1, x2: x + 4, y2: y1}, A), 'gap');
+  mk('line', Object.assign({x1: x - 4, y1: y2, x2: x + 4, y2: y2}, A), 'gap');
+  return [x, (y1 + y2) / 2];
+}
+const bPos = brace(kPos), bNeg = brace(kNeg);
+
+const cont = document.querySelector('.graph-container');
+function put(tex, x, y, o = {}) {
+  const e = document.createElement('div'); e.className = 'katex-label';
+  katex.render(tex, e, {throwOnError: false});
+  e.style.left = (x / VBW * 100).toFixed(2) + '%'; e.style.top = (y / VBH * 100).toFixed(2) + '%';
+  e.style.color = o.c || 'black'; if (o.s) e.style.fontSize = o.s + 'px';
+  const tx = {l: '0', c: '-50%', r: '-100%'}[o.ha || 'l'], ty = {t: '0', m: '-50%', b: '-100%'}[o.va || 't'];
+  e.style.transform = `translate(${tx},${ty})`;
+  if (o.bg) { e.style.background = '#fff'; const q = e.querySelector('.katex'); if (q) q.style.padding = '0 2px'; }
+  cont.appendChild(e);
+}
+const G = '#1D9E75', O = '#D85A30', Bl = '#378ADD';
+put('y', OX - 10, 54, {ha: 'r', s: 18});
+put('k', XE + 8, 440, {va: 'm', s: 18});
+put('sf(k)', X(KMAX) + 6, Yt(sf(KMAX)) + 2, {va: 't', c: G});
+put('(n+\\delta)k', X(KMAX) + 6, Yt(nd * KMAX), {va: 'm', c: O});
+put('k_T^*', X(kT), 450, {ha: 'c'});
+put('k_U', X(kU), 450, {ha: 'c'});
+put('k_D^*', X(kD), 450, {ha: 'c'});
+put('\\textit{big push}', (X(kT) + X(kU)) / 2 + 4, 414, {ha: 'c', va: 'b', c: Bl, s: 15, bg: true});
+put('\\text{tasas}', OX - 8, 504, {ha: 'r', s: 16});
+put('k', XE + 8, 890, {va: 'm', s: 18});
+put('\\dfrac{sf(k)}{k}', X(KMAX) + 6, Yb(gk(KMAX)) + 4, {va: 't', c: G});
+put('n+\\delta', X(KMAX) + 6, Yb(nd) - 2, {va: 'b', c: O});
+put('k_T^*', X(kT), 900, {ha: 'c'});
+put('k_U', X(kU), 900, {ha: 'c'});
+put('k_D^*', X(kD), 900, {ha: 'c'});
+put('\\text{trampa}', X(kT) - 10, Yb(nd) + 12, {ha: 'r', va: 't', s: 15, c: '#444'});
+put('g_k > 0', bPos[0], Yb(gk(kPos)) - 6, {ha: 'c', va: 'b', s: 14, c: '#444'});
+put('g_k < 0', bNeg[0], Yb(gk(kNeg)) + 6, {ha: 'c', va: 't', s: 14, c: '#444'});
+put('g_k = \\dfrac{sf(k)}{k} - (n+\\delta)', X(4.6), 540, {ha: 'l', va: 't', s: 15, c: '#444'});
+put('\\text{umbral}', X(kU) + 10, Yb(nd) + 12, {ha: 'l', va: 't', s: 15, c: '#444'});
+</script>
+</body>
+</html>

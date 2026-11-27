@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="135" y1="460" x2="590" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="135" y1="460" x2="135" y2="40" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="g1v" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="g1h" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="g0v" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="g0h" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <g id="ticks" stroke="black" stroke-width="1"></g>
+
+
+    <path id="loss" fill="none" stroke="#534AB7" stroke-width="2.2"/>
+
+
+    <line id="mr"  stroke="#378ADD" stroke-width="2.2"/>
+    <line id="cp0" stroke="#1D9E75" stroke-width="2.2"/>
+    <line id="cp1" stroke="#1D9E75" stroke-width="2.2" stroke-dasharray="8 4"/>
+
+
+    <line id="shCP" stroke="#1D9E75" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <circle id="pt0" r="5" fill="#000"/>
+    <circle id="pt1" r="5" fill="#000"/>
+  </svg>
+
+<script>
+
+
+const OX=385, OY=260, W=680, H=520, AX=135, AY=460;
+const k=0.65;
+const sMR=0.9;
+const w=sMR*k;
+const eps=110;
+const el=id=>document.getElementById(id);
+function seg(id,x1,y1,x2,y2){const e=el(id);e.setAttribute('x1',x1);e.setAttribute('y1',y1);e.setAttribute('x2',x2);e.setAttribute('y2',y2);}
+const cpY=(dx,c)=>OY-c-k*dx, mrY=dx=>OY+sMR*dx;
+seg('cp0', OX-200, cpY(-200,0),   OX+180, cpY(180,0));
+seg('cp1', OX-200, cpY(-200,eps), OX+170, cpY(170,eps));
+seg('mr',  OX-190, mrY(-190),     OX+185, mrY(185));
+
+const dx1=-eps/(sMR+k), y1=mrY(dx1), d1=OY-y1;
+el('pt0').setAttribute('cx',OX); el('pt0').setAttribute('cy',OY);
+el('pt1').setAttribute('cx',OX+dx1); el('pt1').setAttribute('cy',y1);
+seg('g1v', OX+dx1, y1, OX+dx1, AY);
+seg('g1h', OX+dx1, y1, AX, y1);
+seg('g0v', OX, OY, OX, AY);
+seg('g0h', OX, OY, AX, OY);
+[[AX-4,y1,AX,y1],[AX-4,OY,AX,OY],[OX+dx1,AY,OX+dx1,AY+4],[OX,AY,OX,AY+4]].forEach(q=>{const t=document.createElementNS('http://www.w3.org/2000/svg','line');t.setAttribute('x1',q[0]);t.setAttribute('y1',q[1]);t.setAttribute('x2',q[2]);t.setAttribute('y2',q[3]);el('ticks').appendChild(t);});
+
+const L1=d1*d1+w*dx1*dx1, ax=Math.sqrt(L1/w), ay=Math.sqrt(L1);
+const pts=[];for(let i=0;i<=720;i++){const t=2*Math.PI*i/720;pts.push((OX+ax*Math.cos(t)).toFixed(1)+','+(OY-ay*Math.sin(t)).toFixed(1));}
+el('loss').setAttribute('d','M'+pts.join(' L')+' Z');
+
+const n=Math.hypot(k,1), nx=-k/n, ny=-1/n, dist=eps/n;
+const ax0=OX+120, ay0=cpY(120,0);
+seg('shCP', ax0+nx*6, ay0+ny*6, ax0+nx*(dist-7), ay0+ny*(dist-7));
+const mx=ax0+nx*dist/2, my=ay0+ny*dist/2;
+
+function pct(v,t){return(v/t*100).toFixed(2)+'%';}
+const cont=document.querySelector('.graph-container');
+const labels=[
+  {id:'pi',  tex:'\\pi',       x:AX-7, y:26, size:'18px', align:'right'},
+  {id:'yg',  tex:'\\tilde{y}', x:594, y:450, size:'18px'},
+  {id:'cp0', tex:'\\text{CP}_0', x:OX+185, y:cpY(180,0)-14, color:'#1D9E75', size:'16px'},
+  {id:'cp1', tex:'\\text{CP}_1', x:OX+175, y:cpY(170,eps)-14, color:'#1D9E75', size:'16px'},
+  {id:'mr',  tex:'\\text{MR}',   x:OX+190, y:mrY(185)-12, color:'#378ADD', size:'16px'},
+  {id:'loss',tex:'L(\\tilde{y},\\pi)=L_1', x:OX+ax+8, y:OY-12, color:'#534AB7', size:'16px'},
+  {id:'eps', tex:'\\varepsilon^\\pi > 0', x:mx+10, y:my-26, color:'#1D9E75', size:'14px'},
+  {id:'E0',  tex:'0', x:OX+6, y:OY-34, color:'#000', size:'16px'},
+  {id:'E1',  tex:'1', x:OX+dx1-5, y:y1-34, color:'#000', size:'16px'},
+  {id:'y1',  tex:'\\tilde{y}_1', x:OX+dx1-9, y:AY+7, size:'16px'},
+  {id:'y0',  tex:'\\tilde{y}_0 = 0', x:OX-22, y:AY+7, size:'16px'},
+  {id:'pi1', tex:'\\pi_1',       x:AX-7, y:y1-12, size:'16px', align:'right'},
+  {id:'piT', tex:'\\pi_0 = \\pi^T', x:AX-7, y:OY-12, size:'16px', align:'right'},
+];
+labels.forEach(l=>{const e=document.createElement('div');e.className='katex-label';e.id='lbl-'+l.id;cont.appendChild(e);
+  katex.render(l.tex,e,{throwOnError:false});e.style.left=pct(l.x,W);e.style.top=pct(l.y,H);e.style.color=l.color||'black';
+  if(l.size)e.style.fontSize=l.size;if(l.align==='right')e.classList.add('right-of-axis');
+  if(l.bg){e.style.background='#fff';const q=e.querySelector('.katex');if(q)q.style.padding='0 2px';}});
+</script>
+</div>
+</body>
+</html>

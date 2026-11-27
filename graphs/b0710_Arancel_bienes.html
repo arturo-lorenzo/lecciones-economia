@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<div class="graph-container">
+  <svg viewBox="0 0 680 660" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+    <line id="ax-x" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="ax-y" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <polygon id="tri0" fill="#D85A30" fill-opacity="0.10"/>
+    <polygon id="tri1" fill="#D85A30" fill-opacity="0.22"/>
+
+
+    <path id="ppf" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line id="bw0" stroke="#D85A30" stroke-width="2.2"/>
+    <line id="bw1" stroke="#D85A30" stroke-width="2.2" stroke-dasharray="8 4"/>
+
+    <line id="bd1" stroke="#378ADD" stroke-width="1.4" stroke-dasharray="8 4"/>
+    <line id="bg1" stroke="#378ADD" stroke-width="1.4"/>
+
+
+    <path id="cis0" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="cis1" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-dasharray="8 4" stroke-linecap="round"/>
+
+    <circle id="pt-P0" r="5" fill="#000"/>
+    <circle id="pt-C0" r="5" fill="#000"/>
+    <circle id="pt-P1" r="5" fill="#000"/>
+    <circle id="pt-C1" r="5" fill="#000"/>
+  </svg>
+  <div id="labels"></div>
+</div>
+<script>
+
+const ox = 80, oy = 600, kx = 52, ky = 54;
+function P(x, y) { return [ox + x * kx, oy - y * ky]; }
+function set(id, a) { const e = document.getElementById(id); for (const q in a) e.setAttribute(q, a[q]); }
+function seg(id, x1, y1, x2, y2) { const [a, b] = P(x1, y1), [c, d] = P(x2, y2); set(id, {x1: a, y1: b, x2: c, y2: d}); }
+function poly(id, pts) { set(id, {points: pts.map(([x, y]) => P(x, y).map(v => v.toFixed(1)).join(',')).join(' ')}); }
+set('ax-x', {x1: ox, y1: oy, x2: 640, y2: oy});
+set('ax-y', {x1: ox, y1: oy, x2: ox, y2: 40});
+const XMAX = 10.2, YMAX = 10.4;
+
+
+const Xa = 9, Ya = 8;
+const ppf = x => Ya * Math.sqrt(1 - (x / Xa) * (x / Xa));
+const ppfSl = x => Ya * x / (Xa * Xa * Math.sqrt(1 - (x / Xa) * (x / Xa)));
+function xAt(q) { let lo = 0, hi = Xa - 1e-9; for (let i = 0; i < 100; i++) { const m = (lo + hi) / 2; if (ppfSl(m) < q) lo = m; else hi = m; } return (lo + hi) / 2; }
+const pp = []; for (let i = 0; i <= 300; i++) { const x = Xa * i / 300; const [a, b] = P(x, ppf(x)); pp.push(a.toFixed(1) + ',' + b.toFixed(1)); }
+set('ppf', {d: 'M' + pp.join(' L')});
+
+
+const al = 0.3;
+
+const XP0 = 7.2, YP0 = ppf(XP0), q = ppfSl(XP0);
+const I0 = YP0 + q * XP0;
+const XC0 = al * I0 / q, YC0 = (1 - al) * I0;
+
+const t = 0.5, qd = q / (1 + t);
+const XP1 = xAt(qd), YP1 = ppf(XP1);
+const I1 = YP1 + q * XP1;
+
+const kk = qd * (1 - al) / al, XC1 = I1 / (kk + q), YC1 = kk * XC1;
+const Id = YP1 + qd * XP1;
+const Ig = YC1 + qd * XC1;
+
+
+function lineY(id, I, s, xlo, xhi = XMAX) { const x1 = Math.max(xlo, (I - YMAX) / s), x2 = Math.min(xhi, I / s); seg(id, x1, I - s * x1, x2, I - s * x2); return [x1, x2]; }
+const w0 = lineY('bw0', I0, q, 0), w1 = lineY('bw1', I1, q, 0);
+const d1 = lineY('bd1', Id, qd, 4.6, 9.0), g1 = lineY('bg1', Ig, qd, 0.6, 9.0);
+
+
+const u0 = Math.pow(XC0, al) * Math.pow(YC0, 1 - al), u1 = Math.pow(XC1, al) * Math.pow(YC1, 1 - al);
+const cis = u => x => Math.pow(u / Math.pow(x, al), 1 / (1 - al));
+function curve(id, f, x0, x1) { const pts = []; for (let i = 0; i <= 300; i++) { const x = x0 + (x1 - x0) * i / 300, y = f(x); if (y > YMAX) continue; const [a, b] = P(x, y); pts.push(a.toFixed(1) + ',' + b.toFixed(1)); } set(id, {d: 'M' + pts.join(' L')}); }
+const cisE = 9.9;
+curve('cis0', cis(u0), 2.2, cisE);
+curve('cis1', cis(u1), 2.2, cisE);
+
+
+poly('tri0', [[XC0, YC0], [XC0, YP0], [XP0, YP0]]);
+poly('tri1', [[XC1, YC1], [XC1, YP1], [XP1, YP1]]);
+
+[['pt-P0', XP0, YP0], ['pt-C0', XC0, YC0], ['pt-P1', XP1, YP1], ['pt-C1', XC1, YC1]].forEach(([id, x, y]) => { const [a, b] = P(x, y); set(id, {cx: a, cy: b}); });
+
+const VBW = 680, VBH = 660;
+const pw = v => (v / VBW * 100).toFixed(1) + '%', ph = v => (v / VBH * 100).toFixed(1) + '%';
+const X = x => P(x, 0)[0], Y = y => P(0, y)[1];
+const labels = [
+  {tex:'X', left: 644, top: oy - 14, size:17},
+  {tex:'Y', left: ox - 8, top: 36, size:17, align:'right'},
+  {tex:'\\text{FPP}', left: X(Xa) + 8, top: oy - 30, size:16, color:'#0F6E56'},
+  {tex:'\\text{CIS}_0', left: X(cisE) + 6, top: Y(cis(u0)(cisE)) - 12, size:16, color:'#534AB7'},
+  {tex:'\\text{CIS}_1', left: X(cisE) + 6, top: Y(cis(u1)(cisE)) - 4, size:16, color:'#534AB7'},
+  {tex:'\\text{RRI}^*', left: X(w0[1]) + 6, top: Y(I0 - q * w0[1]) - 12, size:15, color:'#D85A30'},
+  {tex:'\\text{RRI}^*', left: X(w1[1]) + 6, top: Y(I1 - q * w1[1]) - 4, size:15, color:'#D85A30'},
+  {tex:'p_X/[p_Y(1+t)]', left: X(d1[1]) + 6, top: Y(Id - qd * d1[1]) - 10, size:15, color:'#185FA5'},
+  {tex:'\\text{gasto}', left: X(g1[1]) + 6, top: Y(Ig - qd * g1[1]) - 14, size:15, color:'#185FA5'},
+  {tex:'P^0', left: X(XP0) - 14, top: Y(YP0) + 4, align:'right', size:16, color:'#000'},
+  {tex:'C^0', left: X(XC0) + 6, top: Y(YC0) - 30, size:16, color:'#000'},
+  {tex:'P^1', left: X(XP1) - 8, top: Y(YP1) + 2, align:'right', size:16, color:'#000'},
+  {tex:'C^1', left: X(XC1) - 5, top: Y(YC1) + 4, align:'right', size:16, color:'#000'}
+];
+const box = document.getElementById('labels');
+labels.forEach((l, i) => {
+  const el = document.createElement('div');
+  el.className = 'katex-label'; el.id = 'lbl-' + i;
+  box.appendChild(el);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = pw(l.left); el.style.top = ph(l.top);
+  el.style.fontSize = (l.size || 16) + 'px';
+  el.style.color = l.color || 'black';
+  if (l.center) el.style.transform = 'translateX(-50%)';
+  if (l.align === 'right') el.classList.add('right-of-axis');
+  if (l.bg) { el.style.background = 'white'; el.style.padding = '0 2px'; }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  body { margin: 0; }
+  .graph-container { position: relative; width: 100%; max-width: none; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg id="g" viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+</svg>
+</div>
+<script>
+const W = 900, H = 560, S = 900 / 680;
+const svg = document.getElementById('g'), NS = 'http://www.w3.org/2000/svg';
+const box = document.querySelector('.graph-container');
+function el(tag, attrs) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+const f1 = v => v.toFixed(1), f2 = v => v.toFixed(2);
+const labels = [];
+const lab = (tex, x, y, color, ax, ay, size, bg) => labels.push({tex, x, y, color, ax, ay, size, bg});
+const line = (x1, y1, x2, y2, at) => el('line', Object.assign({x1: f1(x1), y1: f1(y1), x2: f1(x2), y2: f1(y2)}, at));
+const AXIS = {stroke: 'black', 'stroke-width': f2(1.2 * S), 'marker-end': 'url(#arrow)'};
+const GUIDE = {stroke: '#888', 'stroke-width': f2(0.8 * S), 'stroke-dasharray': '6.6 4'};
+const TICK = {stroke: '#000', 'stroke-width': f2(1 * S)};
+const CURVE = f2(2.2 * S);
+const BLUE = '#378ADD', GREEN = '#1D9E75', RED = '#D85A30', BLUE_D = '#185FA5', GREEN_D = '#0F6E56';
+
+const OY = 390, AXY = 330, AXX = 350;
+
+const a = 0.2, b = 0.15, t = 1, c = 0.2;
+const z1 = a, z2 = 1 - b, dist = 1 - a - b;
+
+
+const p1 = 0.70, p2 = 0.90;
+const zMid = a + dist / 2;
+const zHat = a + dist / 2 + (p2 - p1) / (2 * t * dist);
+const cost1 = z => p1 + t * (z - z1) ** 2, cost2 = z => p2 + t * (z2 - z) ** 2;
+if (Math.abs(cost1(zHat) - cost2(zHat)) > 1e-9) console.error('el consumidor indiferente no iguala los costes');
+const AOX = 96, AZ = 310, AV = 162;
+const ax_ = z => AOX + AZ * z, ay_ = v => OY - AV * v;
+line(AOX, OY, AOX + AXX, OY, AXIS);
+line(AOX, OY, AOX, OY - AXY, AXIS);
+lab('z', AOX + AXX + 6, OY, '#000', 0, 0.5, '17px');
+lab('\\text{precio} + \\text{coste de transporte}', AOX + 8, OY - AXY + 2, '#000', 0, 0.5, '15px');
+function curve(f, color) {
+  const pts = [];
+  for (let k = 0; k <= 200; k++) { const z = k / 200; pts.push(f1(ax_(z)) + ',' + f1(ay_(f(z)))); }
+  el('path', {d: 'M' + pts.join(' L'), fill: 'none', stroke: color, 'stroke-width': CURVE, 'stroke-linecap': 'round'});
+}
+
+line(ax_(z1), ay_(p1), ax_(z1), OY, GUIDE);
+line(ax_(z2), ay_(p2), ax_(z2), OY, GUIDE);
+line(ax_(zHat), ay_(cost1(zHat)), ax_(zHat), OY, GUIDE);
+curve(cost1, BLUE);
+curve(cost2, GREEN);
+
+lab('p_1 + t(z - z_1)^2', ax_(1) + 6, ay_(cost1(1)) - 10, BLUE, 1, 1);
+lab('p_2 + t(z - z_2)^2', AOX + 10, ay_(cost2(0)) - 10, GREEN, 0, 1);
+
+lab('p_1', ax_(z1) - 6, ay_(p1) + 6, BLUE, 1, 0);
+lab('p_2', ax_(z2) - 6, ay_(p2) + 6, GREEN, 1, 0);
+
+el('circle', {cx: f1(ax_(zHat)), cy: f1(ay_(cost1(zHat))), r: f2(4 * S), fill: '#fff', stroke: RED, 'stroke-width': f2(1.8 * S)});
+
+el('circle', {cx: f1(ax_(z1)), cy: OY, r: f2(5 * S), fill: BLUE});
+el('circle', {cx: f1(ax_(z2)), cy: OY, r: f2(5 * S), fill: GREEN});
+line(ax_(1), OY, ax_(1), OY + 5, TICK);
+line(ax_(zHat), OY, ax_(zHat), OY + 5, TICK);
+const AT = OY + 10;
+lab('0', AOX, AT, '#000', 0.5, 0);
+lab('1', ax_(1), AT, '#000', 0.5, 0);
+lab('\\hat z', ax_(zHat), AT, '#000', 0.5, 0);
+lab('z_1 = a', ax_(z1), AT + 32, '#000', 0.5, 0);
+lab('z_2 = 1 - b', ax_(z2), AT + 32, '#000', 0.5, 0);
+
+const BY = OY + 92;
+el('line', {x1: f1(ax_(0)), y1: BY, x2: f1(ax_(zHat)), y2: BY, stroke: BLUE, 'stroke-opacity': 0.22, 'stroke-width': 26});
+el('line', {x1: f1(ax_(zHat)), y1: BY, x2: f1(ax_(1)), y2: BY, stroke: GREEN, 'stroke-opacity': 0.22, 'stroke-width': 26});
+lab('x_1^d', ax_(zHat / 2), BY, BLUE_D, 0.5, 0.5);
+lab('x_2^d', ax_((zHat + 1) / 2), BY, GREEN_D, 0.5, 0.5);
+
+const CY = BY + 32;
+[0, z1, zMid, zHat].forEach(z => line(ax_(z), CY - 6, ax_(z), CY + 6, {stroke: '#888', 'stroke-width': f2(0.8 * S)}));
+function dim(z0, zE, tex, side) {
+  line(ax_(z0) + 2, CY, ax_(zE) - 2, CY, {stroke: '#000', 'stroke-width': f2(1 * S), 'marker-start': 'url(#arrow)', 'marker-end': 'url(#arrow)'});
+  if (side === 1) lab(tex, ax_(zE) + 7, CY, '#000', 0, 0.5, '15px');
+  else if (side === -1) lab(tex, ax_(z0) - 7, CY, '#000', 1, 0.5, '15px');
+  else lab(tex, ax_((z0 + zE) / 2), CY + 10, '#000', 0.5, 0, '15px');
+}
+dim(0, z1, '\\text{cautiva}', -1);
+dim(z1, zMid, '\\text{compartida}', 0);
+dim(zMid, zHat, '\\text{disputada}', 1);
+lab('\\text{(a) La ciudad lineal}', AOX + AXX / 2, 6, '#444', 0.5, 0, '15px');
+
+
+const aB = 0.175, bB = 0.175, distB = 1 - aB - bB;
+const K1 = t * distB * (1 + aB - bB) / 2, K2 = t * distB * (1 - aB + bB) / 2;
+const R1 = q2 => (q2 + c) / 2 + K1;
+const R2 = q1 => (q1 + c) / 2 + K2;
+const p1s = c + t * distB * (1 + (aB - bB) / 3), p2s = c + t * distB * (1 + (bB - aB) / 3);
+if (Math.abs(p1s - p2s) > 1e-9) console.error('con a = b el equilibrio debe estar sobre la bisectriz');
+if (Math.abs(R1(p2s) - p1s) > 1e-9 || Math.abs(R2(p1s) - p2s) > 1e-9) console.error('el equilibrio no está en las dos funciones de reacción');
+const BOX = 512, BK = 250;
+const bx = q => BOX + BK * q, by = q => OY - BK * q;
+line(BOX, OY, BOX + AXX, OY, AXIS);
+line(BOX, OY, BOX, OY - AXY, AXIS);
+lab('p_1', BOX + AXX + 6, OY, '#000', 0, 0.5, '17px');
+lab('p_2', BOX - 8, OY - AXY, '#000', 1, 0.5, '17px');
+
+const qB = 1.15;
+line(BOX, OY, bx(qB), by(qB), {stroke: '#888', 'stroke-width': f2(1 * S), 'stroke-dasharray': '7.9 5.3'});
+lab('p_1 = p_2', bx(qB) + 6, by(qB) + 2, '#888', 0, 1, '15px');
+
+line(bx(c), by(c), BOX, by(c), GUIDE);
+line(bx(c), by(c), bx(c), OY, GUIDE);
+line(BOX - 5, by(c), BOX, by(c), TICK);
+line(bx(c), OY, bx(c), OY + 5, TICK);
+el('circle', {cx: f1(bx(c)), cy: f1(by(c)), r: f2(3.5 * S), fill: '#000'});
+lab('(c, c)', bx(c) + 9, by(c) + 5, '#000', 0, 0, '15px');
+lab('c', bx(c), OY + 10, '#000', 0.5, 0);
+lab('c', BOX - 9, by(c), '#000', 1, 0.5);
+
+const q2End = 1.22, q1End = 1.12;
+line(bx(R1(0)), by(0), bx(R1(q2End)), by(q2End), {stroke: BLUE, 'stroke-width': CURVE, 'stroke-linecap': 'round'});
+line(bx(0), by(R2(0)), bx(q1End), by(R2(q1End)), {stroke: GREEN, 'stroke-width': CURVE, 'stroke-linecap': 'round'});
+lab('p_1(p_2)', bx(R1(q2End)), by(q2End) - 8, BLUE, 0.5, 1);
+lab('p_2(p_1)', bx(q1End) + 8, by(R2(q1End)), GREEN, 0, 0.5);
+
+line(bx(p1s), by(p2s), BOX, by(p2s), GUIDE);
+line(bx(p1s), by(p2s), bx(p1s), OY, GUIDE);
+line(BOX - 5, by(p2s), BOX, by(p2s), TICK);
+line(bx(p1s), OY, bx(p1s), OY + 5, TICK);
+el('circle', {cx: f1(bx(p1s)), cy: f1(by(p2s)), r: f2(5 * S), fill: '#000'});
+lab('0', bx(p1s) + 11, by(p2s) + 6, '#000', 0, 0);
+lab('p_1^*', bx(p1s), OY + 10, '#000', 0.5, 0);
+lab('p_2^*', BOX - 9, by(p2s), '#000', 1, 0.5);
+lab('\\text{(b) Funciones de reacción en precios}', BOX + AXX / 2, 6, '#444', 0.5, 0, '15px');
+
+labels.forEach((l, i) => {
+  const d = document.createElement('div');
+  d.className = 'katex-label'; d.id = 'lbl-' + i;
+  katex.render(l.tex, d, {throwOnError: false});
+  d.style.left = (l.x / W * 100).toFixed(3) + '%';
+  d.style.top = (l.y / H * 100).toFixed(3) + '%';
+  d.style.transform = `translate(${-(l.ax || 0) * 100}%, ${-(l.ay || 0) * 100}%)`;
+  d.style.color = l.color || '#000';
+  if (l.size) d.style.fontSize = l.size;
+  if (l.bg) { d.style.background = '#fff'; const k = d.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  box.appendChild(d);
+});
+</script>
+</body>
+</html>

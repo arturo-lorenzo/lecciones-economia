@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 520">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <rect x="125" y="60" width="418" height="380" fill="none" stroke="black" stroke-width="1.5"/>
+
+    <line x1="125" y1="470" x2="225" y2="470" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="95"  y1="440" x2="95"  y2="340" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="543" y1="30"  x2="443" y2="30"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="573" y1="60"  x2="573" y2="160" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <g id="iso-a"></g>
+    <g id="iso-b"></g>
+    <path id="contract-curve" fill="none" stroke="#D85A30" stroke-width="2.2" stroke-linecap="round"/>
+    <line id="price-line" stroke="#378ADD" stroke-width="2.2" stroke-dasharray="8 5"/>
+    <g id="tangency-pts"></g>
+
+  </svg>
+
+  <div class="katex-label" id="lbl-oa"></div>
+  <div class="katex-label" id="lbl-ob"></div>
+  <div class="katex-label" id="lbl-la"></div>
+  <div class="katex-label" id="lbl-ka"></div>
+  <div class="katex-label" id="lbl-lb"></div>
+  <div class="katex-label" id="lbl-kb"></div>
+  <div class="katex-label" id="lbl-lbar"></div>
+  <div class="katex-label" id="lbl-kbar"></div>
+  <div class="katex-label" id="lbl-xa"></div>
+  <div class="katex-label" id="lbl-xb"></div>
+  <div class="katex-label" id="lbl-e0"></div>
+  <div class="katex-label" id="lbl-cc"></div>
+  <div class="katex-label" id="lbl-price"></div>
+
+</div>
+
+<script>
+const bx = 125, by = 60, bw = 418, bh = 380;
+const oaX = bx, oaY = by + bh;
+
+function toSvgFromA(l, k) { return [oaX + l / 10 * bw, oaY - k / 8 * bh]; }
+function toSvgFromB(l, k) { return [bx + bw - l / 10 * bw, by + k / 8 * bh]; }
+
+const alphaA = 0.4, alphaB = 0.6;
+let isoA_lastPt = null, isoB_lastPt = null;
+
+function genIsoA(level) {
+  const pts = [];
+  for (let i = 0; i <= 200; i++) {
+    const l = 0.3 + (i / 200) * 9.5;
+    const k = Math.pow(level / Math.pow(l, alphaA), 1 / (1 - alphaA));
+    if (k >= 0.1 && k <= 7.9) {
+      const [sx, sy] = toSvgFromA(l, k);
+      if (sx >= bx + 2 && sx <= bx + bw - 2 && sy >= by + 2 && sy <= by + bh - 2) pts.push({sx, sy});
+    }
+  }
+  if (pts.length > 2) { isoA_lastPt = pts[pts.length - 1]; return 'M' + pts.map(p => p.sx.toFixed(1)+','+p.sy.toFixed(1)).join(' L'); }
+  return '';
+}
+
+function genIsoB(level) {
+  const pts = [];
+  for (let i = 0; i <= 200; i++) {
+    const l = 0.3 + (i / 200) * 9.5;
+    const k = Math.pow(level / Math.pow(l, alphaB), 1 / (1 - alphaB));
+    if (k >= 0.1 && k <= 7.9) {
+      const [sx, sy] = toSvgFromB(l, k);
+      if (sx >= bx + 2 && sx <= bx + bw - 2 && sy >= by + 2 && sy <= by + bh - 2) pts.push({sx, sy});
+    }
+  }
+  if (pts.length > 2) { isoB_lastPt = pts[0]; return 'M' + pts.map(p => p.sx.toFixed(1)+','+p.sy.toFixed(1)).join(' L'); }
+  return '';
+}
+
+function contractK(lA) { return 2.88 * lA / (1.6 + 0.2 * lA); }
+
+const ccPts = [];
+let ccLabelPt = null;
+for (let i = 0; i <= 200; i++) {
+  const lA = 0.05 + (i / 200) * 9.9;
+  const kA = contractK(lA);
+  if (kA >= 0 && kA <= 8) {
+    const [sx, sy] = toSvgFromA(lA, kA);
+    if (sx >= bx && sx <= bx + bw && sy >= by && sy <= by + bh) {
+      ccPts.push(sx.toFixed(1)+','+sy.toFixed(1));
+      if (Math.abs(lA - 7) < 0.1) ccLabelPt = {sx, sy};
+    }
+  }
+}
+document.getElementById('contract-curve').setAttribute('d', 'M' + ccPts.join(' L'));
+
+const lA_eq = 5, kA_eq = contractK(lA_eq);
+const xA_eq = Math.pow(lA_eq, alphaA) * Math.pow(kA_eq, 1 - alphaA);
+const xB_eq = Math.pow(10 - lA_eq, alphaB) * Math.pow(8 - kA_eq, 1 - alphaB);
+
+const isoAg = document.getElementById('iso-a');
+const isoBg = document.getElementById('iso-b');
+
+const pA = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+pA.setAttribute('d', genIsoA(xA_eq)); pA.setAttribute('fill','none');
+pA.setAttribute('stroke','#1D9E75'); pA.setAttribute('stroke-width','2.2'); pA.setAttribute('stroke-linecap','round');
+isoAg.appendChild(pA);
+
+const pB = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+pB.setAttribute('d', genIsoB(xB_eq)); pB.setAttribute('fill','none');
+pB.setAttribute('stroke','#534AB7'); pB.setAttribute('stroke-width','2.2'); pB.setAttribute('stroke-linecap','round');
+isoBg.appendChild(pB);
+
+const [esx, esy] = toSvgFromA(lA_eq, kA_eq);
+const tangG = document.getElementById('tangency-pts');
+const ci = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+ci.setAttribute('cx', esx); ci.setAttribute('cy', esy); ci.setAttribute('r','5'); ci.setAttribute('fill','#000');
+tangG.appendChild(ci);
+
+
+const mrts = (alphaA * kA_eq) / ((1 - alphaA) * lA_eq);
+const slopeSvg = mrts * (bh / 8) / (bw / 10);
+
+function lineY(x) { return esy + slopeSvg * (x - esx); }
+function lineX(y) { return esx + (y - esy) / slopeSvg; }
+
+const candidates = [];
+const yLeft = lineY(bx);
+if (yLeft >= by && yLeft <= by + bh) candidates.push({x: bx, y: yLeft});
+const yRight = lineY(bx + bw);
+if (yRight >= by && yRight <= by + bh) candidates.push({x: bx + bw, y: yRight});
+const xTop = lineX(by);
+if (xTop >= bx && xTop <= bx + bw) candidates.push({x: xTop, y: by});
+const xBot = lineX(by + bh);
+if (xBot >= bx && xBot <= bx + bw) candidates.push({x: xBot, y: by + bh});
+
+candidates.sort((a, b) => a.x - b.x);
+
+const pl = document.getElementById('price-line');
+if (candidates.length >= 2) {
+  pl.setAttribute('x1', candidates[0].x.toFixed(1));
+  pl.setAttribute('y1', candidates[0].y.toFixed(1));
+  pl.setAttribute('x2', candidates[candidates.length-1].x.toFixed(1));
+  pl.setAttribute('y2', candidates[candidates.length-1].y.toFixed(1));
+}
+
+const plPt = candidates[candidates.length-1] || {x: bx + bw, y: by + 300};
+const plLabelX = plPt.x + 8;
+const plLabelY = plPt.y - 22;
+
+const VBW = 680, VBH = 520;
+const uaLbl = isoA_lastPt ? {left:((isoA_lastPt.sx+16)/VBW*100).toFixed(1)+'%', top:((isoA_lastPt.sy-22)/VBH*100).toFixed(1)+'%'} : {left:'75%',top:'75%'};
+const ubLbl = isoB_lastPt ? {left:((isoB_lastPt.sx+8)/VBW*100).toFixed(1)+'%', top:((isoB_lastPt.sy-28)/VBH*100).toFixed(1)+'%'} : {left:'25%',top:'25%'};
+const ccLbl = ccLabelPt ? {left:((ccLabelPt.sx+14)/VBW*100).toFixed(1)+'%', top:((ccLabelPt.sy-5)/VBH*100).toFixed(1)+'%'} : {left:'72%',top:'44%'};
+
+const PX = v => (v / VBW * 100).toFixed(2) + '%';
+const labels = [
+  {id:'lbl-oa',tex:'O_1',left:PX(bx - 32),top:'88%',color:'black'},
+  {id:'lbl-ob',tex:'O_2',left:PX(bx + bw + 11),top:'6%',color:'black'},
+  {id:'lbl-la',tex:'L^1',left:PX(bx + 50),top:'92%',color:'black'},
+  {id:'lbl-ka',tex:'K^1',left:PX(bx - 66),top:'62%',color:'black'},
+  {id:'lbl-lb',tex:'L^2',left:PX(bx + bw - 70),top:'1%',color:'black'},
+  {id:'lbl-kb',tex:'K^2',left:PX(bx + bw + 52),top:'18%',color:'black'},
+  {id:'lbl-lbar',tex:'L_0',left:PX(bx + bw + 4),top:'88%',color:'black'},
+  {id:'lbl-kbar',tex:'K_0',left:PX(bx - 32),top:'6%',color:'black'},
+  {id:'lbl-xa',tex:'x^1',left:uaLbl.left,top:uaLbl.top,color:'#0F6E56'},
+  {id:'lbl-xb',tex:'x^2',left:ubLbl.left,top:ubLbl.top,color:'#534AB7'},
+  {id:'lbl-e0',tex:'0',left:((esx+4)/VBW*100).toFixed(1)+'%',top:((esy-40)/VBH*100).toFixed(1)+'%',color:'#000'},
+  {id:'lbl-cc',tex:'\\text{CC}',left:ccLbl.left,top:ccLbl.top,color:'#D85A30'},
+  {id:'lbl-price',tex:'-\\dfrac{w}{r}',left:((plLabelX)/VBW*100).toFixed(1)+'%',top:((plLabelY)/VBH*100).toFixed(1)+'%',color:'#185FA5'}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError:false});
+  el.style.left = l.left; el.style.top = l.top;
+  if (l.color) el.style.color = l.color;
+  if (l.align === 'right') el.classList.add('right-of-axis');
+});
+</script>
+</body>
+</html>

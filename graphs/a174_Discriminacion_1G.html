@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<style>
+  body{margin:0;display:flex;justify-content:center;background:#fff}
+  .graph-container{position:relative;width:100%;max-width:680px;margin:0 auto}
+  .graph-container svg{width:100%;height:auto;display:block}
+  .katex-label{position:absolute;pointer-events:none;white-space:nowrap;line-height:1;font-size:16px}
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<polygon points="105.0,60.0 426.3,360.0 105.0,360.0" fill="#534AB7" opacity="0.1" stroke="none"/>
+<line x1="105.0" y1="460.0" x2="105.0" y2="30.0" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+<line x1="105.0" y1="460.0" x2="578.0" y2="460.0" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+<polyline fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linejoin="round" points="105.0,60.0 287.1,230.0 469.1,400.0"/>
+<polyline fill="none" stroke="#1D9E75" stroke-width="2.3" stroke-linejoin="round" points="105.0,60.0 319.2,160.0 533.4,260.0"/>
+<line x1="105.0" y1="360.0" x2="544.1" y2="360.0" stroke="#D85A30" stroke-width="2.2"/>
+<line x1="105.0" y1="90.0" x2="137.1" y2="90.0" stroke="#000" stroke-width="0.9" stroke-dasharray="4,3"/>
+<line x1="137.1" y1="90.0" x2="137.1" y2="460.0" stroke="#000" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.45"/>
+<line x1="134.1" y1="457.0" x2="140.1" y2="463.0" stroke="#000" stroke-width="1.1"/>
+<circle cx="137.1" cy="90.0" r="3" fill="#534AB7"/>
+<line x1="105.0" y1="120.0" x2="169.3" y2="120.0" stroke="#000" stroke-width="0.9" stroke-dasharray="4,3"/>
+<line x1="169.3" y1="120.0" x2="169.3" y2="460.0" stroke="#000" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.45"/>
+<line x1="166.3" y1="457.0" x2="172.3" y2="463.0" stroke="#000" stroke-width="1.1"/>
+<circle cx="169.3" cy="120.0" r="3" fill="#534AB7"/>
+<line x1="105.0" y1="150.0" x2="201.4" y2="150.0" stroke="#000" stroke-width="0.9" stroke-dasharray="4,3"/>
+<line x1="201.4" y1="150.0" x2="201.4" y2="460.0" stroke="#000" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.45"/>
+<line x1="198.4" y1="457.0" x2="204.4" y2="463.0" stroke="#000" stroke-width="1.1"/>
+<circle cx="201.4" cy="150.0" r="3" fill="#534AB7"/>
+<line x1="426.3" y1="360.0" x2="426.3" y2="460.0" stroke="#000" stroke-width="0.9" stroke-dasharray="4,3"/>
+<line x1="423.3" y1="457.0" x2="429.3" y2="463.0" stroke="#000" stroke-width="1.1"/>
+<circle cx="426.3" cy="360.0" r="5" fill="#000"/>
+</svg>
+</div>
+<script>
+
+
+const W=680, H=500;
+const LABELS=[["1", 137.1, 468, "t", null, 15, false], ["p(1)", 99.0, 90, "r", null, 15, false], ["2", 169.3, 468, "t", null, 15, false], ["p(2)", 99.0, 120, "r", null, 15, false], ["3", 201.4, 468, "t", null, 15, false], ["p(3)", 99.0, 150, "r", null, 15, false], ["p", 95.0, 32, "r", null, 17, false], ["X", 581.0, 460, "l", null, 17, false], ["X_M = X_C", 426.3, 468, "t", null, 15, false], ["0", 419.1, 372, "r", "#000", 16, false], ["D(X)=\\text{Img}(X)", 473.6, 398, "l", "#534AB7", 16, false], ["\\text{Ime}(X)", 536.9, 260.0, "l", "#1D9E75", 16, false], ["\\text{Cmg}(X)", 542.3, 352, "b", "#D85A30", 16, false], ["\\pi_M = \\text{EC}_C", 281.7, 305, "c", "#534AB7", 16, false]];
+const cont=document.querySelector('.graph-container');
+const T={l:'translate(0,-50%)',r:'translate(-100%,-50%)',t:'translate(-50%,0)',b:'translate(-50%,-100%)',c:'translate(-50%,-50%)'};
+LABELS.forEach(([tex,x,y,a,col,fs,bg])=>{
+  const d=document.createElement('div'); d.className='katex-label';
+  d.style.left=(100*x/W)+'%'; d.style.top=(100*y/H)+'%'; d.style.transform=T[a];
+  if(col) d.style.color=col; if(fs) d.style.fontSize=fs+'px';
+  katex.render(tex,d,{throwOnError:false,displayMode:false});
+  if(bg){d.style.background='#fff'; const k=d.querySelector('.katex'); if(k) k.style.padding='0 2px';}
+  cont.appendChild(d);
+});
+</script>
+</body>
+</html>

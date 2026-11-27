@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Arturo Lorenzo">
+<meta name="description" content="Tema B13 de las oposiciones TCEE. Mercado de divisas, contado y forward, paridad cubierta de intereses, hipótesis de eficiencia, puzzle de Fama y carry trade.">
+
+<title>B13. Mercado de divisas – Lecciones de economía general e internacional</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/b14-tipo-cambio.html" rel="next">
+<link href="../chapters/b12-ajuste-bp.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-af206048d982c71265205c3505cca787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bec3fe2b0881f05566c9dedb60685f6d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="B13. Mercado de divisas – Lecciones de economía general e internacional">
+<meta property="og:description" content="Tema B13 de las oposiciones TCEE. Mercado de divisas, contado y forward, paridad cubierta de intereses, hipótesis de eficiencia, puzzle de Fama y carry trade.">
+<meta property="og:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta property="og:site_name" content="Lecciones de economía general e internacional">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:title" content="B13. Mercado de divisas – Lecciones de economía general e internacional">
+<meta name="twitter:description" content="Tema B13 de las oposiciones TCEE. Mercado de divisas, contado y forward, paridad cubierta de intereses, hipótesis de eficiencia, puzzle de Fama y carry trade.">
+<meta name="twitter:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="B13. Mercado de divisas">
+<meta name="citation_author" content="Arturo Lorenzo">
+<meta name="citation_publication_date" content="2026-11-28">
+<meta name="citation_cover_date" content="2026-11-28">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-11-28">
+<meta name="citation_fulltext_html_url" content="https://librovol1.arturolorenzo.com/chapters/b13-mercado-divisas.html">
+<meta name="citation_language" content="es">
+<meta name="citation_book_title" content="Lecciones de economía general e internacional">
+<link rel="canonical" href="https://librovol1.arturolorenzo.com/chapters/b13-mercado-divisas.html">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/b05-tnc-comercio.html">Comercio Internacional</a></li><li class="breadcrumb-item"><a href="../chapters/b13-mercado-divisas.html"><span class="chapter-title">B13. Mercado de divisas</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Lecciones de economía general e internacional</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/arturo-lorenzo/lecciones-economia" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../creditos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Edición y licencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte A: Economía General</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pensamiento Económico</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a01-objeto-metodo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A1. Objeto y método de la ciencia económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a02-clasicos-marx.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A2. Los economistas clásicos y Marx</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a03-neoclasicos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A3. Los economistas neoclásicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a04-keynes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A4. Keynes: análisis comparado</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a05-monetaristas-snc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A5. La síntesis neoclásica y el monetarismo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a06-nmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A6. La nueva macroeconomía clásica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a07-nek.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A7. La nueva economía keynesiana</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Microeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a08-consumidor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A8. Teoría de la demanda del consumidor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a09-dualidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A9. Dualidad y aplicaciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a10-riesgo-incertidumbre.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A10. Elección en riesgo e incertidumbre</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a11-produccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A11. Teoría de la producción</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a12-costes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A12. Teoría de costes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a13-informacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A13. Economía de la información</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a14-juegos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A14. Teoría de juegos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a15-toi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A15. Teoría de la organización industrial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a16-competencia-perfecta.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A16. Competencia perfecta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a17-monopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A17. Monopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a18-competencia-monopolistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A18. Competencia monopolística</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a19-oligopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A19. Oligopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a20-regulacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A20. Regulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a21-equilibrio-general.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A21. Equilibrio general</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a22-eb-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A22. Economía del bienestar (I)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a23-eb-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A23. Economía del bienestar (II)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a24-eb-iii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A24. Economía del bienestar (III)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Economía Laboral</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a25-oferta-trabajo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A25. Mercado de trabajo y capital humano</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a26-desempleo-friccional.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A26. Desempleo friccional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a27-salarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A27. Determinación de salarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a28-tnp-nairu.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A28. TNP, NAIRU y persistencia</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Macroeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a29-mhi-mgs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A29. Modelos de horizonte infinito y generaciones solapadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a30-magnitudes-cn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A30. Magnitudes macroeconómicas y contabilidad nacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a32-precios-output.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A32. Precios y output en economía abierta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a33-demanda-consumo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A33. Teorías de demanda de consumo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a34-demanda-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A34. Teorías de demanda de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a35-demanda-dinero.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A35. Teorías de la demanda de dinero</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a36-politica-monetaria-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A36. Política monetaria I: diseño e instrumentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a37-politica-monetaria-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A37. Política monetaria II: transmisión y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a38-politica-fiscal.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A38. Política fiscal, crecimiento y ahorro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a39-deficit.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A39. Déficit público, su financiación y sostenibilidad</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a40-interrelacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A40. Interrelación de políticas macroeconómicas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a41-inflacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A41. Inflación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a42-ciclos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A42. Ciclos económicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a43-crecimiento-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A43. Crecimiento económico exógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a44-crecimiento-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A44. Crecimiento económico endógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a45-crecimiento-empirica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A45. Evidencia empírica sobre el crecimiento</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte B: Economía Internacional</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Empresa y Finanzas</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b01-estados-ratios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B1. Estados financieros y ratios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b02-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B2. Decisiones de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b03-financiacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B3. Decisiones de financiación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b04-crecimiento-ma.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B4. Crecimiento empresarial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b23-renta-variable.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B23. Instrumentos de renta variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b24-renta-fija.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B24. Instrumentos de renta fija</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b25-derivados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B25. Instrumentos derivados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b26-crisis-financieras.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B26. Crisis financieras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b27-regulacion-financiera.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B27. Regulación bancaria y financiera</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Comercio Internacional</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b05-tnc-comercio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B5. Teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b06-nueva-teoria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B6. Nueva teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b07-politica-comercial-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B7. Política comercial I: instrumentos y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b08-politica-comercial-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B8. Política comercial II: política estratégica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b09-comercio-crecimiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B9. Comercio internacional y crecimiento</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b10-integracion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B10. Teoría de la integración económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b11-balanza-pagos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B11. Balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b12-ajuste-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B12. Ajuste de la balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b13-mercado-divisas.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">B13. Mercado de divisas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b14-tipo-cambio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B14. Determinación del tipo de cambio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b15-regimenes-cambiarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B15. Regímenes cambiarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b16-integracion-monetaria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B16. Integración monetaria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b17-crisis-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B17. Crisis de balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b18-globalizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B18. Globalización</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b19-coordinacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B19. Coordinación de políticas económicas internacionales</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Sistema Económico Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b20-sei-hasta-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B20. El sistema económico internacional hasta el colapso de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b21-sei-despues-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B21. El sistema económico internacional después de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b22-fmi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B22. El Fondo Monetario Internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b28-desarrollo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B28. Desarrollo económico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b29-fod-aod.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B29. Financiación oficial del desarrollo y AOD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b30-gbm-brsd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B30. Grupo Banco Mundial y bancos regionales de desarrollo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b31-ma-bpg.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B31. El cambio climático y su impacto en la economía</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b32-perspectivas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B32. Perspectivas de la economía internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b33-omc-gatt.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B33. La OMC y el GATT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b34-gats-trips.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B34. GATS, TRIPS y acuerdos plurilaterales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b35-no-comunitarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B35. Acuerdos comerciales no comunitarios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unión Europea</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b36-tratados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B36. Los tratados de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b37-finanzas-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B37. Las finanzas de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b38-pac-ppc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B38. Política Agrícola Común y Política Pesquera Común</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b39-miue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B39. Mercado interior de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b41-comercial-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B41. Política comercial de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b42-cooperacion-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B42. Política de cooperación de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b43-politica-monetaria-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B43. Política macroeconómica I: el euro y la política monetaria única</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b44-politica-financiera-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B44. Política macroeconómica II: la Unión Bancaria y la Unión de los Mercados de Capitales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b45-politica-fiscal-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B45. Política macroeconómica III: la gobernanza económica de la UE y de la zona euro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Descargas</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Primer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/ejercicios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios prácticos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/flashcards-conceptos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de conceptos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/guia-dictamen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guía para el dictamen</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Segundo Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/segundo-ejercicio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de inglés</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Tercer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/libro-bloques.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">El libro en PDF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del tercer ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Cuarto Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del cuarto ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Más allá del libro</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/otras-publicaciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Otras publicaciones y trabajos del autor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/enlaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Enlaces de interés</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Bibliografía</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manuales y obras de referencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia-articulos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Obras citadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../fuentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fuentes normativas y documentales</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#mercado-de-divisas-concepto-características-y-agentes" id="toc-mercado-de-divisas-concepto-características-y-agentes" class="nav-link" data-scroll-target="#mercado-de-divisas-concepto-características-y-agentes">1. Mercado de divisas: concepto, características y agentes</a>
+  <ul class="collapse">
+  <li><a href="#divisa-y-tipo-de-cambio" id="toc-divisa-y-tipo-de-cambio" class="nav-link" data-scroll-target="#divisa-y-tipo-de-cambio">1.1. Divisa y tipo de cambio</a></li>
+  <li><a href="#características-del-mercado-de-divisas" id="toc-características-del-mercado-de-divisas" class="nav-link" data-scroll-target="#características-del-mercado-de-divisas">1.2. Características del mercado de divisas</a></li>
+  <li><a href="#agentes-que-participan-en-el-mercado-de-divisas" id="toc-agentes-que-participan-en-el-mercado-de-divisas" class="nav-link" data-scroll-target="#agentes-que-participan-en-el-mercado-de-divisas">1.3. Agentes que participan en el mercado de divisas</a></li>
+  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link" data-scroll-target="#conclusiones">1.4. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#instrumentos-y-operaciones" id="toc-instrumentos-y-operaciones" class="nav-link" data-scroll-target="#instrumentos-y-operaciones">2. Instrumentos y operaciones</a>
+  <ul class="collapse">
+  <li><a href="#instrumentos" id="toc-instrumentos" class="nav-link" data-scroll-target="#instrumentos">2.1. Instrumentos</a></li>
+  <li><a href="#operaciones" id="toc-operaciones" class="nav-link" data-scroll-target="#operaciones">2.2. Operaciones</a></li>
+  <li><a href="#conclusiones-1" id="toc-conclusiones-1" class="nav-link" data-scroll-target="#conclusiones-1">2.3. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#eficiencia-y-regulación-del-mercado-de-divisas" id="toc-eficiencia-y-regulación-del-mercado-de-divisas" class="nav-link" data-scroll-target="#eficiencia-y-regulación-del-mercado-de-divisas">3. Eficiencia y regulación del mercado de divisas</a>
+  <ul class="collapse">
+  <li><a href="#la-hipótesis-de-eficiencia-bachelier-1900-samuelson-1965-fama-1970" id="toc-la-hipótesis-de-eficiencia-bachelier-1900-samuelson-1965-fama-1970" class="nav-link" data-scroll-target="#la-hipótesis-de-eficiencia-bachelier-1900-samuelson-1965-fama-1970">3.1. La hipótesis de eficiencia (Bachelier, 1900; Samuelson, 1965; Fama, 1970)</a></li>
+  <li><a href="#contraste-de-la-hipótesis-de-eficiencia-la-paradoja-del-margen-forward-o-puzzle-de-fama-fama-1984" id="toc-contraste-de-la-hipótesis-de-eficiencia-la-paradoja-del-margen-forward-o-puzzle-de-fama-fama-1984" class="nav-link" data-scroll-target="#contraste-de-la-hipótesis-de-eficiencia-la-paradoja-del-margen-forward-o-puzzle-de-fama-fama-1984">3.2. Contraste de la hipótesis de eficiencia: la paradoja del margen <em>forward</em> o <em>puzzle</em> de Fama (Fama, 1984)</a></li>
+  <li><a href="#la-situación-de-la-regulación-en-el-mercado-de-divisas" id="toc-la-situación-de-la-regulación-en-el-mercado-de-divisas" class="nav-link" data-scroll-target="#la-situación-de-la-regulación-en-el-mercado-de-divisas">3.3. La situación de la regulación en el mercado de divisas</a></li>
+  </ul></li>
+  <li><a href="#conclusiones-3" id="toc-conclusiones-3" class="nav-link" data-scroll-target="#conclusiones-3">Conclusiones</a></li>
+  <li><a href="#anexo" id="toc-anexo" class="nav-link" data-scroll-target="#anexo">Anexo</a>
+  <ul class="collapse">
+  <li><a href="#a.1.-cómo-operan-los-creadores-de-mercado" id="toc-a.1.-cómo-operan-los-creadores-de-mercado" class="nav-link" data-scroll-target="#a.1.-cómo-operan-los-creadores-de-mercado">A.1. Cómo operan los creadores de mercado</a></li>
+  <li><a href="#a.2.-obtención-de-la-paridad-cubierta-de-intereses-pci" id="toc-a.2.-obtención-de-la-paridad-cubierta-de-intereses-pci" class="nav-link" data-scroll-target="#a.2.-obtención-de-la-paridad-cubierta-de-intereses-pci">A.2. Obtención de la paridad <em>cubierta</em> de intereses (PCI)</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/b05-tnc-comercio.html">Comercio Internacional</a></li><li class="breadcrumb-item"><a href="../chapters/b13-mercado-divisas.html"><span class="chapter-title">B13. Mercado de divisas</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">B13. Mercado de divisas</span></h1>
+<p class="subtitle lead">Mercados de divisas: operaciones e instrumentos.</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Arturo Lorenzo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">noviembre de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<p>Tal y como subrayó Paul Volcker, “el tipo de cambio es el precio más importante de una economía”<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. En efecto, la evolución macroeconómica depende de forma decisiva de los tipos de cambio, que condicionan el comercio exterior, la inflación y el <em>valor</em> en moneda nacional de la deuda externa. Esa influencia hace del <strong>mercado de divisas</strong> uno de los mercados con más peso en el sistema económico internacional. Con ese nombre genérico se alude a la red de instituciones a través de la cual unas monedas nacionales se compran y se venden a cambio de otras. Por la misma razón, la forma en que cada país organiza la relación entre su moneda y las demás, su <strong>régimen cambiario</strong>, es una de sus decisiones de política económica más importantes.</p>
+<p>Históricamente, la relevancia de los tipos de cambio ha crecido con la integración económica internacional. Durante el patrón oro clásico (c.&nbsp;1870-1914) los tipos de cambio eran fijos respecto del oro; el periodo de entreguerras combinó la volatilidad con devaluaciones competitivas; y el sistema de Bretton Woods (1944) estableció paridades fijas pero ajustables frente al dólar. Tras la Segunda Guerra Mundial, la rápida expansión del comercio y de los movimientos de capital multiplicó las operaciones de cambio entre monedas. El fin de la convertibilidad del dólar en oro (1971) y la generalización de la flotación (1973) abrieron una etapa de tipos de cambio flexibles, caracterizada por una elevada volatilidad y por la libertad de cada país para elegir su régimen cambiario, reconocida en los Acuerdos de Jamaica (1976).</p>
+<p>Hoy, el mercado de divisas es el mayor mercado financiero del mundo. Según la encuesta trienal del Banco de Pagos Internacionales (BIS)<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, el volumen medio de negociación <em>diario</em> alcanzó en abril de 2025 los 9,6 billones de dólares, mientras que el comercio mundial de bienes y servicios ronda los 35 billones de dólares <em>anuales</em>. El valor anual de las transacciones de divisas multiplica así por setenta, aproximadamente, el del comercio que, en principio, deberían financiar. El crecimiento de la negociación de divisas ha ido acompañado de una transformación constante del funcionamiento del mercado, impulsada por el avance tecnológico y la innovación financiera, y de un debate recurrente sobre qué determina los tipos de cambio y qué régimen cambiario es preferible.</p>
+<p>El tema se ocupa del mercado de divisas como mercado, es decir, de quién opera en él, con qué contratos y con qué grado de eficiencia. Su negociación es descentralizada y extrabursátil, no se interrumpe durante los días laborables, se canaliza a través de bancos creadores de mercado y plataformas electrónicas y está muy concentrada, pues el dólar interviene en el 89,2&nbsp;% de las operaciones (BIS, 2025). Sus buenas prácticas descansan, sobre todo, en un código de adhesión voluntaria, el Código Global de Conducta del mercado de divisas (2017).</p>
+<p>El tema estudia el mercado de divisas según el esquema siguiente:</p>
+<ul>
+<li><p><em>Concepto, características y agentes</em>: concepto de mercado de divisas, sus características y los agentes que operan en él.</p></li>
+<li><p><em>Instrumentos y operaciones</em>: los contratos que se negocian y las operaciones que se hacen con ellos.</p></li>
+<li><p><em>Eficiencia y regulación</em>: la eficiencia del mercado de divisas y su regulación.</p></li>
+</ul>
+</section>
+<section id="mercado-de-divisas-concepto-características-y-agentes" class="level2">
+<h2 class="anchored" data-anchor-id="mercado-de-divisas-concepto-características-y-agentes">1. Mercado de divisas: concepto, características y agentes</h2>
+<p>El estudio del mercado parte de lo que en él se negocia, la divisa, y de su precio, el tipo de cambio, para describir después cómo funciona y quiénes operan en él.</p>
+<section id="divisa-y-tipo-de-cambio" class="level3">
+<h3 class="anchored" data-anchor-id="divisa-y-tipo-de-cambio">1.1. Divisa y tipo de cambio</h3>
+<p>El <strong>mercado de divisas</strong> es el marco organizativo en el que agentes de todo el mundo intercambian moneda extranjera y en el que se forma su precio, el tipo de cambio. Conviene precisar antes ambos conceptos.</p>
+<section id="concepto-de-divisas" class="level4">
+<h4 class="anchored" data-anchor-id="concepto-de-divisas">1.1.1. Concepto de divisas</h4>
+<p><strong>Definición</strong>: las <em>divisas</em> son los medios de pago denominados en moneda extranjera que se aceptan con carácter general para saldar operaciones internacionales. En sentido amplio, además de los billetes y monedas extranjeros de curso legal, incluyen los depósitos bancarios denominados en moneda extranjera y los documentos que dan derecho a disponer de ellos (p.&nbsp;ej. cheques, talones o tarjetas de crédito)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. No incluyen, en cambio, los instrumentos de deuda en moneda extranjera.</p>
+<p><strong>Tipos</strong>: por su grado de convertibilidad, se distinguen tres clases de divisas:</p>
+<ol type="1">
+<li><p><em>Plenamente convertibles</em>: se intercambian sin restricciones, al contado (<em>spot</em>) y a plazo (<em>forward</em>), tanto si el tipo de cambio lo fija el mercado como si lo fija la autoridad. Son ejemplos de esta clase:</p>
+<ul>
+<li><p><em>Majors</em><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>: las cinco principales, el dólar estadounidense, el euro, el yen, la libra esterlina y el franco suizo (USD, EUR, JPY, GBP y CHF).</p></li>
+<li><p><em>Minors</em>: el dólar canadiense, el australiano y el neozelandés (CAD, AUD y NZD), a los que se suman las tres coronas escandinavas.</p></li>
+<li><p><em>Exóticas</em>: algunas de ellas (p.&nbsp;ej. el peso mexicano o el <em>rand</em> sudafricano).</p></li>
+</ul></li>
+<li><p><em>Parcialmente convertibles</em>: la conversión está limitada a ciertas operaciones<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> o a ciertos agentes, con el renminbi chino<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> como ejemplo paradigmático. Según quién pueda convertir libremente la moneda, se habla de dos variantes:</p>
+<ul>
+<li><p><em>Convertibilidad externa</em>: solo la tienen los no residentes.</p></li>
+<li><p><em>Convertibilidad interna</em>: solo la tienen los residentes.</p></li>
+</ul></li>
+<li><p><em>No convertibles</em> (<em>blocked currencies</em>): los controles de cambio impiden cambiarlas libremente, así que la moneda circula solo en las transacciones internas y no se negocia abiertamente en el mercado de divisas.</p></li>
+</ol>
+<p>Algunos de los motivos por los cuales puede imponerse la no convertibilidad son las dificultades de balanza de pagos, el temor a que se produzcan fugas masivas de capitales hacia ubicaciones <em>offshore</em> o la elevada volatilidad debida a la especulación.</p>
+<p>Sin llegar a ese extremo, el real brasileño, el peso argentino o la rupia india tienen restringida la plena convertibilidad por razones históricas, por lo que buena parte de su negociación exterior se articula mediante instrumentos <em>non-deliverable</em>.</p>
+</section>
+<section id="concepto-de-tipo-de-cambio" class="level4">
+<h4 class="anchored" data-anchor-id="concepto-de-tipo-de-cambio">1.1.2. Concepto de tipo de cambio</h4>
+<p><strong>Definición</strong>: el <em>tipo de cambio</em> es el precio relativo de un par de monedas (p.&nbsp;ej. USD/EUR). La primera moneda es la moneda base (<em>base currency</em>) y la segunda moneda es la moneda de cotización (<em>quote currency</em>). Obsérvese que esta notación de mercado sigue el orden opuesto al de la notación algebraica (cociente) que emplea el libro, pues el par USD/EUR expresa euros por dólar, es decir, <span class="math inline">\(\text{EUR}/\text{USD}\)</span> en forma de cociente.</p>
+<p><strong>Tipos</strong>: a partir de esta definición se distinguen cuatro:</p>
+<ol type="1">
+<li><p><em>Tipo de cambio nominal</em> (<span class="math inline">\(E\)</span>): es el precio relativo o tasa de cambio de dos monedas y, por tanto, no tiene en cuenta su poder adquisitivo. Se distinguen tres cotizaciones, dos según que la moneda base sea la extranjera o la nacional y una tercera entre dos monedas extranjeras:</p>
+<ul>
+<li><p><em>Tipo de cambio directo o continental</em>: precio de una unidad de moneda extranjera expresado en moneda nacional, <span class="math inline">\(E = M/M^*\)</span> (<span class="math inline">\(\uparrow E \rightarrow\)</span> depreciación). Este tema y el resto del libro siguen esta convención.</p></li>
+<li><p><em>Tipo de cambio inverso o americano</em>: precio de una unidad de moneda nacional expresado en moneda extranjera, <span class="math inline">\(1/E = M^*/M\)</span> (<span class="math inline">\(\uparrow 1/E \rightarrow\)</span> apreciación). El <em>Financial Times</em>, por ejemplo, utiliza esta cotización.</p></li>
+<li><p><em>Tipo de cambio cruzado</em>: el tipo de cambio entre dos monedas en el que ninguna de ellas es la moneda del país, obtenido a partir de las cotizaciones de ambas frente a una tercera moneda vehicular (generalmente, el dólar).</p></li>
+</ul></li>
+<li><p><em>Tipo de cambio real</em> (<span class="math inline">\(e\)</span>): corrige el tipo nominal por los niveles de precios de los dos países y mide cuántas unidades de bienes nacionales cuesta una unidad de bienes extranjeros, <span class="math inline">\(e = E \cdot (P^*/P)\)</span><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>.</p></li>
+<li><p><em>Tipo de cambio efectivo nominal</em>: promedio geométrico de los tipos nominales bilaterales frente a los socios comerciales, ponderados por la importancia de cada uno en el comercio del país.</p></li>
+</ol>
+<p>Por ejemplo, el BCE publica índices de tipos de cambio efectivos nominales del euro frente a tres grupos de socios comerciales, cuya composición se ajusta con cada ampliación de la zona del euro (la última, la entrada de Bulgaria en enero de 2026):</p>
+<ul>
+<li><p><em>Grupo estrecho</em> (TCE-12): frente a los principales socios comerciales.</p></li>
+<li><p><em>Grupo ampliado</em> (TCE-17): añade al anterior otros socios relevantes, como China y varios Estados miembros de la UE ajenos a la zona del euro.</p></li>
+<li><p><em>Grupo amplio</em> (TCE-40): añade un conjunto más extenso de países y es el índice de referencia del BCE.</p></li>
+</ul>
+<ol start="4" type="1">
+<li><em>Tipo de cambio efectivo real</em>: resulta de multiplicar el tipo de cambio efectivo nominal, en cotización directa, por una media ponderada de precios o costes externos (p.&nbsp;ej. costes laborales unitarios) relativa a los precios o costes del propio país, como en <span class="math inline">\(e = E \cdot (P^*/P)\)</span>. Los índices que publican el BCE y el FMI usan, sin embargo, la cotización inversa, de modo que en ellos un aumento indica apreciación (véase el tema <a href="../chapters/a30-magnitudes-cn.html">A30</a>).</li>
+</ol>
+</section>
+</section>
+<section id="características-del-mercado-de-divisas" class="level3">
+<h3 class="anchored" data-anchor-id="características-del-mercado-de-divisas">1.2. Características del mercado de divisas</h3>
+<p>El mercado de divisas abarca tanto la infraestructura física como el conjunto de instituciones necesarias para negociar. Desde el punto de vista descriptivo, ha experimentado una gran transformación y hoy presenta los siguientes rasgos:</p>
+<p><strong>Dimensión</strong>: además de ser el mayor del mundo (véase la introducción), es un mercado profundo y líquido. Es también intertemporal, pues tiene un segmento de operaciones <em>spot</em> (entrega prácticamente inmediata) y otro de operaciones <em>forward</em> (entrega a plazo).</p>
+<p><strong>Composición y estructura</strong>:</p>
+<ul>
+<li><p><em>Concentración</em>: pocas divisas y pocas plazas reúnen la mayor parte del volumen, según la encuesta trienal del BIS de 2025:</p>
+<ul>
+<li><p><em>Por divisas</em>: el dólar, presente en el 89,2&nbsp;% de las operaciones, representa el 44,6&nbsp;% del volumen negociado<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>. A distancia se sitúan el euro, con el 14,5&nbsp;%, y el yen, con el 8,4&nbsp;%.</p></li>
+<li><p><em>Por ubicación geográfica</em>: el 38&nbsp;% de la negociación se realiza en el Reino Unido y el 19&nbsp;%, en EE.&nbsp;UU.</p></li>
+</ul></li>
+<li><p><em>Carácter interbancario</em>: la negociación se desarrolla sobre todo entre bancos y otras instituciones financieras, que concentran en torno al 95&nbsp;% del volumen según la encuesta trienal del BIS de 2025. Las operaciones con clientes no financieros, más ligadas al comercio y la inversión real, son, por el contrario, una fracción mínima (el reparto por agentes se detalla en el apartado 1.3).</p></li>
+</ul>
+<p><strong>Regulación y funcionamiento</strong>:</p>
+<ul>
+<li><p><em>Mercado OTC</em>: se trata de un mercado no organizado u <em>over-the-counter</em> (OTC), descentralizado, sin cámara de compensación y con contratos a medida<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>.</p></li>
+<li><p><em>Mercado continuo</em>: la negociación no se interrumpe en todo el día porque se desplaza con los husos horarios. Empieza en Asia (Tokio y Hong Kong), pasa por Oriente Medio (Baréin) a Europa (Fráncfort y Londres) y acaba en América (Nueva York y San Francisco), donde enlaza con la apertura asiática siguiente. Como las sesiones se solapan, el arbitraje entre plazas mantiene una única cotización.</p></li>
+</ul>
+<p><strong>Infraestructura y tecnología</strong>: la innovación financiera ha automatizado casi todo el ciclo de una operación, que descansa en tres tipos de sistemas:</p>
+<ul>
+<li><p><em>Sistemas de información</em>: difunden en tiempo real los precios y las noticias que mueven el mercado. Las plataformas más extendidas son LSEG Workspace (heredera de Refinitiv Eikon, antes Reuters) y Bloomberg.</p></li>
+<li><p><em>Sistemas de casación automática</em>: emparejan electrónicamente las órdenes de compra y de venta de cualquier plaza sin intervención de un operador. La negociación electrónica interbancaria al contado se concentra en EBS (integrado hoy en CME Group) y en LSEG FX Matching (antiguo Reuters Matching).</p></li>
+<li><p><em>Sistemas de compensación y liquidación</em>: en algunos mercados y para parte de las operaciones, los sistemas de pago y compensación, como CHIPS en EE.&nbsp;UU. o T2 (antes TARGET2) en la zona del euro, limitan el riesgo de contrapartida. Específicamente para las divisas, el sistema CLS (Continuous Linked Settlement, 2002) elimina el riesgo de liquidación (el llamado <em>riesgo Herstatt</em>) mediante el mecanismo de pago contra pago.</p></li>
+</ul>
+</section>
+<section id="agentes-que-participan-en-el-mercado-de-divisas" class="level3">
+<h3 class="anchored" data-anchor-id="agentes-que-participan-en-el-mercado-de-divisas">1.3. Agentes que participan en el mercado de divisas</h3>
+<p>Históricamente, los participantes en el mercado de divisas eran comerciantes de bienes y servicios. Sin embargo, la liberalización de los mercados de capitales del s. XX y la innovación financiera han dado lugar a la participación de un número mucho mayor de agentes.</p>
+<section id="creadores-de-mercado-market-makers-o-dealers" class="level4">
+<h4 class="anchored" data-anchor-id="creadores-de-mercado-market-makers-o-dealers">1.3.1. Creadores de mercado (<em>market makers</em> o <em>dealers</em>)</h4>
+<p>Los <strong>creadores de mercado</strong> (<em>market makers</em> o <em>dealers</em>) son típicamente grandes bancos comerciales e instituciones financieras encargadas de proveer liquidez a los mercados<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>. Dicho de otro modo, garantizan un volumen de intercambios suficiente para que los demás participantes operen de manera continuada, y actúan por ello como mayoristas.</p>
+<p>Su remuneración procede de las comisiones y del diferencial (<em>spread</em>) entre el precio al que el creador de mercado compra (<em>bid</em>) y el precio al que vende (<em>ask</em>).</p>
+<p>La encuesta trienal del BIS recoge los datos de más de 1100 <em>dealers</em> declarantes de 52 jurisdicciones, pero la creación de mercado está en manos de unos pocos grandes bancos, entre ellos BNP Paribas, Deutsche Bank o UBS. Según la encuesta trienal del BIS de 2025, los <em>dealers</em> declarantes representan en torno al 46&nbsp;% del volumen de negocio, algo menos que el 47&nbsp;% de 2022 y más que el 38&nbsp;% de 2019<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>.</p>
+</section>
+<section id="corredores-o-intermediarios-de-mercado-brokers" class="level4">
+<h4 class="anchored" data-anchor-id="corredores-o-intermediarios-de-mercado-brokers">1.3.2. Corredores o intermediarios de mercado (<em>brokers</em>)</h4>
+<p>Los <strong>intermediarios</strong> o <em>brokers</em> ponen en contacto a los creadores de mercado con quienes quieren comprar o vender divisas. Facilitan la liquidez sin proveerla, porque no operan por cuenta propia ni mantienen nunca una <strong>posición abierta</strong>, es decir, una operación con ganancias o pérdidas todavía no realizadas (en una posición cerrada ya se han materializado).</p>
+<p>Como no asumen riesgo, a diferencia de los <em>dealers</em>, solo ingresan comisiones o, en su lugar, un margen fijo de puntos sobre el <em>spread</em> natural del mercado (Anexo A.1). Reciben a la vez las cotizaciones de compra (<em>bid</em>) y de venta (<em>ask</em>) de muchos <em>dealers</em> y trasladan a cada cliente la más favorable, de modo que también los inversores pequeños operan a precios que por su cuenta no obtendrían.</p>
+</section>
+<section id="resto-de-agentes-instituciones-financieras-no-creadoras-y-agentes-no-financieros" class="level4">
+<h4 class="anchored" data-anchor-id="resto-de-agentes-instituciones-financieras-no-creadoras-y-agentes-no-financieros">1.3.3. Resto de agentes: instituciones financieras no creadoras y agentes no financieros</h4>
+<p>Tradicionalmente, los agentes privados que acudían al mercado de divisas en busca de liquidez eran las <strong>instituciones financieras no creadoras de mercado</strong> y las <strong>sociedades no financieras</strong>. No obstante, en los últimos años se ha incorporado un elevado número de operadores minoristas y de empresas de negociación algorítmica por cuenta propia (<em>proprietary trading firms</em>, PTF).</p>
+<p><strong>Instituciones financieras</strong>: las no creadoras de mercado concentran en torno al 50&nbsp;% de las operaciones en 2025 (frente al 55&nbsp;% de 2019). Su composición es diversa, pues en el lado privado figuran bancos comerciales y de inversión, fondos de pensiones, aseguradoras y <em>hedge funds</em>, y en el oficial, bancos centrales y fondos soberanos.</p>
+<p>Las instituciones privadas operan en el mercado de divisas para invertir en el exterior y diversificar sus carteras, para cubrir el riesgo de cambio de esas inversiones y, en el caso de los <em>hedge funds</em>, para tomar posiciones especulativas.</p>
+<p>Las instituciones oficiales apenas suman en torno al 1&nbsp;% de las operaciones. Aun así, los bancos centrales influyen en el mercado por sus funciones de regulación, supervisión y señalización. Sus compras y ventas solo alcanzan un volumen relevante en episodios puntuales, como las intervenciones de Japón en 2010-2011, 2022, 2024 y 2026. Al estar ligada sobre todo a la política cambiaria, su actuación varía según el régimen cambiario.</p>
+<p><strong>Agentes no financieros</strong>: incluyen, sobre todo, a las sociedades no financieras y a los Gobiernos, así como a los inversores minoristas o particulares, y representan en torno al 5&nbsp;% restante de las operaciones. Los inversores minoristas, históricamente irrelevantes, han ganado peso con las plataformas de agregación minorista (<em>retail aggregators</em>).</p>
+</section>
+</section>
+<section id="conclusiones" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones">1.4. Conclusiones</h3>
+<p>La divisa sirve de medio de pago en las transacciones internacionales y su convertibilidad va de la plena a la nula. Su precio, el tipo de cambio, admite cotizaciones nominales, reales y efectivas. El mercado en que se negocia, el mayor del mundo, es OTC, continuo y muy informatizado, y se concentra en el dólar, en el Reino Unido y en las operaciones entre instituciones financieras. La concentración alcanza también a los agentes, entre los que unos pocos grandes bancos actúan como creadores de mercado, que proveen liquidez y asumen riesgo a cambio del <em>spread</em>, mientras que los <em>brokers</em> median sin tomar posiciones abiertas. Las demás instituciones financieras privadas acuden al mercado para invertir, cubrirse o especular. Los bancos centrales, en cambio, influyen por sus funciones de regulación y señalización, con un volumen de operaciones pequeño.</p>
+<p>Entendido qué se negocia, dónde y quién lo hace, la sección 2 estudia primero los instrumentos, que son las herramientas de las operaciones, y después las operaciones mismas.</p>
+</section>
+</section>
+<section id="instrumentos-y-operaciones" class="level2">
+<h2 class="anchored" data-anchor-id="instrumentos-y-operaciones">2. Instrumentos y operaciones</h2>
+<p>La sección presenta los instrumentos, del contado a las opciones, y las operaciones de obtención de liquidez, cobertura, arbitraje, especulación e intervención oficial. Los instrumentos son esencialmente contratos entre las partes. Desde el punto de vista histórico, se distinguen los instrumentos tradicionales (el contado y el plazo, tan antiguos como el propio comercio internacional) y los instrumentos fruto de la innovación financiera desarrollada desde la década de los setenta, que operó en dos vertientes:</p>
+<p><strong>Innovación de proceso</strong>: las telecomunicaciones y la informática abarataron y aceleraron las operaciones, y con ello integraron las distintas plazas en un mercado mundial.</p>
+<p><strong>Innovación de producto</strong>: la libertad de movimientos de capitales trajo necesidades nuevas de cobertura y de financiación, a las que respondieron instrumentos como los <em>swaps</em> y las opciones.</p>
+<p>En todos los casos, los porcentajes de volumen se refieren a la cuota de cada instrumento sobre el volumen medio diario negociado en el mercado mundial de divisas<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>.</p>
+<section id="instrumentos" class="level3">
+<h3 class="anchored" data-anchor-id="instrumentos">2.1. Instrumentos</h3>
+<p>En el mercado se negocian cinco instrumentos, de la compraventa al contado a los derivados. Son los contratos <em>spot</em>, los de futuros y a plazo, los <em>swaps</em> de tipos de cambio, los <em>swaps</em> de divisas y las opciones.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>El concepto, el mecanismo, la valoración y las estrategias de futuros, <em>forwards</em>, opciones y <em>swaps</em> se desarrollan en el tema <a href="../chapters/b25-derivados.html">B25</a>, secciones 1 a 3. Aquí se recoge solo lo propio del mercado de divisas: el peso de cada instrumento, su uso en las operaciones con divisas y los FX <em>swaps</em>, instrumento característico de este mercado que el tema B25 solo resume.</p>
+</div>
+</div>
+</div>
+<section id="contratos-spot-31-del-volumen" class="level4">
+<h4 class="anchored" data-anchor-id="contratos-spot-31-del-volumen">2.1.1. Contratos <em>spot</em> (31&nbsp;% del volumen)</h4>
+<p>El cambio de monedas al contado es tan antiguo como el comercio entre comunidades monetarias distintas, de los cambistas medievales a la banca moderna. Sin embargo, el mercado <em>spot</em> contemporáneo, interbancario y continuo, se articuló con el telégrafo. Así, el primer cable trasatlántico duradero (1866) permitió al tipo de cambio GBP/USD cotizar simultáneamente en Londres y Nueva York, y de ahí que el par libra-dólar se siga denominando <em>cable</em>.</p>
+<p><strong>Definición</strong>: los contratos <em>spot</em> o al contado son acuerdos de compraventa entre dos partes para su ejecución inmediata. Pactada la operación en <em>t</em>, la liquidación (<em>settlement</em>), es decir, el pago y la entrega de las divisas, se produce en la fecha <em>spot</em>, por lo general en <em>t+2</em> como máximo.</p>
+<p><strong>Tipos</strong>: el contado no tiene modalidades propias y solo se distingue por la fecha valor, que puede ser el mismo día de la contratación (<em>t</em>), el día hábil siguiente (<em>t+1</em>) o la fecha <em>spot</em> estándar (<em>t+2</em>). La encuesta del BIS computa las tres como contado<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>.</p>
+<p><strong>Funcionamiento</strong>: son los contratos de compraventa de divisas más sencillos y se negocian en el segmento <em>spot</em> del mercado. En el segmento interbancario, la negociación electrónica se concentra en los sistemas de casación automática (EBS y LSEG FX Matching), y la liquidación puede hacerse por pago contra pago en CLS (apartado 1.2). Los contratos <em>spot</em> representan en torno al 31&nbsp;% del volumen y se utilizan sobre todo en operaciones comerciales y de obtención de liquidez.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: su sencillez y la entrega inmediata los convierten en el instrumento natural para disponer de la divisa en el momento en que se necesita.</p></li>
+<li><p><em>Limitaciones</em>: no protegen frente a la variación del tipo de cambio de los cobros y pagos aplazados, cuya cobertura exige el segmento <em>forward</em>. Si las dos monedas no se entregan a la vez, los contratos <em>spot</em> exponen además al riesgo de liquidación (riesgo Herstatt), que elimina CLS.</p></li>
+</ul>
+</section>
+<section id="contratos-de-futuros-futures-y-contratos-a-plazo-forward-19-del-volumen" class="level4">
+<h4 class="anchored" data-anchor-id="contratos-de-futuros-futures-y-contratos-a-plazo-forward-19-del-volumen">2.1.2. Contratos de futuros (<em>futures</em>) y contratos a plazo (<em>forward</em>) (19&nbsp;% del volumen)</h4>
+<p>Los acuerdos de entrega futura a precio pactado son antiquísimos, y sus antecedentes como mercados organizados (Ámsterdam en el s. XVII, Dōjima en 1730) se recogen en el tema <a href="../chapters/b25-derivados.html">B25</a>, apartado 1.1.1. Para el mercado de divisas, el hito es 1972, cuando el CME (Chicago Mercantile Exchange) creó el IMM (International Monetary Market), cuyos futuros sobre divisas fueron los primeros futuros financieros.</p>
+<p><strong>Definición</strong>: a diferencia de los contratos <em>spot</em>, los futuros y los <em>forwards</em> fijan hoy el precio y la obligación de una compraventa de divisas en una fecha futura.</p>
+<p><strong>Tipos</strong>: según el mercado en que se negocian, se distinguen dos, cuyo concepto, mecanismo y diferencias se desarrollan en el tema <a href="../chapters/b25-derivados.html">B25</a>, apartados 1.1.1 a 1.1.3:</p>
+<ul>
+<li><p><em>Futuros</em>: contratos estandarizados que se negocian en mercados organizados con cámara de compensación.</p></li>
+<li><p><em>Forwards</em>: contratos bilaterales y a medida que se negocian en mercados OTC.</p></li>
+</ul>
+<p><strong>Funcionamiento</strong>: el tipo de cambio pactado, el tipo <em>forward</em>, refleja el diferencial de intereses entre las dos monedas (paridad cubierta de intereses). Dado el carácter OTC del mercado de divisas, en él domina el <em>forward</em>, con en torno al 19&nbsp;% del volumen que mide la encuesta del BIS. Los futuros sobre divisas, negociados en mercados organizados (p.&nbsp;ej. el CME) y ajenos a esa encuesta, suponen, en cambio, una fracción marginal. Los <em>forwards</em> se utilizan sobre todo para cobertura y especulación.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: fijan hoy el tipo de cambio de un cobro o pago futuro y eliminan el riesgo de cambio con más eficacia que las opciones, sin exigir prima.</p></li>
+<li><p><em>Limitaciones</em>: obligan a liquidar al tipo pactado aunque el tipo de cambio evolucione favorablemente. Los <em>forwards</em>, bilaterales y sin cámara de compensación, conservan además el riesgo de contrapartida, y los futuros exigen márgenes y liquidación diaria de pérdidas.</p></li>
+</ul>
+</section>
+<section id="contratos-de-swaps-de-tipos-de-cambio-forex-o-fx-swaps-42-del-volumen" class="level4">
+<h4 class="anchored" data-anchor-id="contratos-de-swaps-de-tipos-de-cambio-forex-o-fx-swaps-42-del-volumen">2.1.3. Contratos de <em>swaps</em> de tipos de cambio (Forex o FX <em>swaps</em>) (42&nbsp;% del volumen)</h4>
+<p>Los FX <em>swaps</em> se generalizaron como instrumento interbancario de gestión de la liquidez y la financiación en divisas tras el colapso de Bretton Woods y la generalización de la flotación (1973), y su uso se multiplicó con la globalización financiera de las décadas siguientes.</p>
+<p><strong>Definición</strong>: los <em>swaps de tipos de cambio</em> son contratos de permuta entre dos partes con dos patas de intercambio acordadas simultáneamente:</p>
+<ul>
+<li><p><em>Spot</em> o <em>near leg</em>: una parte compra a la otra, o le vende, una cantidad de divisas al tipo <em>spot</em> del día.</p></li>
+<li><p><em>Forward</em> o <em>far leg</em>: en la fecha pactada, las partes deshacen ese intercambio por la misma cantidad al tipo <em>forward</em> que fijaron al contratar.</p></li>
+</ul>
+<p><strong>Tipos</strong>: según la fecha de la pata cercana, la encuesta del BIS distingue los <em>swaps spot/forward</em>, con esa pata al contado, y los <em>forward/forward</em>, con las dos patas a plazo. Incluye también los <em>swaps</em> a muy corto plazo (<em>overnight</em>, <em>tomorrow/next</em>, <em>spot/next</em>), con los que se renuevan de un día para otro las posiciones de contado<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>.</p>
+<p><strong>Funcionamiento</strong>: económicamente, un FX <em>swap</em> equivale a un préstamo garantizado, en el que cada parte presta temporalmente su moneda y recibe la otra como colateral. Con en torno al 42&nbsp;% del volumen, es el instrumento más negociado del mercado y se utiliza, generalmente, en operaciones de cobertura, financiación y gestión de la liquidez en divisas. No debe confundirse con los <em>swaps</em> de divisas o <em>currency swaps</em>.</p>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo: un FX *swap* a seis meses">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo: un FX <em>swap</em> a seis meses
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Scotiabank (un banco canadiense) necesita euros y un banco de la zona del euro necesita dólares canadienses. Ambos acuerdan usar un <em>swap</em> de tipo de cambio con vencimiento a seis meses. La pata <em>spot</em> se fija en 1&nbsp;M€ por 1,25&nbsp;M$CA, es decir, CAD/EUR = 0,8. La pata <em>forward</em> se fija en 0,79 CAD/EUR, tipo <em>forward</em> que refleja el diferencial de intereses entre ambas monedas (paridad cubierta de intereses).</p>
+<p>Así, hoy, Scotiabank recibe 1&nbsp;M€ del banco de la zona del euro y le entrega 1,25&nbsp;M$CA y, en seis meses, Scotiabank devuelve 1&nbsp;M€ y recibe 1,27&nbsp;M$CA (1&nbsp;M€ · (1/0,79) = 1,2658&nbsp;M$CA), lo cual le permite cubrir el riesgo de cambio.</p>
+</div>
+</div>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: como préstamo garantizado, apenas presenta riesgo de crédito, y combina en una sola operación la cobertura y la obtención de liquidez temporal en la otra divisa.</p></li>
+<li><p><em>Limitaciones</em>: subsisten el riesgo de reposición, si la contraparte incumple antes de la pata <em>forward</em> y hay que rehacer la operación a los precios del momento, y el de liquidación, hoy mitigado por sistemas como CLS.</p></li>
+</ul>
+</section>
+<section id="contratos-de-swaps-de-divisas-currency-swaps-2-del-volumen" class="level4">
+<h4 class="anchored" data-anchor-id="contratos-de-swaps-de-divisas-currency-swaps-2-del-volumen">2.1.4. Contratos de <em>swaps</em> de divisas (<em>currency swaps</em>) (2&nbsp;% del volumen)</h4>
+<p>El antecedente de los <em>swaps</em> de divisas son los préstamos paralelos (<em>parallel loans</em>) con los que las empresas sorteaban los controles de cambios británicos en los años setenta. El primer <em>currency swap</em> moderno, entre IBM y el Banco Mundial en 1981, se describe en el tema <a href="../chapters/b25-derivados.html">B25</a>, apartado 3.1.</p>
+<p><strong>Definición</strong>: los <em>swaps de divisas</em> son contratos de permuta en los que las partes se pagan intereses en monedas distintas durante el plazo pactado y, por lo general, intercambian los principales al vencimiento a un tipo de cambio fijado de antemano. A diferencia de los FX <em>swaps</em>, en los que el diferencial de intereses queda incorporado en el tipo de la pata <em>forward</em>, en ellos sí hay pagos periódicos de intereses.</p>
+<p><strong>Tipos</strong>: como el interés de cada moneda puede ser fijo o variable, caben tres combinaciones, fijo contra fijo, fijo contra variable y variable contra variable, que el tema <a href="../chapters/b25-derivados.html">B25</a> recoge en el apartado 3.1.1.</p>
+<p><strong>Funcionamiento</strong>: su uso típico es el de una empresa que se endeuda en su moneda y permuta los flujos para financiarse en otra. El tema <a href="../chapters/b25-derivados.html">B25</a> ilustra ese caso en el apartado 3.1 y desarrolla su valoración en el 3.2. En comparación con los FX <em>swaps</em>, los <em>swaps</em> de divisas, de mayor plazo, representan apenas en torno al 2&nbsp;% del volumen negociado.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: como los FX <em>swaps</em>, eliminan el riesgo de cambio, en su caso el de una financiación a más largo plazo en otra moneda, pues el tipo de cambio al que se devuelven los principales se fija de antemano.</p></li>
+<li><p><em>Limitaciones</em>: a diferencia de los FX <em>swaps</em>, presentan un riesgo de impago apreciable.</p></li>
+</ul>
+</section>
+<section id="contratos-de-opciones-7-del-volumen" class="level4">
+<h4 class="anchored" data-anchor-id="contratos-de-opciones-7-del-volumen">2.1.5. Contratos de opciones (7&nbsp;% del volumen)</h4>
+<p>Las primeras opciones sobre divisas cotizadas se listaron en la Bolsa de Filadelfia (PHLX) en 1982, y el mercado OTC se desarrolló durante esa misma década, apoyado en la adaptación del modelo de Black-Scholes a las divisas realizada por Garman y Kohlhagen (1983).</p>
+<p><strong>Definición</strong>: una opción sobre divisas da a quien la compra el derecho, sin obligación alguna, de comprar o de vender una divisa a un tipo de cambio pactado, el precio de ejercicio (<em>strike price</em>), en una fecha determinada o hasta ella (vencimiento).</p>
+<p><strong>Tipos</strong>: según el derecho que otorgan, se distinguen dos, a los que se suman modalidades más complejas (sus tipos, su mecanismo y su valoración se desarrollan en el tema <a href="../chapters/b25-derivados.html">B25</a>, apartados 2.1 y 2.2):</p>
+<ul>
+<li><p><em>Call</em> (opción de compra): da derecho a comprar la divisa al precio de ejercicio.</p></li>
+<li><p><em>Put</em> (opción de venta): da derecho a venderla al precio de ejercicio.</p></li>
+<li><p><em>Otras opciones</em>: las <em>average rate options</em>, las <em>barrier options</em>, los <em>swaptions</em> de divisas y los <em>currency warrants</em>.</p></li>
+</ul>
+<p><strong>Funcionamiento</strong>: a cambio del derecho, el comprador paga una prima y ejerce la opción solo si el tipo de cambio evoluciona a su favor. Las opciones representan en torno al 7&nbsp;% del volumen (incluidas las modalidades más complejas), frente al 4&nbsp;% de 2022. Su volumen se ha más que duplicado en el último trienio, impulsado por la volatilidad cambiaria. Como los <em>forwards</em>, se utilizan sobre todo para cobertura y especulación.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: protegen frente a una evolución desfavorable del tipo de cambio sin renunciar a la favorable, pues no obligan a ejercer.</p></li>
+<li><p><em>Limitaciones</em>: exigen el pago de una prima y cubren el riesgo con menos eficacia que los <em>forwards</em> y los futuros, porque generan ratios de cobertura volátiles.</p></li>
+</ul>
+</section>
+</section>
+<section id="operaciones" class="level3">
+<h3 class="anchored" data-anchor-id="operaciones">2.2. Operaciones</h3>
+<p>Vistos los instrumentos, queda por estudiar qué operaciones realizan con ellos los agentes. Las operaciones se clasifican según dos criterios.</p>
+<p><strong>Según la fecha de entrega de la divisa</strong>:</p>
+<ul>
+<li><p><em>Operaciones al contado o spot</em>: con entrega en un máximo de dos días hábiles (<em>t+2</em>), se realizan en el segmento <em>spot</em> del mercado apoyándose en los contratos al contado.</p></li>
+<li><p><em>Operaciones a plazo o forward</em>: con entrega posterior a <em>t+2</em>, se realizan en el segmento <em>forward</em> mediante <em>forwards</em>, <em>swaps</em> y opciones, y concentran el resto del volumen. Su peso se ha mantenido relativamente estable, en torno a dos tercios del volumen, en las dos últimas décadas.</p></li>
+</ul>
+<p><strong>Según su fin</strong>: se distinguen cinco categorías, que estructuran el resto de la sección:</p>
+<ul>
+<li><p><em>Obtención o disposición de liquidez</em>: ligadas a la actividad comercial y de inversión internacional.</p></li>
+<li><p><em>Cobertura</em>: cierran posiciones abiertas para eliminar el riesgo cambiario.</p></li>
+<li><p><em>Arbitraje</em>: explotan sin riesgo los desajustes transitorios de precios y rentabilidades.</p></li>
+<li><p><em>Especulativas</em>: toman posiciones abiertas sobre la base de expectativas, a cambio de asumir riesgo.</p></li>
+<li><p><em>Oficiales</em>: mediante ellas, las autoridades monetarias intervienen en el mercado.</p></li>
+</ul>
+<section id="operaciones-de-obtención-o-disposición-de-liquidez" class="level4">
+<h4 class="anchored" data-anchor-id="operaciones-de-obtención-o-disposición-de-liquidez">2.2.1. Operaciones de obtención o disposición de liquidez</h4>
+<p><strong>Definición</strong>: las <em>operaciones de obtención o disposición de liquidez</em> son las más elementales del mercado. Son compraventas de divisa cuyo fin, transaccional y no financiero, es disponer de la moneda extranjera necesaria para atender pagos (o convertir a moneda nacional los cobros recibidos en divisa). Constituyen la función original del mercado de divisas, la que lo conecta con la economía real.</p>
+<p><strong>Tipos</strong>: según su motivo, se distinguen dos:</p>
+<ul>
+<li><p><em>Actividad comercial</em>: la necesidad de divisa por parte de una sociedad no financiera en el curso de su actividad comercial internacional.</p></li>
+<li><p><em>Repatriación</em>: la necesidad de repatriar fondos denominados en divisa, tanto por parte de sociedades no financieras como financieras.</p></li>
+</ul>
+<p><strong>Funcionamiento</strong>: estas operaciones persiguen obtener liquidez inmediata en divisa en el segmento <em>spot</em> del mercado, donde se realizan las compraventas. La dinámica entre los agentes de este segmento se ilustra con un modelo sencillo de balanza de pagos en el plano <span class="math inline">\((M^*, E)\)</span>, con la cantidad de divisas en el eje horizontal y el tipo de cambio directo en el vertical (figura <a href="#fig-b131-mercado-divisas" class="quarto-xref"><span>B13.1</span></a>):</p>
+<ol type="1">
+<li><p><em>Demanda de divisas</em>, <span class="math inline">\(D(M^*)\)</span>: la generan las importaciones de bienes y servicios y las inversiones en el exterior (p.&nbsp;ej. inversión directa), que exigen disponer de divisa. Tiene pendiente negativa en el plano <span class="math inline">\((M^*, E)\)</span> porque una depreciación de la moneda nacional (<span class="math inline">\(\uparrow E\)</span>) encarece lo importado, reduce las compras al exterior y, con ellas, las divisas que se piden.</p></li>
+<li><p><em>Oferta de divisas</em>, <span class="math inline">\(S(M^*)\)</span>: la generan las exportaciones y las entradas de inversión extranjera, cuyos perceptores quieren convertir en moneda nacional la divisa recibida. Tiene pendiente positiva si la demanda extranjera de exportaciones es elástica, porque entonces una depreciación (<span class="math inline">\(\uparrow E\)</span>) eleva el volumen exportado en mayor proporción de lo que baja su precio en divisas, y crecen los ingresos en divisa que se ofrecen.</p></li>
+<li><p><em>Equilibrio</em>: en el punto 0, donde se cortan ambas curvas, la interacción de las dos fuerzas fija el tipo de cambio, <span class="math inline">\(E_0\)</span>, y el volumen de divisas intercambiado, <span class="math inline">\(M^*_0\)</span>. Si el equilibrio es estable<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>, a un tipo de cambio superior a <span class="math inline">\(E_0\)</span> la oferta de divisas excede a la demanda y la moneda nacional se aprecia hasta volver al punto 0, mientras que a un tipo inferior el exceso de demanda la deprecia.</p></li>
+</ol>
+<div id="fig-b131-mercado-divisas" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b131-mercado-divisas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b131_Mercado_divisas.html" style="height:560px" loading="lazy" title="fig-b131-mercado-divisas"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b131-mercado-divisas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B13.1: Equilibrio en el mercado de divisas. La oferta y la demanda de divisas determinan el tipo de cambio nominal <span class="math inline">\(E_0\)</span> y la cantidad de divisas intercambiada <span class="math inline">\(M^*_0\)</span>.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: este tipo de operaciones son sencillas y permiten obtener la liquidez en el momento necesario.</p></li>
+<li><p><em>Limitaciones</em>: muchos flujos comerciales internacionales suponen un intercambio aplazado y se puede incurrir en un riesgo de cambio. Por ejemplo, un exportador europeo que cierra hoy una venta por 1 M de dólares, que cobrará dentro de un año, queda expuesto hasta entonces a las fluctuaciones del tipo de cambio dólar-euro. Ese riesgo puede cubrirse con los instrumentos del segmento <em>forward</em>.</p></li>
+</ul>
+</section>
+<section id="operaciones-de-cobertura" class="level4">
+<h4 class="anchored" data-anchor-id="operaciones-de-cobertura">2.2.2. Operaciones de cobertura</h4>
+<p><strong>Definición</strong>: las <em>operaciones de cobertura</em> buscan mitigar el riesgo cambiario adoptando una posición contraria a la posición abierta. Para ello, el agente acude al segmento <em>forward</em> y lleva a cabo una cobertura mediante alguno de los instrumentos anteriores<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>.</p>
+<p><strong>Tipos</strong>: según el instrumento, se distinguen tres:</p>
+<ul>
+<li><p><em>Con contratos a plazo</em>: lo más habitual es utilizar un <em>forward</em> de divisas<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>. En el ejemplo del exportador, cabe distinguir dos posiciones:</p>
+<ul>
+<li><p><em>Exportador</em>: puede vender un <em>forward</em> para asegurarse un precio de venta fijo (el tipo <em>forward</em>) dentro de un año. En el plano tipo de cambio <em>spot</em>-beneficio, la función de beneficios de la posición <em>forward</em> es decreciente en el tipo de cambio <em>spot</em>, es decir, la posición pierde con la depreciación del euro (<span class="math inline">\(\uparrow E\)</span>).</p></li>
+<li><p><em>Importador</em>: compra, en cambio, un <em>forward</em> para fijar de antemano su precio de compra. La función de beneficios de su posición es creciente en el tipo de cambio <em>spot</em>, porque una depreciación del euro encarece la divisa que debe comprar y revaloriza el compromiso de comprarla al tipo pactado.</p></li>
+</ul></li>
+<li><p><em>Con</em> swaps <em>de tipos de cambio</em>: los FX <em>swaps</em> combinan en una sola operación una pata <em>spot</em> y una pata <em>forward</em> de signo contrario. Se emplean cuando, además de cubrirse, el agente necesita liquidez temporal en la otra divisa o quiere desplazar en el tiempo (<em>roll over</em>) una cobertura ya contratada.</p></li>
+<li><p><em>Con opciones</em>: la estrategia básica consiste en adoptar una posición protectora frente a la posición primaria. Así, el importador compra una <em>call</em> para cubrir el riesgo de apreciación de la divisa, es decir, de depreciación de la moneda nacional, y el exportador, una <em>put</em> para cubrir el de depreciación de la divisa. Las estrategias más elaboradas, complejas o de diferenciales, se desarrollan en el tema <a href="../chapters/b25-derivados.html">B25</a>, apartado 2.3.</p></li>
+</ul>
+<p><strong>Funcionamiento</strong>: las operaciones de cobertura son juegos de suma cero, pues la ganancia del agente que se cubre es la pérdida de su contraparte (véase el tema <a href="../chapters/b25-derivados.html">B25</a>, apartado 1.1.2). La cobertura perfecta exige que la cantidad, la fecha y el par de divisas sean idénticos, para que la posición en el segmento <em>forward</em> “case” perfectamente con la posición <em>spot</em>.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: permiten eliminar el riesgo de cambio y reducen la incertidumbre en cuanto a los flujos de caja futuros. Todo ello, a su vez, facilita el acceso al crédito en los mercados financieros y puede ayudar a la planificación empresarial. Las operaciones de cobertura han aumentado desde la crisis financiera.</p></li>
+<li><p><em>Limitaciones</em>: son operaciones más sofisticadas que pueden requerir más conocimientos técnicos y, en algunos casos, hacer frente a flujos de caja negativos importantes (p.&nbsp;ej. en el caso de los <em>forwards</em>).</p></li>
+</ul>
+</section>
+<section id="operaciones-de-arbitraje-o-arbitraje-puro-arbitraje-espacial-y-paridad-cubierta-de-intereses" class="level4">
+<h4 class="anchored" data-anchor-id="operaciones-de-arbitraje-o-arbitraje-puro-arbitraje-espacial-y-paridad-cubierta-de-intereses">2.2.3. Operaciones de arbitraje o arbitraje <em>puro</em>: arbitraje espacial y paridad cubierta de intereses</h4>
+<p><strong>Definición</strong>: las <em>operaciones de arbitraje</em> usan los mismos instrumentos para buscar beneficios. Son estrategias que aprovechan los desajustes transitorios en el valor de las divisas, dado por su tipo de cambio o por su rentabilidad. En sentido estricto, el arbitraje es sin riesgo (y autofinanciado), y se denomina frecuentemente <em>arbitraje puro</em>.</p>
+<p><strong>Tipos</strong>: el arbitraje puro, el arbitraje propiamente dicho, puede ser espacial, si explota diferencias de tipo de cambio entre plazas, o temporal, si explota diferencias de rentabilidad. En cambio, la expresión “arbitraje con riesgo”, heredada de la literatura clásica, designa en realidad una operación especulativa, pues quien la realiza toma una posición abierta sobre la base de sus expectativas. Por ello se estudia dentro de las operaciones especulativas, donde el término se conserva por su valor didáctico como puente entre ambas categorías.</p>
+<p><strong>Arbitraje espacial sin riesgo o arbitraje puro espacial</strong>: consiste en comprar una divisa en la plaza donde cotiza más barata y venderla en el mismo instante en otra donde cotiza más cara. Como las dos operaciones son simultáneas, en ningún momento queda una posición abierta ni se asume riesgo de cambio. La estrategia se limita al segmento <em>spot</em> y solo atiende al tipo de cambio nominal<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>.</p>
+<ul>
+<li><p><em>Supuestos</em>: el único relevante es la ausencia de costes de transacción. En su presencia, el arbitraje solo se activa cuando el diferencial de cotización supera dichos costes (una banda de no arbitraje en lugar de una igualdad exacta).</p></li>
+<li><p><em>Funcionamiento</em>: el arbitraje espacial se lleva a cabo de dos formas, con condiciones ligeramente diferentes, y en ambas garantiza el cumplimiento de la ley del precio único en el plano espacial:</p>
+<ul>
+<li><p><em>Bilateral</em>: la operación implica dos plazas<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a>, dos monedas y su tipo de cambio. Existe oportunidad de arbitraje si <span class="math inline">\(E^A \neq E^B\)</span>, es decir, si el tipo de cambio entre las monedas <span class="math inline">\(M^*\)</span> y <span class="math inline">\(M\)</span> en las plazas <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> no coincide. Su explotación conduce al equilibrio <span class="math inline">\(E^A = E^B\)</span>, en el que la misma divisa cotiza igual en todas las plazas.</p></li>
+<li><p><em>Triangular</em>: la operación implica tres plazas<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a>, tres monedas y el tipo de cambio cruzado. Existe oportunidad si <span class="math inline">\(E_{M'/M}^A \neq E_{M^*/M}^B \cdot E_{M'/M^*}^C\)</span>, y el equilibrio impone la coherencia de los tipos cruzados, <span class="math inline">\(E_{M'/M}^A = E_{M^*/M}^B \cdot E_{M'/M^*}^C\)</span>, con la que desaparecen las oportunidades de arbitraje.</p></li>
+</ul></li>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: el arbitraje espacial hace que la ley del precio único se cumpla casi al instante. De hecho, con el desarrollo de las operaciones de alta frecuencia<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a> y la negociación algorítmica, en el mundo real las posibilidades de llevar a cabo este tipo de arbitraje duran apenas milisegundos<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a>.</p></li>
+<li><p><em>Limitaciones</em>: con costes de transacción, la igualdad de cotizaciones solo se cumple dentro de una banda de no arbitraje, y la brevedad de las oportunidades las reserva a los operadores con sistemas de negociación algorítmica, capaces de explotar ventajas de latencia.</p></li>
+</ul></li>
+</ul>
+<p><strong>Arbitraje temporal sin riesgo o arbitraje puro temporal: la condición de paridad cubierta de intereses (PCI)</strong>: el tipo de cambio no agota el valor de una divisa. En sentido amplio, mantener riqueza en una moneda rinde además el tipo de interés de los depósitos denominados en ella. Puede compararse, entonces, la rentabilidad total de invertir en una u otra moneda, formada por el tipo de interés que cada una paga más la variación cambiaria entre el momento de la inversión y el del vencimiento. El arbitraje temporal aprovecha las diferencias entre ambas rentabilidades y elimina el riesgo de cambio mediante la contratación de un <em>forward</em>. Las operaciones que las explotan conducen a la paridad cubierta de intereses.</p>
+<ul>
+<li><p><em>Supuestos</em>: agentes racionales (no es preciso suponer neutralidad al riesgo, pues la operación cubierta no entraña riesgo cambiario), que tienen en cuenta el tipo de cambio nominal y el tipo de interés nominal de los depósitos con vencimiento a un año. Se supone también perfecta movilidad de capitales (sin controles ni costes de transacción), cobertura <em>forward</em> total<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a> y ausencia de endeudamiento o apalancamiento despreciable.</p></li>
+<li><p><em>Funcionamiento</em>: un residente dispone de 1 u.m. nacional (p.&nbsp;ej. un euro) para colocarla un año en un depósito y puede elegir entre dos alternativas:</p>
+<ul>
+<li><p><em>Activo nacional</em>: el depósito en moneda nacional le devuelve al cabo del año <span class="math inline">\(r_{\text{€}}^A = 1 \cdot (1+i)\)</span> u.m. nacionales brutas.</p></li>
+<li><p><em>Activo extranjero</em>: la colocación en el exterior exige tres pasos:</p>
+<ol type="1">
+<li><em>Cambio</em>: hoy cambia su u.m. nacional al tipo <em>spot</em> vigente y recibe <span class="math inline">\(1/E_t^s\)</span> u.m. extranjeras.</li>
+<li><em>Inversión</em>: deposita esa cantidad en el extranjero y al cabo del año dispone de <span class="math inline">\(r_\$^B = (1/E_t^s)(1+i^*)\)</span> u.m. extranjeras.</li>
+<li><em>Conversión</em>: pasa ese importe a moneda nacional y obtiene <span class="math inline">\(r_{\text{€}}^B = (E_{t+1}^s / E_t^s)(1+i^*)\)</span>.</li>
+</ol></li>
+</ul></li>
+<li><p><em>Diferencial de rentabilidades</em>: <em>ex post</em>, vendrá dado por <span class="math inline">\(r_{\text{€}} \equiv r_{\text{€}}^B - r_{\text{€}}^A \rightarrow r_{\text{€}} = (E_{t+1}^s / E_t^s)(1+i^*) - (1+i)\)</span> (1). Si la rentabilidad bruta del depósito extranjero en moneda nacional es superior a la del depósito nacional, el diferencial es positivo y existen ganancias del arbitraje para el residente.</p></li>
+<li><p><em>Aproximación</em>: la expresión se reduce<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a> a <span class="math inline">\(r_{\text{€}} \approx (E_{t+1}^s - E_t^s)/E_t^s + (i^* - i) \rightarrow r_{\text{€}} \approx g_E + (i^* - i)\)</span> (2), donde <span class="math inline">\(g_E\)</span> es la tasa de depreciación observada de la moneda nacional (tasa de depreciación <em>ex post</em>).</p></li>
+<li><p><em>Cobertura forward</em>: ahora bien, en el momento de invertir (<span class="math inline">\(t\)</span>), el agente no conoce <span class="math inline">\(E_{t+1}^s\)</span>. Si no quiere asumir riesgo cambiario, contratará hoy un <em>forward</em><a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a> que le permita convertir su retorno futuro a un tipo predeterminado, el tipo de cambio <em>forward</em> o a plazo, <span class="math inline">\(E_t^f\)</span>, obteniendo así una ganancia con cobertura total.</p></li>
+<li><p><em>Margen forward</em>: en estas condiciones, la tasa de depreciación en (2) pasa a ser el margen <em>forward</em>, <span class="math inline">\(\mu_f = (E_t^f - E_t^s)/E_t^s\)</span>, que indica el porcentaje en que el precio <em>forward</em> supera o está por debajo del precio <em>spot</em>. Así, si <span class="math inline">\(\mu_f &gt; 0\)</span> la moneda nacional cotiza al descuento en el mercado <em>forward</em><a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a>, si <span class="math inline">\(\mu_f &lt; 0\)</span> cotiza a premio y si <span class="math inline">\(\mu_f = 0\)</span> cotiza a la par. Existen, pues, oportunidades de arbitraje temporal sin riesgo cuando el diferencial de tipos de interés, <span class="math inline">\((i^* - i)\)</span>, difiere del margen <em>forward</em> con signo contrario (<span class="math inline">\(r_{\text{€}} \neq 0\)</span>).</p></li>
+<li><p><em>Ajuste hacia el equilibrio</em>: la explotación de estas ganancias se ilustra con dos casos, partiendo de una situación en la que ambas monedas cotizan a la par (<span class="math inline">\(E_t^s = E_t^f\)</span>, <span class="math inline">\(\mu_f = 0\)</span>):</p>
+<ul>
+<li><p><em>Depósito extranjero atractivo</em> (<span class="math inline">\(i &lt; i^* + \mu_f \rightarrow \Delta\mu_f &lt; 0\)</span>): con un interés extranjero mayor que el nacional, a los residentes les conviene comprar hoy divisa y depositarla en el exterior. El rendimiento llegará en divisa, pero los residentes no necesitan esperar al tipo <em>spot</em> futuro para convertirlo, porque pueden fijar hoy su conversión con un <em>forward</em>. Las compras de divisa al contado deprecian la moneda nacional (<span class="math inline">\(\uparrow E_t^s\)</span>) y reducen el margen <em>forward</em> (<span class="math inline">\(\downarrow \mu_f\)</span>) hasta que desaparece el arbitraje sin riesgo (<span class="math inline">\(r_{\text{€}} = 0\)</span>).</p></li>
+<li><p><em>Depósito nacional atractivo</em> (<span class="math inline">\(i &gt; i^* + \mu_f \rightarrow \Delta\mu_f &gt; 0\)</span>): con un interés nacional mayor, son los no residentes quienes compran hoy moneda nacional y aseguran con un <em>forward</em> la conversión a divisa de su rendimiento, en un razonamiento simétrico al anterior. La moneda nacional se aprecia al contado (<span class="math inline">\(\downarrow E_t^s\)</span>) y el margen <em>forward</em> sube (<span class="math inline">\(\uparrow \mu_f\)</span>) hasta que el diferencial de rentabilidades se anula (<span class="math inline">\(r_{\text{€}} = 0\)</span>).</p></li>
+</ul></li>
+<li><p><em>Equilibrio</em>: en el límite, en ambos casos el diferencial de rentabilidades es nulo y se cumple la paridad cubierta de intereses, <span class="math inline">\(r_{\text{€}} = 0 \leftrightarrow i = i^* + \mu_f\)</span>. Con ella, el arbitraje sin riesgo garantiza que se cumple la ley del precio único en el mercado de divisas, ahora en el plano temporal<a href="#fn27" class="footnote-ref" id="fnref27" role="doc-noteref"><sup>27</sup></a>.</p></li>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la evidencia empírica respalda la paridad cubierta, cuyo cumplimiento avanzó con la liberalización de capitales. Así, el Reino Unido y Japón aún mantenían controles en 1979, y a finales de los años ochenta la liberalización financiera había eliminado casi por completo los diferenciales cubiertos de intereses a corto plazo entre las principales economías industrializadas (Frankel, 1991). Hoy la negociación electrónica permite arbitrar con cobertura <em>forward</em> de forma continua y precisa. Por ello, en condiciones normales, una desviación de la paridad desaparece en pocos minutos (Akram, Rime y Sarno, 2008, y tema <a href="../chapters/b14-tipo-cambio.html">B14</a>, apartado 1.3.5), salvo las desviaciones persistentes observadas desde 2008.</p></li>
+<li><p><em>Limitaciones</em>: antes de 2008, las desviaciones de la PCI se explicaban por los controles de cambio y los costes de transacción. Desde la crisis financiera de 2008, sin embargo, se observan desviaciones persistentes (la llamada base de los <em>swaps</em> de divisas o <em>cross-currency basis</em>), incluso entre monedas de economías avanzadas sin controles de capital. Se atribuyen a las restricciones de balance de los intermediarios tras la reforma regulatoria. En todo caso, el grado de cumplimiento de la paridad cubierta se sigue usando, hoy en día, como medida del grado de movilidad internacional del capital (más que medidas como la correlación inversión-ahorro o los diferenciales de tipos de interés reales).</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="operaciones-especulativas-paridad-descubierta-de-intereses-carry-trade-especulación-en-el-forward-y-prop-trading" class="level4">
+<h4 class="anchored" data-anchor-id="operaciones-especulativas-paridad-descubierta-de-intereses-carry-trade-especulación-en-el-forward-y-prop-trading">2.2.4. Operaciones especulativas: paridad descubierta de intereses, <em>carry trade</em>, especulación en el <em>forward</em> y <em>prop trading</em></h4>
+<p><strong>Definición</strong>: las <em>operaciones especulativas</em> asumen deliberadamente el riesgo de cambio y mantienen posiciones abiertas basadas en las expectativas del agente. En ellas desemboca el arbitraje temporal cuando no hay instrumentos <em>forward</em> (como en muchos países en desarrollo) o el agente decide asumir ese riesgo.</p>
+<p><strong>Tipos</strong>: se distinguen cuatro operaciones, que se presentan por orden de relevancia analítica. La primera es el arbitraje con riesgo, que da lugar a la paridad descubierta de intereses, central en la teoría del tipo de cambio. Siguen el <em>carry trade</em>, su explotación práctica más importante, la especulación con derivados y, por último, el <em>trading</em> propietario.</p>
+<p><strong>Arbitraje con riesgo: condición de paridad descubierta de intereses (PDI)</strong>: consiste en replicar la lógica del arbitraje temporal sin cobertura <em>forward</em>. El agente toma una posición abierta en la divisa que ofrece mayor rentabilidad esperada y asume el riesgo de cambio sobre la base de sus expectativas.</p>
+<ul>
+<li><p><em>Supuestos</em>: los del arbitraje temporal, a los que se añade la neutralidad al riesgo (los agentes no exigen prima por invertir en un sitio o en otro), y las expectativas del agente sobre el tipo de cambio futuro sustituyen a la cobertura <em>forward</em>.</p></li>
+<li><p><em>Funcionamiento</em>: quien no se cubre convierte su rendimiento al tipo <em>spot</em> que rija al vencimiento, que desconoce al invertir. Decide, por tanto, con el tipo <em>spot</em> esperado para esa fecha, <span class="math inline">\(E_t^e \equiv \mathbb{E}_t[E_{t+1}^s]\)</span>, y la tasa de depreciación en (2) pasa a ser la esperada, <span class="math inline">\(g_E^e = (E_t^e - E_t^s)/E_t^s\)</span>. Las oportunidades que surgen son de ganancia con riesgo, y su explotación conduce en teoría a la paridad descubierta de intereses por un mecanismo similar al anterior<a href="#fn28" class="footnote-ref" id="fnref28" role="doc-noteref"><sup>28</sup></a>.</p></li>
+<li><p><em>Equilibrio</em>: si se cumple la PDI, <span class="math inline">\(\mathbb{E}_t[r_{\text{€}}] = 0 \leftrightarrow i = i^* + g_E^e\)</span>, el diferencial de rentabilidades esperadas es nulo y se han eliminado todas las oportunidades de ganancia con riesgo<a href="#fn29" class="footnote-ref" id="fnref29" role="doc-noteref"><sup>29</sup></a>. Su incumplimiento, en cambio, está estrechamente relacionado con el <em>puzzle</em> de Fama, paradoja del margen <em>forward</em> o anomalía de la prima <em>forward</em> (apartado 3.2). Implica, además, que es posible obtener ganancias asumiendo riesgos, en lo que se basan estrategias como el <em>carry trade</em>.</p></li>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la paridad descubierta es la condición de equilibrio del mercado de divisas con la que trabajan las teorías de determinación del tipo de cambio (véase el tema <a href="../chapters/b14-tipo-cambio.html">B14</a>), lo que la convierte en la más relevante analíticamente de las condiciones de paridad.</p></li>
+<li><p><em>Limitaciones</em>: la evidencia empírica muestra que la PDI no se cumple a corto plazo, aunque tiende a cumplirse a horizontes largos (Chinn y Meredith, 2004). Por tanto, existen, por lo general, oportunidades de ganancia con riesgo en los mercados de divisas. El incumplimiento de la PDI puede deberse a tres causas, entre otras:</p>
+<ul>
+<li><em>Dificultad de predicción</em>: pese a los desarrollos tecnológicos, los agentes anticipan mal la evolución de los tipos de cambio.</li>
+<li><em>Aversión al riesgo</em>: con agentes aversos, invertir en el exterior solo compensa si la rentabilidad esperada supera la nacional en una prima, <span class="math inline">\(\mathbb{E}_t[r_{\text{€}}^B] = r_{\text{€}}^A + \rho\)</span>.</li>
+<li><em>Expectativas sesgadas</em>: con datos de encuestas, Froot y Frankel (1989) no hallan prima de riesgo alguna en el sesgo de la prima <em>forward</em> y lo atribuyen a errores sistemáticos de expectativas. Esos errores pueden deberse a expectativas sesgadas o, aun siendo estas racionales, a que el suceso que el mercado esperaba no llega a producirse en la muestra, como en el caso de los <em>peso problems</em><a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a>.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><strong>Arbitraje con riesgo y apalancamiento: el <em>carry trade</em></strong>: consiste en tomar prestado en una divisa de tipo de interés bajo (divisa de financiación, p.&nbsp;ej. el yen) para invertir en activos de otra con tipo alto (divisa de destino, p.&nbsp;ej. el dólar). La estrategia explota de forma apalancada el incumplimiento sistemático de la PDI<a href="#fn31" class="footnote-ref" id="fnref31" role="doc-noteref"><sup>31</sup></a>.</p>
+<ul>
+<li><p><em>Supuestos</em>: la estrategia solo es rentable si la divisa de destino no se deprecia (frente a la de financiación) en la cuantía que la PDI predice, lo que exige que esta paridad no se cumpla en el horizonte de la inversión.</p></li>
+<li><p><em>Funcionamiento</em>: el beneficio de la estrategia es el diferencial de intereses, <span class="math inline">\(i^{\text{destino}} - i^{\text{financiación}}\)</span>, menos la depreciación observada de la divisa de destino. Mientras el tipo de cambio permanece estable, la estrategia rinde el <em>carry</em>. Sin embargo, su principal riesgo es el desmantelamiento súbito de posiciones (<em>unwinding</em>) ante episodios de aversión al riesgo, que provoca movimientos cambiarios bruscos y pérdidas amplificadas por el apalancamiento. En la jerga, el <em>carry trade</em> “sube por la escalera y baja en ascensor”.</p></li>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la estrategia explota de forma sistemática el incumplimiento de la PDI a corto plazo. Por ello se ha aplicado durante décadas con el yen japonés como divisa de financiación, dados los tipos de interés muy reducidos de Japón, para comprar activos en dólares, euros o deuda emergente<a href="#fn32" class="footnote-ref" id="fnref32" role="doc-noteref"><sup>32</sup></a>. Análogamente, es común financiarse en países desarrollados para invertir en deuda de emergentes con rentabilidades más altas.</p></li>
+<li><p><em>Limitaciones</em>: el apalancamiento amplifica las pérdidas cuando un episodio de aversión al riesgo obliga a deshacer las posiciones. Ese riesgo se materializó en agosto de 2024. La subida de tipos del Banco de Japón a finales de julio, unida a unos datos de empleo estadounidenses peores de lo esperado, desencadenó un desmantelamiento masivo de posiciones de <em>carry</em> en yenes, con una apreciación abrupta de la divisa japonesa y turbulencias bursátiles globales.</p></li>
+</ul></li>
+</ul>
+<p><strong>Especulación en el segmento <em>forward</em></strong>: además de cubrir posiciones, los derivados permiten especular con posiciones abiertas (sin posición contraria en el subyacente asociada a una operación comercial) basadas en las expectativas cambiarias propias.</p>
+<ul>
+<li><p><em>Supuestos</em>: el especulador confía en su expectativa sobre el tipo de cambio futuro y acepta el riesgo de la posición abierta. Su contraparte (p.&nbsp;ej. un agente que se cubre) toma la posición contraria, en un juego de suma cero.</p></li>
+<li><p><em>Funcionamiento</em>: con expectativas bajistas (<em>bearish</em>) sobre la divisa, el especulador vende un <em>forward</em> (posición corta), cuyo beneficio es decreciente en el tipo <em>spot</em> al vencimiento, porque gana si este queda por debajo del tipo pactado. Con expectativas alcistas (<em>bullish</em>), lo compra (posición larga), con un beneficio creciente en el tipo <em>spot</em>. Los perfiles de ambas posiciones se representan en el tema <a href="../chapters/b25-derivados.html">B25</a>, apartado 1.1.2.</p></li>
+<li><p><em>Ejemplo</em>: el caso más conocido de especulación cambiaria en corto es el ataque de George Soros a la libra esterlina en 1992:</p>
+<ul>
+<li><p><em>Contexto</em>: Soros consideraba que la libra estaba sobrevalorada con respecto al marco alemán, dado que el Gobierno británico, del que dependía entonces el BoE (Bank of England), renunciaba a devaluarla por su pertenencia al Mecanismo de Cambios e Intervención (MCI) del Sistema Monetario Europeo (SME).</p></li>
+<li><p><em>Primera fase</em>: Soros tomaba prestado en libras y las vendía para comprar marcos, causando presión depreciatoria sobre la libra y apreciatoria sobre el marco, lo cual intensificaba la divergencia entre ambas monedas.</p></li>
+<li><p><em>Segunda fase</em>: Soros anticipaba que el BoE no podría soportar la divergencia, pues defender la paridad exigía mantener tipos de interés muy elevados (en línea con los del Bundesbank tras la reunificación alemana) en plena recesión británica. Con esa expectativa abrió una posición corta sobre la libra por valor de 10.000&nbsp;M$, a la que siguieron, por comportamiento de rebaño, otras posiciones cortas.</p></li>
+<li><p><em>Desenlace</em>: el BoE no pudo aguantar la presión depreciatoria. Así, el 16 de septiembre de 1992, el “miércoles negro”, el Reino Unido tuvo que abandonar el MCI del SME.</p></li>
+</ul></li>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: el especulador da contrapartida a los agentes que se cubren, pues asume el riesgo cambiario del que estos se desprenden, y con un <em>forward</em> puede tomar posición sobre sus propias expectativas sin pagar prima.</p></li>
+<li><p><em>Limitaciones</em>: la posición queda abierta a ganancias o pérdidas en un juego de suma cero, y el comportamiento de rebaño puede amplificar la presión sobre una paridad, como en 1992. Por ello, en la práctica, estas operaciones suelen articularse con alguna cobertura parcial mediante otro derivado.</p></li>
+</ul></li>
+</ul>
+<p><strong>Negociación por cuenta propia (<em>prop trading</em>)</strong>: consiste en la asunción directa de riesgos por parte de las instituciones financieras, que utilizan recursos propios (no de clientes) exclusivamente para operaciones especulativas, incluido el arbitraje con riesgo a gran escala. Esta práctica, también llamada <em>trading</em> propietario, abarca los mercados financieros en general, no solo los de divisas.</p>
+<ul>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: al incluir arbitraje con riesgo a gran escala, empuja las rentabilidades esperadas hacia la paridad descubierta y aporta liquidez a los mercados.</p></li>
+<li><p><em>Limitaciones</em>: es una práctica de elevado riesgo y, por lo general, menos transparente que otras, pues muchas instituciones no ofrecen información abierta sobre el volumen de su operativa propietaria. En los bancos ha perdido relevancia a raíz de la Gran Recesión (2008-2014), con la aparición de nueva regulación al respecto<a href="#fn33" class="footnote-ref" id="fnref33" role="doc-noteref"><sup>33</sup></a>, aunque la han ganado las empresas de negociación algorítmica por cuenta propia (apartado 1.3.3).</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="operaciones-oficiales-intervención-directa-e-indirecta" class="level4">
+<h4 class="anchored" data-anchor-id="operaciones-oficiales-intervención-directa-e-indirecta">2.2.5. Operaciones oficiales: intervención directa e indirecta</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Sobre los regímenes cambiarios y la política de intervención, véase el tema <a href="../chapters/b15-regimenes-cambiarios.html">B15</a>, y sobre la determinación del tipo de cambio, el tema <a href="../chapters/b14-tipo-cambio.html">B14</a>.</p>
+</div>
+</div>
+</div>
+<p><strong>Definición</strong>: se habla de intervención cuando las autoridades monetarias actúan para influir en el tipo de cambio, como un operador más en el mercado de divisas o por otras vías. La intervención incluye medidas de distinto tipo (p.&nbsp;ej. anuncios, compraventas…) dirigidas a suavizar los vaivenes del tipo de cambio y a ganar credibilidad. Los controles de cambio también alteran los flujos de divisas, pero no son intervención, sino regulación (apartado 3.3.2).</p>
+<p>La intervención también engloba la gestión de reservas, es decir, el proceso de garantizar que los activos en divisas o reservas exteriores de los que dispone el sector público tienen un volumen adecuado y están disponibles en el momento necesario. Las reservas son, en efecto, un seguro frente a <em>shocks</em> financieros y paradas súbitas (<em>sudden stops</em>) en el acceso a los mercados de capitales, así como un medio para mejorar la credibilidad de la política monetaria.</p>
+<p><strong>Tipos</strong>: la intervención puede ser directa o indirecta:</p>
+<ul>
+<li><p><em>Intervención directa</em>: consiste en la compraventa de divisas contra moneda nacional en el mercado, con cargo a las reservas internacionales. Puede ser, a su vez, de dos tipos:</p>
+<ul>
+<li><p><em>Intervención esterilizada</em>: el banco central compensa el efecto de la operación sobre la base monetaria mediante operaciones de mercado abierto de signo contrario, de modo que la intervención altera la composición de los activos en manos del público, pero no la oferta monetaria.</p></li>
+<li><p><em>Intervención no esterilizada</em>: la operación se traslada íntegramente a la base monetaria, por lo que equivale, <em>de facto</em>, a una operación de política monetaria.</p></li>
+</ul></li>
+<li><p><em>Intervención indirecta</em>: el banco central influye sobre el tipo de cambio sin operar directamente en el mercado de divisas. Puede hacerlo por dos vías:</p>
+<ul>
+<li><p><em>Política monetaria</em>: variaciones del tipo de interés que alteran los flujos de capital.</p></li>
+<li><p><em>Intervención verbal</em> (<em>oral intervention</em>): los anuncios y declaraciones buscan orientar las expectativas del mercado (efecto señalización).</p></li>
+</ul></li>
+</ul>
+<p><strong>Funcionamiento</strong>: la finalidad de la intervención depende del régimen cambiario:</p>
+<ul>
+<li><p><em>Cambio fijo</em>: la intervención busca mantener la paridad deseada y, con ella, la estabilidad total del tipo de cambio.</p></li>
+<li><p><em>Cambio flexible</em>: busca contrarrestar los movimientos del tipo de cambio a corto plazo, en lo que se conoce como <em>lucha contra el viento</em> (<em>leaning against the wind</em>), y garantizar así su estabilidad parcial.</p></li>
+</ul>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: frente al consenso de los años ochenta, que la tenía por ineficaz, la revisión de Sarno y Taylor (2001) concluye que la intervención puede ser eficaz. Lo es sobre todo como señal de las intenciones futuras de la autoridad, cuando es pública, concertada entre varios bancos centrales (p.&nbsp;ej. los Acuerdos del Plaza de 1985 y del Louvre de 1987) y coherente con la orientación de la política monetaria.</p></li>
+<li><p><em>Limitaciones</em>: el efecto directo de la intervención esterilizada es limitado, dada la magnitud del mercado en relación con las reservas disponibles.</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusiones-1" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-1">2.3. Conclusiones</h3>
+<p>Los instrumentos van del contado a los derivados que trajo la innovación financiera desde los años setenta, y el más negociado es hoy el FX <em>swap</em>. Con ellos, las operaciones han pasado de servir al comercio a sostener estrategias complejas. La obtención de liquidez conecta el mercado con la economía real, y la cobertura elimina el riesgo de cambio al trasladarlo a una contraparte. El arbitraje sin riesgo impone la ley del precio único entre plazas y, en el plano temporal, la paridad cubierta de intereses. La especulación, en cambio, toma posiciones abiertas según las expectativas, y el <em>carry trade</em> obtiene beneficio porque la paridad descubierta no se cumple a corto plazo. La intervención oficial, por último, es eficaz sobre todo como señal de las intenciones de la autoridad.</p>
+<p>La innovación financiera ha producido, así, un cambio estructural en este mercado y un escenario propicio a una mayor volatilidad de los tipos de cambio, con efectos sobre la economía real. La sección 3 examina si un mercado así es eficiente y si debe regularse.</p>
+</section>
+</section>
+<section id="eficiencia-y-regulación-del-mercado-de-divisas" class="level2">
+<h2 class="anchored" data-anchor-id="eficiencia-y-regulación-del-mercado-de-divisas">3. Eficiencia y regulación del mercado de divisas</h2>
+<p>Falta saber si el mercado de divisas es eficiente<a href="#fn34" class="footnote-ref" id="fnref34" role="doc-noteref"><sup>34</sup></a>, lo que exige definir antes la eficiencia, contrastarla y examinar el debate sobre su regulación.</p>
+<section id="la-hipótesis-de-eficiencia-bachelier-1900-samuelson-1965-fama-1970" class="level3">
+<h3 class="anchored" data-anchor-id="la-hipótesis-de-eficiencia-bachelier-1900-samuelson-1965-fama-1970">3.1. La hipótesis de eficiencia (Bachelier, 1900; Samuelson, 1965; Fama, 1970)</h3>
+<p><strong>Origen</strong>: diversos autores han definido la eficiencia de los mercados financieros, entre ellos Louis Bachelier (1900) y Paul Samuelson (1965), pero la definición de referencia es la de Eugene Fama (1970), Premio Nobel en 2013.</p>
+<p><strong>Idea</strong>: un mercado es <em>eficiente</em> o de juego justo<a href="#fn35" class="footnote-ref" id="fnref35" role="doc-noteref"><sup>35</sup></a> si los precios reflejan plenamente toda la información disponible. En ese caso, la cotización es una estimación fiable del valor intrínseco del activo y ningún agente obtiene de forma sistemática ganancias extraordinarias.</p>
+<section id="supuestos" class="level4">
+<h4 class="anchored" data-anchor-id="supuestos">3.1.1. Supuestos</h4>
+<p>Fama (1970) enuncia tres condiciones suficientes, aunque no necesarias, de eficiencia, que pueden agruparse en dos:</p>
+<p><strong>Entorno</strong>: no existen costes de transacción ni restricciones a los precios o a la compraventa de activos (p.&nbsp;ej. intervención oficial) y el mercado provee toda la información sin coste.</p>
+<p><strong>Agentes</strong>: son racionales y tienen expectativas homogéneas. Se supone que los agentes interpretan la información de forma idéntica y actúan en consecuencia.</p>
+</section>
+<section id="razonamiento" class="level4">
+<h4 class="anchored" data-anchor-id="razonamiento">3.1.2. Razonamiento</h4>
+<p>Fama distingue tres niveles de eficiencia, según la información que contienen los precios:</p>
+<ul>
+<li><p><em>Eficiencia débil</em>: los precios recogen toda la información pasada relevante, la contenida en las series históricas de precios. Como corolario, los inversores no pueden predecir los precios actuales o futuros a partir de los precios pasados y, así, obtener un rendimiento superior al rendimiento normal de mercado usando series históricas, pero sí usando información adicional (pública o privada). Dicho de otro modo, si se cumple la eficiencia débil, el mercado “no tiene memoria”, en el sentido de que la serie histórica no permite predecir rendimientos extraordinarios (el paseo aleatorio es solo un caso particular).</p></li>
+<li><p><em>Eficiencia semifuerte</em>: los precios recogen toda la información pasada y pública. Por ello, con información pública no es posible conseguir rendimientos anormalmente altos, aunque sí cabe alcanzarlos disponiendo de información privada, privilegiada o confidencial (relativa a la empresa o a la coyuntura económica en general).</p></li>
+<li><p><em>Eficiencia fuerte</em>: los precios recogen toda la información (pasada, pública y privilegiada). Ningún inversor puede, entonces, obtener rentabilidades superiores a la normal de forma sistemática, ni siquiera utilizando información privilegiada.</p></li>
+</ul>
+</section>
+<section id="conclusiones-2" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones-2">3.1.3. Conclusiones</h4>
+<p><strong>Aspectos positivos</strong>: la hipótesis ofrece una definición operativa y contrastable de la eficiencia, con tres niveles anidados (la eficiencia fuerte contiene a la semifuerte y esta, a su vez, a la débil). Además, si se verifica, la competencia entre agentes racionales basta para que el precio de cada activo refleje en todo momento su valor intrínseco.</p>
+<p><strong>Limitaciones</strong>: sus condiciones suficientes no se dan en la práctica, y la hipótesis solo puede contrastarse de forma conjunta con un modelo de equilibrio, que en el mercado de divisas reúne la PDI y la neutralidad al riesgo<a href="#fn36" class="footnote-ref" id="fnref36" role="doc-noteref"><sup>36</sup></a>. El rechazo de esa hipótesis conjunta se estudia a continuación.</p>
+</section>
+</section>
+<section id="contraste-de-la-hipótesis-de-eficiencia-la-paradoja-del-margen-forward-o-puzzle-de-fama-fama-1984" class="level3">
+<h3 class="anchored" data-anchor-id="contraste-de-la-hipótesis-de-eficiencia-la-paradoja-del-margen-forward-o-puzzle-de-fama-fama-1984">3.2. Contraste de la hipótesis de eficiencia: la paradoja del margen <em>forward</em> o <em>puzzle</em> de Fama (Fama, 1984)</h3>
+<p>Diversos estudios posteriores rechazan la hipótesis conjunta de eficiencia y neutralidad al riesgo en el mercado de divisas. Se expone primero el contraste de referencia y después las explicaciones de su resultado.</p>
+<section id="desarrollo" class="level4">
+<h4 class="anchored" data-anchor-id="desarrollo">3.2.1. Desarrollo</h4>
+<p>Entre esos estudios destaca el artículo de Eugene Fama (1984), que contrasta la hipótesis estimando la regresión <span class="math inline">\(g_E = \alpha + \beta\,\mu_f + \varepsilon\)</span>, donde la hipótesis nula de eficiencia (junto con la PDI y la neutralidad al riesgo) implica <span class="math inline">\(\alpha = 0\)</span> y <span class="math inline">\(\beta = 1\)</span><a href="#fn37" class="footnote-ref" id="fnref37" role="doc-noteref"><sup>37</sup></a>.</p>
+<p>Si la hipótesis nula se cumple, el diferencial entre el tipo de cambio <em>forward</em> y el tipo de cambio <em>spot</em> (el margen <em>forward</em>) será un predictor insesgado de la variación (<em>ex post</em>) del tipo de cambio <em>spot</em> entre <span class="math inline">\(t\)</span> y <span class="math inline">\(t+1\)</span>.</p>
+<p>Las estimaciones de <span class="math inline">\(\beta\)</span>, sin embargo, se sitúan de forma reiterada más cerca de <span class="math inline">\(-1\)</span> que de <span class="math inline">\(+1\)</span>, un hecho estilizado de la literatura<a href="#fn38" class="footnote-ref" id="fnref38" role="doc-noteref"><sup>38</sup></a>. De ahí que el tipo <em>forward</em> se considere un mal predictor del tipo <em>spot</em> futuro<a href="#fn39" class="footnote-ref" id="fnref39" role="doc-noteref"><sup>39</sup></a>. El tipo <em>forward</em> falla en la magnitud de la variación (<em>ex post</em>) del tipo <em>spot</em> e incluso en su signo.</p>
+<p>Este resultado se conoce como <strong>paradoja del margen <em>forward</em>, <em>puzzle</em> de Fama, anomalía de los precios (o prima) <em>forward</em></strong>, una de las paradojas clásicas de la literatura sobre el mercado de divisas, junto con la de Meese y Rogoff (1983) del tema <a href="../chapters/b14-tipo-cambio.html">B14</a>, apartado 2.4.</p>
+<p>Se trata de una paradoja porque, aunque los tipos de interés de un país sean superiores a los de otro y se cumpla la paridad cubierta de intereses, la moneda del país con tipos altos tiende a apreciarse. En cambio, si se cumpliese la hipótesis nula (la PCI junto con la PDI), se depreciaría.</p>
+</section>
+<section id="explicaciones-a-la-paradoja" class="level4">
+<h4 class="anchored" data-anchor-id="explicaciones-a-la-paradoja">3.2.2. Explicaciones a la paradoja</h4>
+<p>Algunas de las teorías explicativas de la paradoja son:</p>
+<p><strong>Expectativas heterogéneas</strong> (Frankel y Froot, 1990; De Grauwe y Grimaldi, 2006): en el mercado conviven <em>chartistas</em>, que extrapolan la tendencia reciente, y fundamentalistas, que esperan el regreso del tipo de cambio a su valor de equilibrio. Cuando pesan más los primeros, el tipo de cambio puede alejarse de los fundamentos durante periodos largos. El modelo se desarrolla en el tema <a href="../chapters/b14-tipo-cambio.html">B14</a>, apartado 3.2.1.</p>
+<p><strong>Agentes aversos al riesgo</strong>: el margen <em>forward</em> puede recoger, además de la depreciación esperada, una prima de riesgo, la rentabilidad adicional que se exige por mantener la divisa, que crece con la volatilidad de su tipo de cambio. Para explicar <span class="math inline">\(\beta &lt; 0\)</span>, esa prima debe variar más que la depreciación esperada de la divisa y estar negativamente correlacionada con ella (Fama, 1984).</p>
+<p><strong>Interpretación incorrecta</strong>: la paradoja podría desvanecerse si se atiende también al término independiente de la regresión, <span class="math inline">\(\alpha\)</span>. En rigor, un <span class="math inline">\(\beta\)</span> negativo indica que la depreciación esperada es menor cuanto mayor es el descuento de la moneda nacional (cuanto mayor es <span class="math inline">\(\mu_f\)</span>), no que la moneda a descuento vaya a apreciarse.</p>
+<p>Con un <span class="math inline">\(\alpha\)</span> positivo y suficientemente grande, la moneda nacional a descuento puede tener todavía una depreciación esperada. Sin embargo, el argumento no resuelve la paradoja con carácter general, porque el signo y la magnitud estimados de <span class="math inline">\(\alpha\)</span> cambian de un par de divisas a otro.</p>
+</section>
+</section>
+<section id="la-situación-de-la-regulación-en-el-mercado-de-divisas" class="level3">
+<h3 class="anchored" data-anchor-id="la-situación-de-la-regulación-en-el-mercado-de-divisas">3.3. La situación de la regulación en el mercado de divisas</h3>
+<p>El rechazo de la hipótesis conjunta no prueba por sí solo que el mercado de divisas sea ineficiente, pues puede reflejar una prima de riesgo variable. Queda abierta, con todo, la cuestión de si debe regularse. El punto de partida es su escasa regulación, frente a la cual se sitúan los controles de cambio y la propuesta de la tasa Tobin.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Este apartado enlaza el tema con el <a href="../chapters/b15-regimenes-cambiarios.html">B15</a>, sobre regímenes cambiarios, y con el <a href="../chapters/b27-regulacion-financiera.html">B27</a>, sobre regulación financiera.</p>
+</div>
+</div>
+</div>
+<section id="contexto-la-ausencia-de-regulación-en-el-mercado-de-divisas" class="level4">
+<h4 class="anchored" data-anchor-id="contexto-la-ausencia-de-regulación-en-el-mercado-de-divisas">3.3.1. Contexto: la ausencia de regulación en el mercado de divisas</h4>
+<p>La mayoría de las operaciones del mercado de divisas están poco reguladas, a diferencia de los mercados de acciones y bonos, y la regulación de cada instrumento corresponde a cada país.</p>
+<p>Prácticas que la mayoría de los mercados organizados regulan exhaustivamente, como la inversión ventajista<a href="#fn40" class="footnote-ref" id="fnref40" role="doc-noteref"><sup>40</sup></a> o <em>front running</em>, se consideran aquí malas prácticas. Las desalienta el Código Global de Conducta del mercado de divisas (<em>FX Global Code</em>, 2017), un conjunto de principios de adhesión voluntaria que mantiene el Comité Global de Divisas (GFXC) y que no constituye regulación. Estas prácticas carecen, por tanto, de una prohibición específica equivalente, aunque pueden perseguirse como fraude o abuso.</p>
+<p>En consecuencia, los creadores de mercado tienen una gran facilidad para desplazarse por los distintos mercados que componen el mercado de divisas. Sin embargo, la ausencia de regulación no supone, <em>a priori</em>, un problema, dada la naturaleza especial de este mercado. Por ejemplo, las restricciones a las ventas en corto que existen en otros mercados no tienen encaje como tal en el mercado de divisas, puesto que la venta en corto de una moneda implica la compra de otra.</p>
+<p>No obstante, la escasa regulación del mercado de divisas hace que la información disponible sea insuficiente, pues no se conoce con exactitud el volumen de transacciones de un día concreto. La fuente de información más amplia es el informe trienal del BIS, que complementan las encuestas semestrales de los comités de divisas de las principales plazas (p.&nbsp;ej. Londres o Nueva York) y los datos de liquidación de CLS.</p>
+</section>
+<section id="regulación-y-controles-de-cambio" class="level4">
+<h4 class="anchored" data-anchor-id="regulación-y-controles-de-cambio">3.3.2. Regulación y controles de cambio</h4>
+<p>La regulación de los mercados de cambios va de la legislación de base a los límites a los movimientos de capitales, que pueden mover el tipo de cambio porque alteran los flujos de divisas. Se justifica por la teoría del <em>second best</em>, según la cual, con fallos de mercado, una restricción adicional a la movilidad del capital puede aumentar el bienestar. La regulación se concreta en los controles de capitales, cuantitativos o basados en precios (como el encaje chileno de 1991, un depósito no remunerado), los tipos de cambio múltiples y los impuestos sobre las transacciones, cuya versión de referencia es la tasa Tobin.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La justificación, los tipos de regulación con sus ejemplos y su valoración se desarrollan en el tema <a href="../chapters/b15-regimenes-cambiarios.html">B15</a>, apartado 3.2.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="la-tasa-tobin-1972" class="level4">
+<h4 class="anchored" data-anchor-id="la-tasa-tobin-1972">3.3.3. La tasa Tobin (1972)</h4>
+<p><strong>Origen</strong>: James Tobin la propuso en 1972, en unas conferencias en la Universidad de Princeton, poco después de la suspensión de la convertibilidad del dólar.</p>
+<p><strong>Idea</strong>: gravar las transacciones cambiarias con una tasa cuya incidencia efectiva sea inversamente proporcional a la duración de la operación, para “echar arena en las ruedas” de la especulación a corto plazo, en expresión del propio Tobin (1978).</p>
+<p><strong>Razonamiento</strong>: como la tasa se paga en cada operación, apenas encarece las inversiones a largo plazo, mientras que las operaciones de ida y vuelta a muy corto plazo soportan un gravamen anualizado mucho mayor. En consecuencia, desincentiva los flujos especulativos y, con ellos, la volatilidad del tipo de cambio.</p>
+<p><strong>Extensiones</strong>: acogida al principio con escaso éxito, la propuesta ganó popularidad desde los años noventa en el debate sobre los mecanismos alternativos de financiación de los gobiernos, y se ha planteado también para las transacciones financieras en general.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: sus partidarios defienden que permitiría reducir la volatilidad de los flujos y obtener importantes ingresos sin alterar notablemente la operativa del mercado. Así, con el volumen actual del mercado de divisas (unos 9,6 billones de dólares diarios, según la encuesta trienal del BIS de 2025), una tasa mundial del 0,05&nbsp;% recaudaría del orden de 1,2 billones de dólares al año si ese volumen se mantuviera constante. No obstante, la recaudación efectiva sería muy inferior, pues la propia tasa reduciría el volumen negociado.</p></li>
+<li><p><em>Limitaciones</em>: sus detractores aducen que es difícil de implementar, porque exige una cooperación internacional intensa, sin la cual las transacciones se desviarían en gran medida hacia las jurisdicciones que no la aplicasen, y que produciría distorsiones en el mecanismo de los precios.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="conclusiones-3" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones-3">Conclusiones</h2>
+<p>El mercado de divisas es el mayor mercado financiero del mundo, un mercado OTC global, profundo y concentrado en un núcleo de creadores de mercado, con transacciones sobre todo financieras y con instrumentos que van del contado a los derivados. La cobertura traslada el riesgo de cambio a quien está dispuesto a asumirlo. El arbitraje hace cumplir la ley del precio único entre plazas y, en el plano temporal, da lugar a la paridad cubierta de intereses. La especulación toma posiciones abiertas y obtiene beneficio del incumplimiento de la paridad descubierta, como el <em>carry trade</em>, con el riesgo de amplificar la volatilidad cuando se apalanca con derivados OTC, cuya opacidad agravó la crisis financiera global. El contraste de la hipótesis de eficiencia desemboca en el <em>puzzle</em> de Fama, porque el margen <em>forward</em> predice mal incluso el signo de la depreciación. Queda abierta la regulación de un mercado poco regulado y mal medido, con los controles de cambio y la tasa Tobin como respuestas posibles.</p>
+<p>La paridad descubierta es la condición de equilibrio de las teorías de determinación del tipo de cambio, y las expectativas heterogéneas que explican el <em>puzzle</em> de Fama reaparecen en ellas (tema <a href="../chapters/b14-tipo-cambio.html">B14</a>). Las operaciones oficiales y los controles de cambio son, respectivamente, instrumentos de la intervención y de la regulación con que se gestionan los regímenes cambiarios (tema <a href="../chapters/b15-regimenes-cambiarios.html">B15</a>), y la especulación contra una paridad, que puede forzar su abandono aunque los fundamentos sean sanos, es el mecanismo de las crisis de segunda generación (tema <a href="../chapters/b17-crisis-bp.html">B17</a>). Por último, los derivados que se negocian en este mercado tienen su propia teoría de valoración (tema <a href="../chapters/b25-derivados.html">B25</a>), y su opacidad motivó la reforma regulatoria posterior a 2008 (tema <a href="../chapters/b27-regulacion-financiera.html">B27</a>).</p>
+<p>Desde 2008, la paridad cubierta presenta desviaciones persistentes entre las monedas del G10, que Du, Tepper y Verdelhan (2018) documentan y atribuyen a los costes de balance que la regulación poscrisis impone a los bancos que arbitran. Sigue en debate, además, el sentido del <em>puzzle</em> de Fama. Brunnermeier, Nagel y Pedersen (2008) interpretan el rendimiento del <em>carry trade</em> como compensación por el riesgo de desplomes cambiarios bruscos. Por su parte, Bussière, Chinn, Ferrara y Heipertz (2022) encuentran que el coeficiente de Fama se vuelve positivo y elevado a partir de la crisis financiera, un “nuevo <em>puzzle</em>” ligado sobre todo a cambios en la covarianza entre los errores de expectativas y los diferenciales de intereses.</p>
+</section>
+<section id="anexo" class="level2">
+<h2 class="anchored" data-anchor-id="anexo">Anexo</h2>
+<section id="a.1.-cómo-operan-los-creadores-de-mercado" class="level3">
+<h3 class="anchored" data-anchor-id="a.1.-cómo-operan-los-creadores-de-mercado">A.1. Cómo operan los creadores de mercado</h3>
+<p>Los creadores de mercado (apartado 1.3.1) cotizan simultáneamente un precio de compra (<em>bid</em>) y un precio de venta (<em>ask</em>) y operan en ambos lados del mercado con posiciones propias, a diferencia de los <em>brokers</em> (apartado 1.3.2). El inversor que quiere vender recibirá el precio <em>bid</em>, ligeramente inferior al precio medio de mercado, mientras que el que quiere comprar pagará el precio <em>ask</em>, ligeramente superior. El diferencial entre ambos (el <em>spread</em>) es un coste para quien opera y una ganancia para el creador de mercado, porque este compra la divisa al <em>bid</em> y la vende al <em>ask</em>. Esa ganancia le compensa por el servicio de liquidez y de búsqueda que presta.</p>
+<p><strong>Ejemplo: el <em>spread</em> como coste de la operación</strong></p>
+<ol type="1">
+<li><p><em>Orden de compra</em>: un inversor quiere comprar el par GBP/USD cuando la cotización es 1,2756/1,2758. Como compra, el precio de referencia es el <em>ask</em>, 1,2758.</p></li>
+<li><p><em>Posición inicial</em>: nada más ejecutarse la operación, su posición está en −2 puntos, porque para deshacerla debe vender, y entonces el precio de referencia es el <em>bid</em>, 1,2756.</p></li>
+<li><p><em>Coste de la operación</em>: el inversor ha pagado al creador de mercado 2 puntos, el <em>spread</em>.</p></li>
+</ol>
+<p>El <em>spread</em> es un coste cada vez más relevante en el mercado de divisas, debido a la proliferación de las operaciones de alta frecuencia y de muy corto plazo gracias al desarrollo de las nuevas tecnologías. Cuando se hacen muchas operaciones en el corto plazo, el coste del <em>spread</em> pesa mucho en el beneficio del inversor.</p>
+<p>Sin embargo, no debe confundirse el <em>spread</em> con la comisión que cobra el <em>broker</em>. Cuando se opera en mercados de acciones, la comisión tiene dos tramos, la comisión que cobra el <em>broker</em> por el servicio y el canon de bolsa. El canon de bolsa es variable según el importe de la operación y el coste del <em>broker</em> puede ser proporcional o fijo. En el caso de las divisas, en cambio, al operarse en un mercado OTC, la comisión solo tiene el tramo del <em>broker</em>.</p>
+<p>Es común, no obstante, que los <em>brokers</em> del mercado de divisas no cobren comisión. En ese caso, suelen cobrar una cantidad fija de puntos que suman al <em>spread</em> natural del mercado, y por ello se denominan <em>brokers</em> de <em>spread</em> fijo. A diferencia de estos, los <em>brokers</em> que operan con <em>spreads</em> flexibles suelen cobrar una comisión que habrá que sumar al <em>spread</em> para calcular el coste real de la operación.</p>
+</section>
+<section id="a.2.-obtención-de-la-paridad-cubierta-de-intereses-pci" class="level3">
+<h3 class="anchored" data-anchor-id="a.2.-obtención-de-la-paridad-cubierta-de-intereses-pci">A.2. Obtención de la paridad <em>cubierta</em> de intereses (PCI)</h3>
+<p><strong>Punto de partida</strong>: la paridad cubierta de intereses se puede expresar como:</p>
+<p><span class="math display">\[0 = \frac{E^f}{E^s}(1+i^*) - (1+i) \rightarrow (1+i) = \frac{E^f}{E^s}(1+i^*) \rightarrow \frac{1+i}{1+i^*} = \frac{E^f}{E^s}\]</span></p>
+<p><strong>Resta de la unidad</strong>: sustrayendo 1 de ambos miembros se obtiene:</p>
+<p><span class="math display">\[\frac{E^f}{E^s} - 1 = \frac{1+i}{1+i^*} - 1 \rightarrow \frac{E^f - E^s}{E^s} = \frac{i - i^*}{1+i^*}\]</span></p>
+<p><strong>Aproximación</strong>: el término <span class="math inline">\(\frac{E^f - E^s}{E^s} \cdot i^*\)</span> toma valores muy pequeños, por lo que se aproxima a cero por simplicidad. Operando se obtiene:</p>
+<p><span class="math display">\[\frac{E^f - E^s}{E^s} + \underbrace{\frac{E^f - E^s}{E^s} \cdot i^*}_{\approx 0} = i - i^* \rightarrow \mu_f \approx i - i^*\]</span></p>
+<p><strong>Ejemplo: magnitud del término de segundo orden</strong></p>
+<p>Con <span class="math inline">\(E^f = 0{,}9\)</span>, <span class="math inline">\(E^s = 0{,}87\)</span> e <span class="math inline">\(i^* = 0{,}03\)</span>: <span class="math inline">\(\mu_f = (0{,}9 - 0{,}87)/0{,}87 \approx 0{,}034\)</span>, y el término omitido es <span class="math inline">\(\mu_f \cdot i^* \approx 0{,}034 \cdot 0{,}03 \approx 0{,}001\)</span>, es decir, un 0,1&nbsp;% frente a un margen <em>forward</em> del 3,4&nbsp;%.</p>
+
+
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>“A nation’s exchange rate is the single most important price in its economy; it will influence the entire range of individual prices, imports and exports, and even the level of economic activity. So it is hard for any government to ignore larger swings in its exchange rate.” Volcker y Gyohten, <em>Changing Fortunes: The World’s Money and the Threat to American Leadership</em> (1992).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>BIS (2025), <em>Triennial Central Bank Survey. OTC foreign exchange turnover in April 2025</em>, Basilea, Banco de Pagos Internacionales.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Como incluyen depósitos, el tipo de interés ya no es solo un coste de oportunidad de la divisa, sino también una fuente de rentabilidad de esta.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>No deben confundirse con las monedas de “libre uso” del Convenio Constitutivo del FMI (art. XXX, f). Estas son hoy las cinco de la cesta del derecho especial de giro (DEG): USD, EUR, CNY, JPY y GBP, lista que incluye el renminbi y no el franco suizo.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>El Convenio Constitutivo del FMI prohíbe, salvo aprobación del Fondo o al amparo del régimen transitorio del art. XIV, las restricciones a los pagos y transferencias por transacciones internacionales corrientes (art. VIII, sección 2), pero admite los controles de capitales (art. VI, sección 3).<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Vinculado al dólar hasta 2005 (y de nuevo entre 2008 y 2010), flota desde entonces dentro de una banda estrecha con referencia a una cesta de divisas. Es convertible por cuenta corriente desde 1996, pero no plenamente por cuenta financiera, y forma parte de la cesta del DEG desde 2016.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Obsérvese que, si cada país está especializado en un único bien (<span class="math inline">\(P = P_X\)</span> y <span class="math inline">\(E P^* = P_M\)</span>), el tipo de cambio real es la inversa de la relación real de intercambio (Bajo y Monés, 2000, p.&nbsp;474).<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>En el informe trienal del BIS las cuotas son el doble porque cada operación se computa una vez por cada una de sus dos monedas, de modo que suman el 200&nbsp;%.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Ser OTC no lo convierte en un mercado opaco en sus precios, porque gracias a la tecnología todos los participantes acceden a cotizaciones en tiempo real.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Cotizan precios de compra y de venta a cualquier contraparte y en todo momento, aunque sin obligación formal de hacerlo, porque dejar de proveer liquidez tendría para ellos elevados costes reputacionales.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Fuente: BIS (2025), <em>Triennial Central Bank Survey</em>, https://www.bis.org/statistics/rpfx25_fx.htm<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Salvo indicación en contrario, las cuotas son las de abril de 2025, según la encuesta trienal del BIS (<em>Triennial Central Bank Survey</em>, 2025), que no incluye los derivados negociados en mercados organizados. Fue un mes de volatilidad excepcional por el episodio arancelario estadounidense.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>Fuente: BIS (2022), <em>Triennial Central Bank Survey of Foreign Exchange and OTC Derivatives Markets. Reporting guidelines for turnover in April 2022</em>, apartado 5.1, https://www.bis.org/statistics/triennialrep/2022survey_guidelinesturnover.pdf. En cambio, las operaciones a muy corto plazo del tipo <em>tomorrow/next</em>, <em>overnight</em> o <em>spot/next</em> no se computan como contado, sino como FX <em>swaps</em> (apartado 2.1.3), y tampoco las patas <em>spot</em> de estos.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>Fuente: BIS (2022), <em>Triennial Central Bank Survey of Foreign Exchange and OTC Derivatives Markets. Reporting guidelines for turnover in April 2022</em>, apartado 5.1, https://www.bis.org/statistics/triennialrep/2022survey_guidelinesturnover.pdf.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p>De acuerdo con la tradición marshalliana, este será estable (cualquier desajuste de la balanza de pagos conducirá de nuevo a él) siempre que se cumpla la condición de Marshall-Lerner.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p>Otras vías de cobertura son abrir posiciones contrarias en pares de divisas correlacionados o mantener cuentas en distintas divisas, en el propio país o en el extranjero.<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p>En la jerga, el exportador, que recibirá divisas, “está largo” de divisa en el mercado <em>spot</em> y se cubre abriendo “un corto” en el mercado <em>forward</em>.<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p>Se omiten otros factores que podrían influir en la decisión (liquidez, riesgo de crédito, inflación o tipo de interés). El tipo de interés se incorpora en el arbitraje temporal.<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19"><p><em>Ejemplo</em>: si el dólar cotiza a 0,93 euros en Fráncfort y a 0,90 en Nueva York (tipo continental), quien compre dólares en Nueva York y los venda a la vez en Fráncfort gana 0,03 euros por dólar sin riesgo. Esas compras encarecen el dólar en Nueva York y las ventas lo abaratan en Fráncfort hasta igualar ambas cotizaciones.<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20"><p><em>Ejemplo</em>: sean <span class="math inline">\(E_{\text{€}/L}^{\text{FRA}} = 0{,}95\)</span> (euros por libra en Fráncfort), <span class="math inline">\(E_{\text{€}/\text{¥}}^{\text{TK}} = 0{,}0077\)</span> (euros por yen en Tokio) y <span class="math inline">\(E_{\text{¥}/L}^{\text{NY}} = 121\)</span> (yenes por libra en Nueva York). Si <span class="math inline">\(0{,}95 \neq 0{,}0077 \cdot 121 = 0{,}9317\)</span>, existe oportunidad de arbitraje triangular. Solo si <span class="math inline">\(0{,}95 = 0{,}0077 \cdot 123{,}38\)</span> desaparece dicha oportunidad.<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn21"><p>El año 2003 fue decisivo para la popularización de este tipo de operativa, cuando EBS comenzó a ofrecer una interfaz plenamente automatizada a los bancos.<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn22"><p>El aprovechamiento del retraso entre el envío de una señal de compraventa por un servidor y su recepción por otro se conoce como <em>arbitraje por latencia</em>.<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn23"><p>En la práctica, la cobertura nunca es perfecta, aunque en mercados profundos y líquidos se aproxima mucho.<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn24"><p>Escribiendo <span class="math inline">\(E_{t+1}^s/E_t^s = 1 + g_E\)</span> en (1), se tiene <span class="math inline">\(r_{\text{€}} = (1+g_E)(1+i^*) - (1+i) = g_E + (i^* - i) + g_E \cdot i^*\)</span>, y para variaciones pequeñas el último término, de segundo orden, es despreciable, de donde se obtiene la aproximación <span class="math inline">\(r_{\text{€}} \approx g_E + (i^* - i)\)</span>.<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn25"><p>Nótese que esta operación requiere un contrato <em>spot</em> y un contrato <em>forward</em>, por lo que ambos podrían combinarse en un FX <em>swap</em> o <em>swap</em> de tipos de cambio (Mascareñas, 2013, p.&nbsp;48).<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn26"><p><em>Ejemplo</em>: si el par USD/EUR cotiza (tipo continental) a 0,9 en el <em>spot</em> y a 0,93 en el <em>forward</em>, el margen <em>forward</em> es positivo (<span class="math inline">\(\mu_f &gt; 0\)</span>). Así, dado que se requieren más euros para adquirir el mismo dólar, el euro cotiza al descuento (con menor poder de compra).<a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn27"><p>El diferencial de rentabilidades es nulo aunque no lo sean necesariamente el diferencial de intereses ni el margen <em>forward</em>. Además, el tipo <em>forward</em> se deduce de tres variables observables (Mascareñas, 2013, p.&nbsp;48), <span class="math inline">\(E_t^f = E_t^s(1+i)/(1+i^*)\)</span>, lo que ilustra por qué el <em>forward</em> es un derivado, pues su precio se deriva del precio del subyacente. La fórmula es el caso cambiario del coste de mantenimiento del tema <a href="../chapters/b25-derivados.html">B25</a>, apartado 1.2.2.<a href="#fnref27" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn28"><p>La diferencia reside en que en el ejemplo anterior ya no subirá o bajará el margen <em>forward</em> hasta anular el diferencial de rentabilidades, sino la tasa de depreciación esperada.<a href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn29"><p>Si se cumple la paridad descubierta de intereses, se dispone también de una teoría sobre la determinación del tipo de cambio <em>spot</em> (Mascareñas, 2013, p.&nbsp;52), <span class="math inline">\(E_t^s = E_t^e(1+i^*)/(1+i)\)</span>, en la que una de las variables, el tipo de cambio <em>spot</em> esperado <span class="math inline">\(E_t^e \equiv \mathbb{E}_t[E_{t+1}^s]\)</span>, no es observable.<a href="#fnref29" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn30"><p>Este término deriva de la evolución del peso mexicano entre 1955 y 1976. El peso estaba fijado a un tipo de cambio constante con el dólar, pero se vendía al descuento en el mercado a plazo, lo cual sugería que el mercado esperaba una fuerte devaluación, la cual se produjo finalmente en 1976. Esto validó las predicciones del mercado, pero dicha devaluación no se podía predecir utilizando la muestra entre 1955 y 1976 dado que en ese periodo no se había producido ninguna devaluación.<a href="#fnref30" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn31"><p>A diferencia del arbitraje cubierto, el <em>carry trade</em> no contrata un <em>forward</em> (si lo hiciera, la paridad cubierta eliminaría la ganancia).<a href="#fnref31" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn32"><p><em>Ejemplo</em>: con un tipo de 108 yenes por dólar y un tipo de interés nulo en Japón, se toman prestados 2.000.000 de yenes, se cambian por 18.519 dólares y se invierten en un bono estadounidense al 2,2&nbsp;%, que devuelve 18.926 dólares. Si el tipo de cambio no varía, tras devolver el préstamo queda una ganancia de unos 44.000 yenes (2,2&nbsp;%). Si el yen se aprecia, la ganancia se reduce o se convierte en pérdida.<a href="#fnref32" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn33"><p>Por ejemplo, la regla Volcker de la Ley Dodd-Frank (2010) en EE. UU.<a href="#fnref33" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn34"><p>La eficiencia se entiende aquí en el sentido financiero y no en el sentido propio de la economía del bienestar.<a href="#fnref34" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn35"><p>Un juego (actuarialmente) justo es aquel cuyo valor esperado coincide con su coste.<a href="#fnref35" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn36"><p>Con neutralidad al riesgo, la eficiencia financiera puede entenderse como una condición de equilibrio en la que se cumplen ambas paridades: <span class="math inline">\((E_t^f - E_t^s)/E_t^s = (E_t^e - E_t^s)/E_t^s \rightarrow E_t^f = E_t^e\)</span>, es decir, el tipo <em>forward</em> coincide con el tipo <em>spot</em> esperado.<a href="#fnref36" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn37"><p>Con <span class="math inline">\(\beta = 1\)</span>, cada punto de margen se traduce, en promedio, en un punto de depreciación (una simple correlación positiva exigiría solo <span class="math inline">\(\beta &gt; 0\)</span>).<a href="#fnref37" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn38"><p>Kenneth Froot y Richard Thaler (1990) encuentran que el coeficiente medio de 75 estimaciones publicadas es próximo a −0,88.<a href="#fnref38" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn39"><p>Por mal predictor se entiende que presenta sesgos estadísticos y que no necesariamente es el de menor varianza (no es eficiente u óptimo estadísticamente).<a href="#fnref39" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn40"><p>El creador de mercado compra por cuenta propia justo antes de ejecutar una orden de compra de un cliente, anticipándose a la subida de precio que esta provocará y obteniendo un beneficio a su costa.<a href="#fnref40" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script>
+// Gráficos del libro (iframes .graph-frame).
+// 1) Escala única: los grosores, los discontinuos y el tamaño de los puntos de cada figura están fijados para verla a 680 px
+//    de ancho. Los marcos anchos (figuras de varios paneles) se estiran hasta la columna y las pantallas estrechas las encogen; aquí se
+//    compensa para que en pantalla las curvas midan siempre lo mismo (2,2 px las económicas, 1,4 las auxiliares, 1,2 ejes y flechas,
+//    0,8 las guías) y los puntos tengan el mismo tamaño en todas las figuras, sea cual sea el ancho al que se muestren.
+// 2) Ajusta la altura de cada iframe al elemento dibujado más bajo (curvas, ejes, etiquetas KaTeX).
+(function () {
+  var REF = 680;
+  function norm(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var s = d.querySelector("svg"); if (!s) return;
+      var w = s.getBoundingClientRect().width; if (!(w > 0)) return;
+      var r = REF / w;
+      var els = s.querySelectorAll("path, line, polyline, polygon, rect, circle, ellipse");
+      els.forEach(function (el) {
+        var cs = d.defaultView.getComputedStyle(el);
+        if (el.dataset.sw0 === undefined) {
+          el.dataset.sw0 = parseFloat(cs.strokeWidth) || 0;
+          el.dataset.da0 = (cs.strokeDasharray && cs.strokeDasharray !== "none") ? cs.strokeDasharray : "";
+          if (el.tagName.toLowerCase() === "circle" && el.r && el.r.baseVal.value > 0 && el.r.baseVal.value <= 9) {
+            el.dataset.r0 = el.r.baseVal.value;
+          }
+        }
+        var sw0 = +el.dataset.sw0;
+        if (sw0 > 0) el.style.strokeWidth = (sw0 * r).toFixed(3) + "px";
+        if (el.dataset.da0) {
+          el.style.strokeDasharray = el.dataset.da0.split(/[ ,]+/).map(function (v) {
+            return (parseFloat(v) * r).toFixed(3) + "px";
+          }).join(" ");
+        }
+        if (el.dataset.r0) el.setAttribute("r", (+el.dataset.r0 * r).toFixed(3));
+      });
+    } catch (e) {}
+  }
+  function fit(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var sy = d.defaultView.scrollY || 0, bottom = 0;
+      var els = d.querySelectorAll("svg path, svg line, svg circle, svg polyline, svg polygon, svg rect, svg text, svg ellipse, .katex-label");
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width > 0 || r.height > 0) bottom = Math.max(bottom, r.bottom + sy);
+      });
+      if (!(bottom > 20)) {
+        var svg = d.querySelector("svg"); var vb = svg && svg.getAttribute("viewBox");
+        if (vb) { var p = vb.split(/\s+/); bottom = f.clientWidth * (+p[3]) / (+p[2]); }
+      }
+      if (bottom > 20) f.style.height = Math.ceil(bottom + 10) + "px";
+    } catch (e) {}
+  }
+  // 3) Un gráfico de varios paneles no se amplía por encima del 110 % de su ancho de dibujo (viewBox). Los dibujados a
+  //    680 px quedan en 748 px como máximo, con rótulos de tamaño normal; los de 900 o 960 px, en el tope de 900 px del CSS.
+  function cap(f) {
+    try {
+      if (!f.parentElement || !f.parentElement.classList.contains("wide")) return;
+      var s = f.contentDocument && f.contentDocument.querySelector("svg"); if (!s) return;
+      var vb = s.viewBox && s.viewBox.baseVal; if (!vb || !(vb.width > 0)) return;
+      var m = Math.min(900, Math.round(vb.width * 1.1)) + "px";
+      if (f.style.maxWidth !== m) f.style.maxWidth = m;
+    } catch (e) {}
+  }
+  function both(f) { cap(f); norm(f); fit(f); }
+  function all() { document.querySelectorAll(".graph-frame iframe").forEach(both); }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".graph-frame iframe").forEach(function (f) {
+      f.addEventListener("load", function () { both(f); setTimeout(function () { both(f); }, 700); });
+    });
+  });
+  window.addEventListener("load", function () { setTimeout(all, 1200); });
+  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(all, 150); });
+})();
+</script>
+<style>
+.graph-frame { margin: 1.25rem 0 0.25rem; }
+.quarto-figure .graph-frame + * { margin-top: 0; }
+</style>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/librovol1\.arturolorenzo\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/b12-ajuste-bp.html" class="pagination-link" aria-label="B12. Ajuste de la balanza de pagos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">B12. Ajuste de la balanza de pagos</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/b14-tipo-cambio.html" class="pagination-link" aria-label="B14. Determinación del tipo de cambio">
+        <span class="nav-page-text"><span class="chapter-title">B14. Determinación del tipo de cambio</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

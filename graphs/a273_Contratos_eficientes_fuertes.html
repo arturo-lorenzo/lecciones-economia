@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+  .katex-label .katex { font-size: 1em; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="128" y1="460" x2="582" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="128" y1="460" x2="128" y2="40" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <line id="d-lcp" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+    <line id="n-line" stroke="black" stroke-width="1"/>
+
+    <line id="ci0" stroke="#1D9E75" stroke-width="2.2"/>
+    <line id="ci1" stroke="#1D9E75" stroke-width="2.2"/>
+    <line id="ci2" stroke="#1D9E75" stroke-width="2.2"/>
+
+    <path id="iso0" fill="none" stroke="#534AB7" stroke-width="1.4" stroke-linecap="round"/>
+    <path id="iso1" fill="none" stroke="#534AB7" stroke-width="1.4" stroke-linecap="round"/>
+    <path id="isoz" fill="none" stroke="#534AB7" stroke-width="1.4" stroke-linecap="round"/>
+
+    <line id="ld" stroke="#378ADD" stroke-width="2.2"/>
+
+    <line id="cc" stroke="#D85A30" stroke-width="2.2" stroke-linecap="round"/>
+
+    <g id="ticks"></g>
+    <circle id="pt0" r="5" fill="#000"/>
+    <circle id="ptm" r="5" fill="#000"/>
+    <circle id="pt1" r="5" fill="#000"/>
+  </svg>
+</div>
+
+<script>
+
+
+
+
+
+
+
+const a = 15.7, b = 1.82, wbar = 3, N = 10;
+const LCP = (a - wbar)/b;
+const piOf = w => (a - wbar)*LCP - (b/2)*LCP*LCP - (w - wbar)*N;
+const w1 = wbar + ((a - wbar)*LCP - (b/2)*LCP*LCP)/N;
+const wm = 5.2;
+const hump = (L, p) => wbar + ((a - wbar)*L - (b/2)*L*L - p)/N;
+
+
+const VBW = 680, VBH = 520;
+const sx = L => 128 + L*34.26;
+const sy = w => 460 - w*44;
+const $ = id => document.getElementById(id);
+function setL(id, x1, y1, x2, y2) { const e = $(id); e.setAttribute('x1', x1); e.setAttribute('y1', y1); e.setAttribute('x2', x2); e.setAttribute('y2', y2); }
+function path(id, f, L1, L2, n = 220) {
+  const p = [];
+  for (let i = 0; i <= n; i++) { const L = L1 + (i/n)*(L2 - L1); p.push(sx(L).toFixed(1) + ',' + sy(f(L)).toFixed(1)); }
+  $(id).setAttribute('d', 'M' + p.join(' L'));
+}
+
+const wTop = 9.2;
+setL('ld', sx((a - wTop)/b), sy(wTop), sx((a - 0.4)/b), sy(0.4));
+setL('ci0', sx(0), sy(wbar), sx(12.2), sy(wbar));
+setL('ci1', sx(0), sy(wm), sx(12.2), sy(wm));
+setL('ci2', sx(0), sy(w1), sx(12.2), sy(w1));
+path('iso0', L => hump(L, piOf(wbar)), 2.9, 11.0);
+path('iso1', L => hump(L, piOf(wm)), 2.9, 11.0);
+path('isoz', L => hump(L, 0), 2.9, 11.0);
+setL('cc', sx(LCP), sy(wbar), sx(LCP), sy(w1));
+setL('n-line', sx(N), sy(0), sx(N), sy(9.2));
+setL('d-lcp', sx(LCP), sy(wbar), sx(LCP), sy(0));
+
+const tg = $('ticks');
+function tick(x1, y1, x2, y2) { const t = document.createElementNS('http://www.w3.org/2000/svg', 'line'); t.setAttribute('x1', x1); t.setAttribute('y1', y1); t.setAttribute('x2', x2); t.setAttribute('y2', y2); t.setAttribute('stroke', 'black'); t.setAttribute('stroke-width', '1'); tg.appendChild(t); }
+[wbar, wm, w1].forEach(w => tick(124, sy(w), 128, sy(w)));
+[LCP, N].forEach(L => tick(sx(L), 460, sx(L), 464));
+
+function pt(id, L, w) { $(id).setAttribute('cx', sx(L)); $(id).setAttribute('cy', sy(w)); }
+pt('pt0', LCP, wbar); pt('ptm', LCP, wm); pt('pt1', LCP, w1);
+
+
+const cont = document.querySelector('.graph-container');
+function put(id, tex, x, y, o = {}) {
+  const e = document.createElement('div');
+  e.className = 'katex-label'; e.id = id;
+  katex.render(tex, e, {throwOnError: false});
+  e.style.left = (x/VBW*100).toFixed(2) + '%';
+  e.style.top = (y/VBH*100).toFixed(2) + '%';
+  e.style.color = o.c || 'black';
+  if (o.s) e.style.fontSize = o.s + 'px';
+  const tx = {l: '0', c: '-50%', r: '-100%'}[o.ha || 'l'], ty = {t: '0', m: '-50%', b: '-100%'}[o.va || 't'];
+  e.style.transform = `translate(${tx},${ty})`;
+  if (o.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  cont.appendChild(e);
+}
+const G = '#1D9E75', B = '#378ADD', P = '#534AB7', O = '#D85A30', T = '#888';
+put('lbl-w', 'w', 118, 36, {ha: 'r', s: 17});
+put('lbl-l', 'L', 586, 468, {s: 17});
+put('lbl-o', 'O', 120, 468, {ha: 'r'});
+put('lbl-wbar', '\\underline{w}', 120, sy(wbar), {ha: 'r', va: 'm'});
+put('lbl-wm', 'w^{*}', 120, sy(wm), {ha: 'r', va: 'm'});
+put('lbl-w1', 'w_1', 120, sy(w1), {ha: 'r', va: 'm'});
+put('lbl-lcp', 'L_C', sx(LCP), 468, {ha: 'c'});
+put('lbl-n', 'N^s', sx(N), 468, {ha: 'c'});
+put('lbl-ld', 'L^d(w)', sx((a - 0.4)/b) + 6, sy(0.4), {va: 'm', c: B});
+put('lbl-ci0', '\\text{CI}_0', sx(12.2) + 6, sy(wbar), {va: 'm', c: G});
+put('lbl-ci1', '\\text{CI}_1', sx(12.2) + 6, sy(wm), {va: 'm', c: G});
+put('lbl-ci2', '\\text{CI}_2', sx(12.2) + 6, sy(w1), {va: 'm', c: G});
+put('lbl-iso0', '\\pi_0', sx(2.9) - 5, sy(hump(2.9, piOf(wbar))), {ha: 'r', va: 'm', c: P});
+put('lbl-iso1', '\\pi_1', sx(2.9) - 5, sy(hump(2.9, piOf(wm))), {ha: 'r', va: 'm', c: P});
+put('lbl-isoz', '\\pi = 0', sx(2.9) - 5, sy(hump(2.9, 0)), {ha: 'r', va: 'm', c: P});
+put('lbl-cc', '\\text{CC}', sx(LCP) + 8, sy((wm + w1)/2), {va: 'm', c: O});
+put('lbl-p0', '0', sx(LCP) + 9, sy(wbar) - 5, {va: 'b', c: '#000'});
+put('lbl-g0', '(\\gamma = 0)', sx(LCP) + 24, sy(wbar) - 5, {va: 'b', c: T, s: 14});
+put('lbl-gm', '(\\gamma \\in (0,1))', sx(LCP) + 12, sy(wm) - 5, {va: 'b', c: T, s: 14});
+put('lbl-p1', '1', sx(LCP) + 9, sy(w1) - 5, {va: 'b', c: '#000'});
+put('lbl-g1', '(\\gamma = 1)', sx(LCP) + 24, sy(w1) - 5, {va: 'b', c: T, s: 14});
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<div class="graph-container">
+  <svg viewBox="0 0 680 580" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+    <line id="ax-x" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="ax-y" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="dv-0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dh-0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dv-1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dh-1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+
+    <path id="cmeS" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="cmeT" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <line id="demand" stroke="#378ADD" stroke-width="2.2"/>
+
+
+    <line id="gapC0" stroke="#D85A30" stroke-width="1.2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+    <circle id="pt-0" r="5" fill="#000"/>
+    <circle id="pt-1" r="5" fill="white" stroke="#000" stroke-width="2"/>
+    <circle id="pt-C0" r="4" fill="#1D9E75"/>
+    <g id="ticks" stroke="black" stroke-width="1"></g>
+  </svg>
+  <div id="labels"></div>
+</div>
+<script>
+
+
+
+const ox = 150, oy = 510, kx = 46, ky = 50;
+function P(x, y) { return [ox + x * kx, oy - y * ky]; }
+function set(id, a) { const e = document.getElementById(id); for (const q in a) e.setAttribute(q, a[q]); }
+function seg(id, x1, y1, x2, y2) { const [a, b] = P(x1, y1), [c, d] = P(x2, y2); set(id, {x1: a, y1: b, x2: c, y2: d}); }
+function curve(id, f, x0, x1) { const pts = []; for (let i = 0; i <= 300; i++) { const x = x0 + (x1 - x0) * i / 300; const [a, b] = P(x, f(x)); pts.push(a.toFixed(1) + ',' + b.toFixed(1)); } set(id, {d: 'M' + pts.join(' L')}); }
+function bisect(f, a, b) { let fa = f(a); for (let i = 0; i < 100; i++) { const m = (a + b) / 2, fm = f(m); if ((fm > 0) === (fa > 0)) { a = m; fa = fm; } else b = m; } return (a + b) / 2; }
+set('ax-x', {x1: ox, y1: oy, x2: 640, y2: oy});
+set('ax-y', {x1: ox, y1: oy, x2: ox, y2: 40});
+
+const a = 12, b = 2, cS = 2.0, cT = 1.2;
+const cmeS = x => cS + a / (x + b), cmeT = x => cT + a / (x + b);
+const ad = 9, bd = 0.8, D = x => ad - bd * x;
+const XS = bisect(x => D(x) - cmeS(x), 1, 10), pS = D(XS);
+const XT = bisect(x => D(x) - cmeT(x), 1, 10.5), pT = D(XT);
+const C0 = cmeT(0);
+
+const XE = 9.0, XDe = 10.2;
+curve('cmeS', cmeS, 0, XE);
+curve('cmeT', cmeT, 0, XE);
+seg('demand', 0, ad, XDe, D(XDe));
+
+function hl(id, x, y) { seg(id, 0, y, x, y); }
+function vl(id, x, y) { seg(id, x, 0, x, y); }
+hl('dh-0', XS, pS); vl('dv-0', XS, pS); hl('dh-1', XT, pT); vl('dv-1', XT, pT);
+[['pt-0', XS, pS], ['pt-1', XT, pT], ['pt-C0', 0, C0]].forEach(([id, x, y]) => { const [u, v] = P(x, y); set(id, {cx: u, cy: v}); });
+
+
+const gx = ox - 14;
+set('gapC0', {x1: gx, y1: P(0, pS)[1] - 2, x2: gx, y2: P(0, C0)[1] + 2});
+
+const tk = document.getElementById('ticks');
+function tick(x1, y1, x2, y2) { const l = document.createElementNS('http://www.w3.org/2000/svg', 'line'); l.setAttribute('x1', x1); l.setAttribute('y1', y1); l.setAttribute('x2', x2); l.setAttribute('y2', y2); tk.appendChild(l); }
+[pS, pT, C0].forEach(y => tick(ox - 4, P(0, y)[1], ox, P(0, y)[1]));
+[XS, XT].forEach(x => tick(P(x, 0)[0], oy, P(x, 0)[0], oy + 4));
+
+const VBW = 680, VBH = 580;
+const pw = v => (v / VBW * 100).toFixed(1) + '%', ph = v => (v / VBH * 100).toFixed(1) + '%';
+const X = x => P(x, 0)[0], Y = y => P(0, y)[1];
+const labels = [
+  {tex:'Y', left: 644, top: oy - 14, size:17},
+  {tex:'p,\\ \\text{Cme}', left: ox - 8, top: 30, size:17, align:'right'},
+  {tex:'D(Y)', left: X(XDe) + 6, top: Y(D(XDe)) - 8, size:16, color:'#378ADD'},
+  {tex:'\\text{Cme}_S(Y)', left: X(XE) + 6, top: Y(cmeS(XE)) - 16, size:16, color:'#534AB7'},
+  {tex:'\\text{Cme}_T(Y)', left: X(XE) + 6, top: Y(cmeT(XE)) - 4, size:16, color:'#0F6E56'},
+  {tex:'c_0', left: ox - 24, top: Y(C0) - 12, size:15, align:'right'},
+  {tex:'p_S', left: ox - 24, top: Y(pS) - 12, size:15, align:'right'},
+  {tex:'p_T', left: ox - 24, top: Y(pT) - 10, size:15, align:'right'},
+  {tex:'c_0 > p_S', left: ox - 40, top: (Y(C0) + Y(pS)) / 2 - 11, size:14, color:'#D85A30', align:'right'},
+  {tex:'Y_S', left: X(XS), top: oy + 6, size:15, center:true},
+  {tex:'Y_T', left: X(XT), top: oy + 6, size:15, center:true},
+  {tex:'0', left: X(XS) + 7, top: Y(pS) - 27, size:16, color:'#000'},
+  {tex:'1\\ (\\text{potencial})', left: X(XT) - 4, top: Y(pT) - 30, size:15, color:'#000'}
+];
+const box = document.getElementById('labels');
+labels.forEach((l, i) => {
+  const el = document.createElement('div');
+  el.className = 'katex-label'; el.id = 'lbl-' + i;
+  box.appendChild(el);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = pw(l.left); el.style.top = ph(l.top);
+  el.style.fontSize = (l.size || 16) + 'px';
+  el.style.color = l.color || 'black';
+  if (l.center) el.style.transform = 'translateX(-50%)';
+  if (l.align === 'right') el.classList.add('right-of-axis');
+  if (l.bg) { el.style.background = 'white'; el.style.padding = '0 2px'; }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 540">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+  </svg>
+</div>
+
+<script>
+
+const NS = 'http://www.w3.org/2000/svg';
+const svg = document.querySelector('.graph-container svg');
+const cont = document.querySelector('.graph-container');
+const VBW = 680, VBH = +svg.getAttribute('viewBox').split(' ')[3];
+const pctX = x => (x / VBW * 100).toFixed(2) + '%';
+const pctY = y => (y / VBH * 100).toFixed(2) + '%';
+function el(tag, attrs, parent) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  (parent || svg).appendChild(e); return e;
+}
+function line(id, x1, y1, x2, y2, stroke, w, extra) {
+  return el('line', Object.assign({id, x1, y1, x2, y2, stroke, 'stroke-width': w}, extra || {}));
+}
+function guide(id, x1, y1, x2, y2) { return line(id, x1, y1, x2, y2, '#888', 0.8, {'stroke-dasharray': '6 4'}); }
+function path(id, pts, stroke, w, extra) {
+  const d = 'M' + pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' L');
+  return el('path', Object.assign({id, d, fill: 'none', stroke, 'stroke-width': w, 'stroke-linecap': 'round'}, extra || {}));
+}
+function dot(id, x, y, fill, r) { return el('circle', {id, cx: x, cy: y, r: r || 5, fill}); }
+function tickX(x) { line('', x, OY, x, OY + 4, 'black', 1); }
+function tickY(y) { line('', OX - 4, y, OX, y, 'black', 1); }
+function label(id, tex, x, y, color, size, opt) {
+  opt = opt || {};
+  const d = document.createElement('div');
+  d.className = 'katex-label'; d.id = id; cont.appendChild(d);
+  katex.render(tex, d, {throwOnError: false});
+  d.style.left = pctX(x); d.style.top = pctY(y);
+  d.style.color = color || 'black'; d.style.fontSize = (size || 16) + 'px';
+  d.style.whiteSpace = 'nowrap';
+  if (opt.right) d.classList.add('right-of-axis');
+  if (opt.center) d.style.transform = 'translateX(-50%)';
+  if (opt.bg) { d.style.background = '#fff'; const k = d.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  return d;
+}
+function axes() {
+  line('axis-x', OX, OY, XEND, OY, 'black', 1.2, {'marker-end': 'url(#arrow)'});
+  line('axis-y', OX, OY, OX, YEND, 'black', 1.2, {'marker-end': 'url(#arrow)'});
+}
+
+
+
+
+
+const r = 0.05, al = 0.5, aa = 5, B0 = 0.05;
+const piK = (K, B) => B * Math.pow(K, -al);
+const F = (s, B, c) => [(s[1] - c) / aa, r * s[1] - piK(s[0], B)];
+function rk4(s, dt, B, c) {
+  const k1 = F(s, B, c), k2 = F([s[0] + dt / 2 * k1[0], s[1] + dt / 2 * k1[1]], B, c);
+  const k3 = F([s[0] + dt / 2 * k2[0], s[1] + dt / 2 * k2[1]], B, c), k4 = F([s[0] + dt * k3[0], s[1] + dt * k3[1]], B, c);
+  return [s[0] + dt / 6 * (k1[0] + 2 * k2[0] + 2 * k3[0] + k4[0]), s[1] + dt / 6 * (k1[1] + 2 * k2[1] + 2 * k3[1] + k4[1])];
+}
+const Kss = (B, c) => Math.pow(B / (r * c), 1 / al);
+const KE = 1.95;
+const BOX = {K0: 0.40, K1: KE, q0: 0.52, q1: 1.62};
+function saddle(B, c, lim) {
+  lim = lim || BOX;
+  const K = Kss(B, c), d = al * B * Math.pow(K, -al - 1) / aa;
+  const ls = (r - Math.sqrt(r * r + 4 * d)) / 2, slope = aa * ls;
+  const arms = [];
+  for (const sg of [-1, 1]) {
+    let s = [K + sg * 1e-4, c + sg * 1e-4 * slope]; const pts = [s];
+    for (let i = 0; i < 20000; i++) { s = rk4(s, -0.05, B, c); if (s[0] < lim.K0 || s[0] > lim.K1 || s[1] < lim.q0 || s[1] > lim.q1) break; pts.push(s); }
+    arms.push(pts.reverse());
+  }
+  arms.push([K, c]);
+  return arms;
+}
+function interpQ(arm, K) {
+  for (let i = 1; i < arm.length; i++) { const a = arm[i - 1], b = arm[i];
+    if ((a[0] - K) * (b[0] - K) <= 0) { const t = (K - a[0]) / (b[0] - a[0]); return a[1] + t * (b[1] - a[1]); } }
+  return NaN;
+}
+
+function tempPath(B1, c1, T, qlo, qhi) {
+  const S0 = saddle(B0, 1, {K0: 0.05, K1: 4, q0: -1, q1: 4}), K0 = Kss(B0, 1);
+  const run = q => { let s = [K0, q]; const pts = [s]; const n = Math.round(T / 0.02);
+    for (let i = 0; i < n; i++) { s = rk4(s, 0.02, B1, c1); pts.push(s); } return pts; };
+  const gap = q => { const p = run(q), e = p[p.length - 1]; const arm = e[0] >= K0 ? S0[1] : S0[0]; return e[1] - interpQ(arm, e[0]); };
+  let lo = qlo, hi = qhi, glo = gap(lo);
+  for (let i = 0; i < 80; i++) { const m = (lo + hi) / 2, g = gap(m); if ((g > 0) === (glo > 0)) { lo = m; glo = g; } else hi = m; }
+  return run((lo + hi) / 2);
+}
+
+
+const OX = 113, OY = 480, XEND = 588, YEND = 40;
+const KB = 0.36, SK = 264.6, QB = 0.5, SQ = 380;
+const sx = K => OX + (K - KB) * SK, sy = q => OY - (q - QB) * SQ;
+const P = p => [sx(p[0]), sy(p[1])];
+function curve(id, pts, stroke, w, extra) { return path(id, pts.map(P), stroke, w, extra); }
+
+function chevron(pts, i, color) {
+  const a = pts[Math.max(i - 1, 0)], b = pts[Math.min(i + 1, pts.length - 1)];
+  const ang = Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI, p = pts[i];
+  el('path', {d: 'M-4.2,-4.2 L0,0 L-4.2,4.2', transform: `translate(${p[0].toFixed(1)},${p[1].toFixed(1)}) rotate(${ang.toFixed(1)})`,
+    fill: 'none', stroke: color, 'stroke-width': 1.6, 'stroke-linecap': 'round', 'stroke-linejoin': 'round'});
+}
+function arcArrows(pts, fracs, color) {
+  const s = pts.map(P), cum = [0]; for (let i = 1; i < s.length; i++) cum.push(cum[i - 1] + Math.hypot(s[i][0] - s[i - 1][0], s[i][1] - s[i - 1][1]));
+  fracs.forEach(f => { const L = f * cum[cum.length - 1]; let i = cum.findIndex(c => c >= L); chevron(s, Math.max(1, Math.min(i, s.length - 2)), color); });
+}
+function qdotPts(B) { const pts = []; for (let i = 0; i <= 300; i++) { const K = BOX.K0 + (KE - BOX.K0) * i / 300, q = piK(K, B) / r; if (q <= BOX.q1) pts.push([K, q]); } return pts; }
+function arrowLine(id, x1, y1, x2, y2, color) { return line(id, x1, y1, x2, y2, color, 1.2, {'marker-end': 'url(#arrow)'}); }
+
+function shiftArrowQ(B1, Ka, color) {
+  const q = piK(Ka, B0) / r, dq = -al * piK(Ka, B0) / Ka / r;
+  const x = sx(Ka), y = sy(q), m = -dq * SQ / SK;
+  let nx = m, ny = -1; const nl = Math.hypot(nx, ny); nx /= nl; ny /= nl;
+  if (nx < 0) { nx = -nx; ny = -ny; }
+  let t = 0; const G = (X, Y) => sy(piK((X - OX) / SK + KB, B1) / r) - Y;
+  while (G(x + nx * t, y + ny * t) < 0 && t < 200) t += 0.25;
+  arrowLine('shift', x + nx * 7, y + ny * 7, x + nx * (t - 7), y + ny * (t - 7), color);
+  const ym = y + ny * t / 2, qm = QB + (OY - ym) / SQ, Kn = Math.pow(B1 / (r * qm), 1 / al);
+  return [x + nx * t / 2, ym, sx(Kn)];
+}
+
+axes();
+const B1 = 1.25 * B0;
+const S0 = saddle(B0, 1), S1 = saddle(B1, 1), K0 = S0[2][0], K1 = S1[2][0];
+line('kdot', OX, sy(1), sx(KE), sy(1), '#534AB7', 2.2);
+curve('qdot0', qdotPts(B0), '#1D9E75', 2.2);
+curve('qdot1', qdotPts(B1), '#1D9E75', 2.2, {'stroke-dasharray': '7 4'});
+curve('silla1-i', S1[0], '#5a5a5a', 2.2, {'stroke-dasharray': '6 4'});
+curve('silla1-d', S1[1], '#5a5a5a', 2.2, {'stroke-dasharray': '6 4'});
+arcArrows(S1[0], [0.3, 0.7], '#5a5a5a'); arcArrows(S1[1], [0.3, 0.7], '#5a5a5a');
+const q0p = interpQ(S1[0], K0);
+
+arrowLine('salto', sx(K0), sy(1) - 7, sx(K0), sy(q0p) + 7, '#185FA5');
+const seg = S1[0].filter(p => p[0] >= K0);
+curve('senda', seg, '#185FA5', 2.2);
+arcArrows(seg, [0.4, 0.8], '#185FA5');
+guide('g-0v', sx(K0), sy(1), sx(K0), OY); guide('g-1v', sx(K1), sy(1), sx(K1), OY);
+tickX(sx(K0)); tickX(sx(K1)); tickY(sy(1));
+const tag = shiftArrowQ(B1, 0.5, '#1D9E75');
+dot('p0', sx(K0), sy(1), '#000'); dot('p0p', sx(K0), sy(q0p), '#000'); dot('p1', sx(K1), sy(1), '#000');
+label('l-q', 'q', OX - 8, YEND - 8, 'black', 17, {right: true});
+label('l-K', 'K', XEND + 4, OY - 12, 'black', 17);
+label('l-1', '1', OX - 8, sy(1) - 11, 'black', 16, {right: true});
+label('l-K0', 'K_0^*', sx(K0) - 12, OY + 6, 'black', 16);
+label('l-K1', 'K_1^*', sx(K1) - 12, OY + 6, 'black', 16);
+label('l-kdot', '\\dot{K} = 0', sx(KE) - 62, sy(1) - 28, '#534AB7', 16);
+label('l-qdot0', '(\\dot{q} = 0)_0', sx(KE) + 6, sy(piK(KE, B0) / r) + 4, '#1D9E75', 16);
+label('l-qdot1', '(\\dot{q} = 0)_1', sx(KE) + 6, sy(piK(KE, B1) / r) - 28, '#1D9E75', 16);
+label('l-s1', '\\text{silla}_1', OX + 3, sy(S1[0][0][1]) - 24, '#5a5a5a', 15);
+label('l-tag', '\\Delta Y > 0', tag[2] + 8, tag[1] - 12, '#1D9E75', 14);
+label('l-p0', '0', sx(K0) - 20, sy(1) + 3, '#000');
+label('l-p0p', "0'", sx(K0) + 6, sy(q0p) - 27, '#000');
+label('l-p1', '1', sx(K1) + 5, sy(1) - 27, '#000');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+    <g id="g"></g>
+  </svg>
+</div>
+<script>
+const VBW = 680, VBH = 480;
+const NS = 'http://www.w3.org/2000/svg', G = document.getElementById('g');
+function el(tag, at) { const e = document.createElementNS(NS, tag); for (const k in at) if (at[k] !== null && at[k] !== undefined) e.setAttribute(k, at[k]); G.appendChild(e); return e; }
+function ln(x1, y1, x2, y2, at) { return el('line', Object.assign({x1: (+x1).toFixed(1), y1: (+y1).toFixed(1), x2: (+x2).toFixed(1), y2: (+y2).toFixed(1)}, at)); }
+function path(pts, at) { return el('path', Object.assign({d: 'M' + pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' L'), fill: 'none'}, at)); }
+const AX = {stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'};
+const GUIDE = {stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'};
+const TICK = {stroke: 'black', 'stroke-width': 1};
+const labels = [];
+function L(id, tex, x, y, anchor, color, size, bg) { labels.push({id, tex, x, y, anchor, color, size, bg}); }
+
+
+const OX = 120, OY = 420;
+const SX = 0.836;
+const SMIN = 110, E0 = 170, KK = 6;
+const sig = e => Math.sqrt(SMIN * SMIN + KK * (e - E0) * (e - E0));
+const X = s => OX + SX * s, Yp = e => OY - e;
+const ELO = E0 - 150, EHI = E0 + 170;
+const upper = [], lower = [];
+for (let i = 0; i <= 200; i++) { const e = E0 + (EHI - E0) * i / 200; upper.push([X(sig(e)), Yp(e)]); }
+for (let i = 0; i <= 200; i++) { const e = E0 - (E0 - ELO) * i / 200; lower.push([X(sig(e)), Yp(e)]); }
+function axes() { ln(OX, OY, X(500), OY, AX); ln(OX, OY, OX, 40, AX); }
+function frontier() {
+  path(lower, {stroke: '#888', 'stroke-width': 2.2, 'stroke-dasharray': '6 4'});
+  path(upper, {stroke: '#378ADD', 'stroke-width': 2.2, 'stroke-linecap': 'round'});
+}
+L('lER', 'R_c^e', OX - 8, 38, 'rt', 'black', 17);
+L('lsig', '\\sigma_c', X(500) + 6, OY, 'lm', 'black', 17);
+L('lO', 'O', OX - 8, OY + 6, 'rt', 'black', 16);
+axes();
+frontier();
+
+
+const eT = E0 + 100, sT = sig(eT);
+const slopeF = sT / (KK * (eT - E0));
+const Acoef = slopeF / sT;
+const U0 = eT - Acoef / 2 * sT * sT;
+function ic(U, dash, id) {
+  const pts = [];
+  for (let s = 0; s <= 520; s += 2) { const e = U + Acoef / 2 * s * s; if (e > 382) break; pts.push([X(s), Yp(e)]); }
+  path(pts, {stroke: '#1D9E75', 'stroke-width': 2.2, 'stroke-dasharray': dash ? '6 4' : null});
+  return pts[pts.length - 1];
+}
+const endHi = ic(U0 + 45, true);
+const end0 = ic(U0, false);
+const tx = X(sT), ty = Yp(eT);
+ln(OX, ty, tx, ty, GUIDE); ln(tx, ty, tx, OY, GUIDE);
+ln(tx, OY, tx, OY + 4, TICK); ln(OX - 4, ty, OX, ty, TICK); ln(OX - 4, Yp(U0), OX, Yp(U0), TICK);
+el('circle', {cx: tx, cy: ty, r: 5, fill: '#000'});
+L('lp0', '0', tx + 4, ty + 8, 'lt', '#000', 16);
+L('lsst', '\\sigma_c^{*}', tx, OY + 7, 'ct', 'black', 16);
+L('lest', 'R_c^{e*}', OX - 8, ty, 'rm', 'black', 16);
+L('lU0ax', 'U_0', OX - 8, Yp(U0), 'rm', 'black', 16);
+L('lU0', 'U_0', end0[0] + 6, end0[1], 'lm', '#1D9E75', 16);
+L('lU1', 'U_1', endHi[0] + 6, endHi[1], 'lm', '#1D9E75', 16);
+L('lfe', '\\text{frontera eficiente}', upper[200][0] + 8, upper[200][1], 'lm', '#378ADD', 15);
+
+const TX = {l: '0', c: '-50%', r: '-100%'}, TY = {t: '0', m: '-50%', b: '-100%'};
+const CONT = document.querySelector('.graph-container');
+labels.forEach(l => {
+  const e = document.createElement('div'); e.className = 'katex-label'; e.id = l.id; CONT.appendChild(e);
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = (l.x / VBW * 100).toFixed(2) + '%';
+  e.style.top = (l.y / VBH * 100).toFixed(2) + '%';
+  e.style.color = l.color || 'black';
+  e.style.fontSize = (l.size || 16) + 'px';
+  const a = l.anchor || 'lt';
+  e.style.transform = 'translate(' + TX[a[0]] + ',' + TY[a[1]] + ')';
+  if (l.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+});
+</script>
+</body>
+</html>

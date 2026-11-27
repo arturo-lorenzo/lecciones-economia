@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<style>
+  body { margin: 0; display: flex; justify-content: center; }
+  .graph-wrapper { position: relative; width: 680px; }
+  svg text { font-family: "KaTeX_Main", serif; }
+  .label { position: absolute; font-size: 16px; pointer-events: none; white-space: nowrap; }
+</style>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<div class="graph-wrapper">
+<svg viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+
+
+
+
+<line x1="124" y1="460" x2="124" y2="60" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+<line x1="124" y1="460" x2="556.2" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+<line id="C1" x1="124" y1="239.3" x2="366.7" y2="460" stroke="#378ADD" stroke-width="1.4" opacity="0.55"/>
+<line id="Cs" x1="124" y1="163.4" x2="450.1" y2="460" stroke="#378ADD" stroke-width="2.2"/>
+<line id="C2" x1="124" y1="87.6" x2="533.5" y2="460" stroke="#378ADD" stroke-width="1.4" opacity="0.55"/>
+
+
+<polyline id="iso" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linejoin="round" points="189.7,92.2 190.9,98.4 192.0,104.5 193.1,110.3 194.3,116.0 195.4,121.5 196.6,126.8 197.7,131.9 198.9,136.9 200.0,141.7 201.1,146.4 202.3,151.0 203.4,155.4 204.6,159.8 205.7,163.9 206.8,168.0 208.0,171.9 209.1,175.8 210.3,179.5 211.4,183.2 212.5,186.8 213.7,190.2 214.8,193.6 215.9,196.9 217.1,200.1 218.2,203.3 219.4,206.3 220.5,209.3 221.6,212.3 222.8,215.1 223.9,217.9 225.0,220.6 226.2,223.3 227.3,225.9 228.4,228.5 229.6,230.9 230.7,233.3 231.9,235.7 233.0,238.1 234.1,240.4 235.3,242.6 236.4,244.8 237.5,247.0 238.7,249.1 239.8,251.2 241.0,253.2 242.1,255.2 243.2,257.1 244.4,259.1 245.5,261.0 246.6,262.9 247.8,264.6 248.9,266.4 250.0,268.2 251.2,269.8 252.3,271.6 253.5,273.2 254.6,274.8 255.7,276.5 256.9,278.0 258.0,279.6 259.1,281.1 260.3,282.5 261.4,284.0 262.6,285.5 263.7,286.9 264.8,288.3 266.0,289.7 267.1,291.0 268.2,292.4 269.4,293.7 270.5,294.9 271.6,296.2 272.8,297.5 273.9,298.7 275.1,299.9 276.2,301.1 279.2,304.2 282.3,307.3 285.3,310.1 288.3,312.9 291.4,315.5 294.4,318.1 297.4,320.6 300.5,323.0 303.5,325.3 306.5,327.6 309.6,329.7 312.6,331.8 315.6,333.8 318.7,335.8 321.7,337.7 324.7,339.5 327.8,341.4 330.8,343.1 333.8,344.8 336.9,346.4 339.9,348.0 342.9,349.6 346.0,351.0 349.0,352.5 352.0,354.0 355.1,355.4 358.1,356.7 361.1,358.0 364.2,359.3 367.1,360.6 370.2,361.8 373.2,363.0 376.2,364.2 379.3,365.3 382.3,366.4 385.3,367.5 388.4,368.6 391.4,369.6 394.4,370.6 397.5,371.6 400.5,372.6 403.5,373.6 406.6,374.5 409.6,375.4 412.6,376.2 415.7,377.1 418.7,378.0 421.7,378.8 424.8,379.6 427.8,380.5 430.9,381.2 433.9,382.0 436.9,382.8 440.0,383.5 443.0,384.2 446.0,385.0 449.1,385.6 452.1,386.3 455.1,387.0 458.2,387.6 461.2,388.3 464.2,388.9 467.3,389.6 470.3,390.2 473.3,390.8 476.4,391.4 479.4,392.0 482.4,392.6 485.5,393.1 488.5,393.7 491.5,394.3 494.6,394.8 497.6,395.3 500.6,395.8 503.7,396.4 506.7,396.8 509.7,397.3 512.8,397.8 515.8,398.3 518.9,398.8 521.9,399.2 524.9,399.7 528.0,400.1 531.0,400.6"/>
+
+
+<line x1="287" y1="311.8" x2="287" y2="460" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+<line x1="287" y1="311.8" x2="124" y2="311.8" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+
+<circle cx="287" cy="311.8" r="5" fill="#000"/>
+
+
+<line x1="287" y1="460" x2="287" y2="464" stroke="black" stroke-width="1"/>
+<line x1="120" y1="311.8" x2="124" y2="311.8" stroke="black" stroke-width="1"/>
+</svg>
+
+
+<div class="label" style="left: 43.2%; top: 57.2%; color: #000;" id="lbl-p0"></div>
+<div class="label" style="left: 15.9%; top: 92.0%;" id="lbl-o"></div>
+<div class="label" style="left: 14.2%; top: 7.0%;" id="lbl-y"></div>
+<div class="label" style="left: 82.3%; top: 90.7%; " id="lbl-x"></div>
+<div class="label" style="left: 79.1%; top: 77.6%; color: #0F6E56;" id="lbl-iso"></div>
+<div class="label" style="left: 53.9%; top: 93.3%; transform: translateX(-50%); font-size: 13px; color: #185FA5;" id="lbl-c1"></div>
+<div class="label" style="left: 66.2%; top: 93.3%; transform: translateX(-50%); font-size: 13px; color: #185FA5;" id="lbl-cs"></div>
+<div class="label" style="left: 78.5%; top: 93.3%; transform: translateX(-50%); font-size: 13px; color: #185FA5;" id="lbl-c2"></div>
+<div class="label" style="left: 17.4%; top: 62.3%; transform: translate(-100%,-50%);" id="lbl-z2"></div>
+<div class="label" style="left: 42.3%; top: 93.3%; transform: translateX(-50%); font-size: 13px;" id="lbl-z1"></div>
+
+<script>
+const labels = [
+  ['lbl-o', 'O'],
+  ['lbl-p0', '0'],
+  ['lbl-y', 'z_2'],
+  ['lbl-x', 'z_1'],
+  ['lbl-iso', 'x_0'],
+  ['lbl-c1', '\\dfrac{C_1}{p_1^z}'],
+  ['lbl-cs', '\\dfrac{C^*}{p_1^z}'],
+  ['lbl-c2', '\\dfrac{C_2}{p_1^z}'],
+  ['lbl-z2', 'z_2^*'],
+  ['lbl-z1', 'z_1^*'],
+];
+labels.forEach(([id, tex]) => {
+  const el = document.getElementById(id);
+  if (el) katex.render(tex, el, { throwOnError: false, displayMode: false });
+});
+</script>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Arturo Lorenzo">
+<meta name="description" content="Tema A13 de las oposiciones TCEE. Economía de la información, principal y agente, riesgo moral, selección adversa, limones de Akerlof y señalización de Spence.">
+
+<title>A13. Economía de la información – Lecciones de economía general e internacional</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/a14-juegos.html" rel="next">
+<link href="../chapters/a12-costes.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-af206048d982c71265205c3505cca787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bec3fe2b0881f05566c9dedb60685f6d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="A13. Economía de la información – Lecciones de economía general e internacional">
+<meta property="og:description" content="Tema A13 de las oposiciones TCEE. Economía de la información, principal y agente, riesgo moral, selección adversa, limones de Akerlof y señalización de Spence.">
+<meta property="og:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta property="og:site_name" content="Lecciones de economía general e internacional">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:title" content="A13. Economía de la información – Lecciones de economía general e internacional">
+<meta name="twitter:description" content="Tema A13 de las oposiciones TCEE. Economía de la información, principal y agente, riesgo moral, selección adversa, limones de Akerlof y señalización de Spence.">
+<meta name="twitter:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="A13. Economía de la información">
+<meta name="citation_author" content="Arturo Lorenzo">
+<meta name="citation_publication_date" content="2026-11-28">
+<meta name="citation_cover_date" content="2026-11-28">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-11-28">
+<meta name="citation_fulltext_html_url" content="https://librovol1.arturolorenzo.com/chapters/a13-informacion.html">
+<meta name="citation_language" content="es">
+<meta name="citation_book_title" content="Lecciones de economía general e internacional">
+<link rel="canonical" href="https://librovol1.arturolorenzo.com/chapters/a13-informacion.html">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/a08-consumidor.html">Microeconomía</a></li><li class="breadcrumb-item"><a href="../chapters/a13-informacion.html"><span class="chapter-title">A13. Economía de la información</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Lecciones de economía general e internacional</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/arturo-lorenzo/lecciones-economia" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../creditos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Edición y licencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte A: Economía General</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pensamiento Económico</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a01-objeto-metodo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A1. Objeto y método de la ciencia económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a02-clasicos-marx.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A2. Los economistas clásicos y Marx</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a03-neoclasicos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A3. Los economistas neoclásicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a04-keynes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A4. Keynes: análisis comparado</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a05-monetaristas-snc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A5. La síntesis neoclásica y el monetarismo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a06-nmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A6. La nueva macroeconomía clásica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a07-nek.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A7. La nueva economía keynesiana</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Microeconomía</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a08-consumidor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A8. Teoría de la demanda del consumidor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a09-dualidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A9. Dualidad y aplicaciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a10-riesgo-incertidumbre.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A10. Elección en riesgo e incertidumbre</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a11-produccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A11. Teoría de la producción</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a12-costes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A12. Teoría de costes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a13-informacion.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">A13. Economía de la información</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a14-juegos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A14. Teoría de juegos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a15-toi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A15. Teoría de la organización industrial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a16-competencia-perfecta.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A16. Competencia perfecta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a17-monopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A17. Monopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a18-competencia-monopolistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A18. Competencia monopolística</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a19-oligopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A19. Oligopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a20-regulacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A20. Regulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a21-equilibrio-general.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A21. Equilibrio general</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a22-eb-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A22. Economía del bienestar (I)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a23-eb-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A23. Economía del bienestar (II)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a24-eb-iii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A24. Economía del bienestar (III)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Economía Laboral</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a25-oferta-trabajo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A25. Mercado de trabajo y capital humano</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a26-desempleo-friccional.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A26. Desempleo friccional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a27-salarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A27. Determinación de salarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a28-tnp-nairu.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A28. TNP, NAIRU y persistencia</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Macroeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a29-mhi-mgs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A29. Modelos de horizonte infinito y generaciones solapadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a30-magnitudes-cn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A30. Magnitudes macroeconómicas y contabilidad nacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a32-precios-output.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A32. Precios y output en economía abierta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a33-demanda-consumo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A33. Teorías de demanda de consumo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a34-demanda-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A34. Teorías de demanda de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a35-demanda-dinero.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A35. Teorías de la demanda de dinero</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a36-politica-monetaria-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A36. Política monetaria I: diseño e instrumentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a37-politica-monetaria-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A37. Política monetaria II: transmisión y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a38-politica-fiscal.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A38. Política fiscal, crecimiento y ahorro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a39-deficit.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A39. Déficit público, su financiación y sostenibilidad</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a40-interrelacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A40. Interrelación de políticas macroeconómicas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a41-inflacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A41. Inflación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a42-ciclos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A42. Ciclos económicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a43-crecimiento-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A43. Crecimiento económico exógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a44-crecimiento-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A44. Crecimiento económico endógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a45-crecimiento-empirica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A45. Evidencia empírica sobre el crecimiento</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte B: Economía Internacional</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Empresa y Finanzas</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b01-estados-ratios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B1. Estados financieros y ratios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b02-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B2. Decisiones de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b03-financiacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B3. Decisiones de financiación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b04-crecimiento-ma.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B4. Crecimiento empresarial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b23-renta-variable.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B23. Instrumentos de renta variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b24-renta-fija.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B24. Instrumentos de renta fija</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b25-derivados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B25. Instrumentos derivados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b26-crisis-financieras.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B26. Crisis financieras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b27-regulacion-financiera.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B27. Regulación bancaria y financiera</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Comercio Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b05-tnc-comercio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B5. Teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b06-nueva-teoria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B6. Nueva teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b07-politica-comercial-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B7. Política comercial I: instrumentos y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b08-politica-comercial-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B8. Política comercial II: política estratégica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b09-comercio-crecimiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B9. Comercio internacional y crecimiento</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b10-integracion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B10. Teoría de la integración económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b11-balanza-pagos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B11. Balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b12-ajuste-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B12. Ajuste de la balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b13-mercado-divisas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B13. Mercado de divisas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b14-tipo-cambio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B14. Determinación del tipo de cambio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b15-regimenes-cambiarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B15. Regímenes cambiarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b16-integracion-monetaria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B16. Integración monetaria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b17-crisis-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B17. Crisis de balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b18-globalizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B18. Globalización</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b19-coordinacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B19. Coordinación de políticas económicas internacionales</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Sistema Económico Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b20-sei-hasta-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B20. El sistema económico internacional hasta el colapso de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b21-sei-despues-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B21. El sistema económico internacional después de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b22-fmi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B22. El Fondo Monetario Internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b28-desarrollo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B28. Desarrollo económico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b29-fod-aod.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B29. Financiación oficial del desarrollo y AOD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b30-gbm-brsd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B30. Grupo Banco Mundial y bancos regionales de desarrollo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b31-ma-bpg.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B31. El cambio climático y su impacto en la economía</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b32-perspectivas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B32. Perspectivas de la economía internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b33-omc-gatt.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B33. La OMC y el GATT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b34-gats-trips.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B34. GATS, TRIPS y acuerdos plurilaterales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b35-no-comunitarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B35. Acuerdos comerciales no comunitarios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unión Europea</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b36-tratados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B36. Los tratados de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b37-finanzas-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B37. Las finanzas de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b38-pac-ppc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B38. Política Agrícola Común y Política Pesquera Común</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b39-miue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B39. Mercado interior de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b41-comercial-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B41. Política comercial de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b42-cooperacion-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B42. Política de cooperación de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b43-politica-monetaria-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B43. Política macroeconómica I: el euro y la política monetaria única</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b44-politica-financiera-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B44. Política macroeconómica II: la Unión Bancaria y la Unión de los Mercados de Capitales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b45-politica-fiscal-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B45. Política macroeconómica III: la gobernanza económica de la UE y de la zona euro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Descargas</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Primer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/ejercicios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios prácticos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/flashcards-conceptos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de conceptos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/guia-dictamen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guía para el dictamen</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Segundo Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/segundo-ejercicio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de inglés</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Tercer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/libro-bloques.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">El libro en PDF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del tercer ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Cuarto Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del cuarto ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Más allá del libro</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/otras-publicaciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Otras publicaciones y trabajos del autor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/enlaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Enlaces de interés</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Bibliografía</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manuales y obras de referencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia-articulos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Obras citadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../fuentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fuentes normativas y documentales</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#teoría-de-la-agencia-el-problema-del-principal-agente-ross-1973-jensen-y-meckling-1976" id="toc-teoría-de-la-agencia-el-problema-del-principal-agente-ross-1973-jensen-y-meckling-1976" class="nav-link" data-scroll-target="#teoría-de-la-agencia-el-problema-del-principal-agente-ross-1973-jensen-y-meckling-1976">1. Teoría de la agencia: el problema del principal-agente (Ross, 1973; Jensen y Meckling, 1976)</a>
+  <ul class="collapse">
+  <li><a href="#concepto-elementos-del-problema-principal-agente" id="toc-concepto-elementos-del-problema-principal-agente" class="nav-link" data-scroll-target="#concepto-elementos-del-problema-principal-agente">1.1. Concepto: elementos del problema principal-agente</a></li>
+  <li><a href="#modelo-base-información-imperfecta-y-simétrica" id="toc-modelo-base-información-imperfecta-y-simétrica" class="nav-link" data-scroll-target="#modelo-base-información-imperfecta-y-simétrica">1.2. Modelo base: información imperfecta y simétrica</a></li>
+  <li><a href="#aplicaciones" id="toc-aplicaciones" class="nav-link" data-scroll-target="#aplicaciones">1.3. Aplicaciones</a></li>
+  <li><a href="#conclusiones-1" id="toc-conclusiones-1" class="nav-link" data-scroll-target="#conclusiones-1">1.4. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#riesgo-moral-arrow-1963-pauly-1968" id="toc-riesgo-moral-arrow-1963-pauly-1968" class="nav-link" data-scroll-target="#riesgo-moral-arrow-1963-pauly-1968">2. Riesgo moral (Arrow, 1963; Pauly, 1968)</a>
+  <ul class="collapse">
+  <li><a href="#concepto-riesgo-moral" id="toc-concepto-riesgo-moral" class="nav-link" data-scroll-target="#concepto-riesgo-moral">2.1. Concepto: riesgo moral</a></li>
+  <li><a href="#modelo-esfuerzo-no-observable" id="toc-modelo-esfuerzo-no-observable" class="nav-link" data-scroll-target="#modelo-esfuerzo-no-observable">2.2. Modelo: esfuerzo no observable</a></li>
+  <li><a href="#aplicaciones-1" id="toc-aplicaciones-1" class="nav-link" data-scroll-target="#aplicaciones-1">2.3. Aplicaciones</a></li>
+  <li><a href="#soluciones-al-problema-del-riesgo-moral" id="toc-soluciones-al-problema-del-riesgo-moral" class="nav-link" data-scroll-target="#soluciones-al-problema-del-riesgo-moral">2.4. Soluciones al problema del riesgo moral</a></li>
+  <li><a href="#conclusiones-3" id="toc-conclusiones-3" class="nav-link" data-scroll-target="#conclusiones-3">2.5. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#selección-adversa-akerlof-1970" id="toc-selección-adversa-akerlof-1970" class="nav-link" data-scroll-target="#selección-adversa-akerlof-1970">3. Selección adversa (Akerlof, 1970)</a>
+  <ul class="collapse">
+  <li><a href="#concepto-selección-adversa" id="toc-concepto-selección-adversa" class="nav-link" data-scroll-target="#concepto-selección-adversa">3.1. Concepto: selección adversa</a></li>
+  <li><a href="#modelo-de-akerlof-1970-el-mercado-de-limones" id="toc-modelo-de-akerlof-1970-el-mercado-de-limones" class="nav-link" data-scroll-target="#modelo-de-akerlof-1970-el-mercado-de-limones">3.2. Modelo de Akerlof (1970): el mercado de “limones”</a></li>
+  <li><a href="#aplicaciones-2" id="toc-aplicaciones-2" class="nav-link" data-scroll-target="#aplicaciones-2">3.3. Aplicaciones</a></li>
+  <li><a href="#soluciones-al-problema-de-selección-adversa" id="toc-soluciones-al-problema-de-selección-adversa" class="nav-link" data-scroll-target="#soluciones-al-problema-de-selección-adversa">3.4. Soluciones al problema de selección adversa</a></li>
+  <li><a href="#conclusiones-5" id="toc-conclusiones-5" class="nav-link" data-scroll-target="#conclusiones-5">3.5. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#conclusiones-6" id="toc-conclusiones-6" class="nav-link" data-scroll-target="#conclusiones-6">Conclusiones</a></li>
+  <li><a href="#anexo.-modelo-de-autoselección-con-un-único-principal" id="toc-anexo.-modelo-de-autoselección-con-un-único-principal" class="nav-link" data-scroll-target="#anexo.-modelo-de-autoselección-con-un-único-principal">Anexo. Modelo de autoselección con un único principal</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/a08-consumidor.html">Microeconomía</a></li><li class="breadcrumb-item"><a href="../chapters/a13-informacion.html"><span class="chapter-title">A13. Economía de la información</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">A13. Economía de la información</span></h1>
+<p class="subtitle lead">Economía de la información y teoría de la agencia: selección adversa y riesgo moral.</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Arturo Lorenzo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">noviembre de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Introducción común.</strong> Los temas A10 y A13 comparten una introducción, que se desarrolla al comienzo del tema <a href="../chapters/a10-riesgo-incertidumbre.html"><strong>A10</strong></a>. Explica cómo la elección con información imperfecta extiende la teoría del consumidor y de la empresa, desde la utilidad esperada hasta la economía de la información, con la selección adversa y el riesgo moral.</p>
+</div>
+</div>
+</div>
+<p>En un mercado de coches de segunda mano en el que solo el vendedor conoce la calidad del vehículo, los compradores ofrecen un precio que refleja la calidad media, los propietarios de los buenos coches se retiran y el mercado puede llegar a desaparecer. Con ese ejemplo, Akerlof (1970) mostró que la información asimétrica puede impedir el funcionamiento de mercados enteros, un fallo de mercado que la teoría de la elección con información perfecta no contemplaba. Pocos años antes, Arrow (1963) había analizado en el mercado de seguros el otro gran problema de la información asimétrica, el del asegurado que, una vez cubierto, tiene menos incentivos para evitar el siniestro.</p>
+<p>La <strong>economía de la información</strong> estudia las situaciones en las que la información está repartida de forma asimétrica entre las partes de una relación económica, de modo que una de ellas conoce algo relevante que la otra no puede observar. De ella se ocupa este tema, que se organiza en tres partes:</p>
+<ul>
+<li><p><em>Teoría de la agencia</em>: el problema del principal-agente es el marco general del diseño de contratos cuando el principal delega una tarea en un agente.</p></li>
+<li><p><em>Riesgo moral</em> (Arrow, 1963; Pauly, 1968): la asimetría surge después de firmar el contrato, porque la acción del agente no es observable.</p></li>
+<li><p><em>Selección adversa</em> (Akerlof, 1970): la asimetría existe antes del contrato, porque el tipo o la calidad no son observables. Se estudian también sus soluciones mediante señales y autoselección.</p></li>
+</ul>
+<p>Ante una asimetría, la iniciativa puede tomarla cualquiera de las dos partes. La parte informada puede emitir una <strong>señal</strong> costosa que revele su tipo (Spence, 1973), y la no informada puede diseñar contratos que hagan que cada tipo se revele al elegir, lo que se llama <strong>autoselección</strong> o <em>screening</em> (Rothschild y Stiglitz, 1976).</p>
+<p>Estas ideas explican instituciones tan dispares como las franquicias y los copagos de los seguros, las garantías de los productos, los títulos académicos como señal de productividad, la retribución variable de los directivos o la regulación prudencial de la banca. Su importancia la reflejan los premios Nobel de Akerlof, Spence y Stiglitz (2001), Tirole (2014) y Hart y Holmström (2016). El tema se apoya en la teoría de la utilidad esperada (tema <a href="../chapters/a10-riesgo-incertidumbre.html">A10</a>) y en la teoría de juegos (tema <a href="../chapters/a14-juegos.html">A14</a>), y sus resultados reaparecen en el mercado de trabajo (tema <a href="../chapters/a27-salarios.html">A27</a>), en la regulación (tema <a href="../chapters/a15-toi.html">A15</a>) y en los mercados financieros (tema <a href="../chapters/b23-renta-variable.html">B23</a>).</p>
+</section>
+<section id="teoría-de-la-agencia-el-problema-del-principal-agente-ross-1973-jensen-y-meckling-1976" class="level2">
+<h2 class="anchored" data-anchor-id="teoría-de-la-agencia-el-problema-del-principal-agente-ross-1973-jensen-y-meckling-1976">1. Teoría de la agencia: el problema del principal-agente (Ross, 1973; Jensen y Meckling, 1976)</h2>
+<p>La <strong>teoría de la agencia</strong> estudia las relaciones en las que una parte (el principal) encarga a otra (el agente) que actúe en su nombre, cuando sus intereses no coinciden. Su objeto es el diseño del <strong>contrato óptimo</strong>, es decir, el que mejor alinea ambos intereses. La teoría nace de la mano de varios autores (p.&nbsp;ej. Stephen Ross, 1973, o Michael Jensen y William Meckling, 1976) y presenta una serie de elementos comunes.</p>
+<section id="concepto-elementos-del-problema-principal-agente" class="level3">
+<h3 class="anchored" data-anchor-id="concepto-elementos-del-problema-principal-agente">1.1. Concepto: elementos del problema principal-agente</h3>
+<p>Los elementos comunes de la relación de agencia son los siguientes:</p>
+<p><strong>Agentes</strong>: en general, existen dos partes y una de ellas, denominada <em>principal</em>, busca contratar a la otra, denominada <em>agente</em>. Ambos pueden ser individuos, instituciones o centros de decisión (p.&nbsp;ej. Estado-ciudadanía, accionista-directivo, empleador-empleado o paciente-médico). No obstante, pueden considerarse situaciones en las que existen múltiples agentes.</p>
+<p><strong>Negociación</strong>: se desarrolla con un determinado reparto del poder negociador entre las partes. Generalmente, la negociación es de la forma “lo tomas o lo dejas” (una de las partes tiene todo el poder negociador y no caben contraofertas) o de regateo (ambas partes tienen poder negociador y pueden hacer contraofertas).</p>
+<p><strong>Contrato</strong>: lo que se negocia es un contrato o un conjunto de contratos. Se trata de un compromiso que persigue que el agente actúe en nombre del principal. Para ello, determina, en cada estado de la naturaleza, qué corresponde hacer a cada parte y qué retribución recibe el agente del principal a cambio de su esfuerzo.</p>
+<p>El contrato solo se basa en variables verificables, que pueden ser revisadas por un árbitro independiente. De no ser verificables, no habría incentivos a firmar el contrato en sí mismo, ya que ambas partes sabrían que un árbitro independiente no podría comprobar su cumplimiento y, al anticipar la situación, no participarían en el contrato.</p>
+<p><strong>Aceptación o rechazo</strong>: el agente acepta el contrato si la utilidad de participar en él no es inferior a la de no firmarlo, es decir, a su <em>utilidad de reserva</em>. La utilidad de reserva puede definirse como la utilidad de oportunidades alternativas en el mercado. Si el agente no acepta las condiciones del contrato, no aparece ningún tipo de relación, pero si lo hace, nace una relación bilateral.</p>
+<p><strong>Conflicto de interés</strong>: los objetivos del agente se oponen a los del principal, dado que ambos se mueven por el interés propio. Así, el coste de uno es el ingreso del otro y viceversa (p.&nbsp;ej. salario). El conflicto de interés da lugar a una serie de <em>costes de agencia</em>, es decir, destrucción de valor en la relación contractual a falta de una alineación entre los intereses de las partes.</p>
+</section>
+<section id="modelo-base-información-imperfecta-y-simétrica" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-base-información-imperfecta-y-simétrica">1.2. Modelo base: información imperfecta y simétrica</h3>
+<p><strong>Origen</strong>: con base en lo anterior, puede desarrollarse un modelo canónico para estudiar el problema del principal y el agente (Ross, 1973; Holmström, 1979).</p>
+<p><strong>Idea</strong>: el pago del agente depende del reparto óptimo del riesgo y este aspecto se condensa en el contrato. Esta idea permite entender uno de los principales objetivos de la economía de la información, que es caracterizar el contrato óptimo.</p>
+<section id="supuestos" class="level4">
+<h4 class="anchored" data-anchor-id="supuestos">1.2.1. Supuestos</h4>
+<p><strong>Entorno</strong>: la información es imperfecta, pero simétrica. Ninguna de las partes conoce de antemano el estado de la naturaleza, pero ambas observan lo mismo. El resultado de la relación es una variable aleatoria verificable, <span class="math inline">\(x_i = f(e, s_i)\)</span>, que depende del esfuerzo del agente, <span class="math inline">\(e\)</span> (también verificable), y del estado de la naturaleza, <span class="math inline">\(s_i\)</span>, que ocurre con probabilidad <span class="math inline">\(p_i\)</span>.</p>
+<p>De forma equivalente, y esta es la formulación que se utiliza en adelante, puede tomarse como dado el conjunto de resultados posibles, <span class="math inline">\(\{x_1, \dots, x_n\}\)</span>, y hacer que el esfuerzo actúe sobre sus probabilidades, <span class="math inline">\(P(X = x_i \mid e) = p_i(e)\)</span>, con <span class="math inline">\(\sum_i p_i(e) = 1\)</span> y <span class="math inline">\(p_i(e) &gt; 0\)</span>. El esfuerzo mejora el resultado (<span class="math inline">\(f_e' &gt; 0\)</span> en la primera formulación), de modo que un mayor esfuerzo desplaza la distribución hacia los resultados altos.</p>
+<p><strong>Agentes</strong>: un principal y un agente entran en contacto para establecer una relación bilateral:</p>
+<ul>
+<li><em>Principal</em>: es el encargado del diseño del contrato (completo) y busca maximizar la utilidad esperada de su beneficio. El contrato abarca el salario ofrecido para cada resultado, <span class="math inline">\(w(x_i)\)</span>, y el esfuerzo demandado del agente, <span class="math inline">\(e\)</span>.</li>
+</ul>
+<p>Las preferencias del principal se expresan en una función de utilidad esperada de tipo von Neumann-Morgenstern (VNM), <span class="math inline">\(\pi^e(e) = \sum_i p_i(e) \cdot \pi[x_i - w(x_i)]\)</span>, con <span class="math inline">\(\pi' &gt; 0\)</span> y <span class="math inline">\(\pi'' \leq 0\)</span>. El caso <span class="math inline">\(\pi'' = 0\)</span> es el del principal neutral al riesgo, que servirá de referencia.</p>
+<ul>
+<li><p><em>Agente</em>: observa el contrato y decide si participar o no. Si participa, aporta el esfuerzo que fija el contrato y obtiene una utilidad esperada VNM<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, <span class="math inline">\(u^e = \sum_i p_i(e) \cdot u[w(x_i)] - v(e)\)</span>, donde <span class="math inline">\(v\)</span> es la desutilidad del esfuerzo, creciente y convexa (<span class="math inline">\(v' &gt; 0\)</span>, <span class="math inline">\(v'' \geq 0\)</span>), y la utilidad del salario es creciente y cóncava (<span class="math inline">\(u' &gt; 0\)</span>, <span class="math inline">\(u'' \leq 0\)</span>).</p></li>
+<li><p><em>Conflicto de interés</em>: para el principal, el resultado es su ganancia y el salario es su coste, pero el esfuerzo no supone un coste en sí mismo. Para el agente, el salario es su ganancia y el esfuerzo es su coste, pero el resultado no supone ni coste ni ganancia en sí mismo. En todo caso, el esfuerzo mejora la probabilidad de un buen resultado. En estas circunstancias, el contrato se constituye como el medio que permite hacer compatibles los distintos intereses de las partes.</p></li>
+</ul>
+</section>
+<section id="modelo" class="level4">
+<h4 class="anchored" data-anchor-id="modelo">1.2.2. Modelo</h4>
+<p><strong>Planteamiento</strong>: el principal buscará maximizar la utilidad esperada de su beneficio mediante el diseño de un contrato que especifique el esfuerzo demandado y el salario ofrecido, restringido por la aceptación del contrato por parte del agente (la <em>condición de participación</em>). El problema puede resolverse mediante el método de Kuhn-Tucker<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
+<p><span class="math display">\[\max_{e, \{w(x_i)\}} \sum_{i=1}^{n} p_i(e) \cdot \pi[x_i - w(x_i)] \quad \text{s.a.:} \quad \sum_{i=1}^{n} p_i(e) \cdot u[w(x_i)] - v(e) \geq \underline{u}\]</span></p>
+<p>donde <span class="math inline">\(e\)</span> es el esfuerzo exigido al agente, <span class="math inline">\(w(x_i)\)</span> el salario ofrecido cuando el resultado es <span class="math inline">\(x_i\)</span>, <span class="math inline">\(p_i(e)\)</span> la probabilidad de ese resultado dado el esfuerzo, <span class="math inline">\(\pi\)</span> y <span class="math inline">\(u\)</span> las funciones de utilidad VNM del principal y del agente, <span class="math inline">\(v(e)\)</span> la desutilidad del esfuerzo, <span class="math inline">\(\underline{u}\)</span> la utilidad de reserva del agente y <span class="math inline">\(\lambda\)</span> el multiplicador de la restricción de participación. El lagrangiano es <span class="math inline">\(\mathcal{L} = \sum_i p_i(e)\,\pi[x_i - w(x_i)] + \lambda\,\bigl[\sum_i p_i(e)\,u[w(x_i)] - v(e) - \underline{u}\bigr]\)</span>.</p>
+<p><strong>CPO</strong>: con la restricción de participación activa, se deriva el lagrangiano respecto al salario de cada estado, al esfuerzo y al multiplicador, y se obtienen tres condiciones:</p>
+<p><span class="math display">\[\frac{\partial \mathcal{L}}{\partial w(x_i)} = -p_i(e)\,\frac{d\pi}{d(x_i - w_i)} + \lambda\,p_i(e)\,\frac{du}{dw_i} = 0 \;\Rightarrow\; \frac{d\pi/d(x_i - w_i)}{du/dw_i} = \lambda \tag{1}\]</span></p>
+<p><span class="math display">\[\frac{\partial \mathcal{L}}{\partial e} = \sum_i \frac{dp_i}{de} \cdot \pi[x_i - w(x_i)] + \lambda \left[ \sum_i \frac{dp_i}{de} \cdot u[w(x_i)] - \frac{dv}{de} \right] = 0\]</span></p>
+<p><span class="math display">\[\frac{\partial \mathcal{L}}{\partial \lambda} = \sum_i p_i(e) \cdot u[w(x_i)] - v(e) - \underline{u} = 0\]</span></p>
+<p>Cada una de las tres condiciones tiene su lectura:</p>
+<ol type="1">
+<li><em>Reparto del riesgo</em>: la condición (1), que resulta de derivar respecto al salario, se cumple en todos los estados de la naturaleza, de modo que, para dos estados cualesquiera <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>:</li>
+</ol>
+<p><span class="math display">\[
+\frac{d\pi/d(x_i - w_i)}{du/dw_i} = \frac{d\pi/d(x_j - w_j)}{du/dw_j} = \lambda
+\quad\Longrightarrow\quad
+\underbrace{\frac{d\pi/d(x_i - w_i)}{d\pi/d(x_j - w_j)}}_{\text{RMS}^{P}_{j,i}}
+=
+\underbrace{\frac{du/dw_i}{du/dw_j}}_{\text{RMS}^{A}_{j,i}}
+\tag{2}
+\]</span></p>
+<p>El contrato óptimo será tal que el cociente entre la utilidad marginal del principal y la del agente sea constante en todos los estados de la naturaleza e igual a <span class="math inline">\(\lambda\)</span>, el multiplicador asociado a la restricción de participación. Dividiendo esta condición para dos estados cualesquiera <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>, <span class="math inline">\(\lambda\)</span> se cancela y se obtiene que la relación marginal de sustitución entre resultados en esos dos estados para el principal coincide con la del agente.</p>
+<p>Estrictamente, la relación marginal de sustitución (RMS) entre rentas contingentes incluye las probabilidades, <span class="math inline">\(p_i\,(d\pi/d(x_i - w_i))/[p_j\,(d\pi/d(x_j - w_j))]\)</span>, pero estas se cancelan al suponer que ambos comparten las mismas creencias.</p>
+<p>Esta condición se conoce como <em>condición de Borch</em> de reparto óptimo del riesgo y caracteriza las asignaciones Pareto-eficientes bajo incertidumbre. Gráficamente, en una caja de Edgeworth cuyos ejes son las rentas en los estados <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>, corresponde a los puntos de tangencia entre las curvas de indiferencia de ambos (la curva de contratos).</p>
+<ol start="2" type="1">
+<li><p><em>Esfuerzo</em>: la segunda condición, que resulta de derivar respecto al esfuerzo, determina el nivel que el contrato exige. El principal demanda esfuerzo hasta que su ganancia marginal en utilidad esperada iguala, a través de <span class="math inline">\(\lambda\)</span>, la compensación adicional que el agente exige por la desutilidad marginal del esfuerzo. Como el esfuerzo es verificable, el principal puede exigirlo directamente en el contrato, sin necesidad de incentivarlo.</p></li>
+<li><p><em>Participación</em>: la tercera condición es la propia restricción, que se cumple con igualdad. En el óptimo, el agente recibe una “utilidad neta” exactamente equivalente a su utilidad de reserva. De lo contrario, el principal estaría pagando demasiado, ya que podría reducir los pagos y obtener mayor beneficio, y el agente todavía aceptaría el nuevo contrato.</p></li>
+</ol>
+<p><strong>CSO</strong>: se supone que el problema es de buen comportamiento (funciones de beneficio y utilidad cóncavas, con concavidad estricta en al menos una de ellas), de modo que el cumplimiento de las CPO garantiza una solución única e interior.</p>
+<p><strong>Solución</strong>: el contrato óptimo, <span class="math inline">\(\{e^*, w^*(x_i)\}\)</span>, es un vector que recoge el nivel de esfuerzo exigido y el esquema de pagos asociado a cada resultado. Equivale, en el problema de agencia, a la función de demanda del consumidor, pues recoge cómo responde la decisión (aquí, el reparto de rentas entre estados) a los parámetros del problema.</p>
+<p>En este caso, el parámetro decisivo son las actitudes ante el riesgo de las partes. Cada caso de actitud frente al riesgo se caracteriza por tres elementos: la <em>condición</em> que impone (2) sobre las utilidades marginales, el <em>reparto del riesgo</em> que resulta y el <em>esquema de pagos</em> concreto.</p>
+<ul>
+<li><p><em>Caso 1: principal neutral, agente averso</em>:</p>
+<ul>
+<li><p><em>Condición</em>: si el principal es neutral al riesgo, <span class="math inline">\(\pi'\)</span> es constante, y si el agente es averso, <span class="math inline">\(u'\)</span> es decreciente. Como el contrato óptimo exige <span class="math inline">\(\pi'/u' = \lambda\)</span> constante y <span class="math inline">\(\pi'\)</span> lo es, <span class="math inline">\(u'\)</span> ha de ser constante en todos los estados, lo que solo ocurre si el salario es el mismo con independencia del resultado, es decir, <span class="math inline">\(w(x_i) = w(x_j)\)</span> para todo <span class="math inline">\(i, j\)</span>.</p></li>
+<li><p><em>Reparto del riesgo</em>: el principal asume todo el riesgo de la transacción y el agente queda totalmente asegurado.</p></li>
+<li><p><em>Esquema de pagos</em>: salario fijo, <span class="math inline">\(w^* = u^{-1}[\underline{u} + v(e^*)]\)</span>, que compensa exactamente la utilidad de reserva y la desutilidad del esfuerzo exigido.</p></li>
+</ul></li>
+<li><p><em>Caso 2: principal averso, agente neutral</em>:</p>
+<ul>
+<li><p><em>Condición</em>: es el caso opuesto. Como <span class="math inline">\(u'\)</span> es constante (agente neutral), <span class="math inline">\(\pi'\)</span> ha de ser constante para satisfacer la condición. Al ser <span class="math inline">\(\pi'\)</span> decreciente, ello solo ocurre si el beneficio del principal es el mismo en todos los estados (<span class="math inline">\(x_i - w(x_i) = k\)</span> para todo <span class="math inline">\(i\)</span>).</p></li>
+<li><p><em>Reparto del riesgo</em>: el agente asume todo el riesgo de la transacción y el principal queda totalmente asegurado.</p></li>
+<li><p><em>Esquema de pagos</em>: contrato de franquicia, <span class="math inline">\(w^* = x_i - k\)</span>, con <span class="math inline">\(k &gt; 0\)</span> el canon. El principal recibe una cantidad fija con independencia del resultado y el agente se queda con el resultado neto. Intuitivamente, el principal cede su saber hacer, su imagen de marca y la comercialización de sus productos a un agente-franquiciado neutral al riesgo, a cambio de que este asuma los riesgos y pague un canon.</p></li>
+</ul></li>
+<li><p><em>Caso 3: ambos aversos</em>:</p>
+<ul>
+<li><p><em>Condición</em>: con <span class="math inline">\(\pi'\)</span> y <span class="math inline">\(u'\)</span> decrecientes, ninguno de los dos puede ser constante y la condición (2) se cumple con pagos que varían con el resultado, en una proporción que depende de los grados de aversión: <span class="math display">\[\frac{dw^*}{dx_i} = \frac{\text{CAA}_P}{\text{CAA}_P + \text{CAA}_A}\]</span> donde <span class="math inline">\(\text{CAA}_P\)</span> y <span class="math inline">\(\text{CAA}_A\)</span> son los coeficientes de aversión absoluta al riesgo de cada parte, evaluados en el reparto óptimo, de modo que la regla vale localmente. El contrato es lineal (pendiente constante) cuando ambos coeficientes son constantes, es decir, con utilidades de aversión absoluta al riesgo constante (CARA, <em>constant absolute risk aversion</em>). Los dos casos anteriores son los casos particulares en que uno de los coeficientes es nulo (pendiente 0 en el salario fijo y 1 en la franquicia).</p></li>
+<li><p><em>Reparto del riesgo</em>: las dos partes soportan riesgo y ninguna queda del todo cubierta. La más aversa, que absorbe menos variación del resultado, es la mejor cubierta.</p></li>
+<li><p><em>Esquema de pagos</em>: salario variable con el resultado, <span class="math inline">\(w^* = a + b \cdot x_i\)</span> con <span class="math inline">\(0 &lt; b &lt; 1\)</span>, asimilable a una <em>joint venture</em> o a una remuneración con parte fija y parte variable.</p></li>
+</ul></li>
+<li><p><em>Corolario</em>: de los tres casos se deduce que la condición de tangencia se produce sobre la línea de certeza del individuo averso cuando el aseguramiento es completo (casos 1 y 2) y entre ambas líneas de certeza cuando es parcial (caso 3).</p></li>
+</ul>
+<p><strong>Desarrollo gráfico</strong>: la solución se ilustra en una caja de Edgeworth de estados de la naturaleza (figura <a href="#fig-a131-ppal-agente" class="quarto-xref"><span>A13.1</span></a>), cuyos lados son los dos posibles resultados, <span class="math inline">\(x_1\)</span> (horizontal) y <span class="math inline">\(x_2\)</span> (vertical). El agente mide sus salarios, <span class="math inline">\(w_1\)</span> y <span class="math inline">\(w_2\)</span>, desde <span class="math inline">\(O_A\)</span>, y el principal sus rentas netas, <span class="math inline">\(x_1 - w_1\)</span> y <span class="math inline">\(x_2 - w_2\)</span>, desde <span class="math inline">\(O_P\)</span>:</p>
+<ol type="1">
+<li><p><em>Líneas de certeza</em> (L.C.<span class="math inline">\(_A\)</span> y L.C.<span class="math inline">\(_P\)</span>): los dos segmentos desde cada origen representan las combinaciones de rentas contingentes iguales en ambos estados, para el agente (desde <span class="math inline">\(O_A\)</span>) y para el principal (desde <span class="math inline">\(O_P\)</span>).</p></li>
+<li><p><em>Curvas de indiferencia</em>: las del principal (<span class="math inline">\(\pi^e_0\)</span>) se dibujan desde <span class="math inline">\(O_P\)</span> hacia <span class="math inline">\(O_A\)</span> y las del agente desde <span class="math inline">\(O_A\)</span> hacia <span class="math inline">\(O_P\)</span>. Su curvatura refleja la aversión al riesgo de cada parte (rectas si es neutral, convexas si es averso).</p></li>
+<li><p><em>Condición de participación</em>: los únicos contratos aceptables para el agente son los situados sobre o por encima de la curva de indiferencia correspondiente a su utilidad de reserva, <span class="math inline">\(\underline{u}\)</span>.</p></li>
+<li><p><em>Equilibrio</em>: entre los contratos que el agente acepta, el principal elige el que le permite llegar a su curva de indiferencia más lejana de <span class="math inline">\(O_P\)</span>. En ese punto, dicha curva es tangente a la de reserva del agente (condición de Borch). En el caso 1, que recoge la figura, el óptimo es el punto 0, con <span class="math inline">\(w_1^* = w_2^* = w^*\)</span>.</p></li>
+</ol>
+<div id="fig-a131-ppal-agente" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a131-ppal-agente-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a131_Ppal-agente.html" style="height:520px" loading="lazy" title="fig-a131-ppal-agente"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a131-ppal-agente-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A13.1: Modelo principal-agente con información simétrica. En el contrato óptimo, el principal neutral al riesgo asegura plenamente al agente averso al riesgo.
+</figcaption>
+</figure>
+</div>
+<p>El punto óptimo define un plan de pagos contingente, con <span class="math inline">\(w_1^*\)</span> si el resultado es <span class="math inline">\(x_1\)</span> y <span class="math inline">\(w_2^*\)</span> si es <span class="math inline">\(x_2\)</span>, y la figura <a href="#fig-a134-reparto-riesgo" class="quarto-xref"><span>A13.2</span></a> muestra su posición en los tres casos del corolario. La tangencia se sitúa sobre la línea de certeza del agente averso cuando el principal es neutral (panel a), sobre la del principal averso cuando el agente es neutral (panel b) y entre ambas líneas de certeza cuando los dos son aversos (panel c).</p>
+<div id="fig-a134-reparto-riesgo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a134-reparto-riesgo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame wide">
+<iframe src="../graphs/a134_Reparto_riesgo.html" style="--r:1.255" loading="lazy" title="fig-a134-reparto-riesgo"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a134-reparto-riesgo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A13.2: Reparto óptimo del riesgo en la caja de Edgeworth de estados de la naturaleza. La curva de indiferencia de reserva del agente, <span class="math inline">\(\underline{u}\)</span>, y la del principal, <span class="math inline">\(\pi^e_0\)</span>, son tangentes en el punto 0. La tangencia se sitúa sobre la línea de certeza del agente averso cuando el principal es neutral (panel a, caso 1) y sobre la del principal averso cuando el agente es neutral (panel b, caso 2). Cuando los dos son aversos (panel c, caso 3), la tangencia queda entre ambas líneas de certeza.
+</figcaption>
+</figure>
+</div>
+<p><strong>Estática comparativa</strong>: se distinguen dos perturbaciones:</p>
+<ul>
+<li><p><em>Aumento de la utilidad de reserva <span class="math inline">\(\underline{u}\)</span></em>: desplaza la restricción de participación hacia <span class="math inline">\(O_P\)</span> y traslada el contrato a lo largo de la curva de contratos, mejorando al agente a costa del principal.</p></li>
+<li><p><em>Aumento de la aversión al riesgo de una de las partes</em>: aumenta la curvatura de sus curvas de indiferencia y desplaza la tangencia hacia su línea de certeza, es decir, hacia un mayor aseguramiento de esa parte.</p></li>
+</ul>
+</section>
+<section id="conclusiones" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones">1.2.3. Conclusiones</h4>
+<p><strong>Aspectos positivos</strong>: el modelo base establece la referencia de eficiencia de la relación de agencia. Con información simétrica, el contrato óptimo reparte el riesgo según los perfiles de las partes (el principal neutral asegura plenamente al agente averso) y no existe pérdida de eficiencia. Cualquier ineficiencia observada en el resto del tema es, por tanto, imputable exclusivamente a la asimetría de información.</p>
+<p><strong>Limitaciones</strong>: la observabilidad del esfuerzo y de los tipos falla precisamente en las relaciones económicas relevantes (empleo, seguros, crédito, regulación), por lo que el modelo es un punto de partida y no una descripción. Los apartados 2 y 3 relajan, respectivamente, la observabilidad del esfuerzo y la de los tipos.</p>
+</section>
+</section>
+<section id="aplicaciones" class="level3">
+<h3 class="anchored" data-anchor-id="aplicaciones">1.3. Aplicaciones</h3>
+<p>El marco principal-agente es transversal y aparece en el libro cada vez que una parte actúa por cuenta de otra con objetivos distintos y bajo incertidumbre. Sus aplicaciones principales son las siguientes:</p>
+<ul>
+<li><p><em>Asegurador-asegurado</em>: los contratos de seguro, donde el asegurador desconoce el riesgo del asegurado y su comportamiento una vez asegurado (apartados 2.3 y 3.4.2; tema <a href="../chapters/a10-riesgo-incertidumbre.html">A10</a>).</p></li>
+<li><p><em>Accionista-directivo</em>: la separación entre propiedad y control en la empresa moderna, origen de la teoría de la agencia (Jensen y Meckling, 1976) y de los mecanismos de gobierno corporativo (tema <a href="../chapters/a15-toi.html">A15</a>).</p></li>
+<li><p><em>Regulador-empresa regulada</em>: la regulación de monopolios naturales cuando el regulador desconoce los costes de la empresa (apartado 3.4.3 y tema <a href="../chapters/a20-regulacion.html">A20</a>).</p></li>
+<li><p><em>Empleador-empleado</em>: el diseño de los contratos de trabajo y de los sistemas de incentivos, y la teoría de los salarios de eficiencia (tema <a href="../chapters/a27-salarios.html">A27</a>).</p></li>
+<li><p><em>Prestamista-prestatario</em>: el racionamiento del crédito (Stiglitz y Weiss, 1981; tema <a href="../chapters/a42-ciclos.html">A42</a>, apartado 2.3.1) y los costes de agencia de la deuda (tema <a href="../chapters/b03-financiacion.html">B03</a>, apartado 2.3.4).</p></li>
+<li><p><em>Estado-ciudadano y organismos internacionales-Estados</em>: la condicionalidad de la ayuda y de los préstamos, y el diseño de las políticas públicas cuando el Estado no observa las características de los beneficiarios (temas <a href="../chapters/b22-fmi.html">B22</a> y <a href="../chapters/b29-fod-aod.html">B29</a>).</p></li>
+</ul>
+<p>En todos los casos el problema tiene interés económico precisamente porque falla el supuesto de información simétrica del modelo base. Si el principal no observa lo que el agente hace (el esfuerzo del directivo, la prudencia del asegurado, el uso del crédito), hay riesgo moral (apartado 2). Si no observa lo que el agente es (la productividad del trabajador, el riesgo del asegurado, la eficiencia de la empresa regulada), hay selección adversa (apartado 3). Las aplicaciones son, por tanto, el desarrollo de esas dos desviaciones respecto de la simetría de información.</p>
+</section>
+<section id="conclusiones-1" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-1">1.4. Conclusiones</h3>
+<p><strong>Aspectos positivos</strong>: la teoría de la agencia proporciona el marco general de la economía de la información, porque toda relación de agencia puede formularse como un contrato con restricciones de participación y, cuando la información es asimétrica, de incentivos. El modelo base es la referencia de eficiencia frente a la que se miden los dos fallos de información.</p>
+<p><strong>Limitaciones</strong>: el marco supone que el contrato puede escribirse sobre variables verificables y hacerse cumplir sin coste, que las partes son racionales y que la relación es bilateral. La teoría de los contratos incompletos (Grossman-Hart-Moore, tema <a href="../chapters/a15-toi.html">A15</a>, apartado 1.3.1) y la de los contratos relacionales relajan estos supuestos.</p>
+</section>
+</section>
+<section id="riesgo-moral-arrow-1963-pauly-1968" class="level2">
+<h2 class="anchored" data-anchor-id="riesgo-moral-arrow-1963-pauly-1968">2. Riesgo moral (Arrow, 1963; Pauly, 1968)</h2>
+<p>La primera desviación respecto de la simetría de información del modelo base surge cuando el principal no observa lo que el agente hace una vez firmado el contrato. Tras precisar el concepto, se formaliza el modelo con esfuerzo no observable y se repasan sus aplicaciones y sus soluciones.</p>
+<section id="concepto-riesgo-moral" class="level3">
+<h3 class="anchored" data-anchor-id="concepto-riesgo-moral">2.1. Concepto: riesgo moral</h3>
+<p>El término <strong>riesgo moral</strong> procede del sector asegurador, donde era de uso frecuente en el s. XIX. Sin embargo, su popularidad en la ciencia económica comienza tras la publicación del trabajo de Kenneth Arrow (1963).</p>
+<p>El riesgo moral se produce cuando, después de la firma del contrato, el esfuerzo del agente no es observable ni verificable. El salario constante es óptimo con información simétrica cuando el agente es averso y el principal neutral (caso 1). No obstante, si el principal lo ofrece, el agente tiene incentivos a realizar un esfuerzo subóptimo (<span class="math inline">\(e_L &lt; e_H\)</span>), porque el esfuerzo le cuesta y el salario no depende de él.</p>
+<p>Por eso, cuando hay riesgo moral, el principal se ve obligado a replantear la estructura de pagos. El contrato ya no puede exigir el esfuerzo, sino que debe inducirlo, haciendo que el esfuerzo deseado por el principal coincida con el que el agente elige por su cuenta una vez firmado el contrato.</p>
+</section>
+<section id="modelo-esfuerzo-no-observable" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-esfuerzo-no-observable">2.2. Modelo: esfuerzo no observable</h3>
+<p><strong>Origen</strong>: Kenneth Arrow (1963) y Mark Pauly (1968) plantean el problema en el mercado de seguros. La formalización del contrato óptimo con esfuerzo no observable es de Bengt Holmström (1979).</p>
+<p><strong>Idea</strong>: el esfuerzo del agente no es observable, de modo que el contrato no puede exigirlo y debe inducirlo mediante el esquema de pagos.</p>
+<section id="supuestos-1" class="level4">
+<h4 class="anchored" data-anchor-id="supuestos-1">2.2.1. Supuestos</h4>
+<p><strong>Entorno</strong>: se mantienen los supuestos del modelo base del apartado 1.2 (un principal y un agente, resultado <span class="math inline">\(x_i\)</span> aleatorio con probabilidades <span class="math inline">\(p_i(e)\)</span> que dependen del esfuerzo, contrato sobre variables verificables, utilidad de reserva <span class="math inline">\(\underline{u}\)</span>). La única diferencia es que el principal ya no observa el esfuerzo <span class="math inline">\(e\)</span>, solo el resultado.</p>
+<p><strong>Agentes</strong>: el esfuerzo, para simplificar, toma dos valores, alto (<span class="math inline">\(e_H\)</span>) y bajo (<span class="math inline">\(e_L\)</span>). El principal desea inducir el alto mediante el esquema de pagos <span class="math inline">\(w(x_i)\)</span>, lo que añade al problema una <em>restricción de incentivos</em>, según la cual el agente debe preferir el esfuerzo alto al bajo.</p>
+</section>
+<section id="modelo-1" class="level4">
+<h4 class="anchored" data-anchor-id="modelo-1">2.2.2. Modelo</h4>
+<p><strong>Planteamiento</strong>: se añade la restricción de incentivos y se construye el nuevo lagrangiano con un nuevo multiplicador, <span class="math inline">\(\mu\)</span>:</p>
+<p><span class="math display">\[\max_{\{w(x_i)\}} \sum_{i=1}^{n} p_i(e_H) \cdot \pi[x_i - w(x_i)]\]</span> <span class="math display">\[\text{s.a.:} \begin{cases}  \; \sum_i p_i(e_H) \cdot u[w(x_i)] - v(e_H) \geq \underline{u} &amp; \text{(participación)} \\ \; \sum_i [p_i(e_H) - p_i(e_L)] \cdot u[w(x_i)] \geq v(e_H) - v(e_L) &amp; \text{(incentivos)} \end{cases}\]</span></p>
+<p>donde <span class="math inline">\(w(x_i)\)</span> es el salario ofrecido cuando el resultado es <span class="math inline">\(x_i\)</span>, <span class="math inline">\(e_H\)</span> y <span class="math inline">\(e_L\)</span> los niveles de esfuerzo alto y bajo, <span class="math inline">\(p_i(e_H)\)</span> y <span class="math inline">\(p_i(e_L)\)</span> las probabilidades de cada resultado con uno u otro esfuerzo, <span class="math inline">\(\pi\)</span> y <span class="math inline">\(u\)</span> las utilidades VNM del principal y del agente, <span class="math inline">\(v(e)\)</span> la desutilidad del esfuerzo, <span class="math inline">\(\underline{u}\)</span> la utilidad de reserva y <span class="math inline">\(\lambda\)</span> y <span class="math inline">\(\mu\)</span> los multiplicadores de las restricciones de participación e incentivos.</p>
+<p>La restricción de incentivos recoge el problema de riesgo moral, pues exige que el esfuerzo alto rinda al agente una utilidad esperada no inferior a la del bajo.</p>
+<p><strong>CPO</strong>: se deriva el lagrangiano respecto al salario de cada estado y se obtiene la condición que sustituye a (1):</p>
+<p><span class="math display">\[\begin{aligned} \frac{\partial \mathcal{L}}{\partial w(x_i)} &amp;= -p_i(e_H)\,\frac{d\pi}{d(x_i - w_i)} + \lambda\,p_i(e_H)\,\frac{du}{dw_i} + \mu\,[p_i(e_H) - p_i(e_L)]\,\frac{du}{dw_i} = 0 \\ &amp;\Rightarrow\; \frac{d\pi/d(x_i - w_i)}{du/dw_i} = \lambda + \mu \left( 1 - \frac{p_i(e_L)}{p_i(e_H)} \right) \end{aligned} \tag{3}\]</span></p>
+<p>donde <span class="math inline">\(\lambda\)</span> es el multiplicador de la restricción de participación y <span class="math inline">\(\mu\)</span> el de la restricción de incentivos. Se obtiene así la <em>condición de Holmström</em> (1979), según la cual el salario en cada estado depende del cociente de verosimilitud, que informa sobre el esfuerzo a partir del resultado observado.</p>
+<p>Esta condición se diferencia de la condición de Borch en dos elementos:</p>
+<ol type="1">
+<li><em>Coste del riesgo moral</em> (<span class="math inline">\(\mu &gt; 0\)</span>): el multiplicador <span class="math inline">\(\mu\)</span> mide cuánto aumentaría el beneficio esperado del principal si se relajase marginalmente la restricción de incentivos, es decir, el coste que le impone el riesgo moral.</li>
+</ol>
+<p>Cuando el principal es neutral y el agente averso al riesgo (caso 1), <span class="math inline">\(\mu\)</span> es estrictamente positivo. Para verlo, supóngase que <span class="math inline">\(\mu = 0\)</span>. En este caso, la condición (3) se reduciría a la de Borch y se recuperaría el contrato de información simétrica. Sin embargo, en el caso 1 ese contrato es un salario constante, que no ofrece ningún incentivo, induce el esfuerzo bajo y viola la restricción de incentivos. Por tanto, <span class="math inline">\(\mu &gt; 0\)</span>, de modo que la restricción de incentivos es activa y, debido a la asimetría de información, el principal obtiene un beneficio menor que con información simétrica.</p>
+<ol start="2" type="1">
+<li><em>Cociente de verosimilitud</em> (<span class="math inline">\(p_i(e_L)/p_i(e_H)\)</span>): mide cuán probable es el resultado <span class="math inline">\(x_i\)</span> con esfuerzo bajo en relación con el esfuerzo alto.</li>
+</ol>
+<p>Cuanto menor es el cociente, más indicativo es <span class="math inline">\(x_i\)</span> de esfuerzo alto, mayor es el lado derecho de (3) y, por tanto, mayor el salario en ese estado. En el caso 1 el efecto es inmediato, porque <span class="math inline">\(\pi'\)</span> es constante y un mayor lado derecho exige una menor <span class="math inline">\(u'\)</span>. Cuando <span class="math inline">\(\mu &gt; 0\)</span>, el salario varía con el resultado siempre que el cociente varíe entre estados y el principal condiciona el pago a toda señal que contenga información sobre el esfuerzo. Además, en el caso 1, el salario será creciente en el resultado solo si el cociente es decreciente en <span class="math inline">\(x_i\)</span> (propiedad del cociente de verosimilitud monótono).</p>
+<p>La restricción de participación sigue saturada. Como el contrato traslada riesgo al agente, el principal tiene que compensarlo con una prima de riesgo. Esta prima toma la forma de un salario esperado superior al de información simétrica que le deje justo en su utilidad de reserva. Ese salario más alto no mejora en nada al agente, pero el principal ve caer su beneficio esperado, y esa caída es justamente el coste del riesgo moral.</p>
+<p><strong>CSO</strong>: como en el modelo base, la concavidad de <span class="math inline">\(\pi\)</span> y <span class="math inline">\(u\)</span> garantiza que las CPO caracterizan el óptimo. Con dos niveles de esfuerzo, el principal compara además el beneficio de inducir <span class="math inline">\(e_H\)</span> con el de conformarse con <span class="math inline">\(e_L\)</span> a salario fijo, y elige el mayor.</p>
+<p><strong>Solución</strong>: es de nuevo el contrato óptimo <span class="math inline">\(\{e^*, w^*(x_i)\}\)</span>, ahora con <span class="math inline">\(e^* = e_H\)</span> inducido en lugar de exigido. Si principal y agente persiguen lo mismo, el contrato de información simétrica ya cumple la restricción de incentivos y el riesgo moral no tiene coste. En cambio, con intereses enfrentados, los tres casos de perfil de riesgo se caracterizan como en el modelo base:</p>
+<ul>
+<li><p><em>Caso 1: principal neutral, agente averso</em>:</p>
+<ul>
+<li><p><em>Condición</em>: con <span class="math inline">\(d\pi/d(x_i - w_i)\)</span> constante, (3) exige que <span class="math inline">\(du/dw_i\)</span> varíe con el cociente de verosimilitud, de modo que el salario ya no puede ser constante.</p></li>
+<li><p><em>Reparto del riesgo</em>: el agente soporta parte del riesgo aunque sea averso, porque solo así el salario transmite incentivos, y de ahí procede el conflicto entre aseguramiento e incentivos.</p></li>
+<li><p><em>Esquema de pagos</em>: salario variable, mayor en los estados más indicativos de esfuerzo alto, y creciente con el resultado si el cociente de verosimilitud es monótono (los resultados altos son relativamente más probables con esfuerzo alto).</p></li>
+</ul></li>
+<li><p><em>Caso 2: principal averso, agente neutral</em>:</p>
+<ul>
+<li><p><em>Condición</em>: con <span class="math inline">\(u'\)</span> constante, (3) se cumple con <span class="math inline">\(\pi'\)</span> constante, como en el modelo base, y la restricción de incentivos no es activa.</p></li>
+<li><p><em>Reparto del riesgo</em>: el agente asume todo el riesgo, sin coste, pues es neutral.</p></li>
+<li><p><em>Esquema de pagos</em>: contrato de franquicia, <span class="math inline">\(w^* = x_i - k\)</span>. No hay pérdida de eficiencia porque, al depender el salario del resultado, y este del esfuerzo, el agente internaliza plenamente los incentivos y el principal obtiene el mismo beneficio que con información simétrica. Para ello el agente no ha de tener responsabilidad limitada, de modo que pueda aceptar pagos negativos.</p></li>
+</ul></li>
+<li><p><em>Caso 3: ambos aversos</em>:</p>
+<ul>
+<li><p><em>Condición</em>: si el contrato de información simétrica, ya variable, no cumple la restricción de incentivos, <span class="math inline">\(\mu &gt; 0\)</span> y (3) se cumple con pagos variables que combinan el reparto del riesgo de la condición de Borch con la prima de incentivos del cociente de verosimilitud.</p></li>
+<li><p><em>Reparto del riesgo</em>: ambos comparten el riesgo, pero el agente soporta más que en el modelo base.</p></li>
+<li><p><em>Esquema de pagos</em>: salario variable con parte fija y parte ligada al resultado, más sensible al resultado que con información simétrica.</p></li>
+</ul></li>
+</ul>
+<p><strong>Desarrollo gráfico</strong>: el riesgo moral se representa en la caja de Edgeworth de estados de la naturaleza (figura <a href="#fig-a103-moral-hazard" class="quarto-xref"><span>A13.3</span></a>):</p>
+<ol type="1">
+<li><p><em>Líneas de certeza y curvas de indiferencia</em>: las del modelo base, con la curva de reserva del agente, <span class="math inline">\(\underline{u}\)</span>, y las del principal, <span class="math inline">\(\pi^e_0\)</span> y <span class="math inline">\(\pi^e_1\)</span>.</p></li>
+<li><p><em>Restricción de incentivos</em> (RI): excluye los contratos con salario igual en ambos estados. La región sombreada recoge los contratos que la cumplen.</p></li>
+<li><p><em>Equilibrio</em>: el riesgo moral se manifiesta en que el contrato ya no puede situarse en el punto 0, sobre la línea de certeza del agente averso (caso 1). El óptimo se desplaza, por tanto, a lo largo de la curva de indiferencia de reserva del agente hasta el punto 1, en la frontera de la restricción de incentivos, con <span class="math inline">\(w_1^* \neq w_2^*\)</span>. En él, el principal renuncia a parte del reparto eficiente del riesgo a cambio de inducir el esfuerzo.</p></li>
+</ol>
+<div id="fig-a103-moral-hazard" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a103-moral-hazard-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a103_moral_hazard.html" style="height:520px" loading="lazy" title="fig-a103-moral-hazard"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a103-moral-hazard-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A13.3: Riesgo moral en la caja de Edgeworth de estados de la naturaleza. Con esfuerzo observable, el contrato eficiente (0) asegura completamente al agente averso al riesgo. Con esfuerzo no observable, la restricción de incentivos (RI) lleva el contrato a lo largo de la curva de reserva del agente hasta 1, fuera de su línea de certeza y con menor beneficio esperado para el principal.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="conclusiones-2" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones-2">2.2.3. Conclusiones</h4>
+<p><strong>Aspectos positivos</strong>: el modelo muestra con precisión que el origen de la ineficiencia del riesgo moral no está en la asimetría de información por sí misma, sino en la combinación de esfuerzo no observable, conflicto de interés y aversión al riesgo.</p>
+<p>El modelo proporciona, además, el principio general de todo contrato de incentivos, el uso de cualquier señal informativa sobre el esfuerzo (condición de Holmström). Si la restricción de incentivos es activa y el agente es averso al riesgo, su pago ha de ser variable, pues no puede quedar asegurado en la medida en que lo haría el reparto eficiente del riesgo, y se llega a una solución de <em>second best</em>.</p>
+<p><strong>Limitaciones</strong>: el coste del riesgo moral depende de supuestos sobre las actitudes ante el riesgo que no siempre son contrastables (caso 2). Además, el modelo es estático y con una única tarea. Sin embargo, con relaciones repetidas (reputación) o con varias tareas (Holmström y Milgrom, 1991), el contrato óptimo cambia sustancialmente.</p>
+</section>
+</section>
+<section id="aplicaciones-1" class="level3">
+<h3 class="anchored" data-anchor-id="aplicaciones-1">2.3. Aplicaciones</h3>
+<p>La teoría del riesgo moral tiene múltiples aplicaciones, todas con la misma estructura. Una parte no observa la conducta de la otra tras la firma del contrato, y el remedio consiste en trasladarle parte del riesgo o en condicionar los pagos a resultados observables.</p>
+<ul>
+<li><p><em>Mercados de seguros</em>: tras suscribir la póliza, el asegurado carece de incentivos para actuar con diligencia y prevenir el siniestro. Coherentemente con el modelo, la respuesta consiste en transferir al agente una parte del riesgo. Así, la póliza cubre solo una fracción del valor del bien, o el asegurado paga el primer tramo del daño (franquicias, copagos).</p></li>
+<li><p><em>Gobierno corporativo</em>: cuando propiedad y gestión están separadas, los directivos pueden anteponer el tamaño o el prestigio al valor de la empresa. Para corregirlo, su retribución se vincula a los resultados (opciones sobre acciones, primas) y se establecen mecanismos de supervisión (tema <a href="../chapters/a15-toi.html">A15</a>).</p></li>
+<li><p><em>Mercado de trabajo</em>: si el empleador solo detecta el escaqueo con cierta probabilidad, paga un salario superior al de vaciado del mercado para que el despido sea costoso para el trabajador y este tenga incentivos a no escaquearse. El modelo de salarios de eficiencia de Shapiro y Stiglitz (1984) explica así el desempleo involuntario como dispositivo de disciplina (tema <a href="../chapters/a27-salarios.html">A27</a>).</p></li>
+<li><p><em>Mercado de crédito</em>: tras una subida del tipo de interés, el prestatario tiene incentivos a reorientar los fondos hacia proyectos más arriesgados, con mayor rendimiento en caso de éxito, con los que afrontar el mayor coste, lo que eleva la morosidad esperada. Por ello, el prestamista prefiere racionar el crédito antes que subir el tipo (Stiglitz y Weiss, 1981; temas <a href="../chapters/a42-ciclos.html">A42</a> y <a href="../chapters/b26-crisis-financieras.html">B26</a>).</p></li>
+<li><p><em>Rescates macroeconómicos</em>: tras obtener la ayuda, el país carece de incentivos para corregir la política económica que lo condujo a la emergencia. La solución es la condicionalidad de las instituciones multilaterales (tema <a href="../chapters/b22-fmi.html">B22</a>).</p></li>
+</ul>
+</section>
+<section id="soluciones-al-problema-del-riesgo-moral" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-al-problema-del-riesgo-moral">2.4. Soluciones al problema del riesgo moral</h3>
+<p>Las soluciones al riesgo moral responden todas a la misma lógica del modelo, que consiste en reducir la asimetría de información o hacer que el agente soporte las consecuencias de su conducta.</p>
+<ul>
+<li><p><em>Uso de toda la información disponible</em> (resultado de suficiencia estadística, Holmström, 1979): el riesgo moral es un coste adicional para la relación. Por ello, es valiosa cualquier señal que aporte, además de la del resultado, información sobre el esfuerzo (p.&nbsp;ej. sobre el estado de la naturaleza), y solo esa. El valor de esa señal está en que permite al principal estimar mejor el esfuerzo del agente y reducir el riesgo que este ha de soportar.</p></li>
+<li><p><em>Competencia por comparación</em> (<em>yardstick competition</em>): los incentivos dependen de cómo rinde el agente frente al promedio del mercado, al de la propia empresa en otros periodos o al de otras empresas, lo que filtra las perturbaciones comunes que el agente no controla. También se construyen sobre la competencia intraempresa, mediante mecanismos de promoción y reconocimiento de méritos (torneos).</p></li>
+<li><p><em>Supervisión y control</em>: las auditorías internas o externas y los indicadores de gestión reducen la asimetría de información y fomentan que el agente alinee su conducta con los intereses del principal. La contrapartida es el gasto en supervisión, que el principal lleva hasta que su coste marginal iguala la reducción marginal del coste de agencia.</p></li>
+<li><p><em>Castigos</em>: el despido, la pérdida de reputación y las penalizaciones contractuales complementan a los incentivos positivos. Su eficacia depende de que sean creíbles y de que el agente tenga algo que perder, lo que conecta con los salarios de eficiencia.</p></li>
+<li><p><em>Regulación</em>: tras la Gran Recesión (crisis financiera global y de deuda soberana, 2008-2014) se hizo evidente el riesgo moral asociado al <em>too big to fail</em>. Varias entidades financieras contaban con garantías implícitas de rescate público, lo que fomentaba la toma excesiva de riesgos. Por ello, los colchones de capital, las cláusulas de <em>bail-in</em> y los mecanismos de resolución tratan de devolver a la entidad y a sus acreedores las consecuencias de sus decisiones (tema <a href="../chapters/b27-regulacion-financiera.html">B27</a>).</p></li>
+<li><p><em>Separación de responsabilidades y condicionalidad</em>: muchos problemas de riesgo moral derivan de la estructura de gobernanza (la monetización del déficit cuando la autoridad monetaria no es independiente del Gobierno) y se resuelven separando las funciones. En la ayuda oficial al desarrollo y en los rescates, la financiación en condiciones favorables a países con instituciones débiles genera riesgo moral, y la solución es la condicionalidad, es decir, subordinar los desembolsos al cumplimiento de reformas (temas <a href="../chapters/b22-fmi.html">B22</a> y <a href="../chapters/b29-fod-aod.html">B29</a>).</p></li>
+</ul>
+</section>
+<section id="conclusiones-3" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-3">2.5. Conclusiones</h3>
+<p><strong>Aspectos positivos</strong>: la teoría del riesgo moral explica la forma de los contratos reales (remuneraciones variables, franquicias y copagos en los seguros, condicionalidad de la ayuda) como respuestas a la no observabilidad de la conducta. Proporciona también el principio que guía el diseño de esos contratos, usar toda la información sobre el esfuerzo y solo esa. Sus resultados son la base de la economía de las organizaciones y de la regulación financiera moderna.</p>
+<p><strong>Limitaciones</strong>: el modelo canónico es bilateral y estático, con un solo agente y una sola tarea. Las extensiones muestran que los resultados cambian con terceros y con el tiempo:</p>
+<ul>
+<li><p><em>Con terceros</em>: John Vickers (1985) muestra, en un contexto de información simétrica, que los accionistas (principales) pueden preferir remunerar a los directivos (agentes) no solo según el resultado, sino con el objetivo estratégico de que los competidores produzcan menos. Fershtman y Judd (1987) y Sklivas (1987) extienden el resultado a la competencia en precios, en la que el contrato lleva a los rivales a fijar precios más altos. El contrato de agencia se convierte así en un instrumento de competencia en el mercado (sobre el oligopolio, tema <a href="../chapters/a19-oligopolio.html">A19</a>).</p></li>
+<li><p><em>Con el tiempo</em>: con relaciones repetidas, la reputación sustituye parcialmente a los incentivos explícitos.</p></li>
+</ul>
+</section>
+</section>
+<section id="selección-adversa-akerlof-1970" class="level2">
+<h2 class="anchored" data-anchor-id="selección-adversa-akerlof-1970">3. Selección adversa (Akerlof, 1970)</h2>
+<p>Si lo que el principal no observa es lo que el agente es, y no lo que hace, la asimetría existe ya antes del contrato y da lugar a la selección adversa. A su concepto siguen el modelo de Akerlof, sus aplicaciones y las soluciones mediante señalización y autoselección.</p>
+<section id="concepto-selección-adversa" class="level3">
+<h3 class="anchored" data-anchor-id="concepto-selección-adversa">3.1. Concepto: selección adversa</h3>
+<p>Hay <strong>selección adversa</strong> cuando el agente sabe, ya antes de firmar el contrato, algo que el principal ignora sobre algún rasgo propio o del bien intercambiado que pesa en el resultado final del intercambio<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<p>Esta asimetría previa al contrato puede tener dos orígenes. Uno es que el mercado funciona mal porque no permite diferenciar unos bienes y servicios de otros, y el otro, que una de las partes oculte a propósito lo que sabe.</p>
+<p>La consecuencia de esa asimetría es que la peor calidad desplaza a la mejor, hasta el punto de que pueden desaparecer algunos segmentos de un mercado o incluso el mercado entero.</p>
+</section>
+<section id="modelo-de-akerlof-1970-el-mercado-de-limones" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-de-akerlof-1970-el-mercado-de-limones">3.2. Modelo de Akerlof (1970): el mercado de “limones”</h3>
+<p><strong>Origen</strong>: George Akerlof (<em>The Market for “Lemons”</em>, 1970; Nobel 2001) toma como ejemplo la compraventa de coches usados. Una proporción <span class="math inline">\(\alpha\)</span> de ellos es de mala calidad y la restante, <span class="math inline">\(1 - \alpha\)</span>, de buena calidad, con <span class="math inline">\(\alpha \in (0, 1)\)</span>.</p>
+<p><strong>Idea</strong>: quien compra sin observar la calidad solo paga lo que vale un coche medio, y eso expulsa del mercado a los coches buenos hasta que solo se venden los malos (“limones”).</p>
+<section id="supuestos-2" class="level4">
+<h4 class="anchored" data-anchor-id="supuestos-2">3.2.1. Supuestos</h4>
+<p><strong>Entorno</strong>: la información sobre la calidad de cada coche usado está repartida de forma asimétrica, porque solo la tiene quien vende y no quien compra. Hay dos calidades, coches buenos y limones, en proporciones conocidas, <span class="math inline">\(1 - \alpha\)</span> y <span class="math inline">\(\alpha\)</span>.</p>
+<p><strong>Agentes</strong>: los dueños de coches usados, que conocen la calidad del suyo, y los compradores, numerosos y neutrales al riesgo. Cada coche vale más para el comprador que para su dueño, de modo que con información completa todos se venderían.</p>
+<p><strong>Mercado de bienes</strong>: competitivo y con un único precio para todos los coches, porque los compradores no distinguen calidades.</p>
+</section>
+<section id="modelo-2" class="level4">
+<h4 class="anchored" data-anchor-id="modelo-2">3.2.2. Modelo</h4>
+<p><strong>Planteamiento</strong>: con calidad observable, cada coche se vendería por lo que vale para el comprador, <span class="math inline">\(p_A\)</span> el bueno y <span class="math inline">\(p_B\)</span> el malo (<span class="math inline">\(p_A &gt; p_B\)</span>). Como en realidad el comprador no sabe cuál le venden, solo paga por lo que espera recibir. Si cree que los coches en venta se reparten como el conjunto de los coches usados, ofrece la media ponderada de ambos valores, <span class="math inline">\(p_C = (1 - \alpha)p_A + \alpha p_B\)</span>.</p>
+<p>Del lado de la oferta, quien tiene un coche bueno exige por él un precio mínimo, <span class="math inline">\(p_A^V\)</span>, más alto que el que piden los dueños de coches malos.</p>
+<p><strong>Equilibrio</strong>: si el precio mínimo de los coches buenos supera lo que el comprador ofrece por un coche cualquiera (<span class="math inline">\(p_A^V &gt; p_C\)</span>), el mercado pasa de la situación inicial al equilibrio final en cuatro pasos:</p>
+<ol type="1">
+<li><p><em>Situación inicial</em>: los compradores esperan la calidad media del conjunto de los coches usados y ofrecen <span class="math inline">\(p_C\)</span> por cualquiera de ellos.</p></li>
+<li><p><em>Retirada de los coches buenos</em>: a ese precio, al propietario de un coche bueno no le compensa venderlo y lo saca del mercado, mientras que los limones se siguen ofreciendo<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p></li>
+<li><p><em>Revisión de las expectativas</em>: los compradores pagan <span class="math inline">\(p_C\)</span> y comprueban que reciben limones, de modo que revisan a la baja la probabilidad que asignan a que un coche en venta sea bueno. Por la regla de Bayes, esa probabilidad es <span class="math inline">\((1-\alpha)s_A/[(1-\alpha)s_A + \alpha s_B]\)</span>, donde <span class="math inline">\(s_A\)</span> y <span class="math inline">\(s_B\)</span> son las fracciones de dueños de coches buenos y malos que venden al precio vigente. Como al precio <span class="math inline">\(p_C\)</span> ningún dueño de un coche bueno vende (<span class="math inline">\(s_A = 0\)</span>), la probabilidad pasa de <span class="math inline">\(1 - \alpha\)</span> a cero.</p></li>
+<li><p><em>Equilibrio final</em>: los compradores ya solo ofrecen <span class="math inline">\(p_B\)</span>, lo que vale un limón, y a ese precio solo se intercambian limones. Las expectativas se confirman, pero el mercado de coches buenos ha desaparecido.</p></li>
+</ol>
+<p><strong>Desarrollo gráfico</strong>: con un continuo de calidades, los mercados de coches buenos y de limones se condensan en uno solo, el de coches usados de calidad no observable, que se representa en el plano cantidad-precio (figura <a href="#fig-a132-akerlof" class="quarto-xref"><span>A13.4</span></a>):</p>
+<ol type="1">
+<li><p><em>Oferta</em>, <span class="math inline">\(S(x)\)</span>: es creciente, porque cada vendedor solo ofrece su coche si el precio supera el valor que le atribuye, y los propietarios de coches mejores los valoran más. Por ello, al subir el precio entran en el mercado coches de mayor calidad y la calidad media de los coches en venta, <span class="math inline">\(\theta\)</span>, aumenta. Al bajar el precio, en cambio, se retiran primero los mejores coches.</p></li>
+<li><p><em>Demanda</em>, <span class="math inline">\(D(x)\)</span>: los compradores no observan la calidad de cada coche, pero anticipan que la calidad media depende del precio. Sobre la cantidad demandada actúan, por tanto, dos efectos de signo contrario:</p>
+<ul>
+<li><p><em>Efecto precio</em>: con la calidad dada, un precio más alto reduce la cantidad demandada, como en cualquier demanda ordinaria. Este efecto domina por encima de <span class="math inline">\(\hat{p}\)</span>, y la demanda es decreciente en su tramo superior.</p></li>
+<li><p><em>Efecto calidad</em>: un precio más alto indica que se ofrecen coches de mejor calidad media, lo que hace más atractiva la compra. Este efecto domina por debajo de <span class="math inline">\(\hat{p}\)</span>, y la cantidad demandada aumenta con el precio en el tramo inferior.</p></li>
+</ul>
+<p>La demanda tiene así dos pendientes y se “dobla” en <span class="math inline">\(\hat{p}\)</span>, el precio al que la cantidad demandada es máxima.</p></li>
+<li><p><em>Equilibrios</em>: la oferta corta a la demanda en dos puntos. En el equilibrio 0, al precio <span class="math inline">\(p_0\)</span>, se venden <span class="math inline">\(x(\overline{\theta})\)</span> coches con una calidad media alta, <span class="math inline">\(\overline{\theta}\)</span>, porque aún se ofrecen coches buenos. En el equilibrio 1, al precio <span class="math inline">\(p_1\)</span>, solo se venden <span class="math inline">\(x(\underline{\theta})\)</span> coches, de calidad media baja, <span class="math inline">\(\underline{\theta}\)</span>, y el mercado queda reducido a los limones.</p></li>
+</ol>
+<div id="fig-a132-akerlof" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a132-akerlof-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a132_Akerlof.html" style="height:620px" loading="lazy" title="fig-a132-akerlof"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a132-akerlof-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A13.4: Mercado de limones (Akerlof, 1970), representado como un único mercado de coches usados cuya calidad no observan los compradores. Como el precio determina la calidad media ofrecida, <span class="math inline">\(\theta\)</span>, la demanda <span class="math inline">\(D(x)\)</span> crece con el precio hasta <span class="math inline">\(\hat{p}\)</span> y decrece después. Su corte con la oferta <span class="math inline">\(S(x)\)</span> da dos equilibrios. En 0, al precio <span class="math inline">\(p_0\)</span>, se venden <span class="math inline">\(x(\overline{\theta})\)</span> coches, con calidad media alta, <span class="math inline">\(\overline{\theta}\)</span>, porque se incluyen los de alta calidad. En 1, al precio <span class="math inline">\(p_1\)</span>, solo <span class="math inline">\(x(\underline{\theta})\)</span>, los de baja calidad (<span class="math inline">\(\underline{\theta}\)</span>), y el mercado casi desaparece.
+</figcaption>
+</figure>
+</div>
+<p><strong>Estática comparativa</strong>: el resultado depende de la proporción de limones y de la distancia entre lo que vale un coche bueno para el comprador y para su dueño. Los coches buenos solo se venden si <span class="math inline">\(p_C \geq p_A^V\)</span>, es decir, si la proporción de limones no supera <span class="math inline">\(\alpha^* = (p_A - p_A^V)/(p_A - p_B)\)</span>. Cuanto mayor es <span class="math inline">\(\alpha\)</span>, menor es el precio medio que ofrecen los compradores y más probable es la expulsión de los coches buenos.</p>
+<p><strong>Dinámica</strong>: con un continuo de calidades, los equilibrios 0 y 1 se sostienen por sí mismos, porque en cada uno la calidad media que se ofrece al precio vigente coincide con la que esperan los compradores (Wilson, 1980). Ninguna fuerza interna del modelo empuja el mercado de 0 a 1, y cuál de los dos se alcanza depende de las expectativas. Si una perturbación lleva a los compradores a esperar una calidad suficientemente menor, ofrecen un precio más bajo, los dueños de los mejores coches los retiran y la calidad media cae, lo que confirma la revisión. Una ola de pesimismo puede llevar así el mercado de 0 a 1, en el que solo se intercambian limones. La expulsión de los coches buenos de los cuatro pasos del equilibrio es, en cambio, endógena, porque con dos calidades y <span class="math inline">\(p_A^V &gt; p_C\)</span> el precio <span class="math inline">\(p_C\)</span> no es un equilibrio.</p>
+<p><strong>Bienestar</strong>: con información simétrica, cada calidad tendría su mercado y su precio, y el resultado sería eficiente en el sentido de Pareto. Con información asimétrica, en cambio, el equilibrio no es un óptimo de Pareto, ya que existen intercambios mutuamente beneficiosos (los coches buenos a un precio intermedio entre <span class="math inline">\(p_A^V\)</span> y <span class="math inline">\(p_A\)</span>) que no se realizan porque la asimetría impide que el precio los señale. La pérdida de eficiencia de la selección adversa se mide, así, por el excedente de los intercambios que desaparecen.</p>
+</section>
+<section id="conclusiones-4" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones-4">3.2.3. Conclusiones</h4>
+<p><strong>Aspectos positivos</strong>: las ideas del modelo son de alcance general y admiten múltiples aplicaciones y extensiones. De hecho, la selección adversa que Akerlof analizó con calidades heterogéneas en un mercado de segunda mano puede trasladarse igualmente al mercado de trabajo, con trabajadores heterogéneos, o al de seguros, con clientes heterogéneos.</p>
+<p><strong>Limitaciones</strong>: el modelo supone que la calidad es exógena y que los compradores solo conocen su distribución. Sin embargo, con garantías, reputación o inspección previa, la asimetría se reduce, y el colapso total que predice el modelo es un caso extremo del que muchos mercados escapan con las soluciones del apartado 3.4.</p>
+</section>
+</section>
+<section id="aplicaciones-2" class="level3">
+<h3 class="anchored" data-anchor-id="aplicaciones-2">3.3. Aplicaciones</h3>
+<p>La teoría de la selección adversa tiene múltiples aplicaciones, y el propio Akerlof (1970) la extendió ya al seguro médico de los mayores de 65 años y al crédito en los países en desarrollo. Todas las aplicaciones tienen la estructura del mercado de limones, en la que un precio basado en la calidad media expulsa a los mejores tipos, y el remedio consiste en hacer observable el tipo o en lograr que el agente lo revele.</p>
+<ul>
+<li><p><em>Mercados de seguros</em>: con una prima única, calculada para el riesgo medio, los asegurados de bajo riesgo abandonan el seguro, la prima sube y el proceso se repite (<em>espiral de selección adversa</em>). Por ejemplo, en la Universidad de Harvard, a mediados de los años noventa, los empleados pasaron a pagar íntegramente el sobrecoste del seguro médico más generoso. En respuesta, los empleados más jóvenes y de menor gasto abandonaron ese seguro, y en tres años dejó de ofrecerse (Cutler y Reber, 1998). La respuesta es el seguro obligatorio, que mantiene a todos los tipos en el mismo fondo (responsabilidad civil del automóvil, sanidad pública), o un menú de pólizas que los separa.</p></li>
+<li><p><em>Mercado de crédito</em>: el prestamista no distingue los proyectos seguros de los arriesgados. Si sube el tipo de interés, abandonan primero los prestatarios con proyectos más seguros, cuyo beneficio esperado, con responsabilidad limitada, es menor, y empeora la calidad media de la cartera. Este efecto selección se suma al de incentivos del apartado 2.3 y completa el racionamiento del crédito de Stiglitz y Weiss (1981), desarrollado en el tema <a href="../chapters/a42-ciclos.html">A42</a>, apartado 2.3.1. Las garantías sirven de instrumento de autoselección, pues el prestatario de bajo riesgo, que tiene menos probabilidad de perderlas, acepta aportar más colateral a cambio de un tipo menor (Bester, 1985).</p></li>
+<li><p><em>Financiación de la empresa</em>: los directivos conocen mejor que los inversores el valor de la empresa y solo quieren emitir acciones si están sobrevaloradas. Por ello, el mercado recibe el anuncio de una ampliación de capital como una mala noticia, y las empresas prefieren la autofinanciación a la deuda, y esta a las acciones (jerarquía financiera de Myers y Majluf, 1984, tema <a href="../chapters/b03-financiacion.html">B03</a>, apartado 2.4).</p></li>
+<li><p><em>Mercado de trabajo</em>: el empleador no observa la productividad de los candidatos, cuyo salario de reserva crece con ella. Si baja el salario, se marchan primero los más productivos, por lo que el empleador puede preferir pagar por encima del salario de vaciado del mercado (salarios de eficiencia por selección adversa, tema <a href="../chapters/a27-salarios.html">A27</a>, apartado 3.1). Los periodos de prueba y la educación como señal reducen la asimetría.</p></li>
+</ul>
+</section>
+<section id="soluciones-al-problema-de-selección-adversa" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-al-problema-de-selección-adversa">3.4. Soluciones al problema de selección adversa</h3>
+<p>Los estudios de Michael Spence (1973, 1974), sobre la señalización, y de Michael Rothschild y Joseph Stiglitz (1976), sobre la autoselección, dieron lugar a dos tipos de soluciones para los problemas de selección adversa. Las dos se apoyan en mejorar la circulación de la información para que ambas partes salgan ganando:</p>
+<ol type="1">
+<li><p><em>Señalización</em> (<em>signaling</em>): el agente toma la iniciativa e intenta transmitir mediante acciones observables información sobre aquellas características suyas que no lo son. Funciona como señal cualquier rasgo visible que el agente elige y cuya adquisición le resulta costosa.</p></li>
+<li><p><em>Autoselección o filtro</em> (<em>screening</em>): el principal toma la iniciativa y diseña mecanismos que separan los distintos tipos de agentes, de manera que cada agente revela su tipo con su elección. Su análisis formal se apoya en el <em>principio de revelación</em> de Myerson (1979). Según este principio, al diseñar el contrato óptimo, el principal puede restringir sin pérdida de generalidad el menú de contratos a aquellos que incentivan a los agentes a revelar verazmente sus características. Los agentes revelarán la información correcta cuando decir la verdad sea su mejor estrategia. Este mecanismo se aplica después a la regulación de los monopolios naturales (Laffont y Tirole, 1986).</p></li>
+</ol>
+<section id="señalización-en-el-mercado-de-trabajo-spence-1973" class="level4">
+<h4 class="anchored" data-anchor-id="señalización-en-el-mercado-de-trabajo-spence-1973">3.4.1. Señalización en el mercado de trabajo (Spence, 1973)</h4>
+<p><strong>Origen</strong>: Michael Spence (1973, 1974), Nobel 2001 junto con Akerlof y Stiglitz, formuló el primer modelo en el que la parte informada emite una señal costosa para revelar su tipo.</p>
+<p><strong>Idea</strong>: ¿cómo puede ser que en muchas ofertas de empleo se pida tener título universitario, pero no se especifique cuál? La educación demuestra la capacidad de aprendizaje de los individuos y, así, es señal de las cualidades del trabajador.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Entorno</em>: el modelo describe un mercado de trabajo con información asimétrica previa al contrato. Cada trabajador es de tipo A, de alta productividad, o de tipo B, de baja productividad (<span class="math inline">\(\text{Pmg}_{L,A} &gt; \text{Pmg}_{L,B}\)</span>). Los dos tipos son igual de numerosos en la población. Las empresas no saben de antemano a qué tipo pertenece cada trabajador, pero sí observan su educación, <span class="math inline">\(h\)</span>, que se aproxima con indicadores como los años de escolarización o los títulos obtenidos.</p></li>
+<li><p><em>Tecnología</em>: Spence supone que educarse resulta más caro para los trabajadores menos productivos<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>, aunque la educación no altera la productividad de nadie<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p></li>
+</ul>
+<p><strong>Planteamiento</strong>: sin señales, la empresa no sabe de qué tipo es cada trabajador. A diferencia de lo que ocurriría en un mercado competitivo con información simétrica, el de tipo A cobra entonces menos de lo que produce y el de tipo B, más<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>.</p>
+<p>Los agentes pueden elegir su nivel de educación, <span class="math inline">\(h\)</span>, antes de ser contratados. Cada tipo de agente elige o bien educarse (<span class="math inline">\(h = h^*\)</span>) o no educarse (<span class="math inline">\(h = 0\)</span>). La elección se reduce a esas dos opciones porque el valor de la educación como señal es el mismo para cualquier nivel <span class="math inline">\(h \geq h^*\)</span> (y nulo por debajo), si bien el coste de la educación aumenta con el nivel de educación.</p>
+<p>Las empresas parten de unas creencias previas que asocian el tipo de cada trabajador a su educación, con un umbral de referencia, <span class="math inline">\(h^*\)</span>. A quien alcanza al menos ese umbral (<span class="math inline">\(h \geq h^*\)</span>) lo tratan como tipo A y le pagan <span class="math inline">\(w_A\)</span>, y a quien se queda por debajo (<span class="math inline">\(h &lt; h^*\)</span>), como tipo B, con un salario <span class="math inline">\(w_B &lt; w_A\)</span>.</p>
+<p>Para que la señal separe deben cumplirse dos condiciones. Según la restricción de incentivos de A, el salario del trabajador productivo, neto del coste de educarse, no debe quedar por debajo del que obtendría sin educarse (<span class="math inline">\(w_A - c_A(h^*) \geq w_B\)</span>). Según la de B, al trabajador poco productivo no educarse le ha de dejar estrictamente más que educarse (<span class="math inline">\(w_B &gt; w_A - c_B(h^*)\)</span>).</p>
+<p>De las restricciones se desprenden varias implicaciones. La condición necesaria para la existencia del equilibrio separador es que el coste de educarse del agente A sea menor que el de B (<span class="math inline">\(c_A(h^*) &lt; c_B(h^*)\)</span>), lo cual se cumple por hipótesis. No obstante, el equilibrio no es único, porque las restricciones admiten varios equilibrios según el diferencial salarial y el umbral <span class="math inline">\(h^*\)</span> que fijen las creencias.</p>
+<p><strong>Equilibrio</strong>: de las restricciones de incentivos se desprenden tres equilibrios posibles:</p>
+<ol type="1">
+<li><p><em>Equilibrio agrupador con educación</em> (<span class="math inline">\(w_A - w_B \geq c_B(h^*)\)</span>): si el diferencial salarial es al menos equivalente al coste de educarse de B, ambos agentes elegirán educarse. Por tanto, la señal no distingue. En esta versión simplificada los salarios vienen dados por las creencias previas de las empresas, mientras que con creencias consistentes todos los trabajadores cobrarían en el equilibrio agrupador el salario medio.</p></li>
+<li><p><em>Equilibrio agrupador sin educación</em> (<span class="math inline">\(w_A - w_B &lt; c_A(h^*)\)</span>): si el diferencial salarial es menor que el coste de educarse de A, ningún agente elegirá educarse.</p></li>
+<li><p><em>Equilibrio separador</em> (<span class="math inline">\(c_B(h^*) &gt; w_A - w_B \geq c_A(h^*)\)</span>): si el diferencial salarial es menor que el coste de educarse de B, pero al menos equivale al coste de educarse de A, entonces solo A se educa. La señal funciona porque es costosa en su justa medida.</p></li>
+</ol>
+<p><strong>Desarrollo gráfico</strong>: los equilibrios de la señalización se representan en el plano educación-salarios (figura <a href="#fig-a133-spence" class="quarto-xref"><span>A13.5</span></a>):</p>
+<ol type="1">
+<li><p><em>Costes de educarse</em>, <span class="math inline">\(c_A(h)\)</span> y <span class="math inline">\(c_B(h)\)</span>: los del agente B son mayores que los del agente A para cualquier nivel de educación.</p></li>
+<li><p><em>Diferencial salarial</em>, <span class="math inline">\(w_A - w_B\)</span>: es una recta horizontal, pues no depende de la educación.</p></li>
+<li><p><em>Equilibrios</em>: los puntos de corte entre la recta del diferencial salarial y las funciones de costes, <span class="math inline">\(\underline{h}\)</span> con <span class="math inline">\(c_B(h)\)</span> y <span class="math inline">\(\overline{h}\)</span> con <span class="math inline">\(c_A(h)\)</span>, determinan las tres zonas en las que se pueden producir los diferentes equilibrios. El equilibrio es agrupador con educación si <span class="math inline">\(h^* \leq \underline{h}\)</span>, separador si <span class="math inline">\(\underline{h} &lt; h^* \leq \overline{h}\)</span> y agrupador sin educación si <span class="math inline">\(h^* &gt; \overline{h}\)</span>.</p></li>
+</ol>
+<div id="fig-a133-spence" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a133-spence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a133_Spence.html" style="height:620px" loading="lazy" title="fig-a133-spence"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a133-spence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A13.5: Señalización (Spence, 1973). El diferencial salarial <span class="math inline">\(w_A - w_B\)</span> corta las curvas de coste de educarse <span class="math inline">\(c_B(h)\)</span> y <span class="math inline">\(c_A(h)\)</span> en <span class="math inline">\(\underline{h}\)</span> y <span class="math inline">\(\overline{h}\)</span>. Esos umbrales delimitan las zonas de equilibrio agrupador con educación (<span class="math inline">\(h^* \leq \underline{h}\)</span>), separador (<span class="math inline">\(\underline{h} &lt; h^* \leq \overline{h}\)</span>), en el que solo los trabajadores de alta productividad se educan, y agrupador sin educación (<span class="math inline">\(h^* &gt; \overline{h}\)</span>).
+</figcaption>
+</figure>
+</div>
+<p><strong>Estática comparativa</strong>: como los costes de educarse son crecientes en <span class="math inline">\(h\)</span>, todo lo que eleva la recta del diferencial o baja las curvas de costes desplaza a la derecha los cortes <span class="math inline">\(\underline{h}\)</span> y <span class="math inline">\(\overline{h}\)</span>:</p>
+<ul>
+<li><p><em>Mayor diferencial salarial</em>, <span class="math inline">\(w_A - w_B\)</span>: para un umbral <span class="math inline">\(h^*\)</span> dado, la economía puede pasar del agrupador sin educación al separador y, si el diferencial sigue creciendo, del separador al agrupador con educación, porque también al tipo B le compensa educarse.</p></li>
+<li><p><em>Educación más barata</em> (menores <span class="math inline">\(c_A(h)\)</span> y <span class="math inline">\(c_B(h)\)</span>): el efecto es el mismo. Si las empresas no elevan <span class="math inline">\(h^*\)</span>, la señal puede dejar de separar, y para mantener la separación el umbral ha de subir.</p></li>
+<li><p><em>Mayor diferencia de costes entre tipos</em>: amplía la zona separadora, <span class="math inline">\((\underline{h}, \overline{h}]\)</span>, y hace la señal más robusta.</p></li>
+</ul>
+<p><strong>Bienestar</strong>: el equilibrio agrupador sin educación es eficiente en el sentido de Pareto, pues nadie incurre en el coste de una señal que no aumenta la productividad, mientras que el agrupador con educación despilfarra recursos. Como la señal supone un coste, el equilibrio separador introduce una distorsión en términos de bienestar. Así, la solución descentralizada al problema de selección adversa basada en la señalización constituye una solución de <em>second best</em>.</p>
+<p>Ahora bien, si el umbral <span class="math inline">\(h^*\)</span> es el mínimo compatible con la separación (el más próximo a <span class="math inline">\(\underline{h}\)</span>), se alcanza el equilibrio separador de menor coste (Riley, 1979), que es Pareto-superior a los demás equilibrios separadores. Alternativamente, también se podría alcanzar una solución Pareto-óptima si un planificador benevolente fija subsidios cruzados.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: las ideas de Spence sostienen los argumentos a favor de una educación más exigente, que evite que las señales sean percibidas como poco costosas. El modelo explica, además, el <em>efecto diploma</em> (<em>sheepskin effect</em>), por el que los trabajadores con título perciben un salario mayor que los que carecen de él aunque el título no haya aumentado su productividad.</p></li>
+<li><p><em>Limitaciones</em>: el supuesto de que la educación no altera en absoluto la productividad es, cuando menos, exigente, y en ello difieren Spence y Becker. Para Spence, la productividad alta causa más educación, que actúa como señal y permite obtener más salario, mientras que para Becker (capital humano), la educación causa más productividad, que causa más salario (tema <a href="../chapters/a25-oferta-trabajo.html">A25</a>).</p></li>
+</ul>
+</section>
+<section id="autoselección-y-filtro-rothschild-y-stiglitz-1976" class="level4">
+<h4 class="anchored" data-anchor-id="autoselección-y-filtro-rothschild-y-stiglitz-1976">3.4.2. Autoselección y filtro (Rothschild y Stiglitz, 1976)</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>El desarrollo analítico del modelo (programa, CPO, equilibrio, representación gráfica y extensiones) se recoge en el Anexo. Para la exposición basta con la idea y el razonamiento que siguen.</p>
+</div>
+</div>
+</div>
+<p><strong>Origen</strong>: Michael Rothschild y Joseph Stiglitz (1976) formularon el modelo canónico de criba en el mercado de seguros, con aseguradoras en competencia. En cambio, la versión con un único principal que se presenta aquí, el <em>cribado monopolístico</em>, procede de Mussa y Rosen (1978) y de Maskin y Riley (1984).</p>
+<p><strong>Idea</strong>: el principal ofrece un menú de contratos diseñado de modo que cada tipo esté mejor con el contrato pensado para él, y los agentes se autoseleccionan al elegir.</p>
+<p><strong>Razonamiento</strong>: en el mercado de trabajo, el principal no observa si el agente es de tipo A, más productivo, o de tipo B, al que el esfuerzo le pesa más. El principal ofrece un par esfuerzo-salario para cada uno. El tipo A tendría interés en hacerse pasar por B, cuyo contrato exige menos esfuerzo. Para impedirlo, el principal exige al tipo B menos esfuerzo del eficiente, lo que hace su contrato poco atractivo para A. Además, el principal deja al tipo A una <em>renta informacional</em>, una utilidad por encima de su utilidad de reserva. El resultado es un equilibrio separador de <em>second best</em>, eficiente en el contrato del tipo alto y distorsionado en el del tipo bajo.</p>
+<p>Con aseguradoras en competencia, como en el modelo original, tampoco hay equilibrio agrupador y la distorsión recae en los asegurados de bajo riesgo, que solo obtienen cobertura parcial, aunque en ese caso nadie obtiene renta informacional.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: el modelo muestra que la parte no informada puede inducir a la informada a revelar su tipo mediante un menú de contratos. En su versión original de seguros, el menú combina cobertura completa cara (elegida por los de alto riesgo) y cobertura parcial barata (elegida por los de bajo riesgo). El menú explica así la estructura real de las pólizas, con franquicias y límites de cobertura como instrumentos de autoselección.</p></li>
+<li><p><em>Limitaciones</em>: el equilibrio separador impone un coste al tipo bajo, pues el asegurado de bajo riesgo queda infraasegurado y el trabajador poco productivo recibe un contrato distorsionado. Además, en el mercado de seguros el equilibrio separador puede no existir cuando la proporción de agentes de bajo riesgo es alta, de modo que el mercado carece de equilibrio de Nash. No obstante, los refinamientos posteriores restauran la existencia a costa de modificar el concepto de equilibrio.</p></li>
+</ul>
+</section>
+<section id="aplicación-a-la-regulación-laffont-y-tirole-1986" class="level4">
+<h4 class="anchored" data-anchor-id="aplicación-a-la-regulación-laffont-y-tirole-1986">3.4.3. Aplicación a la regulación (Laffont y Tirole, 1986)</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>El modelo de Laffont y Tirole (1986), con el programa del regulador, su CPO y su CSO, se desarrolla en el tema <a href="../chapters/a15-toi.html">A15</a>, apartado 2.3.3, y sus implicaciones para la política regulatoria, en el tema <a href="../chapters/a20-regulacion.html">A20</a>, apartado 2.2.2. Aquí se presenta como aplicación del mecanismo de autoselección.</p>
+</div>
+</div>
+</div>
+<p><strong>Origen</strong>: el mecanismo de autoselección del apartado anterior se aplica también a la regulación de los monopolios naturales. Jean-Jacques Laffont y Jean Tirole (1986) parten de un regulador que no conoce la eficiencia intrínseca de la empresa regulada (selección adversa) ni observa el esfuerzo con que la empresa reduce sus costes (riesgo moral).</p>
+<p><strong>Idea</strong>: la regulación óptima es un menú de contratos.</p>
+<p><strong>Razonamiento</strong>: la empresa eficiente se autoselecciona en un contrato de precio fijo, con incentivos plenos y una renta informacional. La ineficiente, en cambio, elige un contrato con mayor reembolso de costes, de menor potencia de incentivos y sin renta.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: el modelo reúne en un solo marco los dos fallos de información de este tema y muestra que la respuesta a ambos es la misma, un menú diseñado mediante el principio de revelación. La contrapartida es una renta informacional que el regulador no puede evitar.</p></li>
+<li><p><em>Limitaciones</em>: el modelo es estático y supone un regulador benevolente con capacidad de compromiso. Si el regulador usa la información revelada para endurecer la regulación futura (efecto trinquete), la empresa deja de revelar su tipo, y si la industria captura al regulador, la regulación deja de perseguir el bienestar social. Además, el diseño del menú exige que el regulador conozca la distribución de los tipos de empresa.</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusiones-5" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-5">3.5. Conclusiones</h3>
+<p><strong>Aspectos positivos</strong>: la selección adversa explica por qué mercados que deberían funcionar (seguros, crédito, bienes de segunda mano, trabajo) se contraen o desaparecen. Las soluciones al problema (señalización, autoselección, menús de contratos) son hoy el fundamento del diseño de contratos y de la regulación con información asimétrica. El principio de revelación unifica las soluciones de autoselección, ya que cualquier mecanismo puede replicarse con uno en el que a los agentes les interese decir la verdad.</p>
+<p><strong>Limitaciones</strong>: las soluciones descentralizadas son de <em>second best</em> (la señal y la autoselección tienen un coste real), y los equilibrios son a menudo múltiples, por lo que su selección exige refinamientos. Además, los modelos suponen que los tipos son fijos y los agentes racionales. En cambio, con tipos endógenos o racionalidad limitada, la información asimétrica puede ser menos o más grave de lo que predicen los modelos.</p>
+</section>
+</section>
+<section id="conclusiones-6" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones-6">Conclusiones</h2>
+<p>El tema ha estudiado las relaciones en que una parte sabe algo relevante que la otra no observa. El modelo principal-agente con información simétrica fija la referencia de eficiencia. Con riesgo moral, el principal no observa lo que el agente hace, y el pago ha de depender del resultado para inducir el esfuerzo, a costa de un peor reparto del riesgo. Con selección adversa, no observa lo que el agente es, y un precio basado en la calidad media puede expulsar del mercado a los mejores tipos. La señalización, la autoselección, la supervisión y la competencia por comparación mitigan estos problemas, siempre en un <em>second best</em>. La información asimétrica es, así, un fallo de mercado, condición necesaria pero no suficiente para intervenir, y varios premios Nobel reflejan su importancia (Akerlof, Spence y Stiglitz, 2001; Tirole, 2014; Hart y Holmström, 2016; Milgrom y Wilson, 2020).</p>
+<p>Los modelos de información asimétrica combinan la utilidad esperada y la aversión al riesgo (tema <a href="../chapters/a10-riesgo-incertidumbre.html">A10</a>) con la teoría de juegos, que formaliza la señalización como equilibrio bayesiano perfecto (tema <a href="../chapters/a14-juegos.html">A14</a>). Su alcance es muy amplio. Dentro de la empresa, la agencia y los contratos incompletos explican su organización y sus límites (tema <a href="../chapters/a15-toi.html">A15</a>), y, frente a ella, el regulador que no conoce sus costes ha de diseñar contratos que revelen esa información (tema <a href="../chapters/a20-regulacion.html">A20</a>). En el análisis del bienestar, la información imperfecta es uno de los fallos de mercado que invalidan los teoremas fundamentales (tema <a href="../chapters/a23-eb-ii.html">A23</a>). En macroeconomía, por último, explica por qué las empresas pagan salarios superiores al de equilibrio (tema <a href="../chapters/a27-salarios.html">A27</a>) y por qué los bancos racionan el crédito en lugar de subir el tipo de interés, un canal de amplificación del ciclo (tema <a href="../chapters/a42-ciclos.html">A42</a>).</p>
+<p>Los sistemas de valoraciones de las plataformas digitales generan la reputación que permite comerciar entre desconocidos, aunque sufren sesgos que limitan su información (Tadelis, 2016). Por su parte, la economía de los datos estudia la información como bien que se compra y se vende (Bergemann y Bonatti, 2019). Como los datos de un usuario revelan información sobre otros, su precio puede ser demasiado bajo y llevar a compartir más datos de lo eficiente (Acemoglu, Makhdoumi, Malekian y Ozdaglar, 2022). En el diseño de información, la persuasión bayesiana se distingue de la señalización porque el emisor no elige una acción costosa conociendo su tipo, sino que se compromete de antemano con la información que revelará al receptor (Kamenica y Gentzkow, 2011).</p>
+</section>
+<section id="anexo.-modelo-de-autoselección-con-un-único-principal" class="level2">
+<h2 class="anchored" data-anchor-id="anexo.-modelo-de-autoselección-con-un-único-principal">Anexo. Modelo de autoselección con un único principal</h2>
+<p>El anexo desarrolla el modelo de autoselección del apartado 3.4.2, en la versión con un único principal aplicada al mercado de trabajo, y recoge sus extensiones.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Entorno</em>: información asimétrica previa al contrato. El agente puede ser de tipo A (más productivo, al que se destina el contrato <span class="math inline">\((e_A, w_A)\)</span>) o de tipo B (menos productivo, contrato <span class="math inline">\((e_B, w_B)\)</span>), con probabilidad <span class="math inline">\(p\)</span> de que sea de tipo A. El esfuerzo es verificable <em>a posteriori</em>, pero el empresario no observa el tipo.</p></li>
+<li><p><em>Agentes</em>: el principal es neutral al riesgo y su ingreso depende del esfuerzo, <span class="math inline">\(x(e)\)</span>. Los dos tipos valoran el salario y sufren desutilidad por el esfuerzo, pero al tipo B este le pesa más, <span class="math inline">\(\gamma \cdot v(e)\)</span> con <span class="math inline">\(\gamma &gt; 1\)</span>.</p></li>
+</ul>
+<p><strong>Planteamiento</strong>: el mismo mecanismo se aplica aquí al mercado de trabajo, con un único principal en lugar de aseguradoras en competencia, para mantener el marco de los supuestos comunes. Aplicando el principio de revelación, el principal diseña un menú de dos contratos:</p>
+<p><span class="math display">\[\begin{aligned} \max_{e_A, w_A, e_B, w_B} \; &amp; p \cdot [x(e_A) - w_A] + (1 - p) \cdot [x(e_B) - w_B] \\ \text{s.a.:} \; &amp; \begin{cases} w_A - v(e_A) \geq \underline{u} \\ w_B - \gamma \cdot v(e_B) \geq \underline{u} \\ w_A - v(e_A) \geq w_B - v(e_B) \\ w_B - \gamma \cdot v(e_B) \geq w_A - \gamma \cdot v(e_A) \end{cases} \end{aligned}\]</span></p>
+<p>donde <span class="math inline">\((e_A, w_A)\)</span> y <span class="math inline">\((e_B, w_B)\)</span> son los pares esfuerzo-salario destinados a los tipos A y B, <span class="math inline">\(p\)</span> la probabilidad de que el agente sea de tipo A, <span class="math inline">\(x(e)\)</span> el ingreso del empresario en función del esfuerzo y <span class="math inline">\(\underline{u}\)</span> la utilidad de reserva, común a los dos tipos (en la figura, <span class="math inline">\(\underline{u}_A\)</span> y <span class="math inline">\(\underline{u}_B\)</span> son sus curvas de reserva). Las dos primeras restricciones son las de participación (cada tipo acepta su contrato), y las dos últimas, las de incentivos o autoselección (ninguno prefiere el contrato del otro al suyo). El principal busca el mayor beneficio esperado sujeto a que cada tipo, a la vista del menú, acepte participar y escoja el contrato pensado para él.</p>
+<p><strong>CPO</strong>: por el método de Kuhn-Tucker, en el óptimo se cumplen con igualdad la restricción de participación del tipo B, que queda sin renta, y la de incentivos del tipo A, y las otras dos se satisfacen solas. La de incentivos de A es activa porque el tipo productivo tendría interés en hacerse pasar por B, es decir, en elegir el contrato de B, de menor esfuerzo, y obtener con él una renta informacional, ya que a A el esfuerzo le cuesta menos. De esas dos restricciones salen los salarios, <span class="math inline">\(w_B = \underline{u} + \gamma \cdot v(e_B)\)</span> y <span class="math inline">\(w_A = \underline{u} + v(e_A) + (\gamma - 1) \cdot v(e_B)\)</span>, y, sustituidos en el objetivo, <span class="math inline">\(\Pi\)</span>, las condiciones para los esfuerzos son:</p>
+<p><span class="math display">\[\begin{aligned} \frac{\partial \Pi}{\partial e_A} &amp;= p \left[\frac{dx}{de}\Big|_{e_A} - \frac{dv}{de}\Big|_{e_A}\right] = 0 \\ &amp;\Rightarrow\; \frac{dx}{de}\Big|_{e_A} = \frac{dv}{de}\Big|_{e_A} \\ \frac{\partial \Pi}{\partial e_B} &amp;= (1-p)\left[\frac{dx}{de}\Big|_{e_B} - \gamma \frac{dv}{de}\Big|_{e_B}\right] - p\,(\gamma - 1)\frac{dv}{de}\Big|_{e_B} = 0 \\ &amp;\Rightarrow\; \frac{dx}{de}\Big|_{e_B} = \left[\gamma + \frac{p\,(\gamma - 1)}{1-p}\right]\frac{dv}{de}\Big|_{e_B} \end{aligned}\]</span></p>
+<p>El tipo A se esfuerza hasta que el ingreso marginal iguala su desutilidad marginal, como con información simétrica. En cambio, al tipo B se le pide menos, porque cada unidad de su esfuerzo eleva también la renta informacional del tipo A, <span class="math inline">\((\gamma - 1) \cdot v(e_B)\)</span>, que el principal paga con probabilidad <span class="math inline">\(p\)</span>.</p>
+<p><strong>CSO</strong>: como en los modelos anteriores, se supone el problema de buen comportamiento (<span class="math inline">\(x\)</span> cóncava en el esfuerzo, desutilidad del esfuerzo convexa), de modo que el programa es cóncavo y las condiciones de Kuhn-Tucker (tema <a href="../chapters/a08-consumidor.html">A08</a>, apartado 1.4.1) caracterizan el menú óptimo.</p>
+<p><strong>Equilibrio</strong>: para impedir que el tipo A se haga pasar por B, el principal distorsiona el contrato del tipo B, al que exige menos esfuerzo del eficiente, lo que lo hace poco atractivo para A. Además, deja al tipo A una <em>renta informacional</em>, una utilidad por encima de su utilidad de reserva. El resultado es un equilibrio separador de <em>second best</em>, eficiente en el contrato del tipo alto y distorsionado en el del tipo bajo.</p>
+<p><strong>Desarrollo gráfico</strong>: en el plano esfuerzo-salario <span class="math inline">\((e, w)\)</span> (figura <a href="#fig-a135-autoseleccion" class="quarto-xref"><span>A13.6</span></a>), las curvas de indiferencia del tipo B, <span class="math inline">\(w - \gamma \cdot v(e)\)</span>, son más inclinadas que las del tipo A, <span class="math inline">\(w - v(e)\)</span>, porque a B el esfuerzo le cuesta más. Los contratos de primer óptimo, <span class="math inline">\(A^*\)</span> y <span class="math inline">\(B^*\)</span>, están donde la curva de reserva de cada tipo es tangente a una curva isobeneficio del principal. En el menú de <em>second best</em>, el contrato del tipo B (punto <span class="math inline">\(B\)</span>) se sitúa sobre su curva de reserva, <span class="math inline">\(\underline{u}_B\)</span>, con <span class="math inline">\(e_B &lt; e_B^*\)</span>, y el del tipo A (punto <span class="math inline">\(A\)</span>) mantiene el esfuerzo eficiente, <span class="math inline">\(e_A^*\)</span>, sobre la curva <span class="math inline">\(u_A\)</span> que pasa por <span class="math inline">\(B\)</span>. La distancia vertical entre <span class="math inline">\(u_A\)</span> y la curva de reserva de A, <span class="math inline">\(\underline{u}_A\)</span>, es la renta informacional.</p>
+<div id="fig-a135-autoseleccion" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a135-autoseleccion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a135_Autoseleccion.html" style="height:580px" loading="lazy" title="fig-a135-autoseleccion"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a135-autoseleccion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A13.6: Autoselección en el mercado de trabajo (adaptación con un único principal del mecanismo de Rothschild y Stiglitz, 1976). Las curvas de indiferencia del tipo B, <span class="math inline">\(w - \gamma \cdot v(e)\)</span>, son más inclinadas que las del tipo A, <span class="math inline">\(w - v(e)\)</span>, y en los contratos de primer óptimo, <span class="math inline">\(A^*\)</span> y <span class="math inline">\(B^*\)</span>, la curva de reserva de cada tipo es tangente a una isobeneficio del principal. En el menú de <em>second best</em>, el contrato de B, sobre su curva de reserva <span class="math inline">\(\underline{u}_B\)</span>, exige un esfuerzo inferior al de primer óptimo, y el de A mantiene <span class="math inline">\(e_A^*\)</span> sobre la curva <span class="math inline">\(u_A\)</span> que pasa por B, con una renta informacional sobre <span class="math inline">\(\underline{u}_A\)</span>.
+</figcaption>
+</figure>
+</div>
+<p><strong>Extensiones</strong>: los resultados cambian cuando compiten varios principales, como en el modelo original de seguros, y el mecanismo explica además dos regularidades del mercado de trabajo:</p>
+<ul>
+<li><p><em>Competencia entre aseguradoras</em> (Rothschild y Stiglitz, 1976): con muchas aseguradoras neutrales al riesgo y libre entrada, cada contrato tiene beneficio esperado nulo. No hay equilibrio agrupador, porque frente a cualquier póliza común una aseguradora puede ofrecer otra con menos cobertura y menos prima que solo atrae a los de bajo riesgo. En el equilibrio separador, los de alto riesgo obtienen cobertura completa a su prima justa, sin distorsión, y los de bajo riesgo, la máxima cobertura parcial a su prima justa que no tienta a los de alto riesgo, cuya restricción de incentivos es la activa. Nadie obtiene renta informacional, a diferencia de lo que ocurre con un único principal, y la distorsión recae, como allí, en el tipo al que el otro querría imitar, aquí el de bajo riesgo. Además, el equilibrio puede no existir si hay muchos asegurados de bajo riesgo, porque entonces una póliza común a la prima media atraería a ambos tipos.</p></li>
+<li><p><em>Grilletes dorados</em> (Salop y Salop, 1976): perder a un trabajador ya formado sale caro, así que la empresa retrasa la recompensa. Paga poco al principio y promete después subidas por encima de las del mercado, condiciones que solo convienen a quien piensa quedarse. El perfil temporal del salario sirve así para filtrar a los candidatos y para retenerlos.</p></li>
+<li><p><em>Menú de salario fijo y variable</em> (Lazear, 1986): los trabajadores más productivos tienen mejores alternativas fuera, y por eso la empresa ofrece elegir entre una retribución fija y otra que crece con el rendimiento. El poco productivo se queda con la fija y el productivo con la variable, que mejora sus ofertas externas. Cada uno revela así su tipo sin que la empresa lo observe, aunque el productivo conserva una renta informacional.</p></li>
+</ul>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Función aditivamente separable, de modo que la aversión al riesgo no varía con el esfuerzo.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Equivale a resolverlo en dos etapas, buscando primero, para cada esfuerzo, el contrato aceptable que da al principal mayor utilidad esperada (el más barato, si es neutral al riesgo) y, después, el esfuerzo que maximiza esa utilidad.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Requiere heterogeneidad de la contraparte y conflicto de interés.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>La oferta de limones genera una externalidad negativa, porque sus vendedores rebajan la calidad media percibida y, con ella, el precio que se paga por todos los coches.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Coste en términos financieros, de oportunidad o desutilidad.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>De lo contrario, un agente de tipo B podría pasar a ser un agente de tipo A.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>La empresa, en incertidumbre, ofrece un salario medio.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script>
+// Gráficos del libro (iframes .graph-frame).
+// 1) Escala única: los grosores, los discontinuos y el tamaño de los puntos de cada figura están fijados para verla a 680 px
+//    de ancho. Los marcos anchos (figuras de varios paneles) se estiran hasta la columna y las pantallas estrechas las encogen; aquí se
+//    compensa para que en pantalla las curvas midan siempre lo mismo (2,2 px las económicas, 1,4 las auxiliares, 1,2 ejes y flechas,
+//    0,8 las guías) y los puntos tengan el mismo tamaño en todas las figuras, sea cual sea el ancho al que se muestren.
+// 2) Ajusta la altura de cada iframe al elemento dibujado más bajo (curvas, ejes, etiquetas KaTeX).
+(function () {
+  var REF = 680;
+  function norm(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var s = d.querySelector("svg"); if (!s) return;
+      var w = s.getBoundingClientRect().width; if (!(w > 0)) return;
+      var r = REF / w;
+      var els = s.querySelectorAll("path, line, polyline, polygon, rect, circle, ellipse");
+      els.forEach(function (el) {
+        var cs = d.defaultView.getComputedStyle(el);
+        if (el.dataset.sw0 === undefined) {
+          el.dataset.sw0 = parseFloat(cs.strokeWidth) || 0;
+          el.dataset.da0 = (cs.strokeDasharray && cs.strokeDasharray !== "none") ? cs.strokeDasharray : "";
+          if (el.tagName.toLowerCase() === "circle" && el.r && el.r.baseVal.value > 0 && el.r.baseVal.value <= 9) {
+            el.dataset.r0 = el.r.baseVal.value;
+          }
+        }
+        var sw0 = +el.dataset.sw0;
+        if (sw0 > 0) el.style.strokeWidth = (sw0 * r).toFixed(3) + "px";
+        if (el.dataset.da0) {
+          el.style.strokeDasharray = el.dataset.da0.split(/[ ,]+/).map(function (v) {
+            return (parseFloat(v) * r).toFixed(3) + "px";
+          }).join(" ");
+        }
+        if (el.dataset.r0) el.setAttribute("r", (+el.dataset.r0 * r).toFixed(3));
+      });
+    } catch (e) {}
+  }
+  function fit(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var sy = d.defaultView.scrollY || 0, bottom = 0;
+      var els = d.querySelectorAll("svg path, svg line, svg circle, svg polyline, svg polygon, svg rect, svg text, svg ellipse, .katex-label");
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width > 0 || r.height > 0) bottom = Math.max(bottom, r.bottom + sy);
+      });
+      if (!(bottom > 20)) {
+        var svg = d.querySelector("svg"); var vb = svg && svg.getAttribute("viewBox");
+        if (vb) { var p = vb.split(/\s+/); bottom = f.clientWidth * (+p[3]) / (+p[2]); }
+      }
+      if (bottom > 20) f.style.height = Math.ceil(bottom + 10) + "px";
+    } catch (e) {}
+  }
+  // 3) Un gráfico de varios paneles no se amplía por encima del 110 % de su ancho de dibujo (viewBox). Los dibujados a
+  //    680 px quedan en 748 px como máximo, con rótulos de tamaño normal; los de 900 o 960 px, en el tope de 900 px del CSS.
+  function cap(f) {
+    try {
+      if (!f.parentElement || !f.parentElement.classList.contains("wide")) return;
+      var s = f.contentDocument && f.contentDocument.querySelector("svg"); if (!s) return;
+      var vb = s.viewBox && s.viewBox.baseVal; if (!vb || !(vb.width > 0)) return;
+      var m = Math.min(900, Math.round(vb.width * 1.1)) + "px";
+      if (f.style.maxWidth !== m) f.style.maxWidth = m;
+    } catch (e) {}
+  }
+  function both(f) { cap(f); norm(f); fit(f); }
+  function all() { document.querySelectorAll(".graph-frame iframe").forEach(both); }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".graph-frame iframe").forEach(function (f) {
+      f.addEventListener("load", function () { both(f); setTimeout(function () { both(f); }, 700); });
+    });
+  });
+  window.addEventListener("load", function () { setTimeout(all, 1200); });
+  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(all, 150); });
+})();
+</script>
+<style>
+.graph-frame { margin: 1.25rem 0 0.25rem; }
+.quarto-figure .graph-frame + * { margin-top: 0; }
+</style>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/librovol1\.arturolorenzo\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/a12-costes.html" class="pagination-link" aria-label="A12. Teoría de costes">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">A12. Teoría de costes</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/a14-juegos.html" class="pagination-link" aria-label="A14. Teoría de juegos">
+        <span class="nav-page-text"><span class="chapter-title">A14. Teoría de juegos</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

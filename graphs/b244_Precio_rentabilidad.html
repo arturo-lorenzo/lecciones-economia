@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+    <g id="g"></g>
+  </svg>
+</div>
+<script>
+const VBW = 680, VBH = 500;
+const NS = 'http://www.w3.org/2000/svg', G = document.getElementById('g');
+function el(tag, at) { const e = document.createElementNS(NS, tag); for (const k in at) if (at[k] !== null && at[k] !== undefined) e.setAttribute(k, at[k]); G.appendChild(e); return e; }
+function ln(x1, y1, x2, y2, at) { return el('line', Object.assign({x1: (+x1).toFixed(1), y1: (+y1).toFixed(1), x2: (+x2).toFixed(1), y2: (+y2).toFixed(1)}, at)); }
+function path(pts, at) { return el('path', Object.assign({d: 'M' + pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' L'), fill: 'none'}, at)); }
+const AX = {stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'};
+const GUIDE = {stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'};
+const TICK = {stroke: 'black', 'stroke-width': 1};
+const labels = [];
+function L(id, tex, x, y, anchor, color, size, bg) { labels.push({id, tex, x, y, anchor, color, size, bg}); }
+
+
+
+const OX = 128, OY = 450, XE = OX + 440;
+const C = 6, F = 100, N = 20, c = 0.06, D = 0.03, PC = 110, S = 7;
+const X = r => OX + 8 + r * 2552, Yp = P => OY - P * 1.85;
+const price = r => C * (1 - Math.pow(1 + r, -N)) / r + F * Math.pow(1 + r, -N);
+const call = r => { const p = price(r); return -S * Math.log(Math.exp(-p / S) + Math.exp(-PC / S)); };
+ln(OX, OY, XE, OY, AX); ln(OX, OY, OX, 40, AX);
+const R0 = 0.012, R1 = 0.16;
+
+ln(OX, Yp(PC), X(R1), Yp(PC), GUIDE);
+
+[c - D, c, c + D].forEach(r => { ln(OX, Yp(price(r)), X(r), Yp(price(r)), GUIDE); ln(X(r), Yp(price(r)), X(r), OY, GUIDE); ln(X(r), OY, X(r), OY + 4, TICK); });
+
+const pts = [], ptc = [];
+for (let i = 0; i <= 300; i++) { const r = R0 + (R1 - R0) * i / 300; pts.push([X(r), Yp(price(r))]); ptc.push([X(r), Yp(call(r))]); }
+path(ptc, {stroke: '#534AB7', 'stroke-width': 2.2, 'stroke-linecap': 'round'});
+path(pts, {stroke: '#378ADD', 'stroke-width': 2.2, 'stroke-linecap': 'round'});
+
+const XB = OX + 18;
+ln(XB, Yp(F) - 3, XB, Yp(price(c - D)) + 3, {stroke: '#1D9E75', 'stroke-width': 1.2, 'marker-start': 'url(#arrow)', 'marker-end': 'url(#arrow)'});
+ln(XB, Yp(price(c + D)) - 3, XB, Yp(F) + 3, {stroke: '#1D9E75', 'stroke-width': 1.2, 'marker-start': 'url(#arrow)', 'marker-end': 'url(#arrow)'});
+[c - D, c, c + D].forEach(r => el('circle', {cx: X(r), cy: Yp(price(r)), r: 4.5, fill: 'black'}));
+ln(OX - 4, Yp(F), OX, Yp(F), TICK);
+L('ly', 'p_t^m', OX - 8, 38, 'rt', 'black', 17);
+L('lx', 'k', XE + 6, OY, 'lm', 'black', 17);
+L('lO', 'O', OX - 8, OY + 6, 'rt', 'black', 16);
+L('lF', 'F_T', OX - 8, Yp(F), 'rm', 'black', 16);
+L('lc0', 'c - \\Delta k', X(c - D), OY + 7, 'ct', 'black', 15);
+L('lc', 'c', X(c), OY + 7, 'ct', 'black', 16);
+L('lc1', 'c + \\Delta k', X(c + D), OY + 7, 'ct', 'black', 15);
+L('ldp1', '\\Delta p^{+}', XB + 6, (Yp(F) + Yp(price(c - D))) / 2, 'lm', '#1D9E75', 15, true);
+L('ldp2', '\\Delta p^{-}', XB + 6, (Yp(F) + Yp(price(c + D))) / 2, 'lm', '#1D9E75', 15, true);
+L('lsin', '\\text{sin opción}', X(R0) + 10, Yp(price(R0)), 'lm', '#378ADD', 15);
+L('lcall', '\\text{amortizable}', X(R0) + 4, Yp(call(R0)) + 10, 'lt', '#534AB7', 15, true);
+L('lpc', '\\text{precio de amortización}', X(R1), Yp(PC) - 5, 'rb', '#888', 14);
+
+const TX = {l: '0', c: '-50%', r: '-100%'}, TY = {t: '0', m: '-50%', b: '-100%'};
+const CONT = document.querySelector('.graph-container');
+labels.forEach(l => {
+  const e = document.createElement('div'); e.className = 'katex-label'; e.id = l.id; CONT.appendChild(e);
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = (l.x / VBW * 100).toFixed(2) + '%';
+  e.style.top = (l.y / VBH * 100).toFixed(2) + '%';
+  e.style.color = l.color || 'black';
+  e.style.fontSize = (l.size || 16) + 'px';
+  const a = l.anchor || 'lt';
+  e.style.transform = 'translate(' + TX[a[0]] + ',' + TY[a[1]] + ')';
+  if (l.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+});
+</script>
+</body>
+</html>

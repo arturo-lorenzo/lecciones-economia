@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+
+
+  <svg viewBox="0 0 680 500">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="124" y1="460" x2="556" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="124" y1="460" x2="124" y2="60"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line x1="124" y1="372" x2="414.3" y2="372" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="414.3" y1="372" x2="414.3" y2="108" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line x1="273.3" y1="285.8" x2="367" y2="425" stroke="#378ADD" stroke-width="2.2"/>
+    <line x1="314.8" y1="259.4" x2="418.7" y2="413.6" stroke="#378ADD" stroke-width="2.2" stroke-dasharray="8 5"/>
+    <line x1="356.2" y1="211"   x2="497.2"   y2="420.4" stroke="#378ADD" stroke-width="2.2"/>
+    <line x1="389.4" y1="172.2" x2="530.4" y2="381.7" stroke="#378ADD" stroke-width="2.2" stroke-dasharray="8 5"/>
+
+
+    <line id="sh0" stroke="#185FA5" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="sh1" stroke="#185FA5" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line x1="414.3" y1="460" x2="414.3" y2="464" stroke="black" stroke-width="1"/>
+
+
+    <circle cx="331.4"   cy="372"   r="5" fill="#000"/>
+    <circle cx="390.6" cy="372"   r="5" fill="#000"/>
+    <circle cx="414.3"   cy="297.2" r="5" fill="#000"/>
+    <circle cx="414.3"   cy="209.2" r="5" fill="#000"/>
+
+  </svg>
+
+  <div class="katex-label" id="lbl-y"></div>
+  <div class="katex-label" id="lbl-p"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-oa"></div>
+  <div class="katex-label" id="lbl-ype"></div>
+  <div class="katex-label" id="lbl-da0"></div>
+  <div class="katex-label" id="lbl-da1"></div>
+  <div class="katex-label" id="lbl-da0p"></div>
+  <div class="katex-label" id="lbl-da1p"></div>
+  <div class="katex-label" id="lbl-p0"></div>
+  <div class="katex-label" id="lbl-p1"></div>
+  <div class="katex-label" id="lbl-p0p"></div>
+  <div class="katex-label" id="lbl-p1p"></div>
+
+</div>
+
+<script>
+
+
+
+
+
+const W = 680, H = 500;
+function pct(v, t) { return (v / t * 100).toFixed(2) + '%'; }
+
+const K = 0.864; const dir = [124.8 * K, 160.1].map((v, _, a) => v / Math.hypot(124.8 * K, 160.1));
+const nrm = [dir[1], -dir[0]];
+const gap = (320.8 - 272.8) * K * nrm[0] + (259.4 - 285.8) * nrm[1];
+function shift(id, x0, y0, t0) {
+  const bx = x0 + dir[0] * t0, by = y0 + dir[1] * t0;
+  const L = document.getElementById(id);
+  L.setAttribute('x1', (bx + nrm[0] * 6).toFixed(1)); L.setAttribute('y1', (by + nrm[1] * 6).toFixed(1));
+  L.setAttribute('x2', (bx + nrm[0] * (gap - 6)).toFixed(1)); L.setAttribute('y2', (by + nrm[1] * (gap - 6)).toFixed(1));
+  return {x: bx + nrm[0] * (gap - 6), y: by + nrm[1] * (gap - 6)};
+}
+const e0 = shift('sh0', 273.3, 285.8, 44);
+const e1 = shift('sh1', 356.2, 211, 150);
+const labels = [
+  {id: 'lbl-y',    tex: 'Y', x: 559.5, y: 462, a: 'lt', s: '17px'},
+  {id: 'lbl-p',    tex: 'P', x: 117.1,  y: 50,  a: 'rt', s: '17px'},
+  {id: 'lbl-o',    tex: 'O', x: 118.8,  y: 466, a: 'rt'},
+  {id: 'lbl-oa',   tex: '\\text{OA}', x: 414.3, y: 102, a: 'cb', c: '#0F6E56'},
+  {id: 'lbl-ype',  tex: 'Y_{\\text{PE}}', x: 414.3, y: 467, a: 'ct', s: '15px'},
+  {id: 'lbl-da0',  tex: '\\text{DA}_0', x: 369.4, y: 427, a: 'lt', c: '#185FA5'},
+  {id: 'lbl-da1',  tex: '\\text{DA}_1', x: 421.2, y: 416, a: 'lt', c: '#185FA5'},
+  {id: 'lbl-da0p', tex: '\\text{DA}_{\\text{PE},0}', x: 500.7, y: 424, a: 'lt', c: '#185FA5'},
+  {id: 'lbl-da1p', tex: '\\text{DA}_{\\text{PE},1}', x: 533.5, y: 385, a: 'lt', c: '#185FA5'},
+  {id: 'lbl-sh0',  tex: '\\Delta e > 0', x: 307.2, y: 277, a: 'rb', c: '#185FA5', s: '14px'},
+  {id: 'lbl-sh1',  tex: '\\Delta e > 0', x: e1.x + 26, y: e1.y, a: 'lm', c: '#185FA5', s: '14px'},
+  {id: 'lbl-p0',   tex: '0', x: 326.2, y: 380, a: 'rt', c: '#000', s: '15px'},
+  {id: 'lbl-p1',   tex: '1', x: 384.9, y: 380, a: 'rt', c: '#000', s: '15px'},
+  {id: 'lbl-p0p',  tex: '0_{\\text{PE}}', x: 421.2, y: 284, a: 'lm', c: '#000', s: '15px'},
+  {id: 'lbl-p1p',  tex: '1_{\\text{PE}}', x: 421.2, y: 197, a: 'lm', c: '#000', s: '15px'}
+];
+const cont = document.querySelector('.graph-container');
+labels.forEach(l => {
+  let e = document.getElementById(l.id);
+  if (!e) { e = document.createElement('div'); e.className = 'katex-label'; e.id = l.id; cont.appendChild(e); }
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = pct(l.x, W); e.style.top = pct(l.y, H);
+  e.style.color = l.c || 'black'; e.style.fontSize = l.s || '16px';
+  const a = l.a || 'lt';
+  e.style.transform = `translate(${{l: 0, c: -50, r: -100}[a[0]]}%, ${{t: 0, m: -50, b: -100}[a[1]]}%)`;
+  if (l.bg) { e.style.background = '#fff'; e.firstChild.style.padding = '0 2px'; }
+});
+</script>
+</body>
+</html>

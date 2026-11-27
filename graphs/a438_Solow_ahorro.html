@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+  .katex-label .katex { font-size: 1em; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 820" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <line x1="145" y1="375" x2="513" y2="375" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="145" y1="375" x2="145" y2="40" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="dv0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dv1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dh0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dh1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="tk0" stroke="black" stroke-width="1"/><line id="tk1" stroke="black" stroke-width="1"/>
+    <line id="ti0" stroke="black" stroke-width="1"/><line id="ti1" stroke="black" stroke-width="1"/>
+    <line id="dep" stroke="#D85A30" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="s0f" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="s1f" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-dasharray="7 5" stroke-linecap="round"/>
+    <line id="arr-s" stroke="#1D9E75" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <polyline id="dyn" fill="none" stroke="#5a5a5a" stroke-width="1.2" stroke-dasharray="5 4" marker-mid="url(#arrow)" marker-end="url(#arrow)"/>
+    <circle id="p0" r="5" fill="#000"/>
+    <circle id="p1" r="5" fill="#000"/>
+
+    <line x1="145" y1="770" x2="513" y2="770" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="145" y1="770" x2="145" y2="435" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="dv0b" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dv1b" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="tk0b" stroke="black" stroke-width="1"/><line id="tk1b" stroke="black" stroke-width="1"/>
+    <line id="dep2" stroke="#D85A30" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="g0" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="g1" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-dasharray="7 5" stroke-linecap="round"/>
+    <line id="arr-s2" stroke="#1D9E75" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="jump" stroke="#5a5a5a" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <path id="dyn2" fill="none" stroke="#5a5a5a" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+    <circle id="q0" r="5" fill="#000"/>
+    <circle id="q0p" r="5" fill="#000"/>
+    <circle id="q1" r="5" fill="#000"/>
+  </svg>
+</div>
+<script>
+
+
+
+
+const A = 3, alpha = 0.5, dn = 0.6, s0 = 0.35, s1 = 0.45;
+const f = k => A*Math.pow(k, alpha), g = (s, k) => s*A*Math.pow(k, alpha - 1);
+const k0 = Math.pow(s0*A/dn, 1/(1 - alpha)), k1 = Math.pow(s1*A/dn, 1/(1 - alpha));
+
+const VBW = 680, VBH = 820, OX = 145, OY = 375, OY2 = 770, kEnd = 8;
+const X = k => OX + k*60*368/520;
+const Y = v => OY - v*66*335/360;
+const Y2 = v => OY2 - v*250*335/300;
+const $ = id => document.getElementById(id);
+function setL(id, x1, y1, x2, y2) { const e = $(id); e.setAttribute('x1', x1); e.setAttribute('y1', y1); e.setAttribute('x2', x2); e.setAttribute('y2', y2); }
+function curve(id, fn, Yf, a, b) { const p = []; for (let i = 0; i <= 300; i++) { const k = a + (i/300)*(b - a); p.push(X(k).toFixed(1) + ',' + Yf(fn(k)).toFixed(1)); } $(id).setAttribute('d', 'M' + p.join(' L')); }
+function dot(id, x, y) { $(id).setAttribute('cx', x); $(id).setAttribute('cy', y); }
+
+curve('s0f', k => s0*f(k), Y, 0, kEnd);
+curve('s1f', k => s1*f(k), Y, 0, kEnd);
+setL('dep', X(0), Y(0), X(kEnd), Y(dn*kEnd));
+const i0 = dn*k0, i1 = dn*k1;
+setL('dv0', X(k0), Y(i0), X(k0), OY); setL('dv1', X(k1), Y(i1), X(k1), OY);
+setL('dh0', OX, Y(i0), X(k0), Y(i0)); setL('dh1', OX, Y(i1), X(k1), Y(i1));
+setL('tk0', X(k0), OY, X(k0), OY + 4); setL('tk1', X(k1), OY, X(k1), OY + 4);
+setL('ti0', OX - 4, Y(i0), OX, Y(i0)); setL('ti1', OX - 4, Y(i1), OX, Y(i1));
+dot('p0', X(k0), Y(i0)); dot('p1', X(k1), Y(i1));
+const ka = 7.3;
+
+document.getElementById('arr-s').setAttribute('x1', 460.7); document.getElementById('arr-s').setAttribute('y1', 194.0); document.getElementById('arr-s').setAttribute('x2', 449.8); document.getElementById('arr-s').setAttribute('y2', 160.3);
+function setDyn(id, xa, xb, y) {
+  const n = Math.max(2, Math.round(Math.abs(xb - xa)/45)), pts = [];
+  for (let i = 0; i <= n; i++) pts.push((xa + (xb - xa)*i/n).toFixed(1) + ',' + y);
+  $(id).setAttribute('points', pts.join(' '));
+}
+setDyn('dyn', X(k0) + 12, X(k1) - 12, OY - 10);
+
+const kE2 = 7.4, gmax = 1.14;
+curve('g0', k => g(s0, k), Y2, Math.pow(s0*A/gmax, 2), kE2);
+curve('g1', k => g(s1, k), Y2, Math.pow(s1*A/gmax, 2), kE2);
+setL('dep2', OX, Y2(dn), X(kE2), Y2(dn));
+const gj = g(s1, k0);
+setL('dv0b', X(k0), Y2(gj), X(k0), OY2); setL('dv1b', X(k1), Y2(dn), X(k1), OY2);
+setL('tk0b', X(k0), OY2, X(k0), OY2 + 4); setL('tk1b', X(k1), OY2, X(k1), OY2 + 4);
+dot('q0', X(k0), Y2(dn)); dot('q0p', X(k0), Y2(gj)); dot('q1', X(k1), Y2(dn));
+setL('jump', X(k0) - 12, Y2(dn) - 8, X(k0) - 12, Y2(gj) + 8);
+const kc = 1.6;
+
+document.getElementById('arr-s2').setAttribute('x1', 202.7); document.getElementById('arr-s2').setAttribute('y1', 511.1); document.getElementById('arr-s2').setAttribute('x2', 223.2); document.getElementById('arr-s2').setAttribute('y2', 500.3);
+
+(function () { const p = []; const a = k0 + 0.55, b = k1 - 0.3;
+  for (let i = 0; i <= 60; i++) { const k = a + (i/60)*(b - a); p.push(X(k).toFixed(1) + ',' + (Y2(g(s1, k)) - 14).toFixed(1)); }
+  $('dyn2').setAttribute('d', 'M' + p.join(' L')); })();
+
+function put(id, tex, x, y, o = {}) {
+  const cont = document.querySelector('.graph-container');
+  const e = document.createElement('div');
+  e.className = 'katex-label'; e.id = id;
+  katex.render(tex, e, {throwOnError: false});
+  e.style.left = (x/VBW*100).toFixed(2) + '%';
+  e.style.top = (y/VBH*100).toFixed(2) + '%';
+  e.style.color = o.c || 'black';
+  if (o.s) e.style.fontSize = o.s + 'px';
+  const tx = {l: '0', c: '-50%', r: '-100%'}[o.ha || 'l'], ty = {t: '0', m: '-50%', b: '-100%'}[o.va || 't'];
+  e.style.transform = `translate(${tx},${ty})`;
+  if (o.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  cont.appendChild(e);
+}
+const G = '#1D9E75', O = '#D85A30';
+put('lbl-y', 'y', OX - 8, 44, {ha: 'r', s: 18});
+put('lbl-k', 'k', OX + 376, OY, {va: 'm', s: 18});
+put('lbl-dep', '(n + \\delta)k', X(kEnd) + 6, Y(dn*kEnd), {va: 'm', c: O});
+put('lbl-s1f', 's_1 f(k)', X(kEnd) + 6, Y(s1*f(kEnd)), {va: 'm', c: G});
+put('lbl-s0f', 's_0 f(k)', X(kEnd) + 6, Y(s0*f(kEnd)), {va: 'm', c: G});
+put('lbl-ds', '\\Delta s > 0', X(ka) - 8, Y(s0*f(ka)) - 13, {ha: 'r', va: 'm', c: G, s: 14});
+put('lbl-k0', 'k^*_0', X(k0), OY + 8, {ha: 'c', s: 15});
+put('lbl-k1', 'k^*_1', X(k1), OY + 8, {ha: 'c', s: 15});
+put('lbl-i0', 'i^*_0', OX - 8, Y(i0), {ha: 'r', va: 'm', s: 15});
+put('lbl-i1', 'i^*_1', OX - 8, Y(i1), {ha: 'r', va: 'm', s: 15});
+put('lbl-p0', '0', X(k0) + 6, Y(i0) + 8, {va: 't', s: 15});
+put('lbl-p1', '1', X(k1) + 6, Y(i1) + 8, {va: 't', s: 15});
+put('lbl-gk', 'g_k', OX - 8, 439, {ha: 'r', s: 18});
+put('lbl-k2', 'k', OX + 376, OY2, {va: 'm', s: 18});
+put('lbl-dep2', 'n + \\delta', X(kE2) + 6, Y2(dn), {va: 'm', c: O});
+put('lbl-g1', 's_1 A k^{\\alpha - 1}', X(kE2) + 6, Y2(g(s1, kE2)) + 2, {va: 'm', c: G, s: 15});
+put('lbl-g0', 's_0 A k^{\\alpha - 1}', X(kE2) + 6, Y2(g(s0, kE2)) + 4, {va: 'm', c: G, s: 15});
+put('lbl-ds2', '\\Delta s > 0', X(kc) + 6, Y2(g(s1, kc)) - 2, {va: 'b', c: G, s: 14});
+put('lbl-k0b', 'k^*_0', X(k0), OY2 + 8, {ha: 'c', s: 15});
+put('lbl-k1b', 'k^*_1', X(k1), OY2 + 8, {ha: 'c', s: 15});
+put('lbl-q0', '0', X(k0) - 6, Y2(dn) + 6, {ha: 'r', va: 't', s: 15});
+put('lbl-q0p', "0'", X(k0) + 7, Y2(gj) - 4, {va: 'b', s: 15});
+put('lbl-q1', '1', X(k1) + 6, Y2(dn) - 6, {va: 'b', s: 15});
+</script>
+</body>
+</html>

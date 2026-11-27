@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 500">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="124" y1="460" x2="556" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="124" y1="460" x2="124" y2="60"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <path id="dm-curve" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="dh-curve" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line x1="124" y1="300" x2="288.2" y2="300" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line x1="288.2" y1="300" x2="288.2" y2="460" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+
+    <line x1="120" y1="300" x2="124" y2="300" stroke="black" stroke-width="1"/>
+    <line x1="288.2" y1="460" x2="288.2" y2="464" stroke="black" stroke-width="1"/>
+
+
+    <circle cx="288.2" cy="300" r="5" fill="#000"/>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-x1"></div>
+  <div class="katex-label" id="lbl-p1"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-pt0"></div>
+  <div class="katex-label" id="lbl-p0"></div>
+  <div class="katex-label" id="lbl-x0"></div>
+  <div class="katex-label" id="lbl-dm"></div>
+  <div class="katex-label" id="lbl-dh"></div>
+
+</div>
+
+<script>
+
+
+
+
+
+
+
+
+
+
+function toSvgX(x) { return 124 + x * 16.416; }
+function toSvgY(p) { return 460 - p * 80; }
+
+function genCurve(fn, id, pMin, pMax) {
+  const pts = [];
+  for (let i = 0; i <= 300; i++) {
+    const p = pMax - (i / 300) * (pMax - pMin);
+    const x = fn(p);
+    const sx = toSvgX(x);
+    const sy = toSvgY(p);
+    if (sx >= 129 && sx <= 543 && sy >= 70 && sy <= 440) {
+      pts.push(sx.toFixed(1) + ',' + sy.toFixed(1));
+    }
+  }
+  document.getElementById(id).setAttribute('d', 'M' + pts.join(' L'));
+}
+
+genCurve(p => 20 / p,                 'dm-curve', 0.75, 4.8);
+genCurve(p => 14.142 / Math.sqrt(p),  'dh-curve', 0.75, 4.8);
+
+
+const labels = [
+  {id: 'lbl-x1',  tex: 'x_1',                          left: '82.4%',   top: '91%', color: 'black'},
+  {id: 'lbl-p1',  tex: 'p_1',                          left: '14.2%',   top: '7%',  color: 'black'},
+  {id: 'lbl-o',   tex: 'O',                             left: '15.9%',   top: '92%', color: 'black'},
+  {id: 'lbl-pt0', tex: '0',                             left: '43.5%',   top: '55%', color: '#000'},
+  {id: 'lbl-p0',  tex: 'p_1^0',                        left: '16.9%', top: '58%', color: 'black', align: 'right'},
+  {id: 'lbl-x0',  tex: 'x_1^0',                        left: '41%',   top: '93%', color: 'black'},
+  {id: 'lbl-dm',  tex: 'x_1^m(\\mathbf{p}, M_0)',      left: '72.9%',   top: '80.5%', color: '#0F6E56'},
+  {id: 'lbl-dh',  tex: 'x_1^h(\\mathbf{p}, u_0)',      left: '58.5%', top: '78.5%', color: '#534AB7'}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = l.left;
+  el.style.top = l.top;
+  if (l.color) el.style.color = l.color;
+  if (l.align === 'right') el.classList.add('right-of-axis');
+});
+</script>
+</body>
+</html>

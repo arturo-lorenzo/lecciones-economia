@@ -1,0 +1,2103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Arturo Lorenzo">
+<meta name="description" content="Oposiciones TCEE, tema B3. Coste del capital y WACC, teoremas de Modigliani y Miller, trade-off, pecking order de Myers y Majluf y dividendos de Lintner.">
+
+<title>B3. Decisiones de financiación – Lecciones de economía general e internacional</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/b04-crecimiento-ma.html" rel="next">
+<link href="../chapters/b02-inversion.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-af206048d982c71265205c3505cca787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bec3fe2b0881f05566c9dedb60685f6d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="B3. Decisiones de financiación – Lecciones de economía general e internacional">
+<meta property="og:description" content="Oposiciones TCEE, tema B3. Coste del capital y WACC, teoremas de Modigliani y Miller, trade-off, pecking order de Myers y Majluf y dividendos de Lintner.">
+<meta property="og:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta property="og:site_name" content="Lecciones de economía general e internacional">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:title" content="B3. Decisiones de financiación – Lecciones de economía general e internacional">
+<meta name="twitter:description" content="Oposiciones TCEE, tema B3. Coste del capital y WACC, teoremas de Modigliani y Miller, trade-off, pecking order de Myers y Majluf y dividendos de Lintner.">
+<meta name="twitter:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="B3. Decisiones de financiación">
+<meta name="citation_author" content="Arturo Lorenzo">
+<meta name="citation_publication_date" content="2026-11-28">
+<meta name="citation_cover_date" content="2026-11-28">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-11-28">
+<meta name="citation_fulltext_html_url" content="https://librovol1.arturolorenzo.com/chapters/b03-financiacion.html">
+<meta name="citation_language" content="es">
+<meta name="citation_book_title" content="Lecciones de economía general e internacional">
+<link rel="canonical" href="https://librovol1.arturolorenzo.com/chapters/b03-financiacion.html">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/b01-estados-ratios.html">Empresa y Finanzas</a></li><li class="breadcrumb-item"><a href="../chapters/b03-financiacion.html"><span class="chapter-title">B3. Decisiones de financiación</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Lecciones de economía general e internacional</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/arturo-lorenzo/lecciones-economia" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../creditos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Edición y licencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte A: Economía General</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pensamiento Económico</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a01-objeto-metodo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A1. Objeto y método de la ciencia económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a02-clasicos-marx.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A2. Los economistas clásicos y Marx</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a03-neoclasicos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A3. Los economistas neoclásicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a04-keynes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A4. Keynes: análisis comparado</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a05-monetaristas-snc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A5. La síntesis neoclásica y el monetarismo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a06-nmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A6. La nueva macroeconomía clásica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a07-nek.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A7. La nueva economía keynesiana</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Microeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a08-consumidor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A8. Teoría de la demanda del consumidor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a09-dualidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A9. Dualidad y aplicaciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a10-riesgo-incertidumbre.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A10. Elección en riesgo e incertidumbre</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a11-produccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A11. Teoría de la producción</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a12-costes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A12. Teoría de costes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a13-informacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A13. Economía de la información</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a14-juegos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A14. Teoría de juegos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a15-toi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A15. Teoría de la organización industrial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a16-competencia-perfecta.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A16. Competencia perfecta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a17-monopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A17. Monopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a18-competencia-monopolistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A18. Competencia monopolística</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a19-oligopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A19. Oligopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a20-regulacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A20. Regulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a21-equilibrio-general.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A21. Equilibrio general</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a22-eb-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A22. Economía del bienestar (I)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a23-eb-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A23. Economía del bienestar (II)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a24-eb-iii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A24. Economía del bienestar (III)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Economía Laboral</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a25-oferta-trabajo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A25. Mercado de trabajo y capital humano</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a26-desempleo-friccional.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A26. Desempleo friccional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a27-salarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A27. Determinación de salarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a28-tnp-nairu.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A28. TNP, NAIRU y persistencia</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Macroeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a29-mhi-mgs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A29. Modelos de horizonte infinito y generaciones solapadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a30-magnitudes-cn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A30. Magnitudes macroeconómicas y contabilidad nacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a32-precios-output.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A32. Precios y output en economía abierta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a33-demanda-consumo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A33. Teorías de demanda de consumo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a34-demanda-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A34. Teorías de demanda de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a35-demanda-dinero.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A35. Teorías de la demanda de dinero</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a36-politica-monetaria-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A36. Política monetaria I: diseño e instrumentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a37-politica-monetaria-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A37. Política monetaria II: transmisión y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a38-politica-fiscal.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A38. Política fiscal, crecimiento y ahorro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a39-deficit.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A39. Déficit público, su financiación y sostenibilidad</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a40-interrelacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A40. Interrelación de políticas macroeconómicas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a41-inflacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A41. Inflación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a42-ciclos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A42. Ciclos económicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a43-crecimiento-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A43. Crecimiento económico exógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a44-crecimiento-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A44. Crecimiento económico endógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a45-crecimiento-empirica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A45. Evidencia empírica sobre el crecimiento</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte B: Economía Internacional</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Empresa y Finanzas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b01-estados-ratios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B1. Estados financieros y ratios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b02-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B2. Decisiones de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b03-financiacion.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">B3. Decisiones de financiación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b04-crecimiento-ma.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B4. Crecimiento empresarial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b23-renta-variable.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B23. Instrumentos de renta variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b24-renta-fija.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B24. Instrumentos de renta fija</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b25-derivados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B25. Instrumentos derivados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b26-crisis-financieras.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B26. Crisis financieras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b27-regulacion-financiera.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B27. Regulación bancaria y financiera</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Comercio Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b05-tnc-comercio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B5. Teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b06-nueva-teoria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B6. Nueva teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b07-politica-comercial-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B7. Política comercial I: instrumentos y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b08-politica-comercial-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B8. Política comercial II: política estratégica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b09-comercio-crecimiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B9. Comercio internacional y crecimiento</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b10-integracion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B10. Teoría de la integración económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b11-balanza-pagos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B11. Balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b12-ajuste-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B12. Ajuste de la balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b13-mercado-divisas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B13. Mercado de divisas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b14-tipo-cambio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B14. Determinación del tipo de cambio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b15-regimenes-cambiarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B15. Regímenes cambiarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b16-integracion-monetaria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B16. Integración monetaria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b17-crisis-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B17. Crisis de balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b18-globalizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B18. Globalización</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b19-coordinacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B19. Coordinación de políticas económicas internacionales</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Sistema Económico Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b20-sei-hasta-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B20. El sistema económico internacional hasta el colapso de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b21-sei-despues-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B21. El sistema económico internacional después de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b22-fmi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B22. El Fondo Monetario Internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b28-desarrollo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B28. Desarrollo económico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b29-fod-aod.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B29. Financiación oficial del desarrollo y AOD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b30-gbm-brsd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B30. Grupo Banco Mundial y bancos regionales de desarrollo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b31-ma-bpg.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B31. El cambio climático y su impacto en la economía</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b32-perspectivas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B32. Perspectivas de la economía internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b33-omc-gatt.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B33. La OMC y el GATT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b34-gats-trips.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B34. GATS, TRIPS y acuerdos plurilaterales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b35-no-comunitarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B35. Acuerdos comerciales no comunitarios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unión Europea</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b36-tratados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B36. Los tratados de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b37-finanzas-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B37. Las finanzas de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b38-pac-ppc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B38. Política Agrícola Común y Política Pesquera Común</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b39-miue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B39. Mercado interior de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b41-comercial-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B41. Política comercial de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b42-cooperacion-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B42. Política de cooperación de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b43-politica-monetaria-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B43. Política macroeconómica I: el euro y la política monetaria única</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b44-politica-financiera-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B44. Política macroeconómica II: la Unión Bancaria y la Unión de los Mercados de Capitales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b45-politica-fiscal-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B45. Política macroeconómica III: la gobernanza económica de la UE y de la zona euro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Descargas</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Primer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/ejercicios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios prácticos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/flashcards-conceptos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de conceptos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/guia-dictamen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guía para el dictamen</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Segundo Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/segundo-ejercicio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de inglés</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Tercer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/libro-bloques.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">El libro en PDF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del tercer ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Cuarto Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del cuarto ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Más allá del libro</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/otras-publicaciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Otras publicaciones y trabajos del autor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/enlaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Enlaces de interés</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Bibliografía</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manuales y obras de referencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia-articulos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Obras citadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../fuentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fuentes normativas y documentales</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#tipos-de-financiación" id="toc-tipos-de-financiación" class="nav-link" data-scroll-target="#tipos-de-financiación">1. Tipos de financiación</a>
+  <ul class="collapse">
+  <li><a href="#financiación-propia" id="toc-financiación-propia" class="nav-link" data-scroll-target="#financiación-propia">1.1. Financiación propia</a></li>
+  <li><a href="#financiación-ajena" id="toc-financiación-ajena" class="nav-link" data-scroll-target="#financiación-ajena">1.2. Financiación ajena</a></li>
+  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link" data-scroll-target="#conclusiones">1.3. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#estructura-de-financiación-óptima-de-la-empresa-estructura-del-capital" id="toc-estructura-de-financiación-óptima-de-la-empresa-estructura-del-capital" class="nav-link" data-scroll-target="#estructura-de-financiación-óptima-de-la-empresa-estructura-del-capital">2. Estructura de financiación óptima de la empresa: estructura del capital</a>
+  <ul class="collapse">
+  <li><a href="#coste-del-capital" id="toc-coste-del-capital" class="nav-link" data-scroll-target="#coste-del-capital">2.1. Coste del capital</a></li>
+  <li><a href="#teorías-económicas-sobre-la-estructura-óptima-del-capital" id="toc-teorías-económicas-sobre-la-estructura-óptima-del-capital" class="nav-link" data-scroll-target="#teorías-económicas-sobre-la-estructura-óptima-del-capital">2.2. Teorías económicas sobre la estructura óptima del capital</a></li>
+  <li><a href="#extensiones-impuesto-sobre-sociedades-costes-de-insolvencia-impuesto-sobre-la-renta-y-costes-de-agencia" id="toc-extensiones-impuesto-sobre-sociedades-costes-de-insolvencia-impuesto-sobre-la-renta-y-costes-de-agencia" class="nav-link" data-scroll-target="#extensiones-impuesto-sobre-sociedades-costes-de-insolvencia-impuesto-sobre-la-renta-y-costes-de-agencia">2.3. Extensiones: impuesto sobre sociedades, costes de insolvencia, impuesto sobre la renta y costes de agencia</a></li>
+  <li><a href="#teoría-de-la-jerarquía-financiera-pecking-order-theory-myers-y-majluf-1984" id="toc-teoría-de-la-jerarquía-financiera-pecking-order-theory-myers-y-majluf-1984" class="nav-link" data-scroll-target="#teoría-de-la-jerarquía-financiera-pecking-order-theory-myers-y-majluf-1984">2.4. Teoría de la jerarquía financiera (<em>pecking order theory</em>) (Myers y Majluf, 1984)</a></li>
+  <li><a href="#conclusiones-1" id="toc-conclusiones-1" class="nav-link" data-scroll-target="#conclusiones-1">2.5. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#política-de-dividendos" id="toc-política-de-dividendos" class="nav-link" data-scroll-target="#política-de-dividendos">3. Política de dividendos</a>
+  <ul class="collapse">
+  <li><a href="#concepto-y-características-de-un-dividendo" id="toc-concepto-y-características-de-un-dividendo" class="nav-link" data-scroll-target="#concepto-y-características-de-un-dividendo">3.1. Concepto y características de un dividendo</a></li>
+  <li><a href="#dividendos-y-el-valor-de-la-empresa" id="toc-dividendos-y-el-valor-de-la-empresa" class="nav-link" data-scroll-target="#dividendos-y-el-valor-de-la-empresa">3.2. Dividendos y el valor de la empresa</a></li>
+  <li><a href="#imperfecciones-y-política-de-dividendos" id="toc-imperfecciones-y-política-de-dividendos" class="nav-link" data-scroll-target="#imperfecciones-y-política-de-dividendos">3.3. Imperfecciones y política de dividendos</a></li>
+  <li><a href="#el-comportamiento-observado-el-alisamiento-de-dividendos-lintner-1956" id="toc-el-comportamiento-observado-el-alisamiento-de-dividendos-lintner-1956" class="nav-link" data-scroll-target="#el-comportamiento-observado-el-alisamiento-de-dividendos-lintner-1956">3.4. El comportamiento observado: el alisamiento de dividendos (Lintner, 1956)</a></li>
+  </ul></li>
+  <li><a href="#conclusiones-2" id="toc-conclusiones-2" class="nav-link" data-scroll-target="#conclusiones-2">Conclusiones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/b01-estados-ratios.html">Empresa y Finanzas</a></li><li class="breadcrumb-item"><a href="../chapters/b03-financiacion.html"><span class="chapter-title">B3. Decisiones de financiación</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">B3. Decisiones de financiación</span></h1>
+<p class="subtitle lead">La empresa y las decisiones de financiación: financiación propia frente a financiación ajena. Política de dividendos y estructura del capital.</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Arturo Lorenzo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">noviembre de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Introducción común.</strong> Los temas B01 a B04 comparten una introducción, que se desarrolla al comienzo del tema <a href="../chapters/b01-estados-ratios.html"><strong>B01</strong></a>. Presenta la empresa como unidad de producción que busca maximizar su valor y, con Solomon (1963), las tres preguntas a las que responde su gestión financiera, la de qué activos debe adquirir (B02), la de cómo debe financiarlos (B03) y la de qué dimensión y ritmo de crecimiento le convienen (B04).</p>
+</div>
+</div>
+</div>
+<p>Las <strong>decisiones de financiación</strong> responden a la segunda pregunta de Solomon, la de cómo debe obtener la empresa los fondos que necesitan sus inversiones. Puede recurrir a <strong>recursos propios</strong>, aportados por los socios o retenidos de los beneficios, que no obligan a devolución, o a <strong>recursos ajenos</strong>, procedentes de terceros, que deben devolverse y se cobran antes en caso de liquidación. La proporción entre ambos, la <strong>estructura del capital</strong>, reparte la renta y el riesgo entre accionistas y acreedores y, a través del coste del capital, condiciona qué proyectos resultan rentables (tema <a href="../chapters/b02-inversion.html">B02</a>).</p>
+<p>El debate moderno arranca con Modigliani y Miller (1958), que demostraron que, en un mercado de capitales perfecto, el valor de la empresa no depende de cómo se financie, frente a la tesis tradicional, que admitía un endeudamiento óptimo. Tres años después extendieron el resultado a la <strong>política de dividendos</strong> (Miller y Modigliani, 1961). Su aportación fue sobre todo de método, porque, al precisar las condiciones en que la financiación es irrelevante, señalaron dónde buscar las razones por las que sí importa. Las teorías posteriores incorporan esas razones, que son los impuestos, los costes de insolvencia, los conflictos de agencia (Jensen y Meckling, 1976) y la información asimétrica (Myers y Majluf, 1984). Según la <strong>teoría del equilibrio estático</strong>, la empresa busca el endeudamiento que iguala el ahorro fiscal de la deuda con los costes de insolvencia y de agencia. Según la <strong>teoría de la jerarquía financiera</strong>, en cambio, prefiere la autofinanciación a la deuda y la deuda a las nuevas acciones, sin un endeudamiento objetivo. Myers (1984) llamó a esa pugna el enigma de la estructura del capital (<em>the capital structure puzzle</em>).</p>
+<p>El debate sigue vigente en la fiscalidad, porque, como los intereses son deducibles en el impuesto sobre sociedades y los dividendos no, el impuesto favorece la deuda frente a los fondos propios. La ley limita, no obstante, esa ventaja. En España, desde 2012, los gastos financieros netos solo son deducibles hasta el 30&nbsp;% del beneficio operativo, con un mínimo de un millón de euros (art. 16 de la Ley 27/2014), una regla análoga a la que la Directiva (UE) 2016/1164 impuso en toda la UE.</p>
+<p>El tema se organiza en tres partes:</p>
+<ul>
+<li><p><em>Tipos de financiación</em>: el tema presenta las fuentes de financiación, propias y ajenas.</p></li>
+<li><p><em>Estructura de financiación óptima</em>: se analiza si existe una combinación de recursos propios y ajenos que maximice el valor de la empresa.</p></li>
+<li><p><em>Política de dividendos</em>: la última parte estudia el reparto del beneficio entre dividendos y reservas.</p></li>
+</ul>
+</section>
+<section id="tipos-de-financiación" class="level2">
+<h2 class="anchored" data-anchor-id="tipos-de-financiación">1. Tipos de financiación</h2>
+<p>Las decisiones de financiación nacen de una necesidad de la empresa, la de contar con fondos mientras desarrolla su actividad. Los <strong>recursos financieros</strong> son el efectivo y los equivalentes líquidos que llevan asociado un coste, sea financiero o de capital.</p>
+<p>Atendiendo a quién es su titular, se distinguen dos categorías:</p>
+<ul>
+<li><p><em>Financiación propia</em>: de los socios y sin obligación de devolución.</p></li>
+<li><p><em>Financiación ajena</em>: de terceros y con obligación de devolución.</p></li>
+</ul>
+<p>Según el horizonte temporal, la financiación es a corto plazo cuando el vencimiento es inferior a un año (p.&nbsp;ej. crédito bancario y línea de descuento). Es a largo plazo cuando el vencimiento es superior a un año (p.&nbsp;ej. préstamos a largo plazo o empréstitos) o no existe, como en las ampliaciones de capital.</p>
+<section id="financiación-propia" class="level3">
+<h3 class="anchored" data-anchor-id="financiación-propia">1.1. Financiación propia</h3>
+<p>La financiación propia comprende los recursos que no generan obligación de devolución y que integran los fondos propios de la empresa o, en el caso de las amortizaciones y provisiones, quedan retenidos en ella. Sus titulares son los socios, que participan en el control y ocupan el último lugar en el orden de prelación. Según su origen, puede ser de dos tipos:</p>
+<ul>
+<li><p><em>Interna o autofinanciación</em>: generada por la propia empresa a partir de su actividad, se divide a su vez en autofinanciación de mantenimiento y de enriquecimiento (1.1.1).</p></li>
+<li><p><em>Externa</em>: aportada por los socios desde fuera mediante operaciones de capital (1.1.2).</p></li>
+</ul>
+<section id="autofinanciación" class="level4">
+<h4 class="anchored" data-anchor-id="autofinanciación">1.1.1. Autofinanciación</h4>
+<p><strong>Autofinanciación de mantenimiento</strong>: busca evitar las disminuciones en el patrimonio neto y tiene su origen en el ciclo de explotación. Responde a la depreciación que sufren los bienes de equipo empleados en la producción. Tiene dos componentes:</p>
+<ol type="1">
+<li><p><em>Provisiones</em>: fondos dotados con cargo a resultados para cubrir riesgos y obligaciones ciertos o probables en su existencia, pero indeterminados en su cuantía o fecha de materialización.</p></li>
+<li><p><em>Amortización técnica o económica</em>: consiste en emplear como recursos los fondos de amortización, dotados para cubrir la pérdida de valor o depreciación de ciertos elementos patrimoniales. Este proceso de amortización se puede realizar mediante el método lineal de cuotas fijas (<span class="math inline">\(\text{Am} = (V_{\text{adq}} - V_R)/n\)</span>), que es el más utilizado y en el que la cuota resulta del cociente entre el valor amortizable y la vida útil, o mediante métodos acelerados, donde la cuota de amortización es decreciente.</p></li>
+</ol>
+<p>Entre estos últimos destacan el método de la suma de dígitos y el del tanto fijo sobre el valor contable pendiente. El primero reparte el valor amortizable en proporción a una serie de dígitos decrecientes y concentra así la amortización en los primeros años. El segundo aplica un porcentaje constante a una base neta cada vez menor. Los métodos acelerados anticipan el ahorro fiscal ligado a la amortización, lo que eleva su valor actual.</p>
+<p>La autofinanciación de mantenimiento asegura, así, que la empresa tenga a mano los fondos necesarios en el momento de reponer los bienes amortizables o de hacer frente a una contingencia.</p>
+<p>La amortización económica genera un efecto multiplicador, el <strong>efecto Lohmann-Ruchti</strong> (1949, 1953). Para que aparezca, la empresa ha de estar creciendo (necesitar cada vez más equipos), los bienes de equipo no deben perder capacidad productiva a lo largo de su vida útil y no puede haber ni inflación ni obsolescencia tecnológica. Cumplido todo ello, reinvertir en equipos nuevos las cuotas retenidas eleva la capacidad productiva por periodo, más allá de la simple reposición, aunque la capacidad total (las unidades de servicio que les quedan al conjunto de los equipos) no varíe.</p>
+<p><strong>Autofinanciación de enriquecimiento</strong>: consiste en la retención de beneficios en forma de reservas, con el fin de aumentar los fondos propios y, por extensión, el patrimonio neto. Puede provenir del ciclo de explotación o de operaciones de capital, si bien lo más habitual es lo primero.</p>
+<p>Las reservas procedentes del ciclo de explotación son legales (de dotación obligatoria), estatutarias (impuestas por los estatutos), voluntarias (dotadas libremente por acuerdo de la junta) o especiales (exigidas por normas concretas).</p>
+<p>En cuanto a su destino, pueden mantenerse indefinidamente o dedicarse a la compensación de pérdidas o al pago de dividendos. Cuando provienen de operaciones de capital, el ejemplo característico es la prima de emisión, que, en rigor, no procede de beneficios retenidos sino de aportaciones de los socios (1.1.2).</p>
+<p>La autofinanciación de enriquecimiento tiene un efecto multiplicador sobre la financiación:</p>
+<ol type="1">
+<li><p><em>Regla financiera</em>: lo habitual es que la empresa se fije una proporción entre fondos propios y deuda y procure respetarla. Esa regla de balance equivale a una ratio de apalancamiento objetivo, <span class="math inline">\(L = D_f/E\)</span>, donde <span class="math inline">\(D_f\)</span> es la deuda financiera y <span class="math inline">\(E\)</span> son los fondos propios o <em>equity</em>.</p></li>
+<li><p><em>Aumento de recursos ajenos</em>: de ahí que todo incremento de los fondos propios vía reservas (<span class="math inline">\(\Delta E\)</span>) lleve consigo nueva deuda, en la cuantía que conserva intacta esa proporción.</p></li>
+<li><p><em>Efecto multiplicador</em>: la financiación total de la empresa crece, en consecuencia, más que las reservas, según <span class="math inline">\(\Delta(E + D_f) = \Delta E(1+L)\)</span>, donde <span class="math inline">\(E + D_f\)</span> es la financiación total (patrimonio neto y deuda financiera). El efecto es tanto mayor cuanto mayor sea la ratio de apalancamiento deseada.</p></li>
+</ol>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>:</p>
+<ul>
+<li><p><em>Autonomía</em>: la empresa gana independencia y margen de maniobra en sus decisiones.</p></li>
+<li><p><em>Pymes</em>: para una pyme, puede ser la única vía de financiarse al margen de la banca.</p></li>
+<li><p><em>Sin remuneración explícita</em>: los fondos retenidos no llevan aparejado ningún pago explícito a quien los aporta.</p></li>
+</ul></li>
+<li><p><em>Limitaciones</em>:</p>
+<ul>
+<li><p><em>Insuficiencia</em>: los recursos internos se acumulan poco a poco, pero las necesidades de inversión llegan a saltos, así que pueden quedarse cortos.</p></li>
+<li><p><em>Coste de oportunidad</em>: que la autofinanciación no tenga un coste explícito no la convierte necesariamente en la opción más barata. Su coste implícito es el rendimiento que esos fondos darían en su mejor uso alternativo, y el problema se agrava si acaban financiando proyectos de escasa rentabilidad.</p></li>
+<li><p><em>Autofinanciación de enriquecimiento</em>: cada euro retenido es un euro menos de dividendo para el accionista, y esa merma puede castigar la cotización.</p></li>
+<li><p><em>Autofinanciación de mantenimiento</em>: su peso como fuente de fondos varía con la coyuntura de la empresa. Así, resulta mucho mayor en las fases expansivas, en que los recursos se generan con facilidad, que cuando la actividad se estanca o retrocede.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="emisión-de-acciones-y-participaciones" class="level4">
+<h4 class="anchored" data-anchor-id="emisión-de-acciones-y-participaciones">1.1.2. Emisión de acciones y participaciones</h4>
+<p>Dadas las limitaciones de la autofinanciación, es habitual que la empresa busque financiación externa en los mercados de capitales. Por el lado de los recursos propios, esa financiación externa se obtiene mediante <strong>ampliaciones de capital</strong>, que aumentan los fondos propios de la sociedad mediante el incremento de su capital social y pueden realizarse principalmente de dos formas:</p>
+<ol type="1">
+<li><p><em>Emisión de acciones o participaciones nuevas</em>: los antiguos accionistas y el público en general pueden acudir a la ampliación. Si las aportaciones son dinerarias, los antiguos accionistas tienen derecho de suscripción preferente sobre las acciones nuevas (de asunción preferente sobre las participaciones, en las sociedades de responsabilidad limitada), que evita el efecto dilución. No obstante, la junta puede excluirlo cuando lo exija el interés social (arts. 304 y 308 de la Ley de Sociedades de Capital, LSC). El valor teórico del derecho de suscripción preferente compensa a los antiguos accionistas de la dilución que provoca emitir nuevas acciones a un precio inferior al de mercado, y equivale a la diferencia entre la cotización antes de la ampliación y el valor tras ella.</p></li>
+<li><p><em>Incremento del valor nominal de las acciones existentes</em>: en este caso, no se crean acciones nuevas, sino que se eleva el nominal de las que ya existen. Exige el consentimiento de todos los socios, salvo que el aumento se haga íntegramente con cargo a beneficios o reservas que ya figuraban en el último balance aprobado (art. 296.2 LSC).</p></li>
+</ol>
+<p>Según el precio de emisión, la ampliación puede ser a la par (al valor nominal), con prima de emisión (por encima del nominal) o liberada, total o parcialmente, cuando se realiza con cargo a reservas y el accionista no desembolsa la totalidad. En cuanto a su contravalor, puede realizarse mediante aportaciones dinerarias o no dinerarias, compensación de créditos de los acreedores, cargo a reservas o beneficios, conversión de obligaciones en acciones, o una combinación de estos elementos.</p>
+</section>
+</section>
+<section id="financiación-ajena" class="level3">
+<h3 class="anchored" data-anchor-id="financiación-ajena">1.2. Financiación ajena</h3>
+<p>La financiación ajena comprende los recursos aportados por terceros (banca comercial o privada, Estado u otros agentes privados) con obligación de devolución, cuya retribución (el interés) es independiente del resultado de la empresa y cuyos titulares no participan en su control. Puede obtenerse a través de dos grandes canales. En el canal bancario o intermediado, una entidad financiera concede los fondos y asume el riesgo, mientras que en el canal de mercado la empresa capta los recursos directamente de los inversores mediante la emisión de valores.</p>
+<section id="canal-bancario-préstamos-créditos-y-financiación-del-circulante" class="level4">
+<h4 class="anchored" data-anchor-id="canal-bancario-préstamos-créditos-y-financiación-del-circulante">1.2.1. Canal bancario: préstamos, créditos y financiación del circulante</h4>
+<p><strong>Préstamos</strong>: con ellos, la empresa obtiene de terceros recursos financieros cuyo principal reembolsará, junto con los intereses, en los plazos y por las cuantías previamente establecidos. Si bien presentan similitudes con las obligaciones, se diferencian en que el préstamo es concedido por un único acreedor y no se incorpora a un valor negociable, mientras que las obligaciones son títulos emitidos en el mercado con tantos acreedores como tenedores.</p>
+<p><strong>Línea de crédito</strong>: también llamada crédito, se distingue del préstamo por la forma de disponer de los fondos. En el préstamo, la entidad entrega de una vez la totalidad del principal, sobre el que se pagan intereses. En la línea de crédito, en cambio, la empresa dispone de los fondos a medida que los necesita, hasta un límite, y solo paga intereses por lo dispuesto, lo que la hace idónea para cubrir desfases de tesorería.</p>
+<p><strong>Instrumentos ligados al ciclo de explotación</strong>: entre los de financiación a corto plazo destacan los siguientes:</p>
+<ul>
+<li><p><em>Crédito comercial</em>: aplazamiento de pago que conceden los proveedores, gratuito salvo que se renuncie a un descuento por pronto pago. Aunque no es financiación bancaria en sentido estricto, se incluye aquí por su papel central en la financiación del ciclo.</p></li>
+<li><p><em>Descuento comercial</em>: la línea de descuento permite anticipar el importe de efectos comerciales (letras, pagarés) antes de su vencimiento, deduciendo intereses y comisiones, con la cláusula “salvo buen fin”.</p></li>
+<li><p><em>Factoring</em>: cesión de los derechos de cobro a una entidad (el <em>factor</em>) que gestiona su cobro y anticipa su importe. Puede ser sin recurso (el <em>factor</em> asume el riesgo de impago) o con recurso (lo asume la empresa cedente).</p></li>
+<li><p><em>Confirming</em>: también llamado <em>factoring</em> inverso, es la operación simétrica, en la que una empresa encomienda a una entidad la gestión de los pagos a sus proveedores, a los que la entidad ofrece la posibilidad de anticipar el cobro.</p></li>
+</ul>
+<p><strong><em>Leasing</em></strong>: el arrendamiento es otra forma de financiación de activos no corrientes, mediante la cual la empresa disfruta de un bien a cambio del pago de rentas periódicas al arrendador. Cabe distinguir dos modalidades:</p>
+<ul>
+<li><p><em>Leasing financiero</em>: una entidad financiera adquiere el bien elegido por la empresa y se lo arrienda durante un plazo que cubre la mayor parte de su vida económica, con una opción de compra al término (habitualmente por el valor residual). El contrato es irrevocable durante su vigencia, de modo que los riesgos y beneficios del bien se transfieren <em>de facto</em> al arrendatario. Económicamente, equivale a una compra financiada y, contablemente, el bien se registra en el activo del arrendatario con su correspondiente pasivo.</p></li>
+<li><p><em>Leasing operativo</em> (<em>renting</em>): el fabricante o una entidad especializada cede el uso del bien por periodos cortos (habitualmente entre seis meses y tres años), sin opción de compra o con una opción no predeterminada, asumiendo el arrendador el mantenimiento y el riesgo de obsolescencia. El contrato es revocable y, en las cuentas individuales conforme al Plan General de Contabilidad (PGC), sus cuotas se registran como gasto del ejercicio. En cambio, la Norma Internacional de Información Financiera (NIIF) 16, aplicable desde 2019 a las cuentas consolidadas de los grupos cotizados, obliga al arrendatario a reconocer en balance un activo por derecho de uso y el pasivo correspondiente. Pueden quedar fuera, no obstante, los arrendamientos a corto plazo o de escaso valor.</p></li>
+</ul>
+<p>El <em>leasing</em> aporta alivio financiero, pues permite disponer del bien sin un gran desembolso inicial, y sus cuotas son deducibles en el impuesto sobre sociedades. En la modalidad financiera se deducen la carga financiera y la parte de recuperación del coste, esta con el límite del doble de la amortización lineal (art. 106 de la Ley del Impuesto sobre Sociedades, LIS). En la modalidad operativa, además, el arrendatario se libra del riesgo de obsolescencia, algo muy valioso en equipos tecnológicos. Como contrapartida, su coste total suele ser mayor que el de una compra financiada, y no todos los activos no corrientes pueden arrendarse.</p>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo: cuota de un *leasing* frente a un préstamo">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo: cuota de un <em>leasing</em> frente a un préstamo
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Una máquina cuesta 100.000 €. La empresa puede arrendarla con un <em>leasing</em> financiero a cinco años, con cuotas anuales vencidas, un tipo implícito del 7&nbsp;% y una opción de compra final de 5000 €, o comprarla con un préstamo a cinco años al 5&nbsp;%. En miles de euros:</p>
+<ul>
+<li><p><em>Cuotas</em>: la del arrendamiento se obtiene igualando el precio al valor actual al 7&nbsp;% de las cinco cuotas y de la opción, <span class="math inline">\(100 = C \sum_{t=1}^{5} 1{,}07^{-t} + 5 \cdot 1{,}07^{-5}\)</span>, de donde <span class="math inline">\(C \approx 23{,}52\)</span>, y la del préstamo, al 5&nbsp;%, es de 23,10.</p></li>
+<li><p><em>Comparación</em>: descontados al 5&nbsp;%, los pagos del <em>leasing</em> valen 105,75, frente a los 100 del préstamo. El <em>leasing</em> solo compensa si su ventaja fiscal, o el acceso a un bien que la empresa no podría financiar con un préstamo, vale más que esa diferencia.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="canal-de-mercado-no-bancario-emisión-de-bonos-y-nuevas-plataformas" class="level4">
+<h4 class="anchored" data-anchor-id="canal-de-mercado-no-bancario-emisión-de-bonos-y-nuevas-plataformas">1.2.2. Canal de mercado (no bancario): emisión de bonos y nuevas plataformas</h4>
+<p><strong>Bonos y obligaciones</strong>: son valores que representan partes alícuotas de un empréstito, es decir, de una deuda emitida por la empresa. Su rentabilidad y riesgo previstos tienen que ver con la calificación crediticia del emisor y también con el plazo de reembolso y los tipos de interés. En España, cuando estos títulos se emiten a medio plazo (convencionalmente, hasta cinco años), se denominan bonos y, a plazos superiores, obligaciones. En el corto plazo, el instrumento análogo son los pagarés de empresa, emitidos al descuento en los mercados monetarios.</p>
+<p>Entre las figuras híbridas entre deuda y capital destacan las siguientes:</p>
+<ul>
+<li><p><em>Obligaciones convertibles</em>: otorgan el derecho a convertirlas en acciones del emisor en condiciones predeterminadas.</p></li>
+<li><p><em>Préstamos participativos</em>: figura contractual, no de mercado, cuya remuneración se liga a los resultados y que, a efectos mercantiles, se asimila a fondos propios.</p></li>
+<li><p><em>Deuda subordinada o mezzanine</em>: intermedia entre la deuda ordinaria y el capital en el orden de prelación.</p></li>
+</ul>
+<p>El obligacionista asume menos riesgo que el accionista porque su posición es la de un acreedor, no la de un socio. Así, tiene derecho a sus intereses haya o no beneficios, mientras que el dividendo requiere que los haya y que la junta acuerde repartirlos. Al obligacionista se le devuelve, además, el principal al vencimiento (al accionista, solo al liquidarse la sociedad o vendiendo el título) y el obligacionista cobra con preferencia en el orden de prelación.</p>
+<p><strong>Nuevos instrumentos</strong>: junto a la emisión tradicional de bonos, han cobrado protagonismo los mercados y plataformas alternativos de financiación no bancaria. Se tratan aquí en conjunto, aunque algunos de ellos (el <em>equity crowdfunding</em> y el capital riesgo) aportan recursos propios y no ajenos.</p>
+<ul>
+<li><p><em>Mercados alternativos de renta fija</em>: facilitan a las empresas medianas la emisión de títulos con requisitos más flexibles.</p></li>
+<li><p><em>Crowdfunding</em>: agrupa la aportación de multitud de pequeños financiadores y adopta modalidades de recompensa, de donación, de inversión o <em>equity crowdfunding</em> (a cambio de participaciones) y de préstamo o <em>crowdlending</em> (a cambio de la devolución con intereses).</p></li>
+<li><p><em>Capital riesgo</em> (<em>private equity</em> y <em>venture capital</em>): aporta recursos propios, a cambio de una participación temporal, a empresas no cotizadas con elevado potencial de crecimiento.</p></li>
+</ul>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La valoración y la negociación de las acciones y los bonos se desarrollan en los temas <a href="../chapters/b23-renta-variable.html">B23</a>, apartado 1 (renta variable), y <a href="../chapters/b24-renta-fija.html">B24</a>, apartado 1 (renta fija).</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusiones" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones">1.3. Conclusiones</h3>
+<p>La diferencia fundamental entre ambas categorías es que la financiación propia no genera deuda, es decir, no es exigible. A ello se añade una <strong>asimetría fiscal</strong> relevante, pues los intereses de la financiación ajena son deducibles en el impuesto sobre sociedades, mientras que los dividendos no lo son.</p>
+<p>La coexistencia de ambas fuentes ofrece a la empresa un menú amplio para diseñar su estructura del capital, combinando instrumentos según el plazo, el coste, el riesgo y el grado de control que se desea conservar. La financiación propia aporta estabilidad y autonomía, mientras que la ajena permite acelerar el crecimiento y aprovechar el apalancamiento y el escudo fiscal, además de imponer una disciplina financiera a la dirección. Dentro de la financiación ajena, el canal bancario descansa en la relación con un único acreedor, que asume el riesgo, y el de mercado coloca valores negociables directamente entre los inversores.</p>
+<p>No existe, sin embargo, una combinación óptima universal de fuentes, pues la estructura del capital adecuada depende del sector, del ciclo y de la naturaleza de los activos, cuestión que aborda el apartado 2. La asimetría fiscal introduce, además, un sesgo hacia el endeudamiento (<em>debt bias</em>) que puede elevar la fragilidad financiera agregada.</p>
+</section>
+</section>
+<section id="estructura-de-financiación-óptima-de-la-empresa-estructura-del-capital" class="level2">
+<h2 class="anchored" data-anchor-id="estructura-de-financiación-óptima-de-la-empresa-estructura-del-capital">2. Estructura de financiación óptima de la empresa: estructura del capital</h2>
+<p>Revisadas las principales fuentes de financiación de la empresa, la cuestión es cómo combinarlas de manera óptima. La sección parte del coste del capital, expone las teorías sobre la estructura óptima del capital y sus extensiones y termina con la teoría de la jerarquía financiera.</p>
+<p>La financiación no crea por sí misma valor para la empresa, sino que es una fuente de costes. Por tanto, la <strong>estructura óptima del capital</strong> puede definirse como la combinación de fuentes financieras que minimiza los costes de financiación, resumidos en el coste del capital medio ponderado, y maximiza con ello el valor para los accionistas.</p>
+<section id="coste-del-capital" class="level3">
+<h3 class="anchored" data-anchor-id="coste-del-capital">2.1. Coste del capital</h3>
+<p>El <strong>coste del capital</strong> es el rendimiento mínimo que deben dar las inversiones de la empresa para retribuir a quienes le han cedido fondos, y por eso tiene la naturaleza de un coste de oportunidad. La formulación clásica lo expresa en términos bursátiles, como el umbral de rentabilidad que deja inalterada la cotización cuando la empresa acomete un proyecto. Este concepto único se aplica en dos niveles.</p>
+<ul>
+<li><p><em>Coste de capital en sentido aislado</em>: en primer lugar, el de cada fuente de financiación por separado, el del capital ajeno (2.1.1) y el del capital propio (2.1.2).</p></li>
+<li><p><em>Coste de capital en sentido conjunto</em>: en segundo lugar, el que soporta la empresa por toda su financiación, el coste del capital medio ponderado (2.1.3).</p></li>
+</ul>
+<section id="coste-del-capital-ajeno" class="level4">
+<h4 class="anchored" data-anchor-id="coste-del-capital-ajeno">2.1.1. Coste del capital ajeno</h4>
+<p><strong>Concepto</strong>: el coste de capital ajeno es la rentabilidad exigida por los acreedores de la empresa a la hora de ceder fondos a esta. Es un <em>coste explícito</em>, determinado por variables observables, es decir, un coste que queda reflejado en los contratos entre las partes. Para medir este coste hay dos vías, una basada en flujos y otra en primas.</p>
+<p><strong>Método basado en flujos</strong>: la primera vía lo calcula como el tipo de descuento que hace coincidir el dinero recibido con el valor actual de los pagos comprometidos por intereses y principal, es decir, del servicio de la deuda. Formalmente,</p>
+<p><span class="math display">\[k_a: \quad Q_{E,0} = \sum_{t=1}^{T} \frac{Q_{S,t}}{(1 + k_a)^{t}}\]</span></p>
+<p>donde <span class="math inline">\(k_a\)</span> es el coste del capital ajeno (nominal y antes de impuestos), <span class="math inline">\(Q_{E,0}\)</span> son las entradas de fondos a valor actual y <span class="math inline">\(Q_{S,t}\)</span> las salidas de fondos en cada momento <span class="math inline">\(t\)</span>.</p>
+<p>A partir de este coste, el coste efectivo del capital ajeno se verá influido por la imposición, a través del tipo impositivo que la empresa paga sobre sus beneficios, <span class="math inline">\(t_{\text{IS}}\)</span> (impuesto sobre sociedades), y por la tasa de inflación, <span class="math inline">\(\pi\)</span>:</p>
+<ul>
+<li><p><em>Efecto de los impuestos</em>: los intereses son gasto deducible en el impuesto sobre sociedades, así que, siempre que la empresa tenga beneficios, cada euro de intereses rebaja su factura fiscal. Ese ahorro, conocido como <em>escudo fiscal</em> o <em>tax shield</em>, abarata la deuda, cuyo coste neto es <span class="math inline">\(k_a^{\text{ef}} = k_a(1 - t_{\text{IS}})\)</span>. Sin embargo, en España la deducción tiene un tope, pues los gastos financieros netos solo se deducen hasta el 30&nbsp;% del beneficio operativo o, si es mayor, hasta un millón de euros, y el exceso se traslada a ejercicios siguientes (art. 16 LIS).</p></li>
+<li><p><em>Efecto de la inflación</em>: como la deuda se salda devolviendo únicamente su importe nominal, una mayor inflación merma su valor real, de modo que <span class="math inline">\(k_a^{\text{real}} \approx k_a - \pi\)</span>, aproximación de Fisher cuya expresión exacta es <span class="math inline">\(k_a^{\text{real}} = (1 + k_a)/(1 + \pi) - 1\)</span>.</p></li>
+<li><p><em>Efecto conjunto</em>: <span class="math inline">\(k_a^{\text{ef,real}} \approx k_a(1 - t_{\text{IS}}) - \pi\)</span>.</p></li>
+</ul>
+<p><strong>Método basado en primas</strong>: el coste del capital ajeno puede calcularse también como suma del tipo de interés de un activo libre de riesgo y una prima. Formalmente,</p>
+<p><span class="math display">\[k_a=r_f+\rho_d\]</span></p>
+<p>donde <span class="math inline">\(k_a\)</span> es el coste del capital ajeno, <span class="math inline">\(r_f\)</span> el tipo de interés de un activo libre de riesgo y <span class="math inline">\(\rho_d\)</span> la prima de riesgo. La prima puede estimarse de diferentes formas: a través de la tasa interna de rentabilidad (TIR) de los bonos corporativos emitidos por una empresa comparable, a través del último préstamo suscrito, de <em>swaps</em> de tipos de interés o de <em>credit default swaps</em>, o a partir de los diferenciales publicados por las agencias de calificación.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Los <em>swaps</em> de tipos de interés y los <em>credit default swaps</em> se desarrollan en el tema <a href="../chapters/b25-derivados.html">B25</a>, apartado 3.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="coste-del-capital-propio" class="level4">
+<h4 class="anchored" data-anchor-id="coste-del-capital-propio">2.1.2. Coste del capital propio</h4>
+<p><strong>Concepto</strong>: el coste de capital propio es la rentabilidad exigida por los propietarios de la empresa a la hora de aportar o mantener fondos en ella. A diferencia del capital ajeno, no responde a un compromiso contractual y, por tanto, no es un coste explícito sino un <em>coste implícito o coste de oportunidad</em>, que no se observa y ha de inferirse. En la práctica, se identifica con el rendimiento que los accionistas exigen como mínimo para conservar sus títulos. Si no lo obtuvieran, los venderían en masa y, en el mercado secundario, su precio caería. Para medir este coste se aplican las mismas dos vías que al capital ajeno.</p>
+<p><strong>Método basado en flujos</strong>: por analogía con la deuda, se busca la tasa con la que el valor actual de los flujos que la acción promete a su tenedor (los dividendos futuros) coincide con su cotización, y esa tasa es el coste del capital propio. Formalmente,</p>
+<p><span class="math display">\[k_p: \quad P_{0} = \sum_{t=1}^{\infty} \frac{\text{DIV}_{t}}{(1+k_{p})^{t}}\]</span></p>
+<p>donde <span class="math inline">\(k_p\)</span> es el coste del capital propio, <span class="math inline">\(P_0\)</span> es la cotización de la acción en el momento actual y <span class="math inline">\(\text{DIV}_t\)</span> el dividendo esperado en cada momento <span class="math inline">\(t\)</span>.</p>
+<p>El horizonte infinito no exige suponer una tenencia indefinida porque, si el accionista prevé vender en el año <span class="math inline">\(T\)</span>, el precio de venta <span class="math inline">\(P_T\)</span> es el valor actualizado en <span class="math inline">\(T\)</span> de los dividendos posteriores y, sustituyendo recursivamente, se recupera la misma expresión.</p>
+<p>Sin embargo, la expresión general anterior no es operativa sin una hipótesis sobre la senda de <span class="math inline">\(\text{DIV}_t\)</span>. La <em>metodología de Gordon-Shapiro</em> (1956) se centra en el caso particular que resulta de suponer que los dividendos crecen a una tasa constante <span class="math inline">\(g_D &lt; k_p\)</span>, es decir, <span class="math inline">\(\text{DIV}_t = \text{DIV}_1(1+g_D)^{t-1}\)</span>. La suma de la progresión geométrica arroja:</p>
+<p><span class="math display">\[P_{0} = \frac{\text{DIV}_{1}}{k_{p} - g_D} \qquad \Longrightarrow \qquad k_{p} = \frac{\text{DIV}_{1}}{P_{0}} + g_D\]</span></p>
+<p>donde el caso de dividendos constantes (<span class="math inline">\(g_D = 0\)</span>) se obtiene sin más que anular la tasa de crecimiento, lo que da <span class="math inline">\(P_0 = \text{DIV}_1/k_p\)</span>. La aplicabilidad de esta metodología se limita, por tanto, a empresas cotizadas con una política de dividendos estable y predecible.</p>
+<p>Al igual que en el caso del capital ajeno, el coste efectivo se ve influido por la imposición y por la inflación, si bien con una diferencia sustancial en el primer caso:</p>
+<ul>
+<li><p><em>Efecto de los impuestos</em>: frente a los intereses, que sí se deducen, los dividendos no reducen la base del impuesto sobre sociedades, y la financiación propia carece por ello de escudo fiscal. Antes al contrario, los rendimientos del accionista soportan una segunda imposición en sede personal (IRPF), lo que eleva la rentabilidad bruta que este exigirá. La asimetría en el impuesto sobre sociedades es, precisamente, el punto de partida de la extensión de Modigliani y Miller (1963) que se examina en el apartado 2.3.1.</p></li>
+<li><p><em>Efecto de la inflación</em>: a diferencia de lo que ocurre con el capital ajeno, la inflación no abarata la financiación propia, pues la retribución del accionista no está fijada en términos nominales. Por ello, el accionista exigirá una rentabilidad nominal mayor que compense la pérdida de poder adquisitivo.</p></li>
+</ul>
+<p><strong>Método basado en primas</strong>: el coste del capital propio puede calcularse también como suma del tipo de interés de un activo libre de riesgo y una prima. Formalmente,</p>
+<p><span class="math display">\[k_{p} = r_{f} + \rho_{p}\]</span></p>
+<p>donde <span class="math inline">\(r_f\)</span> es el tipo de interés de un activo libre de riesgo y <span class="math inline">\(\rho_p\)</span> la prima de riesgo exigida por el accionista. La diferencia con el capital ajeno estriba en la obtención de la prima. Allí, <span class="math inline">\(\rho_d\)</span> podía leerse directamente de precios de mercado observables, porque existe un contrato con flujos fijados de antemano al que el mercado pone precio. Aquí no existe tal contrato, de modo que la prima ha de modelizarse. La formulación estándar es el modelo de valoración de activos de capital (CAPM, tema <a href="../chapters/b23-renta-variable.html">B23</a>, apartado 3.1), utilizado por los reguladores europeos y aplicable con carácter general, incluso a empresas que no reparten dividendos. Se basa en la idea de que la rentabilidad esperada de un activo para un riesgo sistemático concreto coincidirá con la rentabilidad mínima que cualquier inversor racional le exigirá a dicha inversión:</p>
+<p><span class="math display">\[\rho_{p} = \beta(R^e_{m} - r_{f}) \qquad \Longrightarrow \qquad k_{p} = r_{f} + \beta(R^e_{m} - r_{f})\]</span></p>
+<p>donde <span class="math inline">\((R^e_m - r_f)\)</span> es la prima de mercado y <span class="math inline">\(\beta\)</span> mide el riesgo sistemático, es decir, no diversificable (p.&nbsp;ej. ciclo económico, tipos de interés, inflación o tipo de cambio).</p>
+<p>La beta empleada recoge tanto el riesgo económico del negocio como el riesgo financiero derivado del apalancamiento. A su vez, la ecuación de Hamada permite separar ambos, relacionando la beta apalancada (<span class="math inline">\(\beta_A\)</span>) con la no apalancada o del activo (<span class="math inline">\(\beta_U\)</span>):</p>
+<p><span class="math display">\[\beta_{A} = \beta_{U}\left[1 + (1 - t_{\text{IS}})\frac{D_{f}}{E}\right]\]</span></p>
+<p>donde <span class="math inline">\(\beta_A\)</span>, la beta observada en el mercado, recoge el riesgo económico y el financiero, <span class="math inline">\(\beta_U\)</span> aísla el riesgo económico del negocio, <span class="math inline">\(t_{\text{IS}}\)</span> es el tipo del impuesto sobre sociedades y <span class="math inline">\(D_f/E\)</span> es la ratio de apalancamiento, <span class="math inline">\(L\)</span>, a valores de mercado, distinta del peso <span class="math inline">\(w_D = D_f/(D_f + E)\)</span> empleado en el coste medio ponderado.</p>
+</section>
+<section id="coste-del-capital-medio-ponderado-wacc" class="level4">
+<h4 class="anchored" data-anchor-id="coste-del-capital-medio-ponderado-wacc">2.1.3. Coste del capital medio ponderado (WACC)</h4>
+<p><strong>Concepto</strong>: el coste del capital medio ponderado o <em>weighted average cost of capital</em> (WACC) resume en una sola tasa lo que le cuesta a la empresa toda su financiación, pues promedia el coste de cada fuente con su peso relativo como ponderación.</p>
+<p>Su relevancia es doble. Por un lado, representa el coste de financiar un proyecto de inversión de riesgo análogo al del negocio y opera como tasa de descuento o tasa de corte en el análisis dinámico. Así, una inversión solo creará valor si su rentabilidad esperada supera el WACC. Por otro, al depender de las ponderaciones, es la magnitud a través de la cual la estructura del capital incide sobre el valor de la empresa, lo que enlaza directamente con las teorías sobre la estructura óptima del capital.</p>
+<p>El WACC no se estima por un procedimiento propio e independiente, sino que resulta de agregar los costes ya calculados. No obstante, cabe también recuperarlo de forma implícita a partir de los flujos de la empresa en su conjunto, en aplicación de la misma lógica seguida para la deuda y para las acciones.</p>
+<p><strong>Método por agregación</strong>: es el procedimiento habitual. Formalmente,</p>
+<p><span class="math display">\[\text{WACC} = k_{a}(1-t_{\text{IS}}) \cdot w_D + k_{p} \cdot (1 - w_D), \quad \text{con} \quad w_D = \frac{D_{f}}{D_{f} + E}\]</span></p>
+<p>donde <span class="math inline">\(k_a\)</span> y <span class="math inline">\(k_p\)</span> son los costes del capital ajeno y propio, <span class="math inline">\(D_f\)</span> es la deuda financiera, <span class="math inline">\(E\)</span> son los fondos propios y <span class="math inline">\(w_D\)</span> es el peso de la deuda en la financiación total (distinto de la ratio de apalancamiento <span class="math inline">\(L = D_f/E\)</span> empleada en el apartado 1.1.1 y en el tema <a href="../chapters/b01-estados-ratios.html">B01</a>).</p>
+<p>El coste del capital ajeno se computa neto de impuestos, de modo que la expresión incorpora el escudo fiscal de la deuda. En cambio, la versión sin corrección fiscal, <span class="math inline">\(\text{WACC} = k_a \cdot w_D + k_p(1-w_D)\)</span>, solo resulta pertinente en el mundo sin impuestos del teorema de Modigliani y Miller que se examina en el apartado 2.2.2.</p>
+<p>Abordados los costes, resta determinar las ponderaciones, lo que plantea tres cuestiones:</p>
+<ol type="1">
+<li><p><em>Valores de mercado, no contables</em>: las ponderaciones deben computarse así porque el WACC pretende recoger la retribución exigida por los aportantes de fondos sobre el valor actual de su inversión, y no sobre su coste histórico. Para los fondos propios ello supone emplear la capitalización bursátil y, para la deuda, su valor de mercado, que en la práctica suele aproximarse por el valor contable cuando la calidad crediticia no se ha deteriorado apreciablemente.</p></li>
+<li><p><em>Estructura objetivo, no coyuntural</em>: dado que el WACC se emplea para descontar flujos de larga duración, procede utilizar la estructura del capital objetivo a la que la empresa tiende a largo plazo, y no la observada en un momento puntual, que puede reflejar situaciones transitorias.</p></li>
+<li><p><em>Circularidad</em>: el cálculo de <span class="math inline">\(w_D\)</span> exige conocer <span class="math inline">\(E\)</span> a valor de mercado, que es precisamente la magnitud que a menudo se desea determinar. A ello se añade que la ecuación de Hamada requiere igualmente la ratio <span class="math inline">\(D_f/E\)</span> para reapalancar la beta. El problema se resuelve por iteración o, más habitualmente, fijando de partida las ponderaciones objetivo.</p></li>
+</ol>
+<p><strong>Método basado en flujos</strong>: por analogía con los dos apartados anteriores, el WACC es también la tasa que, aplicada a los flujos de caja libres que generan los activos, hace que su valor actual coincida con lo que vale en el mercado el conjunto de la empresa. Formalmente,</p>
+<p><span class="math display">\[\text{EV}_{0} = D_{f} + E = \sum_{t=1}^{\infty} \frac{\text{FCL}_{t}}{(1+\text{WACC})^{t}}\]</span></p>
+<p>donde <span class="math inline">\(\text{FCL}_t\)</span> es el flujo de caja libre esperado en cada momento <span class="math inline">\(t\)</span>, es decir, el generado por los activos antes de atender la retribución de acreedores y accionistas. Esta vía tiene un uso más limitado como método de cálculo, pero resulta útil para inferir el WACC implícito en las valoraciones de mercado y como comprobación de coherencia del obtenido por agregación.</p>
+<p><strong>Aplicación y límites</strong>: el empleo del WACC como tasa de descuento presupone que el proyecto evaluado presenta un riesgo económico análogo al del negocio existente y que no altera la estructura del capital objetivo. Cuando no es así, procede ajustar la tasa al riesgo específico del proyecto, típicamente reapalancando la beta de empresas comparables del sector correspondiente. Dos precisiones adicionales son relevantes:</p>
+<ol type="1">
+<li><p><em>Coste marginal del capital</em>: para evaluar un nuevo proyecto, lo pertinente es el coste de los fondos adicionales necesarios para financiarlo, que puede superar al coste medio si la empresa ha de acudir a fuentes más caras o incurrir en costes de emisión (<em>flotation costs</em>).</p></li>
+<li><p><em>Valor actual ajustado</em>: cuando la estructura del capital varía de forma apreciable en el tiempo, la ponderación fija deja de ser representativa. En tal caso se prefiere a menudo el método del <em>valor actual ajustado</em> (<em>adjusted present value</em>, Myers, 1974). Este método valora primero el proyecto como si se financiara íntegramente con recursos propios y añade después, por separado, el valor actual del escudo fiscal de la deuda y de los demás efectos de la financiación.</p></li>
+</ol>
+</section>
+</section>
+<section id="teorías-económicas-sobre-la-estructura-óptima-del-capital" class="level3">
+<h3 class="anchored" data-anchor-id="teorías-económicas-sobre-la-estructura-óptima-del-capital">2.2. Teorías económicas sobre la estructura óptima del capital</h3>
+<p>Salvo en mercados perfectos, la composición del pasivo determina el WACC, de modo que coste del capital y estructura del capital son dos caras de un mismo problema. Por eso las decisiones de inversión y las de financiación no pueden tomarse por separado.</p>
+<p>La cuestión es si la estructura óptima del capital existe. De las dos corrientes que han dominado el debate, la tradicional responde que sí, y la de Modigliani y Miller, que no.</p>
+<section id="perspectiva-tradicional-durand-1952" class="level4">
+<h4 class="anchored" data-anchor-id="perspectiva-tradicional-durand-1952">2.2.1. Perspectiva tradicional (Durand, 1952)</h4>
+<p><strong>Origen</strong>: la tesis tradicional se asocia habitualmente a David Durand (1952). Sin embargo, Durand no defiende propiamente una tesis, sino que contrapone dos criterios de valoración. El del <em>resultado neto</em> (<em>net income approach</em>), que supone constantes los costes de los recursos propios y ajenos, implica que el WACC disminuye de forma continuada con el endeudamiento. El del <em>resultado neto de explotación</em> (<em>net operating income approach</em>), en cambio, anticipa la irrelevancia posteriormente demostrada por Modigliani y Miller. La “perspectiva tradicional” es, por tanto, una posición intermedia entre ambos criterios, reconstruida <em>ex post</em> y sistematizada por contraste con el teorema de 1958.</p>
+<p><strong>Idea</strong>: existe una estructura óptima del capital que minimiza el coste del capital y maximiza el valor para los accionistas. La dirección financiera puede, por tanto, crear valor mediante decisiones de financiación.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Entorno</em>: los mercados no son perfectos. En particular, los inversores no pueden replicar por su cuenta el apalancamiento de la empresa en idénticas condiciones, de modo que el arbitraje no disciplina las valoraciones.</p></li>
+<li><p><em>Agentes</em>: el coste de capital ajeno es inferior al del capital propio y permanece constante hasta un determinado umbral de endeudamiento, a partir del cual crece por efecto del riesgo de insolvencia. El coste de capital propio crece con el endeudamiento, pero menos que proporcionalmente en los tramos bajos de deuda. Este es el supuesto crítico, porque solo si los accionistas no penalizan de inmediato y en toda su cuantía el mayor riesgo financiero puede la sustitución de recursos propios por ajenos abaratar el conjunto.</p></li>
+</ul>
+<p><strong>Razonamiento</strong>: mientras el coste de los fondos propios crezca menos que proporcionalmente, sustituirlos por deuda, de menor coste, reduce el coste del conjunto de la financiación. A partir del umbral en que el riesgo de insolvencia encarece ambas fuentes, el efecto se invierte. En consecuencia, existe una estructura óptima del capital, y las decisiones de inversión y de financiación no son independientes, pues la segunda determina la tasa de descuento aplicable a la primera.</p>
+<p><strong>Desarrollo gráfico</strong>: la perspectiva tradicional se representa en el plano ratio de apalancamiento-coste del capital (figura <a href="#fig-b031-tradicional" class="quarto-xref"><span>B3.1</span></a>):</p>
+<ol type="1">
+<li><p><em>Curva de coste de capital propio</em>, <span class="math inline">\(k_p(L)\)</span>: creciente con el endeudamiento, dado que un mayor endeudamiento implica que los accionistas exigirán una mayor rentabilidad. Es, además, convexa, puesto que conforme aumenta el endeudamiento la rentabilidad exigida crece a un ritmo cada vez mayor.</p></li>
+<li><p><em>Curva de coste de capital ajeno</em>, <span class="math inline">\(k_a(L)\)</span>: constante hasta un determinado nivel de endeudamiento. A partir de ahí, el riesgo de insolvencia es tal que los acreedores exigen una rentabilidad creciente y cada vez mayor.</p></li>
+<li><p><em>Curva de coste medio ponderado</em>, <span class="math inline">\(\text{WACC}(L)\)</span>: presenta dos tramos. En el primero es decreciente, debido a que el bajo coste del capital ajeno compensa la mayor rentabilidad exigida por los accionistas, pues se sustituye financiación más cara por otra más barata. Después es creciente, a partir del nivel de endeudamiento en que el riesgo de insolvencia lleva tanto a acreedores como a accionistas a exigir una rentabilidad cada vez mayor.</p></li>
+<li><p><em>Óptimo</em>: el coste medio ponderado alcanza su mínimo en el endeudamiento <span class="math inline">\(L^*\)</span>.</p></li>
+</ol>
+<div id="fig-b031-tradicional" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b031-tradicional-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b031_Tradicional.html" style="height:560px" loading="lazy" title="fig-b031-tradicional"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b031-tradicional-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B3.1: Perspectiva tradicional (Durand, 1952). El coste medio ponderado del capital alcanza un mínimo en un nivel óptimo de endeudamiento <span class="math inline">\(L^*\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>En el plano ratio de apalancamiento-valor (figura <a href="#fig-b035-tradicional-valor" class="quarto-xref"><span>B3.2</span></a>), la curva <span class="math inline">\(\text{EV}(L)\)</span> refleja el valor de la empresa, el beneficio de explotación esperado capitalizado al <span class="math inline">\(\text{WACC}(L)\)</span>. Como ese beneficio no depende de la financiación, la curva crece mientras el WACC baja y alcanza su máximo en el mismo <span class="math inline">\(L^*\)</span>. La recta discontinua <span class="math inline">\(\text{EV}_U\)</span> marca el valor sin deuda.</p>
+<div id="fig-b035-tradicional-valor" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b035-tradicional-valor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b035_Tradicional_valor.html" style="height:560px" loading="lazy" title="fig-b035-tradicional-valor"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b035-tradicional-valor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B3.2: Perspectiva tradicional. El valor de la empresa es máximo en el endeudamiento <span class="math inline">\(L^*\)</span>.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: su principal virtud es la plausibilidad descriptiva, ya que recoge el comportamiento efectivamente observado en las empresas, que operan con ratios de endeudamiento objetivo, y ofrece una justificación intuitiva del recurso a la deuda.</p></li>
+<li><p><em>Limitaciones</em>: son de método, pues la forma de las curvas se postula, no se deduce. No se explica por qué el coste del capital propio habría de crecer menos que proporcionalmente en los tramos bajos, ni se identifica mecanismo alguno que impida a los inversores deshacer por su cuenta las decisiones de financiación de la empresa. Modigliani y Miller vinieron a corregir esta carencia de fundamentación.</p></li>
+</ul>
+</section>
+<section id="perspectiva-de-modigliani-y-miller-teorema-de-modigliani-y-miller-1958" class="level4">
+<h4 class="anchored" data-anchor-id="perspectiva-de-modigliani-y-miller-teorema-de-modigliani-y-miller-1958">2.2.2. Perspectiva de Modigliani y Miller: teorema de Modigliani y Miller (1958)</h4>
+<p><strong>Origen</strong>: el artículo de Franco Modigliani y Merton Miller (1958) se considera el trabajo fundacional de las finanzas corporativas modernas y la primera aplicación sistemática del principio de ausencia de arbitraje a la valoración de empresas.</p>
+<p><strong>Idea</strong>: el valor de la empresa nace de lo que generan sus activos (sus flujos de caja) y no del modo en que estos se financian, es decir, del lado del pasivo, y por eso la estructura del capital es irrelevante.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Entorno</em>:</p>
+<ul>
+<li><p><em>Mercados perfectos</em>: sin impuestos, sin costes de transacción y con información simétrica. Además, los particulares pueden endeudarse en los mismos términos que las empresas.</p></li>
+<li><p><em>Clases de rendimiento equivalente</em>: las empresas se reparten en grupos homogéneos según su riesgo. Intuitivamente, cada grupo equivale a una industria, en la que la rentabilidad económica de todas las empresas sigue una misma distribución de probabilidad, que depende sobre todo del producto vendido y de la tecnología. Sus acciones son, así, sustitutos perfectos entre sí, y como su riesgo económico es idéntico, sus flujos se descuentan a una misma tasa.</p></li>
+<li><p><em>Beneficio</em>: es una variable aleatoria subjetiva, pero todos los inversores le asignan la misma esperanza.</p></li>
+</ul></li>
+<li><p><em>Agentes</em>: son racionales (maximizan su riqueza) y les es indiferente cobrar en dividendos o en plusvalías. El modelo no exige neutralidad frente al riesgo, de modo que los inversores pueden ser aversos al riesgo, y la irrelevancia descansa en las expectativas homogéneas y en la agrupación por clases de rendimiento equivalente.</p></li>
+</ul>
+<p><strong>Planteamiento</strong>: sean dos empresas de la misma clase de riesgo. La empresa <span class="math inline">\(U\)</span> no está apalancada (su valor de mercado coincide con el de sus fondos propios, <span class="math inline">\(\text{EV}_U = E_U\)</span>) y la empresa <span class="math inline">\(A\)</span> sí lo está (<span class="math inline">\(\text{EV}_A = E_A + D_f\)</span>), si bien ambas generan el mismo beneficio esperado y se diferencian únicamente en su estructura del capital.</p>
+<p>El mecanismo que garantiza <span class="math inline">\(\text{EV}_U = \text{EV}_A\)</span> es el <em>apalancamiento casero</em> (<em>homemade leverage</em>). Si la empresa apalancada cotizara con prima, un inversor podría vender sus acciones de <span class="math inline">\(A\)</span>, comprar acciones de <span class="math inline">\(U\)</span> y endeudarse por su cuenta replicando ese apalancamiento, obteniendo la misma renta a menor coste. La operación inversa corregiría un eventual descuento. El arbitraje elimina así cualquier diferencia de valoración atribuible a la sola estructura del capital.</p>
+<p>Formalmente, el valor de la empresa puede entenderse como corriente descontada de renta, <span class="math inline">\(\text{EV}_i = \mathbb{E}[\text{BAIT}_i]/\text{WACC}\)</span>. En ese caso, la igualdad de numeradores y de valores implica que el WACC de <span class="math inline">\(A\)</span> coincide con el de <span class="math inline">\(U\)</span>, es decir, con la rentabilidad exigida a los fondos propios de la empresa sin deuda.</p>
+<p><strong>Solución</strong>: del modelo anterior se desprenden tres resultados, conocidos como <em>proposiciones de Modigliani y Miller</em> (M&amp;M):</p>
+<ul>
+<li><p><em>Proposición I (irrelevancia de la estructura del capital)</em>: si los mercados son perfectos, cambiar la mezcla de deuda y fondos propios no altera la valoración de mercado de la empresa, determinada solo por lo que rinden sus activos. Da igual, por tanto, financiarse con beneficios retenidos, con deuda o con una ampliación de capital. Como corolario inmediato, el WACC es constante y no existe estructura óptima.</p></li>
+<li><p><em>Proposición II (la rentabilidad exigida por el accionista crece con el apalancamiento)</em>: la rentabilidad esperada de las acciones ordinarias de una empresa endeudada crece linealmente con su ratio de apalancamiento si la deuda es sin riesgo (<span class="math inline">\(k_a\)</span> constante), <span class="math inline">\(k_p = \text{WACC} + (\text{WACC} - k_a)\,D_f/E\)</span>. M&amp;M no afirman aquí que el apalancamiento determine el valor de la empresa, sino que eleva la rentabilidad esperada de las acciones. Ahora bien, ese incremento no crea valor, pues compensa exactamente el mayor riesgo financiero soportado por el accionista, de modo que el WACC permanece constante. El efecto sobre <span class="math inline">\(k_p\)</span> es positivo mientras <span class="math inline">\(\text{WACC} &gt; k_a\)</span>.</p></li>
+<li><p><em>Proposición III (independencia de las decisiones de inversión y de financiación)</em>: el coste del capital medio ponderado actúa como tasa de corte única, sea cual sea la fuente con que se financie cada proyecto. Para maximizar su valor, la empresa ha de aceptar los proyectos cuya rentabilidad esperada (su TIR) llegue al menos a esa tasa y rechazar todos los demás.</p></li>
+</ul>
+<p><strong>Desarrollo gráfico</strong>: las proposiciones de Modigliani y Miller se representan en el plano ratio de apalancamiento-coste del capital (figura <a href="#fig-b032-mm" class="quarto-xref"><span>B3.3</span></a>):</p>
+<ol type="1">
+<li><p><em>Curva de coste de capital ajeno</em>, <span class="math inline">\(k_a(L)\)</span>: horizontal, porque la deuda es sin riesgo.</p></li>
+<li><p><em>Curva de coste de capital propio</em>, <span class="math inline">\(k_p(L)\)</span>: recta creciente de pendiente <span class="math inline">\(\text{WACC} - k_a\)</span> (proposición II), porque el accionista exige una prima por el riesgo financiero, que crece en proporción al endeudamiento.</p></li>
+<li><p><em>Curva de coste medio ponderado</em>, <span class="math inline">\(\text{WACC}(L)\)</span>: horizontal, porque el mayor coste de los fondos propios compensa exactamente la sustitución por deuda más barata, por lo que no hay endeudamiento óptimo (proposición I).</p></li>
+</ol>
+<div id="fig-b032-mm" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b032-mm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b032_MM.html" style="height:560px" loading="lazy" title="fig-b032-mm"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b032-mm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B3.3: Proposiciones de Modigliani-Miller sin impuestos. El WACC es independiente del endeudamiento y el coste de los recursos propios crece linealmente con el apalancamiento.
+</figcaption>
+</figure>
+</div>
+<p>En el plano ratio de apalancamiento-valor (figura <a href="#fig-b036-mm-valor" class="quarto-xref"><span>B3.4</span></a>), la recta horizontal <span class="math inline">\(\text{EV}(L)\)</span> refleja el valor de la empresa, que no depende del endeudamiento (proposición I). Las curvas <span class="math inline">\(E(L)\)</span>, decreciente, y <span class="math inline">\(D_f(L)\)</span>, creciente, reflejan el reparto de ese valor entre accionistas y acreedores. Su suma no cambia, porque la deuda reparte los flujos de los activos sin aumentarlos.</p>
+<div id="fig-b036-mm-valor" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b036-mm-valor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b036_MM_valor.html" style="height:560px" loading="lazy" title="fig-b036-mm-valor"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b036-mm-valor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B3.4: Modigliani-Miller sin impuestos. El valor de la empresa no depende del endeudamiento.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la aportación del teorema es sobre todo metodológica. Al identificar con precisión los supuestos bajo los cuales la financiación es irrelevante, M&amp;M transforman el problema. La cuestión deja de ser si existe una estructura óptima y pasa a ser cuál de esos supuestos falla en la realidad y con qué consecuencias. Toda la literatura posterior, incluidas las extensiones que siguen, se ordena en torno a esa pregunta.</p></li>
+<li><p><em>Limitaciones</em>: son las de sus propios supuestos, todos ellos contrafácticos, ya que existen impuestos, existen costes de insolvencia y existen asimetrías informativas. El supuesto más frágil es el del apalancamiento casero. El endeudamiento personal no es un sustituto perfecto del societario, pues carece de la responsabilidad limitada de que goza el accionista y se contrata en condiciones peores que las de la empresa.</p></li>
+</ul>
+</section>
+</section>
+<section id="extensiones-impuesto-sobre-sociedades-costes-de-insolvencia-impuesto-sobre-la-renta-y-costes-de-agencia" class="level3">
+<h3 class="anchored" data-anchor-id="extensiones-impuesto-sobre-sociedades-costes-de-insolvencia-impuesto-sobre-la-renta-y-costes-de-agencia">2.3. Extensiones: impuesto sobre sociedades, costes de insolvencia, impuesto sobre la renta y costes de agencia</h3>
+<p>Las cuatro extensiones que siguen comparten estructura. Cada una relaja uno de los supuestos del teorema de 1958 y examina las consecuencias, manteniendo los restantes, si bien los costes de insolvencia y el impuesto personal se analizan conservando el impuesto sobre sociedades ya incorporado.</p>
+<section id="incorporación-del-impuesto-sobre-sociedades-modigliani-y-miller-1963" class="level4">
+<h4 class="anchored" data-anchor-id="incorporación-del-impuesto-sobre-sociedades-modigliani-y-miller-1963">2.3.1. Incorporación del impuesto sobre sociedades (Modigliani y Miller, 1963)</h4>
+<p><strong>Origen</strong>: la extensión se debe a Modigliani y Miller (1963), <em>Corporate Income Taxes and the Cost of Capital: A Correction</em>. El propio título revela el alcance del trabajo, una rectificación del tratamiento fiscal contenido en el artículo de 1958.</p>
+<p><strong>Idea</strong>: si se considera la fiscalidad, el valor de la empresa aumenta con su ratio de apalancamiento, debido al escudo fiscal, hasta tal punto que la estructura óptima sería una compuesta únicamente por deuda.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Supuesto relajado</em>: la ausencia de impuestos societarios.</p></li>
+<li><p><em>Supuestos que se mantienen</em>: los del teorema de 1958.</p></li>
+</ul>
+<p><strong>Razonamiento</strong>: el impuesto sobre sociedades grava el beneficio antes de impuestos (BAT), es decir, el resultado una vez deducidos los gastos financieros. Dado que los intereses son deducibles de la base imponible mientras que la retribución de los fondos propios no lo es, la financiación ajena disfruta de una ventaja fiscal frente a la propia. En consecuencia, el valor de la empresa apalancada supera al que tendría sin deuda en el valor actual del ahorro fiscal, que, si la deuda es permanente y de importe constante, asciende a <span class="math inline">\(t_{\text{IS}} \cdot D_f\)</span>:</p>
+<p><span class="math display">\[\text{EV}_A = \text{EV}_U + t_{\text{IS}} \cdot D_f\]</span></p>
+<p>El mismo efecto se aprecia a través del coste del capital, pues la expresión <span class="math inline">\(\text{WACC} = k_a(1-t_{\text{IS}}) \cdot w_D + k_p \cdot (1-w_D)\)</span> es decreciente en <span class="math inline">\(w_D\)</span> aun teniendo en cuenta que <span class="math inline">\(k_p\)</span> aumenta con el apalancamiento.</p>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo: valor de la empresa y WACC con impuesto sobre sociedades">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo: valor de la empresa y WACC con impuesto sobre sociedades
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Una empresa sin deuda genera un flujo de caja libre perpetuo de 10 millones de euros y sus accionistas exigen un 10&nbsp;%, así que <span class="math inline">\(\text{EV}_U = 10/0{,}1 = 100\)</span> millones. Emite deuda permanente por 40 millones al 5&nbsp;% y recompra acciones con ella. El tipo del impuesto sobre sociedades es del 25&nbsp;%.</p>
+<ul>
+<li><p><em>Valor</em>: <span class="math inline">\(\text{EV}_A = 100 + 0{,}25 \cdot 40 = 110\)</span> millones, y los fondos propios valen <span class="math inline">\(E = 110 - 40 = 70\)</span> millones.</p></li>
+<li><p><em>Coste del capital propio</em>: sube con el apalancamiento según la proposición II de Modigliani y Miller con la corrección fiscal, <span class="math inline">\(k_p = k_U + (k_U - k_a)(1 - t_{\text{IS}})\, D_f/E = 10 + 5 \cdot 0{,}75 \cdot 40/70 \approx 12{,}14\)</span>&nbsp;%, donde <span class="math inline">\(k_U\)</span> es el coste del capital de la empresa sin deuda.</p></li>
+<li><p><em>WACC</em>: <span class="math inline">\(5 \cdot 0{,}75 \cdot 40/110 + 12{,}14 \cdot 70/110 \approx 9{,}09\)</span>&nbsp;%, y descontar a esa tasa el mismo flujo da de nuevo <span class="math inline">\(10/0{,}0909 = 110\)</span> millones. El escudo fiscal aparece igual en el valor que en el coste del capital.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la corrección fiscal redujo la distancia entre los defensores de una estructura óptima y M&amp;M, ya que admite que, con impuesto sobre sociedades, la estructura del capital sí afecta a lo que vale la empresa y a su coste de capital.</p></li>
+<li><p><em>Limitaciones</em>: la conclusión extrema (un endeudamiento del 100&nbsp;%) carece de todo respaldo empírico, lo que revela que la fiscalidad societaria no es el único supuesto que conviene levantar. El efecto positivo del escudo fiscal se ve contrarrestado, al menos, por los costes de insolvencia y por el tratamiento desfavorable de los rendimientos de la deuda en el impuesto personal.</p></li>
+</ul>
+</section>
+<section id="incorporación-de-los-costes-de-insolvencia-kraus-y-litzenberger-1973" class="level4">
+<h4 class="anchored" data-anchor-id="incorporación-de-los-costes-de-insolvencia-kraus-y-litzenberger-1973">2.3.2. Incorporación de los costes de insolvencia (Kraus y Litzenberger, 1973)</h4>
+<p><strong>Origen</strong>: la intuición se debe a Baxter (1967) y su formalización a Kraus y Litzenberger (1973).</p>
+<p><strong>Idea</strong>: existe una disyuntiva entre las ventajas fiscales del endeudamiento y los costes esperados asociados a la probabilidad de quiebra.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Supuesto relajado</em>: la inexistencia de costes de quiebra, implícita en el supuesto de mercados perfectos.</p></li>
+<li><p><em>Supuestos que se mantienen</em>: los del teorema de 1958, con el impuesto sobre sociedades ya incorporado.</p></li>
+</ul>
+<p><strong>Razonamiento</strong>: cabe distinguir dos tipos de coste asociados al endeudamiento excesivo:</p>
+<ol type="1">
+<li><p><em>Costes de insolvencia directos</em>: costes explícitos y cuantificables derivados del aumento del riesgo (p.&nbsp;ej. costes legales, judiciales y administrativos del proceso concursal).</p></li>
+<li><p><em>Costes de insolvencia indirectos</em>: costes implícitos y de difícil cuantificación (p.&nbsp;ej. pérdida de clientes y proveedores, deterioro de imagen y reputación, salida de empleados clave o distracción de la dirección).</p></li>
+</ol>
+<p>Conforme aumenta el endeudamiento, aumenta la probabilidad de quiebra y, con ella, el valor esperado de ambos tipos de coste. El valor de la empresa pasa a ser:</p>
+<p><span class="math display">\[\text{EV}_A = \text{EV}_U + t_{\text{IS}} \cdot D_f - \text{VA}(\text{costes de insolvencia})\]</span></p>
+<p>Por ello, existe una estructura óptima del capital que no supone un endeudamiento del 100&nbsp;%, situada allí donde el ahorro fiscal marginal iguala al incremento marginal de los costes esperados de insolvencia.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: recupera una solución interior, pero por una vía muy distinta de la tradicional, ya que se deduce de un mecanismo identificado y no se postula sobre la forma de unas curvas.</p></li>
+<li><p><em>Limitaciones</em>: la principal dificultad es de medición, pues los costes indirectos (que, según sugiere la evidencia, son los cuantitativamente relevantes) no son directamente observables.</p></li>
+</ul>
+</section>
+<section id="incorporación-del-impuesto-sobre-la-renta-miller-1977" class="level4">
+<h4 class="anchored" data-anchor-id="incorporación-del-impuesto-sobre-la-renta-miller-1977">2.3.3. Incorporación del impuesto sobre la renta (Miller, 1977)</h4>
+<p><strong>Origen</strong>: el propósito declarado de Merton Miller (1977) es corregir lo que consideraba una sobreestimación de la ventaja fiscal de la deuda en la literatura del <em>trade-off</em>.</p>
+<p><strong>Idea</strong>: el escudo fiscal societario no puede evaluarse aisladamente. La ventaja que el impuesto sobre sociedades concede a la deuda ha de contraponerse al inconveniente del impuesto personal sobre la renta, cuyo trato no es el mismo para los intereses que cobran los obligacionistas que para los rendimientos que obtienen los accionistas (dividendos y plusvalías).</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Supuesto relajado</em>: la ausencia de imposición personal sobre las rentas del capital.</p></li>
+<li><p><em>Supuestos que se mantienen</em>: los del teorema de 1958, con el impuesto sobre sociedades ya incorporado.</p></li>
+</ul>
+<p><strong>Razonamiento</strong>: si plusvalías, dividendos e intereses tributaran al mismo tipo en el impuesto personal, este dejaría intacta la ventaja fiscal del endeudamiento empresarial. Sin embargo, el trato fiscal no es el mismo, y por eso lo que accionistas y obligacionistas reciben en conjunto, una vez pagados todos los impuestos, cambia con la composición del pasivo. La ganancia por apalancamiento pasa a ser:</p>
+<p><span class="math display">\[G_L = \left[1 - \frac{(1 - t_{\text{IS}})(1 - t_{\text{pe}})}{1 - t_{\text{pd}}}\right] D_f\]</span></p>
+<p>donde <span class="math inline">\(t_{\text{pe}}\)</span> es el tipo personal efectivo sobre los rendimientos del capital propio y <span class="math inline">\(t_{\text{pd}}\)</span> el aplicable a los intereses. La ventaja fiscal de la deuda es tanto mayor cuanto más elevado sea el tipo del impuesto sobre sociedades y cuanto menor sea la penalización relativa de los intereses en el impuesto personal frente a los rendimientos del capital propio.</p>
+<p>En el equilibrio agregado de Miller, la oferta de deuda de las empresas se ajusta hasta que el tipo marginal del inversor indiferente anula el corchete. Existe entonces un volumen óptimo de deuda para el conjunto de la economía, pero la estructura del capital vuelve a ser irrelevante para la empresa individual.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: al incorporar la imposición personal, muestra que la ventaja fiscal de la deuda debe valorarse sobre la renta neta que perciben los inversores y no solo sobre el impuesto sobre sociedades. También introduce la idea de clientelas fiscales formadas por inversores con tipos marginales distintos.</p></li>
+<li><p><em>Limitaciones</em>: el retorno a la irrelevancia exige condiciones fiscales muy específicas, como una tributación personal efectiva de los rendimientos de las acciones próxima a cero. De hecho, Graham (2000) estima que, en las empresas estadounidenses, el valor capitalizado del escudo fiscal de la deuda equivale al 9,7&nbsp;% del valor de la empresa y que, neto del impuesto personal, puede bajar al 4,3&nbsp;%. La deuda conserva, por tanto, una ventaja fiscal neta, aunque menor que la que se deduce del impuesto sobre sociedades por sí solo.</p></li>
+</ul>
+</section>
+<section id="costes-de-agencia-jensen-y-meckling-1976" class="level4">
+<h4 class="anchored" data-anchor-id="costes-de-agencia-jensen-y-meckling-1976">2.3.4. Costes de agencia (Jensen y Meckling, 1976)</h4>
+<p><strong>Origen</strong>: el análisis de los costes de agencia se debe a Michael Jensen y William Meckling (1976), <em>Theory of the Firm: Managerial Behavior, Agency Costs and Ownership Structure</em>.</p>
+<p><strong>Idea</strong>: la estructura del capital influye en el valor de la empresa a través de los conflictos de intereses entre agentes.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Supuesto relajado</em>: la ausencia de conflictos de intereses entre los partícipes de la empresa, implícita en el supuesto de que la dirección maximiza el valor.</p></li>
+<li><p><em>Supuestos que se mantienen</em>: los del teorema de 1958.</p></li>
+</ul>
+<p><strong>Razonamiento</strong>: Jensen y Meckling distinguen dos tipos de costes de agencia, de signo opuesto respecto del endeudamiento:</p>
+<ol type="1">
+<li><p><em>Costes de agencia del capital propio</em>: derivados del conflicto entre directivos y accionistas cuando aquellos no son propietarios plenos (consumo de prebendas, construcción de imperios empresariales, inversión en proyectos de escaso valor). La deuda ayuda a mitigarlos, pues el compromiso de atender su servicio disciplina a la dirección y reduce el flujo de caja libre discrecional (hipótesis del <em>free cash flow</em>, Jensen, 1986).</p></li>
+<li><p><em>Costes de agencia de la deuda</em>: derivados del conflicto entre accionistas y acreedores cuando el endeudamiento es elevado. Destacan dos:</p>
+<ul>
+<li><p><em>Sustitución de activos o traslación del riesgo</em>: los accionistas prefieren proyectos más arriesgados, cuya ganancia captan mientras las pérdidas recaen en los acreedores.</p></li>
+<li><p><em>Subinversión por exceso de deuda</em> (<em>debt overhang</em>, Myers, 1977): la empresa renuncia a proyectos rentables cuyo beneficio iría a parar a los acreedores.</p></li>
+</ul></li>
+</ol>
+<p>El nivel óptimo de deuda equilibra la reducción de los costes de agencia del capital propio con el aumento de los costes de agencia de la deuda, lo que ofrece una justificación adicional de una solución interior, independiente de la fiscal.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: su aportación va más allá de la estructura del capital, ya que, al vincular la financiación con el gobierno corporativo, abre la vía al análisis de la deuda como instrumento de control y no solo como fuente de fondos.</p></li>
+<li><p><em>Limitaciones</em>: los costes de agencia son difíciles de medir, de modo que la teoría predice el signo de los efectos, pero no permite cuantificar el nivel óptimo de deuda.</p></li>
+</ul>
+</section>
+<section id="síntesis-la-teoría-del-equilibrio-estático-static-trade-off-theory" class="level4">
+<h4 class="anchored" data-anchor-id="síntesis-la-teoría-del-equilibrio-estático-static-trade-off-theory">2.3.5. Síntesis: la teoría del equilibrio estático (<em>static trade-off theory</em>)</h4>
+<p>El conjunto de estas extensiones (escudo fiscal frente a costes de insolvencia y de agencia) configura la <strong>teoría del equilibrio estático</strong>. Según esta teoría, existe una estructura óptima interior que iguala, en el margen, los beneficios fiscales de la deuda con sus costes de insolvencia y de agencia. En su versión dinámica, la empresa no permanece siempre en ese óptimo, sino que ajusta su endeudamiento hacia él de forma gradual, en función de los costes de transacción.</p>
+<p>Gráficamente, el equilibrio estático se representa en el plano deuda-valor de la empresa (figura <a href="#fig-b033-tradeoff-estatico" class="quarto-xref"><span>B3.5</span></a>):</p>
+<ol type="1">
+<li><p><em>Valor de la empresa no endeudada</em>, <span class="math inline">\(\text{EV}_U\)</span>: horizontal, pues no depende de la deuda.</p></li>
+<li><p><em>Recta del escudo fiscal</em>, <span class="math inline">\(\text{EV}_U + t_{\text{IS}}\, D_f\)</span>: recoge el valor que tendría la empresa con solo el impuesto sobre sociedades (Modigliani y Miller, 1963). Es creciente con pendiente <span class="math inline">\(t_{\text{IS}}\)</span>, porque cada unidad de deuda permanente añade <span class="math inline">\(t_{\text{IS}}\)</span> al valor por el escudo fiscal.</p></li>
+<li><p><em>Valor de la empresa endeudada</em>, <span class="math inline">\(\text{EV}_A(D_f)\)</span>: se separa de la recta anterior en los costes de insolvencia, despreciables con poca deuda y cada vez mayores después, porque la probabilidad de quiebra crece con el endeudamiento.</p></li>
+<li><p><em>Óptimo</em>: el valor alcanza su máximo en <span class="math inline">\(D_f^*\)</span>, donde el ahorro fiscal marginal iguala el aumento marginal de los costes de insolvencia.</p></li>
+</ol>
+<div id="fig-b033-tradeoff-estatico" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b033-tradeoff-estatico-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b033_Tradeoff_estatico.html" style="height:560px" loading="lazy" title="fig-b033-tradeoff-estatico"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b033-tradeoff-estatico-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B3.5: Teoría del equilibrio estático. El valor de la empresa aumenta con el escudo fiscal de la deuda hasta que los costes de insolvencia lo compensan.
+</figcaption>
+</figure>
+</div>
+<p>En el plano ratio de apalancamiento-coste del capital (figura <a href="#fig-b037-tradeoff-coste" class="quarto-xref"><span>B3.6</span></a>), la recta discontinua <span class="math inline">\(\text{WACC}_U\)</span> refleja el coste de la empresa sin deuda, constante en Modigliani y Miller (1958). La curva <span class="math inline">\(\text{WACC}_{\text{IS}}(L)\)</span> añade el impuesto sobre sociedades y decrece por el escudo fiscal. La curva <span class="math inline">\(\text{WACC}(L)\)</span> suma los costes de insolvencia, por lo que baja con poca deuda, alcanza su mínimo en <span class="math inline">\(L^*\)</span>, equivalente a la deuda óptima <span class="math inline">\(D_f^*\)</span>, y sube después.</p>
+<div id="fig-b037-tradeoff-coste" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b037-tradeoff-coste-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b037_Tradeoff_coste.html" style="height:560px" loading="lazy" title="fig-b037-tradeoff-coste"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b037-tradeoff-coste-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B3.6: Teoría del equilibrio estático. El coste medio ponderado del capital es mínimo en el endeudamiento <span class="math inline">\(L^*\)</span>.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="teoría-de-la-jerarquía-financiera-pecking-order-theory-myers-y-majluf-1984" class="level3">
+<h3 class="anchored" data-anchor-id="teoría-de-la-jerarquía-financiera-pecking-order-theory-myers-y-majluf-1984">2.4. Teoría de la jerarquía financiera (<em>pecking order theory</em>) (Myers y Majluf, 1984)</h3>
+<p><strong>Origen</strong>: la observación empírica se remonta a Donaldson (1961), quien documentó que las empresas norteamericanas recurrían sistemáticamente a la autofinanciación antes que a los mercados, y su formalización se debe a Stewart Myers y Nicholas Majluf (1984).</p>
+<p><strong>Idea</strong>: los costes de financiación aumentan con la asimetría de la información. Ello da lugar a que las empresas ordenen jerárquicamente sus fuentes de financiación, en lugar de perseguir una ratio objetivo.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Entorno</em>: existe asimetría informativa, pues los directivos conocen mejor que los inversores externos el valor de los activos y de las oportunidades de inversión de la empresa.</p></li>
+<li><p><em>Agentes</em>: los directivos actúan en interés de los accionistas existentes, no de los potenciales nuevos accionistas. Los inversores son racionales y saben que se encuentran en desventaja informativa, por lo que anticipan el comportamiento de los directivos.</p></li>
+</ul>
+<p><strong>Razonamiento</strong>: el modelo distingue tres fuentes de financiación, la autofinanciación (beneficios retenidos), la deuda y la ampliación de capital. La financiación interna se utiliza en primer lugar. Cuando se agota, se recurre a la deuda y, agotada esta, se emiten acciones, que constituyen la financiación de último recurso.</p>
+<p>El mecanismo es de selección adversa. Un directivo que sepa que sus acciones están sobrevaloradas tendrá incentivos a emitir, y uno que las sepa infravaloradas, no. Anticipándolo, los inversores aplican un descuento a toda nueva emisión, lo que encarece esta fuente y puede llevar a la empresa a renunciar a proyectos rentables antes que a transferir valor a los nuevos accionistas (subinversión). En cambio, la deuda, cuyo valor es menos sensible a la información privada, sufre este problema en menor medida, y la autofinanciación no lo sufre en absoluto. El recurso a las fuentes situadas en lo alto de la jerarquía actúa además como señal de la confianza de los directivos en su empresa.</p>
+<p>De la teoría se siguen cuatro resultados:</p>
+<ul>
+<li><p><em>Sin ratio objetivo</em>: no existe estructura óptima del capital. El endeudamiento observado es el resultado acumulado de los déficits de financiación pasados.</p></li>
+<li><p><em>Reacción bursátil</em>: el anuncio de una ampliación de capital deprime la cotización, mientras que el de una emisión de deuda apenas la altera. Esta reacción es una de las predicciones empíricamente mejor contrastadas de la teoría.</p></li>
+<li><p><em>Rentabilidad y deuda</em>: las empresas más rentables estarán menos endeudadas, pues generan recursos internos suficientes. Nótese que esta predicción es opuesta a la del equilibrio estático, según la cual una mayor rentabilidad implica más base imponible que escudar y, por tanto, más deuda.</p></li>
+<li><p><em>Holgura financiera</em>: la tesorería acumulada y la capacidad de endeudamiento no utilizada (<em>financial slack</em>) tienen valor, porque permiten acometer proyectos rentables sin recurrir a emisiones costosas.</p></li>
+</ul>
+<p><strong>Desarrollo gráfico</strong>: en el plano fondos captados-coste marginal (figura <a href="#fig-b034-pecking-order" class="quarto-xref"><span>B3.7</span></a>), el coste marginal de la financiación forma una escalera de tres tramos:</p>
+<ol type="1">
+<li><p><em>Autofinanciación</em>: primer tramo, el más barato porque no sufre la selección adversa, hasta agotar los beneficios retenidos.</p></li>
+<li><p><em>Deuda</em>: segundo tramo, más caro que el anterior porque la deuda ya sufre la selección adversa, aunque en menor medida que las acciones.</p></li>
+<li><p><em>Nuevas acciones</em>: último tramo, el más caro, porque sufre el mayor descuento por asimetría de información, que crece de un tramo al siguiente (flecha discontinua).</p></li>
+</ol>
+<div id="fig-b034-pecking-order" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b034-pecking-order-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b034_Pecking_order.html" style="height:560px" loading="lazy" title="fig-b034-pecking-order"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b034-pecking-order-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B3.7: Jerarquía financiera (Myers y Majluf, 1984). La empresa financia la inversión primero con recursos internos, después con deuda y en último lugar con acciones.
+</figcaption>
+</figure>
+</div>
+<p><strong>Extensiones</strong>: la asimetría informativa admite también una lectura en clave de señales. En el modelo de Ross (1977), la retribución de los directivos se penaliza si la empresa quiebra, de modo que solo los directivos de empresas con buenas perspectivas eligen un endeudamiento elevado, y el mercado valora más a las empresas más endeudadas. Leland y Pyle (1977), por su parte, atribuyen ese papel de señal a la proporción del capital que retiene el promotor.</p>
+<p>Una hipótesis más reciente, la del oportunismo de mercado (<em>market timing</em>, Baker y Wurgler, 2002), sostiene que las empresas emiten acciones cuando consideran que su valor de mercado es elevado en relación con su valor contable, y recompran o se endeudan cuando lo consideran bajo. La estructura del capital observada sería, así, el resultado acumulado de esas decisiones oportunistas más que el fruto de un óptimo estable.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la teoría explica satisfactoriamente hechos que el equilibrio estático no acomoda bien (los tres últimos resultados de la jerarquía). Shyam-Sunder y Myers (1999) contrastan las dos teorías con grandes empresas cotizadas estadounidenses entre 1971 y 1989. En su muestra, el modelo básico de la jerarquía, en el que la deuda emitida responde al déficit de financiación interna, tiene un poder explicativo mucho mayor que el del ajuste gradual hacia una ratio objetivo que predice el equilibrio estático.</p></li>
+<li><p><em>Limitaciones</em>: al no contemplar una ratio objetivo, no explica la reversión a la media que se observa en los niveles de endeudamiento, ni por qué empresas con capacidad de endeudamiento no agotada emiten acciones. Su capacidad explicativa se deteriora, además, precisamente en las empresas pequeñas y de alto crecimiento, donde la asimetría informativa es mayor y cabría esperar que funcionase mejor.</p></li>
+</ul>
+</section>
+<section id="conclusiones-1" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-1">2.5. Conclusiones</h3>
+<p>En la práctica, al decidir cuánta deuda asumir, la empresa debe sopesar también otros factores, como su sector, su tamaño, la fase de su ciclo de vida, su presencia internacional o la coyuntura económica. La evidencia empírica señala algunas regularidades del endeudamiento (Frank y Goyal, 2009):</p>
+<ul>
+<li><p><em>Factores que lo elevan</em>: el endeudamiento tiende a crecer con el de su sector, con la dimensión y con la tangibilidad de los activos, que sirven de garantía.</p></li>
+<li><p><em>Factores que lo reducen</em>: tiende a disminuir con la rentabilidad, lo que es coherente con la jerarquía financiera, pues las empresas más rentables se autofinancian, y con las oportunidades de crecimiento (medidas por la ratio entre valor de mercado y valor contable).</p></li>
+</ul>
+<p>Las principales teorías son complementarias, pues cada una explica un aspecto distinto:</p>
+<ul>
+<li><p><em>Equilibrio estático</em>: la existencia de un objetivo de endeudamiento.</p></li>
+<li><p><em>Jerarquía financiera</em>: el orden de preferencia entre fuentes ante asimetrías de información.</p></li>
+<li><p><em>Señales</em>: el endeudamiento como indicio de la calidad de la empresa.</p></li>
+<li><p><em>Costes de agencia</em>: el papel disciplinante de la deuda.</p></li>
+<li><p><em>Oportunismo de mercado</em>: la influencia de la valoración bursátil.</p></li>
+</ul>
+</section>
+</section>
+<section id="política-de-dividendos" class="level2">
+<h2 class="anchored" data-anchor-id="política-de-dividendos">3. Política de dividendos</h2>
+<p>La política financiera examinada hasta aquí es, fundamentalmente, una política de gestión de los costes. Queda por ver la gestión de los beneficios de una empresa cotizada, que puede repartirlos entre los accionistas como dividendos o bien reinvertirlos. La <strong>política de dividendos</strong> engloba las decisiones acerca de la proporción que se asigna a cada destino, es decir, acerca de la relación entre beneficios retenidos y distribuidos. La sección expone el concepto y las características del dividendo, su relación con el valor de la empresa, las imperfecciones que hacen relevante su pago y el comportamiento observado.</p>
+<section id="concepto-y-características-de-un-dividendo" class="level3">
+<h3 class="anchored" data-anchor-id="concepto-y-características-de-un-dividendo">3.1. Concepto y características de un dividendo</h3>
+<p>Los <strong>dividendos</strong> son la parte de los beneficios de una empresa que se reparte entre los accionistas. La fracción del beneficio que se destina a dividendos es lo que se conoce en inglés como <em>payout ratio</em> (<span class="math inline">\(1 - b = \text{DIV}/\text{BN}\)</span>), por lo que el dividendo es <span class="math inline">\(\text{DIV} = (1-b) \cdot \text{BN}\)</span>, siendo <span class="math inline">\(b\)</span> la fracción retenida o <em>plowback ratio</em>. Otra ratio habitual es la rentabilidad por dividendo (<em>dividend yield</em>), cociente entre el dividendo por acción y la cotización, que permite comparar la retribución entre empresas de distinto tamaño. El importe del dividendo tiene que ser aprobado por la junta general de accionistas, a propuesta del consejo de administración, salvo el dividendo a cuenta, que puede acordar el propio órgano de administración.</p>
+<p>Según su relación con el beneficio, se distinguen dos tipos de dividendo:</p>
+<ul>
+<li><p><em>Dividendo ordinario</em>: se deriva del beneficio del ejercicio y se compone de un dividendo a cuenta (entregado como anticipo de los resultados esperados) y un complementario (entregado una vez aprobado el reparto definitivo).</p></li>
+<li><p><em>Dividendo extraordinario</em>: se deriva de beneficios de carácter extraordinario.</p></li>
+</ul>
+<p>Según su forma de pago, se distingue entre:</p>
+<ul>
+<li><p><em>Dividendo en efectivo</em>: la empresa retribuye mediante efectivo.</p></li>
+<li><p><em>Dividendo en acciones</em> (<em>stock dividend</em>): la empresa retribuye directamente con acciones, sin opción de elección.</p></li>
+<li><p><em>Dividendo elección</em> (<em>scrip dividend</em>): se diferencia del anterior en que el accionista elige. La empresa realiza una ampliación de capital liberada y entrega a los accionistas derechos de asignación gratuita. Cada accionista tiene entonces tres opciones: vender los derechos a la propia empresa a un precio garantizado (equivalente al dividendo en efectivo), recibir las acciones nuevas (equivalente al dividendo en acciones) o vender los derechos en el mercado.</p></li>
+</ul>
+</section>
+<section id="dividendos-y-el-valor-de-la-empresa" class="level3">
+<h3 class="anchored" data-anchor-id="dividendos-y-el-valor-de-la-empresa">3.2. Dividendos y el valor de la empresa</h3>
+<p>La cuestión es si el reparto de dividendos altera lo que valen las acciones y, con ello, la empresa. Hay dos respuestas enfrentadas, la tesis del beneficio y la tesis de los dividendos.</p>
+<section id="tesis-del-beneficio-irrelevancia-de-la-política-de-dividendos-miller-y-modigliani-1961" class="level4">
+<h4 class="anchored" data-anchor-id="tesis-del-beneficio-irrelevancia-de-la-política-de-dividendos-miller-y-modigliani-1961">3.2.1. Tesis del beneficio: irrelevancia de la política de dividendos (Miller y Modigliani, 1961)</h4>
+<p><strong>Origen</strong>: Miller y Modigliani (1961) extienden a la política de dividendos el teorema de irrelevancia de la estructura del capital de 1958 (apartado 2.2.2).</p>
+<p><strong>Idea</strong>: la política de dividendos, como la financiera, resulta irrelevante (ni añade ni resta valor) cuando los mercados de capitales son perfectos. Lo determinante es la capacidad de la empresa para generar beneficio, que depende de su política de inversiones, y no qué parte de ese beneficio se reparte y qué parte se retiene.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Entorno</em>: mercados perfectos, ausencia de incertidumbre y una política de inversión dada, de modo que un mayor dividendo se financia emitiendo nuevas acciones.</p></li>
+<li><p><em>Agentes</em>: conducta racional y, en ausencia de incertidumbre, un dividendo futuro es tan seguro como uno actual o más próximo.</p></li>
+</ul>
+<p><strong>Planteamiento</strong>: con estos supuestos, el arbitraje mueve los precios hasta que todas las acciones ofrecen, en cualquier periodo, idéntica rentabilidad total (dividendo más ganancia de capital). Si una rindiera más, los accionistas ganarían riqueza vendiendo las demás para comprarla, y las condiciones del mercado aseguran que esa operación sea posible.</p>
+<p><strong>Equilibrio</strong>: formalmente, la condición que se deriva para el mercado financiero es:</p>
+<p><span class="math display">\[k_p = \frac{\text{DIV}_{i,t} + (P_{i,t+1} - P_{i,t})}{P_{i,t}}\]</span></p>
+<p>donde <span class="math inline">\(k_p\)</span> es la tasa de retorno exigida por el mercado, <span class="math inline">\(\text{DIV}_{i,t}\)</span> refleja el dividendo de la empresa <span class="math inline">\(i\)</span> y <span class="math inline">\((P_{i,t+1} - P_{i,t})\)</span> la ganancia de capital. La rentabilidad no depende del título adquirido.</p>
+<p>Si se calcula el valor de la empresa como flujo de renta descontado a la tasa de retorno del mercado, se obtiene:</p>
+<p><span class="math display">\[\text{EV}_t = \frac{\text{EV}_{t+1} + \text{BN}_t - I_t}{1+k_p}\]</span></p>
+<p>donde <span class="math inline">\(\text{EV}_t\)</span> es el valor de mercado de la empresa en el momento actual, <span class="math inline">\(\text{EV}_{t+1}\)</span> es el valor de mercado de la empresa en el futuro, <span class="math inline">\(\text{BN}_t\)</span> representa su beneficio neto e <span class="math inline">\(I_t\)</span> refleja la inversión o incremento de activos durante el periodo considerado.</p>
+<p><strong>Estática comparativa</strong>: el valor de la empresa no depende, por tanto, de la política de dividendos, pues <span class="math inline">\(\text{DIV}\)</span> no aparece en la relación. Intuitivamente, el arbitraje hace que el beneficio que no se reparte, y queda en reservas, se traslade íntegro al precio de la acción. El argumento se apoya, además, en los dividendos “caseros” (<em>homemade dividends</em>). Un accionista que desee liquidez puede generarla vendiendo una fracción de sus acciones, y otro que no la desee puede reinvertir el dividendo recibido, por lo que la política de la empresa resulta indiferente en un mercado sin fricciones ni impuestos.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: los autores demuestran que, incluso en condiciones de incertidumbre, se podría cumplir la irrelevancia de la política de dividendos debido a que todavía puede existir arbitraje.</p></li>
+<li><p><em>Limitaciones</em>: la tesis de Miller y Modigliani ha recibido duras críticas por lo restrictivo de los supuestos. En la realidad, se observan imperfecciones en los mercados financieros. Así, las rigideces en el mercado bancario pueden llevar a una falta de liquidez que impida a los agentes aprovechar las oportunidades de arbitraje.</p></li>
+</ul>
+</section>
+<section id="tesis-de-los-dividendos-importancia-de-la-política-de-dividendos-gordon-1959-1962" class="level4">
+<h4 class="anchored" data-anchor-id="tesis-de-los-dividendos-importancia-de-la-política-de-dividendos-gordon-1959-1962">3.2.2. Tesis de los dividendos: importancia de la política de dividendos (Gordon, 1959; 1962)</h4>
+<p><strong>Origen</strong>: en contraposición a la visión de Miller y Modigliani se encuentra la de Myron Gordon (1959, 1962). Su planteamiento se asocia al argumento del “pájaro en mano” (<em>bird-in-the-hand</em>), según el cual los inversores prefieren un dividendo presente y cierto a una ganancia de capital futura e incierta.</p>
+<p><strong>Idea</strong>: los dividendos tienen una clara influencia sobre el valor de las acciones, influencia que depende del rendimiento de las inversiones de la empresa y de la tasa de descuento del mercado (es decir, del coste del capital de mercado).</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Entorno</em>: el tiempo es continuo y la tasa de descuento de mercado <span class="math inline">\(k_p\)</span> se considera constante y exógena.</p></li>
+<li><p><em>Agentes</em>: se retiene una tasa constante y exógena de los beneficios, <span class="math inline">\(b\)</span>. Los beneficios retenidos son reinvertidos y generan también una tasa constante y exógena de rendimiento <span class="math inline">\(r\)</span>, idéntica para cualquier inversión.</p></li>
+</ul>
+<p><strong>Planteamiento</strong>: el beneficio en cada periodo vendrá dado por una relación que puede expresarse en tiempo continuo como <span class="math inline">\(\text{BN}_t = \text{BN}_0 e^{rbt}\)</span>, y el dividendo, por <span class="math inline">\(\text{DIV}_t = (1-b)\text{BN}_t\)</span>. El valor de la empresa será igual al valor actual de la corriente de dividendos futuros descontados<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
+<p><span class="math display">\[\text{EV}_0 = \int_0^\infty e^{-k_p t}(1-b)\text{BN}_0 e^{rbt} \, dt\]</span></p>
+<p><strong>Estática comparativa</strong>: derivando respecto de <span class="math inline">\(b\)</span> se obtiene la relación entre el valor de la empresa y la tasa de retención, cuyo signo depende de la comparación entre <span class="math inline">\(r\)</span> y la tasa de descuento de mercado:</p>
+<p><span class="math display">\[\frac{\partial \text{EV}}{\partial b} = \frac{\text{BN}_0(r - k_p)}{(k_p - rb)^2}\]</span></p>
+<p>De forma que cabe distinguir tres casos:</p>
+<ul>
+<li><p><em><span class="math inline">\(r = k_p\)</span></em>: la política de dividendos no altera el valor de la empresa, caso en el que el resultado coincide con el de Miller y Modigliani.</p></li>
+<li><p><em><span class="math inline">\(r &gt; k_p\)</span></em>: elevar la tasa de retención de beneficios (<span class="math inline">\(\uparrow b\)</span>) incrementa el valor de la empresa, puesto que las nuevas inversiones financiadas con esos fondos adicionales rinden más que su reparto como dividendos. La política de dividendos óptima consiste, por tanto, en no repartirlos, aunque solo en el límite del modelo. La condición de acotación <span class="math inline">\(k_p &gt; rb\)</span> impide llegar a <span class="math inline">\(b = 1\)</span>, pues el valor crece sin cota cuando <span class="math inline">\(b\)</span> se aproxima a <span class="math inline">\(k_p/r &lt; 1\)</span>.</p></li>
+<li><p><em><span class="math inline">\(r &lt; k_p\)</span></em>: una mayor tasa de retención de beneficios hace caer el valor de la empresa, de modo que lo conveniente es repartir el máximo de dividendos posible.</p></li>
+</ul>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: muestra que la política de dividendos puede influir sobre el valor de mercado de las empresas y precisa en qué sentido, según la rentabilidad de las inversiones frente al coste del capital.</p></li>
+<li><p><em>Limitaciones</em>:</p>
+<ul>
+<li><p><em>Evidencia</em>: solo respalda el modelo de forma limitada. Irwin Friend y Marshall Puckett (1964) concluyen que buena parte del aparente efecto superior de los dividendos frente a los beneficios retenidos se debe a sesgos estadísticos. Corregidos estos, hallan que la preferencia del mercado por los dividendos es escasa, aunque algo mayor en empresas de sectores sin crecimiento o estacionarios, que sí podrían elevar su cotización aumentando los dividendos.</p></li>
+<li><p><em>Supuestos</em>: la hipótesis del rendimiento constante de las inversiones no parece sostenible. Además, es necesario suponer que <span class="math inline">\(k_p &gt; rb\)</span> para que el valor de la empresa esté acotado.</p></li>
+<li><p><em>Pájaro en mano</em>: con <span class="math inline">\(k_p\)</span> constante, el modelo no recoge por sí mismo ese argumento, que exigiría una tasa de descuento creciente con la retención (<span class="math inline">\(k_p'(b) &gt; 0\)</span>).</p></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="imperfecciones-y-política-de-dividendos" class="level3">
+<h3 class="anchored" data-anchor-id="imperfecciones-y-política-de-dividendos">3.3. Imperfecciones y política de dividendos</h3>
+<p>Fuera del mundo de Miller y Modigliani, varias imperfecciones hacen relevante el reparto:</p>
+<p><strong>Teoría de la señalización</strong>: figura entre las más citadas, aunque su respaldo empírico es desigual. El beneficio contable puede maquillarse con contabilidad creativa y dar así una imagen engañosa de la situación de la empresa. El dividendo, en cambio, sirve al accionista de indicador fiable, porque solo una compañía sana puede permitirse pagarlo elevado y mantenerlo estable a lo largo del tiempo.</p>
+<p><strong>Teoría de los costes de agencia</strong>: plantea el problema de la separación entre propiedad y control. Tener que repartir beneficios restringe el margen discrecional con el que los directivos gestionan los flujos de caja, al sustraer de su control una parte de ellos.</p>
+<p><strong>Fiscalidad</strong>: el efecto del reparto depende del trato fiscal relativo de los dividendos y de las ganancias de capital (plusvalías por la venta de acciones). Si las plusvalías tributan más que los dividendos, el inversor puede inclinarse por acciones que repartan dividendos elevados. Si, al contrario, los dividendos tributan más, su efecto sobre el valor de las acciones es negativo (<em>teoría de la preferencia impositiva</em>), y la empresa maximiza el valor para sus accionistas si reparte pocos dividendos y retribuye sus ganancias mediante la recompra de acciones. Las recompras (<em>share buybacks</em>) se han convertido, de hecho, en una vía de retribución cada vez más importante, en especial en EE.&nbsp;UU. Frente al dividendo, ofrecen varias ventajas:</p>
+<ul>
+<li><p><em>Flexibilidad</em>: no generan la expectativa de continuidad que hace tan costoso recortar un dividendo.</p></li>
+<li><p><em>Fiscalidad</em>: su tratamiento es a menudo más favorable, pues difieren la tributación hasta la venta y la someten al régimen de las plusvalías.</p></li>
+<li><p><em>Beneficio por acción</em>: lo elevan al reducir el número de títulos en circulación, siempre que el cociente entre el beneficio por acción y el precio supere el coste después de impuestos de los fondos empleados.</p></li>
+<li><p><em>Señal</em>: pueden indicar que la dirección considera infravaloradas las acciones.</p></li>
+</ul>
+<p><strong>Teoría de la captación de inversores institucionales</strong>: algunas instituciones tienen vedada la inversión en empresas cuyos dividendos no alcancen un determinado umbral.</p>
+<p>A las teorías anteriores se añade el <em>efecto clientela</em>, según el cual distintos grupos de inversores prefieren distintas políticas de dividendos (por motivos fiscales o de necesidad de renta). Por ello, cada empresa tiende a atraer una clientela afín a su política de dividendos, y un cambio brusco de política puede penalizar la cotización. En conjunto, la coexistencia de argumentos a favor y en contra del reparto ha llevado a hablar de un “rompecabezas de los dividendos” (<em>dividend puzzle</em>, Black, 1976). El nombre alude a que no resulta evidente por qué las empresas pagan tantos dividendos cuando fiscalmente suelen ser menos eficientes que las recompras.</p>
+</section>
+<section id="el-comportamiento-observado-el-alisamiento-de-dividendos-lintner-1956" class="level3">
+<h3 class="anchored" data-anchor-id="el-comportamiento-observado-el-alisamiento-de-dividendos-lintner-1956">3.4. El comportamiento observado: el alisamiento de dividendos (Lintner, 1956)</h3>
+<p><strong>Origen</strong>: al margen del debate teórico sobre si los dividendos crean valor, John Lintner (1956) estudió cómo fijan en la práctica las empresas su dividendo.</p>
+<p><strong>Idea</strong>: Lintner halló un patrón muy robusto, según el cual las empresas alisan los dividendos.</p>
+<p><strong>Razonamiento</strong>: las empresas fijan una ratio de reparto objetivo a largo plazo y ajustan el dividendo solo parcialmente hacia el nivel que correspondería al beneficio del ejercicio, según un modelo de ajuste parcial, <span class="math inline">\(\Delta \text{DIV}_t = c\,[(1-b)\, \text{BN}_t - \text{DIV}_{t-1}]\)</span>, donde <span class="math inline">\(c \in (0, 1)\)</span> es la velocidad de ajuste. Cuanto menor es <span class="math inline">\(c\)</span>, más gradual es el ajuste y más estable la senda de dividendos.</p>
+<p>La dirección es muy reacia a recortar el dividendo, porque el mercado interpretaría el recorte como una señal negativa, y la dirección prefiere elevarlo solo cuando confía en poder sostener el nuevo nivel.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: este comportamiento, ampliamente confirmado por la evidencia posterior, casa con la teoría de la señalización y explica la rigidez a la baja (<em>sticky dividends</em>) característica de los dividendos.</p></li>
+<li><p><em>Limitaciones</em>: el modelo describe la regla de ajuste, pero no deriva de un problema de optimización la ratio objetivo ni la velocidad de ajuste, que se estiman empíricamente.</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusiones-2" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones-2">Conclusiones</h2>
+<p>La empresa se financia con recursos propios, que no generan deuda, y con recursos ajenos, que deben devolverse y se cobran antes en caso de liquidación. Modigliani y Miller demuestran que, en un mercado perfecto, ni la estructura del capital ni los dividendos afectan al valor de la empresa, y así identifican por exclusión las imperfecciones que los hacen relevantes. El escudo fiscal de la deuda, frente a los costes de insolvencia y de agencia, da una estructura óptima interior (el equilibrio estático), mientras que la asimetría informativa lleva a ordenar las fuentes de financiación sin ratio objetivo (la jerarquía financiera de Myers y Majluf). Aun así, ninguna de las dos teorías explica por sí sola toda la evidencia. En los dividendos, la tesis de la irrelevancia convive con las que les atribuyen valor, y la conducta observada es el alisamiento que documentó Lintner.</p>
+<p>Las decisiones de financiación completan las de inversión, con las que comparten el coste del capital (tema <a href="../chapters/b02-inversion.html">B02</a>). Sus teorías aplican a la empresa los problemas de información, pues los costes de agencia de Jensen y Meckling son un problema de principal-agente y la jerarquía financiera, uno de selección adversa (tema <a href="../chapters/a13-informacion.html">A13</a>). Esa misma jerarquía, junto con el racionamiento del crédito, explica por qué la inversión agregada depende de la financiación interna y del colateral (tema <a href="../chapters/a34-demanda-inversion.html">A34</a>). Por último, el valor de la empresa que Modigliani y Miller declaran independiente de su estructura es la suma del valor de sus acciones y de sus bonos, cuya valoración se estudia por separado (temas <a href="../chapters/b23-renta-variable.html">B23</a> y <a href="../chapters/b24-renta-fija.html">B24</a>).</p>
+<p>Las regularidades de la estructura del capital que recogen Frank y Goyal (2009) no permiten decidir qué teoría la describe mejor. Encajan con algunas versiones del equilibrio estático, salvo en el signo de la rentabilidad, propio de la jerarquía financiera (apartado 2.5). Sigue abierta, además, la discusión sobre si las recompras han desplazado a los dividendos. Fama y French (2001) documentan que la proporción de cotizadas estadounidenses que pagan dividendos cayó del 66,5&nbsp;% en 1978 al 20,8&nbsp;% en 1999, sobre todo por una menor propensión a pagar. Grullon y Michaely (2002), por su parte, muestran que las recompras se financian con fondos que habrían ido a dividendos.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>El beneficio y el dividendo crecen a la tasa <span class="math inline">\(g_D = rb\)</span> (la tasa de crecimiento sostenible, <span class="math inline">\(b \cdot \text{ROE}\)</span>), y la integral da <span class="math inline">\(\text{EV}_0 = (1-b)\text{BN}_0/(k_p - rb)\)</span>, versión en tiempo continuo de la fórmula de Gordon-Shapiro (apartado 2.1.2).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script>
+// Gráficos del libro (iframes .graph-frame).
+// 1) Escala única: los grosores, los discontinuos y el tamaño de los puntos de cada figura están fijados para verla a 680 px
+//    de ancho. Los marcos anchos (figuras de varios paneles) se estiran hasta la columna y las pantallas estrechas las encogen; aquí se
+//    compensa para que en pantalla las curvas midan siempre lo mismo (2,2 px las económicas, 1,4 las auxiliares, 1,2 ejes y flechas,
+//    0,8 las guías) y los puntos tengan el mismo tamaño en todas las figuras, sea cual sea el ancho al que se muestren.
+// 2) Ajusta la altura de cada iframe al elemento dibujado más bajo (curvas, ejes, etiquetas KaTeX).
+(function () {
+  var REF = 680;
+  function norm(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var s = d.querySelector("svg"); if (!s) return;
+      var w = s.getBoundingClientRect().width; if (!(w > 0)) return;
+      var r = REF / w;
+      var els = s.querySelectorAll("path, line, polyline, polygon, rect, circle, ellipse");
+      els.forEach(function (el) {
+        var cs = d.defaultView.getComputedStyle(el);
+        if (el.dataset.sw0 === undefined) {
+          el.dataset.sw0 = parseFloat(cs.strokeWidth) || 0;
+          el.dataset.da0 = (cs.strokeDasharray && cs.strokeDasharray !== "none") ? cs.strokeDasharray : "";
+          if (el.tagName.toLowerCase() === "circle" && el.r && el.r.baseVal.value > 0 && el.r.baseVal.value <= 9) {
+            el.dataset.r0 = el.r.baseVal.value;
+          }
+        }
+        var sw0 = +el.dataset.sw0;
+        if (sw0 > 0) el.style.strokeWidth = (sw0 * r).toFixed(3) + "px";
+        if (el.dataset.da0) {
+          el.style.strokeDasharray = el.dataset.da0.split(/[ ,]+/).map(function (v) {
+            return (parseFloat(v) * r).toFixed(3) + "px";
+          }).join(" ");
+        }
+        if (el.dataset.r0) el.setAttribute("r", (+el.dataset.r0 * r).toFixed(3));
+      });
+    } catch (e) {}
+  }
+  function fit(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var sy = d.defaultView.scrollY || 0, bottom = 0;
+      var els = d.querySelectorAll("svg path, svg line, svg circle, svg polyline, svg polygon, svg rect, svg text, svg ellipse, .katex-label");
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width > 0 || r.height > 0) bottom = Math.max(bottom, r.bottom + sy);
+      });
+      if (!(bottom > 20)) {
+        var svg = d.querySelector("svg"); var vb = svg && svg.getAttribute("viewBox");
+        if (vb) { var p = vb.split(/\s+/); bottom = f.clientWidth * (+p[3]) / (+p[2]); }
+      }
+      if (bottom > 20) f.style.height = Math.ceil(bottom + 10) + "px";
+    } catch (e) {}
+  }
+  // 3) Un gráfico de varios paneles no se amplía por encima del 110 % de su ancho de dibujo (viewBox). Los dibujados a
+  //    680 px quedan en 748 px como máximo, con rótulos de tamaño normal; los de 900 o 960 px, en el tope de 900 px del CSS.
+  function cap(f) {
+    try {
+      if (!f.parentElement || !f.parentElement.classList.contains("wide")) return;
+      var s = f.contentDocument && f.contentDocument.querySelector("svg"); if (!s) return;
+      var vb = s.viewBox && s.viewBox.baseVal; if (!vb || !(vb.width > 0)) return;
+      var m = Math.min(900, Math.round(vb.width * 1.1)) + "px";
+      if (f.style.maxWidth !== m) f.style.maxWidth = m;
+    } catch (e) {}
+  }
+  function both(f) { cap(f); norm(f); fit(f); }
+  function all() { document.querySelectorAll(".graph-frame iframe").forEach(both); }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".graph-frame iframe").forEach(function (f) {
+      f.addEventListener("load", function () { both(f); setTimeout(function () { both(f); }, 700); });
+    });
+  });
+  window.addEventListener("load", function () { setTimeout(all, 1200); });
+  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(all, 150); });
+})();
+</script>
+<style>
+.graph-frame { margin: 1.25rem 0 0.25rem; }
+.quarto-figure .graph-frame + * { margin-top: 0; }
+</style>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/librovol1\.arturolorenzo\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/b02-inversion.html" class="pagination-link" aria-label="B2. Decisiones de inversión">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">B2. Decisiones de inversión</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/b04-crecimiento-ma.html" class="pagination-link" aria-label="B4. Crecimiento empresarial">
+        <span class="nav-page-text"><span class="chapter-title">B4. Crecimiento empresarial</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

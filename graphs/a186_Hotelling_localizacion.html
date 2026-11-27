@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  body { margin: 0; }
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg id="g" viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+</svg>
+</div>
+<script>
+const W = 680, H = 500;
+const svg = document.getElementById('g'), NS = 'http://www.w3.org/2000/svg';
+const box = document.querySelector('.graph-container');
+function el(tag, attrs) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+const f1 = v => v.toFixed(1);
+const labels = [];
+const lab = (tex, x, y, color, ax, ay, size, bg) => labels.push({tex, x, y, color, ax, ay, size, bg});
+const line = (x1, y1, x2, y2, at) => el('line', Object.assign({x1: f1(x1), y1: f1(y1), x2: f1(x2), y2: f1(y2)}, at));
+const AXIS = {stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'};
+const GUIDE = {stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'};
+const TICK = {stroke: '#000', 'stroke-width': 1};
+const BLUE = '#378ADD', GREEN = '#1D9E75', RED = '#D85A30';
+
+const c = 0.2, t = 1, a = 0, b = 0;
+const pS = c + t * (1 - a - b) * (1 + (a - b) / 3);
+const z1 = a, z2 = 1 - b, zOpt1 = 0.25, zOpt2 = 0.75;
+const cost1 = z => pS + t * (z - z1) ** 2, cost2 = z => pS + t * (z2 - z) ** 2;
+const zHat = 0.5;
+if (Math.abs(cost1(zHat) - cost2(zHat)) > 1e-9) console.error('el consumidor indiferente no está en 1/2');
+
+const OX = 110, OY = 430, AZ = 400, AV = 154.5, AXX = 440, AXY = 400;
+const X = z => OX + AZ * z, Y = v => OY - AV * v;
+line(OX, OY, OX + AXX, OY, AXIS);
+line(OX, OY, OX, OY - AXY, AXIS);
+lab('z', OX + AXX + 6, OY, '#000', 0, 0.5, '17px');
+lab('\\text{precio} + \\text{coste de transporte}', OX + 8, OY - AXY + 2, '#000', 0, 0.5, '15px');
+
+line(OX, Y(c), X(1), Y(c), GUIDE);
+line(OX, Y(pS), X(z2), Y(pS), GUIDE);
+line(X(zHat), Y(cost1(zHat)), X(zHat), OY, GUIDE);
+line(OX - 4, Y(c), OX, Y(c), TICK);
+line(OX - 4, Y(pS), OX, Y(pS), TICK);
+lab('c', OX - 8, Y(c), '#000', 1, 0.5);
+lab('p^* = c + t', OX - 8, Y(pS), '#000', 1, 0.5);
+
+line(OX + 16, Y(c) - 2, OX + 16, Y(pS) + 2, {stroke: '#000', 'stroke-width': 1, 'marker-start': 'url(#arrow)', 'marker-end': 'url(#arrow)'});
+lab('t', OX + 23, (Y(c) + Y(pS)) / 2, '#000', 0, 0.5);
+
+function curve(f, color) {
+  const pts = [];
+  for (let k = 0; k <= 200; k++) { const z = k / 200; pts.push(f1(X(z)) + ',' + f1(Y(f(z)))); }
+  el('path', {d: 'M' + pts.join(' L'), fill: 'none', stroke: color, 'stroke-width': 2.2, 'stroke-linecap': 'round'});
+}
+curve(cost1, BLUE);
+curve(cost2, GREEN);
+lab('p^* + t(z - z_1)^2', X(1) + 8, Y(cost1(1)), BLUE, 0, 0.5);
+lab('p^* + t(z - z_2)^2', X(1) + 8, Y(cost2(1)) - 14, GREEN, 0, 0.5);
+
+el('circle', {cx: f1(X(zHat)), cy: f1(Y(cost1(zHat))), r: 4, fill: '#fff', stroke: RED, 'stroke-width': 1.8});
+
+const AY = OY - 15;
+line(X(zOpt1) - 7, AY, X(z1) + 7, AY, {stroke: BLUE, 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+line(X(zOpt2) + 7, AY, X(z2) - 7, AY, {stroke: GREEN, 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+el('circle', {cx: f1(X(zOpt1)), cy: OY, r: 4.5, fill: '#fff', stroke: BLUE, 'stroke-width': 1.8});
+el('circle', {cx: f1(X(zOpt2)), cy: OY, r: 4.5, fill: '#fff', stroke: GREEN, 'stroke-width': 1.8});
+
+el('circle', {cx: f1(X(z1)), cy: OY, r: 5, fill: BLUE});
+el('circle', {cx: f1(X(z2)), cy: OY, r: 5, fill: GREEN});
+[zOpt1, zHat, zOpt2].forEach(z => line(X(z), OY, X(z), OY + 4, TICK));
+const AT = OY + 9;
+lab('0', OX, AT, '#000', 0.5, 0);
+lab('1', X(1), AT, '#000', 0.5, 0);
+lab('\\tfrac{1}{4}', X(zOpt1), AT, '#000', 0.5, 0);
+lab('\\hat z = \\tfrac{1}{2}', X(zHat), AT, '#000', 0.5, 0);
+lab('\\tfrac{3}{4}', X(zOpt2), AT, '#000', 0.5, 0);
+lab('\\text{óptimo social}', (X(zOpt1) + X(zOpt2)) / 2, AT + 30, '#444', 0.5, 0, '15px');
+lab('z_1^{\\text{opt}}', X(zOpt1), AT + 30, BLUE, 0.5, 0);
+lab('z_2^{\\text{opt}}', X(zOpt2), AT + 30, GREEN, 0.5, 0);
+
+labels.forEach((l, i) => {
+  const d = document.createElement('div');
+  d.className = 'katex-label'; d.id = 'lbl-' + i;
+  katex.render(l.tex, d, {throwOnError: false});
+  d.style.left = (l.x / W * 100).toFixed(3) + '%';
+  d.style.top = (l.y / H * 100).toFixed(3) + '%';
+  d.style.transform = `translate(${-(l.ax || 0) * 100}%, ${-(l.ay || 0) * 100}%)`;
+  d.style.color = l.color || '#000';
+  if (l.size) d.style.fontSize = l.size;
+  if (l.bg) { d.style.background = '#fff'; const k = d.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  box.appendChild(d);
+});
+</script>
+</body>
+</html>

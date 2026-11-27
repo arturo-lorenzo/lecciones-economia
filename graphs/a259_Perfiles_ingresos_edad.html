@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  body { margin: 0; background: #fff; }
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg id="g" viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+</svg>
+</div>
+<script>
+const W = 680, H = 560;
+const svg = document.getElementById('g'), NS = 'http://www.w3.org/2000/svg';
+const box = document.querySelector('.graph-container');
+function el(tag, attrs) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+const f1 = v => v.toFixed(1);
+const labels = [];
+const lab = (tex, x, y, color, ax, ay, size, bg) => labels.push({tex, x, y, color, ax, ay, size, bg});
+const line = (x1, y1, x2, y2, at) => el('line', Object.assign({x1: f1(x1), y1: f1(y1), x2: f1(x2), y2: f1(y2)}, at));
+const path = (pts, at) => el('path', Object.assign({d: pts.map((q, i) => (i ? 'L' : 'M') + f1(q[0]) + ',' + f1(q[1])).join(' '), fill: 'none'}, at));
+const AXIS = {stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'};
+const GUIDE = {stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'};
+const TICK = {stroke: '#000', 'stroke-width': 1};
+const ARR = c => ({stroke: c, 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+const STAB = {stroke: '#5a5a5a', 'stroke-width': 1.2, 'stroke-dasharray': '5 3', 'marker-end': 'url(#arrow)'};
+const RED = '#D85A30', GREEN = '#1D9E75', GREEN_D = '#0F6E56', BLUE = '#378ADD', BLUE_D = '#185FA5', DEM = '#534AB7';
+const dot = (x, y) => el('circle', {cx: f1(x), cy: f1(y), r: 4.5, fill: RED});
+
+function shiftArrow(x0, y0, nx, ny, d, color, gap) { gap = gap || 6; line(x0 + nx * gap, y0 + ny * gap, x0 + nx * (d - gap), y0 + ny * (d - gap), ARR(color)); }
+
+
+
+const wn = 3, we = 5.4, cd = 1.3, S = 3, T = 10;
+const OX = 100, Y0 = 376, KX = 40, KW = 46;
+const gx = t => OX + KX * t, gy = v => Y0 - KW * v;
+const tEnd = 10.6, vTop = 6.8, vBot = -2.1;
+line(OX, gy(vBot), OX, gy(vTop), AXIS);
+line(OX, Y0, gx(tEnd), Y0, AXIS);
+lab('\\text{Ingresos}', OX, gy(vTop) - 6, '#000', 0.5, 1, '16px'); lab('\\text{Edad}', gx(tEnd) + 6, Y0, '#000', 0, 0.5, '16px');
+
+
+const rect = (t0, t1, v0, v1, c, o) => el('rect', {x: f1(gx(t0)), y: f1(gy(v1)), width: f1(KX * (t1 - t0)), height: f1(KW * (v1 - v0)), fill: c, opacity: o, stroke: 'none'});
+rect(0, S, 0, wn, RED, 0.12);
+rect(0, S, -cd, 0, RED, 0.24);
+rect(S, T, wn, we, GREEN, 0.16);
+
+
+line(OX, gy(we), gx(S), gy(we), GUIDE);
+line(gx(S), gy(-cd), gx(S), Y0 + 0, {stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'});
+line(gx(T), gy(we), gx(T), Y0, GUIDE);
+[gy(we), gy(wn), Y0].forEach(y => line(OX - 4, y, OX, y, TICK));
+
+
+line(gx(0), gy(wn), gx(T), gy(wn), {stroke: DEM, 'stroke-width': 2.2});
+path([[gx(0), gy(-cd)], [gx(S), gy(-cd)], [gx(S), gy(we)], [gx(T), gy(we)]], {stroke: BLUE, 'stroke-width': 2.2, 'stroke-linejoin': 'round'});
+lab('\\text{Con educación}', gx(T) + 6, gy(we), BLUE_D, 0, 0.5, '15px');
+lab('\\text{Sin educación}', gx(T) + 6, gy(wn), DEM, 0, 0.5, '15px');
+
+
+lab('\\begin{array}{c}\\text{Coste de}\\\\ \\text{oportunidad}\\end{array}', gx(S / 2), gy(wn / 2), '#8A3A1C', 0.5, 0.5, '14px');
+lab('\\text{Coste directo}', gx(S / 2), gy(-cd / 2), '#8A3A1C', 0.5, 0.5, '14px');
+lab('\\text{Rendimientos: } w_e - w_n', gx((S + T) / 2), gy((wn + we) / 2), GREEN_D, 0.5, 0.5, '15px');
+
+
+lab('w_e', OX - 8, gy(we), '#000', 1, 0.5); lab('w_n', OX - 8, gy(wn), '#000', 1, 0.5); lab('0', OX - 8, Y0, '#000', 1, 0.5);
+
+
+const yb = gy(vBot) + 22;
+line(gx(0) + 1, yb, gx(S) - 1, yb, {stroke: '#000', 'stroke-width': 1.2, 'marker-start': 'url(#arrow)', 'marker-end': 'url(#arrow)'});
+line(gx(S) + 1, yb, gx(T) - 1, yb, {stroke: '#000', 'stroke-width': 1.2, 'marker-start': 'url(#arrow)', 'marker-end': 'url(#arrow)'});
+lab('\\begin{array}{c}\\text{Periodo 1}\\\\ \\text{(estudios)}\\end{array}', gx(S / 2), yb + 8, '#000', 0.5, 0, '14px');
+lab('\\begin{array}{c}\\text{Periodo 2}\\\\ \\text{(vida laboral)}\\end{array}', gx((S + T) / 2), yb + 8, '#000', 0.5, 0, '14px');
+
+labels.forEach((l, i) => {
+  const d = document.createElement('div');
+  d.className = 'katex-label'; d.id = 'lbl-' + i;
+  katex.render(l.tex, d, {throwOnError: false});
+  d.style.left = (l.x / W * 100).toFixed(3) + '%';
+  d.style.top = (l.y / H * 100).toFixed(3) + '%';
+  d.style.transform = `translate(${-(l.ax || 0) * 100}%, ${-(l.ay || 0) * 100}%)`;
+  d.style.color = l.color || '#000';
+  if (l.size) d.style.fontSize = l.size;
+  if (l.bg) { d.style.background = '#fff'; const k = d.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  box.appendChild(d);
+});
+</script>
+</body>
+</html>

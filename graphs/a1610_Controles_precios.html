@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  body{margin:0;display:flex;justify-content:center;background:#fff}
+  .graph-container{position:relative;width:100%;max-width:none;margin:0 auto}
+  .graph-container svg{width:100%;height:auto;display:block}
+  .katex-label{position:absolute;pointer-events:none;white-space:nowrap;line-height:1;font-size:15px}
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg id="g" viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<g id="shade"></g><g id="guides"></g><g id="axes"></g><g id="curves"></g><g id="arrows"></g><g id="points"></g>
+</svg>
+</div>
+<script>
+
+const W=700, H=400, NS='http://www.w3.org/2000/svg';
+const f1=v=>(+v).toFixed(1);
+function add(layer, tag, at){const e=document.createElementNS(NS,tag);for(const k in at)e.setAttribute(k,at[k]);document.getElementById(layer).appendChild(e);return e;}
+
+function frame(ox,oy,w,h,xr,yr){return {X:x=>ox+(x-xr[0])/(xr[1]-xr[0])*w, Y:y=>oy-(y-yr[0])/(yr[1]-yr[0])*h};}
+function axis(x1,y1,x2,y2){add('axes','line',{x1:f1(x1),y1:f1(y1),x2:f1(x2),y2:f1(y2),stroke:'black','stroke-width':1.2,'marker-end':'url(#arrow)'});}
+function pathOf(pts){return 'M'+pts.map(q=>f1(q[0])+','+f1(q[1])).join(' L');}
+function sample(fn,a,b,n){n=n||200;const o=[];for(let i=0;i<=n;i++){const u=a+(b-a)*i/n;o.push([u,fn(u)]);}return o;}
+function curve(pts,color,extra){return add('curves','path',Object.assign({d:pathOf(pts),fill:'none',stroke:color,'stroke-width':2.4,'stroke-linecap':'round','stroke-linejoin':'round'},extra||{}));}
+function area(pts,color,op){return add('shade','path',{d:pathOf(pts)+' Z',fill:color,opacity:op,stroke:'none'});}
+function guide(x1,y1,x2,y2){add('guides','line',{x1:f1(x1),y1:f1(y1),x2:f1(x2),y2:f1(y2),stroke:'#888','stroke-width':0.8,'stroke-dasharray':'5 3'});}
+function tickX(x,y){add('axes','line',{x1:f1(x),y1:f1(y),x2:f1(x),y2:f1(y+4),stroke:'#000','stroke-width':1});}
+function tickY(x,y){add('axes','line',{x1:f1(x-4),y1:f1(y),x2:f1(x),y2:f1(y),stroke:'#000','stroke-width':1});}
+function dot(x,y,r,fill,stroke){return add('points','circle',{cx:f1(x),cy:f1(y),r:r||4.5,fill:fill||'#D85A30',stroke:stroke||'none','stroke-width':1.6});}
+
+function conv(x1,y1,x2,y2){add('arrows','polyline',{points:f1(x1)+','+f1(y1)+' '+f1((x1+x2)/2)+','+f1((y1+y2)/2)+' '+f1(x2)+','+f1(y2),fill:'none',stroke:'#5a5a5a','stroke-width':1.2,'stroke-dasharray':'5 4','marker-mid':'url(#arrow)','marker-end':'url(#arrow)'});}
+
+
+const LABELS=[];
+function L(tex,x,y,a,col,fs,bg){LABELS.push([tex,x,y,a||'c',col||null,fs||null,!!bg]);}
+const base=316;
+function xppanel(ox, title){
+  axis(ox, base, ox+262, base); axis(ox, base, ox, base-255);
+  L('p', ox-8, base-251, 'r', '#000', 16);
+  L('X', ox+265, base, 'l', '#000', 16);
+  L(title, ox+128, base+42, 'b', '#000', 13);
+  return frame(ox, base, 240, 228, [0,10], [0,9.5]);
+}
+const pd=X=>9-0.75*X, ps=X=>1.5+0.5*X;
+const Xs=6, ps0=4.5;
+function line(P,fn,a,b,col){return curve(sample(fn,a,b,2).map(([x,y])=>[P.X(x),P.Y(y)]),col);}
+function poly(P,pts,col,op){return area(pts.map(([x,y])=>[P.X(x),P.Y(y)]),col,op);}
+function vguide(P,x,y){guide(P.X(x),P.Y(y),P.X(x),base); tickX(P.X(x),base);}
+function hguide(P,x,y){guide(P.X(0),P.Y(y),P.X(x),P.Y(y)); tickY(P.X(0),P.Y(y));}
+
+function bracket(P,x1,x2,y,dy,txt){
+  const yy=P.Y(y)+dy;
+  add('arrows','line',{x1:f1(P.X(x1)+2),y1:f1(yy),x2:f1(P.X(x2)-2),y2:f1(yy),stroke:'#000','stroke-width':1,'marker-start':'url(#arrow)','marker-end':'url(#arrow)'});
+  L(txt, (P.X(x1)+P.X(x2))/2, yy+(dy>0?6:-6), dy>0?'t':'b', '#000', 13, true);
+}
+
+{ const ox=55, P=xppanel(ox,'\\text{(a) Precio máximo, } p_{\\max} < p^*');
+  const pm=3, Xo=(pm-1.5)/0.5, Xd=(9-pm)/0.75;
+  poly(P,[[Xo,pd(Xo)],[Xs,ps0],[Xo,pm]],'#D85A30',0.22);
+  line(P,pd,0,10,'#534AB7'); line(P,ps,0,9.5,'#1D9E75');
+  add('curves','line',{x1:f1(P.X(0)),y1:f1(P.Y(pm)),x2:f1(P.X(9.4)),y2:f1(P.Y(pm)),stroke:'#378ADD','stroke-width':2.27});
+  hguide(P,Xs,ps0); tickY(P.X(0),P.Y(pm));
+  vguide(P,Xo,pd(Xo)); vguide(P,Xs,ps0); vguide(P,Xd,pm);
+  dot(P.X(Xs),P.Y(ps0),5,'#000'); dot(P.X(Xo),P.Y(pm),5,'#000'); dot(P.X(Xd),P.Y(pm),3.5,'#000');
+  L('0', P.X(Xs)+6, P.Y(ps0)-15, 'l', '#000', 15);
+  L('1', P.X(Xo)-8, P.Y(pm)-10, 'r', '#000', 15);
+  bracket(P,Xo,Xd,pm,14,'\\text{exceso de demanda}');
+  L('p^*', ox-8, P.Y(ps0), 'r', '#000', 16);
+  L('p_{\\max}', ox-8, P.Y(pm), 'r', '#000', 16);
+  L('S(p_{\\max})', P.X(Xo), base+6, 't', '#000', 13);
+  L('X^*', P.X(Xs), base+6, 't', '#000', 15);
+  L('D(p_{\\max})', P.X(Xd), base+6, 't', '#000', 13);
+  L('D(X)', P.X(10)+6, P.Y(pd(10))-4, 'l', '#534AB7', 15);
+  L('S(X)', P.X(9.5)+6, P.Y(ps(9.5))-6, 'l', '#1D9E75', 15);
+}
+
+{ const ox=385, P=xppanel(ox,'\\text{(b) Precio mínimo, } p_{\\min} > p^*');
+  const pm=6, Xo=(9-pm)/0.75, Xsp=(pm-1.5)/0.5;
+  poly(P,[[Xo,pm],[Xs,ps0],[Xo,ps(Xo)]],'#D85A30',0.22);
+  line(P,pd,0,10,'#534AB7'); line(P,ps,0,9.5,'#1D9E75');
+  add('curves','line',{x1:f1(P.X(0)),y1:f1(P.Y(pm)),x2:f1(P.X(9.9)),y2:f1(P.Y(pm)),stroke:'#378ADD','stroke-width':2.27});
+  hguide(P,Xs,ps0); tickY(P.X(0),P.Y(pm));
+  vguide(P,Xo,pm); vguide(P,Xs,ps0); vguide(P,Xsp,pm);
+  dot(P.X(Xs),P.Y(ps0),5,'#000'); dot(P.X(Xo),P.Y(pm),5,'#000'); dot(P.X(Xsp),P.Y(pm),3.5,'#000');
+  L('0', P.X(Xs)+12, P.Y(ps0), 'l', '#000', 15);
+  L('1', P.X(Xo)-8, P.Y(pm)+12, 'r', '#000', 15);
+  bracket(P,Xo,Xsp,pm,-14,'\\text{exceso de oferta}');
+  L('p^*', ox-8, P.Y(ps0), 'r', '#000', 16);
+  L('p_{\\min}', ox-8, P.Y(pm), 'r', '#000', 16);
+  L('D(p_{\\min})', P.X(Xo), base+6, 't', '#000', 13);
+  L('X^*', P.X(Xs), base+6, 't', '#000', 15);
+  L('S(p_{\\min})', P.X(Xsp), base+6, 't', '#000', 13);
+  L('D(X)', P.X(10)+6, P.Y(pd(10))-4, 'l', '#534AB7', 15);
+  L('S(X)', P.X(9.5)+6, P.Y(ps(9.5))-6, 'l', '#1D9E75', 15);
+}
+const cont=document.querySelector('.graph-container');
+const T={l:'translate(0,-50%)',r:'translate(-100%,-50%)',t:'translate(-50%,0)',b:'translate(-50%,-100%)',c:'translate(-50%,-50%)'};
+LABELS.forEach(([tex,x,y,a,col,fs,bg])=>{
+  const d=document.createElement('div'); d.className='katex-label';
+  d.style.left=(100*x/W)+'%'; d.style.top=(100*y/H)+'%'; d.style.transform=T[a];
+  if(col) d.style.color=col; if(fs) d.style.fontSize=fs+'px';
+  katex.render(tex,d,{throwOnError:false,displayMode:false});
+  if(bg){d.style.background='#fff'; const k=d.querySelector('.katex'); if(k) k.style.padding='0 2px';}
+  cont.appendChild(d);
+});
+</script>
+</body>
+</html>

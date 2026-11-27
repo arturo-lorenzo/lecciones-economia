@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  body{margin:0;display:flex;justify-content:center;background:#fff}
+  .graph-container{position:relative;width:100%;max-width:none;margin:0 auto}
+  .graph-container svg{width:100%;height:auto;display:block}
+  .katex-label{position:absolute;pointer-events:none;white-space:nowrap;line-height:1;font-size:15px}
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg id="g" viewBox="0 0 692 400" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<g id="shade"></g><g id="guides"></g><g id="axes"></g><g id="curves"></g><g id="arrows"></g><g id="points"></g>
+</svg>
+</div>
+<script>
+
+const W=692, H=400, NS='http://www.w3.org/2000/svg';
+const f1=v=>(+v).toFixed(1);
+function add(layer, tag, at){const e=document.createElementNS(NS,tag);for(const k in at)e.setAttribute(k,at[k]);document.getElementById(layer).appendChild(e);return e;}
+
+function frame(ox,oy,w,h,xr,yr){return {X:x=>ox+(x-xr[0])/(xr[1]-xr[0])*w, Y:y=>oy-(y-yr[0])/(yr[1]-yr[0])*h};}
+function axis(x1,y1,x2,y2){add('axes','line',{x1:f1(x1),y1:f1(y1),x2:f1(x2),y2:f1(y2),stroke:'black','stroke-width':1.2,'marker-end':'url(#arrow)'});}
+function pathOf(pts){return 'M'+pts.map(q=>f1(q[0])+','+f1(q[1])).join(' L');}
+function sample(fn,a,b,n){n=n||200;const o=[];for(let i=0;i<=n;i++){const u=a+(b-a)*i/n;o.push([u,fn(u)]);}return o;}
+function curve(pts,color,extra){return add('curves','path',Object.assign({d:pathOf(pts),fill:'none',stroke:color,'stroke-width':2.24,'stroke-linecap':'round','stroke-linejoin':'round'},extra||{}));}
+function area(pts,color,op){return add('shade','path',{d:pathOf(pts)+' Z',fill:color,opacity:op,stroke:'none'});}
+function guide(x1,y1,x2,y2){add('guides','line',{x1:f1(x1),y1:f1(y1),x2:f1(x2),y2:f1(y2),stroke:'#888','stroke-width':0.8,'stroke-dasharray':'5 3'});}
+function tickX(x,y){add('axes','line',{x1:f1(x),y1:f1(y),x2:f1(x),y2:f1(y+4),stroke:'#000','stroke-width':1});}
+function tickY(x,y){add('axes','line',{x1:f1(x-4),y1:f1(y),x2:f1(x),y2:f1(y),stroke:'#000','stroke-width':1});}
+function dot(x,y,r,fill,stroke){return add('points','circle',{cx:f1(x),cy:f1(y),r:r||4.5,fill:fill||'#D85A30',stroke:stroke||'none','stroke-width':1.6});}
+
+function conv(x1,y1,x2,y2){add('arrows','polyline',{points:f1(x1)+','+f1(y1)+' '+f1((x1+x2)/2)+','+f1((y1+y2)/2)+' '+f1(x2)+','+f1(y2),fill:'none',stroke:'#5a5a5a','stroke-width':1.2,'stroke-dasharray':'5 4','marker-mid':'url(#arrow)','marker-end':'url(#arrow)'});}
+
+
+const LABELS=[];
+function L(tex,x,y,a,col,fs,bg){LABELS.push([tex,x,y,a||'c',col||null,fs||null,!!bg]);}
+const base=316;
+function xppanel(ox, title){
+  axis(ox, base, ox+262, base); axis(ox, base, ox, base-255);
+  L('p', ox-8, base-251, 'r', '#000', 16);
+  L('X', ox+265, base, 'l', '#000', 16);
+  L(title, ox+128, base+42, 'b', '#000', 13);
+  return frame(ox, base, 240, 228, [0,10], [0,9.5]);
+}
+const pd=X=>9-0.75*X, ps=X=>1.5+0.5*X;
+const Xs=6, ps0=4.5;
+function line(P,fn,a,b,col){return curve(sample(fn,a,b,2).map(([x,y])=>[P.X(x),P.Y(y)]),col);}
+function poly(P,pts,col,op){return area(pts.map(([x,y])=>[P.X(x),P.Y(y)]),col,op);}
+function vguide(P,x,y){guide(P.X(x),P.Y(y),P.X(x),base); tickX(P.X(x),base);}
+function hguide(P,x,y){guide(P.X(0),P.Y(y),P.X(x),P.Y(y)); tickY(P.X(0),P.Y(y));}
+
+
+{ const ox=55, P=xppanel(ox,'\\text{(a) Equilibrio competitivo}');
+  poly(P,[[0,ps0],[0,pd(0)],[Xs,ps0]],'#534AB7',0.13);
+  poly(P,[[0,ps0],[Xs,ps0],[0,ps(0)]],'#1D9E75',0.15);
+  line(P,pd,0,10,'#534AB7'); line(P,ps,0,9.5,'#1D9E75');
+  hguide(P,Xs,ps0); vguide(P,Xs,ps0); dot(P.X(Xs),P.Y(ps0),5,'#000');
+  L('p^*', ox-8, P.Y(ps0), 'r', '#000', 16);
+  L('X^*', P.X(Xs), base+6, 't', '#000', 16);
+  L('\\text{EC}', P.X(1.9), P.Y(5.85), 'c', '#3C3489', 15);
+  L('\\text{EP}', P.X(1.9), P.Y(3.35), 'c', '#0F6E56', 15);
+  L('D(X)', P.X(10)+6, P.Y(pd(10))-4, 'l', '#534AB7', 15);
+  L('S(X)=\\text{Cmg}(X)', P.X(9.5)-28, P.Y(ps(9.5))-10, 'b', '#1D9E75', 15);
+}
+
+{ const ox=385, P=xppanel(ox,"\\text{(b) Cantidad inferior, } X' < X^*");
+  const Xp=3.5;
+  poly(P,[[0,pd(0)],[Xp,pd(Xp)],[Xp,ps(Xp)],[0,ps(0)]],'#378ADD',0.12);
+  poly(P,[[Xp,pd(Xp)],[Xs,ps0],[Xp,ps(Xp)]],'#D85A30',0.22);
+  line(P,pd,0,10,'#534AB7'); line(P,ps,0,9.5,'#1D9E75');
+  vguide(P,Xp,pd(Xp)); vguide(P,Xs,ps0); dot(P.X(Xs),P.Y(ps0),5,'#000');
+  dot(P.X(Xp),P.Y(pd(Xp)),3.5,'#000'); dot(P.X(Xp),P.Y(ps(Xp)),3.5,'#000');
+  L("X'", P.X(Xp), base+6, 't', '#000', 16);
+  L('X^*', P.X(Xs), base+6, 't', '#000', 16);
+  L('\\text{EC}+\\text{EP}', P.X(1.6), P.Y(4.75), 'c', '#185FA5', 14);
+  L('D(X)', P.X(10)+6, P.Y(pd(10))-4, 'l', '#534AB7', 15);
+  L('S(X)=\\text{Cmg}(X)', P.X(9.5)-28, P.Y(ps(9.5))-10, 'b', '#1D9E75', 15);
+}
+const cont=document.querySelector('.graph-container');
+const T={l:'translate(0,-50%)',r:'translate(-100%,-50%)',t:'translate(-50%,0)',b:'translate(-50%,-100%)',c:'translate(-50%,-50%)'};
+LABELS.forEach(([tex,x,y,a,col,fs,bg])=>{
+  const d=document.createElement('div'); d.className='katex-label';
+  d.style.left=(100*x/W)+'%'; d.style.top=(100*y/H)+'%'; d.style.transform=T[a];
+  if(col) d.style.color=col; if(fs) d.style.fontSize=fs+'px';
+  katex.render(tex,d,{throwOnError:false,displayMode:false});
+  if(bg){d.style.background='#fff'; const k=d.querySelector('.katex'); if(k) k.style.padding='0 2px';}
+  cont.appendChild(d);
+});
+</script>
+</body>
+</html>

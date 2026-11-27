@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  body { margin: 0; background: #fff; }
+  .graph-container { position: relative; width: 100%; max-width: none; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg id="g" viewBox="0 0 680 440" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+</svg>
+</div>
+<script>
+const W = 680, H = 440;
+const svg = document.getElementById('g'), NS = 'http://www.w3.org/2000/svg';
+const box = document.querySelector('.graph-container');
+function el(tag, attrs) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+const f1 = v => v.toFixed(1);
+const labels = [];
+const lab = (tex, x, y, color, ax, ay, size, bg) => labels.push({tex, x, y, color, ax, ay, size, bg});
+const line = (x1, y1, x2, y2, at) => el('line', Object.assign({x1: f1(x1), y1: f1(y1), x2: f1(x2), y2: f1(y2)}, at));
+const AXIS = {stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'};
+const GUIDE = {stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'};
+const TICK = {stroke: '#000', 'stroke-width': 1};
+const BLUE = '#378ADD', GREEN = '#1D9E75', RED = '#D85A30';
+
+
+const s0 = 1.5, s1 = 0.6, d0 = 8.5, d1 = 0.7;
+const DX = 3.0;
+const S = (x, sh) => s0 + s1 * (x - (sh || 0));
+const D = (x, sh) => d0 - d1 * (x - (sh || 0));
+const eq = (shS, shD) => { const x = (d0 + d1 * (shD || 0) - s0 + s1 * (shS || 0)) / (s1 + d1); return [x, S(x, shS)]; };
+
+
+const OY = 305, KY = 23, KX = 23.5;
+const gy = r => OY - KY * r;
+const RTOP = 10.2, XEND = 10.6;
+
+function panel(OX, title, mode) {
+  const gx = x => OX + KX * x;
+
+  line(OX, OY, OX, gy(RTOP), AXIS);
+  line(OX, OY, gx(XEND), OY, AXIS);
+  lab('r', OX - 8, gy(RTOP) - 2, '#000', 1, 0, '17px');
+  lab('S,\\, I', gx(XEND) + 2, OY + 6, '#000', 0.5, 0, '17px');
+  const e0 = eq(0, 0), e1 = mode === 'a' ? eq(0, DX) : eq(DX, 0);
+
+  [e0, e1].forEach(e => {
+    line(gx(e[0]), gy(e[1]), gx(e[0]), OY, GUIDE);
+    line(OX, gy(e[1]), gx(e[0]), gy(e[1]), GUIDE);
+    line(gx(e[0]), OY, gx(e[0]), OY + 4, TICK);
+    line(OX - 4, gy(e[1]), OX, gy(e[1]), TICK);
+  });
+
+  const seg = (f, xa, xb, at) => line(gx(xa), gy(f(xa)), gx(xb), gy(f(xb)), at);
+  const solid = c => ({stroke: c, 'stroke-width': 2.2, 'stroke-linecap': 'round'});
+  const dash = c => ({stroke: c, 'stroke-width': 2.2, 'stroke-linecap': 'round', 'stroke-dasharray': '7 4'});
+  const xS0a = 0.3, xS0b = 8.6, xD0a = 0.9, xD0b = 8.8;
+  if (mode === 'a') {
+    seg(x => S(x), xS0a, xS0b, solid(BLUE));
+    seg(x => D(x), xD0a, xD0b, solid(GREEN));
+    seg(x => D(x, DX), xD0a + DX, Math.min(xD0b + DX, 10.0), dash(GREEN));
+    lab('S(r)', gx(xS0b) + 3, gy(S(xS0b)) - 2, BLUE, 0, 1);
+    lab('I_0(r)', gx(xD0b) + 4, gy(D(xD0b)) + 2, GREEN, 0, 0.2);
+    const xe = Math.min(xD0b + DX, 10.0);
+    lab('I_1(r)', gx(xe) + 4, gy(D(xe, DX)) + 2, GREEN, 0, 0.2);
+  } else {
+    seg(x => S(x), xS0a, xS0b, solid(BLUE));
+    seg(x => S(x, DX), xS0a + DX, Math.min(xS0b + DX, 10.0), dash(BLUE));
+    seg(x => D(x), xD0a, xD0b, solid(GREEN));
+    lab('S_0(r)', gx(xS0b) - 4, gy(S(xS0b)) - 4, BLUE, 1, 1);
+    const xe = Math.min(xS0b + DX, 10.0);
+    lab('S_1(r)', gx(xe) + 3, gy(S(xe, DX)) + 2, BLUE, 0, 0.6);
+    lab('I(r)', gx(xD0b) + 4, gy(D(xD0b)) + 2, GREEN, 0, 0.2);
+  }
+
+  {
+    const f = mode === 'a' ? D : S, sl = mode === 'a' ? -d1 : s1, c = mode === 'a' ? GREEN : BLUE;
+    const xa = mode === 'a' ? 2.0 : 2.4;
+    const x0 = gx(xa), y0 = gy(f(xa));
+    const m = -sl * KY / KX;
+    let nx = -m, ny = 1; const nl = Math.hypot(nx, ny); nx /= nl; ny /= nl;
+    if (nx < 0) { nx = -nx; ny = -ny; }
+
+    const dist = Math.abs(KX * DX * m) / Math.hypot(1, m);
+    line(x0 + nx * 6, y0 + ny * 6, x0 + nx * (dist - 6), y0 + ny * (dist - 6), {stroke: c, 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+    const tx = x0 + nx * dist / 2, ty = y0 + ny * dist / 2;
+    if (mode === 'a') lab("\\Delta f' > 0", tx + 6, ty - 16, c, 0, 1, '15px');
+    else lab('\\Delta S > 0', tx - 12, ty + 32, c, 0.5, 0, '15px');
+  }
+
+  el('circle', {cx: f1(gx(e0[0])), cy: f1(gy(e0[1])), r: 5, fill: '#000'});
+  el('circle', {cx: f1(gx(e1[0])), cy: f1(gy(e1[1])), r: 5, fill: '#000'});
+  if (mode === 'a') {
+    lab('0', gx(e0[0]) + 4, gy(e0[1]) + 8, '#000', 0, 0);
+    lab('1', gx(e1[0]) - 2, gy(e1[1]) - 8, '#000', 0.5, 1);
+  } else {
+    lab('0', gx(e0[0]) - 2, gy(e0[1]) - 8, '#000', 0.5, 1);
+    lab('1', gx(e1[0]) + 2, gy(e1[1]) + 9, '#000', 0, 0);
+  }
+
+  lab('r_0', OX - 7, gy(e0[1]), '#000', 1, 0.5, '15px');
+  lab('r_1', OX - 7, gy(e1[1]), '#000', 1, 0.5, '15px');
+  lab('I_0', gx(e0[0]) - 3, OY + 7, '#000', 1, 0, '15px');
+  lab('I_1', gx(e1[0]) + 3, OY + 7, '#000', 0, 0, '15px');
+  lab(title, gx(XEND / 2), OY + 44, '#444', 0.5, 0, '15px');
+}
+
+panel(42, '\\text{(a) Mejora tecnológica}', 'a');
+panel(384, '\\text{(b) Aumento del ahorro}', 'b');
+
+labels.forEach((l, i) => {
+  const d = document.createElement('div');
+  d.className = 'katex-label'; d.id = 'lbl-' + i;
+  katex.render(l.tex, d, {throwOnError: false});
+  d.style.left = (l.x / W * 100).toFixed(3) + '%';
+  d.style.top = (l.y / H * 100).toFixed(3) + '%';
+  d.style.transform = `translate(${-(l.ax || 0) * 100}%, ${-(l.ay || 0) * 100}%)`;
+  d.style.color = l.color || '#000';
+  if (l.size) d.style.fontSize = l.size;
+  if (l.bg) { d.style.background = '#fff'; const k = d.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  box.appendChild(d);
+});
+</script>
+</body>
+</html>

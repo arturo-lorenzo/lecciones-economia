@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 870" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line id="axH" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="axU" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <line id="axD" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="dash-h-opt" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-v-opt" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-h-alpha" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-sB" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-sB-h" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+
+    <line id="cml" stroke="#378ADD" stroke-width="2.2"/>
+
+
+    <path id="ic-curve" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line id="low" stroke="#1D9E75" stroke-width="2.2"/>
+
+
+    <circle id="pt-opt" r="5" fill="#000"/>
+    <circle id="pt-opt-low" r="4" fill="#D85A30"/>
+    <circle id="pt-sB-lower" r="4" fill="black"/>
+
+
+    <line id="brack-alpha" stroke="black" stroke-width="1" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <line id="brack-1alpha" stroke="black" stroke-width="1" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+
+    <line id="tk-R" stroke="black" stroke-width="1"/>
+    <line id="tk-a" stroke="black" stroke-width="1"/>
+    <line id="tk-1" stroke="black" stroke-width="1"/>
+  </svg>
+
+  <div class="katex-label" id="lbl-ER"></div>
+  <div class="katex-label" id="lbl-sigma"></div>
+  <div class="katex-label" id="lbl-CML"></div>
+  <div class="katex-label" id="lbl-U"></div>
+  <div class="katex-label" id="lbl-0"></div>
+  <div class="katex-label" id="lbl-Rstar"></div>
+  <div class="katex-label" id="lbl-sstar"></div>
+  <div class="katex-label" id="lbl-sigmaB"></div>
+  <div class="katex-label" id="lbl-sigmaline"></div>
+  <div class="katex-label" id="lbl-astar"></div>
+  <div class="katex-label" id="lbl-one"></div>
+  <div class="katex-label" id="lbl-alpha-tag"></div>
+  <div class="katex-label" id="lbl-1alpha-tag"></div>
+  <div class="katex-label" id="lbl-alpha-ax"></div>
+</div>
+
+<script>
+const W=680,H=870;
+const SC=1.5;
+const OX=158,OY=440,XL=290*SC,YL=270*SC;
+const sBx=OX+240*SC, topY=OY-YL+34*SC, aOneY=OY+YL-48*SC;
+const m=(OY-topY)/(sBx-OX);
+
+
+const optX=OX+0.45*(sBx-OX), optY=OY-m*(optX-OX);
+
+const aStarY=OY+(optX-OX)/(sBx-OX)*(aOneY-OY);
+
+const el=id=>document.getElementById(id);
+function setL(id,x1,y1,x2,y2){const e=el(id);e.setAttribute('x1',x1);e.setAttribute('y1',y1);e.setAttribute('x2',x2);e.setAttribute('y2',y2);}
+
+el('pt-opt').setAttribute('cx',optX); el('pt-opt').setAttribute('cy',optY);
+el('pt-opt-low').setAttribute('cx',optX); el('pt-opt-low').setAttribute('cy',aStarY);
+el('pt-sB-lower').setAttribute('cx',sBx); el('pt-sB-lower').setAttribute('cy',aOneY);
+
+setL('dash-h-opt',OX,optY,optX,optY);
+setL('dash-v-opt',optX,optY,optX,aStarY);
+setL('dash-h-alpha',OX,aStarY,optX,aStarY);
+setL('dash-sB',sBx,topY,sBx,aOneY);
+setL('axH',OX,OY,OX+XL,OY);setL('axU',OX,OY,OX,OY-YL);setL('axD',OX,OY,OX,OY+YL);
+setL('cml',OX,OY,sBx,topY);setL('low',OX,OY,sBx,aOneY);setL('tk-1',OX-4,aOneY,OX,aOneY);
+setL('dash-sB-h',OX,aOneY,sBx,aOneY);
+setL('tk-R',OX-4,optY,OX,optY);
+setL('tk-a',OX-4,aStarY,OX,aStarY);
+
+
+const s0=optX-OX, k=m/(2*s0), c0=m*s0-k*s0*s0;
+const ic=[];
+for(let s=0;s<=400*SC;s+=4){const e=c0+k*s*s; if(e>180*SC) break; ic.push((OX+s).toFixed(1)+','+(OY-e).toFixed(1));}
+el('ic-curve').setAttribute('d','M'+ic.join(' L'));
+const icEnd=ic[ic.length-1].split(',').map(Number);
+
+
+setL('brack-alpha',OX-40,OY+3,OX-40,aStarY-3);
+setL('brack-1alpha',OX-40,aStarY+3,OX-40,aOneY-3);
+
+function pct(v,t){return(v/t*100).toFixed(2)+'%';}
+const labels=[
+  {id:'lbl-ER',       tex:'R_c^e',                                   x:OX-7,y:OY-YL-16, align:'right',size:'18px'},
+  {id:'lbl-sigma',    tex:'\\sigma_c',                               x:OX+XL+3,y:OY-12,size:'18px'},
+  {id:'lbl-alpha-ax', tex:'w_B',                                    x:OX-7,y:OY+YL-16,align:'right',size:'18px'},
+  {id:'lbl-CML',      tex:'R_c^e=\\dfrac{r_B}{\\sigma_B}\\,\\sigma_c',x:sBx-12,y:topY-29,color:'#378ADD',size:'16px',align:'right'},
+  {id:'lbl-U',        tex:'u^e_0',                                   x:icEnd[0]-6,y:icEnd[1]-24,color:'#534AB7',size:'16px',align:'right'},
+  {id:'lbl-0',        tex:'0',                                       x:optX-24,y:optY-32,color:'#000',size:'16px'},
+  {id:'lbl-Rstar',    tex:'R_c^{e*}',                                x:OX-7,y:optY-13,align:'right',size:'16px'},
+  {id:'lbl-sstar',    tex:'\\sigma_c^*',                             x:optX+6,y:OY+4,size:'16px',bg:true},
+  {id:'lbl-sigmaB',   tex:'\\sigma_B',                               x:sBx+6,y:OY+4,size:'16px',bg:true},
+  {id:'lbl-sigmaline',tex:'\\sigma_c=w_B\\,\\sigma_B',           x:sBx+12,y:aOneY-13,color:'#1D9E75',size:'16px'},
+  {id:'lbl-astar',    tex:'w_B^*',                               x:OX-7,y:aStarY-12,align:'right',size:'16px'},
+  {id:'lbl-one',      tex:'1',                                       x:OX-7,y:aOneY-12,align:'right',size:'16px'},
+  {id:'lbl-alpha-tag',tex:'w_B',                                    x:OX-50,y:(OY+aStarY)/2-11,size:'15px',align:'right'},
+  {id:'lbl-1alpha-tag',tex:'1-w_B',                               x:OX-50,y:(aStarY+aOneY)/2-11,size:'15px',align:'right'}
+];
+labels.forEach(l=>{const e=el(l.id);if(!e)return;katex.render(l.tex,e,{throwOnError:false});e.style.left=pct(l.x,W);e.style.top=pct(l.y,H);e.style.color=l.color||'black';if(l.align==='right')e.classList.add('right-of-axis');if(l.size)e.style.fontSize=l.size;
+  if(l.bg){e.style.background='#fff';const k=e.querySelector('.katex');if(k)k.style.padding='0 2px';}});
+</script>
+</body>
+</html>

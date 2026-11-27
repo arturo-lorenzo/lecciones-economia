@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+  .katex-label .katex { font-size: 1em; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <line x1="120" y1="460" x2="560" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="120" y1="460" x2="120" y2="60"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <g id="guides"></g>
+    <g id="curves"></g>
+    <g id="arrows"></g>
+    <g id="points"></g>
+  </svg>
+</div>
+<script>
+
+
+
+
+
+
+
+
+
+const ybar = 40, pT0 = 58, pT1 = 25, phi = Math.tan(35*Math.PI/180)*5.5/5, wk = Math.tan(55*Math.PI/180)*5.5/5;
+const mr = (Y, pT) => pT - wk*(Y - ybar), cp = (Y, pe) => pe + phi*(Y - ybar);
+const cut = (pT, pe) => { const Y = ybar + (pT - pe)/(wk + phi); return [Y, mr(Y, pT)]; };
+const P0 = [ybar, pT0], P0p = cut(pT1, pT0), P0pp = cut(pT1, P0p[1]), P1 = [ybar, pT1];
+const VBW = 680, VBH = 500;
+
+const OX = 120, SX = 5.5;
+const X = y => OX + y*SX, Y = p => 460 - p*5;
+const NS = 'http://www.w3.org/2000/svg';
+function el(g, tag, att) { const e = document.createElementNS(NS, tag); for (const k in att) e.setAttribute(k, att[k]); document.getElementById(g).appendChild(e); return e; }
+function line(g, x1, y1, x2, y2, att) { return el(g, 'line', Object.assign({x1, y1, x2, y2}, att)); }
+const dash = {stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'}, tk = {stroke: 'black', 'stroke-width': 1};
+const cD = '#378ADD', cO = '#1D9E75', grey = '#888';
+const L = []; function put(tex, x, y, o = {}) { L.push(Object.assign({tex, x, y}, o)); }
+
+
+line('guides', X(0), Y(pT0), X(ybar), Y(pT0), dash); line('guides', OX - 4, Y(pT0), OX, Y(pT0), tk);
+line('guides', X(0), Y(pT1), X(ybar), Y(pT1), dash); line('guides', OX - 4, Y(pT1), OX, Y(pT1), tk);
+line('guides', X(P0p[0]), Y(P0p[1]), X(P0p[0]), Y(0), dash); line('guides', X(P0p[0]), 460, X(P0p[0]), 464, tk);
+line('guides', X(ybar), Y(pT0), X(ybar), Y(0), dash); line('guides', X(ybar), 460, X(ybar), 464, tk);
+
+
+const seg = (f, a, b, att) => line('curves', X(a), Y(f(a)), X(b), Y(f(b)), att);
+seg(Y_ => mr(Y_, pT0), 26, 72, {stroke: cD, 'stroke-width': 2.2});
+seg(Y_ => mr(Y_, pT1), 7, 52, {stroke: cD, 'stroke-width': 2.2, 'stroke-dasharray': '8 4'});
+seg(Y_ => cp(Y_, pT0), 4, 70, {stroke: cO, 'stroke-width': 2.2});
+seg(Y_ => cp(Y_, P0p[1]), 4, 74, {stroke: cO, 'stroke-width': 2.2, 'stroke-dasharray': '8 5'});
+seg(Y_ => cp(Y_, pT1), 11, 78, {stroke: cO, 'stroke-width': 2.2, 'stroke-dasharray': '3 4'});
+
+
+
+
+function perp(xa, ya, sl, dv, sgn) {
+  const n = Math.hypot(1, sl), nx = sgn*sl/n, ny = 1/n, d = dv/n;
+  return [xa + nx*3, ya + ny*3, xa + nx*(d - 3), ya + ny*(d - 3), xa + nx*d/2, ya + ny*d/2];
+}
+
+let a = perp(X(62), Y(mr(62, pT0)), wk*5/SX, (pT0 - pT1)*5, -1);
+line('arrows', a[0], a[1], a[2], a[3], {stroke: cD, 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+put('\\Delta \\pi^T < 0', a[0] + 10, a[1] + 4, {c: cD, s: 14, va: 'm'});
+
+a = perp(X(52), Y(cp(52, pT0)), -phi*5/SX, (pT0 - P0p[1])*5, -1);
+line('arrows', a[0], a[1], a[2], a[3], {stroke: cO, 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+a = perp(X(60), Y(cp(60, P0p[1])), -phi*5/SX, (P0p[1] - pT1)*5, -1);
+line('arrows', a[0], a[1], a[2], a[3], {stroke: cO, 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+put('\\Delta \\mathbb{E}_t[\\pi_{t+1}] < 0', a[4] + 12, a[5] - 7, {c: cO, s: 14, va: 'm'});
+
+
+function path(A, B, off, t0 = 8) {
+  const x0 = X(A[0]), y0 = Y(A[1]), x1 = X(B[0]), y1 = Y(B[1]), l = Math.hypot(x1 - x0, y1 - y0), ux = (x1 - x0)/l, uy = (y1 - y0)/l;
+  const px = uy*off, py = -ux*off;
+  line('arrows', x0 + ux*t0 + px, y0 + uy*t0 + py, x1 - ux*8 + px, y1 - uy*8 + py, {stroke: grey, 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+}
+path(P0, P0p, -9, 16); path(P0p, P0pp, 9); path(P0pp, P1, 9);
+
+
+[P0, P0p, P0pp, P1].forEach(p => el('points', 'circle', {cx: X(p[0]), cy: Y(p[1]), r: 5, fill: '#000'}));
+
+
+put('\\tilde{y}', 564, 460, {va: 'm', s: 17});
+put('\\pi', OX - 8, 58, {ha: 'r', s: 17});
+put('\\text{MR}_0', X(72) + 5, Y(mr(72, pT0)), {c: cD, va: 'm'});
+put('\\text{MR}_1', X(52) + 5, Y(mr(52, pT1)), {c: cD, va: 'm'});
+put('\\text{CP}_0', X(70) + 5, Y(cp(70, pT0)), {c: cO, va: 'm'});
+put("\\text{CP}_{0'}", X(74) + 5, Y(cp(74, P0p[1])), {c: cO, va: 'm'});
+put('\\text{CP}_1', X(78) + 5, Y(cp(78, pT1)), {c: cO, va: 'm'});
+put('0', X(P0[0]) + 6, Y(P0[1]) - 12, {c: '#000', va: 'b'});
+put("0'", X(P0p[0]) - 6, Y(P0p[1]) + 12, {c: '#000', ha: 'r'});
+put("0''", X(P0pp[0]) - 10, Y(P0pp[1]) - 2, {c: '#000', ha: 'r', va: 'm'});
+put('1', X(P1[0]) - 8, Y(P1[1]) + 12, {c: '#000', ha: 'r'});
+put('\\pi^T_0', OX - 8, Y(pT0), {ha: 'r', va: 'm', s: 15});
+put('\\pi^T_1', OX - 8, Y(pT1), {ha: 'r', va: 'm', s: 15});
+put('0', X(ybar), 468, {ha: 'c', s: 15});
+put("\\tilde{y}_{0'}", X(P0p[0]), 468, {ha: 'c', s: 15});
+
+const cont = document.querySelector('.graph-container');
+L.forEach((l, i) => {
+  const e = document.createElement('div'); e.className = 'katex-label'; e.id = 'lbl-' + i;
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = (l.x/VBW*100).toFixed(2) + '%'; e.style.top = (l.y/VBH*100).toFixed(2) + '%';
+  e.style.color = l.c || 'black'; if (l.s) e.style.fontSize = l.s + 'px';
+  const tx = {l: '0', c: '-50%', r: '-100%'}[l.ha || 'l'], ty = {t: '0', m: '-50%', b: '-100%'}[l.va || 't'];
+  e.style.transform = `translate(${tx},${ty})`;
+  if (l.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  cont.appendChild(e);
+});
+</script>
+</body>
+</html>

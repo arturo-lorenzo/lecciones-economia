@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+
+
+  <svg viewBox="0 0 680 500">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="110" y1="460" x2="550" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="110" y1="460" x2="110" y2="60"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line x1="110" y1="300" x2="490" y2="140" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line x1="110" y1="300" x2="490" y2="300" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line x1="110" y1="380" x2="490" y2="380" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-x"></div>
+  <div class="katex-label" id="lbl-c"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-rp"></div>
+  <div class="katex-label" id="lbl-wacc"></div>
+  <div class="katex-label" id="lbl-ra"></div>
+
+</div>
+
+<script>
+
+
+const pct = (v, t) => (v / t * 100).toFixed(2) + '%';
+
+const labels = [
+  {id: 'lbl-x',    tex: 'L = D_f/E', x: 556, y: 470, ax: 1, ay: 0, color: 'black', size: 17},
+  {id: 'lbl-c',    tex: '\\text{Coste}', x: 110, y: 48, ax: 0.5, ay: 1, color: 'black', size: 17},
+  {id: 'lbl-o',    tex: 'O', x: 104, y: 466, ax: 1, ay: 0, color: 'black'},
+  {id: 'lbl-rp',   tex: 'k_p(L)', x: 496, y: 140, ax: 0, ay: 0.5, color: '#534AB7'},
+  {id: 'lbl-wacc', tex: '\\text{WACC}(L)', x: 496, y: 300, ax: 0, ay: 0.5, color: '#0F6E56'},
+  {id: 'lbl-ra',   tex: 'k_a(L)', x: 496, y: 380, ax: 0, ay: 0.5, color: '#185FA5'}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = pct(l.x, 680);
+  el.style.top = pct(l.y, 500);
+  el.style.fontSize = (l.size || 16) + 'px';
+  el.style.whiteSpace = 'nowrap';
+  el.style.transform = `translate(${-100*l.ax}%, ${-100*l.ay}%)`;
+  if (l.color) el.style.color = l.color;
+});
+</script>
+</body>
+</html>

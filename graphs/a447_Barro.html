@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+  .katex-label .katex { font-size: 1em; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <line x1="150" y1="250" x2="595" y2="250" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="150" y1="455" x2="150" y2="50"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <g id="guides"></g>
+    <g id="curves"></g>
+    <g id="points"></g>
+  </svg>
+</div>
+<script>
+
+
+
+const al = 0.25, th = 2, rho = 0.02, dl = 0.05, gMax = 0.03;
+const S = (th*gMax + dl + rho)/((1 - al)*(1 - al)*Math.pow(al, al/(1 - al)));
+const g = t => ((1 - t)*(1 - al)*S*Math.pow(t, al/(1 - al)) - dl - rho)/th;
+const gMin = -(dl + rho)/th;
+const VBW = 680, VBH = 480, OX = 150, OY = 250;
+const X = t => OX + t*400, Y = v => OY - v*5000;
+const NS = 'http://www.w3.org/2000/svg';
+function el(gr, tag, att) { const e = document.createElementNS(NS, tag); for (const k in att) e.setAttribute(k, att[k]); document.getElementById(gr).appendChild(e); return e; }
+function line(gr, x1, y1, x2, y2, att) { return el(gr, 'line', Object.assign({x1, y1, x2, y2}, att)); }
+const dash = {stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'}, tk = {stroke: 'black', 'stroke-width': 1};
+const cC = '#378ADD', cPt = '#000';
+const L = []; function put(tex, x, y, o = {}) { L.push(Object.assign({tex, x, y}, o)); }
+
+
+line('guides', OX, Y(gMin), X(1), Y(gMin), dash); line('guides', OX - 4, Y(gMin), OX, Y(gMin), tk);
+line('guides', X(al), Y(gMax), X(al), OY, dash); line('guides', X(al), OY, X(al), OY + 4, tk);
+line('guides', X(1), Y(gMin), X(1), OY, dash); line('guides', X(1), OY, X(1), OY + 4, tk);
+
+
+const pts = [];
+for (let i = 0; i <= 400; i++) { const t = Math.pow(i/400, 2.2); pts.push(X(t).toFixed(1) + ',' + Y(g(t)).toFixed(1)); }
+el('curves', 'path', {d: 'M' + pts.join(' L'), fill: 'none', stroke: cC, 'stroke-width': 2.2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round'});
+
+
+el('points', 'circle', {cx: X(al), cy: Y(gMax), r: 5, fill: cPt});
+
+
+put('\\tau', OX + 451, OY, {va: 'm', s: 17});
+put('g_c', OX - 8, 48, {ha: 'r', s: 17});
+put('0', OX - 6, OY + 6, {ha: 'r', s: 15});
+put('1', X(1) + 5, OY + 7, {ha: 'l', s: 15});
+put('\\tau^* = 1-\\alpha \\;\\; \\text{(regla de Barro)}', X(al) - 6, OY + 8, {ha: 'l', s: 15});
+put('-(\\delta + \\rho)/\\theta', OX - 7, Y(gMin), {ha: 'r', va: 'm', s: 15});
+put('g_c(\\tau)', X(1) + 7, Y(gMin), {c: cC, va: 'm'});
+put('\\text{efecto productivo}', OX + 12, 70, {s: 14, c: '#444'});
+put('\\text{domina}', OX + 12, 88, {s: 14, c: '#444'});
+put('\\text{efecto distorsión domina}', X(1), 70, {ha: 'r', s: 14, c: '#444'});
+
+const cont = document.querySelector('.graph-container');
+L.forEach((l, i) => {
+  const e = document.createElement('div'); e.className = 'katex-label'; e.id = 'lbl-' + i;
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = (l.x/VBW*100).toFixed(2) + '%'; e.style.top = (l.y/VBH*100).toFixed(2) + '%';
+  e.style.color = l.c || 'black'; if (l.s) e.style.fontSize = l.s + 'px';
+  const tx = {l: '0', c: '-50%', r: '-100%'}[l.ha || 'l'], ty = {t: '0', m: '-50%', b: '-100%'}[l.va || 't'];
+  e.style.transform = `translate(${tx},${ty})`;
+  if (l.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  cont.appendChild(e);
+});
+</script>
+</body>
+</html>

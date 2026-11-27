@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 500">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+    <line x1="120" y1="460" x2="560" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="120" y1="460" x2="120" y2="50"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <line id="ray" x1="120" y1="460" stroke="#888" stroke-width="1.4"/>
+    <path id="arc-b" fill="none" stroke="#888" stroke-width="1.2"/>
+    <line id="g-v" stroke="black" stroke-width="1" stroke-dasharray="5,4"/>
+    <path id="prod-fn" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <circle id="pt" r="4.5" fill="#D85A30"/>
+  </svg>
+  <div class="katex-label" id="lbl-l"></div>
+  <div class="katex-label" id="lbl-x"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-fn"></div>
+  <div class="katex-label" id="lbl-b"></div>
+  <div class="katex-label" id="lbl-ot"></div>
+  <div class="katex-label" id="lbl-l1"></div>
+</div>
+<script>
+
+
+function toSvgX(l) { return 120 + l * 37; }
+function toSvgY(x) { return 460 - x * 3.6; }
+const f = l => 3*l*l - 0.2*l*l*l;
+const pts = [];
+for (let i = 0; i <= 220; i++) {
+  const l = (i / 220) * 11;
+  pts.push(toSvgX(l).toFixed(1)+','+toSvgY(f(l)).toFixed(1));
+}
+document.getElementById('prod-fn').setAttribute('d', 'M'+pts.join(' L'));
+
+const L1 = 7.5, X1 = f(L1), px = toSvgX(L1), py = toSvgY(X1);
+const ray = document.getElementById('ray');
+const Le = 9.4; ray.setAttribute('x2', toSvgX(Le)); ray.setAttribute('y2', toSvgY(X1/L1*Le));
+const pt = document.getElementById('pt'); pt.setAttribute('cx', px); pt.setAttribute('cy', py);
+const gv = document.getElementById('g-v');
+gv.setAttribute('x1', px); gv.setAttribute('y1', py); gv.setAttribute('x2', px); gv.setAttribute('y2', 460);
+
+const ang = Math.atan2(py-460, px-120), R = 46;
+document.getElementById('arc-b').setAttribute('d',
+  `M${120+R},460 A${R},${R} 0 0,0 ${(120+R*Math.cos(ang)).toFixed(1)},${(460+R*Math.sin(ang)).toFixed(1)}`);
+
+const W = 680, H = 500;
+const labels = [
+  {id:'lbl-l', tex:'L',                     x:556, y:466},
+  {id:'lbl-x', tex:'x',                     x:92,  y:40},
+  {id:'lbl-o', tex:'O',                     x:100, y:462},
+  {id:'lbl-fn',tex:'x = f(\\bar{K}, L)',    x:533, y:96, color:'#1D9E75'},
+  {id:'lbl-b', tex:'\\beta',                x:134, y:402, color:'#888', size:'15px'},
+  {id:'lbl-ot',tex:'\\text{óptimo técnico}',x:px+12, y:py+6, size:'15px', color:'#D85A30'},
+  {id:'lbl-l1',tex:'L_{\\text{OT}}',                   x:px, y:466, center:true}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError:false});
+  el.style.left = (100*l.x/W)+'%'; el.style.top = (100*l.y/H)+'%';
+  if (l.center) el.style.transform = 'translateX(-50%)';
+  if (l.size) el.style.fontSize = l.size;
+  if (l.color) el.style.color = l.color;
+});
+</script>
+</body>
+</html>

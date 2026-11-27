@@ -1,0 +1,2386 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Arturo Lorenzo">
+<meta name="description" content="Tema A14 de las oposiciones TCEE. Teoría de juegos, equilibrio de Nash, juegos dinámicos y cooperativos, subasta de Vickrey y equivalencia de ingresos.">
+
+<title>A14. Teoría de juegos – Lecciones de economía general e internacional</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/a15-toi.html" rel="next">
+<link href="../chapters/a13-informacion.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-af206048d982c71265205c3505cca787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bec3fe2b0881f05566c9dedb60685f6d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="A14. Teoría de juegos – Lecciones de economía general e internacional">
+<meta property="og:description" content="Tema A14 de las oposiciones TCEE. Teoría de juegos, equilibrio de Nash, juegos dinámicos y cooperativos, subasta de Vickrey y equivalencia de ingresos.">
+<meta property="og:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta property="og:site_name" content="Lecciones de economía general e internacional">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:title" content="A14. Teoría de juegos – Lecciones de economía general e internacional">
+<meta name="twitter:description" content="Tema A14 de las oposiciones TCEE. Teoría de juegos, equilibrio de Nash, juegos dinámicos y cooperativos, subasta de Vickrey y equivalencia de ingresos.">
+<meta name="twitter:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="A14. Teoría de juegos">
+<meta name="citation_author" content="Arturo Lorenzo">
+<meta name="citation_publication_date" content="2026-11-28">
+<meta name="citation_cover_date" content="2026-11-28">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-11-28">
+<meta name="citation_fulltext_html_url" content="https://librovol1.arturolorenzo.com/chapters/a14-juegos.html">
+<meta name="citation_language" content="es">
+<meta name="citation_book_title" content="Lecciones de economía general e internacional">
+<link rel="canonical" href="https://librovol1.arturolorenzo.com/chapters/a14-juegos.html">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/a08-consumidor.html">Microeconomía</a></li><li class="breadcrumb-item"><a href="../chapters/a14-juegos.html"><span class="chapter-title">A14. Teoría de juegos</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Lecciones de economía general e internacional</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/arturo-lorenzo/lecciones-economia" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../creditos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Edición y licencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte A: Economía General</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pensamiento Económico</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a01-objeto-metodo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A1. Objeto y método de la ciencia económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a02-clasicos-marx.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A2. Los economistas clásicos y Marx</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a03-neoclasicos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A3. Los economistas neoclásicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a04-keynes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A4. Keynes: análisis comparado</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a05-monetaristas-snc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A5. La síntesis neoclásica y el monetarismo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a06-nmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A6. La nueva macroeconomía clásica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a07-nek.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A7. La nueva economía keynesiana</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Microeconomía</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a08-consumidor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A8. Teoría de la demanda del consumidor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a09-dualidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A9. Dualidad y aplicaciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a10-riesgo-incertidumbre.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A10. Elección en riesgo e incertidumbre</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a11-produccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A11. Teoría de la producción</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a12-costes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A12. Teoría de costes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a13-informacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A13. Economía de la información</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a14-juegos.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">A14. Teoría de juegos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a15-toi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A15. Teoría de la organización industrial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a16-competencia-perfecta.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A16. Competencia perfecta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a17-monopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A17. Monopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a18-competencia-monopolistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A18. Competencia monopolística</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a19-oligopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A19. Oligopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a20-regulacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A20. Regulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a21-equilibrio-general.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A21. Equilibrio general</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a22-eb-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A22. Economía del bienestar (I)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a23-eb-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A23. Economía del bienestar (II)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a24-eb-iii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A24. Economía del bienestar (III)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Economía Laboral</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a25-oferta-trabajo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A25. Mercado de trabajo y capital humano</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a26-desempleo-friccional.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A26. Desempleo friccional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a27-salarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A27. Determinación de salarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a28-tnp-nairu.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A28. TNP, NAIRU y persistencia</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Macroeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a29-mhi-mgs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A29. Modelos de horizonte infinito y generaciones solapadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a30-magnitudes-cn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A30. Magnitudes macroeconómicas y contabilidad nacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a32-precios-output.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A32. Precios y output en economía abierta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a33-demanda-consumo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A33. Teorías de demanda de consumo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a34-demanda-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A34. Teorías de demanda de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a35-demanda-dinero.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A35. Teorías de la demanda de dinero</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a36-politica-monetaria-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A36. Política monetaria I: diseño e instrumentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a37-politica-monetaria-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A37. Política monetaria II: transmisión y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a38-politica-fiscal.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A38. Política fiscal, crecimiento y ahorro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a39-deficit.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A39. Déficit público, su financiación y sostenibilidad</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a40-interrelacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A40. Interrelación de políticas macroeconómicas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a41-inflacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A41. Inflación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a42-ciclos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A42. Ciclos económicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a43-crecimiento-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A43. Crecimiento económico exógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a44-crecimiento-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A44. Crecimiento económico endógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a45-crecimiento-empirica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A45. Evidencia empírica sobre el crecimiento</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte B: Economía Internacional</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Empresa y Finanzas</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b01-estados-ratios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B1. Estados financieros y ratios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b02-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B2. Decisiones de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b03-financiacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B3. Decisiones de financiación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b04-crecimiento-ma.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B4. Crecimiento empresarial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b23-renta-variable.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B23. Instrumentos de renta variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b24-renta-fija.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B24. Instrumentos de renta fija</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b25-derivados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B25. Instrumentos derivados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b26-crisis-financieras.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B26. Crisis financieras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b27-regulacion-financiera.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B27. Regulación bancaria y financiera</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Comercio Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b05-tnc-comercio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B5. Teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b06-nueva-teoria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B6. Nueva teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b07-politica-comercial-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B7. Política comercial I: instrumentos y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b08-politica-comercial-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B8. Política comercial II: política estratégica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b09-comercio-crecimiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B9. Comercio internacional y crecimiento</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b10-integracion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B10. Teoría de la integración económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b11-balanza-pagos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B11. Balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b12-ajuste-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B12. Ajuste de la balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b13-mercado-divisas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B13. Mercado de divisas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b14-tipo-cambio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B14. Determinación del tipo de cambio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b15-regimenes-cambiarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B15. Regímenes cambiarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b16-integracion-monetaria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B16. Integración monetaria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b17-crisis-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B17. Crisis de balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b18-globalizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B18. Globalización</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b19-coordinacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B19. Coordinación de políticas económicas internacionales</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Sistema Económico Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b20-sei-hasta-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B20. El sistema económico internacional hasta el colapso de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b21-sei-despues-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B21. El sistema económico internacional después de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b22-fmi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B22. El Fondo Monetario Internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b28-desarrollo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B28. Desarrollo económico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b29-fod-aod.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B29. Financiación oficial del desarrollo y AOD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b30-gbm-brsd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B30. Grupo Banco Mundial y bancos regionales de desarrollo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b31-ma-bpg.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B31. El cambio climático y su impacto en la economía</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b32-perspectivas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B32. Perspectivas de la economía internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b33-omc-gatt.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B33. La OMC y el GATT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b34-gats-trips.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B34. GATS, TRIPS y acuerdos plurilaterales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b35-no-comunitarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B35. Acuerdos comerciales no comunitarios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unión Europea</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b36-tratados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B36. Los tratados de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b37-finanzas-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B37. Las finanzas de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b38-pac-ppc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B38. Política Agrícola Común y Política Pesquera Común</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b39-miue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B39. Mercado interior de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b41-comercial-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B41. Política comercial de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b42-cooperacion-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B42. Política de cooperación de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b43-politica-monetaria-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B43. Política macroeconómica I: el euro y la política monetaria única</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b44-politica-financiera-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B44. Política macroeconómica II: la Unión Bancaria y la Unión de los Mercados de Capitales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b45-politica-fiscal-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B45. Política macroeconómica III: la gobernanza económica de la UE y de la zona euro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Descargas</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Primer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/ejercicios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios prácticos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/flashcards-conceptos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de conceptos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/guia-dictamen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guía para el dictamen</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Segundo Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/segundo-ejercicio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de inglés</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Tercer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/libro-bloques.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">El libro en PDF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del tercer ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Cuarto Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del cuarto ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Más allá del libro</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/otras-publicaciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Otras publicaciones y trabajos del autor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/enlaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Enlaces de interés</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Bibliografía</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manuales y obras de referencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia-articulos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Obras citadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../fuentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fuentes normativas y documentales</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#fundamentos-de-la-teoría-de-juegos-elementos-estrategias-y-conceptos-de-solución" id="toc-fundamentos-de-la-teoría-de-juegos-elementos-estrategias-y-conceptos-de-solución" class="nav-link" data-scroll-target="#fundamentos-de-la-teoría-de-juegos-elementos-estrategias-y-conceptos-de-solución">1. Fundamentos de la teoría de juegos: elementos, estrategias y conceptos de solución</a>
+  <ul class="collapse">
+  <li><a href="#definición-y-elementos-básicos-de-un-juego" id="toc-definición-y-elementos-básicos-de-un-juego" class="nav-link" data-scroll-target="#definición-y-elementos-básicos-de-un-juego">1.1. Definición y elementos básicos de un juego</a></li>
+  <li><a href="#tipos-de-juego-y-sus-representaciones" id="toc-tipos-de-juego-y-sus-representaciones" class="nav-link" data-scroll-target="#tipos-de-juego-y-sus-representaciones">1.2. Tipos de juego y sus representaciones</a></li>
+  <li><a href="#comportamiento-de-los-jugadores-la-estrategia" id="toc-comportamiento-de-los-jugadores-la-estrategia" class="nav-link" data-scroll-target="#comportamiento-de-los-jugadores-la-estrategia">1.3. Comportamiento de los jugadores: la estrategia</a></li>
+  <li><a href="#soluciones-a-los-juegos" id="toc-soluciones-a-los-juegos" class="nav-link" data-scroll-target="#soluciones-a-los-juegos">1.4. Soluciones a los juegos</a></li>
+  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link" data-scroll-target="#conclusiones">1.5. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#aplicaciones" id="toc-aplicaciones" class="nav-link" data-scroll-target="#aplicaciones">2. Aplicaciones</a>
+  <ul class="collapse">
+  <li><a href="#juegos-estáticos-con-información-completa" id="toc-juegos-estáticos-con-información-completa" class="nav-link" data-scroll-target="#juegos-estáticos-con-información-completa">2.1. Juegos estáticos con información completa</a></li>
+  <li><a href="#juegos-con-incertidumbre" id="toc-juegos-con-incertidumbre" class="nav-link" data-scroll-target="#juegos-con-incertidumbre">2.2. Juegos con incertidumbre</a></li>
+  <li><a href="#juegos-dinámicos" id="toc-juegos-dinámicos" class="nav-link" data-scroll-target="#juegos-dinámicos">2.3. Juegos dinámicos</a></li>
+  <li><a href="#juegos-cooperativos-y-negociación" id="toc-juegos-cooperativos-y-negociación" class="nav-link" data-scroll-target="#juegos-cooperativos-y-negociación">2.4. Juegos cooperativos y negociación</a></li>
+  <li><a href="#conclusiones-1" id="toc-conclusiones-1" class="nav-link" data-scroll-target="#conclusiones-1">2.5. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#teoría-de-las-subastas" id="toc-teoría-de-las-subastas" class="nav-link" data-scroll-target="#teoría-de-las-subastas">3. Teoría de las subastas</a>
+  <ul class="collapse">
+  <li><a href="#concepto-vickrey-1961-myerson-1981-milgrom-y-wilson-nobel-2020" id="toc-concepto-vickrey-1961-myerson-1981-milgrom-y-wilson-nobel-2020" class="nav-link" data-scroll-target="#concepto-vickrey-1961-myerson-1981-milgrom-y-wilson-nobel-2020">3.1. Concepto (Vickrey, 1961; Myerson, 1981; Milgrom y Wilson, Nobel 2020)</a></li>
+  <li><a href="#formatos-básicos-de-subasta" id="toc-formatos-básicos-de-subasta" class="nav-link" data-scroll-target="#formatos-básicos-de-subasta">3.2. Formatos básicos de subasta</a></li>
+  <li><a href="#pujas-de-equilibrio-la-subasta-de-primer-precio-y-la-subasta-de-vickrey-1961" id="toc-pujas-de-equilibrio-la-subasta-de-primer-precio-y-la-subasta-de-vickrey-1961" class="nav-link" data-scroll-target="#pujas-de-equilibrio-la-subasta-de-primer-precio-y-la-subasta-de-vickrey-1961">3.3. Pujas de equilibrio: la subasta de primer precio y la subasta de Vickrey (1961)</a></li>
+  <li><a href="#teorema-de-equivalencia-de-ingresos-vickrey-1961-riley-y-samuelson-1981-myerson-1981" id="toc-teorema-de-equivalencia-de-ingresos-vickrey-1961-riley-y-samuelson-1981-myerson-1981" class="nav-link" data-scroll-target="#teorema-de-equivalencia-de-ingresos-vickrey-1961-riley-y-samuelson-1981-myerson-1981">3.4. Teorema de equivalencia de ingresos (Vickrey, 1961; Riley y Samuelson, 1981; Myerson, 1981)</a></li>
+  <li><a href="#aplicaciones-1" id="toc-aplicaciones-1" class="nav-link" data-scroll-target="#aplicaciones-1">3.5. Aplicaciones</a></li>
+  </ul></li>
+  <li><a href="#conclusiones-2" id="toc-conclusiones-2" class="nav-link" data-scroll-target="#conclusiones-2">Conclusiones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/a08-consumidor.html">Microeconomía</a></li><li class="breadcrumb-item"><a href="../chapters/a14-juegos.html"><span class="chapter-title">A14. Teoría de juegos</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">A14. Teoría de juegos</span></h1>
+<p class="subtitle lead">Teoría de juegos. Principales conceptos. Aplicaciones, con especial referencia a las subastas.</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Arturo Lorenzo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">noviembre de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<p>Buena parte de la teoría económica moderna descansa sobre la <strong>teoría de juegos</strong>, que permite modelizar la <em>interdependencia estratégica</em> entre agentes, y el <strong>análisis intertemporal</strong>, que permite modelizar el <em>tiempo</em>, dos herramientas analíticas que no pertenecen a ningún campo concreto, sino que atraviesan todos ellos. Con la primera se analiza cómo elige un agente cuando lo que obtiene está condicionado por las elecciones de otros, y con la segunda, cómo elige cuando sus decisiones, como consumir o ahorrar, invertir o endeudarse, tienen efectos que se prolongan durante varios periodos.</p>
+<p>Ambas herramientas tienen orígenes antiguos, pero su formalización es propia del siglo XX. En el terreno estratégico, los <strong>modelos de duopolio</strong> de Cournot (1838) y de Bertrand (1883) anticiparon el razonamiento de la teoría de juegos. Esta se constituye, sin embargo, como disciplina con <em>Theory of Games and Economic Behavior</em> (1944) de John von Neumann y Oskar Morgenstern y alcanza su concepto de solución central con el equilibrio de John Nash (1950). Reinhard Selten, con sus refinamientos para los juegos dinámicos, y John Harsanyi, con su extensión a los juegos con información incompleta, compartieron con Nash el Premio Nobel de 1994. Esas aportaciones hicieron de la teoría de juegos el lenguaje de la organización industrial, la economía de la información, el diseño de mecanismos y las negociaciones internacionales.</p>
+<p>En el terreno intertemporal, Irving Fisher (<em>The Theory of Interest</em>, 1930) ofreció el primer análisis riguroso de la <strong>elección entre consumo presente y futuro</strong>. Frank Ramsey (1928) había planteado ya el problema del ahorro óptimo de una economía a lo largo de un <strong>horizonte infinito</strong>, que Cass y Koopmans (1965) integraron en la teoría del crecimiento. Frente a ese horizonte infinito, Paul Samuelson (1958) y Peter Diamond (1965) propusieron la alternativa de las <strong>generaciones solapadas</strong>, en la que los agentes tienen vida finita. Estas herramientas pasaron al centro de la macroeconomía a raíz de la crítica de Lucas (1976), que exigió que los modelos agregados se derivaran de las decisiones óptimas de agentes que miran hacia el futuro, y de esa exigencia proceden los modelos dinámicos de equilibrio general que hoy utilizan los bancos centrales.</p>
+<p>Este tema desarrolla la primera de esas dos herramientas, la teoría de juegos. En competencia perfecta los agentes toman el precio como dado, y en el monopolio hay un único decisor. La teoría de juegos se ocupa, en cambio, de la <em>interdependencia estratégica</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Su ámbito va desde el oligopolio (tema <a href="../chapters/a19-oligopolio.html">A19</a>) y la economía de la información (tema <a href="../chapters/a13-informacion.html">A13</a>) hasta la negociación internacional y el diseño de subastas, que hoy se emplean para colocar deuda pública o adjudicar licencias de espectro radioeléctrico.</p>
+<p>El tema expone las bases de la teoría de juegos, organizadas en los tres bloques que siguen:</p>
+<ul>
+<li><p><em>Fundamentos</em>: qué es un juego y cómo se resuelve.</p></li>
+<li><p><em>Aplicaciones</em>: los juegos representativos de cada entorno.</p></li>
+<li><p><em>Subastas</em>: su teoría y sus aplicaciones.</p></li>
+</ul>
+</section>
+<section id="fundamentos-de-la-teoría-de-juegos-elementos-estrategias-y-conceptos-de-solución" class="level2">
+<h2 class="anchored" data-anchor-id="fundamentos-de-la-teoría-de-juegos-elementos-estrategias-y-conceptos-de-solución">1. Fundamentos de la teoría de juegos: elementos, estrategias y conceptos de solución</h2>
+<p>Antes de analizar juegos concretos (apartado 2) conviene fijar los elementos de un juego, sus tipos y representaciones, la noción de estrategia y los conceptos de solución.</p>
+<section id="definición-y-elementos-básicos-de-un-juego" class="level3">
+<h3 class="anchored" data-anchor-id="definición-y-elementos-básicos-de-un-juego">1.1. Definición y elementos básicos de un juego</h3>
+<p>Un <strong>juego</strong> es la representación formal de una situación en la que un número determinado de individuos interactúa en un entorno de interdependencia estratégica. La <em>solución</em> al juego representa una predicción de cómo jugarán los agentes.</p>
+<p>Todo juego queda definido por una serie de elementos que pueden agruparse en cuatro categorías principales:</p>
+<ol type="1">
+<li><p><em>Conjunto de jugadores</em> (<span class="math inline">\(N = \{1, 2, \ldots, n\}\)</span>): individuos, empresas o países, generalmente en número fijo.</p></li>
+<li><p><em>Reglas</em>:</p>
+<ul>
+<li><p><em>Conjunto de acciones</em> disponibles para cada jugador <span class="math inline">\(i\)</span>: <span class="math inline">\(A_i\)</span>.</p></li>
+<li><p><em>Temporalidad</em>: el juego puede ser simultáneo o secuencial.</p></li>
+<li><p><em>Información</em>: qué sabe cada jugador en cada momento, tanto sobre las características del juego (pagos, tipos de los rivales) como sobre las acciones ya tomadas.</p></li>
+<li><p><em>Compromisos vinculantes</em>: si los acuerdos entre jugadores son vinculantes, el juego es cooperativo, y si no lo son, no cooperativo. El caso extremo de conflicto de intereses son los juegos de suma cero, en los que lo que gana un jugador lo pierde el otro<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p></li>
+</ul></li>
+<li><p><em>Resultados</em>: para cada combinación de acciones, el desenlace del juego.</p></li>
+<li><p><em>Pagos</em>: las preferencias de los jugadores sobre los resultados, representadas como funciones de utilidad cardinal. La función de pagos <span class="math inline">\(u_i(s_i, \mathbf{s}_{-i})\)</span> asigna a cada perfil de estrategias un pago para el jugador <span class="math inline">\(i\)</span>.</p></li>
+</ol>
+</section>
+<section id="tipos-de-juego-y-sus-representaciones" class="level3">
+<h3 class="anchored" data-anchor-id="tipos-de-juego-y-sus-representaciones">1.2. Tipos de juego y sus representaciones</h3>
+<p>Los juegos pueden clasificarse según varios criterios:</p>
+<p><strong>Según el tratamiento del tiempo</strong>:</p>
+<ul>
+<li><p><em>Juegos estáticos</em>: los jugadores eligen sus acciones simultáneamente (o, de forma equivalente, sin observar las elecciones de los demás) y el juego se resuelve de una sola vez.</p></li>
+<li><p><em>Juegos dinámicos</em>: las decisiones se toman secuencialmente, de modo que al menos un jugador observa alguna acción previa de otro antes de decidir. Son de dos clases:</p>
+<ul>
+<li><p><em>Secuenciales</em>: el juego se juega una sola vez, por turnos, como el juego de entrada (apartado 2.3.1) o la negociación de Rubinstein (apartado 2.4.3).</p></li>
+<li><p><em>Repetidos</em>: un mismo juego estático, el juego de etapa, se juega varias veces, en horizonte finito o infinito (apartados 2.3.2 y 2.3.3).</p></li>
+</ul></li>
+</ul>
+<p><strong>Según el contexto informativo</strong>: cabe distinguir el conocimiento sobre el juego en sí (información completa frente a incompleta) y sobre las acciones de los otros jugadores (información perfecta frente a imperfecta):</p>
+<ul>
+<li><p><em>Juegos con información completa</em>: todos los jugadores conocen jugadores, estrategias y pagos, y se supone <em>conocimiento común</em> (Aumann, 1976), es decir, que cada uno sabe que los demás lo saben, y así <em>ad infinitum</em>.</p></li>
+<li><p><em>Juegos con información incompleta</em>: algún jugador desconoce alguna característica relevante del juego, típicamente los pagos (o el “tipo”) de algún rival. Se modelizan con la transformación de Harsanyi.</p></li>
+<li><p><em>Juegos con información perfecta</em>: al decidir, cada jugador conoce todas las acciones previas, de modo que cada conjunto de información tiene un solo nodo.</p></li>
+<li><p><em>Juegos con información imperfecta</em>: algún jugador decide sin observar alguna acción previa, como en los juegos simultáneos (apartado 2.2.1).</p></li>
+</ul>
+<p><strong>Según la posibilidad de acuerdos vinculantes</strong>:</p>
+<ul>
+<li><p><em>Juegos no cooperativos</em>: la unidad de análisis es el jugador individual y no existen mecanismos externos que hagan exigibles los acuerdos, de modo que cualquier cooperación debe sostenerse en los propios incentivos.</p></li>
+<li><p><em>Juegos cooperativos</em>: la unidad de análisis es la coalición y los acuerdos son vinculantes. La pregunta relevante ya no es qué estrategia jugar, sino cómo repartir las ganancias de la cooperación.</p></li>
+</ul>
+<p>Un juego admite, además, dos representaciones principales:</p>
+<p><strong>Representación normal, matricial o estratégica</strong>: una matriz de pagos que muestra las estrategias y los pagos de cada combinación. Por ejemplo, para dos jugadores con dos estrategias cada uno (donde el primer elemento de cada celda es el pago del jugador 1, que elige fila, y el segundo el del jugador 2, que elige columna):</p>
+<div id="tbl-a14-forma-normal" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-a14-forma-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;A14.1: Representación normal de un juego de dos jugadores con dos estrategias.
+</figcaption>
+<div aria-describedby="tbl-a14-forma-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Izquierda</th>
+<th>Derecha</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Arriba</strong></td>
+<td>(3, 3)</td>
+<td>(0, 4)</td>
+</tr>
+<tr class="even">
+<td><strong>Abajo</strong></td>
+<td>(4, 0)</td>
+<td>(1, 1)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Representación en forma extensiva</strong>: un diagrama de árbol que muestra la secuencia de decisiones, los nodos de decisión de cada jugador, la información disponible en cada nodo y los pagos en los nodos terminales. Los nodos entre los que un jugador no puede distinguir se agrupan en <em>conjuntos de información</em>.</p>
+<p>La representación normal es la natural para los juegos estáticos y la extensiva para los dinámicos, si bien todo juego en forma extensiva admite una representación normal (asociando a cada plan contingente completo una estrategia). La figura <a href="#fig-a141-forma-extensiva" class="quarto-xref"><span>A14.1</span></a> representa en forma extensiva el juego de la matriz anterior, con información imperfecta (derecha), y su versión secuencial con los mismos pagos, con información perfecta (izquierda). En ella, A y B son Arriba y Abajo, y a y b, Izquierda y Derecha.</p>
+<div id="fig-a141-forma-extensiva" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a141-forma-extensiva-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame wide">
+<iframe src="../graphs/a141_Forma_extensiva.html" style="--r:1.545" loading="lazy" title="fig-a141-forma-extensiva"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a141-forma-extensiva-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A14.1: Forma extensiva del juego simultáneo de la matriz (derecha, con información imperfecta) y de su versión secuencial con los mismos pagos (izquierda, con información perfecta). El gráfico muestra los nodos de decisión, el conjunto de información y los pagos.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="comportamiento-de-los-jugadores-la-estrategia" class="level3">
+<h3 class="anchored" data-anchor-id="comportamiento-de-los-jugadores-la-estrategia">1.3. Comportamiento de los jugadores: la estrategia</h3>
+<p>Entender el comportamiento de los agentes en un juego exige distinguir entre acción y estrategia, conceptos que coinciden en un juego estático con información completa, pero no en uno dinámico:</p>
+<ol type="1">
+<li><p><em>Acción</em>: cada una de las alternativas disponibles en un nodo de decisión.</p></li>
+<li><p><em>Estrategia</em>: un plan completo que indica qué acción tomar en cada nodo en el que al jugador pueda tocarle decidir (en cada uno de sus conjuntos de información), incluidos los nodos que, según ese mismo plan, nunca se alcanzarán.</p></li>
+</ol>
+<section id="estrategias-puras" class="level4">
+<h4 class="anchored" data-anchor-id="estrategias-puras">1.3.1. Estrategias puras</h4>
+<p>Una <strong>estrategia pura</strong> (<span class="math inline">\(s_i^j\)</span>) es un plan contingente completo, en el sentido anterior, que el jugador sigue con certeza. En un juego finito, cada jugador dispone de un conjunto finito de estrategias puras, <span class="math inline">\(S_i = \{s_i^1, s_i^2, \ldots, s_i^m\}\)</span>, cuyo tamaño crece rápidamente con la estructura del juego, pues un jugador con <span class="math inline">\(k\)</span> conjuntos de información y dos acciones en cada uno dispone de <span class="math inline">\(2^k\)</span> estrategias puras.</p>
+<p>Un juego es <em>discreto</em> si cada jugador elige entre un número finito de estrategias (confesar o no en el dilema del prisionero) y <em>continuo</em> si elige en un intervalo (la cantidad en el duopolio de Cournot). En los discretos el equilibrio se busca en la matriz de pagos, y en los continuos, con las funciones de mejor respuesta que dan las condiciones de primer orden. En los juegos continuos existe un equilibrio en estrategias puras si los conjuntos de estrategias son compactos y convexos y los pagos, continuos y cuasicóncavos en la estrategia propia (Debreu, 1952).</p>
+<p>Un <strong>perfil de estrategias</strong> es el vector formado por una estrategia de cada jugador, <span class="math inline">\(\mathbf{s} = (s_1, s_2, \ldots, s_n)\)</span>, que suele escribirse como <span class="math inline">\(\mathbf{s} = (s_i, \mathbf{s}_{-i})\)</span> para separar la estrategia del jugador <span class="math inline">\(i\)</span> de las de todos los demás.</p>
+</section>
+<section id="estrategias-mixtas" class="level4">
+<h4 class="anchored" data-anchor-id="estrategias-mixtas">1.3.2. Estrategias mixtas</h4>
+<p>Una <strong>estrategia mixta</strong> (<span class="math inline">\(\sigma_i\)</span>) es una distribución de probabilidad sobre las estrategias puras del jugador, <span class="math inline">\(\sigma_i = (p_1, p_2, \ldots, p_m)\)</span>, con <span class="math inline">\(p_j \geq 0\)</span> y <span class="math inline">\(\sum_j p_j = 1\)</span>.</p>
+<p>Toda estrategia pura es una estrategia mixta degenerada, y el conjunto de estrategias mixtas de un jugador es el símplice construido sobre sus estrategias puras. Los pagos de un perfil mixto son pagos esperados, de modo que su uso presupone preferencias de von Neumann-Morgenstern (tema <a href="../chapters/a10-riesgo-incertidumbre.html">A10</a>).</p>
+<p>Las estrategias mixtas requieren dos precisiones:</p>
+<ul>
+<li><p><em>Interpretación</em>: aleatorización deliberada para no ser previsible (juegos de suma cero, como el <em>matching pennies</em>), frecuencias de las distintas estrategias puras en una población de jugadores, o incertidumbre de los rivales sobre lo que hará el jugador (interpretación de Harsanyi).</p></li>
+<li><p><em>Comportamiento</em>: en los juegos dinámicos se utilizan también las <em>estrategias de comportamiento</em>, que aleatorizan nodo a nodo en lugar de sobre planes completos. Con memoria perfecta, ambas son equivalentes (Kuhn, 1953).</p></li>
+</ul>
+</section>
+<section id="mejor-respuesta-y-dominancia" class="level4">
+<h4 class="anchored" data-anchor-id="mejor-respuesta-y-dominancia">1.3.3. Mejor respuesta y dominancia</h4>
+<p>Dos conceptos construidos sobre las estrategias permiten formular después los conceptos de solución:</p>
+<p><strong>Mejor respuesta</strong>: la estrategia <span class="math inline">\(s_i^*\)</span> es una mejor respuesta a <span class="math inline">\(\mathbf{s}_{-i}\)</span> si <span class="math inline">\(u_i(s_i^*, \mathbf{s}_{-i}) \geq u_i(s_i, \mathbf{s}_{-i})\)</span> para toda <span class="math inline">\(s_i \in S_i\)</span>. La <em>función de mejor respuesta</em> (o de reacción), <span class="math inline">\(s_i^* = R_i(\mathbf{s}_{-i})\)</span>, asigna a cada perfil de los rivales la respuesta óptima del jugador.</p>
+<p><strong>Dominancia</strong>: la estrategia <span class="math inline">\(s_i\)</span> está <em>estrictamente dominada</em> por <span class="math inline">\(s_i'\)</span> si <span class="math inline">\(u_i(s_i', \mathbf{s}_{-i}) &gt; u_i(s_i, \mathbf{s}_{-i})\)</span> para todo <span class="math inline">\(\mathbf{s}_{-i}\)</span>, y <em>débilmente dominada</em> si la desigualdad es débil para todo <span class="math inline">\(\mathbf{s}_{-i}\)</span> y estricta para alguno. Una estrategia <em>dominante</em> es la que domina a todas las demás. Un jugador racional nunca juega una estrategia estrictamente dominada, lo que, si la racionalidad es conocimiento común, justifica el proceso de eliminación iterativa. Con todo, la eliminación de estrategias débilmente dominadas es menos segura, pues su resultado puede depender del orden de eliminación.</p>
+</section>
+</section>
+<section id="soluciones-a-los-juegos" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-a-los-juegos">1.4. Soluciones a los juegos</h3>
+<p>Los conceptos de solución se presentan por separado para los juegos no cooperativos, centrados en la estrategia de cada jugador, y para los cooperativos, centrados en el reparto entre coaliciones.</p>
+<section id="juegos-no-cooperativos" class="level4">
+<h4 class="anchored" data-anchor-id="juegos-no-cooperativos">1.4.1. Juegos no cooperativos</h4>
+<p>Los conceptos de solución de los juegos no cooperativos se corresponden con las distintas combinaciones de temporalidad e información. Todos responden a la misma pregunta, qué perfiles de estrategias cabe esperar de jugadores racionales, pero difieren en lo que exigen a los jugadores y en el tipo de juego al que se aplican. Las tablas <a href="#tbl-a14-soluciones-completa" class="quarto-xref"><span>A14.2</span></a> y <a href="#tbl-a14-soluciones-incompleta" class="quarto-xref"><span>A14.3</span></a> los recapitulan.</p>
+<p><strong>Equilibrio en estrategias dominantes</strong> (EED): si cada jugador dispone de una estrategia dominante, la juega con independencia de lo que espere que hagan los demás, y el perfil formado por esas estrategias es el EED. Este equilibrio es la predicción más robusta, porque solo exige racionalidad individual y ninguna hipótesis sobre las creencias, pero rara vez existe. La <em>eliminación iterativa de estrategias estrictamente dominadas</em> amplía su alcance. Suprimidas esas estrategias, en el juego reducido pueden aparecer otras dominadas, y si tras repetir el proceso sobrevive un único perfil, el juego es <em>resoluble por dominancia</em>.</p>
+<p><strong>Equilibrio de Nash</strong> (EN): es un perfil de estrategias <span class="math inline">\(\mathbf{s}^* = (s_i^*, \mathbf{s}_{-i}^*)\)</span> en el que la estrategia de cada jugador es mejor respuesta a las de los demás, <span class="math inline">\(u_i(s_i^*, \mathbf{s}_{-i}^*) \geq u_i(s_i, \mathbf{s}_{-i}^*)\)</span> para toda <span class="math inline">\(s_i \in S_i\)</span> y todo jugador <span class="math inline">\(i\)</span>. Ningún jugador gana, por tanto, desviándose unilateralmente, y el perfil funciona como un acuerdo que se cumple por sí solo. El EN es más exigente que el EED, porque a la racionalidad añade que cada jugador acierte al prever qué estrategias van a seguir sus rivales. A cambio, se aplica a muchos más juegos, y todo EED es un EN, pero no a la inversa. Cabe distinguir dos casos:</p>
+<ul>
+<li><p><em>En estrategias puras</em>: cada jugador elige con certeza una de sus estrategias. En este caso el EN puede no existir (<em>matching pennies</em>, apartado 2.1.4) o no ser único (batalla de los sexos, apartado 2.1.5).</p></li>
+<li><p><em>En estrategias mixtas</em>: cada jugador aleatoriza entre sus estrategias puras y la condición de equilibrio se impone sobre los pagos esperados. Un jugador solo está dispuesto a mezclar entre estrategias puras que le dan el mismo pago esperado, de modo que, en equilibrio, las probabilidades de cada jugador dejan a los rivales indiferentes entre las estrategias que estos mezclan. El <em>teorema de Nash</em> (1950) garantiza que todo juego finito (número finito de jugadores, cada uno con un número finito de estrategias puras) tiene al menos un EN en estrategias mixtas. La demostración aplica el teorema de punto fijo de Kakutani a la correspondencia de mejor respuesta, que asigna a cada perfil las mejores respuestas de todos los jugadores, porque un EN es un punto fijo de esa correspondencia.</p></li>
+</ul>
+<p><strong>Equilibrio de Nash perfecto en subjuegos</strong> (ENPS): en un juego dinámico, el EN puede apoyarse en <em>amenazas no creíbles</em> (juego de entrada, apartado 2.3.1), acciones previstas para nodos que no se alcanzan en equilibrio y que el jugador no ejecutaría si llegara a ellos. Reinhard Selten (1965) propuso descartarlas exigiendo racionalidad también fuera de la senda de equilibrio. Un <em>subjuego</em> es la parte del árbol que empieza en un nodo que forma por sí solo un conjunto de información y comprende todos sus sucesores, sin partir ningún conjunto de información. Un ENPS es un perfil de estrategias que induce un EN en cada subjuego, se alcance este o no (<em>racionalidad secuencial</em>). En los juegos finitos con información perfecta se obtiene por <em>inducción hacia atrás</em>. Se resuelven primero las decisiones de los últimos nodos, se sustituye cada uno por el pago de la acción óptima y se retrocede hasta el nodo inicial. Todo ENPS es un EN, pero no a la inversa.</p>
+<p><strong>Equilibrio de Bayes-Nash</strong> (EBN): cuando algún jugador desconoce los pagos de los rivales, la <em>transformación de Harsanyi</em> (1967-1968) convierte el juego en otro de información completa pero imperfecta. La naturaleza elige primero el <em>tipo</em> de cada jugador (sus pagos o su información privada) según una distribución de probabilidad que es conocimiento común. Cada jugador observa solo su propio tipo, y una estrategia pasa a ser un plan que asigna una acción a cada tipo posible. El EBN es el EN de este juego ampliado, en el que cada tipo de cada jugador elige la acción que maximiza su pago esperado, dadas sus creencias sobre los tipos de los rivales y las estrategias de estos.</p>
+<p><strong>Equilibrio bayesiano perfecto</strong> (EBP): en los juegos dinámicos con información incompleta las acciones observadas transmiten información sobre el tipo de quien las toma, y el EBN, como el EN, puede descansar en amenazas no creíbles. Por ello, el EBP combina la racionalidad secuencial del ENPS con la actualización de las creencias. Consta de unas estrategias <em>secuencialmente racionales</em> (óptimas en cada conjunto de información dadas las creencias) y de unas <em>creencias</em> sobre los nodos de cada conjunto de información <em>consistentes</em> (obtenidas de las estrategias por Bayes siempre que sea posible). En los conjuntos de información alcanzados con probabilidad nula en equilibrio, la regla de Bayes no impone nada, y ese margen para fijar creencias explica la multiplicidad de equilibrios, que refinamientos como el criterio intuitivo intentan acotar (apartado 2.2.4).</p>
+<div id="tbl-a14-soluciones-completa" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-a14-soluciones-completa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;A14.2: Soluciones de los juegos no cooperativos con información completa.
+</figcaption>
+<div aria-describedby="tbl-a14-soluciones-completa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th class="nowrap"></th>
+<th>Equilibrio en estrategias dominantes (EED)</th>
+<th>Equilibrio de Nash (EN)</th>
+<th>Equilibrio de Nash perfecto en subjuegos (ENPS)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="nowrap"><strong>Tiempo</strong></td>
+<td>Estático</td>
+<td>Estático</td>
+<td>Dinámico</td>
+</tr>
+<tr class="even">
+<td class="nowrap"><strong>Información</strong></td>
+<td>Completa</td>
+<td>Completa</td>
+<td>Completa</td>
+</tr>
+<tr class="odd">
+<td class="nowrap"><strong>Criterio</strong></td>
+<td>Dominancia estratégica</td>
+<td>Mejor respuesta</td>
+<td>Racionalidad secuencial</td>
+</tr>
+<tr class="even">
+<td class="nowrap"><strong>Definición</strong></td>
+<td>Cada jugador juega la estrategia que maximiza su pago haga lo que haga el rival</td>
+<td>Cada estrategia es mejor respuesta a las demás, y nadie gana desviándose unilateralmente</td>
+<td>EN que induce un EN en cada subjuego</td>
+</tr>
+<tr class="odd">
+<td class="nowrap"><strong>Método</strong></td>
+<td>Elegir la estrategia estrictamente dominante o eliminar iterativamente las dominadas<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></td>
+<td>Marcar las mejores respuestas en la matriz o cortar las funciones de mejor respuesta</td>
+<td>Inducción hacia atrás desde los nodos finales</td>
+</tr>
+<tr class="even">
+<td class="nowrap"><strong>Usos</strong></td>
+<td>Predicción robusta, pues solo exige racionalidad individual (dilema del prisionero, mecanismos de revelación)</td>
+<td>Concepto central (oligopolio, bienes públicos, coordinación), que existe en mixtas en todo juego finito</td>
+<td>Descarta las amenazas no creíbles (juego de entrada, Stackelberg, juegos repetidos)</td>
+</tr>
+<tr class="odd">
+<td class="nowrap"><strong>Limitaciones</strong></td>
+<td>Rara vez existe y puede ser ineficiente</td>
+<td>Puede no existir en puras, no ser único ni ser eficiente</td>
+<td>Exige subjuegos identificables y falla en horizontes finitos largos (cadena de tiendas)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="tbl-a14-soluciones-incompleta" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-a14-soluciones-incompleta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;A14.3: Soluciones de los juegos no cooperativos con información incompleta.
+</figcaption>
+<div aria-describedby="tbl-a14-soluciones-incompleta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th class="nowrap"></th>
+<th>Equilibrio de Bayes-Nash (EBN)</th>
+<th>Equilibrio bayesiano perfecto (EBP)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="nowrap"><strong>Tiempo</strong></td>
+<td>Estático</td>
+<td>Dinámico</td>
+</tr>
+<tr class="even">
+<td class="nowrap"><strong>Información</strong></td>
+<td>Incompleta</td>
+<td>Incompleta</td>
+</tr>
+<tr class="odd">
+<td class="nowrap"><strong>Criterio</strong></td>
+<td>Mejor respuesta condicional (en pagos esperados)</td>
+<td>Racionalidad secuencial con creencias consistentes</td>
+</tr>
+<tr class="even">
+<td class="nowrap"><strong>Definición</strong></td>
+<td>Cada tipo maximiza su pago esperado dadas sus creencias sobre los tipos y las estrategias rivales</td>
+<td>Estrategias secuencialmente racionales dadas unas creencias que siguen la regla de Bayes siempre que es posible</td>
+</tr>
+<tr class="odd">
+<td class="nowrap"><strong>Método</strong></td>
+<td>Transformación de Harsanyi y maximización del pago esperado de cada tipo</td>
+<td>Proponer un perfil (separador o agrupador), fijar las creencias por Bayes y comprobar que ningún tipo gana desviándose</td>
+</tr>
+<tr class="even">
+<td class="nowrap"><strong>Usos</strong></td>
+<td>Subastas (apartado 3), costes privados y mercado de “limones” (apartados 2.2.2 y 2.2.3)</td>
+<td>Señalización y reputación (apartados 2.2.4 y 2.3.4)</td>
+</tr>
+<tr class="odd">
+<td class="nowrap"><strong>Limitaciones</strong></td>
+<td>Depende de la distribución de tipos supuesta, que ha de ser conocimiento común</td>
+<td>Multiplicidad por la libertad de creencias fuera de la senda, que el criterio intuitivo acota sin eliminar</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="juegos-cooperativos" class="level4">
+<h4 class="anchored" data-anchor-id="juegos-cooperativos">1.4.2. Juegos cooperativos</h4>
+<p>En los juegos cooperativos, definidos por una <strong>función característica</strong> <span class="math inline">\(V(S)\)</span> que asigna a cada coalición <span class="math inline">\(S \subseteq N\)</span> el valor que puede garantizarse por sí misma, la pregunta es cómo repartir el valor de la gran coalición, <span class="math inline">\(V(N)\)</span>. Un <em>reparto</em> es un vector <span class="math inline">\(\mathbf{x} = (x_1, \ldots, x_n)\)</span> que asigna a cada jugador una parte de ese valor. Los dos conceptos de solución fundamentales responden a criterios distintos, la estabilidad y la equidad, y la tabla <a href="#tbl-a14-soluciones-cooperativos" class="quarto-xref"><span>A14.4</span></a> los recapitula.</p>
+<p><strong>Núcleo</strong> (Gillies, 1959): un reparto es estable si ninguna coalición puede garantizar a sus miembros más de lo que reciben, porque en caso contrario esa coalición abandonaría el acuerdo, es decir, lo <em>bloquearía</em>. El núcleo es el conjunto de repartos eficientes que ninguna coalición bloquea:</p>
+<p><span class="math display">\[\mathcal{C}(V) = \left\{ \mathbf{x} \in \mathbb{R}^n : \sum_{i \in N} x_i = V(N), \;\; \sum_{i \in S} x_i \geq V(S) \;\; \text{para toda } S \subseteq N \right\}\]</span></p>
+<p>donde <span class="math inline">\(x_i\)</span> es lo que recibe el jugador <span class="math inline">\(i\)</span>, <span class="math inline">\(V(N)\)</span> el valor de la gran coalición y <span class="math inline">\(V(S)\)</span> el que la coalición <span class="math inline">\(S\)</span> obtiene por sí misma. Las coaliciones de un solo jugador imponen la <em>racionalidad individual</em>, <span class="math inline">\(x_i \geq V(\{i\})\)</span>. El núcleo puede contener infinitos repartos cuando las coaliciones distintas de la gran coalición obtienen poco por sí solas (<em>joint venture</em>, apartado 2.4.1) y ser vacío cuando obtienen mucho. Así, si tres jugadores se reparten una unidad y basta una mayoría de dos para quedársela, cada pareja debe recibir en conjunto al menos la unidad. Sumando las tres condiciones, los pagos tendrían que sumar al menos <span class="math inline">\(3/2\)</span>, más de lo que hay que repartir.</p>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo: cálculo del núcleo con tres jugadores">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo: cálculo del núcleo con tres jugadores
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Un inventor (jugador 1) y dos fabricantes (jugadores 2 y 3) pueden explotar una patente. Nadie obtiene nada por sí solo, <span class="math inline">\(V(\{i\}) = 0\)</span>. El inventor con cualquiera de los fabricantes obtiene <span class="math inline">\(V(\{1,2\}) = V(\{1,3\}) = 60\)</span>, los dos fabricantes sin la patente, <span class="math inline">\(V(\{2,3\}) = 30\)</span>, y los tres juntos, <span class="math inline">\(V(N) = 90\)</span>. Como <span class="math inline">\(x_1 + x_2 + x_3 = 90\)</span>, cada condición de coalición equivale a un tope para el jugador que queda fuera de ella:</p>
+<p><span class="math display">\[x_1 + x_2 \geq 60 \Leftrightarrow x_3 \leq 30, \qquad x_1 + x_3 \geq 60 \Leftrightarrow x_2 \leq 30, \qquad x_2 + x_3 \geq 30 \Leftrightarrow x_1 \leq 60\]</span></p>
+<p>El núcleo son los repartos no negativos que suman 90 con <span class="math inline">\(x_1 \leq 60\)</span> y <span class="math inline">\(x_2, x_3 \leq 30\)</span>, como <span class="math inline">\((30, 30, 30)\)</span> o <span class="math inline">\((60, 15, 15)\)</span>. Si un fabricante recibiera más de 30, el inventor y el otro fabricante, que juntos se garantizan 60, abandonarían el acuerdo.</p>
+</div>
+</div>
+</div>
+<p><strong>Valor de Shapley</strong> (Shapley, 1953): en lugar de describir todos los repartos estables, Lloyd Shapley busca una regla que asigne a cada juego un único reparto equitativo y la caracteriza por cuatro axiomas:</p>
+<ul>
+<li><p><em>Eficiencia</em>: se reparte todo el valor de la gran coalición, <span class="math inline">\(\sum_{i \in N} \phi_i(V) = V(N)\)</span>.</p></li>
+<li><p><em>Simetría</em>: dos jugadores que aportan lo mismo a toda coalición que no incluye a ninguno de ellos reciben lo mismo.</p></li>
+<li><p><em>Jugador nulo</em>: quien no aporta nada a ninguna coalición recibe cero.</p></li>
+<li><p><em>Aditividad</em>: si los mismos jugadores participan en dos juegos, <span class="math inline">\(V\)</span> y <span class="math inline">\(W\)</span>, el pago de cada uno en el juego suma es la suma de sus pagos en cada juego, <span class="math inline">\(\phi_i(V + W) = \phi_i(V) + \phi_i(W)\)</span>.</p></li>
+</ul>
+<p>La única regla que cumple los cuatro axiomas asigna a cada jugador la media de sus contribuciones marginales:</p>
+<p><span class="math display">\[\phi_i(V) = \sum_{S \subseteq N \setminus \{i\}} \frac{s!\,(n-s-1)!}{n!}\,\left[V(S \cup \{i\}) - V(S)\right]\]</span></p>
+<p>donde <span class="math inline">\(\phi_i(V)\)</span> es el pago del jugador <span class="math inline">\(i\)</span>, <span class="math inline">\(n\)</span> el número de jugadores, <span class="math inline">\(s\)</span> el número de miembros de la coalición <span class="math inline">\(S\)</span>, <span class="math inline">\(V(S \cup \{i\}) - V(S)\)</span> la <em>contribución marginal</em> de <span class="math inline">\(i\)</span> a <span class="math inline">\(S\)</span> y <span class="math inline">\(s!\,(n-s-1)!/n!\)</span> la probabilidad de que, si los jugadores se incorporan a la gran coalición en un orden aleatorio y todos los órdenes son igual de probables, <span class="math inline">\(i\)</span> encuentre formada exactamente la coalición <span class="math inline">\(S\)</span> al llegar. El valor de Shapley siempre existe y es único, pero no tiene por qué pertenecer al núcleo, porque la equidad no garantiza la estabilidad. Sí pertenece a él en los <em>juegos convexos</em>, en los que la contribución marginal de cada jugador no disminuye cuando se amplía la coalición a la que se une (Shapley, 1971).</p>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo: cálculo del valor de Shapley">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo: cálculo del valor de Shapley
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>En el juego del ejemplo anterior hay <span class="math inline">\(3! = 6\)</span> órdenes de llegada igual de probables. El inventor no aporta nada si llega el primero (dos órdenes) y aporta 60 en los otros cuatro, tanto si encuentra a un fabricante (<span class="math inline">\(60 - 0\)</span>) como a los dos (<span class="math inline">\(90 - 30\)</span>). Cada fabricante aporta 0 si llega el primero, 60 si encuentra solo al inventor, 30 si encuentra solo al otro fabricante y 30 si encuentra a ambos (<span class="math inline">\(90 - 60\)</span>). Con los pesos de la fórmula (<span class="math inline">\(2/6\)</span> para la coalición vacía y para la de los otros dos, <span class="math inline">\(1/6\)</span> para cada coalición de uno):</p>
+<p><span class="math display">\[\phi_1 = \tfrac{2}{6}\cdot 0 + \tfrac{1}{6}\cdot 60 + \tfrac{1}{6}\cdot 60 + \tfrac{2}{6}\cdot 60 = 40, \qquad \phi_2 = \phi_3 = \tfrac{2}{6}\cdot 0 + \tfrac{1}{6}\cdot 60 + \tfrac{1}{6}\cdot 30 + \tfrac{2}{6}\cdot 30 = 25\]</span></p>
+<p>El reparto <span class="math inline">\((40, 25, 25)\)</span> suma 90 (eficiencia), trata igual a los dos fabricantes (simetría) y está en el núcleo, pues <span class="math inline">\(40 \leq 60\)</span> y <span class="math inline">\(25 \leq 30\)</span>. El inventor recibe más porque su contribución marginal es mayor.</p>
+</div>
+</div>
+</div>
+<div id="tbl-a14-soluciones-cooperativos" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-a14-soluciones-cooperativos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;A14.4: Soluciones de los juegos cooperativos.
+</figcaption>
+<div aria-describedby="tbl-a14-soluciones-cooperativos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th class="nowrap"></th>
+<th>Núcleo (<em>core</em>)</th>
+<th>Valor de Shapley (1953)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="nowrap"><strong>Criterio</strong></td>
+<td>Estabilidad coalicional</td>
+<td>Equidad axiomática (eficiencia, simetría, jugador nulo, aditividad)</td>
+</tr>
+<tr class="even">
+<td class="nowrap"><strong>Definición</strong></td>
+<td>Repartos del valor total que ninguna coalición puede bloquear</td>
+<td>Reparto que da a cada jugador su contribución marginal esperada</td>
+</tr>
+<tr class="odd">
+<td class="nowrap"><strong>Método</strong></td>
+<td>Comprobar la racionalidad individual y la de cada coalición</td>
+<td>Promediar las contribuciones marginales sobre todos los órdenes de llegada</td>
+</tr>
+<tr class="even">
+<td class="nowrap"><strong>Usos</strong></td>
+<td>Estabilidad de los acuerdos entre socios (<em>joint venture</em>, apartado 2.4.1)</td>
+<td>Siempre existe y es único (reparto de costes, poder de voto, apartado 2.4.2)</td>
+</tr>
+<tr class="odd">
+<td class="nowrap"><strong>Limitaciones</strong></td>
+<td>Puede ser vacío o muy grande</td>
+<td>Puede quedar fuera del núcleo (lo “justo” puede no ser estable)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+</section>
+<section id="conclusiones" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones">1.5. Conclusiones</h3>
+<p>Un juego queda definido por sus jugadores, reglas, resultados y pagos, y las reglas sobre el tiempo, la información y los compromisos vinculantes determinan su representación y el concepto de solución aplicable. Los conceptos no cooperativos, construidos sobre la mejor respuesta y la dominancia, son cada vez más exigentes. Así, el equilibrio de Nash pide que cada jugador acierte al prever las estrategias rivales, y a cambio existe en estrategias mixtas en todo juego finito. El ENPS y el equilibrio bayesiano perfecto añaden racionalidad fuera de la senda de equilibrio. En los juegos cooperativos, en cambio, el núcleo y el valor de Shapley reparten por estabilidad y por equidad, y el reparto equitativo puede no ser estable. El apartado 2 aplica estos conceptos a juegos característicos de cada entorno.</p>
+</section>
+</section>
+<section id="aplicaciones" class="level2">
+<h2 class="anchored" data-anchor-id="aplicaciones">2. Aplicaciones</h2>
+<p>Los juegos no cooperativos se presentan, en la medida en que cada caso lo permite, con una estructura común: planteamiento del juego, solución por dominancia, equilibrio de Nash, equilibrio de Nash perfecto en subjuegos (cuando el juego es dinámico), análisis de bienestar y conclusiones. Los modelos más formales (señalización, reputación y negociación) se exponen a partir de su origen, su idea y sus resultados, y los juegos cooperativos, mediante ejemplos.</p>
+<section id="juegos-estáticos-con-información-completa" class="level3">
+<h3 class="anchored" data-anchor-id="juegos-estáticos-con-información-completa">2.1. Juegos estáticos con información completa</h3>
+<p>Cinco juegos simultáneos con información completa ilustran los casos característicos, desde el equilibrio en estrategias dominantes hasta la multiplicidad de equilibrios.</p>
+<section id="el-dilema-del-prisionero" class="level4">
+<h4 class="anchored" data-anchor-id="el-dilema-del-prisionero">2.1.1. El dilema del prisionero</h4>
+<p><strong>Planteamiento</strong>: dos sospechosos de un crimen son arrestados e interrogados por separado, sin posibilidad de comunicarse, y pueden confesar (C) o no confesar (NC). Se les dan las siguientes opciones, cuyos pagos (en años de condena, con signo negativo) recoge la tabla <a href="#tbl-a14-dilema-prisionero" class="quarto-xref"><span>A14.5</span></a>:</p>
+<ul>
+<li><p><em>Ambos confiesan</em>: cada uno recibe cinco años de prisión.</p></li>
+<li><p><em>Ninguno confiesa</em>: un año por un delito menor.</p></li>
+<li><p><em>Solo uno confiesa</em>: queda libre y el otro recibe diez años.</p></li>
+</ul>
+<div id="tbl-a14-dilema-prisionero" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-a14-dilema-prisionero-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;A14.5: Matriz de pagos del dilema del prisionero.
+</figcaption>
+<div aria-describedby="tbl-a14-dilema-prisionero-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>C</th>
+<th>NC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>C</strong></td>
+<td>(-5, -5)</td>
+<td>(0, -10)</td>
+</tr>
+<tr class="even">
+<td><strong>NC</strong></td>
+<td>(-10, 0)</td>
+<td>(-1, -1)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Equilibrio en estrategias dominantes</strong> (EED): confesar es estrictamente dominante para ambos, ya que, sea cual sea la elección del otro, da un pago mayor (<span class="math inline">\(-5 &gt; -10\)</span> si el otro confiesa y <span class="math inline">\(0 &gt; -1\)</span> si no lo hace). El EED es, por tanto, (C, C), con pagos <span class="math inline">\((-5, -5)\)</span>.</p>
+<p><strong>Equilibrio de Nash</strong> (EN): todo EED es un EN, y aquí (C, C) es el único, pues en cualquier otra celda al menos un jugador mejora desviándose unilateralmente.</p>
+<p><strong>Bienestar</strong>: el resultado es ineficiente en el sentido de Pareto. (NC, NC), con pagos <span class="math inline">\((-1, -1)\)</span>, es Pareto-superior al equilibrio, pero no es sostenible, porque cada jugador tiene incentivos a desviarse unilateralmente.</p>
+<p><strong>Conclusiones</strong>: el dilema ilustra la tensión fundamental entre racionalidad individual y eficiencia colectiva, que reaparece en el oligopolio (la colusión), la provisión de bienes públicos, la carrera de armamentos o las guerras arancelarias.</p>
+<p>Su lección es que la cooperación no puede descansar en el interés individual en un juego jugado una sola vez, sino que exige compromisos vinculantes (juegos cooperativos) o repetición con castigos creíbles.</p>
+</section>
+<section id="la-batalla-del-mar-de-bismarck" class="level4">
+<h4 class="anchored" data-anchor-id="la-batalla-del-mar-de-bismarck">2.1.2. La batalla del mar de Bismarck</h4>
+<p><strong>Planteamiento</strong>: la batalla del mar de Bismarck es un ejemplo histórico de juego de suma cero. En 1943, un convoy japonés debía elegir la ruta norte o sur de Nueva Bretaña, y la aviación aliada, en qué ruta concentrar su búsqueda.</p>
+<p>Los pagos (días de bombardeo sobre el convoy) eran:</p>
+<div id="tbl-a14-bismarck" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-a14-bismarck-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;A14.6: Matriz de pagos de la batalla del mar de Bismarck.
+</figcaption>
+<div aria-describedby="tbl-a14-bismarck-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>J: Norte</th>
+<th>J: Sur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>A: Norte</strong></td>
+<td>(2, -2)</td>
+<td>(2, -2)</td>
+</tr>
+<tr class="even">
+<td><strong>A: Sur</strong></td>
+<td>(1, -1)</td>
+<td>(3, -3)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Equilibrio en estrategias dominantes</strong>: para el convoy japonés, navegar por el norte domina débilmente al sur, pues garantiza como máximo dos días de bombardeo frente a los tres posibles en el sur. Para los aliados no existe estrategia dominante, pero, eliminada la ruta sur japonesa, su mejor respuesta es buscar en el norte. Por tanto, la eliminación iterada de estrategias dominadas conduce a (Norte, Norte).</p>
+<p><strong>Equilibrio de Nash</strong>: de nuevo, el único EN en estrategias puras es (Norte, Norte). Dado que Japón navega por el norte, los aliados buscan en el norte. Dado que los aliados buscan en el norte, Japón es indiferente entre ambas rutas y el norte es una mejor respuesta.</p>
+<p>En estrategias mixtas existen además otros EN, en los que los aliados buscan en el norte y Japón elige el norte con probabilidad de al menos <span class="math inline">\(1/2\)</span>, todos con el mismo pago de dos días de bombardeo. En un juego de suma cero, el EN coincide con la solución <em>maximin</em> de cada jugador.</p>
+<p><strong>Bienestar</strong>: en un juego de suma cero toda ganancia de un jugador es pérdida del otro, de modo que cualquier perfil es óptimo de Pareto.</p>
+<p><strong>Conclusiones</strong>: la predicción coincide con lo que hicieron ambos bandos. El ejemplo muestra a la vez la potencia y el límite de la dominancia, pues con dominancia débil el resultado de la eliminación iterada puede depender del orden (apartado 1.3.3).</p>
+</section>
+<section id="juegos-con-un-único-equilibrio-de-nash-sin-estrategias-dominantes-el-duopolio-de-cournot" class="level4">
+<h4 class="anchored" data-anchor-id="juegos-con-un-único-equilibrio-de-nash-sin-estrategias-dominantes-el-duopolio-de-cournot">2.1.3. Juegos con un único equilibrio de Nash sin estrategias dominantes: el duopolio de Cournot</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>El modelo de Cournot, con sus supuestos, las funciones de reacción y la comparación del equilibrio con el monopolio y la competencia perfecta, se desarrolla en el tema <a href="../chapters/a19-oligopolio.html">A19</a>, apartado 1.1. Aquí sirve de ejemplo de juego con un único equilibrio de Nash sin estrategias dominantes.</p>
+</div>
+</div>
+</div>
+<p><strong>Planteamiento</strong>: dos empresas eligen simultáneamente cantidades de un bien homogéneo. El precio de mercado depende de la cantidad total y el beneficio de cada empresa de su propia cantidad y de la del rival. Como cada empresa puede elegir cualquier cantidad, no cabe una tabla de pagos y el juego se describe con funciones de beneficio.</p>
+<p><strong>Equilibrio en estrategias dominantes</strong>: no existe, porque la cantidad óptima de cada empresa depende de la del rival. En el duopolio lineal, no obstante, la eliminación iterativa de estrategias estrictamente dominadas converge al EN.</p>
+<p><strong>Equilibrio de Nash</strong>: se obtiene como intersección de las funciones de mejor respuesta (funciones de reacción) y, bajo los supuestos habituales, es único<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+<p><strong>Bienestar</strong>: el equilibrio de Cournot se sitúa entre el monopolio y la competencia perfecta. La cantidad total es mayor y el precio menor que en el cártel, pero menor y mayor, respectivamente, que en competencia, con la consiguiente pérdida de eficiencia.</p>
+<p><strong>Conclusiones</strong>: es el ejemplo canónico de que el EN es el concepto de solución general para los juegos estáticos con información completa, ya que todo EED es un EN, pero muchos juegos sin estrategias dominantes tienen, no obstante, un único EN.</p>
+</section>
+<section id="juegos-sin-equilibrio-en-estrategias-puras-el-matching-pennies" class="level4">
+<h4 class="anchored" data-anchor-id="juegos-sin-equilibrio-en-estrategias-puras-el-matching-pennies">2.1.4. Juegos sin equilibrio en estrategias puras: el <em>matching pennies</em></h4>
+<p><strong>Planteamiento</strong>: dos jugadores muestran simultáneamente una moneda por una de sus caras. Si coinciden, gana el jugador 1 y, si no, el jugador 2. Es un juego de suma cero, de nuevo:</p>
+<div id="tbl-a14-matching-pennies" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-a14-matching-pennies-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;A14.7: Matriz de pagos del <em>matching pennies</em>.
+</figcaption>
+<div aria-describedby="tbl-a14-matching-pennies-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Cara</th>
+<th>Cruz</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Cara</strong></td>
+<td>(1, -1)</td>
+<td>(-1, 1)</td>
+</tr>
+<tr class="even">
+<td><strong>Cruz</strong></td>
+<td>(-1, 1)</td>
+<td>(1, -1)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Equilibrio en estrategias dominantes</strong>: no existe, porque la mejor elección de cada jugador depende por completo de la del rival.</p>
+<p><strong>Equilibrio de Nash</strong>: no existe EN en estrategias puras, ya que en toda celda algún jugador gana desviándose, de modo que las mejores respuestas nunca se cruzan. Sí existe en estrategias mixtas, y en él cada jugador elige cara con probabilidad <span class="math inline">\(p = 1/2\)</span> y cruz con <span class="math inline">\(1 - p = 1/2\)</span>, lo que deja al rival indiferente entre sus dos opciones y le impide explotar patrón alguno. El pago esperado es cero para ambos. El juego ilustra así el teorema de Nash (1950), enunciado en el apartado 1.4.1.</p>
+<p><strong>Bienestar</strong>: como en todo juego de suma cero, no hay mejoras de Pareto posibles.</p>
+<p><strong>Conclusiones</strong>: el juego muestra por qué son necesarias las estrategias mixtas, ya que sin ellas la teoría no daría predicción alguna en los juegos de pura oposición.</p>
+</section>
+<section id="juegos-con-múltiples-equilibrios-la-batalla-de-los-sexos" class="level4">
+<h4 class="anchored" data-anchor-id="juegos-con-múltiples-equilibrios-la-batalla-de-los-sexos">2.1.5. Juegos con múltiples equilibrios: la batalla de los sexos</h4>
+<p><strong>Planteamiento</strong>: dos personas quieren pasar la tarde juntas, pero una prefiere el fútbol y la otra la ópera. Ambas prefieren coincidir antes que ir por separado:</p>
+<div id="tbl-a14-batalla-sexos" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-a14-batalla-sexos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;A14.8: Matriz de pagos de la batalla de los sexos.
+</figcaption>
+<div aria-describedby="tbl-a14-batalla-sexos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Fútbol</th>
+<th>Ópera</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Fútbol</strong></td>
+<td>(3, 2)</td>
+<td>(0, 0)</td>
+</tr>
+<tr class="even">
+<td><strong>Ópera</strong></td>
+<td>(0, 0)</td>
+<td>(2, 3)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Equilibrio en estrategias dominantes</strong>: no existe, ya que cada jugador prefiere ir donde vaya el otro.</p>
+<p><strong>Equilibrio de Nash</strong>: existen dos EN en estrategias puras, (Fútbol, Fútbol) y (Ópera, Ópera), y uno adicional en estrategias mixtas en el que cada jugador elige su opción favorita con probabilidad <span class="math inline">\(3/5\)</span>.</p>
+<p><strong>Bienestar</strong>: los dos equilibrios en puras son óptimos de Pareto, pero distribuyen de forma distinta las ganancias de la coordinación. En cambio, el equilibrio en mixtas es ineficiente, pues con probabilidad positiva los jugadores no se coordinan y ambos obtienen cero.</p>
+<p><strong>Conclusiones</strong>: el juego ilustra el problema de coordinación y el límite del EN como concepto de solución, pues la teoría no predice cuál de los equilibrios se alcanzará.</p>
+<p>Esta indeterminación ha motivado conceptos de selección de equilibrios, como el punto focal de Schelling (convenciones, precedentes) o la comunicación previa, y muestra que en los juegos de coordinación la historia y las instituciones importan tanto como los incentivos.</p>
+</section>
+</section>
+<section id="juegos-con-incertidumbre" class="level3">
+<h3 class="anchored" data-anchor-id="juegos-con-incertidumbre">2.2. Juegos con incertidumbre</h3>
+<p>Hasta aquí se ha supuesto que los jugadores conocen toda la información sobre los pagos, los jugadores y las reglas. Se estudian ahora tres formas de incertidumbre: información imperfecta, información incompleta e información asimétrica. La última se extiende después a los juegos dinámicos de señalización.</p>
+<section id="información-imperfecta-hundir-la-flota" class="level4">
+<h4 class="anchored" data-anchor-id="información-imperfecta-hundir-la-flota">2.2.1. Información imperfecta: hundir la flota</h4>
+<p><strong>Planteamiento</strong>: en los juegos con información <em>imperfecta</em>, los jugadores no observan alguna acción de los rivales, de modo que no conocen el estado del juego en el momento de decidir. Esta propiedad es distinta de la completitud, pues el propio dilema del prisionero es un juego de información completa (todos conocen los pagos) pero imperfecta (los jugadores deciden simultáneamente, sin observar la elección del otro)<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. Un ejemplo es el juego de hundir la flota, en el que, en todo momento, cada jugador conoce el resultado de sus acciones, pero no la disposición de la flota del rival.</p>
+<p><strong>Equilibrio</strong>: la información imperfecta se representa en forma extensiva mediante conjuntos de información (apartado 1.2), y los conceptos de solución son los mismos (EN y, en los juegos dinámicos, ENPS aplicado a los subjuegos identificables). En juegos como hundir la flota, sin embargo, el espacio de estrategias es tan grande que el equilibrio no se calcula de forma cerrada, y los jugadores lo aproximan mediante reglas heurísticas de búsqueda.</p>
+<p><strong>Conclusiones</strong>: la distinción entre información perfecta e imperfecta permite representar la simultaneidad dentro de la forma extensiva y delimita dónde puede aplicarse la inducción hacia atrás (que exige subjuegos propios, que comienzan en nodos con información perfecta).</p>
+</section>
+<section id="información-incompleta-el-equilibrio-de-bayes-nash" class="level4">
+<h4 class="anchored" data-anchor-id="información-incompleta-el-equilibrio-de-bayes-nash">2.2.2. Información incompleta: el equilibrio de Bayes-Nash</h4>
+<p><strong>Planteamiento</strong>: la información incompleta se modeliza con un movimiento inicial de la naturaleza (transformación de Harsanyi, apartado 1.4.1). Como ejemplo, existen dos posibles estados de la naturaleza, crisis y no crisis, <span class="math inline">\(\Omega = \{\omega_c, \omega_{nc}\}\)</span>, y en cada estado la matriz de pagos del juego es distinta. El jugador 1 observa el estado antes de decidir, de modo que el estado es su tipo (su información privada). El jugador 2, en cambio, no sabe en qué matriz juega y solo conoce la distribución de probabilidad (de conocimiento común) que asigna <span class="math inline">\(P_c \in (0, 1)\)</span> al estado de crisis y <span class="math inline">\(1 - P_c\)</span> al de no crisis.</p>
+<p><strong>Equilibrio de Bayes-Nash</strong>: la estrategia del jugador 1 asigna a cada estado la acción que mejor responde, con la matriz de ese estado, a la del jugador 2. El jugador 2 elige la acción de mayor pago esperado, ponderando por las probabilidades de los estados los pagos que obtiene frente a la acción del jugador 1 en cada uno. Según la estructura de pagos, el equilibrio puede coincidir con el de alguno de los estados o ser distinto de ambos, y puede existir en estrategias puras o requerir estrategias mixtas. Sin información privada bastaría con hallar el EN de la matriz de pagos esperados.</p>
+<p><strong>Bienestar</strong>: se evalúa en términos esperados. El equilibrio puede ser ineficiente <em>ex post</em> (una vez conocido el estado) aunque sea la mejor respuesta <em>ex ante</em> a las creencias.</p>
+<p><strong>Conclusiones</strong>: la transformación de Harsanyi permite aplicar el aparato del EN, a costa de que la predicción sea sensible a la distribución de probabilidad supuesta, que ha de ser conocimiento común.</p>
+</section>
+<section id="información-asimétrica-el-mercado-de-coches-usados-akerlof-1970" class="level4">
+<h4 class="anchored" data-anchor-id="información-asimétrica-el-mercado-de-coches-usados-akerlof-1970">2.2.3. Información asimétrica: el mercado de coches usados (Akerlof, 1970)</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>El modelo de Akerlof, con su formalización, se desarrolla en el tema <a href="../chapters/a13-informacion.html">A13</a>, apartado 3.2, y las soluciones a la selección adversa (señalización y autoselección), en el apartado 3.4. Aquí se presenta como juego con información asimétrica, cuyo resultado es un equilibrio de Bayes-Nash.</p>
+</div>
+</div>
+</div>
+<p><strong>Planteamiento</strong>: la información incompleta es <em>asimétrica</em> cuando una de las partes posee información privada relevante que la otra desconoce. Los vendedores conocen la calidad de su coche, <span class="math inline">\(\theta \in \{\theta_L, \theta_H\}\)</span>, y los compradores solo la distribución de calidades, de modo que ofrecen un precio basado en la calidad esperada, que actualizan por Bayes según qué vendedores acuden al mercado.</p>
+<p><strong>Equilibrio de Bayes-Nash</strong>: si la proporción de coches buenos no es lo bastante alta, al precio medio los vendedores de alta calidad se retiran. Su salida degrada la calidad esperada, reduce el precio y expulsa a más vendedores buenos, en una espiral de selección adversa que acaba en un EBN en el que solo se intercambian los coches malos (<em>lemons</em>).</p>
+<p><strong>Bienestar</strong>: el equilibrio no es un óptimo de Pareto, porque quedan sin realizar intercambios mutuamente beneficiosos, los de los coches buenos a un precio intermedio.</p>
+<p><strong>Conclusiones</strong>: es el modelo fundacional de la economía de la información y muestra que la información privada es por sí misma un fallo de mercado. Sus soluciones se estudian a continuación y en el tema <a href="../chapters/a13-informacion.html">A13</a>.</p>
+</section>
+<section id="juegos-de-señalización-y-equilibrio-bayesiano-perfecto-spence-1973-cho-y-kreps-1987" class="level4">
+<h4 class="anchored" data-anchor-id="juegos-de-señalización-y-equilibrio-bayesiano-perfecto-spence-1973-cho-y-kreps-1987">2.2.4. Juegos de señalización y equilibrio bayesiano perfecto (Spence, 1973; Cho y Kreps, 1987)</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La señalización en el mercado de trabajo se desarrolla en el tema <a href="../chapters/a13-informacion.html">A13</a>, apartado 3.4.1, como solución a la selección adversa, con sus zonas de equilibrio y su análisis de bienestar. Aquí se formaliza como juego dinámico con información incompleta para introducir el equilibrio bayesiano perfecto y el criterio intuitivo.</p>
+</div>
+</div>
+</div>
+<p><strong>Origen</strong>: los juegos de señalización son la clase más simple de juegos dinámicos con información incompleta. El modelo de partida es el de Michael Spence (1973) sobre el mercado de trabajo, y el criterio intuitivo de Cho y Kreps (1987) selecciona entre sus equilibrios múltiples.</p>
+<p><strong>Idea</strong>: en un juego dinámico con información incompleta el EBN no basta, y el concepto de solución es el equilibrio bayesiano perfecto (EBP). En un juego de señalización, el jugador informado (emisor) elige primero una acción observable, la señal, y el no informado (receptor) responde tras actualizar sus creencias.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Entorno</em>: la productividad <span class="math inline">\(\theta \in \{\theta_L, \theta_H\}\)</span>, con <span class="math inline">\(\theta_H &gt; \theta_L\)</span>, es privada, y las empresas solo conocen la probabilidad <em>a priori</em> <span class="math inline">\(\mu_0 = \Pr(\theta = \theta_H)\)</span>. Es decir, los trabajadores conocen su tipo, pero las empresas no, de modo que estas hacen conjeturas sobre el tipo de trabajador que contratan.</p></li>
+<li><p><em>Agentes</em>: un trabajador (emisor) y varias empresas competitivas (receptores), de modo que el salario iguala la productividad esperada.</p></li>
+<li><p><em>Tecnología</em>: la educación <span class="math inline">\(h \geq 0\)</span> no altera la productividad, pero su coste marginal es menor para el tipo productivo que para el improductivo (<em>cruce único</em> o <em>single crossing</em>). Concretamente, el coste de la educación viene dado por <span class="math inline">\(c(h, \theta) = h/\theta\)</span>.</p></li>
+</ul>
+<p><strong>Planteamiento</strong>: un EBP es una educación por tipo, un salario <span class="math inline">\(w(h) = \mu(h)\,\theta_H + (1 - \mu(h))\,\theta_L\)</span> y unas creencias <span class="math inline">\(\mu(h) = \Pr(\theta_H \mid h)\)</span> obtenidas por Bayes en las educaciones de equilibrio, tales que cada tipo maximiza <span class="math inline">\(w(h) - c(h, \theta)\)</span>. Caben dos clases de equilibrio:</p>
+<ol type="1">
+<li><p><em>Equilibrio separador</em>: cada tipo elige una educación distinta, de modo que la señal revela el tipo. El tipo bajo no se educa (<span class="math inline">\(h_L = 0\)</span>, <span class="math inline">\(w = \theta_L\)</span>) y el alto elige <span class="math inline">\(h^*\)</span> (<span class="math inline">\(w = \theta_H\)</span>), siempre que ningún tipo prefiera imitar al otro:</p>
+<p><span class="math display">\[\theta_H - \frac{h^*}{\theta_H} \;\geq\; \theta_L \qquad \text{y} \qquad \theta_L \;\geq\; \theta_H - \frac{h^*}{\theta_L}\]</span></p>
+<p>donde <span class="math inline">\(\theta_H - h^*/\theta_H\)</span> es la utilidad del tipo alto que se educa y es reconocido, <span class="math inline">\(\theta_L\)</span> la de cualquier tipo sin educarse y <span class="math inline">\(\theta_H - h^*/\theta_L\)</span> la del tipo bajo si imitase al alto. Estas <em>condiciones de compatibilidad de incentivos</em> acotan la señal, y el cruce único garantiza que el intervalo no sea vacío:</p>
+<p><span class="math display">\[\theta_L(\theta_H - \theta_L) \;\leq\; h^* \;\leq\; \theta_H(\theta_H - \theta_L)\]</span></p></li>
+<li><p><em>Equilibrio agrupador</em> (<em>pooling</em>): ambos tipos eligen la misma educación, <span class="math inline">\(h_p\)</span>, de modo que la señal no revela nada, las empresas mantienen la creencia <em>a priori</em> y pagan el salario medio, <span class="math inline">\(\bar{w} = \mu_0\,\theta_H + (1 - \mu_0)\,\theta_L\)</span>. Con creencias pesimistas fuera del equilibrio (<span class="math inline">\(\mu(h) = 0\)</span> para toda <span class="math inline">\(h \neq h_p\)</span>), quien se desvía cobra <span class="math inline">\(\theta_L\)</span> y le conviene entonces no educarse. Basta, por tanto, con que no lo prefiera el tipo bajo, para el que educarse es más caro:</p>
+<p><span class="math display">\[\bar{w} - \frac{h_p}{\theta_L} \;\geq\; \theta_L \quad \Longrightarrow \quad h_p \;\leq\; \mu_0\,\theta_L(\theta_H - \theta_L)\]</span></p></li>
+</ol>
+<p><strong>Equilibrio</strong>: cualquier <span class="math inline">\(h^*\)</span> del primer intervalo, con la creencia <span class="math inline">\(\mu(h) = 1\)</span> si <span class="math inline">\(h \geq h^*\)</span> y <span class="math inline">\(\mu(h) = 0\)</span> en caso contrario, es un EBP separador, y cualquier <span class="math inline">\(h_p\)</span> entre cero y <span class="math inline">\(\mu_0\,\theta_L(\theta_H - \theta_L)\)</span>, un EBP agrupador. Qué equilibrio surge depende, ante todo, del coste de la educación. La señal separa porque educarse es más caro para el tipo bajo, y cuanto mayor es esa diferencia, menos educación hace falta para separar (con el mismo coste para ambos, solo en un caso límite). El nivel del coste y la proporción de productivos deciden, a su vez, si al tipo alto le compensa separarse, pues la señal le cuesta <span class="math inline">\(h^*/\theta_H\)</span> y le reporta, frente al agrupador, <span class="math inline">\((1 - \mu_0)(\theta_H - \theta_L)\)</span>. Así, si los productivos son mayoría (<span class="math inline">\(\mu_0\)</span> alta), el tipo alto puede preferir el agrupador. La multiplicidad procede de la libertad de creencias fuera de la senda.</p>
+<p><strong>Extensiones</strong>: el <em>criterio intuitivo</em> de Cho y Kreps (1987) restringe esas creencias. Si una desviación <span class="math inline">\(h'\)</span> está <em>dominada en equilibrio</em> para el tipo bajo (ni con <span class="math inline">\(w = \theta_H\)</span> mejoraría su pago de equilibrio) pero no para el alto, el receptor debe atribuirla al tipo alto. Con ello todo agrupador se rompe y de los separadores solo sobrevive el de señal mínima, <span class="math inline">\(h^* = \theta_L(\theta_H - \theta_L)\)</span>. La misma lógica explica el precio límite como señal de costes bajos (Milgrom y Roberts, 1982a; tema <a href="../chapters/a19-oligopolio.html">A19</a>, apartado 3.2.1) o la garantía como señal de calidad.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: el EBP es el concepto de solución general de los juegos dinámicos con información incompleta, y el modelo de Spence muestra que una actividad improductiva puede ser valiosa porque transmite información.</p></li>
+<li><p><em>Limitaciones</em>: la libertad de creencias fuera de la senda genera una multiplicidad que ningún refinamiento elimina del todo, y el equilibrio separador es ineficiente respecto a la información simétrica, pues la educación es un coste puro.</p></li>
+</ul>
+</section>
+</section>
+<section id="juegos-dinámicos" class="level3">
+<h3 class="anchored" data-anchor-id="juegos-dinámicos">2.3. Juegos dinámicos</h3>
+<p>En los juegos dinámicos el equilibrio de Nash puede apoyarse en amenazas no creíbles, y la repetición plantea si puede sostenerse la cooperación.</p>
+<section id="el-juego-de-entrada" class="level4">
+<h4 class="anchored" data-anchor-id="el-juego-de-entrada">2.3.1. El juego de entrada</h4>
+<p><strong>Planteamiento</strong>: el juego de entrada ilustra a la vez la ventaja de mover primero, el problema de las amenazas no creíbles y el principio de racionalidad secuencial. La empresa entrante decide entrar (E) o no entrar (NE) en el mercado. Si entra, la empresa instalada o incumbente decide luchar (L, p.&nbsp;ej. una guerra de precios) o acomodar (A, repartir el mercado). Los pagos (entrante, incumbente) son <span class="math inline">\((0, 2)\)</span> si no hay entrada, <span class="math inline">\((-3, -1)\)</span> si hay entrada y lucha, y <span class="math inline">\((2, 1)\)</span> si hay entrada y acomodación.</p>
+<p><strong>Equilibrio en estrategias dominantes</strong>: no existe, pues la mejor estrategia de la entrante depende de cómo reaccione la incumbente.</p>
+<p><strong>Equilibrio de Nash</strong>: la forma normal del juego tiene dos EN en estrategias puras, (E, A) y (NE, L). El segundo lo es porque ninguna de las dos gana desviándose unilateralmente y, mientras la entrante se queda fuera, luchar no llega a ejecutarse y resulta irrelevante. Ese equilibrio se apoya, sin embargo, en una amenaza no creíble, ya que ante una entrada real la incumbente acomodaría (<span class="math inline">\(1 &gt; -1\)</span>). Que el EN no permita eliminar equilibrios así es su principal debilidad en los juegos secuenciales.</p>
+<p><strong>Equilibrio de Nash perfecto en subjuegos</strong>: aplicando el principio de racionalidad secuencial, se resuelve el juego por inducción hacia atrás. En el nodo de la incumbente, si la entrante ha entrado, la mejor respuesta de la incumbente es acomodar (<span class="math inline">\(1 &gt; -1\)</span>). En el nodo de la entrante, si no entra obtiene <span class="math inline">\(0\)</span>, y si entra, obtiene <span class="math inline">\(2\)</span>, pues sabe que la incumbente acomodará. Por tanto, entra. El ENPS es (E, A), con pagos <span class="math inline">\((2, 1)\)</span> (figura <a href="#fig-a143-juego-entrada" class="quarto-xref"><span>A14.2</span></a>).</p>
+<div id="fig-a143-juego-entrada" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a143-juego-entrada-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a143_Juego_entrada.html" style="height:560px" loading="lazy" title="fig-a143-juego-entrada"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a143-juego-entrada-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A14.2: Juego de entrada en forma extensiva. La amenaza de lucha no es creíble y, por inducción hacia atrás, el ENPS es (E, A). El otro EN, (NE, L), no sobrevive.
+</figcaption>
+</figure>
+</div>
+<p>Para comprometerse de forma creíble a luchar, la incumbente debe modificar sus propios pagos mediante costes hundidos (inversiones irreversibles en capacidad, por ejemplo) que hagan que, llegado el caso, luchar sea efectivamente su mejor respuesta (figura <a href="#fig-a142-juego-entrada" class="quarto-xref"><span>A14.3</span></a>).</p>
+<div id="fig-a142-juego-entrada" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a142-juego-entrada-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a142_juego_entrada.html" style="height:580px" loading="lazy" title="fig-a142-juego-entrada"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a142-juego-entrada-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A14.3: Juego de entrada con compromiso previo. Si la inversión hundida <span class="math inline">\(C_0\)</span> hace creíble la lucha (<span class="math inline">\(\pi^L &gt; \pi^D - C_0\)</span>), la lucha causa pérdidas a la entrante (<span class="math inline">\(\pi^L &lt; 0\)</span>) y la inversión compensa (<span class="math inline">\(\pi^M - C_0 &gt; \pi^D\)</span>), la incumbente invierte y la entrada queda disuadida. ACT es invertir <span class="math inline">\(C_0\)</span> y PAS, no invertir. Los beneficios de monopolio, de duopolio y de lucha son <span class="math inline">\(\pi^M\)</span>, <span class="math inline">\(\pi^D\)</span> y <span class="math inline">\(\pi^L\)</span>.
+</figcaption>
+</figure>
+</div>
+<p><strong>Bienestar</strong>: el ENPS es eficiente para las dos empresas frente a la lucha, y la entrada aumenta la competencia y el bienestar de los consumidores, lo que explica el interés de la política de competencia por las conductas que la disuaden.</p>
+<p><strong>Conclusiones</strong>: dos lecciones se desprenden del juego. La primera es la <em>credibilidad</em>, pues la incumbente puede alterar el resultado comprometiéndose creíblemente a luchar. La paradoja es que reducir la propia libertad de acción futura puede aumentar el poder estratégico presente<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. La segunda es la <em>ventaja de mover primero</em>, ya que quien mueve primero puede comprometerse con una acción que condiciona la respuesta del seguidor (el líder de Stackelberg obtiene más que en Cournot). Sin embargo, la ventaja no es universal, pues en la competencia secuencial en precios con productos diferenciados el seguidor gana más que el líder.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Las barreras a la entrada se estudian en el tema <a href="../chapters/a15-toi.html">A15</a>, apartado 2.2.1. Los modelos de oligopolio (Cournot, Bertrand, Stackelberg) se desarrollan en el tema <a href="../chapters/a19-oligopolio.html">A19</a>, sección 1, y la disuasión estratégica de la entrada, en su apartado 3.2.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="el-dilema-del-prisionero-repetido-en-horizonte-finito" class="level4">
+<h4 class="anchored" data-anchor-id="el-dilema-del-prisionero-repetido-en-horizonte-finito">2.3.2. El dilema del prisionero repetido en horizonte finito</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La aplicación a la colusión en oligopolio, con competencia en precios a la Bertrand, se desarrolla en el tema <a href="../chapters/a19-oligopolio.html">A19</a>, apartado 2.1.2, con el mismo razonamiento.</p>
+</div>
+</div>
+</div>
+<p>La cuestión es si la amenaza de castigar mañana a quien no coopere hoy permite sostener la cooperación que el juego de una sola ronda no sostiene.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Entorno</em>: el juego de etapa, el dilema del prisionero, se repite un número finito de veces, <span class="math inline">\(T\)</span>, conocido por todos. La información es completa y de conocimiento común, cada jugador observa las acciones pasadas y el juego no varía de un periodo a otro.</p></li>
+<li><p><em>Agentes</em>: dos jugadores racionales. En lo que sigue, cooperar (<span class="math inline">\(c\)</span>) es no confesar (NC) y no cooperar (<span class="math inline">\(nc\)</span>) es confesar (C).</p></li>
+</ul>
+<p><strong>Razonamiento</strong>: el juego se resuelve por inducción hacia atrás:</p>
+<ol type="1">
+<li><p><em>Periodo <span class="math inline">\(T\)</span></em>: como ya no hay futuro, la historia es irrelevante y el juego se reduce a una sola jugada. No cooperar es la estrategia dominante, porque el castigo tendría que llegar en <span class="math inline">\(T + 1\)</span>, que no existe, y ninguna amenaza es creíble. Todo ENPS prescribe, por tanto, el EN de etapa en el último periodo.</p></li>
+<li><p><em>Periodo <span class="math inline">\(T - 1\)</span> y anteriores</em>: ambos saben que en <span class="math inline">\(T\)</span> nadie cooperará pase lo que pase hoy, así que desviarse en <span class="math inline">\(T - 1\)</span> no tiene coste. El mismo argumento vale para <span class="math inline">\(T - 2\)</span> y, retrocediendo, para cada periodo hasta el primero.</p></li>
+</ol>
+<p><strong>Equilibrio</strong>: el único ENPS consiste en <span class="math inline">\(T\)</span> repeticiones del EN del juego de etapa, (C, C) en cada ronda. Ni siquiera hay otros EN que sostengan la cooperación en alguna ronda, porque el pago del EN de etapa, <span class="math inline">\((-5, -5)\)</span>, coincide con el pago <em>minimax</em> de cada jugador (lo máximo que obtiene cuando el rival lo castiga confesando), de modo que no hay castigo más severo con el que amenazar. La excepción son los juegos de etapa con varios EN, en los que la repetición finita sí puede sostener la cooperación en las primeras rondas, con la selección del equilibrio final como premio o castigo.</p>
+<p><strong>Bienestar</strong>: el resultado es tan ineficiente como el del juego de una ronda, repetido <span class="math inline">\(T\)</span> veces.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la lección, negativa y robusta, es que con horizonte finito y conocido e información completa la cooperación no se sostiene por los propios incentivos. Además, el modelo precisa qué haría falta, un horizonte sin final conocido o varios equilibrios en el juego de etapa.</p></li>
+<li><p><em>Limitaciones</em>: el resultado depende de que el último periodo se conozca con certeza y de que la racionalidad sea conocimiento común. De hecho, basta una pequeña probabilidad de que el rival sea de un tipo cooperativo para que la cooperación se sostenga durante buena parte del juego (Kreps, Milgrom, Roberts y Wilson, 1982).</p></li>
+</ul>
+</section>
+<section id="juegos-repetidos-en-horizonte-infinito-la-colusión-tácita" class="level4">
+<h4 class="anchored" data-anchor-id="juegos-repetidos-en-horizonte-infinito-la-colusión-tácita">2.3.3. Juegos repetidos en horizonte infinito: la colusión tácita</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La aplicación a la colusión tácita, con el umbral <span class="math inline">\(\beta \geq 1/2\)</span> del duopolio de Bertrand, su extensión a <span class="math inline">\(n\)</span> empresas y las guerras de precios en equilibrio, se desarrolla en el tema <a href="../chapters/a19-oligopolio.html">A19</a>, apartado 2.2.</p>
+</div>
+</div>
+</div>
+<p>James Friedman (1971) estudió si, cuando los jugadores prevén un número indeterminado de repeticiones (el “superjuego”), lo que ganan a largo plazo cumpliendo sus compromisos compensa la ganancia inmediata de incumplirlos.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Entorno</em>: el juego de etapa se repite infinitamente o, de forma equivalente, con una probabilidad constante <span class="math inline">\(p \in (0, 1)\)</span> de que continúe tras cada periodo, que se incorpora al factor de descuento. La información es completa y cada jugador observa las acciones pasadas.</p></li>
+<li><p><em>Agentes</em>: dos jugadores racionales que descuentan el futuro con un factor <span class="math inline">\(\beta \in (0, 1)\)</span>.</p></li>
+</ul>
+<p><strong>Planteamiento</strong>: consta de tres elementos:</p>
+<ul>
+<li><p><em>Historia del juego</em>: la historia hasta el periodo <span class="math inline">\(t\)</span> es la sucesión de acciones de ambos jugadores, <span class="math inline">\(h^{t-1} = \{(s_1^\tau, s_2^\tau)\}_{\tau=1}^{t-1}\)</span>, con <span class="math inline">\(s_i^\tau \in \{c, nc\}\)</span>, y la estrategia de cada jugador en cada periodo es una función de ella, <span class="math inline">\(s_i^t(h^{t-1})\)</span>.</p></li>
+<li><p><em>Estrategia del gatillo</em> (<em>trigger strategy</em>): <span class="math inline">\(s_i^t(h^{t-1}) = c \Leftrightarrow (s_1^\tau, s_2^\tau) = (c, c) \;\; \forall \tau &lt; t\)</span>. Cada jugador coopera mientras ambos hayan cooperado en todos los periodos anteriores y, ante una sola desviación, revierte para siempre al EN del juego de etapa.</p></li>
+<li><p><em>Condición de cooperación</em>: cooperar debe valer al menos tanto como desviarse y sufrir después el castigo:</p>
+<p><span class="math display">\[\sum_{t=0}^{\infty} \beta^t\, \pi_{c,c} \;\geq\; \pi_{nc,c} + \sum_{t=1}^{\infty} \beta^t\, \pi_{nc,nc}, \qquad \beta \in (0, 1)\]</span></p>
+<p>donde <span class="math inline">\(\pi_{c,c}\)</span> es el pago de cooperación mutua, <span class="math inline">\(\pi_{nc,c}\)</span> el pago de traicionar cuando el otro coopera y <span class="math inline">\(\pi_{nc,nc}\)</span> el pago del EN no cooperativo.</p></li>
+</ul>
+<p>Aplicando la serie geométrica, <span class="math inline">\(\sum_{t=0}^{\infty} \beta^t = 1/(1-\beta)\)</span>, y operando, con <span class="math inline">\(\pi_{nc,c} &gt; \pi_{c,c} &gt; \pi_{nc,nc}\)</span>:</p>
+<p><span class="math display">\[\frac{\pi_{c,c}}{1-\beta} \;\geq\; \pi_{nc,c} + \frac{\beta}{1-\beta}\, \pi_{nc,nc} \quad \Longrightarrow \quad \beta \;\geq\; \frac{\pi_{nc,c} - \pi_{c,c}}{\pi_{nc,c} - \pi_{nc,nc}}\]</span></p>
+<p><strong>Equilibrio</strong>: la cooperación es un ENPS si se cumple la condición. El numerador del umbral es la ganancia inmediata de la traición, <span class="math inline">\(\pi_{nc,c} - \pi_{c,c}\)</span>, y el denominador suma a esa ganancia la pérdida que el castigo inflige en cada periodo futuro, <span class="math inline">\(\pi_{c,c} - \pi_{nc,nc}\)</span>. Si los jugadores son suficientemente pacientes, la pérdida futura supera la ganancia presente. El castigo es creíble porque revertir al EN del juego de etapa es, en cada subjuego, un equilibrio. En el dilema del prisionero, con <span class="math inline">\(\pi_{c,c} = -1\)</span>, <span class="math inline">\(\pi_{nc,c} = 0\)</span> y <span class="math inline">\(\pi_{nc,nc} = -5\)</span>, basta <span class="math inline">\(\beta \geq 1/5\)</span>.</p>
+<p><strong>Bienestar</strong>: el resultado general es el <em>folk theorem</em>. Friedman (1971) mostró que, si el juego se repite sin fin y los jugadores son lo bastante pacientes, puede sostenerse como ENPS cualquier vector de pagos factible que mejore estrictamente para todos el pago del EN del juego de etapa. Fudenberg y Maskin (1986) lo generalizaron, con castigos más duros que la vuelta al EN, a todo vector factible que dé a cada jugador más que su pago <em>minimax</em>, con una condición de dimensión si hay más de dos jugadores. La cooperación eficiente es, por tanto, alcanzable, pero también lo son infinitos resultados intermedios, de modo que la repetición resuelve el problema de eficiencia a costa de un problema de multiplicidad.</p>
+<p><strong>Extensiones</strong>: además de la estrategia del gatillo, destacan otras dos:</p>
+<ul>
+<li><p><em>Tit-for-tat</em> (Axelrod, 1984): coopera en la primera ronda y después imita la acción del rival en la anterior, de modo que permite restaurar la cooperación tras una desviación.</p></li>
+<li><p><em>Castigo óptimo</em>: castiga durante un número finito de periodos y vuelve después a cooperar, maximizando los pagos cooperativos sujetos a la restricción de incentivos.</p></li>
+</ul>
+<p><strong>Conclusiones</strong>: la aplicación económica central es la <em>colusión tácita</em> en oligopolio. Si las empresas son suficientemente pacientes y existen castigos creíbles, la cooperación colusiva puede sostenerse sin acuerdos explícitos. Por eso la estabilidad de los cárteles depende del número de empresas, de la transparencia del mercado y del factor de descuento.</p>
+</section>
+<section id="reputación-y-la-paradoja-de-la-cadena-de-tiendas-selten-1978-kreps-y-wilson-1982" class="level4">
+<h4 class="anchored" data-anchor-id="reputación-y-la-paradoja-de-la-cadena-de-tiendas-selten-1978-kreps-y-wilson-1982">2.3.4. Reputación y la paradoja de la cadena de tiendas (Selten, 1978; Kreps y Wilson, 1982)</h4>
+<p><strong>Origen</strong>: Reinhard Selten (1978) planteó la paradoja como crítica a su propio concepto de perfección en subjuegos, y Kreps y Wilson (1982) y Milgrom y Roberts (1982b) la resolvieron con información incompleta.</p>
+<p><strong>Idea</strong>: una cadena de tiendas se enfrenta sucesivamente a <span class="math inline">\(K\)</span> entrantes en el juego de entrada. Por inducción hacia atrás nunca debe luchar, porque en el último mercado luchar no disuade a nadie, y así hasta el primero. La intuición dice, en cambio, que conviene luchar al principio para ganar una reputación de dureza.</p>
+<p><strong>Razonamiento</strong>: si, con una probabilidad <span class="math inline">\(\varepsilon &gt; 0\)</span> que es conocimiento común, la cadena es un tipo duro que lucha siempre, la solución es un EBP. Acomodar revela que la cadena es racional, mientras que luchar mantiene la sospecha de que es dura, de modo que el tipo racional imita al duro mientras la reputación le ahorre entradas futuras. Con los pagos del juego de entrada, un entrante espera <span class="math inline">\(2 - 5\Pr(\text{luchar})\)</span> y solo entra si <span class="math inline">\(\Pr(\text{luchar}) &lt; 2/5\)</span>. Para <span class="math inline">\(K\)</span> grande, una <span class="math inline">\(\varepsilon\)</span> arbitrariamente pequeña sostiene la no entrada en casi todos los mercados. La reputación racionaliza así la predación (tema <a href="../chapters/a19-oligopolio.html">A19</a>, apartado 3.2.3; tema <a href="../chapters/a15-toi.html">A15</a>).</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: resuelve la paradoja sin renunciar a la racionalidad de la cadena y muestra la fragilidad de la inducción hacia atrás, que cambia por completo con una perturbación mínima de la información.</p></li>
+<li><p><em>Limitaciones</em>: la predicción depende del tipo “duro” que se postule y de que su probabilidad inicial sea conocimiento común, supuestos difíciles de contrastar.</p></li>
+</ul>
+</section>
+</section>
+<section id="juegos-cooperativos-y-negociación" class="level3">
+<h3 class="anchored" data-anchor-id="juegos-cooperativos-y-negociación">2.4. Juegos cooperativos y negociación</h3>
+<p>La sección ilustra los conceptos de solución de los juegos cooperativos y termina con la negociación bilateral, que enlaza los enfoques cooperativo y no cooperativo. Los conceptos de núcleo y valor de Shapley del apartado 1.4.2 se ilustran con dos aplicaciones características, la <em>joint venture</em> de dos empresas y el reparto del poder en una votación.</p>
+<section id="el-núcleo-la-joint-venture" class="level4">
+<h4 class="anchored" data-anchor-id="el-núcleo-la-joint-venture">2.4.1. El núcleo: la <em>joint venture</em></h4>
+<p>Dos empresas valoran cooperar en un proyecto conjunto. En solitario, la empresa 1 obtiene <span class="math inline">\(V(\{1\}) = 1\)</span> y la empresa 2, <span class="math inline">\(V(\{2\}) = 2\)</span>. Si cooperan, las sinergias elevan el valor a <span class="math inline">\(V(\{1,2\}) = 5\)</span>. El <strong>núcleo</strong> es el conjunto de repartos <span class="math inline">\((x_1, x_2)\)</span> con <span class="math inline">\(x_1 + x_2 = 5\)</span>, <span class="math inline">\(x_1 \geq 1\)</span> y <span class="math inline">\(x_2 \geq 2\)</span>. Cualquier reparto que dé a cada socio al menos su alternativa exterior es estable, pues ninguna de las dos gana rompiendo el acuerdo. El núcleo no determina un reparto único, ya que cualquier punto del segmento entre <span class="math inline">\((1, 4)\)</span> y <span class="math inline">\((3, 2)\)</span> es estable.</p>
+</section>
+<section id="el-valor-de-shapley-reparto-único-y-poder-de-voto" class="level4">
+<h4 class="anchored" data-anchor-id="el-valor-de-shapley-reparto-único-y-poder-de-voto">2.4.2. El valor de Shapley: reparto único y poder de voto</h4>
+<p>El <strong>valor de Shapley</strong> selecciona un reparto concreto, que en este juego pertenece al núcleo. Promediando las contribuciones marginales de cada empresa en los dos órdenes posibles de formación de la coalición, se obtienen <span class="math inline">\(\phi_1 = (1 + 3)/2 = 2\)</span> y <span class="math inline">\(\phi_2 = (4 + 2)/2 = 3\)</span>.</p>
+<p>Gráficamente, el núcleo y el valor de Shapley se representan en el plano <span class="math inline">\((x_1, x_2)\)</span> (figura <a href="#fig-a144-nucleo-shapley" class="quarto-xref"><span>A14.4</span></a>):</p>
+<ol type="1">
+<li><p><em>Restricciones individuales</em>, <span class="math inline">\(x_1 \geq V(\{1\})\)</span> y <span class="math inline">\(x_2 \geq V(\{2\})\)</span>: cada socio recibe al menos su alternativa exterior.</p></li>
+<li><p><em>Recta de repartos eficientes</em>, <span class="math inline">\(x_1 + x_2 = V(\{1,2\}) = 5\)</span>: recoge los repartos que agotan el valor de la coalición.</p></li>
+<li><p><em>Núcleo y valor de Shapley</em>: el núcleo es el segmento de esa recta entre <span class="math inline">\((1, 4)\)</span> y <span class="math inline">\((3, 2)\)</span>, y el valor de Shapley, <span class="math inline">\(\phi = (2, 3)\)</span>, es uno de sus puntos.</p></li>
+</ol>
+<div id="fig-a144-nucleo-shapley" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a144-nucleo-shapley-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a144_Nucleo_Shapley.html" style="height:560px" loading="lazy" title="fig-a144-nucleo-shapley"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a144-nucleo-shapley-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A14.4: <em>Joint venture</em> de dos empresas. El núcleo es el conjunto de repartos eficientes no bloqueados y el valor de Shapley, el reparto único.
+</figcaption>
+</figure>
+</div>
+<p>Aplicado a juegos de votación (donde <span class="math inline">\(V(S) = 1\)</span> si la coalición alcanza la mayoría y <span class="math inline">\(0\)</span> en caso contrario), el valor de Shapley da lugar al <strong>índice de poder de Shapley-Shubik</strong>, que mide el poder de cada partido como la proporción de ordenaciones en las que resulta <em>pivotal</em>. El resultado clásico es que el poder no es proporcional a los escaños. Por ejemplo, en un parlamento con tres partidos de 45, 35 y 20 escaños y mayoría de 51, cualquier pareja alcanza la mayoría, por lo que los tres son pivotales por igual y el índice asigna a cada uno un poder de <span class="math inline">\(1/3\)</span>.</p>
+<p><strong>Bienestar</strong>: ambos conceptos son eficientes por construcción (reparten todo el valor de la gran coalición).</p>
+<p><strong>Conclusiones</strong>: los ejemplos muestran la diferencia de criterio entre el núcleo y el valor de Shapley. La teoría cooperativa es el fundamento de los modelos de negociación (tema <a href="../chapters/a27-salarios.html">A27</a>), de la teoría del equilibrio general (el núcleo converge al equilibrio competitivo cuando crece el número de agentes, tema <a href="../chapters/a21-equilibrio-general.html">A21</a>) y de la medición del poder en las decisiones colectivas (tema <a href="../chapters/a24-eb-iii.html">A24</a>).</p>
+</section>
+<section id="negociación-la-solución-de-nash-1950-y-el-modelo-de-rubinstein-1982" class="level4">
+<h4 class="anchored" data-anchor-id="negociación-la-solución-de-nash-1950-y-el-modelo-de-rubinstein-1982">2.4.3. Negociación: la solución de Nash (1950) y el modelo de Rubinstein (1982)</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La solución de Nash es la base de los modelos de negociación salarial del tema <a href="../chapters/a27-salarios.html">A27</a>: su versión generalizada, con distinto poder negociador (apartado 2.1.3), el modelo de <em>right to manage</em> (apartado 2.2) y los contratos eficientes (apartado 2.3).</p>
+</div>
+</div>
+</div>
+<p><strong>Origen</strong>: John Nash (1950) formuló la primera solución axiomática al reparto entre dos agentes, y Ariel Rubinstein (1982) le dio fundamento estratégico como ENPS de un juego de ofertas alternas.</p>
+<p><strong>Idea</strong>: dos agentes deben repartirse un excedente y, sin acuerdo, cada uno obtiene su pago de desacuerdo. Nash no modela el regateo, sino las propiedades que debe cumplir un reparto razonable, y demuestra que solo uno las cumple todas. Por su parte, Rubinstein muestra que ese reparto es, aproximadamente, lo que obtendrían dos negociadores impacientes con ofertas alternas.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Entorno</em>: un conjunto factible de pares de utilidades <span class="math inline">\(\mathcal{U}\)</span>, compacto y convexo, y un punto de desacuerdo <span class="math inline">\(d = (d_1, d_2) \in \mathcal{U}\)</span> dominado por algún <span class="math inline">\(u \in \mathcal{U}\)</span>.</p></li>
+<li><p><em>Agentes</em>: dos jugadores con utilidades de von Neumann-Morgenstern <span class="math inline">\(u_1\)</span> y <span class="math inline">\(u_2\)</span>.</p></li>
+<li><p><em>Axiomas</em>: la solución debe ser (a) <em>invariante</em> a transformaciones afines positivas de las utilidades, (b) <em>simétrica</em> (si <span class="math inline">\(\mathcal{U}\)</span> es simétrico y <span class="math inline">\(d_1 = d_2\)</span>, ambos reciben lo mismo), (c) <em>independiente de alternativas irrelevantes</em> (sigue siendo la solución en todo subconjunto de <span class="math inline">\(\mathcal{U}\)</span> que la contenga junto con <span class="math inline">\(d\)</span>) y (d) <em>eficiente</em> en el sentido de Pareto.</p></li>
+</ul>
+<p><strong>Planteamiento</strong>: la única solución que satisface los cuatro axiomas es la que resuelve</p>
+<p><span class="math display">\[\max_{(u_1, u_2) \in \mathcal{U}} \; (u_1 - d_1)(u_2 - d_2) \qquad \text{s.a.:} \quad u_i \geq d_i, \; i = 1, 2\]</span></p>
+<p>donde <span class="math inline">\(u_i\)</span> es la utilidad que el acuerdo proporciona al jugador <span class="math inline">\(i\)</span>, <span class="math inline">\(d_i\)</span> su utilidad de desacuerdo (su <em>alternativa exterior</em>) y <span class="math inline">\(u_i - d_i\)</span> su ganancia neta. En el reparto de un excedente monetario <span class="math inline">\(Y\)</span> con utilidades lineales, <span class="math inline">\(u_1 = x\)</span> y <span class="math inline">\(u_2 = Y - x\)</span>, el programa se reduce a <span class="math inline">\(\max_x (x - d_1)(Y - x - d_2)\)</span>.</p>
+<p><strong>CPO</strong>: en el reparto monetario, la derivada del producto de Nash respecto a <span class="math inline">\(x\)</span> se anula:</p>
+<p><span class="math display">\[(Y - x - d_2) - (x - d_1) = 0 \quad \Longrightarrow \quad x^* - d_1 = Y - x^* - d_2\]</span></p>
+<p>En el caso general, la CPO iguala la pendiente de la frontera de <span class="math inline">\(\mathcal{U}\)</span>, en valor absoluto, a la ratio de ganancias netas:</p>
+<p><span class="math display">\[-\frac{du_2}{du_1} = \frac{u_2 - d_2}{u_1 - d_1}\]</span></p>
+<p>En el plano <span class="math inline">\((u_1, u_2)\)</span> (figura <a href="#fig-a145-solucion-nash" class="quarto-xref"><span>A14.5</span></a>), las curvas de nivel del producto de Nash son hipérbolas con asíntotas <span class="math inline">\(u_1 = d_1\)</span> y <span class="math inline">\(u_2 = d_2\)</span>, y la solución <span class="math inline">\(N\)</span> es el punto en que la más alta de ellas toca la frontera de <span class="math inline">\(\mathcal{U}\)</span>.</p>
+<div id="fig-a145-solucion-nash" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a145-solucion-nash-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a145_Solucion_Nash.html" style="height:560px" loading="lazy" title="fig-a145-solucion-nash"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a145-solucion-nash-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A14.5: Solución de negociación de Nash. Las curvas de nivel del producto de Nash, <span class="math inline">\((u_1 - d_1)(u_2 - d_2) = k\)</span>, son hipérbolas con asíntotas <span class="math inline">\(u_1 = d_1\)</span> y <span class="math inline">\(u_2 = d_2\)</span>, y la solución <span class="math inline">\(N\)</span> está donde la más alta de ellas toca la frontera del conjunto factible <span class="math inline">\(\mathcal{U}\)</span>. En <span class="math inline">\(N\)</span>, la pendiente de la frontera, en valor absoluto, iguala la ratio de ganancias netas respecto al punto de desacuerdo, <span class="math inline">\((u_2 - d_2)/(u_1 - d_1)\)</span>.
+</figcaption>
+</figure>
+</div>
+<p><strong>CSO</strong>: el objetivo es estrictamente cóncavo en <span class="math inline">\(x\)</span> (su segunda derivada es <span class="math inline">\(-2\)</span>), lo que hace la CPO suficiente. En el caso general, la convexidad de <span class="math inline">\(\mathcal{U}\)</span> garantiza un máximo único.</p>
+<p><strong>Solución</strong>: el reparto iguala las ganancias netas de los dos jugadores:</p>
+<p><span class="math display">\[x^* = d_1 + \frac{1}{2}\,(Y - d_1 - d_2)\]</span></p>
+<p>Cada parte recibe su alternativa exterior más la mitad del excedente que la negociación genera respecto al desacuerdo, de modo que quien tiene mejor alternativa exterior obtiene más.</p>
+<p><strong>Extensiones</strong>: en el <em>modelo de Rubinstein</em> (1982), dos jugadores se reparten un excedente de tamaño uno con ofertas alternas sin límite de periodos, y ambos descuentan el futuro con un factor <span class="math inline">\(\beta \in (0, 1)\)</span>. El jugador 1 propone en los periodos pares y el 2 en los impares. Quien recibe la oferta la acepta o la rechaza, y en este caso se pasa al periodo siguiente. El único ENPS tiene acuerdo inmediato, en el que el jugador 1 se queda con <span class="math inline">\(x^* = 1/(1 + \beta)\)</span> y el 2 acepta, porque quien propone ofrece al otro exactamente lo que este obtendría, descontado, si rechazase y propusiera él después (<span class="math inline">\(1 - x^* = \beta x^*\)</span>). Por tanto, el proponente obtiene más de la mitad, tanto más cuanto más impacientes sean los jugadores. Cuando <span class="math inline">\(\beta \to 1\)</span>, el reparto converge a la mitad, la solución de Nash simétrica, de modo que la ventaja del proponente nace de la impaciencia.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la solución de Nash es la herramienta estándar para todo reparto bilateral que el mercado no fija, como la negociación salarial o el monopolio bilateral, cuyo precio deja indeterminado el análisis de oferta y demanda (tema <a href="../chapters/a17-monopolio.html">A17</a>). Rubinstein le da un fundamento no cooperativo.</p></li>
+<li><p><em>Limitaciones</em>: el axioma de independencia de alternativas irrelevantes es discutible (Kalai y Smorodinsky, 1975, lo sustituyen por una condición de monotonía), y el resultado depende de qué se tome como punto de desacuerdo. Además, ambos modelos suponen información completa, cuando con información privada aparecen retrasos e ineficiencias que ninguno predice.</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusiones-1" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-1">2.5. Conclusiones</h3>
+<p>Los juegos estáticos recorren los casos del equilibrio de Nash, desde el que coincide con el de estrategias dominantes hasta el que solo existe en estrategias mixtas o se multiplica y deja la selección a las convenciones. Con incertidumbre, la información privada se traslada a las creencias y puede impedir intercambios beneficiosos, como en el mercado de coches usados. En los juegos dinámicos, la inducción hacia atrás descarta las amenazas que no conviene cumplir, y por eso la disuasión y la cooperación se apoyan en compromisos irreversibles, en la repetición indefinida o en la reputación. Por último, en la negociación de Rubinstein el reparto converge con jugadores pacientes a la solución simétrica de Nash. El apartado 3 aplica el equilibrio de Bayes-Nash a las subastas.</p>
+</section>
+</section>
+<section id="teoría-de-las-subastas" class="level2">
+<h2 class="anchored" data-anchor-id="teoría-de-las-subastas">3. Teoría de las subastas</h2>
+<p>Tras describir los formatos de subasta, se derivan las pujas de equilibrio y el teorema de equivalencia de ingresos, con los casos en que deja de cumplirse, y se repasan sus aplicaciones al diseño de políticas públicas.</p>
+<section id="concepto-vickrey-1961-myerson-1981-milgrom-y-wilson-nobel-2020" class="level3">
+<h3 class="anchored" data-anchor-id="concepto-vickrey-1961-myerson-1981-milgrom-y-wilson-nobel-2020">3.1. Concepto (Vickrey, 1961; Myerson, 1981; Milgrom y Wilson, Nobel 2020)</h3>
+<p>Las subastas son uno de los mecanismos de asignación de bienes y recursos más antiguos y extendidos. Ya Heródoto describe subastas de novias en Babilonia hacia el siglo V a. C.</p>
+<p>Hoy siguen siendo centrales en la economía y se emplean para colocar deuda pública, adjudicar licencias de espectro radioeléctrico, vender electricidad en los mercados mayoristas o asignar los anuncios en buscadores y redes sociales.</p>
+<p>La <strong>teoría de subastas</strong>, iniciada por William Vickrey (1961, Nobel en 1996), analiza el funcionamiento de los distintos mecanismos de venta en presencia de información asimétrica (cada pujador conoce su propia valoración, pero no la de los demás). Myerson (1981) la extendió al diseño de la subasta óptima para el vendedor. Por esa información asimétrica, las subastas son la principal aplicación de los juegos con información incompleta.</p>
+</section>
+<section id="formatos-básicos-de-subasta" class="level3">
+<h3 class="anchored" data-anchor-id="formatos-básicos-de-subasta">3.2. Formatos básicos de subasta</h3>
+<p>Se distinguen cuatro formatos básicos, en los que se subasta un único objeto:</p>
+<ol type="1">
+<li><p><em>Subasta inglesa</em> (ascendente): el precio se anuncia abiertamente y sube hasta que queda un solo pujador, que obtiene el objeto y paga el precio al que abandonó el último rival.</p></li>
+<li><p><em>Subasta holandesa</em> (descendente): el precio también se anuncia públicamente, pero baja desde un nivel alto hasta que un pujador lo acepta y paga ese precio.</p></li>
+<li><p><em>Subasta en sobre cerrado de primer precio</em>: a diferencia de los dos casos anteriores, cada pujador presenta una oferta sellada, sin conocer las de los demás. El ganador es quien presenta la oferta más alta y paga su propia oferta.</p></li>
+<li><p><em>Subasta en sobre cerrado de segundo precio</em> (Vickrey): cada pujador presenta de nuevo una oferta sellada, y gana quien presenta la más alta, pero en este caso paga la segunda oferta más alta.</p></li>
+</ol>
+</section>
+<section id="pujas-de-equilibrio-la-subasta-de-primer-precio-y-la-subasta-de-vickrey-1961" class="level3">
+<h3 class="anchored" data-anchor-id="pujas-de-equilibrio-la-subasta-de-primer-precio-y-la-subasta-de-vickrey-1961">3.3. Pujas de equilibrio: la subasta de primer precio y la subasta de Vickrey (1961)</h3>
+<p><strong>Origen</strong>: la derivación de las pujas de equilibrio con valores privados independientes se debe a Vickrey (1961), que resolvió el caso uniforme y propuso la subasta de segundo precio que lleva su nombre.</p>
+<p><strong>Idea</strong>: en la subasta de primer precio, pujar alto aumenta la probabilidad de ganar pero reduce la ganancia, y la puja óptima rebaja la valoración (<em>bid shading</em>) según el número de rivales. En cambio, en la de segundo precio el dilema desaparece, porque la puja solo decide si se gana, no cuánto se paga.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Entorno</em>: cada pujador conoce su valoración <span class="math inline">\(v_i\)</span>, extraída de forma independiente de una uniforme en <span class="math inline">\([0, 1]\)</span> (valores privados independientes).</p></li>
+<li><p><em>Agentes</em>: <span class="math inline">\(n \geq 2\)</span> pujadores neutrales al riesgo y un vendedor que valora el objeto en cero.</p></li>
+<li><p><em>Reglas</em>: pujas simultáneas en sobre cerrado. Gana la más alta y paga su puja (primer precio) o la segunda más alta (Vickrey). Se busca un equilibrio simétrico en estrategias <span class="math inline">\(b(v)\)</span> crecientes.</p></li>
+</ul>
+<p><strong>Planteamiento</strong>: en la subasta de primer precio, el pujador de valoración <span class="math inline">\(v\)</span> elige su puja <span class="math inline">\(b\)</span> para maximizar el excedente esperado:</p>
+<p><span class="math display">\[\max_{b} \; (v - b) \cdot \Pr(\text{ganar} \mid b), \qquad \Pr(\text{ganar} \mid b) = \left[b^{-1}(b)\right]^{n-1}\]</span></p>
+<p>donde <span class="math inline">\(v - b\)</span> es la ganancia si vence, <span class="math inline">\(b^{-1}(b) = \tilde{v}\)</span> es la valoración del rival que, en equilibrio, pujaría exactamente <span class="math inline">\(b\)</span>, y <span class="math inline">\(\tilde{v}^{n-1}\)</span> la probabilidad de que las <span class="math inline">\(n - 1\)</span> valoraciones rivales sean inferiores a <span class="math inline">\(\tilde{v}\)</span>. Elegir la puja equivale a elegir la valoración <span class="math inline">\(\tilde{v}\)</span> que el pujador aparenta, <span class="math inline">\(\max_{\tilde{v}}\, (v - b(\tilde{v}))\, \tilde{v}^{n-1}\)</span>.</p>
+<p><strong>CPO</strong>: derivando respecto a <span class="math inline">\(b\)</span> e imponiendo que en equilibrio el pujador no quiera desviarse de <span class="math inline">\(b^* = b(v)\)</span> (es decir, que no quiera aparentar una valoración distinta de la propia, <span class="math inline">\(\tilde{v} = v\)</span>), el beneficio marginal de pujar un euro más debe igualar a su coste marginal<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>:</p>
+<p><span class="math display">\[
+\underbrace{\frac{(n - 1)\, v^{n-2}}{db/dv} \left[v - b(v)\right]}_{\text{Bmg}(b^*)} = \underbrace{v^{n-1}}_{\text{Cmg}(b^*)}
+\]</span></p>
+<p>El beneficio marginal es el aumento de la probabilidad de ganar multiplicado por el excedente obtenido al ganar, mientras que el coste marginal es la probabilidad de ganar, pues el euro adicional se paga en todos los casos en que se gana.</p>
+<p><strong>CSO</strong>: la derivada del objetivo respecto a <span class="math inline">\(\tilde{v}\)</span> tiene el signo de <span class="math inline">\(v - \tilde{v}\)</span>, de modo que a quien aparenta menos de lo que valora le compensa subir la puja, y a quien aparenta más, bajarla. Por tanto, <span class="math inline">\(\tilde{v} = v\)</span> es el máximo global y <span class="math inline">\(b(v)\)</span> es mejor respuesta a sí misma (equilibrio de Bayes-Nash simétrico).</p>
+<p><strong>Solución</strong>: integrando con <span class="math inline">\(b(0) = 0\)</span> resulta <span class="math inline">\(b(v) = \frac{n-1}{n}\, v\)</span>, es decir, la puja es una fracción constante de la valoración (la mitad con dos pujadores) que tiende a la valoración cuando <span class="math inline">\(n \to \infty\)</span>, porque la competencia elimina la rebaja.</p>
+<p>En la subasta de Vickrey, en cambio, pujar la propia valoración, <span class="math inline">\(b(v) = v\)</span>, es débilmente dominante, pues pujar más solo añade victorias con pérdida y pujar menos solo hace perder victorias rentables. El ganador paga la segunda valoración, cuya esperanza es <span class="math inline">\(\frac{n-1}{n}\, v\)</span>, lo mismo que puja el ganador en la de primer precio.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: el modelo da una predicción cerrada y contrastable de las pujas y muestra que la rebaja estratégica es una respuesta racional a la información privada, no un fallo.</p></li>
+<li><p><em>Limitaciones</em>: la solución cerrada depende de la simetría, la neutralidad al riesgo y la independencia de las valoraciones. Así, con aversión al riesgo, los pujadores rebajan menos (la de primer precio recauda más que la de Vickrey), y con valores comunes la puja debe corregir además la maldición del ganador.</p></li>
+</ul>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La subasta de Vickrey es el caso más sencillo del <em>mecanismo de Clarke-Groves-Vickrey</em> (VCG, por sus siglas en inglés), que el tema <a href="../chapters/a23-eb-ii.html">A23</a>, apartado 2.1.4, estudia como solución a la provisión ineficiente de los bienes públicos. Con varios objetos, el mecanismo asigna los bienes de forma eficiente y cobra a cada pujador el coste que su presencia impone a los demás, de modo que pujar la verdadera valoración sigue siendo una estrategia dominante. En la práctica apenas se usa, porque puede recaudar poco y es vulnerable a la colusión y a los pujadores ficticios (Ausubel y Milgrom, 2006). Una excepción notable fue la venta de publicidad de Facebook (Varian y Harris, 2014).</p>
+</div>
+</div>
+</div>
+</section>
+<section id="teorema-de-equivalencia-de-ingresos-vickrey-1961-riley-y-samuelson-1981-myerson-1981" class="level3">
+<h3 class="anchored" data-anchor-id="teorema-de-equivalencia-de-ingresos-vickrey-1961-riley-y-samuelson-1981-myerson-1981">3.4. Teorema de equivalencia de ingresos (Vickrey, 1961; Riley y Samuelson, 1981; Myerson, 1981)</h3>
+<p><strong>Origen</strong>: Vickrey (1961) observó que, con valores privados independientes y uniformes, las subastas de primer y de segundo precio generan el mismo ingreso esperado. Riley y Samuelson (1981) y Myerson (1981) lo generalizaron, de forma independiente, al analizar la subasta óptima para el vendedor.</p>
+<p><strong>Idea</strong>: el ingreso esperado del vendedor depende de quién obtiene el objeto y del excedente que se deja al pujador de menor valoración, no de las reglas de pago. Por ello, dos subastas que asignan el objeto del mismo modo recaudan, en promedio, lo mismo.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Entorno</em>: valores privados independientes. Cada pujador conoce su propia valoración, independiente de las demás y extraída de la misma distribución continua.</p></li>
+<li><p><em>Agentes</em>: <span class="math inline">\(n \geq 2\)</span> pujadores neutrales al riesgo y simétricos.</p></li>
+<li><p><em>Reglas</em>: cualquier formato en el que gane el pujador de mayor valoración y el de valoración mínima obtenga excedente nulo.</p></li>
+</ul>
+<p><strong>Razonamiento</strong>: con estos supuestos, los cuatro formatos básicos de subasta generan el mismo ingreso esperado para el vendedor<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>. La intuición distingue dos grupos de formatos:</p>
+<ul>
+<li><p><em>Vickrey e inglesa</em>: la estrategia débilmente dominante es pujar la verdadera valoración (revelación veraz) o, en la inglesa, permanecer en la puja hasta alcanzarla, pues el precio pagado no depende de la propia oferta.</p></li>
+<li><p><em>Primer precio y holandesa</em>: los pujadores rebajan estratégicamente sus ofertas (<em>bid shading</em>), pero el equilibrio produce el mismo ingreso esperado.</p></li>
+</ul>
+<p><strong>Extensiones</strong>: el teorema sirve de referencia para analizar qué cambia cuando el vendedor fija un precio mínimo o cuando falla alguno de sus supuestos:</p>
+<ul>
+<li><p><em>Precio de reserva óptimo</em> (Myerson, 1981): el vendedor aumenta su ingreso esperado fijando un <em>precio de reserva</em> <span class="math inline">\(\underline{r}\)</span> por debajo del cual no vende, aunque a veces se quede con el objeto. La condición de optimalidad es <span class="math inline">\(\underline{r} - \frac{1 - F(\underline{r})}{f(\underline{r})} = 0\)</span>, donde <span class="math inline">\(F\)</span> y <span class="math inline">\(f\)</span> son la distribución y la densidad de las valoraciones. El vendedor se comporta como un monopolista frente al pujador de mayor valoración e iguala su coste (cero) al <em>valor virtual</em>, el ingreso marginal de vender al tipo <span class="math inline">\(\underline{r}\)</span> descontada la renta informacional que cede a los tipos superiores. En el caso uniforme, <span class="math inline">\(\underline{r}^* = 1/2\)</span> con independencia de <span class="math inline">\(n\)</span>. Con dos pujadores, el ingreso esperado pasa de <span class="math inline">\(1/3\)</span> a <span class="math inline">\(5/12\)</span>.</p></li>
+<li><p><em>Aversión al riesgo</em>: la equivalencia se rompe a favor de la subasta de primer precio y de la holandesa. En ellas, pujar algo más reduce el riesgo de quedarse sin el objeto, de modo que los pujadores aversos al riesgo rebajan menos sus ofertas. En la de Vickrey y en la inglesa, en cambio, pujar la propia valoración sigue siendo débilmente dominante y la recaudación no cambia.</p></li>
+<li><p><em>Valores comunes</em>: el valor del objeto es el mismo para todos los pujadores, pero desconocido (p.&nbsp;ej. una concesión petrolífera). Surge la <em>maldición del ganador</em>, porque el ganador tiende a ser quien más ha sobrestimado el valor, por lo que los pujadores racionales ajustan sus ofertas a la baja. La corrección consiste en pujar según el valor esperado <em>condicionado a ganar</em>, y como la señal del ganador es más optimista cuanto mayor es <span class="math inline">\(n\)</span>, más competidores no siempre elevan las pujas. La subasta inglesa mitiga la maldición porque las retiradas sucesivas revelan las señales de los rivales.</p></li>
+<li><p><em>Valores afiliados</em> (Milgrom y Weber, 1982): las señales de los pujadores están correlacionadas positivamente, de modo que una señal alta hace más probable que las de los rivales también lo sean. La subasta inglesa genera al menos tantos ingresos como las de sobre cerrado (y la de segundo precio, al menos tantos como la de primer precio), porque revela más información durante el proceso.</p></li>
+</ul>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: el teorema es la referencia con la que se comparan todos los formatos, y el razonamiento de su demostración se extiende al diseño de la subasta óptima.</p></li>
+<li><p><em>Limitaciones</em>: sus supuestos (neutralidad al riesgo, simetría, valores privados independientes y un único objeto) rara vez se cumplen a la vez, y cuando falla alguno los formatos dejan de ser equivalentes. Tampoco contempla la colusión entre pujadores ni la venta de muchas unidades, que son habituales en las aplicaciones.</p></li>
+</ul>
+</section>
+<section id="aplicaciones-1" class="level3">
+<h3 class="anchored" data-anchor-id="aplicaciones-1">3.5. Aplicaciones</h3>
+<p>El Premio Nobel de 2020 a Paul Milgrom y Robert Wilson reconoció la mejora de la teoría de subastas y la invención de nuevos formatos, como las subastas de múltiples objetos y las combinatorias, que han llevado la teoría al diseño de políticas públicas. En la mayoría de estas aplicaciones se venden muchas unidades de un bien homogéneo a pujadores que demandan varias, y el teorema de equivalencia de ingresos deja de cumplirse.</p>
+<p>En la subasta de <em>precio uniforme</em> todos los adjudicatarios pagan el precio marginal, lo que invita a rebajar la puja de las últimas unidades para abaratar las demás. En la <em>discriminatoria</em> (de precios múltiples) cada uno paga su puja, lo que invita a rebajarlas todas. Ningún formato domina al otro en general, ni en ingresos ni en eficiencia. Las principales aplicaciones son las siguientes:</p>
+<ul>
+<li><p><em>Deuda pública</em>: el Tesoro Público usa un formato mixto, la subasta española u holandesa modificada. En ella, las ofertas competitivas aceptadas pagan su propio precio si queda entre el mínimo aceptado y el medio ponderado, y el medio ponderado si lo igualan o superan, igual que las no competitivas (Orden ECM/2/2026, art. 12.4). En cambio, el Tesoro de EE.&nbsp;UU. aplica precio uniforme a todas sus subastas desde 1998 (tema <a href="../chapters/b24-renta-fija.html">B24</a>, apartado 1.1.1).</p></li>
+<li><p><em>Política monetaria</em>: el Eurosistema adjudicó sus operaciones principales de financiación por subasta a tipo variable y de precios múltiples entre junio de 2000 y octubre de 2008, tras comprobar que el tipo fijo con prorrateo provocaba pujas infladas. Desde entonces aplica tipo fijo con adjudicación plena, confirmado en la revisión de su marco operativo de 2024, de modo que cada entidad obtiene lo que pide al tipo oficial y la subasta deja de ser un juego estratégico (tema <a href="../chapters/a36-politica-monetaria-i.html">A36</a>, apartado 3.1.1).</p></li>
+<li><p><em>Derechos de emisión</em>: el régimen de comercio de derechos de emisión de la Unión Europea (RCDE UE) subasta hasta el 57&nbsp;% de sus derechos generales de 2021-2030 en la bolsa European Energy Exchange (EEX) de Leipzig. Las subastas son de ronda única, en sobre cerrado y a precio uniforme (Reglamento Delegado (UE) 2023/2830; tema <a href="../chapters/a23-eb-ii.html">A23</a>, apartado 2.2.5).</p></li>
+<li><p><em>Espectro radioeléctrico</em>: Milgrom y Wilson, en parte con Preston McAfee, diseñaron para la Comisión Federal de Comunicaciones de EE.&nbsp;UU. la subasta simultánea de rondas múltiples, que vende a la vez todas las licencias con pujas ascendentes para que cada operador ajuste sus pujas por licencias complementarias. En su estreno, en julio de 1994, la subasta vendió diez licencias por 617&nbsp;M$ (Real Academia Sueca de Ciencias, 2020).</p></li>
+<li><p><em>Contratación pública</em>: en una licitación el comprador subasta un contrato a la baja, y el riesgo principal es la colusión entre licitadores (<em>bid rigging</em>), que la teoría de subastas ayuda a detectar (sobre los cárteles, tema <a href="../chapters/a19-oligopolio.html">A19</a>, apartado 2.1.1). Por ejemplo, en las licitaciones de carreteras de Long Island, el orden de las ofertas de cobertura del cártel no respondía a sus costes (Porter y Zona, 1993). La Organización para la Cooperación y el Desarrollo Económicos (OCDE) recoge estos indicios en sus directrices de 2025.</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusiones-2" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones-2">Conclusiones</h2>
+<p>La teoría de juegos es el marco formal de la interacción estratégica, y sus conceptos de solución se ordenan según el tiempo y la información del juego. Así, la dominancia y el equilibrio de Nash resuelven los juegos estáticos, el ENPS descarta las amenazas no creíbles de los dinámicos y los equilibrios bayesianos incorporan las creencias cuando hay información privada. Los ejemplos muestran que el equilibrio puede no existir en estrategias puras, como en el <em>matching pennies</em>, no ser único, como en la batalla de los sexos, o no ser eficiente, como en el dilema del prisionero, y que la repetición entre jugadores pacientes permite sostener la cooperación (<em>folk theorem</em>). Los juegos cooperativos, en cambio, se ocupan del reparto estable (el núcleo) y equitativo (el valor de Shapley) de las ganancias de cooperar, y las subastas aplican estas herramientas a un problema de diseño.</p>
+<p>Estas herramientas recorren buena parte del libro, siempre que el resultado de cada agente dependa de lo que hagan los demás. En los mercados, el oligopolio, la colusión tácita y la disuasión de la entrada son juegos entre empresas (tema <a href="../chapters/a19-oligopolio.html">A19</a>), y la selección adversa y la señalización, juegos con información privada (tema <a href="../chapters/a13-informacion.html">A13</a>). En macroeconomía, la inconsistencia dinámica de la política monetaria (Kydland y Prescott, 1977; Barro y Gordon, 1983a) es un juego entre el banco central y el público, en el que el anuncio de una inflación baja no es creíble sin compromiso (tema <a href="../chapters/a06-nmc.html">A06</a>). En economía internacional, por último, la guerra arancelaria sigue la lógica del dilema del prisionero (tema <a href="../chapters/b07-politica-comercial-i.html">B07</a>), y la coordinación de políticas entre países se analiza con juegos no cooperativos y cooperativos (tema <a href="../chapters/b19-coordinacion.html">B19</a>).</p>
+<p>Sobre la colusión algorítmica, Calvano, Calzolari, Denicolò y Pastorello (2020) muestran en simulaciones que algoritmos de precios basados en el aprendizaje por refuerzo (<em>Q-learning</em>) aprenden por sí solos a fijar precios supracompetitivos y a castigar las desviaciones sin comunicarse entre sí. Los algoritmos reproducen así la colusión tácita de los juegos repetidos con una coordinación que nadie ha acordado. El diseño de mercados, por su parte, emplea la teoría de juegos para construir instituciones de asignación. Al diseño de subastas de Milgrom y Wilson (Nobel 2020) se suma la teoría de las asignaciones estables de Roth y Shapley (Nobel 2012), cuyos mecanismos de emparejamiento asignan médicos residentes, plazas escolares o riñones de donantes vivos.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Las mejores acciones pueden depender de acciones ya tomadas, de acciones simultáneas esperadas o de futuras acciones que resulten de las presentes.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>La interdependencia estratégica no se limita al conflicto, pues existen juegos de coordinación pura, con intereses plenamente alineados.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>El orden de supresión no afecta al conjunto final de estrategias supervivientes (con dominancia estricta).<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>La concavidad estricta del beneficio en la cantidad propia da funciones de reacción continuas (existencia). Una pendiente de estas, respecto a la cantidad del rival, menor que uno en valor absoluto garantiza la unicidad, como ocurre con demanda lineal y costes marginales constantes (pendiente <span class="math inline">\(-1/2\)</span>).<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Véase Gravelle y Rees (2004).<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Un ejemplo clásico es el de Hernán Cortés al hundir sus naves en 1519, episodio que la tradición recuerda como su “quema”.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Multiplicando por <span class="math inline">\(b'(v)\)</span> y reordenando, <span class="math inline">\(v^{n-1} b'(v) + (n-1)\, v^{n-2}\, b(v) = (n-1)\, v^{n-1}\)</span>, cuyo lado izquierdo es la derivada de <span class="math inline">\(v^{n-1} b(v)\)</span>. Por tanto, la CPO equivale a la ecuación diferencial <span class="math inline">\(\frac{d}{dv}\left[v^{n-1} b(v)\right] = (n - 1)\, v^{n-1}\)</span>, que puede integrarse directamente para obtener la puja de equilibrio.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>La demostración (Myerson, 1981) se apoya en el teorema de la envolvente. Por él, la utilidad de equilibrio del tipo <span class="math inline">\(v\)</span> es <span class="math inline">\(U(v) = \int_0^v P(x)\,dx\)</span>, donde <span class="math inline">\(P(x)\)</span> es la probabilidad de ganar del tipo <span class="math inline">\(x\)</span>. Como <span class="math inline">\(P(\cdot)\)</span> es la misma en todos los formatos, también lo son <span class="math inline">\(U(v)\)</span>, el pago esperado de cada tipo, <span class="math inline">\(v P(v) - U(v)\)</span>, y el ingreso del vendedor (<span class="math inline">\(\frac{n-1}{n+1}\)</span> en el caso uniforme).<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script>
+// Gráficos del libro (iframes .graph-frame).
+// 1) Escala única: los grosores, los discontinuos y el tamaño de los puntos de cada figura están fijados para verla a 680 px
+//    de ancho. Los marcos anchos (figuras de varios paneles) se estiran hasta la columna y las pantallas estrechas las encogen; aquí se
+//    compensa para que en pantalla las curvas midan siempre lo mismo (2,2 px las económicas, 1,4 las auxiliares, 1,2 ejes y flechas,
+//    0,8 las guías) y los puntos tengan el mismo tamaño en todas las figuras, sea cual sea el ancho al que se muestren.
+// 2) Ajusta la altura de cada iframe al elemento dibujado más bajo (curvas, ejes, etiquetas KaTeX).
+(function () {
+  var REF = 680;
+  function norm(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var s = d.querySelector("svg"); if (!s) return;
+      var w = s.getBoundingClientRect().width; if (!(w > 0)) return;
+      var r = REF / w;
+      var els = s.querySelectorAll("path, line, polyline, polygon, rect, circle, ellipse");
+      els.forEach(function (el) {
+        var cs = d.defaultView.getComputedStyle(el);
+        if (el.dataset.sw0 === undefined) {
+          el.dataset.sw0 = parseFloat(cs.strokeWidth) || 0;
+          el.dataset.da0 = (cs.strokeDasharray && cs.strokeDasharray !== "none") ? cs.strokeDasharray : "";
+          if (el.tagName.toLowerCase() === "circle" && el.r && el.r.baseVal.value > 0 && el.r.baseVal.value <= 9) {
+            el.dataset.r0 = el.r.baseVal.value;
+          }
+        }
+        var sw0 = +el.dataset.sw0;
+        if (sw0 > 0) el.style.strokeWidth = (sw0 * r).toFixed(3) + "px";
+        if (el.dataset.da0) {
+          el.style.strokeDasharray = el.dataset.da0.split(/[ ,]+/).map(function (v) {
+            return (parseFloat(v) * r).toFixed(3) + "px";
+          }).join(" ");
+        }
+        if (el.dataset.r0) el.setAttribute("r", (+el.dataset.r0 * r).toFixed(3));
+      });
+    } catch (e) {}
+  }
+  function fit(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var sy = d.defaultView.scrollY || 0, bottom = 0;
+      var els = d.querySelectorAll("svg path, svg line, svg circle, svg polyline, svg polygon, svg rect, svg text, svg ellipse, .katex-label");
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width > 0 || r.height > 0) bottom = Math.max(bottom, r.bottom + sy);
+      });
+      if (!(bottom > 20)) {
+        var svg = d.querySelector("svg"); var vb = svg && svg.getAttribute("viewBox");
+        if (vb) { var p = vb.split(/\s+/); bottom = f.clientWidth * (+p[3]) / (+p[2]); }
+      }
+      if (bottom > 20) f.style.height = Math.ceil(bottom + 10) + "px";
+    } catch (e) {}
+  }
+  // 3) Un gráfico de varios paneles no se amplía por encima del 110 % de su ancho de dibujo (viewBox). Los dibujados a
+  //    680 px quedan en 748 px como máximo, con rótulos de tamaño normal; los de 900 o 960 px, en el tope de 900 px del CSS.
+  function cap(f) {
+    try {
+      if (!f.parentElement || !f.parentElement.classList.contains("wide")) return;
+      var s = f.contentDocument && f.contentDocument.querySelector("svg"); if (!s) return;
+      var vb = s.viewBox && s.viewBox.baseVal; if (!vb || !(vb.width > 0)) return;
+      var m = Math.min(900, Math.round(vb.width * 1.1)) + "px";
+      if (f.style.maxWidth !== m) f.style.maxWidth = m;
+    } catch (e) {}
+  }
+  function both(f) { cap(f); norm(f); fit(f); }
+  function all() { document.querySelectorAll(".graph-frame iframe").forEach(both); }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".graph-frame iframe").forEach(function (f) {
+      f.addEventListener("load", function () { both(f); setTimeout(function () { both(f); }, 700); });
+    });
+  });
+  window.addEventListener("load", function () { setTimeout(all, 1200); });
+  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(all, 150); });
+})();
+</script>
+<style>
+.graph-frame { margin: 1.25rem 0 0.25rem; }
+.quarto-figure .graph-frame + * { margin-top: 0; }
+</style>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/librovol1\.arturolorenzo\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/a13-informacion.html" class="pagination-link" aria-label="A13. Economía de la información">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">A13. Economía de la información</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/a15-toi.html" class="pagination-link" aria-label="A15. Teoría de la organización industrial">
+        <span class="nav-page-text"><span class="chapter-title">A15. Teoría de la organización industrial</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

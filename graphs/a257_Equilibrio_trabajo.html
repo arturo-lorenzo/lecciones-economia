@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  body { margin: 0; background: #fff; }
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg id="g" viewBox="0 0 680 540" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+</svg>
+</div>
+<script>
+const W = 680, H = 540;
+const svg = document.getElementById('g'), NS = 'http://www.w3.org/2000/svg';
+const box = document.querySelector('.graph-container');
+function el(tag, attrs) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+const f1 = v => v.toFixed(1);
+const labels = [];
+const lab = (tex, x, y, color, ax, ay, size, bg) => labels.push({tex, x, y, color, ax, ay, size, bg});
+const line = (x1, y1, x2, y2, at) => el('line', Object.assign({x1: f1(x1), y1: f1(y1), x2: f1(x2), y2: f1(y2)}, at));
+const path = (pts, at) => el('path', Object.assign({d: pts.map((q, i) => (i ? 'L' : 'M') + f1(q[0]) + ',' + f1(q[1])).join(' '), fill: 'none'}, at));
+const AXIS = {stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'};
+const GUIDE = {stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'};
+const TICK = {stroke: '#000', 'stroke-width': 1};
+const ARR = c => ({stroke: c, 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+const STAB = {stroke: '#5a5a5a', 'stroke-width': 1.2, 'stroke-dasharray': '5 3', 'marker-end': 'url(#arrow)'};
+const RED = '#D85A30', GREEN = '#1D9E75', GREEN_D = '#0F6E56', BLUE = '#378ADD', BLUE_D = '#185FA5', DEM = '#534AB7';
+const dot = (x, y) => el('circle', {cx: f1(x), cy: f1(y), r: 5, fill: '#000'});
+
+function shiftArrow(x0, y0, nx, ny, d, color, gap) { gap = gap || 6; line(x0 + nx * gap, y0 + ny * gap, x0 + nx * (d - gap), y0 + ny * (d - gap), ARR(color)); }
+
+
+const ws = L => 1 + 0.08 * L, wd = L => 10 - 0.1 * L;
+const Ls = w => (w - 1) / 0.08, Ld = w => (10 - w) / 0.1;
+const Le = 9 / 0.18, we = ws(Le);
+if (Math.abs(ws(Le) - wd(Le)) > 1e-9) console.error('equilibrio mal calculado');
+const wa = 7.5, wb = 2.5;
+const OX = 122, OY = 480, KX = 476 / 108, KW = 38;
+const gx = L => OX + KX * L, gy = w => OY - KW * w;
+const LEnd = 108, wTop = 11.6;
+line(OX, OY, gx(LEnd), OY, AXIS); line(OX, OY, OX, gy(wTop), AXIS);
+lab('w', OX, gy(wTop) - 6, '#000', 0.5, 1, '17px'); lab('L', gx(LEnd) + 6, OY, '#000', 0, 0.5, '17px');
+
+
+line(OX, gy(we), gx(Le), gy(we), GUIDE); line(gx(Le), gy(we), gx(Le), OY, GUIDE);
+line(OX, gy(wa), gx(Ls(wa)), gy(wa), GUIDE); line(OX, gy(wb), gx(Ld(wb)), gy(wb), GUIDE);
+[gy(we), gy(wa), gy(wb)].forEach(y => line(OX - 4, y, OX, y, TICK));
+line(gx(Le), OY, gx(Le), OY + 4, TICK);
+
+
+line(gx(Ld(wa)) + 3, gy(wa) - 9, gx(Ls(wa)) - 3, gy(wa) - 9, {stroke: '#000', 'stroke-width': 1.2, 'marker-start': 'url(#arrow)', 'marker-end': 'url(#arrow)'});
+line(gx(Ls(wb)) + 3, gy(wb) + 9, gx(Ld(wb)) - 3, gy(wb) + 9, {stroke: '#000', 'stroke-width': 1.2, 'marker-start': 'url(#arrow)', 'marker-end': 'url(#arrow)'});
+lab('\\text{Exceso de oferta}', (gx(Ld(wa)) + gx(Ls(wa))) / 2, gy(wa) - 15, '#000', 0.5, 1, '15px');
+lab('\\text{Exceso de demanda}', (gx(Ls(wb)) + gx(Ld(wb))) / 2, gy(wb) + 15, '#000', 0.5, 0, '15px', true);
+
+
+line(OX + 16, gy(wa) + 6, OX + 16, gy(we) - 8, STAB);
+line(OX + 16, gy(wb) - 6, OX + 16, gy(we) + 8, STAB);
+
+
+const sS = 0, sE = 100, dS = 4, dE = 94;
+line(gx(sS), gy(ws(sS)), gx(sE), gy(ws(sE)), {stroke: BLUE, 'stroke-width': 2.2});
+line(gx(dS), gy(wd(dS)), gx(dE), gy(wd(dE)), {stroke: GREEN, 'stroke-width': 2.2});
+lab('L^s(w)', gx(sE) + 6, gy(ws(sE)), BLUE_D, 0, 0.5);
+lab('L^d(w)', gx(dE) + 6, gy(wd(dE)), GREEN_D, 0, 0.5);
+
+
+dot(gx(Le), gy(we)); lab('0', gx(Le), gy(we) - 10, '#000', 0.5, 1);
+
+
+lab('w^*', OX - 8, gy(we), '#000', 1, 0.5); lab("w'", OX - 8, gy(wa), '#000', 1, 0.5); lab("w''", OX - 8, gy(wb), '#000', 1, 0.5);
+lab('L^*', gx(Le), OY + 8, '#000', 0.5, 0);
+
+labels.forEach((l, i) => {
+  const d = document.createElement('div');
+  d.className = 'katex-label'; d.id = 'lbl-' + i;
+  katex.render(l.tex, d, {throwOnError: false});
+  d.style.left = (l.x / W * 100).toFixed(3) + '%';
+  d.style.top = (l.y / H * 100).toFixed(3) + '%';
+  d.style.transform = `translate(${-(l.ax || 0) * 100}%, ${-(l.ay || 0) * 100}%)`;
+  d.style.color = l.color || '#000';
+  if (l.size) d.style.fontSize = l.size;
+  if (l.bg) { d.style.background = '#fff'; const k = d.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  box.appendChild(d);
+});
+</script>
+</body>
+</html>

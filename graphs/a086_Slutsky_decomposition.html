@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 600">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="124" y1="460" x2="556" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="124" y1="460" x2="124" y2="60"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="bl-init" stroke="#378ADD" stroke-width="2.2"/>
+    <line id="bl-final" stroke="#378ADD" stroke-width="2.2" stroke-dasharray="8 4"/>
+    <line id="bl-comp" stroke="#1D9E75" stroke-width="1.4" stroke-dasharray="6 4"/>
+
+
+    <path id="ic0" fill="none" stroke="#D85A30" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="ic1" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line id="dA-v" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line id="dA-h" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line id="dB-v" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line id="dB-h" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line id="dC-v" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line id="dC-h" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+
+    <g id="ticks"></g>
+
+
+    <circle id="ptA" r="5" fill="#000"/>
+    <circle id="ptB" r="5" fill="#000"/>
+    <circle id="ptC" r="5" fill="#000"/>
+
+
+    <g id="effect-arrows"></g>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-x1"></div>
+  <div class="katex-label" id="lbl-x2"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-A"></div>
+  <div class="katex-label" id="lbl-B"></div>
+  <div class="katex-label" id="lbl-C"></div>
+  <div class="katex-label" id="lbl-u0"></div>
+  <div class="katex-label" id="lbl-u1"></div>
+  <div class="katex-label" id="lbl-rp0"></div>
+  <div class="katex-label" id="lbl-rp1"></div>
+  <div class="katex-label" id="lbl-rpc"></div>
+  <div class="katex-label" id="lbl-x1A"></div>
+  <div class="katex-label" id="lbl-x1B"></div>
+  <div class="katex-label" id="lbl-x1C"></div>
+  <div class="katex-label" id="lbl-x2A"></div>
+  <div class="katex-label" id="lbl-x2B"></div>
+  <div class="katex-label" id="lbl-es"></div>
+  <div class="katex-label" id="lbl-er"></div>
+  <div class="katex-label" id="lbl-et"></div>
+
+</div>
+
+<script>
+
+const alpha = 0.5;
+const M = 40, p1i = 4, p2 = 2, p1f = 2;
+
+const x1A = alpha * M / p1i;
+const x2A = (1-alpha) * M / p2;
+const uA = Math.pow(x1A, alpha) * Math.pow(x2A, 1-alpha);
+
+const x1C = alpha * M / p1f;
+const x2C = (1-alpha) * M / p2;
+const uC = Math.pow(x1C, alpha) * Math.pow(x2C, 1-alpha);
+
+const x1B = uA * Math.pow(p2/p1f, 1-alpha);
+const x2B = uA * Math.pow(p1f/p2, alpha);
+const Mc = p1f * x1B + p2 * x2B;
+
+
+function toSvgX(x) { return 124 + x * 19.872; }
+function toSvgY(y) { return 460 - y * 18.5; }
+const VBH = 600;
+
+
+const bl = document.getElementById('bl-init');
+bl.setAttribute('x1', toSvgX(0));  bl.setAttribute('y1', toSvgY(M/p2));
+bl.setAttribute('x2', toSvgX(M/p1i)); bl.setAttribute('y2', toSvgY(0));
+
+const blf = document.getElementById('bl-final');
+blf.setAttribute('x1', toSvgX(0));  blf.setAttribute('y1', toSvgY(M/p2));
+blf.setAttribute('x2', toSvgX(M/p1f)); blf.setAttribute('y2', toSvgY(0));
+
+const blc = document.getElementById('bl-comp');
+blc.setAttribute('x1', toSvgX(0));  blc.setAttribute('y1', toSvgY(Mc/p2));
+blc.setAttribute('x2', toSvgX(Mc/p1f)); blc.setAttribute('y2', toSvgY(0));
+
+
+function genIC(u, id) {
+  const pts = [];
+  for (let i = 0; i <= 200; i++) {
+    const x1 = 0.6 + (i / 200) * 21;
+    const x2 = u * u / x1;
+    const sx = toSvgX(x1), sy = toSvgY(x2);
+    if (sx >= 129 && sx <= 550 && sy >= 65 && sy <= 458) {
+      pts.push(sx.toFixed(1) + ',' + sy.toFixed(1));
+    }
+  }
+  document.getElementById(id).setAttribute('d', 'M' + pts.join(' L'));
+}
+genIC(uA, 'ic0');
+genIC(uC, 'ic1');
+
+
+document.getElementById('ptA').setAttribute('cx', toSvgX(x1A));
+document.getElementById('ptA').setAttribute('cy', toSvgY(x2A));
+document.getElementById('ptB').setAttribute('cx', toSvgX(x1B));
+document.getElementById('ptB').setAttribute('cy', toSvgY(x2B));
+document.getElementById('ptC').setAttribute('cx', toSvgX(x1C));
+document.getElementById('ptC').setAttribute('cy', toSvgY(x2C));
+
+
+function setDash(id, sx1, sy1, sx2, sy2) {
+  const el = document.getElementById(id);
+  el.setAttribute('x1', sx1); el.setAttribute('y1', sy1);
+  el.setAttribute('x2', sx2); el.setAttribute('y2', sy2);
+}
+setDash('dA-v', toSvgX(x1A), toSvgY(x2A), toSvgX(x1A), toSvgY(0));
+setDash('dA-h', toSvgX(0),   toSvgY(x2A), toSvgX(x1A), toSvgY(x2A));
+setDash('dB-v', toSvgX(x1B), toSvgY(x2B), toSvgX(x1B), toSvgY(0));
+setDash('dB-h', toSvgX(0),   toSvgY(x2B), toSvgX(x1B), toSvgY(x2B));
+setDash('dC-v', toSvgX(x1C), toSvgY(x2C), toSvgX(x1C), toSvgY(0));
+setDash('dC-h', toSvgX(0),   toSvgY(x2C), toSvgX(x1C), toSvgY(x2C));
+
+
+const ticksG = document.getElementById('ticks');
+function addHTick(y) {
+  const t = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  t.setAttribute('x1', 120); t.setAttribute('x2', 124);
+  t.setAttribute('y1', toSvgY(y)); t.setAttribute('y2', toSvgY(y));
+  t.setAttribute('stroke', 'black'); t.setAttribute('stroke-width', '1');
+  ticksG.appendChild(t);
+}
+function addVTick(x) {
+  const t = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  t.setAttribute('x1', toSvgX(x)); t.setAttribute('x2', toSvgX(x));
+  t.setAttribute('y1', 460); t.setAttribute('y2', 464);
+  t.setAttribute('stroke', 'black'); t.setAttribute('stroke-width', '1');
+  ticksG.appendChild(t);
+}
+addHTick(x2A); addHTick(x2B);
+addVTick(x1A); addVTick(x1B); addVTick(x1C);
+
+
+const arrowsG = document.getElementById('effect-arrows');
+function drawArrow(econX1, econX2, svgY, color) {
+  const sx1 = toSvgX(econX1), sx2 = toSvgX(econX2);
+  const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  line.setAttribute('x1', sx1); line.setAttribute('y1', svgY);
+  line.setAttribute('x2', sx2 - 8); line.setAttribute('y2', svgY);
+  line.setAttribute('stroke', color); line.setAttribute('stroke-width', '1.2');
+  arrowsG.appendChild(line);
+  const head = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+  head.setAttribute('points', `${sx2},${svgY} ${sx2-8},${svgY-5} ${sx2-8},${svgY+5}`);
+  head.setAttribute('fill', color);
+  arrowsG.appendChild(head);
+}
+drawArrow(x1A, x1B, 510, '#1D9E75');
+drawArrow(x1B, x1C, 540, '#D85A30');
+drawArrow(x1A, x1C, 570, '#534AB7');
+
+
+const u0LabelSvgY = toSvgY(uA*uA/18) - 28;
+const u1LabelSvgY = toSvgY(uC*uC/18) - 28;
+const rpLabelSvgY = 460 - 40;
+
+
+
+
+
+function effectLabelPctY(svgY) { return (svgY / VBH * 100).toFixed(1) + '%'; }
+
+const labels = [
+  {id: 'lbl-x1',  tex: 'x_1',    left: '82.4%',   top: (460/VBH*100).toFixed(1)+'%',  color: 'black'},
+  {id: 'lbl-x2',  tex: 'x_2',    left: '14.2%',   top: (55/VBH*100).toFixed(1)+'%',   color: 'black'},
+  {id: 'lbl-o',   tex: 'O',      left: '15.9%',   top: (460/VBH*100).toFixed(1)+'%',  color: 'black'},
+
+
+  {id: 'lbl-A',   tex: '0',
+   left: ((toSvgX(x1A)+10)/680*100).toFixed(1)+'%',
+   top:  ((toSvgY(x2A)-18)/VBH*100).toFixed(1)+'%',  color: '#000'},
+  {id: 'lbl-B',   tex: "0'",
+   left: ((toSvgX(x1B)+10)/680*100).toFixed(1)+'%',
+   top:  ((toSvgY(x2B)-18)/VBH*100).toFixed(1)+'%',  color: '#000'},
+  {id: 'lbl-C',   tex: '1',
+   left: ((toSvgX(x1C)+10)/680*100).toFixed(1)+'%',
+   top:  ((toSvgY(x2C)-18)/VBH*100).toFixed(1)+'%',  color: '#000'},
+
+
+  {id: 'lbl-u0',  tex: 'u_0',
+   left: ((toSvgX(18))/680*100).toFixed(1)+'%',
+   top:  (u0LabelSvgY/VBH*100).toFixed(1)+'%',  color: '#D85A30'},
+  {id: 'lbl-u1',  tex: 'u_1',
+   left: ((toSvgX(18))/680*100).toFixed(1)+'%',
+   top:  (u1LabelSvgY/VBH*100).toFixed(1)+'%',  color: '#534AB7'},
+
+
+  {id: 'lbl-rp0', tex: '\\text{RP}_0',
+   left: ((toSvgX(M/p1i) - 15)/680*100).toFixed(1)+'%',
+   top:  (rpLabelSvgY/VBH*100).toFixed(1)+'%',  color: '#378ADD'},
+  {id: 'lbl-rp1', tex: '\\text{RP}_1',
+   left: ((toSvgX(M/p1f) - 15)/680*100).toFixed(1)+'%',
+   top:  (rpLabelSvgY/VBH*100).toFixed(1)+'%',  color: '#378ADD'},
+  {id: 'lbl-rpc', tex: '\\text{RP}_c',
+   left: ((toSvgX(Mc/p1f) - 15)/680*100).toFixed(1)+'%',
+   top:  (rpLabelSvgY/VBH*100).toFixed(1)+'%',  color: '#1D9E75'},
+
+
+  {id: 'lbl-x1A', tex: 'x_1^0',
+   left: ((toSvgX(x1A) - 14)/680*100).toFixed(1) + '%',
+   top:  (466/VBH*100).toFixed(1)+'%',  color: 'black'},
+  {id: 'lbl-x1B', tex: "x_1^{0'}",
+   left: ((toSvgX(x1B) - 17)/680*100).toFixed(1) + '%',
+   top:  (466/VBH*100).toFixed(1)+'%',  color: 'black'},
+  {id: 'lbl-x1C', tex: 'x_1^1',
+   left: ((toSvgX(x1C) - 14)/680*100).toFixed(1) + '%',
+   top:  (466/VBH*100).toFixed(1)+'%',  color: 'black'},
+  {id: 'lbl-x2A', tex: 'x_2^{0,1}',
+   left: '16.9%',
+   top:  ((toSvgY(x2A) - 10)/VBH*100).toFixed(1) + '%',  color: 'black', align: 'right'},
+  {id: 'lbl-x2B', tex: "x_2^{0'}",
+   left: '16.9%',
+   top:  ((toSvgY(x2B) - 10)/VBH*100).toFixed(1) + '%',  color: 'black', align: 'right'},
+
+
+  {id: 'lbl-es',  tex: '\\text{ES}',
+   left: ((toSvgX((x1A+x1B)/2))/680*100 - 1.5).toFixed(1) + '%',
+   top:  effectLabelPctY(525),  color: '#1D9E75'},
+  {id: 'lbl-er',  tex: '\\text{ER}',
+   left: ((toSvgX((x1B+x1C)/2))/680*100 - 1.5).toFixed(1) + '%',
+   top:  effectLabelPctY(555),  color: '#D85A30'},
+  {id: 'lbl-et',  tex: '\\text{ET}',
+   left: ((toSvgX((x1A+x1C)/2))/680*100 - 1.5).toFixed(1) + '%',
+   top:  effectLabelPctY(585),  color: '#534AB7'},
+];
+
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  if (!el) return;
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = l.left;
+  el.style.top = l.top;
+  if (l.color) el.style.color = l.color;
+  if (l.align === 'right') el.classList.add('right-of-axis');
+});
+</script>
+<script>(function(){var N={"lbl-B": [0.59, 0, 0], "lbl-rp0": [2.2, -0.88, 1], "lbl-er": [-0.59, -2.06, 0], "lbl-A": [0, 0, 1]};for(var id in N){var e=document.getElementById(id);if(!e)continue;e.style.marginLeft=N[id][0]+"%";e.style.marginTop=N[id][1]+"%";if(N[id][2]){var k=e.querySelector(".katex")||e;k.style.background="#fff";k.style.padding="0 2px";k.style.borderRadius="2px";}}})();</script>
+</body>
+</html>

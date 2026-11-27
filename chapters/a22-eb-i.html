@@ -1,0 +1,2022 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Arturo Lorenzo">
+<meta name="description" content="Tema A22 de las oposiciones TCEE. Eficiencia de Pareto, teoremas del bienestar, criterios de Kaldor, Hicks y Scitovsky y teoría del second best de Lipsey y Lancaster.">
+
+<title>A22. Economía del bienestar (I) – Lecciones de economía general e internacional</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/a23-eb-ii.html" rel="next">
+<link href="../chapters/a21-equilibrio-general.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-af206048d982c71265205c3505cca787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bec3fe2b0881f05566c9dedb60685f6d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="A22. Economía del bienestar (I) – Lecciones de economía general e internacional">
+<meta property="og:description" content="Tema A22 de las oposiciones TCEE. Eficiencia de Pareto, teoremas del bienestar, criterios de Kaldor, Hicks y Scitovsky y teoría del second best de Lipsey y Lancaster.">
+<meta property="og:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta property="og:site_name" content="Lecciones de economía general e internacional">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:title" content="A22. Economía del bienestar (I) – Lecciones de economía general e internacional">
+<meta name="twitter:description" content="Tema A22 de las oposiciones TCEE. Eficiencia de Pareto, teoremas del bienestar, criterios de Kaldor, Hicks y Scitovsky y teoría del second best de Lipsey y Lancaster.">
+<meta name="twitter:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="A22. Economía del bienestar (I)">
+<meta name="citation_author" content="Arturo Lorenzo">
+<meta name="citation_publication_date" content="2026-11-28">
+<meta name="citation_cover_date" content="2026-11-28">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-11-28">
+<meta name="citation_fulltext_html_url" content="https://librovol1.arturolorenzo.com/chapters/a22-eb-i.html">
+<meta name="citation_language" content="es">
+<meta name="citation_book_title" content="Lecciones de economía general e internacional">
+<link rel="canonical" href="https://librovol1.arturolorenzo.com/chapters/a22-eb-i.html">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/a08-consumidor.html">Microeconomía</a></li><li class="breadcrumb-item"><a href="../chapters/a22-eb-i.html"><span class="chapter-title">A22. Economía del bienestar (I)</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Lecciones de economía general e internacional</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/arturo-lorenzo/lecciones-economia" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../creditos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Edición y licencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte A: Economía General</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pensamiento Económico</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a01-objeto-metodo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A1. Objeto y método de la ciencia económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a02-clasicos-marx.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A2. Los economistas clásicos y Marx</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a03-neoclasicos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A3. Los economistas neoclásicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a04-keynes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A4. Keynes: análisis comparado</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a05-monetaristas-snc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A5. La síntesis neoclásica y el monetarismo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a06-nmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A6. La nueva macroeconomía clásica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a07-nek.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A7. La nueva economía keynesiana</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Microeconomía</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a08-consumidor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A8. Teoría de la demanda del consumidor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a09-dualidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A9. Dualidad y aplicaciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a10-riesgo-incertidumbre.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A10. Elección en riesgo e incertidumbre</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a11-produccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A11. Teoría de la producción</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a12-costes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A12. Teoría de costes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a13-informacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A13. Economía de la información</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a14-juegos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A14. Teoría de juegos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a15-toi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A15. Teoría de la organización industrial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a16-competencia-perfecta.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A16. Competencia perfecta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a17-monopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A17. Monopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a18-competencia-monopolistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A18. Competencia monopolística</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a19-oligopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A19. Oligopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a20-regulacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A20. Regulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a21-equilibrio-general.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A21. Equilibrio general</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a22-eb-i.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">A22. Economía del bienestar (I)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a23-eb-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A23. Economía del bienestar (II)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a24-eb-iii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A24. Economía del bienestar (III)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Economía Laboral</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a25-oferta-trabajo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A25. Mercado de trabajo y capital humano</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a26-desempleo-friccional.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A26. Desempleo friccional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a27-salarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A27. Determinación de salarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a28-tnp-nairu.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A28. TNP, NAIRU y persistencia</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Macroeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a29-mhi-mgs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A29. Modelos de horizonte infinito y generaciones solapadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a30-magnitudes-cn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A30. Magnitudes macroeconómicas y contabilidad nacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a32-precios-output.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A32. Precios y output en economía abierta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a33-demanda-consumo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A33. Teorías de demanda de consumo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a34-demanda-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A34. Teorías de demanda de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a35-demanda-dinero.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A35. Teorías de la demanda de dinero</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a36-politica-monetaria-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A36. Política monetaria I: diseño e instrumentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a37-politica-monetaria-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A37. Política monetaria II: transmisión y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a38-politica-fiscal.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A38. Política fiscal, crecimiento y ahorro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a39-deficit.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A39. Déficit público, su financiación y sostenibilidad</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a40-interrelacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A40. Interrelación de políticas macroeconómicas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a41-inflacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A41. Inflación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a42-ciclos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A42. Ciclos económicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a43-crecimiento-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A43. Crecimiento económico exógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a44-crecimiento-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A44. Crecimiento económico endógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a45-crecimiento-empirica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A45. Evidencia empírica sobre el crecimiento</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte B: Economía Internacional</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Empresa y Finanzas</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b01-estados-ratios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B1. Estados financieros y ratios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b02-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B2. Decisiones de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b03-financiacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B3. Decisiones de financiación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b04-crecimiento-ma.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B4. Crecimiento empresarial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b23-renta-variable.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B23. Instrumentos de renta variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b24-renta-fija.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B24. Instrumentos de renta fija</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b25-derivados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B25. Instrumentos derivados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b26-crisis-financieras.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B26. Crisis financieras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b27-regulacion-financiera.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B27. Regulación bancaria y financiera</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Comercio Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b05-tnc-comercio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B5. Teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b06-nueva-teoria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B6. Nueva teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b07-politica-comercial-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B7. Política comercial I: instrumentos y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b08-politica-comercial-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B8. Política comercial II: política estratégica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b09-comercio-crecimiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B9. Comercio internacional y crecimiento</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b10-integracion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B10. Teoría de la integración económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b11-balanza-pagos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B11. Balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b12-ajuste-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B12. Ajuste de la balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b13-mercado-divisas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B13. Mercado de divisas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b14-tipo-cambio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B14. Determinación del tipo de cambio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b15-regimenes-cambiarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B15. Regímenes cambiarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b16-integracion-monetaria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B16. Integración monetaria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b17-crisis-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B17. Crisis de balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b18-globalizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B18. Globalización</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b19-coordinacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B19. Coordinación de políticas económicas internacionales</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Sistema Económico Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b20-sei-hasta-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B20. El sistema económico internacional hasta el colapso de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b21-sei-despues-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B21. El sistema económico internacional después de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b22-fmi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B22. El Fondo Monetario Internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b28-desarrollo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B28. Desarrollo económico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b29-fod-aod.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B29. Financiación oficial del desarrollo y AOD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b30-gbm-brsd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B30. Grupo Banco Mundial y bancos regionales de desarrollo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b31-ma-bpg.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B31. El cambio climático y su impacto en la economía</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b32-perspectivas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B32. Perspectivas de la economía internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b33-omc-gatt.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B33. La OMC y el GATT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b34-gats-trips.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B34. GATS, TRIPS y acuerdos plurilaterales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b35-no-comunitarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B35. Acuerdos comerciales no comunitarios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unión Europea</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b36-tratados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B36. Los tratados de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b37-finanzas-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B37. Las finanzas de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b38-pac-ppc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B38. Política Agrícola Común y Política Pesquera Común</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b39-miue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B39. Mercado interior de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b41-comercial-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B41. Política comercial de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b42-cooperacion-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B42. Política de cooperación de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b43-politica-monetaria-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B43. Política macroeconómica I: el euro y la política monetaria única</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b44-politica-financiera-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B44. Política macroeconómica II: la Unión Bancaria y la Unión de los Mercados de Capitales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b45-politica-fiscal-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B45. Política macroeconómica III: la gobernanza económica de la UE y de la zona euro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Descargas</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Primer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/ejercicios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios prácticos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/flashcards-conceptos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de conceptos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/guia-dictamen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guía para el dictamen</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Segundo Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/segundo-ejercicio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de inglés</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Tercer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/libro-bloques.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">El libro en PDF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del tercer ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Cuarto Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del cuarto ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Más allá del libro</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/otras-publicaciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Otras publicaciones y trabajos del autor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/enlaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Enlaces de interés</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Bibliografía</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manuales y obras de referencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia-articulos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Obras citadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../fuentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fuentes normativas y documentales</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#el-óptimo-económico-los-criterios-de-pareto-y-las-condiciones-de-eficiencia" id="toc-el-óptimo-económico-los-criterios-de-pareto-y-las-condiciones-de-eficiencia" class="nav-link" data-scroll-target="#el-óptimo-económico-los-criterios-de-pareto-y-las-condiciones-de-eficiencia">1. El óptimo económico: los criterios de Pareto y las condiciones de eficiencia</a>
+  <ul class="collapse">
+  <li><a href="#los-criterios-de-pareto-1906" id="toc-los-criterios-de-pareto-1906" class="nav-link" data-scroll-target="#los-criterios-de-pareto-1906">1.1. Los criterios de Pareto (1906)</a></li>
+  <li><a href="#condiciones-de-eficiencia-paretiana-en-una-economía-competitiva-2x2x2x2" id="toc-condiciones-de-eficiencia-paretiana-en-una-economía-competitiva-2x2x2x2" class="nav-link" data-scroll-target="#condiciones-de-eficiencia-paretiana-en-una-economía-competitiva-2x2x2x2">1.2. Condiciones de eficiencia paretiana en una economía competitiva 2x2x2x2</a></li>
+  <li><a href="#conclusiones-1" id="toc-conclusiones-1" class="nav-link" data-scroll-target="#conclusiones-1">1.3. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#los-teoremas-fundamentales-del-bienestar" id="toc-los-teoremas-fundamentales-del-bienestar" class="nav-link" data-scroll-target="#los-teoremas-fundamentales-del-bienestar">2. Los teoremas fundamentales del bienestar</a>
+  <ul class="collapse">
+  <li><a href="#primer-teorema-1tfeb" id="toc-primer-teorema-1tfeb" class="nav-link" data-scroll-target="#primer-teorema-1tfeb">2.1. Primer teorema (1TFEB)</a></li>
+  <li><a href="#segundo-teorema-2tfeb" id="toc-segundo-teorema-2tfeb" class="nav-link" data-scroll-target="#segundo-teorema-2tfeb">2.2. Segundo teorema (2TFEB)</a></li>
+  <li><a href="#incumplimiento-de-los-teoremas-la-medición-de-las-pérdidas-de-bienestar" id="toc-incumplimiento-de-los-teoremas-la-medición-de-las-pérdidas-de-bienestar" class="nav-link" data-scroll-target="#incumplimiento-de-los-teoremas-la-medición-de-las-pérdidas-de-bienestar">2.3. Incumplimiento de los teoremas: la medición de las pérdidas de bienestar</a></li>
+  <li><a href="#los-límites-de-los-teoremas-criterios-de-compensación-y-función-de-bienestar-social" id="toc-los-límites-de-los-teoremas-criterios-de-compensación-y-función-de-bienestar-social" class="nav-link" data-scroll-target="#los-límites-de-los-teoremas-criterios-de-compensación-y-función-de-bienestar-social">2.4. Los límites de los teoremas: criterios de compensación y función de bienestar social</a></li>
+  <li><a href="#conclusiones-2" id="toc-conclusiones-2" class="nav-link" data-scroll-target="#conclusiones-2">2.5. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#la-teoría-del-second-best" id="toc-la-teoría-del-second-best" class="nav-link" data-scroll-target="#la-teoría-del-second-best">3. La teoría del <em>second best</em></a>
+  <ul class="collapse">
+  <li><a href="#el-teorema-del-second-best" id="toc-el-teorema-del-second-best" class="nav-link" data-scroll-target="#el-teorema-del-second-best">3.1. El teorema del <em>second best</em></a></li>
+  <li><a href="#implicaciones-para-la-política-económica" id="toc-implicaciones-para-la-política-económica" class="nav-link" data-scroll-target="#implicaciones-para-la-política-económica">3.2. Implicaciones para la política económica</a></li>
+  <li><a href="#desarrollos-posteriores" id="toc-desarrollos-posteriores" class="nav-link" data-scroll-target="#desarrollos-posteriores">3.3. Desarrollos posteriores</a></li>
+  <li><a href="#conclusiones-3" id="toc-conclusiones-3" class="nav-link" data-scroll-target="#conclusiones-3">3.4. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#conclusiones-4" id="toc-conclusiones-4" class="nav-link" data-scroll-target="#conclusiones-4">Conclusiones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/a08-consumidor.html">Microeconomía</a></li><li class="breadcrumb-item"><a href="../chapters/a22-eb-i.html"><span class="chapter-title">A22. Economía del bienestar (I)</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">A22. Economía del bienestar (I)</span></h1>
+<p class="subtitle lead">Economía del bienestar (I). Los teoremas fundamentales del bienestar. Óptimo económico y <em>second best</em>.</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Arturo Lorenzo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">noviembre de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<p>La preocupación por si las asignaciones de recursos que resultan del mercado son buenas o malas para la sociedad ha acompañado a la economía desde los primeros autores que estudiaron el mercado como mecanismo de asignación, y ya santo Tomás de Aquino se preguntaba por el precio justo. Dentro de la teoría económica, la <strong>economía del bienestar</strong> recoge esa preocupación y se ocupa de juzgar si las asignaciones de recursos y las decisiones propias de un sistema económico son deseables para el conjunto de la sociedad. Cumple, por un lado, una función <em>positiva</em>, que responde a la pregunta de cómo medir el bienestar social, y, por otro, una función <em>normativa</em>, que responde a la de cómo alcanzar el máximo bienestar social.</p>
+<p>En cuanto a la primera pregunta, el <strong>utilitarismo</strong> de Jeremy Bentham fue la corriente dominante a partir de las últimas décadas del siglo XVIII. Para esta doctrina, el <strong>óptimo social</strong> es la mayor felicidad para el mayor número, y el bienestar colectivo resulta de sumar el de cada persona. La escuela de Cambridge (Sidgwick, Marshall, Pigou) prolongó esa línea con dos supuestos, la utilidad medible que ya admitían los primeros marginalistas y la posibilidad de comparar utilidades entre personas, e hizo del <strong>excedente</strong> su concepto central. Para eludir los juicios de valor que esos supuestos exigían, Vilfredo Pareto (<em>Manual de economía política</em>, 1906) propuso un criterio de unanimidad que hace innecesarias las comparaciones de utilidad entre personas. Según ese criterio, una asignación es un <strong>óptimo de Pareto</strong> si ningún agente puede mejorar sin que otro empeore. Precisamente porque requiere tan pocos juicios de valor, el criterio de Pareto acabó siendo el patrón con el que se mide si una asignación es eficiente.</p>
+<p>En cuanto a la segunda pregunta, se suceden tres enfoques:</p>
+<ol type="1">
+<li><p><em>Teoría tradicional del bienestar</em> (Walras, Barone, Pareto): propia de la escuela de Lausana, defiende el <em>laissez faire</em> siempre que se den las condiciones para la eficiencia, aunque admite la intervención cuando no se cumplen. Sus criterios son, sin embargo, incompletos.</p></li>
+<li><p><em>Nueva economía del bienestar</em> (años treinta y cuarenta): comprende la escuela de Harvard (Bergson, Samuelson), que se apoya en la función de bienestar social; la London School of Economics (Kaldor, Hicks, Scitovsky), que recurre a las compensaciones potenciales; y el neocardinalismo (Little, Robertson), que combina la compensación con la medición cardinal.</p></li>
+<li><p><em>Novísima economía del bienestar</em> (desde los años cincuenta): abarca los criterios basados en la elección colectiva y la votación (Arrow) y los basados en la teoría del <em>second best</em> (Meade, Lipsey, Lancaster, Viner).</p></li>
+</ol>
+<p>Este tema estudia los fundamentos de la economía del bienestar en tres pasos:</p>
+<ul>
+<li><p><em>El óptimo económico</em>: los criterios de Pareto y las condiciones de eficiencia en una economía competitiva.</p></li>
+<li><p><em>Los teoremas fundamentales del bienestar</em>, la medición de las pérdidas de bienestar cuando sus supuestos no se cumplen y los intentos de superar la indeterminación del óptimo de Pareto mediante los criterios de compensación y la función de bienestar social.</p></li>
+<li><p><em>La teoría del second best</em> (segundo óptimo) y sus implicaciones para la política económica.</p></li>
+</ul>
+</section>
+<section id="el-óptimo-económico-los-criterios-de-pareto-y-las-condiciones-de-eficiencia" class="level2">
+<h2 class="anchored" data-anchor-id="el-óptimo-económico-los-criterios-de-pareto-y-las-condiciones-de-eficiencia">1. El óptimo económico: los criterios de Pareto y las condiciones de eficiencia</h2>
+<p>La economía del bienestar parte del criterio de eficiencia de Pareto, con el que se ordenan asignaciones sin comparar utilidades entre personas. El primer resultado es la caracterización del <strong>óptimo económico</strong>, es decir, de las condiciones que una asignación ha de cumplir para ser eficiente en la producción, en el consumo y en la relación entre ambos.</p>
+<section id="los-criterios-de-pareto-1906" class="level3">
+<h3 class="anchored" data-anchor-id="los-criterios-de-pareto-1906">1.1. Los criterios de Pareto (1906)</h3>
+<p><strong>Origen</strong>: la definición habitual de eficiencia en economía se corresponde con la <em>eficiencia en el sentido de Pareto</em>, formulada por Vilfredo Pareto (1906).</p>
+<p>Su aportación no puede entenderse al margen del problema que venía a resolver. Hasta entonces, la economía del bienestar, heredera de Bentham y de Marshall, juzgaba una política por el cambio que producía en la suma de utilidades individuales. Para que esa suma tuviera sentido, la utilidad debía ser cardinal, es decir, medible de forma que sus diferencias tuvieran significado, y además comparable entre personas, para poder sostener que lo que uno pierde queda compensado por lo que otro gana. Pareto, sin embargo, consideraba insostenibles ambos supuestos.</p>
+<p><strong>Idea</strong>: Pareto sustituye la utilidad cardinal por la ordinal (para la utilidad económica acuñó el término <em>ofelimidad</em>) y construye un criterio de evaluación que no requiere comparaciones interpersonales. Por eso, si nadie empeora y alguien mejora, el juicio es incontrovertible con independencia de cómo se midan las utilidades.</p>
+<p>Esa es su fuerza y también su límite. Pareto formuló, en realidad, dos criterios encadenados:</p>
+<ol type="1">
+<li><p><em>Relación de comparación</em>: la <em>superioridad de Pareto</em>, que se aplica a dos asignaciones concretas.</p></li>
+<li><p><em>Propiedad de una asignación</em>: la optimalidad o eficiencia de Pareto, que caracteriza una asignación respecto del conjunto de todas las factibles y se define precisamente a partir de la primera.</p></li>
+</ol>
+<p>Ambos criterios recaen sobre la <em>asignación económica</em>, es decir, una lista de magnitudes que describe el estado de una economía, de un mercado o de un proceso productivo. Son ejemplos una cesta de bienes, una combinación de factores, un plan de producción o un reparto de utilidades entre individuos.</p>
+<section id="supuestos" class="level4">
+<h4 class="anchored" data-anchor-id="supuestos">1.1.1. Supuestos</h4>
+<p>Los criterios de Pareto, y con ellos toda la economía del bienestar de tradición paretiana, descansan en cuatro supuestos, cada uno de los cuales ha recibido una crítica.</p>
+<p><strong>Independencia del proceso</strong>: lo que se juzga es el resultado, y no los mecanismos con que se han asignado los recursos. La evaluación se define sobre el conjunto de asignaciones factibles sin valorar cómo se ha llegado a ellas.</p>
+<p>Ahora bien, la sociedad puede atribuir valor al procedimiento en sí, como expresa la democracia, y no solo al resultado. Que una asignación resulte de intercambios libremente consentidos, por ejemplo, es deseable con independencia de la cesta que reciba cada individuo.</p>
+<p><strong>Individualismo</strong>: el bienestar social depende exclusivamente del bienestar de los individuos, de modo que la organización de la producción solo resulta relevante en cuanto los afecta<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>Sin embargo, una estructura de mercado como el monopolio puede considerarse indeseable en sí misma, al margen de sus efectos sobre las utilidades individuales, y el individualismo no permite expresar ese juicio.</p>
+<p><strong>No paternalismo</strong>: nadie sabe mejor que el propio individuo qué le conviene, de modo que la evaluación parte de las utilidades tal como cada cual las declara y el planificador no añade preferencias suyas.</p>
+<p>El supuesto no se sostiene en el caso de los bienes preferentes (<em>merit goods</em>) de Musgrave (1959) y de las adicciones, en los que las preferencias declaradas pueden no reflejar el interés del propio individuo.</p>
+<p><strong>Benevolencia</strong>: un aumento de la utilidad de un individuo, <em>ceteris paribus</em>, mejora el bienestar social.</p>
+<p>No obstante, la benevolencia no emite juicio alguno sobre la desigualdad resultante, de modo que una mejora concentrada en quien ya estaba mejor cuenta exactamente igual que cualquier otra<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>Con base en estos supuestos, Pareto desarrolla sus criterios, la superioridad y la eficiencia en el sentido de Pareto.</p>
+</section>
+<section id="la-dominancia-de-pareto-formulación-general-y-ámbitos-de-aplicación" class="level4">
+<h4 class="anchored" data-anchor-id="la-dominancia-de-pareto-formulación-general-y-ámbitos-de-aplicación">1.1.2. La dominancia de Pareto: formulación general y ámbitos de aplicación</h4>
+<p>Antes de aplicar los criterios conviene precisar su alcance, pues su formulación es más general de lo que sugiere la exposición habitual. La <strong>dominancia de Pareto</strong> no es una relación entre individuos, sino una relación de orden parcial entre vectores.</p>
+<p>Formalmente, sean <span class="math inline">\(\mathbf{v} = (v_1, \dots, v_n)\)</span> y <span class="math inline">\(\mathbf{v}' = (v_1', \dots, v_n')\)</span> dos vectores de magnitudes deseables. Se dice que <span class="math inline">\(\mathbf{v}\)</span> domina en el sentido de Pareto a <span class="math inline">\(\mathbf{v}'\)</span> si</p>
+<p><span class="math display">\[v_i \geq v_i' \;\; \forall i = 1, \dots, n \qquad \text{y} \qquad \exists\, j : v_j &gt; v_j'\]</span></p>
+<p>donde <span class="math inline">\(v_i\)</span> y <span class="math inline">\(v_i'\)</span> son las componentes de ambos vectores y <span class="math inline">\(n\)</span> el número de dimensiones comparadas. Como la relación de preferencia del consumidor (tema <a href="../chapters/a08-consumidor.html">A08</a>, apartado 1.1.2), la dominancia es transitiva, pues si <span class="math inline">\(\mathbf{v}\)</span> domina a <span class="math inline">\(\mathbf{v}'\)</span> y <span class="math inline">\(\mathbf{v}'\)</span> a <span class="math inline">\(\mathbf{v}''\)</span>, también <span class="math inline">\(\mathbf{v}\)</span> domina a <span class="math inline">\(\mathbf{v}''\)</span>. A diferencia de la relación de preferencia, la dominancia no es completa, ya que dos vectores en los que cada uno supera al otro en alguna componente no pueden ordenarse, y de ahí que se trate de un orden parcial.</p>
+<p>La definición significa que, dados dos vectores que indican asignaciones económicas de magnitudes deseables, uno domina al otro si es al menos igual en todas sus componentes y estrictamente mayor en alguna. Lo único que se requiere es que todas las componentes sean “bienes”, en el sentido de que más sea preferible a menos.</p>
+<p>De ello se sigue que el criterio no exige la presencia de dos individuos. Lo que cambia de un ámbito a otro no es la relación, sino el contenido del vector sobre el que se aplica. Esto puede entenderse a través de la tabla <a href="#tbl-a22-pareto-ambitos" class="quarto-xref"><span>A22.1</span></a>.</p>
+<div id="tbl-a22-pareto-ambitos" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-a22-pareto-ambitos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;A22.1: Dominancia de Pareto según el ámbito de aplicación.
+</figcaption>
+<div aria-describedby="tbl-a22-pareto-ambitos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Ámbito</th>
+<th>Vector sobre el que opera</th>
+<th>Dimensiones comparadas</th>
+<th>Frontera de los no dominados</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Producción (eficiencia técnica)</strong></td>
+<td>Plan de producción <span class="math inline">\((-\text{inputs}, \text{outputs})\)</span></td>
+<td>Factores y productos de una unidad productiva</td>
+<td>Función de producción o isocuanta</td>
+</tr>
+<tr class="even">
+<td><strong>Producción (eficiencia productiva)</strong></td>
+<td>Cantidades producidas <span class="math inline">\((x, y)\)</span></td>
+<td>Bienes entre sí, dados los recursos</td>
+<td>Frontera de posibilidades de producción (FPP) o curva de transformación</td>
+</tr>
+<tr class="odd">
+<td><strong>Consumo (eficiencia en el intercambio)</strong></td>
+<td>Utilidades de los consumidores</td>
+<td>Individuos, dadas las dotaciones</td>
+<td>Frontera de posibilidades de utilidad (FPU), imagen de la curva de contratos</td>
+</tr>
+<tr class="even">
+<td><strong>Global (eficiencia asignativa)</strong></td>
+<td>Utilidades de los individuos <span class="math inline">\((u^1,\dots,u^H)\)</span></td>
+<td>Individuos, considerando producción y consumo</td>
+<td>Gran frontera de posibilidades de utilidad (GFPU)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Del cuadro se derivan dos precisiones, que evitan las confusiones más frecuentes:</p>
+<ol type="1">
+<li><p><em>Primera</em>: la <em>eficiencia económica o en costes</em> no es un criterio de Pareto. Mientras los anteriores son relaciones de dominancia que no requieren precios, la eficiencia en costes es un problema de optimización que consiste en elegir, de entre los planes técnicamente eficientes, aquel que minimiza el coste dados los precios de los factores. Su representación es la tangencia entre isocuanta e isocoste, y exige por tanto información que los criterios de Pareto no necesitan. De ahí que la eficiencia técnica sea condición necesaria pero no suficiente de la económica<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p></li>
+<li><p><em>Segunda</em>: cuando se habla de óptimo de Pareto sin calificativo, se entiende referido al vector de utilidades, es decir, a la <em>eficiencia asignativa</em>. Esta es la más exigente de todas, pues requiere que se cumplan simultáneamente las tres condiciones que se examinan en el apartado 1.2, es decir, la eficiencia en la producción, la eficiencia en el consumo y la coincidencia entre lo que se produce y lo que se desea consumir. El equilibrio competitivo verifica precisamente esas tres, conforme al primer teorema del bienestar (apartado 2.1).</p></li>
+</ol>
+</section>
+<section id="superioridad-de-pareto" class="level4">
+<h4 class="anchored" data-anchor-id="superioridad-de-pareto">1.1.3. Superioridad de Pareto</h4>
+<p>La relación anterior se aplica ahora al vector de utilidades, <span class="math inline">\(\mathbf{v} = (u^1(\mathbf{x}), \dots, u^H(\mathbf{x}))\)</span>. Dadas dos asignaciones factibles <span class="math inline">\(\mathbf{x}\)</span> y <span class="math inline">\(\mathbf{x}'\)</span>, se dice que <span class="math inline">\(\mathbf{x}\)</span> es <strong>superior en el sentido de Pareto</strong> a <span class="math inline">\(\mathbf{x}'\)</span> si ningún individuo de la economía prefiere <span class="math inline">\(\mathbf{x}'\)</span> a <span class="math inline">\(\mathbf{x}\)</span> y al menos uno prefiere estrictamente <span class="math inline">\(\mathbf{x}\)</span> a <span class="math inline">\(\mathbf{x}'\)</span>. Formalmente, siendo <span class="math inline">\(u^h\)</span> la función de utilidad del individuo <span class="math inline">\(h\)</span> y <span class="math inline">\(H\)</span> el número de individuos:</p>
+<p><span class="math display">\[u^h(\mathbf{x}) \geq u^h(\mathbf{x}') \;\; \forall h = 1, \dots, H \qquad \text{y} \qquad \exists\, j : u^j(\mathbf{x}) &gt; u^j(\mathbf{x}')\]</span></p>
+<p>El paso de <span class="math inline">\(\mathbf{x}'\)</span> a <span class="math inline">\(\mathbf{x}\)</span> constituye entonces una <strong>mejora paretiana</strong>. La expresión anterior es una representación cómoda, pero el criterio sigue siendo puramente ordinal, ya que basta con la relación de preferencia <span class="math inline">\(\mathbf{x} \succsim_h \mathbf{x}'\)</span>, sin necesidad de que las utilidades sean medibles ni comparables entre personas, que es justamente lo que Pareto buscaba.</p>
+<p>El criterio es, por ello, exigente, pues requiere unanimidad en sentido débil, de manera que basta con que alguien se vea perjudicado, por poco que sea, para que la relación no se establezca. Es, además, incompleto, ya que define una ordenación solo parcial, pues no permite comparar dos asignaciones en las que un individuo gane y otro pierda.</p>
+<p>La limitación no es menor, sino que afecta a la práctica totalidad de las decisiones de política económica, que rara vez dejan a alguien exactamente igual. Un arancel, una reforma fiscal o la liberalización de un sector, por ejemplo, generan siempre ganadores y perdedores, de modo que el criterio de Pareto, aplicado con literalidad, guarda silencio sobre casi todo lo que interesa al analista.</p>
+<p>De esa incompletitud derivan las dos vías por las que ha avanzado la economía del bienestar. Los <strong>criterios de compensación</strong> admiten como mejora aquella en la que los ganadores podrían compensar a los perdedores aunque no lo hagan efectivamente (apartado 2.4.1). Las funciones de bienestar social, en cambio, reintroducen de forma explícita los juicios de valor sobre la distribución (apartado 2.4.2).</p>
+</section>
+<section id="optimalidad-o-eficiencia-de-pareto" class="level4">
+<h4 class="anchored" data-anchor-id="optimalidad-o-eficiencia-de-pareto">1.1.4. Optimalidad o eficiencia de Pareto</h4>
+<p>Una asignación es <strong>eficiente u óptima en el sentido de Pareto</strong> si no existe ninguna otra asignación factible que le sea Pareto-superior. Dicho de otro modo, solo cabe mejorar la situación de un individuo a costa de empeorar la de otro, de manera que se han agotado todas las mejoras paretianas disponibles.</p>
+<p>Formalmente, una asignación factible <span class="math inline">\(\mathbf{x}^*\)</span> es eficiente en el sentido de Pareto si no existe otra asignación factible <span class="math inline">\(\mathbf{x}\)</span> tal que</p>
+<p><span class="math display">\[u^h(\mathbf{x}) \geq u^h(\mathbf{x}^*) \;\; \forall h = 1, \dots, H \qquad \text{y} \qquad \exists\, j : u^j(\mathbf{x}) &gt; u^j(\mathbf{x}^*)\]</span></p>
+<p>es decir, si <span class="math inline">\(\mathbf{x}^*\)</span> no está dominada por ninguna asignación factible. Por ello, los óptimos de Pareto pueden obtenerse maximizando la utilidad de un individuo sujeta a que la de los demás se mantenga en un nivel dado y a las restricciones de recursos y de tecnología, como hacen los programas de eficiencia del apartado 1.2.</p>
+<p>Conviene retener cuatro propiedades:</p>
+<ol type="1">
+<li><p><em>Superioridad y optimalidad son conceptos distintos</em>: una asignación puede ser Pareto-superior a otra sin ser, ella misma, Pareto-óptima, pues basta con que existan mejoras adicionales no explotadas.</p></li>
+<li><p><em>La eficiencia de Pareto es distributivamente neutral</em><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>: no incorpora juicio alguno sobre la distribución, refleja únicamente la ausencia de desperdicio de recursos y resulta compatible con distribuciones extremadamente desiguales. Incluso la asignación que entrega todos los recursos a una sola persona es un óptimo de Pareto, porque quitarle cualquier parte la dejaría peor.</p></li>
+<li><p><em>Los óptimos de Pareto son múltiples</em>: el criterio no selecciona una asignación sino todo un conjunto, el de la gran frontera de posibilidades de utilidad (GFPU), y cuál de ellos alcanza el mercado depende de la distribución inicial de los recursos. De aquí se sigue la necesidad de un criterio adicional para elegir entre ellos, que es el objeto del apartado 2.4.</p></li>
+<li><p><em>El criterio presenta un sesgo hacia el</em> statu quo: al exigir que nadie empeore, privilegia la asignación de partida y, con ella, la distribución inicial de la propiedad, que el propio criterio no somete a examen. Esta objeción de fondo explica que la economía del bienestar no pueda detenerse en él.</p></li>
+</ol>
+</section>
+<section id="conclusiones" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones">1.1.5. Conclusiones</h4>
+<p><strong>Aspectos positivos</strong>: la aportación de Pareto fue sentar un criterio de eficiencia sin comparaciones interpersonales de utilidad, que solo requiere preferencias ordinales. Al definirse como una dominancia entre vectores, el mismo criterio sirve, además, para la producción, el consumo y la asignación global, y con él se caracterizan después las condiciones de eficiencia.</p>
+<p><strong>Limitaciones</strong>: son de dos tipos:</p>
+<ul>
+<li><p><em>De los supuestos</em>: cada uno de los cuatro ha recibido una crítica.</p></li>
+<li><p><em>El problema de la indeterminación</em>: es, con diferencia, la crítica más importante, porque la ordenación paretiana es incompleta. Sobre la GFPU esto significa que sus puntos eficientes no admiten clasificación, y la elección queda indeterminada entre múltiples óptimos. La eficiencia paretiana es un requisito de la optimalidad social, pero no basta, y elegir entre los óptimos el que maximiza el bienestar social (el <em>optimum optimorum</em><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>) exige un criterio adicional. De hecho, el propio Pareto (1916) reconoció la necesidad de complementar sus criterios con comparaciones interpersonales explícitas. La exigencia de unanimidad da lugar, además, a la <em>tiranía de la minoría</em>, pues cualquier perjudicado puede vetar una mejora colectiva y el <em>statu quo</em> tiende a perpetuarse.</p></li>
+</ul>
+</section>
+</section>
+<section id="condiciones-de-eficiencia-paretiana-en-una-economía-competitiva-2x2x2x2" class="level3">
+<h3 class="anchored" data-anchor-id="condiciones-de-eficiencia-paretiana-en-una-economía-competitiva-2x2x2x2">1.2. Condiciones de eficiencia paretiana en una economía competitiva 2x2x2x2</h3>
+<p>Para estudiar la eficiencia en el contexto del equilibrio general, Pareto se apoyó en Walras (1874) y Edgeworth (1881). El análisis se ilustra con una economía simple 2x2x2x2 (dos bienes <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>; dos factores <span class="math inline">\(K\)</span>, <span class="math inline">\(L\)</span>; dos empresas; dos consumidores).</p>
+<p><strong>Supuestos</strong>: el análisis descansa en tres grupos de hipótesis:</p>
+<ul>
+<li><p><em>Entorno</em>: ausencia de fallos de mercado, economía de trueque, dos bienes privados y factores homogéneos con oferta perfectamente inelástica<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p></li>
+<li><p><em>Agentes</em>: funciones de utilidad ordinales, crecientes y cuasicóncavas, con curvas de indiferencia convexas.</p></li>
+<li><p><em>Tecnología</em>: funciones de producción continuas, doblemente diferenciables, con productividades marginales positivas y decrecientes y rendimientos no crecientes<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>, y empresas con distinta intensidad factorial (curva de contratos no recta).</p></li>
+</ul>
+<section id="óptimo-en-la-producción" class="level4">
+<h4 class="anchored" data-anchor-id="óptimo-en-la-producción">1.2.1. Óptimo en la producción</h4>
+<p><strong>Planteamiento</strong>: se maximiza la producción de <span class="math inline">\(x\)</span> dados el nivel de producción de <span class="math inline">\(y\)</span> y las dotaciones de factores:</p>
+<p><span class="math display">\[\max_{K_x, L_x} \; x = f_x(K_x, L_x) \quad \text{s.a.:} \begin{cases} f_y(K_y, L_y) = y_0 \\ K_x + K_y = K_0 \\ L_x + L_y = L_0 \end{cases}\]</span></p>
+<p>donde <span class="math inline">\(L_x\)</span>, <span class="math inline">\(K_x\)</span> y <span class="math inline">\(L_y\)</span>, <span class="math inline">\(K_y\)</span> son las cantidades de trabajo y capital asignadas a la producción de <span class="math inline">\(x\)</span> (variables de decisión) y de <span class="math inline">\(y\)</span>, <span class="math inline">\(f_x(\cdot)\)</span> y <span class="math inline">\(f_y(\cdot)\)</span> las funciones de producción de ambos bienes, <span class="math inline">\(y_0\)</span> el nivel de producción de <span class="math inline">\(y\)</span> que se toma como dado y <span class="math inline">\(K_0\)</span>, <span class="math inline">\(L_0\)</span> las dotaciones totales de capital y trabajo.</p>
+<p><strong>CPO</strong> (condiciones de primer orden): con solución interior y las restricciones agotadas, derivando el lagrangiano respecto a los factores asignados a cada bien y eliminando los multiplicadores:</p>
+<p><span class="math display">\[\text{RMST}_{KL}^x = \frac{\partial f_x/\partial L_x}{\partial f_x/\partial K_x} = \frac{\partial f_y/\partial L_y}{\partial f_y/\partial K_y} = \text{RMST}_{KL}^y\]</span></p>
+<p>La relación marginal de sustitución técnica (RMST), es decir, la tasa a la que se intercambian capital y trabajo, debe ser la misma independientemente del bien que se produzca. Si difiriera entre bienes, bastaría reasignar factores para producir más de uno sin renunciar a nada del otro.</p>
+<p><strong>CSO</strong>: la convexidad de las isocuantas de ambas empresas (funciones de producción cuasicóncavas) garantiza que la tangencia es un máximo de <span class="math inline">\(x\)</span> dado <span class="math inline">\(y_0\)</span>.</p>
+<p><strong>Desarrollo gráfico</strong>: el óptimo en la producción se representa en el plano trabajo-capital de la <em>caja de Edgeworth de la producción</em> (figura <a href="#fig-a226-edgeworth-fpp" class="quarto-xref"><span>A22.1</span></a>, panel a):</p>
+<ol type="1">
+<li><p><em>Caja</em>: sus dimensiones son las dotaciones de los dos factores (<span class="math inline">\(L_0\)</span> en el eje horizontal, <span class="math inline">\(K_0\)</span> en el vertical), de modo que cualquier punto de su interior es una asignación de pleno empleo de ambos factores entre las dos empresas, aunque no sea eficiente.</p></li>
+<li><p><em>Isocuantas</em>: las de la empresa que produce <span class="math inline">\(x\)</span> se miden desde el vértice <span class="math inline">\(O_x\)</span> y las de la que produce <span class="math inline">\(y\)</span> desde el opuesto, <span class="math inline">\(O_y\)</span>, y son más altas cuanto más alejadas de su origen. En un punto como <span class="math inline">\(Z\)</span>, las isocuantas <span class="math inline">\(x(Z)\)</span> e <span class="math inline">\(y(Z)\)</span> se cruzan. Todos los puntos de la lente sombreada que forman son Pareto-superiores, porque en su interior ambas empresas producen más, y en sus bordes una produce más sin que la otra produzca menos. Allais (1943) llamó a esa lente <em>área del excedente distribuible</em>.</p></li>
+<li><p><em>Óptimo</em>: desplazarse desde <span class="math inline">\(Z\)</span> hasta <span class="math inline">\(N\)</span> a lo largo de la isocuanta <span class="math inline">\(y(Z)\)</span>, por ejemplo, aumenta la producción de <span class="math inline">\(x\)</span> sin reducir la de <span class="math inline">\(y\)</span>, que es lo que hace el programa anterior con <span class="math inline">\(y_0 = y(Z)\)</span>. Solo en las tangencias entre isocuantas, como <span class="math inline">\(M\)</span> y <span class="math inline">\(N\)</span>, donde las RMST se igualan, se han agotado las reasignaciones beneficiosas. Esas tangencias son las asignaciones Pareto-eficientes, y su lugar geométrico es la <em>curva de contratos de la producción</em> (CC), con cuatro propiedades:</p>
+<ul>
+<li><p><em>No es necesariamente una isoclina</em>: en todos sus puntos las RMST de ambas empresas coinciden, pero su valor común cambia de un punto a otro.</p></li>
+<li><p><em>Sus puntos no son comparables entre sí según Pareto</em>: pasar de uno a otro aumenta un <em>output</em> y reduce el otro.</p></li>
+<li><p><em>Incluye los vértices de la caja</em>: en ellos una empresa usa todos los factores y la otra ninguno, consecuencia de la neutralidad distributiva del criterio.</p></li>
+<li><p><em>Su forma depende de la intensidad factorial</em>: en el plano <span class="math inline">\((L_x, K_x)\)</span>, se curva por encima de la diagonal si <span class="math inline">\(x\)</span> es más intensiva en capital que <span class="math inline">\(y\)</span>, como en la figura, y por debajo si lo es en trabajo. Si ambas tienen la misma intensidad, coincide con la diagonal.</p></li>
+</ul></li>
+</ol>
+<p>En el plano <span class="math inline">\(x\)</span>-<span class="math inline">\(y\)</span> (panel b), la proyección de la curva de contratos es la FPP, es decir, la máxima cantidad de <span class="math inline">\(x\)</span> que puede producirse para cada cantidad de <span class="math inline">\(y\)</span>, dadas la tecnología y las dotaciones. Cada punto de la curva de contratos, como <span class="math inline">\(M\)</span> o <span class="math inline">\(N\)</span>, da un par de producciones sobre la FPP. Una asignación ineficiente de factores como <span class="math inline">\(Z\)</span> se proyecta, en cambio, en el interior de la frontera, y la lente, en la región sombreada entre <span class="math inline">\(Z\)</span> y la FPP.</p>
+<p>La pendiente de la FPP es, en valor absoluto, la relación marginal de transformación, <span class="math inline">\(\text{RMT}_{yx} = -dy/dx|_{K_0, L_0} = (\partial f_y/\partial K_y)/(\partial f_x/\partial K_x) = (\partial f_y/\partial L_y)/(\partial f_x/\partial L_x)\)</span>, el coste de oportunidad de <span class="math inline">\(x\)</span> en términos de <span class="math inline">\(y\)</span>. La FPP es cóncava, y por tanto la RMT creciente en <span class="math inline">\(x\)</span>, por tres razones que pueden actuar por separado o juntas: los rendimientos decrecientes a escala, la especialización de los factores y la distinta intensidad factorial de los bienes. En particular, la diferencia de intensidades hace que trasladar factores de <span class="math inline">\(y\)</span> a <span class="math inline">\(x\)</span> sea cada vez más costoso. Por el contrario, si ambos bienes tuvieran la misma intensidad y rendimientos constantes, la FPP sería una recta.</p>
+<div id="fig-a226-edgeworth-fpp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a226-edgeworth-fpp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a226_Edgeworth_FPP.html" style="height:1110px" loading="lazy" title="fig-a226-edgeworth-fpp"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a226-edgeworth-fpp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A22.1: Caja de Edgeworth de la producción y frontera de posibilidades de producción. Los puntos de la curva de contratos, como <span class="math inline">\(M\)</span> y <span class="math inline">\(N\)</span>, se proyectan sobre la FPP, y la asignación ineficiente de factores <span class="math inline">\(Z\)</span>, en su interior. La lente de reasignaciones Pareto-superiores se proyecta en la región sombreada.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="óptimo-en-el-consumo-intercambio" class="level4">
+<h4 class="anchored" data-anchor-id="óptimo-en-el-consumo-intercambio">1.2.2. Óptimo en el consumo (intercambio)</h4>
+<p><strong>Planteamiento</strong>: se maximiza la utilidad de <span class="math inline">\(A\)</span> dados el nivel de utilidad de <span class="math inline">\(B\)</span> y las cantidades disponibles de cada bien:</p>
+<p><span class="math display">\[\max_{x^A, y^A} \; u^A(x^A, y^A) \quad \text{s.a.:} \begin{cases} u^B(x^B, y^B) = u_0^B \\ x^A + x^B = x_0 \\ y^A + y^B = y_0 \end{cases}\]</span></p>
+<p>donde <span class="math inline">\(x^A\)</span>, <span class="math inline">\(y^A\)</span> y <span class="math inline">\(x^B\)</span>, <span class="math inline">\(y^B\)</span> son las cantidades de ambos bienes consumidas por <span class="math inline">\(A\)</span> (variables de decisión) y por <span class="math inline">\(B\)</span>, <span class="math inline">\(u^A(\cdot)\)</span> y <span class="math inline">\(u^B(\cdot)\)</span> sus funciones de utilidad, <span class="math inline">\(u_0^B\)</span> el nivel de utilidad de <span class="math inline">\(B\)</span> que se toma como dado y <span class="math inline">\(x_0\)</span>, <span class="math inline">\(y_0\)</span> las cantidades totales disponibles de cada bien.</p>
+<p><strong>CPO</strong>: con solución interior y las restricciones agotadas, derivando el lagrangiano respecto a los consumos de <span class="math inline">\(A\)</span> y de <span class="math inline">\(B\)</span> y eliminando los multiplicadores:</p>
+<p><span class="math display">\[\text{RMS}_{yx}^A = \frac{\partial u^A/\partial x}{\partial u^A/\partial y} = \frac{\partial u^B/\partial x}{\partial u^B/\partial y} = \text{RMS}_{yx}^B\]</span></p>
+<p>En el óptimo, <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> tienen la misma relación marginal de sustitución (RMS), es decir, ambos valoran cada bien en términos del otro a idéntica tasa subjetiva. De lo contrario, existirían ganancias no explotadas del intercambio, pues uno de ellos podría ceder el bien que valora relativamente menos a cambio del que valora más sin que el otro empeore.</p>
+<p><strong>CSO</strong>: la convexidad de las curvas de indiferencia de ambos consumidores (utilidades cuasicóncavas) garantiza que la tangencia es un máximo de <span class="math inline">\(u^A\)</span> dado <span class="math inline">\(u_0^B\)</span>.</p>
+<p><strong>Desarrollo gráfico</strong>: el óptimo en el consumo se representa en el plano bien <span class="math inline">\(x\)</span>-bien <span class="math inline">\(y\)</span> de la <em>caja de Edgeworth del consumo</em> (figura <a href="#fig-a225-edgeworth-fpu" class="quarto-xref"><span>A22.2</span></a>, panel a):</p>
+<ol type="1">
+<li><p><em>Caja</em>: sus dimensiones son las cantidades disponibles de los dos bienes (<span class="math inline">\(x_0\)</span> en el eje horizontal, <span class="math inline">\(y_0\)</span> en el vertical), de modo que cada punto es un reparto de esas cantidades entre los dos consumidores.</p></li>
+<li><p><em>Curvas de indiferencia</em>: las de <span class="math inline">\(A\)</span> se miden desde el vértice <span class="math inline">\(O_A\)</span> y las de <span class="math inline">\(B\)</span> desde el opuesto, <span class="math inline">\(O_B\)</span>. Como en la producción, la lente entre dos curvas que se cruzan, como <span class="math inline">\(u^A(W)\)</span> y <span class="math inline">\(u^B(W)\)</span>, que pasan por la dotación inicial <span class="math inline">\(W\)</span>, contiene los repartos Pareto-superiores.</p></li>
+<li><p><em>Óptimo</em>: las tangencias entre curvas de indiferencia, donde las RMS se igualan, forman la <em>curva de contratos del consumo</em> (CC). Si los consumidores parten de <span class="math inline">\(W\)</span>, solo son alcanzables por intercambio voluntario los puntos de la curva de contratos situados dentro de la lente, es decir, el tramo entre <span class="math inline">\(M\)</span> y <span class="math inline">\(N\)</span>. Esos puntos forman el <em>núcleo</em> de la economía, que, según el teorema de Debreu y Scarf (1963), converge al conjunto de los equilibrios competitivos a medida que el número de agentes crece (tema <a href="../chapters/a21-equilibrio-general.html">A21</a>, apartado 3.1.3).</p></li>
+</ol>
+<p>En el plano <span class="math inline">\(u^A\)</span>-<span class="math inline">\(u^B\)</span> (panel b), la curva de contratos tiene como imagen la frontera de posibilidades de utilidad (FPU). Esta frontera indica hasta dónde puede llegar la utilidad de <span class="math inline">\(A\)</span> sin que la de <span class="math inline">\(B\)</span> baje de un nivel dado. Cada punto de la curva de contratos, como <span class="math inline">\(M\)</span> o <span class="math inline">\(N\)</span>, da un par de utilidades sobre la FPU, y los vértices de la caja, sus extremos sobre los ejes. La dotación <span class="math inline">\(W\)</span>, que no es eficiente, se proyecta en el interior de la frontera, y la lente, en la región sombreada entre <span class="math inline">\(W\)</span> y la FPU. El núcleo es, así, el tramo de la FPU que mejora a ambos consumidores respecto de <span class="math inline">\(W\)</span>.</p>
+<p>Como las utilidades crecen con el consumo, la FPU tiene pendiente negativa, ya que sobre ella solo se mejora a un consumidor empeorando al otro. Su curvatura, en cambio, no está determinada, porque la utilidad es ordinal y cualquier transformación monótona de la utilidad deforma la FPU. Basta, eso sí, con que las funciones de utilidad (cardinales) sean cóncavas, como en la figura, para que la FPU también lo sea, aunque no es una condición imprescindible. Además, cada óptimo en la producción tiene su propia FPU, así que hay infinitas.</p>
+<div id="fig-a225-edgeworth-fpu" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a225-edgeworth-fpu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a225_Edgeworth_FPU.html" style="height:1115px" loading="lazy" title="fig-a225-edgeworth-fpu"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a225-edgeworth-fpu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A22.2: Caja de Edgeworth del consumo y frontera de posibilidades de utilidad. Los puntos de la curva de contratos, como <span class="math inline">\(M\)</span> y <span class="math inline">\(N\)</span>, se proyectan sobre la FPU, y la dotación ineficiente <span class="math inline">\(W\)</span>, en su interior. La lente de mejoras paretianas se proyecta en la región sombreada y el núcleo, en el tramo de la FPU entre <span class="math inline">\(M\)</span> y <span class="math inline">\(N\)</span>.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="óptimo-global-reparto-del-output" class="level4">
+<h4 class="anchored" data-anchor-id="óptimo-global-reparto-del-output">1.2.3. Óptimo global (reparto del <em>output</em>)</h4>
+<p><strong>Planteamiento</strong>: se maximiza la utilidad de <span class="math inline">\(A\)</span> dados el nivel de utilidad de <span class="math inline">\(B\)</span>, la tecnología y las dotaciones de factores:</p>
+<p><span class="math display">\[\max \; u^A(x^A, y^A) \quad \text{s.a.:} \begin{cases} u^B(x^B, y^B) = u_0^B \\ x^A + x^B = f_x(K_x, L_x) \\ y^A + y^B = f_y(K_y, L_y) \\ K_x + K_y = K_0 \\ L_x + L_y = L_0 \end{cases}\]</span></p>
+<p>donde <span class="math inline">\(x^A\)</span>, <span class="math inline">\(y^A\)</span> y <span class="math inline">\(x^B\)</span>, <span class="math inline">\(y^B\)</span> son los consumos de ambos bienes de <span class="math inline">\(A\)</span> y de <span class="math inline">\(B\)</span>, <span class="math inline">\(u^A(\cdot)\)</span> y <span class="math inline">\(u^B(\cdot)\)</span> sus funciones de utilidad, <span class="math inline">\(u_0^B\)</span> el nivel de utilidad de <span class="math inline">\(B\)</span> que se toma como dado, <span class="math inline">\(f_x(K_x, L_x)\)</span> y <span class="math inline">\(f_y(K_y, L_y)\)</span> las funciones de producción de ambos bienes con los factores asignados a cada uno, y <span class="math inline">\(K_0\)</span>, <span class="math inline">\(L_0\)</span> las dotaciones totales de capital y trabajo.</p>
+<p><strong>CPO</strong>: con solución interior y las restricciones agotadas, derivando el lagrangiano respecto a los consumos y a los factores y eliminando los multiplicadores:</p>
+<p><span class="math display">\[\text{RMS}_{yx}^A = \text{RMS}_{yx}^B = \text{RMT}_{yx}\big|_{\text{FPP}} \tag{1}\]</span></p>
+<p>La condición (1) iguala todas las valoraciones en el óptimo global, es decir, la tasa subjetiva de intercambio (RMS) coincide con la tasa objetiva de transformación (RMT). Pueden existir, por tanto, asignaciones eficientes en producción o en consumo por separado que no son óptimos globales, porque no cumplen (1).</p>
+<p><strong>CSO</strong>: preferencias convexas de ambos consumidores y conjunto de producción convexo (FPP cóncava), de modo que la igualdad entre RMS y RMT es un máximo y no un mínimo.</p>
+<p><strong>Desarrollo gráfico</strong>: el óptimo global se representa en el plano <span class="math inline">\(x\)</span>-<span class="math inline">\(y\)</span> (figura <a href="#fig-a222-box-in-fpp" class="quarto-xref"><span>A22.3</span></a>):</p>
+<ol type="1">
+<li><p><em>Frontera de posibilidades de producción</em> (FPP): cada uno de sus puntos es una combinación de producción eficiente, y su pendiente en valor absoluto es la RMT.</p></li>
+<li><p><em>Caja de Edgeworth del consumo</em>: se inscribe en la FPP para cada punto de producción, con origen <span class="math inline">\(O_A\)</span> en el origen de coordenadas y <span class="math inline">\(O_B\)</span> en el punto <span class="math inline">\((x_0, y_0)\)</span> de la frontera.</p></li>
+<li><p><em>Curva de contratos del consumo</em> (<span class="math inline">\(\text{CC}\)</span>): une las tangencias entre las curvas de indiferencia de <span class="math inline">\(A\)</span> y de <span class="math inline">\(B\)</span>, como <span class="math inline">\(u^A\)</span> y <span class="math inline">\(u^B\)</span>.</p></li>
+<li><p><em>Óptimo</em>: sobre la curva de contratos del consumo, solo los puntos donde la RMS coincide con la RMT en <span class="math inline">\(O_B\)</span>, como el punto <span class="math inline">\(0\)</span>, son óptimos globales. En ellos, la tasa a la que los consumidores intercambian los bienes coincide con la que la economía puede transformarlos (condición (1)). Puede haber infinitos óptimos globales.</p></li>
+</ol>
+<div id="fig-a222-box-in-fpp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a222-box-in-fpp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a222_Box_in_FPP.html" style="height:580px;max-width:533px" loading="lazy" title="fig-a222-box-in-fpp"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a222-box-in-fpp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A22.3: Óptimo global. La caja de Edgeworth se inscribe en la frontera de posibilidades de producción, y la relación marginal de transformación debe igualar a las relaciones marginales de sustitución.
+</figcaption>
+</figure>
+</div>
+<p>La GFPU<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> es la envolvente de los puntos de las FPU que se corresponden con los óptimos globales. Cada punto de la GFPU indica una combinación única de utilidades, una distribución única de bienes, una combinación de producción sobre la FPP y una distribución única de factores.</p>
+</section>
+</section>
+<section id="conclusiones-1" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-1">1.3. Conclusiones</h3>
+<p>Los criterios de Pareto ordenan las asignaciones sin comparar utilidades entre personas, aunque solo de forma parcial, y el óptimo de Pareto reúne las asignaciones que ya no admiten mejoras paretianas. En la economía 2x2x2x2 ese óptimo exige igualar las RMST de las dos empresas en la producción y las RMS de los dos consumidores en el consumo, y, en el óptimo global, las RMS con la RMT. Las utilidades de los óptimos globales forman la GFPU.</p>
+<p>Pareto y Barone anticiparon con estas condiciones los dos teoremas fundamentales. Según los teoremas, la asignación competitiva es eficiente (1TFEB) y cualquier óptimo puede alcanzarse como equilibrio competitivo tras redistribuir las dotaciones (2TFEB). Su demostración rigurosa llegaría con Lange (1942b), Arrow (1951a) y Debreu (1951), y con ello la competencia perfecta se consagra como guía de política económica. La sección 2 examina esos teoremas y lo que queda por decidir cuando la GFPU ofrece infinitos óptimos.</p>
+</section>
+</section>
+<section id="los-teoremas-fundamentales-del-bienestar" class="level2">
+<h2 class="anchored" data-anchor-id="los-teoremas-fundamentales-del-bienestar">2. Los teoremas fundamentales del bienestar</h2>
+<p>Los dos teoremas fundamentales, resultado central de la economía del bienestar, conectan el óptimo económico del apartado 1 con el equilibrio competitivo del tema <a href="../chapters/a21-equilibrio-general.html">A21</a>. El primero afirma que el mercado competitivo produce asignaciones eficientes, y el segundo, que cualquier asignación eficiente puede producirla el mercado si se redistribuyen previamente las dotaciones. Ambos descansan, sin embargo, en supuestos exigentes. Cuando estos fallan, el mercado deja pérdidas de bienestar que pueden medirse. Aun cuando se cumplen, los teoremas no permiten elegir entre los óptimos de Pareto, que es el problema que abordan los criterios de compensación y la función de bienestar social.</p>
+<section id="primer-teorema-1tfeb" class="level3">
+<h3 class="anchored" data-anchor-id="primer-teorema-1tfeb">2.1. Primer teorema (1TFEB)</h3>
+<p><strong>Enunciado</strong>: todo equilibrio competitivo <span class="math inline">\((\mathbf{p}^*, \mathbf{x}^*)\)</span> es una asignación eficiente en el sentido de Pareto<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>. El teorema se ha visto como la formalización de la idea de la mano invisible de Adam Smith, si bien se refiere a la optimalidad paretiana y no necesariamente a la optimalidad social.</p>
+<p><strong>Corolarios</strong>:</p>
+<ol type="1">
+<li><p><em>Eficiencia sin equidad</em>: el equilibrio competitivo no desperdicia recursos, aunque puede no tener otras propiedades deseables (p.&nbsp;ej. ser equitativo).</p></li>
+<li><p><em>Referencia normativa</em>: si se cumplen los supuestos del teorema, la competencia perfecta conduce sin excepción a un óptimo de Pareto, con la certeza que da un resultado demostrado. Sirve así de referencia para los decisores de política económica, porque, al margen de cómo se diseñe esta, se sabe que las asignaciones competitivas son eficientes.</p></li>
+<li><p><em>Economía de información</em>: cada agente únicamente necesita conocer los precios para tomar sus decisiones y alcanzar el óptimo de Pareto (Varian, 2014, p.&nbsp;585).</p></li>
+<li><p><em>Justificación de la intervención</em>: el teorema ha servido a los partidarios del libre mercado para reducir el papel del sector público a corregir fallos de mercado. Así, si falla alguna de las condiciones suficientes del teorema (p.&nbsp;ej. hay fallos de mercado), nada asegura que el equilibrio sea eficiente, y el Estado tiene un motivo de eficiencia para intervenir.</p></li>
+</ol>
+<p><strong>Demostración</strong>: descansa en un solo supuesto sobre las preferencias, la <em>no saciedad local</em>, según la cual en todo entorno de una cesta existe otra estrictamente preferida. Sea <span class="math inline">\((\mathbf{p}^*, \mathbf{x}^*)\)</span> un equilibrio competitivo y supóngase, por reducción al absurdo, que existe una asignación factible <span class="math inline">\(\hat{\mathbf{x}}\)</span> Pareto-superior.</p>
+<p>Por un lado, cada consumidor que prefiere estrictamente <span class="math inline">\(\hat{\mathbf{x}}^h\)</span> a <span class="math inline">\(\mathbf{x}^{*h}\)</span> no pudo permitírsela a los precios de equilibrio, pues de lo contrario la habría elegido, de modo que <span class="math inline">\(\mathbf{p}^* \hat{\mathbf{x}}^h &gt; \mathbf{p}^* \mathbf{x}^{*h}\)</span>. Por otro, cada consumidor indiferente no puede obtener <span class="math inline">\(\hat{\mathbf{x}}^h\)</span> más barata, por no saciedad local, por lo que <span class="math inline">\(\mathbf{p}^* \hat{\mathbf{x}}^h \geq \mathbf{p}^* \mathbf{x}^{*h}\)</span>. Sumando, el valor de la nueva asignación a los precios de equilibrio supera al de la de equilibrio, <span class="math inline">\(\mathbf{p}^* \sum_h \hat{\mathbf{x}}^h &gt; \mathbf{p}^* \sum_h \mathbf{x}^{*h}\)</span>.</p>
+<p>Sin embargo, en el equilibrio las empresas maximizan el beneficio, de modo que el valor de la producción de equilibrio es el máximo alcanzable a esos precios. La asignación de equilibrio agota, además, la renta de la economía, por lo que ninguna asignación factible puede valer más. La contradicción muestra que <span class="math inline">\(\hat{\mathbf{x}}\)</span> no puede ser factible. La demostración no usa convexidad ni continuidad de las preferencias ni concavidad de las tecnologías, lo que hace del primer teorema un resultado muy general. Usa, en cambio, que todos los bienes tienen precio y mercado, que es lo que fallan los bienes públicos y las externalidades.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: formaliza la idea de la mano invisible con un solo supuesto sobre las preferencias, la no saciedad local, sin convexidad ni continuidad, lo que lo hace muy general. Convierte, además, los fallos de mercado en la justificación de la intervención por motivos de eficiencia.</p></li>
+<li><p><em>Limitaciones</em>: se refiere a la optimalidad paretiana y no necesariamente a la social, de modo que nada dice de la equidad del equilibrio. Exige, además, mercados completos y agentes precio-aceptantes, supuestos que fallan con el poder de mercado, las externalidades y los bienes públicos (tema <a href="../chapters/a23-eb-ii.html">A23</a>).</p></li>
+</ul>
+</section>
+<section id="segundo-teorema-2tfeb" class="level3">
+<h3 class="anchored" data-anchor-id="segundo-teorema-2tfeb">2.2. Segundo teorema (2TFEB)</h3>
+<p>Tras el 1TFEB, queda por saber si el mercado, capaz de alcanzar por sí solo la eficiencia paretiana, puede alcanzar también la <strong>optimalidad social</strong>, es decir, el óptimo de Pareto que la sociedad prefiera por razones distributivas.</p>
+<p><strong>Enunciado</strong>: bajo ciertas condiciones (convexidad de preferencias y conjuntos de producción)<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> y con una redistribución adecuada de las dotaciones iniciales, el mercado competitivo puede alcanzar cualquier óptimo de Pareto.</p>
+<p><strong>Corolarios</strong>:</p>
+<ol type="1">
+<li><p><em>Separación entre eficiencia y equidad</em>: un planificador benevolente podría repartir primero los recursos mediante transferencias que no distorsionen (impuestos y subvenciones de suma fija<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>) y dejar luego que el mercado se encargue de la eficiencia paretiana. Con una política social adecuada se obtienen así a la vez la optimalidad social (equidad) y la paretiana (eficiencia). Por ello, quienes priorizan la equidad invocan el 2TFEB para sostener que el Estado puede redistribuir <em>ex ante</em> sin coste de eficiencia, aunque el mercado carezca de imperfecciones.</p></li>
+<li><p><em>Planificación con precios sombra</em>: en teoría, un sistema de planificación central <em>à la</em> Lange-Lerner, en el que el Gobierno estima los precios sombra y los impone a los agentes, podría lograr idénticos resultados que un sistema perfectamente competitivo<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>. Este es el argumento del debate sobre el cálculo económico socialista (tema <a href="../chapters/a03-neoclasicos.html">A03</a>).</p></li>
+</ol>
+<p><strong>Desarrollo gráfico</strong>: el segundo teorema se representa en el plano bien <span class="math inline">\(x\)</span>-bien <span class="math inline">\(y\)</span> de la caja de Edgeworth del consumo (figura <a href="#fig-a227-segundo-teorema" class="quarto-xref"><span>A22.4</span></a>), con las preferencias y las cantidades totales de la figura <a href="#fig-a225-edgeworth-fpu" class="quarto-xref"><span>A22.2</span></a>:</p>
+<ol type="1">
+<li><p><em>Dotación inicial y lente</em>: la dotación inicial <span class="math inline">\(W\)</span> queda fuera de la curva de contratos (<span class="math inline">\(\text{CC}\)</span>). Las curvas de indiferencia que pasan por ella, <span class="math inline">\(u^A(W)\)</span> y <span class="math inline">\(u^B(W)\)</span>, reúnen las cestas que dan a cada consumidor la misma utilidad que su dotación. Se cortan en <span class="math inline">\(W\)</span> y encierran la lente sombreada, cuyas asignaciones son Pareto-superiores a <span class="math inline">\(W\)</span>.</p></li>
+<li><p><em>Intercambio voluntario</em>: ningún consumidor acepta un intercambio que le dé menos utilidad que su dotación, y ambos siguen intercambiando mientras queden ganancias mutuas. Por eso, el intercambio voluntario lleva la economía de <span class="math inline">\(W\)</span> a un punto de la curva de contratos dentro de la lente (flecha discontinua), como <span class="math inline">\(C\)</span>, en el tramo resaltado que forma el núcleo.</p></li>
+<li><p><em>Óptimo elegido</em>: por razones distributivas, el planificador prefiere otro óptimo de Pareto, <span class="math inline">\(\mathbf{x}^*\)</span>, situado en la curva de contratos fuera de la lente. Sin embargo, desde <span class="math inline">\(W\)</span> es inalcanzable por intercambio voluntario, porque deja a <span class="math inline">\(A\)</span> por debajo de <span class="math inline">\(u^A(W)\)</span>, con menos utilidad que su dotación.</p></li>
+<li><p><em>Redistribución</em>: una transferencia de suma fija de <span class="math inline">\(A\)</span> a <span class="math inline">\(B\)</span> (flecha continua) lleva la dotación de <span class="math inline">\(W\)</span> a <span class="math inline">\(W'\)</span>. Como no depende de lo que hagan los consumidores, la transferencia no distorsiona sus decisiones. La curva de contratos, que solo depende de las preferencias y de las cantidades totales, tampoco cambia.</p></li>
+<li><p><em>Recta de precios y equilibrio</em>: la recta discontinua que pasa por <span class="math inline">\(W'\)</span> y por <span class="math inline">\(\mathbf{x}^*\)</span> tiene pendiente <span class="math inline">\(-p_x^*/p_y^*\)</span>, igual a la RMS común de ambos consumidores en <span class="math inline">\(\mathbf{x}^*\)</span>, y es tangente allí a <span class="math inline">\(u^A(\mathbf{x}^*)\)</span> y a <span class="math inline">\(u^B(\mathbf{x}^*)\)</span>. A esos precios, es la recta presupuestaria de los dos consumidores desde <span class="math inline">\(W'\)</span>, cada uno demanda su cesta de <span class="math inline">\(\mathbf{x}^*\)</span> y los mercados se vacían. El óptimo elegido es, por tanto, el equilibrio competitivo que se alcanza desde <span class="math inline">\(W'\)</span>. Sirve cualquier dotación de esa recta, pues todas valen lo mismo que <span class="math inline">\(\mathbf{x}^*\)</span> a esos precios.</p></li>
+</ol>
+<p>La figura distingue los dos teoremas. La lente y el paso de <span class="math inline">\(W\)</span> a <span class="math inline">\(C\)</span> ilustran que el intercambio voluntario agota las ganancias mutuas y termina en la curva de contratos. Llega a ella por negociación, en el núcleo (tema <a href="../chapters/a21-equilibrio-general.html">A21</a>, apartado 3.1.2), o por el mercado, cuyo equilibrio es eficiente por el 1TFEB. El 2TFEB añade la redistribución de <span class="math inline">\(W\)</span> a <span class="math inline">\(W'\)</span>, con la que el mercado alcanza cualquier óptimo de la curva de contratos, también los que quedan fuera de la lente de la dotación original. En el plano de utilidades (figura <a href="#fig-a225-edgeworth-fpu" class="quarto-xref"><span>A22.2</span></a>, panel b), el núcleo pasa entonces a otro tramo de la FPU, el que contiene el óptimo elegido.</p>
+<div id="fig-a227-segundo-teorema" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a227-segundo-teorema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a227_Segundo_teorema.html" style="height:620px" loading="lazy" title="fig-a227-segundo-teorema"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a227-segundo-teorema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A22.4: Segundo teorema fundamental del bienestar. Desde la dotación inicial <span class="math inline">\(W\)</span>, el intercambio voluntario lleva a un punto del núcleo, como <span class="math inline">\(C\)</span>, dentro de la lente entre <span class="math inline">\(u^A(W)\)</span> y <span class="math inline">\(u^B(W)\)</span>. El óptimo elegido, <span class="math inline">\(\mathbf{x}^*\)</span>, queda fuera de la lente. Una transferencia de suma fija lleva la dotación a <span class="math inline">\(W'\)</span>, y la recta de precios que pasa por <span class="math inline">\(W'\)</span>, tangente en <span class="math inline">\(\mathbf{x}^*\)</span> a <span class="math inline">\(u^A(\mathbf{x}^*)\)</span> y <span class="math inline">\(u^B(\mathbf{x}^*)\)</span>, sostiene <span class="math inline">\(\mathbf{x}^*\)</span> como equilibrio competitivo.
+</figcaption>
+</figure>
+</div>
+<p><strong>Demostración</strong>: la prueba del segundo teorema es de otra naturaleza, y explica por qué exige convexidad. Sea <span class="math inline">\(\hat{\mathbf{x}}\)</span> un óptimo de Pareto. Se construye el conjunto de todas las cestas agregadas que la sociedad prefiere estrictamente a <span class="math inline">\(\hat{\mathbf{x}}\)</span>, sumando las cestas que cada consumidor prefiere a la suya. Si las preferencias son convexas, ese conjunto es convexo, y si las tecnologías son convexas, el conjunto de producción también lo es.</p>
+<p>Como <span class="math inline">\(\hat{\mathbf{x}}\)</span> es óptimo, ambos conjuntos no se cortan en su interior. El <em>teorema del hiperplano separador</em> garantiza entonces que existe un vector de precios <span class="math inline">\(\mathbf{p}\)</span> que separa uno del otro, de modo que, a esos precios, ninguna cesta preferida es más barata que <span class="math inline">\(\hat{\mathbf{x}}\)</span> y ninguna producción factible vale más. Esos precios sostienen <span class="math inline">\(\hat{\mathbf{x}}\)</span> como equilibrio, una vez que las dotaciones se redistribuyen para que cada consumidor pueda pagar exactamente su cesta. Con dos consumidores y dos bienes, ese hiperplano es la recta de precios de la figura <a href="#fig-a227-segundo-teorema" class="quarto-xref"><span>A22.4</span></a>, tangente en el óptimo elegido (<span class="math inline">\(\mathbf{x}^*\)</span> en la figura) a las curvas de indiferencia de ambos.</p>
+<p>Sin convexidad, en cambio, el hiperplano puede no existir y el teorema falla, como muestran dos contraejemplos clásicos:</p>
+<ul>
+<li><p><em>Preferencias no convexas</em>: un consumidor que, a cualquier precio, prefiere un extremo a la cesta intermedia que se le asigna.</p></li>
+<li><p><em>Rendimientos crecientes</em>: una empresa cuyo conjunto de producción no es convexo y que a precios competitivos tendría pérdidas produciendo la cantidad eficiente (tema <a href="../chapters/a20-regulacion.html">A20</a>).</p></li>
+</ul>
+<p>El segundo teorema es, por tanto, menos general que el primero, y su dependencia de la convexidad es lo que hace del monopolio natural y de las indivisibilidades fallos de mercado.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: muestra que, en principio, la equidad no exige renunciar al mercado, pues basta con actuar sobre las dotaciones iniciales y dejar que los precios asignen los recursos, y orienta la redistribución hacia instrumentos que alteren lo menos posible los precios relativos. Su exigencia de convexidad delimita, además, el alcance de la descentralización mediante precios.</p></li>
+<li><p><em>Limitaciones</em>: los corolarios anteriores tienen dos objeciones.</p>
+<ul>
+<li><p><em>Transferencias distorsionantes</em>: en la práctica, casi cualquier impuesto o transferencia cambia las decisiones de quien lo paga o lo recibe. Redistribuir cuesta entonces eficiencia, y aparece el dilema entre equidad y eficiencia al que vuelven las Conclusiones de la sección.</p></li>
+<li><p><em>Costes de información</em>: para Friedrich Hayek, el diseño de una economía planificada exige tanta información que el segundo corolario no puede llevarse a la práctica, porque los precios sombra no pueden estimarse sin el mercado que los revela.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="incumplimiento-de-los-teoremas-la-medición-de-las-pérdidas-de-bienestar" class="level3">
+<h3 class="anchored" data-anchor-id="incumplimiento-de-los-teoremas-la-medición-de-las-pérdidas-de-bienestar">2.3. Incumplimiento de los teoremas: la medición de las pérdidas de bienestar</h3>
+<p>Los dos teoremas descansan en supuestos exigentes, como la existencia de mercados completos, agentes precio-aceptantes y, en el caso del segundo, la convexidad. Cuando falla alguno de los del primero, por la presencia de poder de mercado, de impuestos distorsionantes, de externalidades o de bienes públicos, el equilibrio deja, en general, de ser un óptimo de Pareto. En el monopolio, por ejemplo, el precio del bien monopolizado supera a su coste marginal. Por ello, la RMS de los consumidores, igual al precio relativo, deja de coincidir con la RMT, igual al cociente de los costes marginales, y no se cumple la condición (1) del óptimo global. El estudio sistemático de estos fallos corresponde al tema <a href="../chapters/a23-eb-ii.html">A23</a>, y el de cómo actuar cuando no todos pueden corregirse, a la teoría del <em>second best</em> del apartado 3.</p>
+<p>Gráficamente, la economía se sitúa entonces en un punto interior de la frontera, como <span class="math inline">\(W\)</span> en la figura <a href="#fig-a225-edgeworth-fpu" class="quarto-xref"><span>A22.2</span></a> o <span class="math inline">\(Z\)</span> en la figura <a href="#fig-a226-edgeworth-fpp" class="quarto-xref"><span>A22.1</span></a>. La región sombreada entre ese punto y la frontera recoge las mejoras paretianas que quedan sin explotar. El criterio de Pareto permite afirmar que esa asignación es ineficiente, pero no cuánto, pues ordena asignaciones sin medirlas.</p>
+<p>Para cuantificar el coste de una asignación ineficiente, o el beneficio de una política, la economía del bienestar aplicada recurre al <strong>excedente</strong>. El excedente es la diferencia entre lo que los agentes están dispuestos a pagar o a recibir y lo que efectivamente pagan o reciben. El instrumento procede de la tradición marshalliana de equilibrio parcial, y Harberger (1954) lo aplicó a la medición del coste social del monopolio.</p>
+<p>El excedente del consumidor es el área bajo la curva de demanda y por encima del precio, y el del productor, el área por encima de la curva de oferta y por debajo del precio. Su suma, el excedente total, se maximiza en la cantidad en que la disposición marginal a pagar iguala al coste marginal, que es la del equilibrio competitivo (tema <a href="../chapters/a16-competencia-perfecta.html">A16</a>).</p>
+<p>Cualquier cantidad distinta genera una <strong>pérdida irrecuperable de eficiencia</strong> (<em>deadweight loss</em>), el triángulo entre demanda y oferta que mide el coste social del monopolio (tema <a href="../chapters/a17-monopolio.html">A17</a>, apartado 1.4.2) y también el exceso de gravamen de un impuesto o el coste de un control de precios. Sean <span class="math inline">\(\varepsilon \equiv |\varepsilon_{Xp}|\)</span> la elasticidad-precio de la demanda en valor absoluto, <span class="math inline">\(p\,X\)</span> el gasto y <span class="math inline">\(\tau\)</span> una distorsión proporcional entre precio y coste marginal. La pérdida es entonces, con coste marginal constante, aproximadamente <span class="math inline">\(\frac{1}{2}\,\varepsilon\, \tau^2\, p\,X\)</span>, de modo que crece con el cuadrado de la distorsión, lo que explica por qué muchas distorsiones pequeñas cuestan menos que una grande de igual magnitud total.</p>
+<p>El excedente es, por ello, el instrumento con el que el análisis coste-beneficio traduce la teoría del óptimo a decisiones concretas (tema <a href="../chapters/a20-regulacion.html">A20</a>, apartado 3.4.1). Su precisión, sin embargo, es limitada. El excedente es una medida exacta del cambio de bienestar solo cuando no hay efectos renta, es decir, con preferencias cuasilineales, y en general se sitúa entre la variación compensatoria y la equivalente (tema <a href="../chapters/a09-dualidad.html">A09</a>, apartado 3.3.2). Agregar excedentes de distintos individuos supone, además, dar el mismo valor a un euro para todos, que es precisamente el juicio de valor implícito en los criterios de compensación.</p>
+</section>
+<section id="los-límites-de-los-teoremas-criterios-de-compensación-y-función-de-bienestar-social" class="level3">
+<h3 class="anchored" data-anchor-id="los-límites-de-los-teoremas-criterios-de-compensación-y-función-de-bienestar-social">2.4. Los límites de los teoremas: criterios de compensación y función de bienestar social</h3>
+<p>Los teoremas garantizan la eficiencia, pero no la elección entre óptimos. La indeterminación paretiana sigue en pie, y la economía del bienestar ha seguido dos vías para resolverla. La primera, los criterios de compensación potencial de la London School of Economics, intenta ampliar las comparaciones posibles sin comparar utilidades entre personas. La segunda, la función de bienestar social de Bergson (1938) y Samuelson (1947)<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>, introduce juicios de valor explícitos sobre la distribución y se desarrolla en detalle en el tema <a href="../chapters/a24-eb-iii.html">A24</a>.</p>
+<section id="los-criterios-de-compensación" class="level4">
+<h4 class="anchored" data-anchor-id="los-criterios-de-compensación">2.4.1. Los criterios de compensación</h4>
+<p>Los criterios de compensación se formularon entre 1939 y 1950 en un debate encadenado, en el que cada propuesta respondía a los defectos de la anterior, hasta concluir que los juicios de valor no pueden evitarse. Se presentan en ese orden:</p>
+<ol type="1">
+<li><p><em>Iniciativa de los ganadores (Kaldor, 1939)</em>:</p>
+<ul>
+<li><p><em>Origen</em>: Nicholas Kaldor (1939) formuló el primer criterio de compensación a propósito de la abolición de las Leyes de Cereales, para mostrar que podía juzgarse una medida con ganadores y perdedores sin comparar sus utilidades.</p></li>
+<li><p><em>Idea</em>: un cambio de asignación es preferible si quienes ganan con él podrían, en principio, indemnizar a quienes pierden y conservar todavía una ganancia. Frente a la unanimidad de Pareto, basta con que las ganancias netas sean positivas.</p></li>
+<li><p><em>Razonamiento</em>: el criterio tiene dos versiones, en las que la compensación es hipotética, luego no tiene por qué realizarse.</p>
+<ul>
+<li><em>Versión fuerte</em>: las transferencias son de suma fija y la producción no cambia, de modo que se comparan asignaciones sobre distintas FPU.</li>
+<li><em>Versión débil</em>: se admite que la producción varíe como parte de la compensación y se comparan asignaciones sobre la GFPU, mediante el reparto de la producción adicional.</li>
+</ul></li>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><em>Aspectos positivos</em>: el criterio amplía las comparaciones posibles.</li>
+<li><em>Limitaciones</em>: no es inequívoco, porque partiendo de la asignación alternativa podría recomendar el cambio inverso (paradoja de Scitovsky, punto 3).</li>
+</ul></li>
+</ul></li>
+<li><p><em>Iniciativa de los perdedores (Hicks, 1939a y 1940)</em>:</p>
+<ul>
+<li><p><em>Origen</em>: John Hicks (1939a y 1940) propuso el criterio simétrico, desde el punto de vista de los perdedores.</p></li>
+<li><p><em>Idea</em>: el cambio es preferible cuando los perdedores no podrían evitarlo pagando a los ganadores, porque, aun indemnizándolos para que renunciaran a él, no lograrían quedar mejor que si se produjera.</p></li>
+<li><p><em>Razonamiento</em>: es el de Kaldor invertido. Si los perdedores no están dispuestos a pagar lo suficiente para evitar el cambio, es que lo que pierden vale menos que lo que los ganadores ganan. Como el de Kaldor, este criterio produce una ordenación incompleta.</p></li>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><em>Aspectos positivos</em>: como el de Kaldor, amplía las comparaciones posibles.</li>
+<li><em>Limitaciones</em>: tampoco es inequívoco y puede producir ordenaciones múltiples y cíclicas.</li>
+</ul></li>
+</ul></li>
+<li><p><em>Paradoja de Scitovsky y criterio doble (Scitovsky, 1941)</em>:</p>
+<ul>
+<li><p><em>Origen</em>: Tibor Scitovsky (1941) demostró que los criterios anteriores pueden contradecirse entre sí.</p></li>
+<li><p><em>Idea</em>: el criterio de Kaldor puede recomendar pasar de una asignación <span class="math inline">\(\mathbf{x}\)</span> a una asignación <span class="math inline">\(\mathbf{x}'\)</span> y, una vez en <span class="math inline">\(\mathbf{x}'\)</span>, recomendar volver a <span class="math inline">\(\mathbf{x}\)</span>, con lo que la economía iría y vendría sin fin. Esta <em>paradoja de Scitovsky</em> solo puede darse cuando las FPU de los estados comparados se cruzan. En el plano <span class="math inline">\((u^A, u^B)\)</span> (figura <a href="#fig-a221-paradoja-scitovsky" class="quarto-xref"><span>A22.5</span></a>, panel a), la FPU de <span class="math inline">\(\mathbf{x}'\)</span> pasa por encima y a la derecha de <span class="math inline">\(\mathbf{x}\)</span>, y la de <span class="math inline">\(\mathbf{x}\)</span>, por encima y a la derecha de <span class="math inline">\(\mathbf{x}'\)</span>, de modo que desde cada asignación los ganadores del cambio podrían compensar a los perdedores.</p></li>
+<li><p><em>Razonamiento</em>: para resolverla, Scitovsky propone un <em>criterio doble</em>. Con ese criterio, una asignación es preferible si supera a la vez las dos pruebas anteriores, la de Kaldor (los ganadores pueden indemnizar a los perdedores) y la de Hicks (los perdedores no pueden indemnizar a los ganadores para impedir el cambio). Ello excluye la reversión, pero no impide la intransitividad cuando se comparan más de dos estados.</p></li>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><em>Aspectos positivos</em>: el criterio doble evita la paradoja bilateral.</li>
+<li><em>Limitaciones</em>: no evita la intransitividad con tres o más estados, demostrada por Samuelson (1950) y Gorman (1955). Por tanto, ningún criterio de compensación proporciona una ordenación completa y transitiva sin juicios de valor.</li>
+</ul></li>
+</ul></li>
+<li><p><em>Criterio de Samuelson y criterio dual de Little (Samuelson, 1950; Little, 1950)</em>:</p>
+<ul>
+<li><p><em>Origen</em>: Paul Samuelson (1950) e Ian Little (1950) cerraron el debate por dos vías opuestas. La primera exige más para comparar, mientras que la segunda admite explícitamente los juicios de valor.</p></li>
+<li><p><em>Idea</em>: para Samuelson, una asignación <span class="math inline">\(\mathbf{x}'\)</span> es preferible a <span class="math inline">\(\mathbf{x}\)</span> solo si la FPU de <span class="math inline">\(\mathbf{x}'\)</span> es completamente exterior a la de <span class="math inline">\(\mathbf{x}\)</span> (figura <a href="#fig-a221-paradoja-scitovsky" class="quarto-xref"><span>A22.5</span></a>, panel b). Para Little, un cambio es deseable si mejora la distribución de la renta y los perjudicados no pueden sobornar a los beneficiados para evitarlo (el criterio de Hicks más un juicio distributivo).</p></li>
+<li><p><em>Razonamiento</em>: el criterio de Samuelson es riguroso pero muy exigente, pues rara vez una FPU es exterior a otra en todos sus puntos, y aun entonces la mejora es solo potencial. En la figura <a href="#fig-a221-paradoja-scitovsky" class="quarto-xref"><span>A22.5</span></a> (panel b), el punto 1 no es Pareto-superior al 0, porque B pierde, y la comparación sigue descansando en una redistribución hipotética. Little, por su parte, advierte que con el criterio Kaldor-Hicks se aprobaría una medida que empobrece a los pobres con tal de que los ricos ganen, en términos absolutos, más de lo que aquellos pierden. Concluye, por ello, que no hay forma de eludir los juicios de valor. En el mismo debate, Dennis Robertson defendió, frente al ordinalismo, que la utilidad podía medirse y compararse entre individuos.</p></li>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><em>Aspectos positivos</em>: el criterio dual de Little reconoce que la economía del bienestar no puede prescindir de los juicios distributivos, y conduce así a la función de bienestar social.</li>
+<li><em>Limitaciones</em>: implica comparaciones interpersonales y puede contradecir el de Pareto (si los mejores puntos son los de la bisectriz, con igualdad de utilidades, se presupone paternalismo).</li>
+</ul></li>
+</ul></li>
+</ol>
+<div id="fig-a221-paradoja-scitovsky" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a221-paradoja-scitovsky-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame wide">
+<iframe src="../graphs/a221_Paradoja_Scitovsky.html" style="--r:1.619" loading="lazy" title="fig-a221-paradoja-scitovsky"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a221-paradoja-scitovsky-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A22.5: Criterios de compensación en el plano de utilidades. (a) Las FPU de <span class="math inline">\(\mathbf{x}\)</span> (punto 0) y de <span class="math inline">\(\mathbf{x}'\)</span> (punto 1) se cruzan, y cada una tiene puntos al noreste de la asignación situada sobre la otra (zonas sombreadas), de modo que el criterio de Kaldor recomienda pasar de <span class="math inline">\(\mathbf{x}\)</span> a <span class="math inline">\(\mathbf{x}'\)</span> y volver. (b) Si <span class="math inline">\(\text{FPU}(\mathbf{x}')\)</span> es exterior a <span class="math inline">\(\text{FPU}(\mathbf{x})\)</span>, la zona sombreada solo aparece al noreste de <span class="math inline">\(\mathbf{x}\)</span>, y el criterio de Samuelson ordena sin ambigüedad.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: los criterios de compensación amplían el alcance de la economía del bienestar paretiana sin exigir comparaciones interpersonales explícitas, pues la valoración corresponde a los propios afectados, y proporcionan el fundamento del análisis coste-beneficio.</p></li>
+<li><p><em>Limitaciones</em>: los criterios, sin embargo, no consiguen lo que pretenden, por dos razones.</p>
+<ul>
+<li><p><em>Resultados innecesarios o contradictorios</em>: si las situaciones ya pueden ordenarse por Pareto, los criterios no añaden nada. Si no pueden, su veredicto puede contradecirse, como prueban la paradoja de Scitovsky y la intransitividad del criterio doble.</p></li>
+<li><p><em>Juicio de valor implícito</em>: tratar la compensación como hipotética equivale a dar el mismo valor a un euro sea quien sea su dueño, lo que ya es un juicio de valor. Pagarla de verdad, en cambio, exigiría instituciones que la gestionaran, saber quién gana y quién pierde y asumir los costes de transacción. Una vez pagada, además, el cambio sería sin más una mejora paretiana, con lo que los criterios de compensación sobrarían.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="la-función-de-bienestar-social" class="level4">
+<h4 class="anchored" data-anchor-id="la-función-de-bienestar-social">2.4.2. La función de bienestar social</h4>
+<p>Del debate anterior ha prevalecido la conclusión de Little, según la cual los juicios distributivos no pueden evitarse, y hacerlos explícitos es la tarea de la función de bienestar social. Conviene ver primero de dónde surge esta función y después cómo selecciona el óptimo social entre los óptimos de Pareto.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La función de bienestar social, sus formas (utilitarista, rawlsiana, Bernoulli-Nash) y su relación con la teoría de la elección colectiva se desarrollan en el tema <a href="../chapters/a24-eb-iii.html">A24</a>, apartados 1.1, 1.2 y 2. Aquí se presenta como la salida a la indeterminación de este apartado.</p>
+</div>
+</div>
+</div>
+<p><strong>Origen</strong>: Abram Bergson (1938) y Paul Samuelson (1947) propusieron resolver la indeterminación paretiana no ampliando los criterios de comparación, como la escuela de la compensación, sino haciendo explícitos los juicios de valor.</p>
+<p><strong>Idea</strong>: la <em>función de bienestar social</em> (FBS) asigna a cada estado social un nivel de bienestar en función de las utilidades individuales, <span class="math inline">\(W = W(u^1, \ldots, u^H)\)</span>, con <span class="math inline">\(\partial W/\partial u^h &gt; 0\)</span>, y permite así ordenar todos los óptimos de Pareto entre sí. Sus curvas de nivel, las <em>curvas de indiferencia social</em>, expresan con su pendiente la tasa a la que la sociedad está dispuesta a sacrificar el bienestar de unos por el de otros y, con su curvatura, su aversión a la desigualdad.</p>
+<p><strong>Razonamiento</strong>: el <em>optimum optimorum</em> del apartado 1.1.5 se obtiene maximizando la FBS sobre la gran frontera de posibilidades de utilidad. Ese óptimo es el punto de tangencia entre la GFPU y la curva de indiferencia social más alta, y por el segundo teorema puede alcanzarse como equilibrio competitivo tras la redistribución de dotaciones que lo sostiene. La forma de la FBS decide qué óptimo se elige:</p>
+<ul>
+<li><p><em>Utilitarista</em>: con curvas de indiferencia lineales, es indiferente a la distribución.</p></li>
+<li><p><em>Rawlsiana</em>: con curvas en ángulo recto, solo atiende al peor situado.</p></li>
+<li><p><em>Formas intermedias</em>: valoran tanto el nivel como la igualdad de las utilidades.</p></li>
+</ul>
+<p><strong>Desarrollo gráfico</strong>: el óptimo social se representa en el plano <span class="math inline">\(u^A\)</span>-<span class="math inline">\(u^B\)</span> (figura <a href="#fig-a223-gfpu" class="quarto-xref"><span>A22.6</span></a>):</p>
+<ol type="1">
+<li><p><em>Fronteras de posibilidades de utilidad</em>: cada una recoge la máxima utilidad de <span class="math inline">\(A\)</span> para cada nivel de utilidad de <span class="math inline">\(B\)</span>, dada una combinación de producción. Hay una, como <span class="math inline">\(\text{FPU}_0\)</span>, <span class="math inline">\(\text{FPU}_1\)</span> o <span class="math inline">\(\text{FPU}_2\)</span>, por cada óptimo en la producción.</p></li>
+<li><p><em>Gran frontera de posibilidades de utilidad</em> (<span class="math inline">\(\text{GFPU}\)</span>): es la envolvente de los puntos de las FPU que son óptimos globales y recoge la máxima utilidad de <span class="math inline">\(A\)</span> para cada nivel de utilidad de <span class="math inline">\(B\)</span> cuando también se elige la producción.</p></li>
+<li><p><em>Curva de indiferencia social</em> (<span class="math inline">\(W_0\)</span>): recoge las combinaciones de utilidades que dan el mismo bienestar social.</p></li>
+<li><p><em>Óptimo social</em>: en el punto <span class="math inline">\(0\)</span>, <span class="math inline">\(W_0\)</span> es tangente a la GFPU, y ese punto es el <em>optimum optimorum</em>.</p></li>
+</ol>
+<div id="fig-a223-gfpu" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a223-gfpu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a223_GFPU.html" style="height:620px" loading="lazy" title="fig-a223-gfpu"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a223-gfpu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A22.6: Gran frontera de posibilidades de utilidad y función de bienestar social. El gráfico sitúa el óptimo social u <em>optimum optimorum</em>.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la FBS completa la economía del bienestar paretiana.</p></li>
+<li><p><em>Limitaciones</em>: lo hace al precio de admitir que la elección social requiere juicios de valor y comparaciones interpersonales, que es lo que Pareto quería evitar. De dónde proceden esos juicios, y si pueden derivarse de las preferencias individuales sin dictadura, es la pregunta del teorema de Arrow, y con ella comienza la teoría de la elección colectiva (tema <a href="../chapters/a24-eb-iii.html">A24</a>).</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusiones-2" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-2">2.5. Conclusiones</h3>
+<p>Los dos teoremas fundamentales fijan la referencia frente a la que se mide toda intervención. Cuando fallan los supuestos del primero, el excedente mide, de forma aproximada, la pérdida de bienestar que motiva la intervención. El segundo separa, en principio, las cuestiones de eficiencia y de equidad. Ninguno de los dos elige, sin embargo, entre óptimos, y las dos vías para hacerlo exigen juicios de valor, implícitos en los criterios de compensación y explícitos en la FBS. La separación entre eficiencia y equidad depende, además, de transferencias de suma fija, que en la práctica apenas existen.</p>
+</section>
+</section>
+<section id="la-teoría-del-second-best" class="level2">
+<h2 class="anchored" data-anchor-id="la-teoría-del-second-best">3. La teoría del <em>second best</em></h2>
+<p>La lección de los teoremas es, por tanto, doble. Existe un mecanismo, la competencia, que garantiza la eficiencia, y la equidad puede perseguirse sin sacrificarla solo si se dispone de instrumentos no distorsionantes. No obstante, ambas afirmaciones dependen de que se cumplan sus supuestos. De ahí que el resto de la economía del bienestar estudie lo que ocurre cuando no se cumplen: los fallos de mercado (tema <a href="../chapters/a23-eb-ii.html">A23</a>), las funciones de bienestar social y la elección colectiva (tema <a href="../chapters/a24-eb-iii.html">A24</a>) y, en este mismo tema, la teoría del <em>second best</em>.</p>
+<section id="el-teorema-del-second-best" class="level3">
+<h3 class="anchored" data-anchor-id="el-teorema-del-second-best">3.1. El teorema del <em>second best</em></h3>
+<p><strong>Origen</strong>: Jacob Viner (1950) y James Meade (1955b) advirtieron, al estudiar las uniones aduaneras, que eliminar una distorsión cuando persisten otras puede empeorar el bienestar. Richard Lipsey y Kelvin Lancaster (<em>The General Theory of Second Best</em>, 1956) generalizaron la observación a un teorema.</p>
+<p><strong>Idea</strong>: en el mundo real existen elementos que alejan la economía de la competencia perfecta (bienes públicos, información imperfecta, poder de mercado, impuestos distorsionantes). La <em>teoría del second best</em> estudia cuáles son los criterios de eficiencia cuando alguna de esas imperfecciones no puede eliminarse.</p>
+<p>El teorema establece que, en una economía de equilibrio general competitivo, basta con que una de las condiciones de optimalidad paretiana, las del <em>first best</em> (primer óptimo), no pueda cumplirse para que, en general, satisfacer las demás deje de ser deseable. El óptimo alcanzable, el <em>second best</em>, suele exigir entonces violar también las demás.</p>
+<section id="supuestos-1" class="level4">
+<h4 class="anchored" data-anchor-id="supuestos-1">3.1.1. Supuestos</h4>
+<p>Se parte del problema del planificador del apartado 1.2, generalizado a <span class="math inline">\(n\)</span> bienes y con una función objetivo <span class="math inline">\(u(X)\)</span>, en el que la maximización del bienestar sujeta a la tecnología produce las condiciones de igualdad entre las relaciones marginales de sustitución y de transformación. A ese problema se añade una restricción adicional que impide cumplir una de esas condiciones en un sector. Por ejemplo, en el bien <span class="math inline">\(k\)</span> el precio se aparta del coste marginal en una proporción <span class="math inline">\(\delta\)</span> que el planificador no puede corregir, <span class="math inline">\(\partial u/\partial x_k - \delta\, \partial G/\partial x_k = 0\)</span>, donde <span class="math inline">\(G\)</span> es la función de transformación. Como en el óptimo del planificador se cumple <span class="math inline">\(\partial u/\partial x_k = \lambda\, \partial G/\partial x_k\)</span>, siendo <span class="math inline">\(\lambda\)</span> el multiplicador de la restricción tecnológica, se normaliza la escala de <span class="math inline">\(G\)</span> para que <span class="math inline">\(\lambda = 1\)</span> en el <em>first best</em>, de modo que la restricción solo introduce una distorsión si <span class="math inline">\(\delta \neq 1\)</span>. Lipsey y Lancaster la formulan de forma análoga como cociente, <span class="math inline">\((\partial u/\partial x_k)/(\partial u/\partial x_n) = \delta\, (\partial G/\partial x_k)/(\partial G/\partial x_n)\)</span>.</p>
+</section>
+<section id="modelo" class="level4">
+<h4 class="anchored" data-anchor-id="modelo">3.1.2. Modelo</h4>
+<p><strong>Planteamiento</strong>: el planificador maximiza el bienestar sujeto a la tecnología y a la restricción adicional que impide cumplir la condición de óptimo en el sector <span class="math inline">\(k\)</span>:</p>
+<p><span class="math display">\[\max_{X} \; u(X) \quad \text{s.a.:} \begin{cases} G(X) = 0 \\ \frac{\partial u}{\partial x_k} - \delta\, \frac{\partial G}{\partial x_k} = 0 \end{cases}\]</span></p>
+<p>donde <span class="math inline">\(X = (x_1, \dots, x_n)\)</span> es el vector de los <span class="math inline">\(n\)</span> bienes, <span class="math inline">\(u(X)\)</span> la función objetivo, <span class="math inline">\(G(X)\)</span> la función de transformación, con la escala normalizada para que su multiplicador valga uno en el <em>first best</em>, y <span class="math inline">\(\delta \neq 1\)</span> la proporción, que el planificador no puede corregir, en que el precio del bien <span class="math inline">\(k\)</span> se aparta de su coste marginal. El lagrangiano incorpora el multiplicador <span class="math inline">\(\lambda\)</span> de la restricción tecnológica y un segundo multiplicador, <span class="math inline">\(\mu\)</span>, asociado a la restricción adicional:</p>
+<p><span class="math display">\[\mathcal{L} = u(X) - \lambda\, G(X) - \mu\,\big[\frac{\partial u}{\partial x_k} - \delta\, \frac{\partial G}{\partial x_k}\big]\]</span></p>
+<p><strong>CPO</strong>: sin la restricción adicional, son <span class="math inline">\(\text{RMS}_{ji} = (\partial u/\partial x_i)/(\partial u/\partial x_j) = (\partial G/\partial x_i)/(\partial G/\partial x_j) \equiv \text{RMT}_{ji}\)</span> para todo par de bienes. Con ella, la condición de primer orden de cada bien no afectado, <span class="math inline">\(i \neq k\)</span>, tiene tres términos:</p>
+<p><span class="math display">\[\frac{\partial \mathcal{L}}{\partial x_i} = \frac{\partial u}{\partial x_i} - \underbrace{\lambda\, \frac{\partial G}{\partial x_i}}_{\text{coste marginal del bien } i} - \underbrace{\mu\,\big[\frac{\partial^2 u}{\partial x_i \partial x_k} - \delta\, \frac{\partial^2 G}{\partial x_i \partial x_k}\big]}_{\text{efecto del bien } i \text{ sobre la restricción del sector } k} = 0\]</span></p>
+<p>Los dos primeros términos son los del <em>first best</em>, en el que la valoración marginal de cada bien iguala a su coste marginal. El tercero es nuevo y recoge cómo una unidad más del bien <span class="math inline">\(i\)</span> altera la valoración y el coste marginales del bien <span class="math inline">\(k\)</span> y, con ellos, la restricción que pesa sobre ese sector. Solo se anula si las derivadas cruzadas son nulas, es decir, si los bienes <span class="math inline">\(i\)</span> y <span class="math inline">\(k\)</span> no están relacionados ni en la utilidad ni en la producción. Dividiendo las condiciones de dos bienes no afectados, <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>:</p>
+<p><span class="math display">\[\frac{\partial u/\partial x_i}{\partial u/\partial x_j} = \frac{\partial G/\partial x_i + \mu\,(\partial^2 u/\partial x_i \partial x_k - \delta\, \partial^2 G/\partial x_i \partial x_k)/\lambda}{\partial G/\partial x_j + \mu\,(\partial^2 u/\partial x_j \partial x_k - \delta\, \partial^2 G/\partial x_j \partial x_k)/\lambda}\]</span></p>
+<p>de modo que <span class="math inline">\(\text{RMS}_{ji} \neq \text{RMT}_{ji}\)</span> salvo que las derivadas cruzadas se anulen.</p>
+<p>En términos económicos, la distorsión en <span class="math inline">\(k\)</span> se transmite a los demás sectores porque los bienes están relacionados entre sí, en el consumo (son sustitutivos o complementarios) y en la producción (compiten por los mismos recursos). Si el precio de <span class="math inline">\(k\)</span> supera a su coste marginal, los consumidores sustituyen el bien <span class="math inline">\(k\)</span> por otros bienes más de lo eficiente, y el precio de esos bienes deja de ser neutral, porque encarecerlos devuelve demanda al sector distorsionado. Por ello, el óptimo restringido exige apartar también sus precios del coste marginal, en una cuantía que depende de esas derivadas cruzadas y que no tiene signo general.</p>
+<p><strong>CSO</strong>: la caracterización supone que el óptimo restringido es interior y que el conjunto factible sigue siendo convexo tras añadir la restricción. Lipsey y Lancaster se limitan a las condiciones necesarias, que es lo que el teorema compara.</p>
+<p><strong>Desarrollo gráfico</strong>: el teorema del <em>second best</em> se representa en el plano <span class="math inline">\(u^A\)</span>-<span class="math inline">\(u^B\)</span> (figura <a href="#fig-a224-second-best" class="quarto-xref"><span>A22.7</span></a>):</p>
+<ol type="1">
+<li><p><em>Frontera de posibilidades de utilidad</em> (<span class="math inline">\(\text{FPU}\)</span>): recoge las asignaciones eficientes en el sentido de Pareto.</p></li>
+<li><p><em>Restricción</em> <span class="math inline">\(r\)</span>: delimita la parte del conjunto de utilidades que sigue siendo accesible.</p></li>
+<li><p><em>Curvas de indiferencia social</em>: <span class="math inline">\(W_C\)</span>, <span class="math inline">\(W_E\)</span> y <span class="math inline">\(W_D\)</span> reúnen las combinaciones de utilidades de igual bienestar social, mayor cuanto más alejadas del origen.</p></li>
+<li><p><em>Equilibrio</em>: sin la restricción, el <em>first best</em> es el punto <span class="math inline">\(C\)</span> de la FPU en el que <span class="math inline">\(W_C\)</span> es tangente a ella, pero la restricción <span class="math inline">\(r\)</span> hace inalcanzable <span class="math inline">\(C\)</span>. Dentro de la parte accesible, la asignación <span class="math inline">\(D\)</span>, situada sobre la FPU, cumple las restantes condiciones de Pareto. La asignación <span class="math inline">\(E\)</span>, en cambio, pese a ser ineficiente en el sentido de Pareto, alcanza una curva de indiferencia social, <span class="math inline">\(W_E\)</span>, más alejada del origen que <span class="math inline">\(W_D\)</span>. El <em>second best</em> es, por tanto, <span class="math inline">\(E\)</span>.</p></li>
+</ol>
+<div id="fig-a224-second-best" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a224-second-best-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a224_Second_Best.html" style="height:620px" loading="lazy" title="fig-a224-second-best"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a224-second-best-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A22.7: Teorema del <em>second best</em> (Lipsey y Lancaster, 1956). Si una condición de optimalidad no puede cumplirse, cumplir las restantes no garantiza el mejor resultado alcanzable.
+</figcaption>
+</figure>
+</div>
+<p><strong>Extensiones</strong>: un caso ilustrativo es el de una economía con dos bienes, <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>, producidos con costes marginales constantes, en la que <span class="math inline">\(x\)</span> es un monopolio no regulable que fija <span class="math inline">\(p_x = \delta \cdot \text{Cmg}_x\)</span>, con <span class="math inline">\(\delta &gt; 1\)</span>. La regla del <em>first best</em> aconsejaría fijar en el sector competitivo <span class="math inline">\(p_y = \text{Cmg}_y\)</span>. Sin embargo, con esa regla el precio relativo <span class="math inline">\(p_x/p_y\)</span> supera al cociente de costes marginales, de modo que los consumidores sustituyen <span class="math inline">\(x\)</span> por <span class="math inline">\(y\)</span> más de lo eficiente.</p>
+<p>El <em>second best</em> consiste en fijar <span class="math inline">\(p_y\)</span> también por encima de su coste marginal, con un margen que restablezca el precio relativo eficiente, <span class="math inline">\(p_y = \delta \cdot \text{Cmg}_y\)</span>. Se introduce una distorsión en <span class="math inline">\(y\)</span> para compensar la de <span class="math inline">\(x\)</span>, y el bienestar es mayor que con <span class="math inline">\(p_y = \text{Cmg}_y\)</span>, aunque ambos precios estén ahora distorsionados. El ejemplo ilustra la lógica de la regulación de las empresas públicas que compiten con sectores no competitivos.</p>
+</section>
+<section id="corolarios" class="level4">
+<h4 class="anchored" data-anchor-id="corolarios">3.1.3. Corolarios</h4>
+<ol type="1">
+<li><p><em>Distorsiones compensatorias</em>: la existencia de una distorsión que no puede eliminarse puede hacer deseable mantener otras o incluso introducirlas, como muestra el caso anterior. Con todo, el resultado solo tiene sentido cuando la distorsión original es inevitable, porque, si puede eliminarse y no persisten otras, eliminarla es siempre mejor.</p></li>
+<li><p><em>Ruptura con la teoría tradicional</em>: la doctrina anterior pedía cumplir todas las condiciones de óptimo que estuvieran al alcance, y el <em>second best</em> muestra que esa receta puede ser contraproducente.</p></li>
+<li><p><em>Irrelevancia del recuento</em>: contar las condiciones de óptimo satisfechas no dice nada sobre el bienestar, porque cumplir más de ellas no garantiza estar mejor.</p></li>
+<li><p><em>Ambigüedad de las reformas parciales</em>: si se suprime una sola distorsión, el bienestar puede subir, bajar o quedarse igual.</p></li>
+</ol>
+</section>
+</section>
+<section id="implicaciones-para-la-política-económica" class="level3">
+<h3 class="anchored" data-anchor-id="implicaciones-para-la-política-económica">3.2. Implicaciones para la política económica</h3>
+<p>El teorema implica que no existen resultados generales. Cuando no se cumplen todas las condiciones de optimalidad, ninguna política parcial (<em>piecemeal policy</em>) garantiza una mejora de bienestar, y cada intervención ha de evaluarse en su contexto. De ahí derivan las aplicaciones siguientes.</p>
+<ol type="1">
+<li><p><em>Regulación y empresa pública</em>: si una empresa pública compite con monopolistas o convive con sectores distorsionados, fijar <span class="math inline">\(p = \text{Cmg}\)</span> deja de ser óptimo para el conjunto. Conviene entonces apartar el precio del coste marginal para compensar esas distorsiones. Otra cosa ocurre con la empresa de rendimientos crecientes obligada a cubrir costes, cuyo <em>second best</em> son los precios de Ramsey-Boiteux, mientras que las tarifas en dos partes y los precios pico-valle mantienen <span class="math inline">\(p = \text{Cmg}\)</span> en el margen (temas <a href="../chapters/a17-monopolio.html">A17</a> y <a href="../chapters/a20-regulacion.html">A20</a>).</p></li>
+<li><p><em>Imposición distorsionante</em>: un segundo impuesto crea un segundo exceso de gravamen, pero puede contrarrestar el sesgo del primero. De ahí que la imposición óptima no sea la que minimiza cada distorsión por separado. Los impuestos de suma fija, los únicos no distorsionantes, son difíciles de implementar y, si son uniformes por persona, regresivos, como mostró el fracaso del <em>poll tax</em> británico de 1990<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>.</p></li>
+<li><p><em>Comercio internacional</em>: es el origen histórico de la teoría. Una unión aduanera elimina los aranceles entre sus miembros pero los mantiene frente a terceros, de modo que su efecto neto es ambiguo y una liberalización parcial no es necesariamente una mejora (tema <a href="../chapters/b10-integracion.html">B10</a>, apartado 1.1). La ambigüedad procede de dos efectos de signo contrario:</p>
+<ul>
+<li><p><em>Creación de comercio</em>: sustituir producción nacional cara por importaciones baratas del socio.</p></li>
+<li><p><em>Desviación de comercio</em>: sustituir importaciones baratas de terceros por importaciones caras del socio.</p></li>
+</ul></li>
+<li><p><em>Evaluación de proyectos</em>: como no hay teoremas generales, cada caso ha de evaluarse individualmente, lo que da al análisis coste-beneficio, con precios sombra que incorporan las distorsiones existentes, su papel central en la política económica (tema <a href="../chapters/a20-regulacion.html">A20</a>).</p></li>
+</ol>
+</section>
+<section id="desarrollos-posteriores" class="level3">
+<h3 class="anchored" data-anchor-id="desarrollos-posteriores">3.3. Desarrollos posteriores</h3>
+<p>Las primeras respuestas al teorema trataron de acotar su alcance, pues en su formulación original parecía invalidar toda la economía del bienestar aplicada. La más intuitiva divide las condiciones de optimalidad en tres bloques, la eficiencia en el intercambio, en la producción y global, y sostiene que una distorsión en uno de ellos no obliga a revisar los otros dos. Si la distorsión se produce, por ejemplo, en el reparto del <em>output</em> entre consumidores, las condiciones de eficiencia en la producción (igualdad de las RMST entre empresas) pueden seguir siendo deseables. La razón es que producir sobre la frontera de posibilidades de producción amplía el conjunto de asignaciones alcanzables.</p>
+<p>El argumento confina el problema del <em>second best</em> al bloque afectado y permite seguir usando como guía las condiciones de los bloques no afectados. No es, sin embargo, un resultado general, porque los tres bloques están ligados por los precios y las cantidades, y la validez del argumento depende de los instrumentos fiscales disponibles, como precisarían Diamond y Mirrlees. Los tres desarrollos que siguen sustituyen esta intuición por condiciones precisas (Davis y Whinston, Diamond y Mirrlees) o por reglas prácticas (Ng).</p>
+<section id="la-separabilidad-por-sectores-davis-y-whinston-1965" class="level4">
+<h4 class="anchored" data-anchor-id="la-separabilidad-por-sectores-davis-y-whinston-1965">3.3.1. La separabilidad por sectores (Davis y Whinston, 1965)</h4>
+<p><strong>Origen</strong>: Otto Davis y Andrew Whinston (1965) precisaron la condición bajo la cual una distorsión en un sector no afecta a las reglas óptimas de los demás.</p>
+<p><strong>Idea</strong>: si el sector distorsionado es <em>separable</em> del resto de la economía, es decir, si las derivadas cruzadas de la utilidad y de la producción entre ese sector y los demás son nulas, la distorsión no se transmite.</p>
+<p><strong>Razonamiento</strong>: en la condición de primer orden del modelo, los términos que apartan la RMS de la RMT son los que contienen las derivadas cruzadas con el bien <span class="math inline">\(k\)</span>. Si son nulas, esos términos desaparecen y las condiciones de Pareto se recuperan íntegras para todos los pares de bienes que no incluyen a <span class="math inline">\(k\)</span>, con lo que el <em>second best</em> queda confinado al sector de la distorsión.</p>
+<p>Por ello, la política parcial recupera su validez cuando las interdependencias son débiles, lo que en la práctica ocurre entre sectores lejanos en la cadena de producción y en las preferencias. El resultado permite aplicar las reglas del <em>first best</em> sector por sector siempre que pueda argumentarse la separabilidad.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: precisa la condición formal, la separabilidad, bajo la cual una distorsión no se transmite al resto de la economía, y fundamenta así el análisis de equilibrio parcial y las reglas sectoriales en presencia de distorsiones.</p></li>
+<li><p><em>Limitaciones</em>: la separabilidad exige derivadas cruzadas nulas, un supuesto fuerte que rara vez se cumple con exactitud y es difícil de contrastar, de modo que el problema se traslada a juzgar empíricamente cuán débiles son las interdependencias.</p></li>
+</ul>
+</section>
+<section id="la-eficiencia-productiva-diamond-y-mirrlees-1971" class="level4">
+<h4 class="anchored" data-anchor-id="la-eficiencia-productiva-diamond-y-mirrlees-1971">3.3.2. La eficiencia productiva (Diamond y Mirrlees, 1971)</h4>
+<p><strong>Origen</strong>: Peter Diamond y James Mirrlees (1971) obtuvieron un resultado en sentido contrario al de Lipsey-Lancaster, en el marco de la imposición óptima.</p>
+<p><strong>Idea</strong>: aunque el óptimo sea un <em>second best</em> por la existencia de impuestos distorsionantes sobre los consumidores, la <em>eficiencia productiva</em> sigue siendo deseable, es decir, la economía debe seguir produciendo sobre su frontera de posibilidades de producción.</p>
+<p><strong>Razonamiento</strong>: el resultado exige que el Gobierno pueda gravar todas las transacciones con los consumidores y controlar los beneficios de las empresas (impuestos sobre beneficios al cien por cien o rendimientos constantes). Bajo esas condiciones, cualquier distorsión en la producción puede sustituirse por una distorsión en el consumo que deje a los consumidores igual de bien y aumente la recaudación, de modo que las distorsiones deben concentrarse en el consumo y no en la producción.</p>
+<p>El teorema fundamenta que la imposición óptima grave los bienes finales y no los intermedios, que las empresas públicas usen los mismos precios sombra que las privadas y que no se impongan aranceles sobre los bienes intermedios. Este resultado es la razón teórica del IVA frente a los impuestos en cascada.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: rescata del teorema del <em>second best</em> un principio general y operativo, la eficiencia productiva, y lo convierte en una de las guías centrales del diseño de la imposición y de la producción pública.</p></li>
+<li><p><em>Limitaciones</em>: descansa en supuestos exigentes, como gravar todas las transacciones con los consumidores y apropiarse de los beneficios puros de las empresas. Si estos no pueden gravarse plenamente, puede ser óptimo introducir también distorsiones en la producción.</p></li>
+</ul>
+</section>
+<section id="la-teoría-del-third-best-ng-1977" class="level4">
+<h4 class="anchored" data-anchor-id="la-teoría-del-third-best-ng-1977">3.3.3. La teoría del <em>third best</em> (Ng, 1977)</h4>
+<p><strong>Origen</strong>: Yew-Kwang Ng (1977) añadió a las distorsiones que no pueden eliminarse las que el propio regulador introduce por su falta de información.</p>
+<p><strong>Idea</strong>: calcular el <em>second best</em> exige conocer las derivadas cruzadas de todos los sectores con el distorsionado. Si el regulador no dispone de esa información, ni de la capacidad administrativa para aplicar precios distintos en cada sector, la política de <em>second best</em> es inalcanzable y ha de buscarse un <em>third best</em>.</p>
+<p><strong>Razonamiento</strong>: con información limitada, el regulador se enfrenta a una elección entre dos opciones, la de aplicar las condiciones del <em>first best</em> en los sectores que puede controlar o la de intentar aproximar el <em>second best</em> con estimaciones inciertas. Ng muestra que, cuando la incertidumbre sobre las interdependencias es grande, la primera opción tiene un valor esperado mayor, porque los errores de una política de <em>second best</em> mal calibrada pueden ser peores que la ineficiencia de ignorar las interdependencias.</p>
+<p>La teoría del <em>third best</em> rehabilita, por una vía distinta, las reglas del <em>first best</em> como reglas prácticas, y anticipa la teoría de la regulación con información asimétrica (tema <a href="../chapters/a20-regulacion.html">A20</a>).</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: incorpora al análisis normativo los costes de información y de administración del propio regulador, y ofrece una justificación práctica de las reglas simples frente a políticas de <em>second best</em> difíciles de calibrar.</p></li>
+<li><p><em>Limitaciones</em>: la superioridad de las reglas del <em>first best</em> no es general, pues depende del grado de incertidumbre sobre las interdependencias. Así, cuando el regulador dispone de buena información, el <em>second best</em> sigue siendo preferible.</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusiones-3" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-3">3.4. Conclusiones</h3>
+<p><strong>Aspectos positivos</strong>: la teoría del <em>second best</em> es una de las advertencias metodológicas más influyentes de la economía normativa. Muestra que, en general, las condiciones de optimalidad solo tienen valor si se satisfacen todas a la vez, que cumplir más condiciones no implica mayor bienestar y que, en presencia de distorsiones inevitables, la política económica no tiene atajos. Fundamenta, además, las reglas de precios de la regulación (Ramsey-Boiteux), la teoría de la imposición óptima y la teoría de las uniones aduaneras.</p>
+<p><strong>Limitaciones</strong>: por su misma generalidad, la teoría no dice por sí sola qué hacer, y su uso indiscriminado puede justificar cualquier distorsión con el argumento de que compensa otra. Aun así, los desarrollos posteriores acotan los casos en que la lógica del <em>first best</em> sigue siendo válida.</p>
+</section>
+</section>
+<section id="conclusiones-4" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones-4">Conclusiones</h2>
+<p>El tema recorre el camino que va del criterio de Pareto a sus límites. La dominancia paretiana, aplicada al vector de utilidades, define un orden parcial que identifica el óptimo económico sin comparar utilidades entre personas, y en una economía 2x2x2x2 ese óptimo exige igualar las RMST entre empresas, las RMS entre consumidores y ambas con la RMT. Los dos teoremas fundamentales enlazan esas condiciones con el mercado, pues el equilibrio competitivo es eficiente y cualquier óptimo puede alcanzarse como equilibrio tras redistribuir las dotaciones. Cuando sus supuestos fallan, el excedente mide la pérdida de bienestar, y aun cuando se cumplen, la indeterminación entre óptimos obliga a recurrir a los criterios de compensación o a una función de bienestar social, con los juicios de valor que Pareto quería evitar. La teoría del <em>second best</em> advierte, por último, de que si una condición de optimalidad no puede cumplirse, perseguir las demás puede empeorar el resultado.</p>
+<p>La economía del bienestar se apoya en las teorías del consumidor y de la producción (temas <a href="../chapters/a08-consumidor.html">A08</a> y <a href="../chapters/a11-produccion.html">A11</a>) y en el equilibrio general walrasiano, cuyas propiedades normativas desarrolla (tema <a href="../chapters/a21-equilibrio-general.html">A21</a>). Sus dos límites abren los temas siguientes. Cuando fallan los supuestos del primer teorema, aparecen los fallos de mercado (tema <a href="../chapters/a23-eb-ii.html">A23</a>), y cuando hay que elegir entre óptimos, la función de bienestar social y la elección colectiva (tema <a href="../chapters/a24-eb-iii.html">A24</a>). La lógica del <em>second best</em>, por su parte, tiene aplicaciones muy diversas, de los precios de Ramsey-Boiteux y el análisis coste-beneficio en la regulación (tema <a href="../chapters/a20-regulacion.html">A20</a>) a la teoría de las uniones aduaneras, que pueden crear o desviar comercio (tema <a href="../chapters/b10-integracion.html">B10</a>).</p>
+<p>Los debates actuales giran en torno a los supuestos y a la medición. La economía del bienestar conductual cuestiona el no paternalismo, pues cuando las elecciones son incoherentes las preferencias reveladas dejan de ser una guía fiable del bienestar, y Bernheim y Rangel (2009) proponen evaluarlas solo a partir de las elecciones que no se contradicen. En el terreno de la compensación, los pesos sociales marginales generalizados de Saez y Stantcheva (2016) y el valor marginal de los fondos públicos de Hendren y Sprung-Keyser (2020) incorporan juicios distributivos explícitos al análisis coste-beneficio. Lo hacen sin renunciar a medir el bienestar mediante la disposición a pagar. Ambas líneas confirman la lección de Little, pues la evaluación de políticas no puede prescindir de los juicios de valor.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>No importa <em>per se</em> si un producto lo produce una empresa grande o muchas pequeñas, o si son privadas o públicas. Implícitamente se supone que la organización industrial es necesariamente eficiente (Tirole, 1988, p.&nbsp;7).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Las asignaciones justas en el sentido de Foley-Varian, que son Pareto-eficientes y sin envidia, se estudian en el tema <a href="../chapters/a24-eb-iii.html">A24</a>, apartado 1.3.2.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>La eficiencia técnica tampoco garantiza la asignativa. Una economía que dedique todos los recursos a fabricar zapatos izquierdos puede ser técnicamente eficiente, pero es asignativamente ineficiente.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Según Sen (<em>Collective Choice and Social Welfare</em>, 1970a), una economía puede ser óptima en el sentido de Pareto y, a la vez, “perfectamente repugnante” según cualquier estándar ético.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Una de las críticas de Wicksell a Pareto fue, precisamente, la confusión entre optimalidad paretiana y optimalidad social.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Supuesto de simplificación análogo a Heckscher-Ohlin-Samuelson. Implica que los agentes ofrecen toda su dotación factorial al mercado.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Con rendimientos decrecientes, los pagos no agotan el producto y los beneficios son positivos, pero se preserva la concavidad de la FPP. Con rendimientos crecientes, podría ser convexa.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Conceptos anticipados por Maurice Allais (1943) y popularizados por Paul Samuelson (1950).<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Las hipótesis, suficientes pero no necesarias, son la ausencia de fallos de mercado, en particular mercados completos (sin externalidades ni bienes públicos), y agentes precio-aceptantes (Mas-Colell, Whinston y Green, 1995, pp.&nbsp;549-550).<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Mas-Colell, Whinston y Green (1995, cap. 16); Gravelle y Rees (2004).<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Los precios tienen una función asignativa (señales de escasez relativa) y otra distributiva (poder de compra de cada agente). Las transferencias de suma fija asumen la segunda y dejan a los precios la primera.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Pareto y, sobre todo, Barone (1908) mostraron que un ministerio de la producción colectivista tendría que resolver las mismas ecuaciones que el mercado para alcanzar el óptimo. El resultado anticipó el argumento del “socialismo de mercado”, sin que ellos lo defendieran.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>Existe también la función de bienestar social de Bergson-Scitovsky, definida en el espacio de bienes (las curvas de indiferencia social se combinan con la FPP, no con la GFPU).<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>El <em>poll tax</em> (Community Charge), implantado en Escocia en 1989 y en Inglaterra y Gales en 1990, contribuyó a la caída de Thatcher, que dimitió en noviembre de 1990.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script>
+// Gráficos del libro (iframes .graph-frame).
+// 1) Escala única: los grosores, los discontinuos y el tamaño de los puntos de cada figura están fijados para verla a 680 px
+//    de ancho. Los marcos anchos (figuras de varios paneles) se estiran hasta la columna y las pantallas estrechas las encogen; aquí se
+//    compensa para que en pantalla las curvas midan siempre lo mismo (2,2 px las económicas, 1,4 las auxiliares, 1,2 ejes y flechas,
+//    0,8 las guías) y los puntos tengan el mismo tamaño en todas las figuras, sea cual sea el ancho al que se muestren.
+// 2) Ajusta la altura de cada iframe al elemento dibujado más bajo (curvas, ejes, etiquetas KaTeX).
+(function () {
+  var REF = 680;
+  function norm(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var s = d.querySelector("svg"); if (!s) return;
+      var w = s.getBoundingClientRect().width; if (!(w > 0)) return;
+      var r = REF / w;
+      var els = s.querySelectorAll("path, line, polyline, polygon, rect, circle, ellipse");
+      els.forEach(function (el) {
+        var cs = d.defaultView.getComputedStyle(el);
+        if (el.dataset.sw0 === undefined) {
+          el.dataset.sw0 = parseFloat(cs.strokeWidth) || 0;
+          el.dataset.da0 = (cs.strokeDasharray && cs.strokeDasharray !== "none") ? cs.strokeDasharray : "";
+          if (el.tagName.toLowerCase() === "circle" && el.r && el.r.baseVal.value > 0 && el.r.baseVal.value <= 9) {
+            el.dataset.r0 = el.r.baseVal.value;
+          }
+        }
+        var sw0 = +el.dataset.sw0;
+        if (sw0 > 0) el.style.strokeWidth = (sw0 * r).toFixed(3) + "px";
+        if (el.dataset.da0) {
+          el.style.strokeDasharray = el.dataset.da0.split(/[ ,]+/).map(function (v) {
+            return (parseFloat(v) * r).toFixed(3) + "px";
+          }).join(" ");
+        }
+        if (el.dataset.r0) el.setAttribute("r", (+el.dataset.r0 * r).toFixed(3));
+      });
+    } catch (e) {}
+  }
+  function fit(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var sy = d.defaultView.scrollY || 0, bottom = 0;
+      var els = d.querySelectorAll("svg path, svg line, svg circle, svg polyline, svg polygon, svg rect, svg text, svg ellipse, .katex-label");
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width > 0 || r.height > 0) bottom = Math.max(bottom, r.bottom + sy);
+      });
+      if (!(bottom > 20)) {
+        var svg = d.querySelector("svg"); var vb = svg && svg.getAttribute("viewBox");
+        if (vb) { var p = vb.split(/\s+/); bottom = f.clientWidth * (+p[3]) / (+p[2]); }
+      }
+      if (bottom > 20) f.style.height = Math.ceil(bottom + 10) + "px";
+    } catch (e) {}
+  }
+  // 3) Un gráfico de varios paneles no se amplía por encima del 110 % de su ancho de dibujo (viewBox). Los dibujados a
+  //    680 px quedan en 748 px como máximo, con rótulos de tamaño normal; los de 900 o 960 px, en el tope de 900 px del CSS.
+  function cap(f) {
+    try {
+      if (!f.parentElement || !f.parentElement.classList.contains("wide")) return;
+      var s = f.contentDocument && f.contentDocument.querySelector("svg"); if (!s) return;
+      var vb = s.viewBox && s.viewBox.baseVal; if (!vb || !(vb.width > 0)) return;
+      var m = Math.min(900, Math.round(vb.width * 1.1)) + "px";
+      if (f.style.maxWidth !== m) f.style.maxWidth = m;
+    } catch (e) {}
+  }
+  function both(f) { cap(f); norm(f); fit(f); }
+  function all() { document.querySelectorAll(".graph-frame iframe").forEach(both); }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".graph-frame iframe").forEach(function (f) {
+      f.addEventListener("load", function () { both(f); setTimeout(function () { both(f); }, 700); });
+    });
+  });
+  window.addEventListener("load", function () { setTimeout(all, 1200); });
+  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(all, 150); });
+})();
+</script>
+<style>
+.graph-frame { margin: 1.25rem 0 0.25rem; }
+.quarto-figure .graph-frame + * { margin-top: 0; }
+</style>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/librovol1\.arturolorenzo\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/a21-equilibrio-general.html" class="pagination-link" aria-label="A21. Equilibrio general">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">A21. Equilibrio general</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/a23-eb-ii.html" class="pagination-link" aria-label="A23. Economía del bienestar (II)">
+        <span class="nav-page-text"><span class="chapter-title">A23. Economía del bienestar (II)</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

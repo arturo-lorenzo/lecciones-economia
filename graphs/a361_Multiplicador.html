@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="136" y1="440" x2="566" y2="440" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="136" y1="440" x2="136" y2="40" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line x1="136" y1="440" x2="496" y2="80" stroke="#888" stroke-width="1" stroke-dasharray="6 4"/>
+
+    <line x1="136" y1="440" x2="406" y2="80" stroke="#378ADD" stroke-width="2.2"/>
+
+
+
+    <path id="angle-arc" fill="none" stroke="black" stroke-width="1.2"/>
+
+
+    <circle id="pt0" r="5" fill="#000"/>
+    <circle id="pt1" r="5" fill="#000"/>
+
+
+    <line id="d0h" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="d0v" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="t0h" stroke="black" stroke-width="1"/>
+    <line id="t0v" stroke="black" stroke-width="1"/>
+
+
+    <line id="d1h" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="d1v" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="t1h" stroke="black" stroke-width="1"/>
+    <line id="t1v" stroke="black" stroke-width="1"/>
+
+  </svg>
+
+  <div class="katex-label" id="lbl-title"></div>
+  <div class="katex-label" id="lbl-M"></div>
+  <div class="katex-label" id="lbl-H0"></div>
+  <div class="katex-label" id="lbl-45"></div>
+  <div class="katex-label" id="lbl-line"></div>
+  <div class="katex-label" id="lbl-m"></div>
+  <div class="katex-label" id="lbl-pt0"></div>
+  <div class="katex-label" id="lbl-pt1"></div>
+  <div class="katex-label" id="lbl-H00"></div>
+  <div class="katex-label" id="lbl-M0"></div>
+  <div class="katex-label" id="lbl-H01"></div>
+  <div class="katex-label" id="lbl-M1"></div>
+</div>
+
+<script>
+const OX=136,OY=440,W=680,H=520;
+
+
+
+
+
+const e0x=OX+0.38*270, e0y=440+0.38*(-360);
+
+const e1x=OX+0.65*270, e1y=440+0.65*(-360);
+
+const el=id=>document.getElementById(id);
+function setL(id,x1,y1,x2,y2){const e=el(id);e.setAttribute('x1',x1);e.setAttribute('y1',y1);e.setAttribute('x2',x2);e.setAttribute('y2',y2);}
+
+el('pt0').setAttribute('cx',e0x);el('pt0').setAttribute('cy',e0y);
+el('pt1').setAttribute('cx',e1x);el('pt1').setAttribute('cy',e1y);
+
+
+setL('d0h',OX,e0y,e0x,e0y);
+setL('d0v',e0x,e0y,e0x,OY);
+setL('t0h',OX-4,e0y,OX,e0y);
+setL('t0v',e0x,OY,e0x,OY+4);
+
+
+setL('d1h',OX,e1y,e1x,e1y);
+setL('d1v',e1x,e1y,e1x,OY);
+setL('t1h',OX-4,e1y,OX,e1y);
+setL('t1v',e1x,OY,e1x,OY+4);
+
+
+const r=70;
+const lineAngle=Math.atan(360/270);
+const arcPts=[];
+for(let i=0;i<=30;i++){
+  const a=-(i/30)*lineAngle;
+  const ax=OX+r*Math.cos(a);
+  const ay=OY+r*Math.sin(a);
+  arcPts.push(ax.toFixed(1)+','+ay.toFixed(1));
+}
+el('angle-arc').setAttribute('d','M'+arcPts.join(' L'));
+
+function pct(v,t){return(v/t*100).toFixed(1)+'%';}
+const labels=[
+  {id:'lbl-title',tex:'\\text{Multiplicador estable}', left:pct(340,W),top:pct(5,H),color:'black',size:'15px'},
+  {id:'lbl-M',   tex:'M^s',              left:pct(OX-7,W),top:pct(28,H),color:'black',align:'right',size:'17px'},
+  {id:'lbl-H0',  tex:'H',            left:pct(570,W),top:pct(440,H),color:'black',size:'17px'},
+  {id:'lbl-45',  tex:'45^\\circ',        left:pct(502,W),top:pct(70,H),color:'#888',size:'14px'},
+  {id:'lbl-line',tex:'M^s = m \\cdot H', left:pct(396,W),top:pct(58,H),color:"#378ADD",size:"16px",align:"right"},
+  {id:'lbl-m',   tex:'m > 1',          left:pct(208,W),top:pct(392,H),color:'black',size:'15px'},
+  {id:'lbl-pt0', tex:'0',              left:pct(e0x-24,W),top:pct(e0y-28,H),color:'#000',size:'16px'},
+  {id:'lbl-pt1', tex:'1',              left:pct(e1x-24,W),top:pct(e1y-28,H),color:'#000',size:'16px'},
+  {id:'lbl-H00', tex:'H_0',          left:pct(e0x-10,W),top:pct(448,H),color:'black',size:'15px'},
+  {id:'lbl-M0',  tex:'M^s_0',            left:pct(OX-7,W),top:pct(e0y-13,H),color:'black',align:'right',size:'15px'},
+  {id:'lbl-H01', tex:'H_1',          left:pct(e1x-10,W),top:pct(448,H),color:'black',size:'15px'},
+  {id:'lbl-M1',  tex:'M^s_1',            left:pct(OX-7,W),top:pct(e1y-13,H),color:'black',align:'right',size:'15px'}
+];
+labels.forEach(l=>{const e=document.getElementById(l.id);if(!e)return;katex.render(l.tex,e,{throwOnError:false});e.style.left=l.left;e.style.top=l.top;if(l.color)e.style.color=l.color;if(l.align==='right')e.classList.add('right-of-axis');if(l.size)e.style.fontSize=l.size;});
+
+
+document.getElementById('lbl-title').style.transform='translateX(-50%)';
+</script>
+</body>
+</html>

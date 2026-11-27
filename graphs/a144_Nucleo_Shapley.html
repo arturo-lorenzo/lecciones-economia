@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+
+
+  <svg viewBox="0 0 680 500">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="120" y1="460" x2="560" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="120" y1="460" x2="120" y2="60"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line x1="200" y1="460" x2="200" y2="96" stroke="#888" stroke-width="0.9" stroke-dasharray="6 4"/>
+    <line x1="120" y1="300" x2="440" y2="300" stroke="#888" stroke-width="0.9" stroke-dasharray="6 4"/>
+
+
+    <line x1="136" y1="76" x2="504" y2="444" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line x1="200" y1="140" x2="360" y2="300" stroke="#1D9E75" stroke-width="4.5" stroke-linecap="round"/>
+
+
+    <circle cx="200" cy="140" r="4" fill="#1D9E75"/>
+    <circle cx="360" cy="300" r="4" fill="#1D9E75"/>
+
+
+    <circle cx="280" cy="220" r="5.5" fill="#D85A30"/>
+
+
+    <line x1="200" y1="460" x2="200" y2="464" stroke="black" stroke-width="1"/>
+    <line x1="116"  y1="300" x2="120" y2="300" stroke="black" stroke-width="1"/>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-x1"></div>
+  <div class="katex-label" id="lbl-x2"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-t1"></div>
+  <div class="katex-label" id="lbl-t2"></div>
+  <div class="katex-label" id="lbl-c1"></div>
+  <div class="katex-label" id="lbl-c2"></div>
+  <div class="katex-label" id="lbl-eff"></div>
+  <div class="katex-label" id="lbl-nucleo"></div>
+  <div class="katex-label" id="lbl-e1"></div>
+  <div class="katex-label" id="lbl-e2"></div>
+  <div class="katex-label" id="lbl-phi"></div>
+
+</div>
+
+<script>
+const labels = [
+  {id: 'lbl-x1',     tex: 'x_1',                                    left: '83.4%',   top: '91%', color: 'black'},
+  {id: 'lbl-x2',     tex: 'x_2',                                    left: '12.9%',   top: '7%',  color: 'black'},
+  {id: 'lbl-o',      tex: 'O',                                       left: '14.9%',   top: '92%', color: 'black'},
+  {id: 'lbl-t1',     tex: '1',                                       left: '28.4%', top: '93%', color: 'black'},
+  {id: 'lbl-t2',     tex: '2',                                       left: '16.1%', top: '58%', color: 'black', align: 'right'},
+  {id: 'lbl-c1',     tex: 'x_1 \\geq V(\\{1\\})',                   left: '30.5%',   top: '16.8%', color: '#888'},
+  {id: 'lbl-c2',     tex: 'x_2 \\geq V(\\{2\\})',                   left: '65.8%',   top: '57.6%', color: '#888'},
+  {id: 'lbl-eff',    tex: 'x_1 + x_2 = V(\\{1,2\\}) = 5',           left: '68.6%',   top: '70.4%', color: '#185FA5'},
+  {id: 'lbl-nucleo', tex: '\\text{Núcleo}',                         left: '38.9%',   top: '31%', color: '#0F6E56'},
+  {id: 'lbl-e1',     tex: '(1,\\, 4)',                              left: '28.5%',   top: '28.8%', color: '#888', align: 'right'},
+  {id: 'lbl-e2',     tex: '(3,\\, 2)',                              left: '52.0%',   top: '61.2%', color: '#888', align: 'right'},
+  {id: 'lbl-phi',    tex: '\\phi = (2,\\, 3)',                      left: '42.9%',   top: '38.8%', color: '#D85A30'}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = l.left;
+  el.style.top = l.top;
+  if (l.color) el.style.color = l.color;
+  if (l.align === 'right') el.classList.add('right-of-axis');
+});
+</script>
+</body>
+</html>

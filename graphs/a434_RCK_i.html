@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+  .katex-label .katex { font-size: 1em; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 600" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+    <line x1="100" y1="520" x2="640" y2="520" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="100" y1="520" x2="100" y2="30" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+  </svg>
+</div>
+<script>
+
+
+
+
+
+const A = 3, alpha = 0.5, dn = 0.6, theta = 1;
+const f = k => A*Math.pow(k, alpha);
+const fp = k => alpha*A*Math.pow(k, alpha - 1);
+const fpp = k => alpha*(alpha - 1)*A*Math.pow(k, alpha - 2);
+const kdot0 = k => f(k) - dn*k;
+const koro = Math.pow(alpha*A/dn, 1/(1 - alpha));
+const kOf = rd => Math.pow(alpha*A/rd, 1/(1 - alpha));
+function rhs(k, c, rd) { return [f(k) - c - dn*k, c*(fp(k) - rd)/theta]; }
+function rk4(k, c, rd, h) {
+  const a = rhs(k, c, rd), b = rhs(k + h/2*a[0], c + h/2*a[1], rd);
+  const d = rhs(k + h/2*b[0], c + h/2*b[1], rd), e = rhs(k + h*d[0], c + h*d[1], rd);
+  return [k + h/6*(a[0] + 2*b[0] + 2*d[0] + e[0]), c + h/6*(a[1] + 2*b[1] + 2*d[1] + e[1])];
+}
+const K = [0.05, 12.4], C = [0.02, 4.75];
+const inBox = (k, c) => k > K[0] && k < K[1] && c > C[0] && c < C[1];
+function traj(k, c, rd, h, nmax) { const p = [[k, c]]; for (let i = 0; i < nmax; i++) { [k, c] = rk4(k, c, rd, h); if (!inBox(k, c)) break; p.push([k, c]); } return p; }
+
+function saddle(rd) {
+  const ks = kOf(rd), cs = kdot0(ks);
+  const j11 = fp(ks) - dn, j21 = cs*fpp(ks)/theta;
+  const lam = (j11 - Math.sqrt(j11*j11 + 4*(-j21)))/2;
+  const v = [1, j11 - lam], nv = Math.hypot(v[0], v[1]); v[0] /= nv; v[1] /= nv;
+  const e = 1e-3;
+  const lo = traj(ks - e*v[0], cs - e*v[1], rd, -0.01, 20000).reverse();
+  const hi = traj(ks + e*v[0], cs + e*v[1], rd, -0.01, 20000).reverse();
+  return {ks, cs, lo, hi};
+}
+
+function cOn(branch, k) { for (let i = 1; i < branch.length; i++) { const [k0, c0] = branch[i-1], [k1, c1] = branch[i]; if ((k0 - k)*(k1 - k) <= 0) return c0 + (c1 - c0)*(k - k0)/(k1 - k0); } return null; }
+const VBW = 680, VBH = 600;
+const X = k => 100 + k*41.6;
+const Y = c => 520 - c*100;
+const $ = id => document.getElementById(id);
+const svg = document.querySelector('svg');
+function mk(tag, attrs) { const e = document.createElementNS('http://www.w3.org/2000/svg', tag); for (const a in attrs) e.setAttribute(a, attrs[a]); svg.appendChild(e); return e; }
+function line(x1, y1, x2, y2, st) { return mk('line', Object.assign({x1, y1, x2, y2}, st)); }
+function poly(pts, st) { return mk('path', Object.assign({d: 'M' + pts.map(p => X(p[0]).toFixed(1) + ',' + Y(p[1]).toFixed(1)).join(' L'), fill: 'none'}, st)); }
+
+function head(pts, t, color) {
+  const P = pts.map(p => [X(p[0]), Y(p[1])]); let L = 0; const acc = [0];
+  for (let i = 1; i < P.length; i++) { L += Math.hypot(P[i][0] - P[i-1][0], P[i][1] - P[i-1][1]); acc.push(L); }
+  let i = acc.findIndex(a => a >= t*L); if (i < 1) i = 1;
+  const [x, y] = P[i], [xa, ya] = P[Math.max(0, i - 3)];
+  let dx = x - xa, dy = y - ya; const n = Math.hypot(dx, dy); dx /= n; dy /= n;
+  const bx = x - 5.5*dx, by = y - 5.5*dy;
+  mk('path', {d: `M${bx - 3.6*dy},${by + 3.6*dx} L${x},${y} L${bx + 3.6*dy},${by - 3.6*dx}`, fill: 'none', stroke: color, 'stroke-width': 1.3, 'stroke-linecap': 'round', 'stroke-linejoin': 'round'});
+}
+
+function heads(pts, color, step = 55) {
+  const P = pts.map(p => [X(p[0]), Y(p[1])]); let L = 0; const acc = [0];
+  for (let i = 1; i < P.length; i++) { L += Math.hypot(P[i][0] - P[i-1][0], P[i][1] - P[i-1][1]); acc.push(L); }
+  const n = Math.max(1, Math.round((L - 30)/step));
+  for (let j = 1; j <= n; j++) head(pts, (15 + (L - 30)*j/n)/L, color);
+}
+
+function dynLeg(x1, y1, x2, y2) { mk('polyline', {points: `${x1},${y1} ${(x1 + x2)/2},${(y1 + y2)/2} ${x2},${y2}`, fill: 'none', stroke: '#5a5a5a', 'stroke-width': 1.2, 'stroke-dasharray': '5 4', 'marker-mid': 'url(#arrow)', 'marker-end': 'url(#arrow)'}); }
+function Lar(k, c, dv, dh) { const x = X(k), y = Y(c); dynLeg(x, y, x, y - dv*42); dynLeg(x, y, x + dh*42, y); }
+function dome(color) { const p = []; for (let i = 0; i <= 300; i++) { const k = 12.3*i/300; p.push([k, Math.max(0, kdot0(k))]); } poly(p, {stroke: color, 'stroke-width': 2.2, 'stroke-linecap': 'round'}); }
+
+const rd = 0.75;
+const S = saddle(rd), ks = S.ks, cs = S.cs;
+const G = {stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'};
+line(X(0), Y(cs), X(ks), Y(cs), G);
+line(X(koro), Y(kdot0(koro)), X(koro), Y(0), G);
+line(X(koro), 520, X(koro), 524, {stroke: 'black', 'stroke-width': 1});
+line(X(ks), 520, X(ks), 524, {stroke: 'black', 'stroke-width': 1});
+line(96, Y(cs), 100, Y(cs), {stroke: 'black', 'stroke-width': 1});
+dome('#378ADD');
+line(X(ks), Y(0), X(ks), Y(4.55), {stroke: '#1D9E75', 'stroke-width': 2.2});
+
+
+const P = {stroke: '#5a5a5a', 'stroke-width': 2.2, 'stroke-dasharray': '6 4'};
+
+const E = [X(ks), Y(cs)];
+const ua = (() => { const v = [E[0] - X(0), E[1] - Y(0)], n = Math.hypot(v[0], v[1]); return [v[0] / n, v[1] / n]; })();
+const ud = [ua[0], -ua[1]];
+const DU = 100, DL = 150;
+const within = R => s => Math.hypot(X(s[0]) - E[0], Y(s[1]) - E[1]) <= R;
+const Slo = S.lo.filter(within(DL - 32)), Shi = S.hi.filter(within(DU - 28));
+poly(Slo, P); poly(Shi, P);
+heads(Slo, '#5a5a5a'); heads(Shi, '#5a5a5a');
+
+function Lc(Q, dv, dh, h = 36) { const x = Q[0] - dh*h/2, y = Q[1] + dv*h/2; dynLeg(x, y, x, y - dv*h); dynLeg(x, y, x + dh*h, y); }
+Lc([E[0] - DL*ua[0], E[1] - DL*ua[1]], +1, +1);
+Lc([E[0] + DU*ua[0], E[1] + DU*ua[1]], -1, -1);
+Lc([E[0] - DU*ud[0], E[1] - DU*ud[1]], +1, -1);
+Lc([E[0] + DL*ud[0], E[1] + DL*ud[1]], -1, +1);
+mk('circle', {cx: X(ks), cy: Y(cs), r: 5, fill: '#000'});
+
+function put(id, tex, x, y, o = {}) {
+  const cont = document.querySelector('.graph-container');
+  const e = document.createElement('div');
+  e.className = 'katex-label'; e.id = id;
+  katex.render(tex, e, {throwOnError: false});
+  e.style.left = (x/VBW*100).toFixed(2) + '%';
+  e.style.top = (y/VBH*100).toFixed(2) + '%';
+  e.style.color = o.c || 'black';
+  if (o.s) e.style.fontSize = o.s + 'px';
+  const tx = {l: '0', c: '-50%', r: '-100%'}[o.ha || 'l'], ty = {t: '0', m: '-50%', b: '-100%'}[o.va || 't'];
+  e.style.transform = `translate(${tx},${ty})`;
+  if (o.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  cont.appendChild(e);
+}
+put('lbl-c', 'c', 92, 36, {ha: 'r', s: 18});
+put('lbl-k', 'k', 646, 520, {va: 'm', s: 18});
+put('lbl-cdot', '\\dot{c} = 0', X(ks) + 6, Y(0.35), {va: 'm', c: '#1D9E75'});
+put('lbl-kdot', '\\dot{k} = 0', X(12.3) + 6, Y(kdot0(12.3)), {va: 'm', c: '#378ADD'});
+put('lbl-sp', '\\text{senda estable}', X(Shi[0][0]) + 8, Y(Shi[0][1]) + 4, {va: 't', c: '#5a5a5a', s: 15});
+put('lbl-0', '0', X(ks) + 8, Y(cs) + 6, {va: 't', c: '#000'});
+put('lbl-kstar', 'k^*', X(ks), 528, {ha: 'c', s: 15});
+put('lbl-koro', 'k_{\\text{oro}}', X(koro), 528, {ha: 'c', s: 15});
+put('lbl-cstar', 'c^*', 92, Y(cs), {ha: 'r', va: 'm', s: 15});
+</script>
+</body>
+</html>

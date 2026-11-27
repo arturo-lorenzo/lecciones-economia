@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 520">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <path id="cpp-area" fill="#1D9E75" opacity="0.1"/>
+
+    <line x1="90"  y1="280" x2="590" y2="280" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="340" y1="500" x2="340" y2="40"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="340" y1="280" x2="90"  y2="280" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="340" y1="280" x2="340" y2="500" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <path id="fpp-curve" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+    <circle id="pt0" r="5" fill="#000"/>
+    <line id="dash-h" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line id="dash-v" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line id="tick-h" stroke="black" stroke-width="1"/>
+    <line id="tick-v" stroke="black" stroke-width="1"/>
+  </svg>
+
+  <div class="katex-label" id="lbl-y1"></div>
+  <div class="katex-label" id="lbl-y2"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-fpp"></div>
+  <div class="katex-label" id="lbl-cpp"></div>
+  <div class="katex-label" id="lbl-pt"></div>
+  <div class="katex-label" id="lbl-y10"></div>
+  <div class="katex-label" id="lbl-y20"></div>
+</div>
+
+<script>
+const ox = 340, oy = 280;
+const leftEdge = 90;
+const maxInput = (ox - leftEdge) / 40;
+
+
+const A = 2.5;
+const expo = 0.4;
+function fpp(y1neg) { return A * Math.pow(y1neg, expo); }
+function toSvgX(y1) { return ox + y1 * 40; }
+function toSvgY(y2) { return oy - y2 * 40; }
+
+const fppPts = [];
+const areaPts = [];
+for (let i = 0; i <= 300; i++) {
+  const y1neg = (i / 300) * maxInput;
+  const y2 = fpp(y1neg);
+  const sx = toSvgX(-y1neg);
+  const sy = toSvgY(y2);
+  fppPts.push(sx.toFixed(1) + ',' + sy.toFixed(1));
+  areaPts.push({sx, sy});
+}
+
+document.getElementById('fpp-curve').setAttribute('d', 'M' + fppPts.join(' L'));
+
+const areaD = 'M' + ox + ',' + oy + ' ' +
+  areaPts.map(p => 'L' + p.sx.toFixed(1) + ',' + p.sy.toFixed(1)).join(' ') +
+  ' L' + leftEdge + ',' + oy +
+  ' L' + leftEdge + ',500' +
+  ' L' + ox + ',500 Z';
+document.getElementById('cpp-area').setAttribute('d', areaD);
+
+const y1_0 = -3;
+const y2_0 = fpp(3);
+const ptSx = toSvgX(y1_0);
+const ptSy = toSvgY(y2_0);
+
+document.getElementById('pt0').setAttribute('cx', ptSx);
+document.getElementById('pt0').setAttribute('cy', ptSy);
+document.getElementById('dash-h').setAttribute('x1', ptSx);
+document.getElementById('dash-h').setAttribute('y1', ptSy);
+document.getElementById('dash-h').setAttribute('x2', ox);
+document.getElementById('dash-h').setAttribute('y2', ptSy);
+document.getElementById('dash-v').setAttribute('x1', ptSx);
+document.getElementById('dash-v').setAttribute('y1', ptSy);
+document.getElementById('dash-v').setAttribute('x2', ptSx);
+document.getElementById('dash-v').setAttribute('y2', oy);
+document.getElementById('tick-h').setAttribute('x1', ox - 4);
+document.getElementById('tick-h').setAttribute('y1', ptSy);
+document.getElementById('tick-h').setAttribute('x2', ox);
+document.getElementById('tick-h').setAttribute('y2', ptSy);
+document.getElementById('tick-v').setAttribute('x1', ptSx);
+document.getElementById('tick-v').setAttribute('y1', oy);
+document.getElementById('tick-v').setAttribute('x2', ptSx);
+document.getElementById('tick-v').setAttribute('y2', oy + 4);
+
+
+const fppLabelInput = 5;
+const fppLabelY2 = fpp(fppLabelInput);
+const fppLabelSx = toSvgX(-fppLabelInput);
+const fppLabelSy = toSvgY(fppLabelY2);
+
+const VBW = 680, VBH = 520;
+const labels = [
+  {id:'lbl-y1',  tex:'y_1',          left:'87.6%', top:'51%',  color:'black'},
+  {id:'lbl-y2',  tex:'y_2',          left:'48%', top:'3%',   color:'black'},
+  {id:'lbl-o',   tex:'O',            left:'51%', top:'54%',  color:'black'},
+  {id:'lbl-fpp', tex:'\\text{FPP}',  left:((fppLabelSx - 5)/VBW*100).toFixed(1)+'%', top:((fppLabelSy - 25)/VBH*100).toFixed(1)+'%', color:'#0F6E56'},
+  {id:'lbl-cpp', tex:'\\text{CPP}',  left:'24%', top:'62%',  color:'#0F6E56'},
+  {id:'lbl-pt',  tex:'0',            left:((ptSx+12)/VBW*100).toFixed(1)+'%', top:((ptSy-20)/VBH*100).toFixed(1)+'%', color:'#000'},
+  {id:'lbl-y10', tex:'-y_1^0',       left:((ptSx-8)/VBW*100).toFixed(1)+'%',  top:'56%', color:'black'},
+  {id:'lbl-y20', tex:'y_2^0',        left:'51%', top:((ptSy-8)/VBH*100).toFixed(1)+'%', color:'black'}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError:false});
+  el.style.left = l.left; el.style.top = l.top;
+  if (l.color) el.style.color = l.color;
+  if (l.align === 'right') el.classList.add('right-of-axis');
+});
+</script>
+<script>(function(){var N={"lbl-fpp": [-0.15, -0.59, 0], "lbl-pt": [0, 0, 1], "lbl-y20": [0, 0, 1]};for(var id in N){var e=document.getElementById(id);if(!e)continue;e.style.marginLeft=N[id][0]+"%";e.style.marginTop=N[id][1]+"%";if(N[id][2]){var k=e.querySelector(".katex")||e;k.style.background="#fff";k.style.padding="0 2px";k.style.borderRadius="2px";}}})();</script>
+</body>
+</html>

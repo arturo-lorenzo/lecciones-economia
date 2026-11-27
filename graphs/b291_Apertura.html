@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+  .katex-label .katex { font-size: 1em; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 640" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+    <g id="guides"></g>
+    <line x1="90" y1="520" x2="640" y2="520" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="90" y1="520" x2="90" y2="36" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <path id="fpp" fill="none" stroke="#888" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="u0" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="u1" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+    <line id="la" stroke="#378ADD" stroke-width="2.2"/>
+    <line id="lw" stroke="#378ADD" stroke-width="2.2" stroke-dasharray="8 4"/>
+    <g id="br"></g>
+    <g id="dots"></g>
+  </svg>
+</div>
+<script>
+const VBW = 680, VBH = 640, NS = 'http://www.w3.org/2000/svg';
+const X = c => 90 + c * 44;
+const Y = c => 520 - c * 23.5;
+
+
+const Y1 = 10, Y2 = 1, A = 6;
+const fpp = q1 => Y2 + A * Math.sqrt(Y1 - q1);
+const Iof = R => Math.pow(A / (2 * R), 2);
+const Ra = 2.2, Rw = 1.4;
+const I0 = Iof(Ra), I1 = Iof(Rw);
+const x0 = Y1 - I0, y0 = fpp(x0);
+const xP = Y1 - I1, yP = fpp(xP);
+
+const beta = y0 / (Ra * x0);
+const Wth = xP + yP / Rw;
+const x1 = Wth / (1 + beta), y1 = beta * Rw * x1;
+const U = (a, b) => Math.log(a) + beta * Math.log(b);
+const ic = (U0, c1) => Math.exp((U0 - Math.log(c1)) / beta);
+function path(id, fn, a, b) { const p = []; for (let i = 0; i <= 300; i++) { const c = a + (b - a) * i / 300; const v = fn(c); if (Y(v) >= 44 && Y(v) <= 520) p.push(X(c).toFixed(1) + ',' + Y(v).toFixed(1)); } document.getElementById(id).setAttribute('d', 'M' + p.join(' L')); }
+function setL(id, x1_, y1_, x2_, y2_) { const e = document.getElementById(id); e.setAttribute('x1', x1_.toFixed(1)); e.setAttribute('y1', y1_.toFixed(1)); e.setAttribute('x2', x2_.toFixed(1)); e.setAttribute('y2', y2_.toFixed(1)); }
+function mk(tag, at, par) { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); document.getElementById(par).appendChild(e); return e; }
+path('fpp', fpp, 2.0, Y1);
+const U0 = U(x0, y0), U1 = U(x1, y1);
+path('u0', c => ic(U0, c), 3.5, 10.2);
+path('u1', c => ic(U1, c), 4.2, 11.6);
+
+setL('la', X(x0 - 2.1), Y(y0 + Ra * 2.1), X(x0 + 2.6), Y(y0 - Ra * 2.6));
+const xw = 11.3;
+setL('lw', X(xP - 2.6), Y(yP + Rw * 2.6), X(xw), Y(yP - Rw * (xw - xP)));
+
+[[x0, y0], [xP, yP], [x1, y1]].forEach(([a, b]) => {
+  mk('line', {x1: X(a), y1: Y(b), x2: X(a), y2: 520, stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'}, 'guides');
+  mk('line', {x1: X(a), y1: Y(b), x2: 90, y2: Y(b), stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'}, 'guides');
+  mk('line', {x1: X(a), y1: 520, x2: X(a), y2: 524, stroke: 'black', 'stroke-width': 1}, 'guides');
+  mk('line', {x1: 86, y1: Y(b), x2: 90, y2: Y(b), stroke: 'black', 'stroke-width': 1}, 'guides');
+});
+
+mk('circle', {cx: X(x0), cy: Y(y0), r: 5, fill: '#000'}, 'dots');
+mk('circle', {cx: X(x1), cy: Y(y1), r: 5, fill: '#000'}, 'dots');
+mk('circle', {cx: X(xP), cy: Y(yP), r: 5, fill: '#000'}, 'dots');
+
+function bracket(a, b, yy, col) {
+  mk('line', {x1: X(a) + 2, y1: yy, x2: X(b) - 2, y2: yy, stroke: col, 'stroke-width': 1.2, 'marker-start': 'url(#arrow)', 'marker-end': 'url(#arrow)'}, 'br');
+}
+bracket(xP, x0, 566, '#0F6E56');
+bracket(xP, x1, 604, '#D85A30');
+
+const cont = document.querySelector('.graph-container');
+function put(tex, x, y, o = {}) {
+  const e = document.createElement('div'); e.className = 'katex-label';
+  katex.render(tex, e, {throwOnError: false});
+  e.style.left = (x / VBW * 100).toFixed(2) + '%'; e.style.top = (y / VBH * 100).toFixed(2) + '%';
+  e.style.color = o.c || 'black'; if (o.s) e.style.fontSize = o.s + 'px';
+  const tx = {l: '0', c: '-50%', r: '-100%'}[o.ha || 'l'], ty = {t: '0', m: '-50%', b: '-100%'}[o.va || 't'];
+  e.style.transform = `translate(${tx},${ty})`;
+  if (o.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  cont.appendChild(e);
+}
+const O = '#D85A30', Bl = '#185FA5';
+put('C_2', 80, 40, {ha: 'r', s: 18});
+put('C_1', 648, 520, {va: 'm', s: 18});
+put('\\text{FPP}', X(2.0) - 6, Y(fpp(2.0)), {ha: 'r', va: 'm', c: '#666'});
+put('\\text{CIS}_0', X(10.2) + 6, Y(ic(U0, 10.2)) + 2, {va: 't', c: '#1D9E75'});
+put('\\text{CIS}_1', X(11.6) + 4, Y(ic(U1, 11.6)) - 4, {va: 'b', c: '#534AB7'});
+put('-(1+r)', X(x0 + 2.6) + 4, Y(y0 - Ra * 2.6) + 2, {va: 't', c: Bl});
+put('-(1+r^*)', X(xw) + 6, Y(yP - Rw * (xw - xP)) + 6, {va: 't', c: Bl});
+put('0', X(x0) - 8, Y(y0) + 6, {ha: 'r', va: 't', c: '#000'});
+put('1', X(x1) + 6, Y(y1) - 6, {va: 'b', c: '#000'});
+put('P^1', X(xP) + 7, Y(yP) - 5, {va: 'b', c: '#000'});
+put('C_1^0', X(x0), 530, {ha: 'c'});
+put('P_1^1', X(xP), 530, {ha: 'c'});
+put('C_1^1', X(x1), 530, {ha: 'c'});
+put('C_2^0', 82, Y(y0), {ha: 'r', va: 'm'});
+put('P_2^1', 82, Y(yP), {ha: 'r', va: 'm'});
+put('C_2^1', 82, Y(y1), {ha: 'r', va: 'm'});
+put('\\Delta I > 0', X(x0) + 8, 566, {va: 'm', c: '#0F6E56', s: 14});
+put('\\text{déficit por cuenta corriente en } t = 1', (X(xP) + X(x1)) / 2, 612, {ha: 'c', va: 't', c: O, s: 14});
+</script>
+</body>
+</html>

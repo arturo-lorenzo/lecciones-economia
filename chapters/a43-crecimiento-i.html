@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Arturo Lorenzo">
+<meta name="description" content="Tema A43 de las oposiciones TCEE. Crecimiento exógeno, modelos de Harrod y Domar y de Solow y Swan, regla de oro, convergencia y Ramsey, Cass y Koopmans.">
+
+<title>A43. Crecimiento económico exógeno – Lecciones de economía general e internacional</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/a44-crecimiento-ii.html" rel="next">
+<link href="../chapters/a42-ciclos.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-af206048d982c71265205c3505cca787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bec3fe2b0881f05566c9dedb60685f6d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="A43. Crecimiento económico exógeno – Lecciones de economía general e internacional">
+<meta property="og:description" content="Tema A43 de las oposiciones TCEE. Crecimiento exógeno, modelos de Harrod y Domar y de Solow y Swan, regla de oro, convergencia y Ramsey, Cass y Koopmans.">
+<meta property="og:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta property="og:site_name" content="Lecciones de economía general e internacional">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:title" content="A43. Crecimiento económico exógeno – Lecciones de economía general e internacional">
+<meta name="twitter:description" content="Tema A43 de las oposiciones TCEE. Crecimiento exógeno, modelos de Harrod y Domar y de Solow y Swan, regla de oro, convergencia y Ramsey, Cass y Koopmans.">
+<meta name="twitter:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="A43. Crecimiento económico exógeno">
+<meta name="citation_author" content="Arturo Lorenzo">
+<meta name="citation_publication_date" content="2026-11-28">
+<meta name="citation_cover_date" content="2026-11-28">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-11-28">
+<meta name="citation_fulltext_html_url" content="https://librovol1.arturolorenzo.com/chapters/a43-crecimiento-i.html">
+<meta name="citation_language" content="es">
+<meta name="citation_book_title" content="Lecciones de economía general e internacional">
+<link rel="canonical" href="https://librovol1.arturolorenzo.com/chapters/a43-crecimiento-i.html">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/a29-mhi-mgs.html">Macroeconomía</a></li><li class="breadcrumb-item"><a href="../chapters/a43-crecimiento-i.html"><span class="chapter-title">A43. Crecimiento económico exógeno</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Lecciones de economía general e internacional</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/arturo-lorenzo/lecciones-economia" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../creditos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Edición y licencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte A: Economía General</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pensamiento Económico</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a01-objeto-metodo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A1. Objeto y método de la ciencia económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a02-clasicos-marx.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A2. Los economistas clásicos y Marx</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a03-neoclasicos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A3. Los economistas neoclásicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a04-keynes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A4. Keynes: análisis comparado</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a05-monetaristas-snc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A5. La síntesis neoclásica y el monetarismo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a06-nmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A6. La nueva macroeconomía clásica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a07-nek.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A7. La nueva economía keynesiana</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Microeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a08-consumidor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A8. Teoría de la demanda del consumidor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a09-dualidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A9. Dualidad y aplicaciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a10-riesgo-incertidumbre.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A10. Elección en riesgo e incertidumbre</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a11-produccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A11. Teoría de la producción</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a12-costes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A12. Teoría de costes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a13-informacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A13. Economía de la información</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a14-juegos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A14. Teoría de juegos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a15-toi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A15. Teoría de la organización industrial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a16-competencia-perfecta.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A16. Competencia perfecta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a17-monopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A17. Monopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a18-competencia-monopolistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A18. Competencia monopolística</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a19-oligopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A19. Oligopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a20-regulacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A20. Regulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a21-equilibrio-general.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A21. Equilibrio general</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a22-eb-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A22. Economía del bienestar (I)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a23-eb-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A23. Economía del bienestar (II)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a24-eb-iii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A24. Economía del bienestar (III)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Economía Laboral</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a25-oferta-trabajo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A25. Mercado de trabajo y capital humano</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a26-desempleo-friccional.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A26. Desempleo friccional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a27-salarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A27. Determinación de salarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a28-tnp-nairu.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A28. TNP, NAIRU y persistencia</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Macroeconomía</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a29-mhi-mgs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A29. Modelos de horizonte infinito y generaciones solapadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a30-magnitudes-cn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A30. Magnitudes macroeconómicas y contabilidad nacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a32-precios-output.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A32. Precios y output en economía abierta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a33-demanda-consumo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A33. Teorías de demanda de consumo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a34-demanda-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A34. Teorías de demanda de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a35-demanda-dinero.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A35. Teorías de la demanda de dinero</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a36-politica-monetaria-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A36. Política monetaria I: diseño e instrumentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a37-politica-monetaria-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A37. Política monetaria II: transmisión y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a38-politica-fiscal.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A38. Política fiscal, crecimiento y ahorro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a39-deficit.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A39. Déficit público, su financiación y sostenibilidad</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a40-interrelacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A40. Interrelación de políticas macroeconómicas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a41-inflacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A41. Inflación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a42-ciclos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A42. Ciclos económicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a43-crecimiento-i.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">A43. Crecimiento económico exógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a44-crecimiento-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A44. Crecimiento económico endógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a45-crecimiento-empirica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A45. Evidencia empírica sobre el crecimiento</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte B: Economía Internacional</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Empresa y Finanzas</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b01-estados-ratios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B1. Estados financieros y ratios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b02-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B2. Decisiones de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b03-financiacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B3. Decisiones de financiación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b04-crecimiento-ma.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B4. Crecimiento empresarial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b23-renta-variable.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B23. Instrumentos de renta variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b24-renta-fija.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B24. Instrumentos de renta fija</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b25-derivados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B25. Instrumentos derivados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b26-crisis-financieras.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B26. Crisis financieras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b27-regulacion-financiera.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B27. Regulación bancaria y financiera</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Comercio Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b05-tnc-comercio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B5. Teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b06-nueva-teoria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B6. Nueva teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b07-politica-comercial-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B7. Política comercial I: instrumentos y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b08-politica-comercial-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B8. Política comercial II: política estratégica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b09-comercio-crecimiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B9. Comercio internacional y crecimiento</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b10-integracion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B10. Teoría de la integración económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b11-balanza-pagos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B11. Balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b12-ajuste-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B12. Ajuste de la balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b13-mercado-divisas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B13. Mercado de divisas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b14-tipo-cambio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B14. Determinación del tipo de cambio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b15-regimenes-cambiarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B15. Regímenes cambiarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b16-integracion-monetaria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B16. Integración monetaria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b17-crisis-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B17. Crisis de balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b18-globalizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B18. Globalización</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b19-coordinacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B19. Coordinación de políticas económicas internacionales</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Sistema Económico Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b20-sei-hasta-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B20. El sistema económico internacional hasta el colapso de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b21-sei-despues-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B21. El sistema económico internacional después de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b22-fmi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B22. El Fondo Monetario Internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b28-desarrollo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B28. Desarrollo económico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b29-fod-aod.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B29. Financiación oficial del desarrollo y AOD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b30-gbm-brsd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B30. Grupo Banco Mundial y bancos regionales de desarrollo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b31-ma-bpg.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B31. El cambio climático y su impacto en la economía</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b32-perspectivas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B32. Perspectivas de la economía internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b33-omc-gatt.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B33. La OMC y el GATT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b34-gats-trips.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B34. GATS, TRIPS y acuerdos plurilaterales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b35-no-comunitarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B35. Acuerdos comerciales no comunitarios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unión Europea</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b36-tratados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B36. Los tratados de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b37-finanzas-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B37. Las finanzas de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b38-pac-ppc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B38. Política Agrícola Común y Política Pesquera Común</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b39-miue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B39. Mercado interior de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b41-comercial-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B41. Política comercial de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b42-cooperacion-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B42. Política de cooperación de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b43-politica-monetaria-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B43. Política macroeconómica I: el euro y la política monetaria única</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b44-politica-financiera-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B44. Política macroeconómica II: la Unión Bancaria y la Unión de los Mercados de Capitales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b45-politica-fiscal-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B45. Política macroeconómica III: la gobernanza económica de la UE y de la zona euro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Descargas</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Primer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/ejercicios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios prácticos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/flashcards-conceptos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de conceptos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/guia-dictamen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guía para el dictamen</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Segundo Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/segundo-ejercicio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de inglés</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Tercer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/libro-bloques.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">El libro en PDF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del tercer ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Cuarto Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del cuarto ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Más allá del libro</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/otras-publicaciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Otras publicaciones y trabajos del autor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/enlaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Enlaces de interés</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Bibliografía</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manuales y obras de referencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia-articulos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Obras citadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../fuentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fuentes normativas y documentales</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#modelo-de-harrod-domar-1939-1946" id="toc-modelo-de-harrod-domar-1939-1946" class="nav-link" data-scroll-target="#modelo-de-harrod-domar-1939-1946">1. Modelo de Harrod-Domar (1939, 1946)</a>
+  <ul class="collapse">
+  <li><a href="#supuestos" id="toc-supuestos" class="nav-link" data-scroll-target="#supuestos">1.1. Supuestos</a></li>
+  <li><a href="#modelo" id="toc-modelo" class="nav-link" data-scroll-target="#modelo">1.2. Modelo</a></li>
+  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link" data-scroll-target="#conclusiones">1.3. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#modelo-de-solow-swan-1956" id="toc-modelo-de-solow-swan-1956" class="nav-link" data-scroll-target="#modelo-de-solow-swan-1956">2. Modelo de Solow-Swan (1956)</a>
+  <ul class="collapse">
+  <li><a href="#supuestos-1" id="toc-supuestos-1" class="nav-link" data-scroll-target="#supuestos-1">2.1. Supuestos</a></li>
+  <li><a href="#modelo-sin-progreso-técnico" id="toc-modelo-sin-progreso-técnico" class="nav-link" data-scroll-target="#modelo-sin-progreso-técnico">2.2. Modelo sin progreso técnico</a></li>
+  <li><a href="#modelo-con-progreso-técnico" id="toc-modelo-con-progreso-técnico" class="nav-link" data-scroll-target="#modelo-con-progreso-técnico">2.3. Modelo con progreso técnico</a></li>
+  <li><a href="#dinámica-de-transición-y-convergencia" id="toc-dinámica-de-transición-y-convergencia" class="nav-link" data-scroll-target="#dinámica-de-transición-y-convergencia">2.4. Dinámica de transición y convergencia</a></li>
+  <li><a href="#extensiones" id="toc-extensiones" class="nav-link" data-scroll-target="#extensiones">2.5. Extensiones</a></li>
+  <li><a href="#conclusiones-1" id="toc-conclusiones-1" class="nav-link" data-scroll-target="#conclusiones-1">2.6. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#modelo-de-ramsey-cass-koopmans-1928-1965" id="toc-modelo-de-ramsey-cass-koopmans-1928-1965" class="nav-link" data-scroll-target="#modelo-de-ramsey-cass-koopmans-1928-1965">3. Modelo de Ramsey-Cass-Koopmans (1928, 1965)</a>
+  <ul class="collapse">
+  <li><a href="#supuestos-2" id="toc-supuestos-2" class="nav-link" data-scroll-target="#supuestos-2">3.1. Supuestos</a></li>
+  <li><a href="#modelo-1" id="toc-modelo-1" class="nav-link" data-scroll-target="#modelo-1">3.2. Modelo</a></li>
+  <li><a href="#conclusiones-2" id="toc-conclusiones-2" class="nav-link" data-scroll-target="#conclusiones-2">3.3. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#conclusiones-3" id="toc-conclusiones-3" class="nav-link" data-scroll-target="#conclusiones-3">Conclusiones</a></li>
+  <li><a href="#anexo.-de-los-niveles-a-las-tasas-de-crecimiento" id="toc-anexo.-de-los-niveles-a-las-tasas-de-crecimiento" class="nav-link" data-scroll-target="#anexo.-de-los-niveles-a-las-tasas-de-crecimiento">Anexo. De los niveles a las tasas de crecimiento</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/a29-mhi-mgs.html">Macroeconomía</a></li><li class="breadcrumb-item"><a href="../chapters/a43-crecimiento-i.html"><span class="chapter-title">A43. Crecimiento económico exógeno</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">A43. Crecimiento económico exógeno</span></h1>
+<p class="subtitle lead">Crecimiento económico (I). Acumulación de capital y progreso técnico exógeno. El modelo de Solow. El modelo de Solow aumentado con acumulación de capital humano. El modelo de Ramsey-Cass-Koopmans.</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Arturo Lorenzo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">noviembre de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<p>De todos los fenómenos que estudia la macroeconomía, el crecimiento económico es probablemente el de mayores consecuencias para el bienestar. Como escribió Robert Lucas (1988), cuando uno empieza a pensar en el crecimiento económico, le resulta difícil pensar en otra cosa. Por <strong>crecimiento económico</strong> se entiende el aumento sostenido de la producción agregada, y en particular de la producción por habitante, a lo largo del tiempo.</p>
+<p>El crecimiento sostenido es un fenómeno reciente en la historia. Según las estimaciones de Angus Maddison, entre 1820 y 1998 la renta real per cápita se multiplicó por más de veinte en Estados Unidos y por casi quince en Europa occidental, mientras que durante los milenios anteriores apenas había variado<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Ese avance, sin embargo, ha sido desigual según el país y la época. Como las tasas se acumulan igual que el interés compuesto, crecer algo más deprisa durante varias décadas basta para que la distancia entre rentas per cápita se haga enorme. De ahí surge la pregunta central de la teoría del crecimiento, por qué crecen las economías y por qué unas crecen más que otras, a la que la literatura ofrece tres grandes respuestas, no excluyentes: la acumulación de capital físico (inversión), la formación de capital humano (educación) y el progreso tecnológico (innovación).</p>
+<p>La teoría moderna del crecimiento tiene sus antecedentes en los clásicos, que vincularon la riqueza de las naciones a la división del trabajo y a la acumulación (Smith) y anticiparon el estado estacionario por los rendimientos decrecientes de la tierra (Ricardo, Malthus). El modelo keynesiano de Harrod (1939) y Domar (1946) mostró la inestabilidad de la senda de crecimiento. En cambio, el modelo neoclásico de Solow y Swan (1956), completado por Cass y Koopmans (1965) con el enfoque de Ramsey (1928), explicó la <strong>convergencia</strong> hacia un <strong>estado estacionario</strong>, pero dejó el progreso técnico fuera del modelo. Los modelos de <strong>crecimiento endógeno</strong>, iniciados por Paul Romer (1986) y Robert Lucas (1988), trataron de explicarlo desde dentro, y la contrastación empírica, desde Barro (1991) y Mankiw, Romer y Weil (1992), ha confrontado todas estas teorías con los datos. El objetivo último de la teoría del crecimiento es, así, doble, pues busca determinar cómo elevar el crecimiento global y cómo aproximar los niveles de vida de los países más pobres a los de los más ricos.</p>
+<p>El tema estudia los modelos de crecimiento con progreso tecnológico exógeno en el orden en que la teoría los produjo:</p>
+<ul>
+<li><p><em>Modelo de Harrod-Domar</em>: el modelo keynesiano relaciona el crecimiento con el ahorro y con la relación entre capital y producto.</p></li>
+<li><p><em>Modelo de Solow-Swan</em>: el modelo neoclásico se estudia junto con su extensión posterior, el modelo aumentado con capital humano (Mankiw, Romer y Weil, 1992).</p></li>
+<li><p><em>Modelo de Ramsey-Cass-Koopmans</em>: este modelo microfundamenta la decisión sobre la tasa de ahorro.</p></li>
+</ul>
+</section>
+<section id="modelo-de-harrod-domar-1939-1946" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-de-harrod-domar-1939-1946">1. Modelo de Harrod-Domar (1939, 1946)</h2>
+<div class="callout callout-style-simple callout-note callout-titled" title="Sobre esta sección">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Sobre esta sección
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>El modelo de Harrod-Domar se expone por su valor conceptual, pues plantea el problema de la estabilidad del crecimiento al que responde el modelo de Solow-Swan. Desde la revisión del programa de 2022 no figura en el título del tema, de modo que en la exposición conviene tratarlo con brevedad.</p>
+</div>
+</div>
+</div>
+<p><strong>Origen</strong>: Roy Harrod (1939) y Evsey Domar (1946) propusieron, con pocos años de diferencia, dos modelos de raíz keynesiana, que varían en detalles pero cuyas implicaciones coinciden.</p>
+<p><strong>Idea</strong>: la inversión tiene una naturaleza dual, crea demanda vía multiplicador y capacidad vía acelerador, y solo una tasa de crecimiento concreta, la garantizada, hace que ambas crezcan al mismo ritmo.</p>
+<p>Nada asegura, sin embargo, que la economía se sitúe en ella, y si se desvía se aleja. En consecuencia, el crecimiento basado en la acumulación del capital es inestable, y la economía transita al filo de la navaja.</p>
+<section id="supuestos" class="level3">
+<h3 class="anchored" data-anchor-id="supuestos">1.1. Supuestos</h3>
+<p><strong>Entorno</strong>: mundo keynesiano en tiempo discreto, con variables fechadas por periodos, a diferencia de los modelos de Solow-Swan y de Ramsey-Cass-Koopmans, que se formulan en tiempo continuo. Los precios relativos no ajustan las proporciones de factores ni el ahorro a la inversión, y las decisiones de inversión dependen de las expectativas de los empresarios. La economía es cerrada, desarrollada, con rendimientos constantes a escala y sin sector público, de modo que la producción se destina a consumo e inversión, <span class="math inline">\(Y = C + I\)</span>, y el ahorro iguala <em>ex post</em> a la inversión, <span class="math inline">\(S = I\)</span>. <em>Ex ante</em>, la igualdad entre ahorro e inversión deseados es la condición de equilibrio. Familias y empresas no se modelizan por separado.</p>
+<p><strong>Agentes</strong>: las familias ahorran una fracción constante y exógena de la renta, <span class="math inline">\(S = sY\)</span>. Las empresas ajustan su <em>stock</em> de capital al deseado periodo a periodo según el principio del acelerador, <span class="math inline">\(K^* = vY\)</span>, donde <span class="math inline">\(v\)</span> es la ratio capital-output deseada, constante y determinada por la tecnología. Se cumple el multiplicador keynesiano, <span class="math inline">\(\Delta Y = \Delta I/s\)</span>.</p>
+<p><strong>Tecnología</strong>: la producción sigue una función de Leontief con dos factores complementarios, <span class="math inline">\(Y = \min(K/v, L/u)\)</span>, sin sustituibilidad entre ellos. El capital no se deprecia (<span class="math inline">\(I_{\text{neta}} = I_{\text{bruta}}\)</span>), la fuerza de trabajo crece a la tasa constante y exógena <span class="math inline">\(n\)</span>, <span class="math inline">\(L_{t+1} = (1+n)L_t\)</span>, y no hay progreso tecnológico.</p>
+</section>
+<section id="modelo" class="level3">
+<h3 class="anchored" data-anchor-id="modelo">1.2. Modelo</h3>
+<p><strong>Planteamiento</strong>: no hay programa de optimización. Los rendimientos constantes permiten trabajar con la función de producción agregada en forma intensiva, <span class="math inline">\(y = \min(k/v, 1/u)\)</span>. El modelo se reduce a comparar tres tasas de crecimiento que se derivan de esta expresión: la que exige el equilibrio entre ahorro e inversión, la que permite la población y la que efectivamente se produce:</p>
+<ul>
+<li><p><em>Tasa garantizada</em> (Harrod): de la igualdad entre ahorro e inversión, <span class="math inline">\(S_t = sY_t = I_t = K_{t+1} - K_t = v(Y_{t+1} - Y_t)\)</span>, se obtiene la tasa de crecimiento que mantiene el equilibrio del mercado de bienes en cada periodo,</p>
+<p><span class="math display">\[g_w = \frac{Y_{t+1} - Y_t}{Y_t} = \frac{s}{v}\]</span></p>
+<p>donde <span class="math inline">\(s \in (0, 1)\)</span> es la tasa de ahorro y <span class="math inline">\(v\)</span> la ratio capital-output, por lo que la tasa garantizada aumenta con la propensión al ahorro y disminuye con la intensidad de capital de la tecnología.</p></li>
+<li><p><em>Tasa natural</em>: es la máxima compatible con el pleno empleo, dada por el crecimiento de la fuerza de trabajo, <span class="math inline">\(g_n = n\)</span> (con progreso técnico, <span class="math inline">\(n + g_A\)</span>).</p></li>
+<li><p><em>Tasa efectiva</em>: <span class="math inline">\(g_Y = (Y_{t+1} - Y_t)/Y_t\)</span>, la que resulta de las decisiones de inversión de los empresarios, guiadas por los <em>animal spirits</em>.</p></li>
+<li><p><em>Condición de Domar</em>: la tasa garantizada se obtiene también partiendo del doble efecto de la inversión. Su aumento amplía la demanda agregada a través del multiplicador, <span class="math inline">\(\Delta Y^d = \Delta I/s\)</span>, mientras que su nivel añade una capacidad productiva igual a <span class="math inline">\(I/v\)</span>, donde <span class="math inline">\(1/v\)</span> es la productividad del capital. Igualando ambos incrementos, la inversión ha de crecer a la tasa <span class="math inline">\(\Delta I/I = s/v\)</span>, es decir, a la tasa garantizada.</p></li>
+</ul>
+<p><strong>Dinámica</strong>: Harrod argumenta que el equilibrio <span class="math inline">\(g_Y = g_w\)</span> es inestable, y la economía discurre por el <em>filo de la navaja</em> (<em>knife-edge</em>). Concretamente, identifica dos desviaciones:</p>
+<ul>
+<li><p><em>Exceso de ahorro</em> (<span class="math inline">\(g_Y &lt; g_w\)</span>, <span class="math inline">\(S &gt; I\)</span>): la producción no encuentra comprador suficiente. Ante ese excedente, los empresarios rebajan la producción que esperan vender y, como trabajan con proporciones fijas de capital, el acelerador reduce el capital que desean tener. Invierten entonces menos, la demanda se contrae aún más y el desequilibrio inicial se amplía, de modo que el crecimiento se frena periodo tras periodo en una espiral implosiva, con la que Harrod y Domar explicaban la década de 1930.</p></li>
+<li><p><em>Exceso de inversión</em> (<span class="math inline">\(g_Y &gt; g_w\)</span>, <span class="math inline">\(S &lt; I\)</span>): el proceso opera al revés y el crecimiento se vuelve explosivo.</p></li>
+</ul>
+<p>A largo plazo se añade un segundo problema. Nada garantiza que <span class="math inline">\(g_w = g_n\)</span>, pues <span class="math inline">\(s\)</span>, <span class="math inline">\(v\)</span> y <span class="math inline">\(n\)</span> son parámetros independientes. Caben dos casos:</p>
+<ul>
+<li><p><em><span class="math inline">\(g_w &gt; g_n\)</span></em>: el capital crece más deprisa que el trabajo y, sin sustituibilidad, aparece capacidad ociosa permanente.</p></li>
+<li><p><em><span class="math inline">\(g_w &lt; g_n\)</span></em>: aparece desempleo creciente y permanente.</p></li>
+</ul>
+<p><strong>Extensiones</strong>: dada la inestabilidad intrínseca de la economía, la intervención pública se vuelve imprescindible. Además, si el ahorro no basta para financiar el crecimiento objetivo, <span class="math inline">\(g_Y^T\)</span> (es decir, si <span class="math inline">\(g_w = s/v &lt; g_Y^T\)</span>), existe un <em>savings gap</em>, una brecha entre la tasa de ahorro corriente, <span class="math inline">\(s\)</span>, y la necesaria para financiar la inversión que exige ese crecimiento, <span class="math inline">\(v\,g_Y^T\)</span>.</p>
+<ul>
+<li><p><em>Política fiscal anticíclica</em>: cuando sobra ahorro, la inversión pública debe aumentar, y debe reducirse cuando escasea.</p></li>
+<li><p><em>Políticas de desarrollo</em>: la brecha de ahorro, en cambio, solo se cierra elevando el ahorro disponible, ya sea interno (ahorro público) o externo (ayuda exterior).</p></li>
+</ul>
+<p>Ante la inestabilidad del filo de la navaja, surgen dos soluciones. O bien se adopta una función de producción continua, que permite que <span class="math inline">\(v\)</span> se ajuste (solución adoptada por Solow-Swan), o bien se endogeniza la tasa de ahorro y se permite que <span class="math inline">\(s\)</span> se ajuste.</p>
+<p>La segunda vía es la de la escuela de Cambridge (Kaldor, 1956; Pasinetti, 1962), en la que <span class="math inline">\(s\)</span> depende de la distribución de la renta entre salarios y beneficios. Si los perceptores de beneficios ahorran una fracción <span class="math inline">\(s_\pi\)</span> mayor que la de los asalariados, <span class="math inline">\(s_w\)</span>, la tasa de ahorro agregada es <span class="math inline">\(s = s_w + (s_\pi - s_w)\,\Pi/Y\)</span>, con <span class="math inline">\(\Pi\)</span> los beneficios. La condición <span class="math inline">\(s/v = n\)</span> determina entonces la participación de los beneficios que hace compatible la tasa garantizada con la natural, <span class="math inline">\(\Pi/Y = (nv - s_w)/(s_\pi - s_w)\)</span>, lo que exige <span class="math inline">\(s_w &lt; nv &lt; s_\pi\)</span>. Con pleno empleo, el ajuste lo realizan los precios, ya que un exceso de inversión eleva los precios respecto de los salarios nominales, aumenta la participación de los beneficios y, con ella, el ahorro.</p>
+<p>Si los asalariados no ahorran, la tasa de beneficio es <span class="math inline">\(\Pi/K = n/s_\pi\)</span>. Pasinetti demostró que, con propensiones al ahorro por clase social y no por tipo de renta, el resultado se mantiene aunque los asalariados ahorren, siempre que su ahorro obtenga la misma tasa de beneficio (<em>teorema de Pasinetti</em>). La tasa de beneficio de equilibrio, <span class="math inline">\(\Pi/K = n/s_c\)</span>, depende entonces solo de la tasa de crecimiento natural y de la propensión al ahorro de los capitalistas, <span class="math inline">\(s_c\)</span>. Ramsey-Cass-Koopmans endogeniza también el ahorro, pero sobre una función de producción neoclásica en la que <span class="math inline">\(v\)</span> ya se ajusta.</p>
+</section>
+<section id="conclusiones" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones">1.3. Conclusiones</h3>
+<p><strong>Aspectos positivos</strong>: con Harrod-Domar arranca la teoría moderna del crecimiento. El modelo lleva además la interacción entre multiplicador y acelerador a un marco dinámico y formula la cuestión que vertebra el tema, la de si el crecimiento equilibrado es estable. Su noción de brecha de ahorro sirvió de fundamento a las políticas de desarrollo apoyadas en la ayuda exterior.</p>
+<p><strong>Limitaciones</strong>: la función de producción de coeficientes fijos genera la inestabilidad del filo de la navaja, que la evidencia no respalda, pues las economías no siguen sendas de crecimiento explosivas ni implosivas. Asimismo, como <span class="math inline">\(s\)</span>, <span class="math inline">\(v\)</span> y <span class="math inline">\(n\)</span> son parámetros independientes, la igualdad entre la tasa garantizada y la natural sería fortuita, y fuera de ella el modelo predice capacidad ociosa o desempleo permanentes.</p>
+<p>De las dos salidas del filo de la navaja, la escuela de Cambridge ajusta la tasa de ahorro mediante la distribución de la renta. La sección 2 sigue la otra y deja que la ratio capital-output se ajuste con la función de producción neoclásica de Solow-Swan, y la sección 3 endogeniza el ahorro sobre esa misma función.</p>
+</section>
+</section>
+<section id="modelo-de-solow-swan-1956" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-de-solow-swan-1956">2. Modelo de Solow-Swan (1956)</h2>
+<p><strong>Origen</strong>: lo propusieron Robert Solow (1956) y, de forma independiente, Trevor Swan (1956).</p>
+<p><strong>Idea</strong>: el modelo sustituye la función de Leontief por una función de producción neoclásica con sustituibilidad entre capital y trabajo. Con ello, la ratio capital-output se ajusta y la inestabilidad del filo de la navaja desaparece.</p>
+<p>El modelo estudia el papel de la inversión como motor del crecimiento y concluye que, por los rendimientos decrecientes del capital, solo el progreso técnico sostiene el crecimiento per cápita a largo plazo.</p>
+<section id="supuestos-1" class="level3">
+<h3 class="anchored" data-anchor-id="supuestos-1">2.1. Supuestos</h3>
+<p><strong>Entorno</strong>: el modelo se formula en tiempo continuo, con información y competencia perfectas. La economía es cerrada, desarrollada y sin sector público, como en Harrod-Domar.</p>
+<p><strong>Agentes</strong>: las familias son agentes del tipo Robinson Crusoe, a la vez productores, consumidores y propietarios de los factores y de la tecnología. Ahorran e invierten una fracción constante de la renta, <span class="math inline">\(S = I = sY\)</span>. Esa fracción es un parámetro exógeno y no se deriva de ninguna decisión.</p>
+<p><strong>Tecnología</strong>: la función de producción es una Cobb-Douglas neoclásica:</p>
+<p><span class="math display">\[Y = AK^\alpha L^{1-\alpha}, \quad \alpha \in (0, 1)\]</span></p>
+<p>donde <span class="math inline">\(A\)</span> es la tecnología (Hicks-neutral, inicialmente constante, <span class="math inline">\(\dot{A} = 0\)</span>), y <span class="math inline">\(\alpha\)</span> y <span class="math inline">\((1-\alpha)\)</span> son las participaciones de capital y trabajo en la renta (constantes, dadas por la tecnología). El capital se deprecia a una tasa constante <span class="math inline">\(\delta\)</span> y la población crece a una tasa constante <span class="math inline">\(n\)</span>.</p>
+<p>La función cumple tres propiedades neoclásicas:</p>
+<ul>
+<li><p><em>Rendimientos constantes a escala</em>: <span class="math inline">\(f(\lambda K, \lambda L) = \lambda f(K,L)\)</span>.</p></li>
+<li><p><em>Productividades marginales positivas y decrecientes</em>: <span class="math inline">\(f_K' &gt; 0\)</span>, <span class="math inline">\(f_K'' &lt; 0\)</span>, con productividades marginales cruzadas positivas, <span class="math inline">\(f_{KL}'' = f_{LK}'' &gt; 0\)</span> (la simetría se sigue del teorema de Young).</p></li>
+<li><p><em>Condiciones de Inada</em>:</p>
+<ul>
+<li><p><em>Condición de Inada en el origen</em>: la productividad marginal del capital tiende a ser infinita cuando el <em>stock</em> de capital tiende a ser nulo, <span class="math inline">\(\lim_{K \rightarrow 0} f_K' = \infty\)</span>.</p></li>
+<li><p><em>Condición de Inada en el infinito</em>: la productividad marginal del capital tiende a ser nula cuando el <em>stock</em> de capital tiende a ser infinito, <span class="math inline">\(\lim_{K \rightarrow \infty} f_K' = 0\)</span>.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="modelo-sin-progreso-técnico" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-sin-progreso-técnico">2.2. Modelo sin progreso técnico</h3>
+<p><strong>Planteamiento</strong>: no hay programa de optimización, porque la tasa de ahorro es exógena. La economía no tiene sector exterior ni sector público, por lo que la renta se destina a consumo o a inversión:</p>
+<p><span class="math display">\[Y = C + I\]</span></p>
+<p>El modelo determina estas tres variables con una ecuación de comportamiento para cada una. Cada ecuación se escribe en niveles, en términos per cápita (<span class="math inline">\(x = X/L\)</span>) y en tasas de crecimiento (<span class="math inline">\(g_x \equiv \dot{x}/x\)</span>), que se obtienen tomando logaritmos y derivando respecto al tiempo con las reglas que recoge el Anexo.</p>
+<ul>
+<li><p><em>Renta</em>: la genera la función de producción, que, con rendimientos constantes a escala, se escribe en forma intensiva dividiendo por <span class="math inline">\(L\)</span>:</p>
+<p><span class="math display">\[Y = AK^\alpha L^{1-\alpha} \quad \Rightarrow \quad y = Ak^\alpha \quad \Rightarrow \quad g_y = \alpha g_k\]</span></p>
+<p>La renta per cápita depende solo del capital per cápita, y su tasa de crecimiento es una fracción <span class="math inline">\(\alpha\)</span> de la de este. Por eso, entender el comportamiento del capital equivale a entender el crecimiento.</p></li>
+<li><p><em>Inversión</em>: las familias invierten la fracción <span class="math inline">\(s\)</span> de la renta, <span class="math inline">\(I = sY\)</span>, y el capital aumenta con la inversión bruta y disminuye con la depreciación:</p>
+<p><span class="math display">\[\dot{K} = sY - \delta K \quad \Rightarrow \quad \dot{k} = sAk^\alpha - (n + \delta)k \quad \Rightarrow \quad g_k = sAk^{\alpha-1} - (n+\delta)\]</span></p>
+<p>La forma per cápita es la <em>ecuación fundamental de Solow-Swan</em> o ley de acumulación del capital per cápita. A diferencia de la renta, no basta con dividir por <span class="math inline">\(L\)</span>, porque el capital per cápita cae también cuando crece la población (Anexo). La variación del capital per cápita es la diferencia entre el ahorro bruto per cápita, <span class="math inline">\(sAk^\alpha = sf(k)\)</span>, y la inversión de reposición, <span class="math inline">\((n+\delta)k\)</span>, que mantiene constante el <em>stock</em> de capital per cápita ante el crecimiento de la población y la depreciación. Así, mientras el ahorro bruto supere la reposición (<span class="math inline">\(\dot{k} &gt; 0\)</span>), la economía acumula capital y crece.</p>
+<p>En tasas, la economía crece siempre que la tasa de ahorro bruto por unidad de capital, <span class="math inline">\(sAk^{\alpha-1}\)</span>, supere la tasa de reposición, <span class="math inline">\(n+\delta\)</span>. La tasa de crecimiento depende positivamente de <span class="math inline">\(s\)</span> y <span class="math inline">\(A\)</span>, y negativamente de <span class="math inline">\(n\)</span> y <span class="math inline">\(\delta\)</span>. El efecto de <span class="math inline">\(\alpha\)</span>, en cambio, es ambiguo, porque <span class="math inline">\(\partial g_k/\partial \alpha = sAk^{\alpha-1}\ln k\)</span> es positivo solo si <span class="math inline">\(k &gt; 1\)</span>.</p></li>
+<li><p><em>Consumo</em>: es la parte de la renta que no se ahorra:</p>
+<p><span class="math display">\[C = (1-s)Y \quad \Rightarrow \quad c = (1-s)Ak^\alpha \quad \Rightarrow \quad g_c = g_y\]</span></p>
+<p>Con una tasa de ahorro constante, el consumo per cápita crece al mismo ritmo que la renta per cápita, y ambos siguen la evolución del capital per cápita.</p></li>
+</ul>
+<p><strong>Equilibrio</strong>: la renta per cápita crece hasta que <span class="math inline">\(\dot{k} = 0\)</span>. En ese punto el ahorro bruto iguala la inversión de reposición y no quedan recursos para incrementar el capital per cápita una vez reemplazado el depreciado y equipados los nuevos trabajadores. Esa situación, en la que las tasas de crecimiento de todas las variables son constantes, es el <em>estado estacionario</em>. Sus valores per cápita son</p>
+<p><span class="math display">\[k^* = \left(\frac{sA}{n+\delta}\right)^{1/(1-\alpha)}, \quad y^* = A^{1/(1-\alpha)}\left(\frac{s}{n+\delta}\right)^{\alpha/(1-\alpha)}, \quad c^* = (1-s)y^*\]</span></p>
+<p>y los precios de los factores, que retribuyen a cada uno según su productividad marginal, son constantes, <span class="math inline">\(w^* = (1-\alpha)Ak^{*\alpha}\)</span> y <span class="math inline">\(r^* = \alpha Ak^{*(\alpha-1)} - \delta\)</span>. Sin progreso tecnológico, <span class="math inline">\(g_y^* = g_k^* = g_c^* = 0\)</span> y, en agregado, <span class="math inline">\(g_Y^* = g_K^* = n\)</span>. El estado estacionario tiene cuatro propiedades.</p>
+<ul>
+<li><p><em>Existencia</em>: gracias a las dos condiciones de Inada. La del origen garantiza que el ahorro supere a la inversión de reposición para <span class="math inline">\(k\)</span> pequeño, y la del infinito, que quede por debajo para <span class="math inline">\(k\)</span> grande, de modo que ambas curvas se cortan en un <span class="math inline">\(k^* &gt; 0\)</span>.</p></li>
+<li><p><em>Unicidad</em>: porque la función de ahorro por trabajador es cóncava y la de reposición lineal.</p></li>
+<li><p><em>Estabilidad</em>: la economía gravita automáticamente hacia <span class="math inline">\(k^*\)</span> desde cualquier punto de partida, lo que constituye la diferencia fundamental con Harrod-Domar.</p></li>
+<li><p><em>Ausencia de crecimiento endógeno</em>: gracias a la condición de Inada en el infinito (la productividad marginal del capital tiende a cero), que impide que la acumulación sostenga por sí sola el crecimiento per cápita. Por los rendimientos decrecientes del capital, solo el progreso técnico exógeno lo mantiene.</p></li>
+</ul>
+<p><strong>Desarrollo gráfico</strong>: el estado estacionario se representa en el plano capital por trabajador-producto por trabajador (figura <a href="#fig-a431-solow-i" class="quarto-xref"><span>A43.1</span></a>):</p>
+<ol type="1">
+<li><p><em>Función de producción</em>, <span class="math inline">\(f(k)\)</span>: recoge la producción por trabajador y es cóncava, por los rendimientos decrecientes del capital.</p></li>
+<li><p><em>Curva de ahorro</em>, <span class="math inline">\(sf(k)\)</span>: recoge el ahorro y la inversión bruta por trabajador, una fracción <span class="math inline">\(s\)</span> de la producción, y es cóncava como ella.</p></li>
+<li><p><em>Recta de reposición</em>, <span class="math inline">\((n+\delta)k\)</span>: recoge la inversión que mantiene constante el capital por trabajador ante el crecimiento de la población y la depreciación, y es lineal porque es proporcional a <span class="math inline">\(k\)</span>.</p></li>
+<li><p><em>Tasa de crecimiento del capital</em>: en el panel inferior, en el plano <span class="math inline">\(k\)</span>-<span class="math inline">\(g_k\)</span>, es la distancia vertical entre la curva <span class="math inline">\(sAk^{\alpha-1}\)</span> y la recta <span class="math inline">\(n + \delta\)</span>.</p></li>
+<li><p><em>Equilibrio</em>: en el punto 0, el cruce de la curva de ahorro y la recta de reposición determina <span class="math inline">\(k^*\)</span> y la inversión por trabajador del estado estacionario, <span class="math inline">\(i^* = sf(k^*) = (n+\delta)k^*\)</span>, y el consumo es <span class="math inline">\(c^* = y^* - i^*\)</span>. A la izquierda el ahorro supera a la reposición y <span class="math inline">\(k\)</span> crece (<span class="math inline">\(g_k &gt; 0\)</span>), mientras que a la derecha <span class="math inline">\(k\)</span> cae.</p></li>
+</ol>
+<div id="fig-a431-solow-i" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a431-solow-i-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a431_Solow_i.html" style="height:1020px" loading="lazy" title="fig-a431-solow-i"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a431-solow-i-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A43.1: Modelo de Solow-Swan. El estado estacionario se alcanza donde el ahorro por trabajador iguala a la inversión de reposición.
+</figcaption>
+</figure>
+</div>
+<p><strong>Estática comparativa</strong>: la alteración permanente de un parámetro produce un efecto <em>nivel</em> permanente y un efecto <em>tasa</em> solo transitorio sobre las variables per cápita.</p>
+<ul>
+<li><p><em>Aumento del ahorro</em> (<span class="math inline">\(\Delta s &gt; 0\)</span>): gráficamente, en el plano <span class="math inline">\(k\)</span>-<span class="math inline">\(y\)</span> (figura <a href="#fig-a438-solow-ahorro" class="quarto-xref"><span>A43.2</span></a>, panel superior), la curva de ahorro pivota hacia arriba, de <span class="math inline">\(s_0 f(k)\)</span> a <span class="math inline">\(s_1 f(k)\)</span>, y corta a la recta de reposición en un capital estacionario mayor, del punto 0 al 1 (<span class="math inline">\(k^*_0 &lt; k^*_1\)</span>). En el plano <span class="math inline">\(k\)</span>-<span class="math inline">\(g_k\)</span> (panel inferior), la curva de ahorro por unidad de capital se desplaza también hacia arriba, de <span class="math inline">\(s_0Ak^{\alpha-1}\)</span> a <span class="math inline">\(s_1Ak^{\alpha-1}\)</span>. En <span class="math inline">\(k^*_0\)</span> la tasa de crecimiento del capital salta de cero a un valor positivo (del punto 0 al 0′) y después decrece a lo largo de la nueva curva hasta anularse en el punto 1.</p>
+<p>Por tanto, durante la transición la economía crece más deprisa, y una vez alcanzado el nuevo estado estacionario la tasa per cápita vuelve a ser la inicial. El consumo cae a corto plazo, porque la inversión absorbe una fracción mayor de la producción, y a largo plazo el consumo solo aumenta si <span class="math inline">\(k^*_0\)</span> era inferior al capital de la regla de oro, que se define en este mismo apartado. Según el modelo, la recomendación habitual de los organismos internacionales a los países pobres, ahorrar más, eleva su nivel de renta, pero no su tasa de crecimiento a largo plazo.</p></li>
+</ul>
+<div id="fig-a438-solow-ahorro" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a438-solow-ahorro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a438_Solow_ahorro.html" style="height:880px" loading="lazy" title="fig-a438-solow-ahorro"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a438-solow-ahorro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A43.2: Aumento de la tasa de ahorro (<span class="math inline">\(\Delta s &gt; 0\)</span>) en el modelo de Solow-Swan. El capital estacionario pasa de <span class="math inline">\(k^*_0\)</span> a <span class="math inline">\(k^*_1\)</span> (0 → 1), y la tasa de crecimiento del capital salta en <span class="math inline">\(k^*_0\)</span> (0 → 0′) y se anula de nuevo en 1.
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><p><em>Caída de la tasa de crecimiento de la población</em> (<span class="math inline">\(\downarrow n\)</span>): hace pivotar hacia abajo la recta de reposición, pues hay que equipar a menos trabajadores nuevos, y el capital estacionario por trabajador aumenta, con el mismo patrón.</p></li>
+<li><p><em>Mejora tecnológica</em>: un aumento de <span class="math inline">\(A\)</span> de una vez desplaza la curva de ahorro y tiene el mismo patrón. En cambio, solo un crecimiento continuo de <span class="math inline">\(A\)</span> genera un efecto tasa permanente.</p></li>
+<li><p><em>Destrucción de capital</em>: una pérdida de una vez del <em>stock</em> de capital (una guerra, una catástrofe) no altera ninguna curva. La economía se sitúa a la izquierda de <span class="math inline">\(k^*\)</span> y vuelve a él creciendo transitoriamente por encima de su tasa estacionaria. Así interpreta el modelo la reconstrucción de Alemania y Japón tras 1945.</p></li>
+</ul>
+<p><strong>Bienestar</strong>: la <em>regla de oro</em> (Phelps, 1961) es la tasa de ahorro que maximiza el consumo de estado estacionario. Partiendo de <span class="math inline">\(c^* = f(k^*) - (n+\delta)k^*\)</span> y maximizando respecto a <span class="math inline">\(k\)</span>,</p>
+<p><span class="math display">\[\frac{df}{dk}\bigg|_{k_{\text{oro}}} = n + \delta \quad \Rightarrow \quad s_{\text{oro}} = \alpha\]</span> La tasa de ahorro oro coincide con la participación del capital en la renta (ahorrar toda la renta del capital y consumir toda la renta laboral), y el <em>stock</em> de capital oro es <span class="math inline">\(k_{\text{oro}} = (\alpha A/(n+\delta))^{1/(1-\alpha)}\)</span>.</p>
+<p>Gráficamente, la regla de oro se representa en el plano capital por trabajador-producto por trabajador (figura <a href="#fig-a437-regla-oro-consumo" class="quarto-xref"><span>A43.3</span></a>, panel superior):</p>
+<ol type="1">
+<li><p><em>Función de producción</em>, <span class="math inline">\(f(k)\)</span>: la producción por trabajador, cóncava por los rendimientos decrecientes del capital.</p></li>
+<li><p><em>Recta de reposición</em>, <span class="math inline">\((n+\delta)k\)</span>: la inversión necesaria para mantener constante el capital por trabajador.</p></li>
+<li><p><em>Curva de ahorro de la regla de oro</em>, <span class="math inline">\(s_{\text{oro}}\,f(k)\)</span>: la inversión bruta por trabajador con la tasa <span class="math inline">\(s_{\text{oro}} = \alpha\)</span>, que corta a la recta de reposición en <span class="math inline">\(k_{\text{oro}}\)</span>.</p></li>
+<li><p><em>Consumo de estado estacionario</em>, <span class="math inline">\(c^*(k) = f(k) - (n+\delta)k\)</span>: en el plano <span class="math inline">\(k\)</span>-<span class="math inline">\(c\)</span> (panel inferior), recoge para cada capital estacionario la distancia vertical entre <span class="math inline">\(f(k)\)</span> y <span class="math inline">\((n+\delta)k\)</span> del panel superior. Crece mientras <span class="math inline">\(df/dk &gt; n+\delta\)</span> y decrece a partir de <span class="math inline">\(k_{\text{oro}}\)</span>.</p></li>
+<li><p><em>Óptimo</em>: en <span class="math inline">\(k_{\text{oro}}\)</span> las pendientes de <span class="math inline">\(f(k)\)</span> y de <span class="math inline">\((n+\delta)k\)</span> coinciden y el consumo alcanza su máximo, <span class="math inline">\(c_{\text{oro}}\)</span>, en la cima de <span class="math inline">\(c^*(k)\)</span>.</p></li>
+</ol>
+<div id="fig-a437-regla-oro-consumo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a437-regla-oro-consumo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a437_Regla_oro_consumo.html" style="height:880px" loading="lazy" title="fig-a437-regla-oro-consumo"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a437-regla-oro-consumo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A43.3: Regla de oro (Phelps, 1961). El consumo de estado estacionario, <span class="math inline">\(c^*(k)\)</span>, alcanza su máximo, <span class="math inline">\(c_{\text{oro}}\)</span>, en <span class="math inline">\(k_{\text{oro}}\)</span>, donde la pendiente de la función de producción iguala a <span class="math inline">\(n+\delta\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>Caben dos situaciones, a cada lado de <span class="math inline">\(k_{\text{oro}}\)</span> en el panel inferior:</p>
+<ul>
+<li><p><em>Exceso de ahorro</em> (<span class="math inline">\(k^* &gt; k_{\text{oro}}\)</span>, <span class="math inline">\(r^* &lt; n\)</span>): reducir <span class="math inline">\(s\)</span> hasta <span class="math inline">\(s_{\text{oro}}\)</span> produce un salto inmediato del consumo hacia arriba, seguido de una convergencia al nuevo <span class="math inline">\(c_{\text{oro}}\)</span>, superior al consumo inicial en todos los periodos. La economía era <em>dinámicamente ineficiente</em>, pues acumulaba capital que no le servía para consumir más. En la práctica, esto podría corregirse penalizando fiscalmente el ahorro financiero privado.</p></li>
+<li><p><em>Insuficiencia de ahorro</em> (<span class="math inline">\(k^* &lt; k_{\text{oro}}\)</span>): aumentar <span class="math inline">\(s\)</span> hasta <span class="math inline">\(s_{\text{oro}}\)</span> requiere un periodo de sacrificio a corto plazo, pues el consumo cae al absorber la inversión más producción, aunque a largo plazo aumenta. A diferencia del caso anterior, ninguna trayectoria factible eleva el consumo en todos los periodos, de modo que la economía es <em>dinámicamente eficiente</em>. Ahorrar más es entonces una elección que depende de la impaciencia de los consumidores, porque una sociedad que valore mucho el presente puede preferir no sacrificar consumo corriente.</p></li>
+</ul>
+<p>En el modelo de Solow nada garantiza que se ahorre exactamente <span class="math inline">\(s_{\text{oro}}\)</span>, pues la tasa de ahorro es exógena. En el de Ramsey-Cass-Koopmans, en cambio, el ahorro óptimo excluye el exceso de ahorro (apartado 3.2).</p>
+<p><strong>Extensiones</strong>: tres corolarios del estado estacionario completan el modelo:</p>
+<ul>
+<li><p><em>Tipo de interés e ineficiencia dinámica</em>: como <span class="math inline">\(r^* = df/dk|_{k^*} - \delta\)</span> y en la regla de oro <span class="math inline">\(df/dk|_{k_{\text{oro}}} = n + \delta\)</span>, la zona de exceso de ahorro (<span class="math inline">\(k^* &gt; k_{\text{oro}}\)</span>) es aquella en la que <span class="math inline">\(r^* &lt; n = g_Y^*\)</span>. Gráficamente, en el plano capital por trabajador-tipo de interés y crecimiento, <span class="math inline">\(k\)</span>-<span class="math inline">\((r, n)\)</span> (figura <a href="#fig-a436-ineficiencia-dinamica" class="quarto-xref"><span>A43.4</span></a>), la curva <span class="math inline">\(df/dk - \delta\)</span> es el tipo de interés real, decreciente por los rendimientos decrecientes del capital. Corta en <span class="math inline">\(k_{\text{oro}}\)</span> a la recta horizontal <span class="math inline">\(n = g_Y^*\)</span>, la tasa de crecimiento de la economía, que no depende de <span class="math inline">\(k\)</span>. A la izquierda de <span class="math inline">\(k_{\text{oro}}\)</span> la economía es dinámicamente eficiente (<span class="math inline">\(r &gt; n\)</span>). A la derecha es dinámicamente ineficiente (<span class="math inline">\(r &lt; n\)</span>), como en el <span class="math inline">\(k^*\)</span> de la figura, con un tipo <span class="math inline">\(r^*\)</span>.</p>
+<p>En esa zona el capital rinde menos de lo que crece la economía. Para contrastarlo, Abel, Mankiw, Summers y Zeckhauser (1989) propusieron comparar la renta bruta del capital con la inversión bruta, y en las economías avanzadas la primera supera sistemáticamente a la segunda, lo que indica eficiencia dinámica. Aun así, el debate se ha reabierto con los tipos de interés inferiores al crecimiento posteriores a 2008 (tema <a href="../chapters/a39-deficit.html">A39</a>).</p></li>
+</ul>
+<div id="fig-a436-ineficiencia-dinamica" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a436-ineficiencia-dinamica-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a436_Ineficiencia_dinamica.html" style="height:500px" loading="lazy" title="fig-a436-ineficiencia-dinamica"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a436-ineficiencia-dinamica-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A43.4: Eficiencia e ineficiencia dinámica en el modelo de Solow. A la derecha de la regla de oro (<span class="math inline">\(k^* &gt; k_{\text{oro}}\)</span>) el tipo de interés real queda por debajo del crecimiento de la economía (<span class="math inline">\(r^* &lt; n\)</span>) y reducir el ahorro elevaría el consumo en todos los periodos.
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><p><em>Rentabilidad del capital y flujos internacionales</em>: con la Cobb-Douglas, <span class="math inline">\(df/dk = \alpha A k^{\alpha - 1}\)</span> y <span class="math inline">\(y = A k^\alpha\)</span>, de donde <span class="math inline">\(df/dk \propto y^{(\alpha-1)/\alpha}\)</span>. Por ejemplo, si la renta per cápita de un país es diez veces la de otro y <span class="math inline">\(\alpha = 1/3\)</span>, su capital per cápita es mil veces mayor y el rendimiento del capital cien veces menor. Con esas diferencias el capital debería fluir masivamente hacia los países pobres, y no lo hace (<em>paradoja de Lucas</em>, 1990). Sin riesgos ni fricciones en los mercados de capitales, la explicación exige que las diferencias de renta se deban a la tecnología o al capital humano y no al capital físico, o que la elasticidad de sustitución sea mayor que la unidad.</p></li>
+<li><p><em>Elasticidad de sustitución</em>: la Cobb-Douglas impone una elasticidad de sustitución entre capital y trabajo <span class="math inline">\(\sigma = 1\)</span>. Con una función de elasticidad de sustitución constante (CES), <span class="math inline">\(Y = [\alpha K^{(\sigma-1)/\sigma} + (1-\alpha)(AL)^{(\sigma-1)/\sigma}]^{\sigma/(\sigma-1)}\)</span>, las conclusiones cambian en los extremos:</p>
+<ul>
+<li><p><em><span class="math inline">\(\sigma &gt; 1\)</span></em>: la productividad marginal del capital está acotada inferiormente por una constante positiva, se incumple la condición de Inada en el infinito y el crecimiento per cápita puede sostenerse sin progreso técnico (tema <a href="../chapters/a44-crecimiento-ii.html">A44</a>).</p></li>
+<li><p><em><span class="math inline">\(\sigma &lt; 1\)</span></em>: el estado estacionario puede no existir para tasas de ahorro bajas.</p></li>
+</ul>
+<p>Además, con <span class="math inline">\(\sigma \neq 1\)</span> las participaciones factoriales dejan de ser constantes, lo que la evidencia reciente sobre la participación del trabajo hace relevante (tema <a href="../chapters/a45-crecimiento-empirica.html">A45</a>).</p></li>
+</ul>
+</section>
+<section id="modelo-con-progreso-técnico" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-con-progreso-técnico">2.3. Modelo con progreso técnico</h3>
+<p>El modelo anterior supone <span class="math inline">\(\dot{A} = 0\)</span> y concluye que el crecimiento per cápita se agota. Para que exista crecimiento sostenido, el modelo incorpora un <strong>progreso técnico exógeno</strong> que crece a la tasa constante <span class="math inline">\(g_A = \dot{A}/A\)</span> y que, como el maná, no consume recursos.</p>
+<p><strong>Planteamiento</strong>: la forma en que el progreso técnico entra en la función de producción importa. Puede ser:</p>
+<ul>
+<li><p><em>Neutral en el sentido de Hicks</em>, <span class="math inline">\(Y = AF(K, L)\)</span>: eleva la productividad de ambos factores por igual.</p></li>
+<li><p><em>Aumentador del trabajo</em> o <em>neutral en el sentido de Harrod</em>, <span class="math inline">\(Y = F(K, AL)\)</span>: equivale a disponer de más trabajadores.</p></li>
+<li><p><em>Aumentador del capital</em> o <em>neutral en el sentido de Solow</em>, <span class="math inline">\(Y = F(AK, L)\)</span>.</p></li>
+</ul>
+<p>Con la Cobb-Douglas las tres formas son indistinguibles, pero en general no lo son. El <em>teorema de Uzawa</em> (1961) establece que solo el progreso técnico aumentador del trabajo es compatible con un estado estacionario de crecimiento equilibrado, es decir, con tasas de crecimiento constantes y participaciones factoriales constantes. Cualquier otra forma haría variar la relación capital-producto sin límite. Por ello el modelo se escribe <span class="math inline">\(Y = K^\alpha (AL)^{1-\alpha}\)</span>, donde <span class="math inline">\(AL\)</span> es el <em>trabajo efectivo</em> o trabajo en unidades de eficiencia.</p>
+<p>Las tres ecuaciones de comportamiento son las del modelo sin progreso técnico (renta, inversión y consumo, por este orden), pero se expresan por unidad de trabajo efectivo, <span class="math inline">\(\tilde{x} = X/(AL)\)</span>, en lugar de por trabajador:</p>
+<p><span class="math display">\[\begin{alignedat}{3} &amp;Y = K^\alpha (AL)^{1-\alpha} \; &amp;&amp; \Rightarrow \; \tilde{y} = \tilde{k}^\alpha \; &amp;&amp; \Rightarrow \; g_{\tilde{y}} = \alpha g_{\tilde{k}}, \qquad \alpha \in (0, 1) \\ &amp;\dot{K} = sY - \delta K \; &amp;&amp; \Rightarrow \; \dot{\tilde{k}} = s\tilde{k}^\alpha - (g_A + n + \delta)\tilde{k} \; &amp;&amp; \Rightarrow \; g_{\tilde{k}} = s\tilde{k}^{\alpha-1} - (g_A + n + \delta) \\ &amp;C = (1-s)Y \; &amp;&amp; \Rightarrow \; \tilde{c} = (1-s)\tilde{k}^\alpha \; &amp;&amp; \Rightarrow \; g_{\tilde{c}} = g_{\tilde{y}} \end{alignedat}\]</span></p>
+<p>La ley de acumulación es formalmente idéntica a la anterior, con la tasa de progreso técnico añadida a la de reposición, porque ahora hay que equipar no solo a los nuevos trabajadores sino también a las nuevas unidades de eficiencia. Las variables per cápita se recuperan multiplicando por <span class="math inline">\(A\)</span>, <span class="math inline">\(y = A\tilde{y}\)</span>, de modo que <span class="math inline">\(g_y = g_A + g_{\tilde{y}}\)</span> (Anexo).</p>
+<p><strong>Equilibrio</strong>: el estado estacionario, <span class="math inline">\(\tilde{k}^* = [s/(g_A+n+\delta)]^{1/(1-\alpha)}\)</span>, es constante en unidades efectivas, lo que implica que las variables per cápita crecen a la tasa del progreso técnico y las agregadas a la del progreso técnico más la población:</p>
+<p><span class="math display">\[g_{\tilde{y}}^* = g_{\tilde{k}}^* = 0, \qquad g_y^* = g_k^* = g_c^* = g_A, \qquad g_Y^* = g_K^* = g_A + n\]</span></p>
+<p>El <em>crecimiento equilibrado</em> resultante reproduce los hechos estilizados de Kaldor, pues la relación capital-producto, el tipo de interés y las participaciones factoriales son constantes, mientras que el salario real crece a la tasa <span class="math inline">\(g_A\)</span> (tema <a href="../chapters/a45-crecimiento-empirica.html">A45</a>).</p>
+<p><strong>Estática comparativa</strong>: un aumento de <span class="math inline">\(g_A\)</span> eleva permanentemente la tasa de crecimiento per cápita, no solo el nivel, y <span class="math inline">\(g_A\)</span> es el único parámetro del modelo con ese efecto, mientras que la acumulación de capital explica la transición, no el estado estacionario. Esa conclusión es a la vez el mayor logro del modelo, pues coincide con el residuo que la contabilidad del crecimiento atribuye a la tecnología, y su mayor limitación, pues deja sin explicar la variable que lo explica todo. Esta laguna motivará los modelos de crecimiento endógeno (tema <a href="../chapters/a44-crecimiento-ii.html">A44</a>).</p>
+</section>
+<section id="dinámica-de-transición-y-convergencia" class="level3">
+<h3 class="anchored" data-anchor-id="dinámica-de-transición-y-convergencia">2.4. Dinámica de transición y convergencia</h3>
+<p><strong>Velocidad de convergencia</strong>: la economía converge gradualmente al estado estacionario, y la velocidad mide la tasa a la que la renta por unidad de trabajo efectivo, <span class="math inline">\(\tilde{y}\)</span>, se aproxima a su nivel estacionario (la per cápita, a su senda de crecimiento equilibrado).</p>
+<p>La velocidad se obtiene log-linealizando la ecuación fundamental en torno al estado estacionario. La tasa de crecimiento del capital, <span class="math inline">\(g_{\tilde{k}} = s\tilde{k}^{\alpha-1} - (g_A+n+\delta)\)</span>, es decreciente en <span class="math inline">\(\tilde{k}\)</span>, y su pendiente respecto a <span class="math inline">\(\ln \tilde{k}\)</span> en <span class="math inline">\(\tilde{k}^*\)</span> es <span class="math inline">\(-(1-\alpha)(g_A+n+\delta)\)</span>, de modo que, para desviaciones pequeñas, <span class="math inline">\(\dot{\ln \tilde{k}} \approx -\lambda(\ln \tilde{k} - \ln \tilde{k}^*)\)</span> con</p>
+<p><span class="math display">\[\lambda = (1-\alpha)(g_A + n + \delta)\]</span></p>
+<p>La solución, <span class="math inline">\(\ln \tilde{k}(t) - \ln \tilde{k}^* = e^{-\lambda t}(\ln \tilde{k}(0) - \ln \tilde{k}^*)\)</span>, muestra que la distancia al estado estacionario se cierra a un ritmo exponencial constante, de modo que cada año se recorre una fracción <span class="math inline">\(\lambda\)</span> de la distancia que queda, y el tiempo para recorrer la mitad es <span class="math inline">\(t_{1/2} = \ln 2 / \lambda\)</span>.</p>
+<p>La velocidad es mayor cuanto menor es la participación del capital, porque con <span class="math inline">\(\alpha\)</span> pequeña los rendimientos decrecientes son más intensos. Con parametrización estándar (<span class="math inline">\(\alpha \approx 1/3\)</span>, <span class="math inline">\(g_A + n + \delta \approx 0{,}06\)</span>), el modelo predice <span class="math inline">\(\lambda \approx 4\ \%\)</span> (<span class="math inline">\(t_{1/2} \approx 17\)</span> años), el doble de la observada empíricamente (en torno al 2&nbsp;%). Con capital ampliado, en cambio, <span class="math inline">\(\lambda\)</span> baja a la velocidad observada.</p>
+<p><strong>Convergencia entre países</strong>: la predicción admite tres formulaciones:</p>
+<ul>
+<li><p><em><span class="math inline">\(\beta\)</span>-convergencia absoluta</em>: los países pobres crecen más que los ricos. Se estima con <span class="math inline">\(g_y = \beta_0 - \beta \ln y_0 + \varepsilon\)</span> y existe si <span class="math inline">\(\beta &gt; 0\)</span>. Requiere parámetros estructurales idénticos, es decir, el mismo estado estacionario (véase la figura del tema <a href="../chapters/a45-crecimiento-empirica.html">A45</a>, apartado 2.1).</p>
+<p>La evidencia de 1960-1990 no la apoya para muestras grandes de países (sí la de las últimas décadas, tema <a href="../chapters/a45-crecimiento-empirica.html">A45</a>), lo que en un principio se leyó como evidencia contraria al modelo neoclásico. En cambio, entre regiones de un mismo país sí se observa, a tasas de alrededor del 2&nbsp;%, como ocurre entre los estados de EE.&nbsp;UU. (Barro y Sala-i-Martin, 1991), con resultados similares para las regiones europeas y las prefecturas japonesas.</p></li>
+<li><p><em><span class="math inline">\(\beta\)</span>-convergencia condicional</em>: controlando por las diferencias en parámetros, <span class="math inline">\(g_y = \beta_0 - \beta \ln y_0 + \boldsymbol{\gamma z} + \varepsilon\)</span>, sí se obtiene una correlación parcial negativa. Basta con que un parámetro no coincida para que cada país se dirija a su propio estado estacionario (véase la figura del tema <a href="../chapters/a45-crecimiento-empirica.html">A45</a>, apartado 2.1), y deje de estar asegurado que los pobres crezcan más. Con esos controles, Barro y Sala-i-Martin (1992a) obtienen en 98 países una tasa de alrededor del 2&nbsp;% (<span class="math inline">\(t_{1/2} \approx 35\)</span> años).</p></li>
+<li><p><em><span class="math inline">\(\sigma\)</span>-convergencia</em>: la dispersión de la renta per cápita entre países disminuye con el tiempo. La <span class="math inline">\(\beta\)</span>-convergencia absoluta es condición necesaria pero no suficiente para la <span class="math inline">\(\sigma\)</span>-convergencia.</p></li>
+</ul>
+</section>
+<section id="extensiones" class="level3">
+<h3 class="anchored" data-anchor-id="extensiones">2.5. Extensiones</h3>
+<p>La primera extensión añade el capital humano, y las demás llevan el modelo a la economía abierta e incorporan la tierra y los recursos naturales.</p>
+<section id="modelo-de-solow-aumentado-con-capital-humano-mankiw-romer-y-weil-1992" class="level4">
+<h4 class="anchored" data-anchor-id="modelo-de-solow-aumentado-con-capital-humano-mankiw-romer-y-weil-1992">2.5.1. Modelo de Solow aumentado con capital humano (Mankiw, Romer y Weil, 1992)</h4>
+<p><strong>Origen</strong>: Gregory Mankiw, David Romer y David Weil (1992) propusieron, ante los fallos cuantitativos del modelo canónico, una versión aumentada con capital humano que conserva la estructura neoclásica.</p>
+<p><strong>Idea</strong>: la participación del capital en la renta, en torno a un tercio, es lo que hace que el modelo de Solow prediga una convergencia demasiado rápida y unos diferenciales de renta entre países demasiado pequeños. Si el capital relevante incluye el capital humano, la participación del capital en sentido amplio se acerca a dos tercios, los rendimientos decrecientes de la acumulación son más suaves y ambas predicciones se corrigen sin renunciar al progreso técnico exógeno.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Agentes</em>: las familias destinan fracciones constantes y exógenas de la renta a acumular cada tipo de capital, <span class="math inline">\(s_k\)</span> y <span class="math inline">\(s_h\)</span>, y ambos capitales se deprecian a la misma tasa <span class="math inline">\(\delta\)</span>.</p></li>
+<li><p><em>Tecnología</em>: la función de producción incorpora el capital humano <span class="math inline">\(H\)</span> como tercer factor, <span class="math inline">\(Y = K^\alpha H^\beta (AL)^{1-\alpha-\beta}\)</span>, con <span class="math inline">\(\alpha + \beta &lt; 1\)</span>, de modo que se mantienen los rendimientos decrecientes del capital en sentido amplio y la condición de Inada, lo que excluye el crecimiento endógeno. El resto de supuestos son los del modelo con progreso técnico.</p></li>
+</ul>
+<p><strong>Planteamiento</strong>: la renta se reparte ahora entre el consumo y la inversión en cada tipo de capital, <span class="math inline">\(Y = C + I_K + I_H\)</span>, con <span class="math inline">\(I_K = s_k Y\)</span> e <span class="math inline">\(I_H = s_h Y\)</span>. En unidades de trabajo efectivo (<span class="math inline">\(\tilde{k} = K/(AL)\)</span>, <span class="math inline">\(\tilde{h} = H/(AL)\)</span>), las ecuaciones de comportamiento de la renta, de la inversión en cada capital y del consumo son, por este orden:</p>
+<p><span class="math display">\[\begin{alignedat}{2} &amp;Y = K^\alpha H^\beta (AL)^{1-\alpha-\beta} \; &amp;&amp; \Rightarrow \; \tilde{y} = \tilde{k}^\alpha \tilde{h}^\beta \;\Rightarrow\; g_{\tilde{y}} = \alpha g_{\tilde{k}} + \beta g_{\tilde{h}}, \quad \alpha, \beta &gt; 0,\; \alpha + \beta &lt; 1 \\ &amp;\dot{K} = s_k Y - \delta K \; &amp;&amp; \Rightarrow \; \dot{\tilde{k}} = s_k \tilde{y} - (g_A+n+\delta)\tilde{k} \\ &amp;\dot{H} = s_h Y - \delta H \; &amp;&amp; \Rightarrow \; \dot{\tilde{h}} = s_h \tilde{y} - (g_A+n+\delta)\tilde{h} \\ &amp;C = (1-s_k-s_h)Y \; &amp;&amp; \Rightarrow \; \tilde{c} = (1-s_k-s_h)\tilde{y} \;\Rightarrow\; g_{\tilde{c}} = g_{\tilde{y}} \end{alignedat}\]</span></p>
+<p>Cada capital tiene su propia ley de acumulación, con la forma de la del modelo canónico, y ambas se enlazan a través de la producción, de la que se financian. Dividiendo cada una por su capital se obtienen sus tasas de crecimiento, <span class="math inline">\(g_{\tilde{k}} = s_k \tilde{y}/\tilde{k} - (g_A+n+\delta)\)</span> y <span class="math inline">\(g_{\tilde{h}} = s_h \tilde{y}/\tilde{h} - (g_A+n+\delta)\)</span>.</p>
+<p><strong>Equilibrio</strong>: resolviendo simultáneamente <span class="math inline">\(\dot{\tilde{k}} = 0\)</span> y <span class="math inline">\(\dot{\tilde{h}} = 0\)</span>,</p>
+<p><span class="math display">\[\tilde{k}^* = \left(\frac{s_k^{1-\beta} s_h^\beta}{g_A+n+\delta}\right)^{1/(1-\alpha-\beta)}, \quad \tilde{h}^* = \left(\frac{s_k^\alpha s_h^{1-\alpha}}{g_A+n+\delta}\right)^{1/(1-\alpha-\beta)}\]</span></p>
+<p>y, sustituyendo ambos valores en <span class="math inline">\(\tilde{y} = \tilde{k}^\alpha \tilde{h}^\beta\)</span> y deshaciendo el cambio a unidades de trabajo efectivo, <span class="math inline">\(y = A\tilde{y}\)</span> con <span class="math inline">\(A = A_0 e^{g_A t}\)</span>, la renta per cápita estacionaria en logaritmos es</p>
+<p><span class="math display">\[\begin{aligned} \ln y^* = \; &amp; \ln A_0 + g_A t + \frac{\alpha}{1-\alpha-\beta}\ln s_k + \frac{\beta}{1-\alpha-\beta}\ln s_h \\ &amp; - \frac{\alpha+\beta}{1-\alpha-\beta}\ln(g_A+n+\delta) \end{aligned}\]</span></p>
+<p>Las tasas de crecimiento estacionarias son las del modelo canónico, <span class="math inline">\(g_{\tilde{y}}^* = 0\)</span> en unidades efectivas y <span class="math inline">\(g_y^* = g_A\)</span> per cápita.</p>
+<p><strong>Desarrollo gráfico</strong>: el estado estacionario con dos tipos de capital se representa en el plano capital físico-capital humano por unidad de trabajo efectivo, <span class="math inline">\(\tilde{k}\)</span>-<span class="math inline">\(\tilde{h}\)</span> (figura <a href="#fig-a433-solow-hc" class="quarto-xref"><span>A43.5</span></a>):</p>
+<ol type="1">
+<li><p><em>Locus</em> <span class="math inline">\(\dot{\tilde{k}} = 0\)</span>: combinaciones en las que el capital físico por unidad de trabajo efectivo no varía, porque su inversión, <span class="math inline">\(s_k\tilde{y}\)</span>, iguala su reposición. Es creciente, porque un capital físico mayor exige más reposición, que solo una producción mayor cubre, obtenida con más capital humano. Es convexo porque, con <span class="math inline">\(\alpha + \beta &lt; 1\)</span>, cada aumento de <span class="math inline">\(\tilde{k}\)</span> exige un aumento mayor de <span class="math inline">\(\tilde{h}\)</span>.</p></li>
+<li><p><em>Locus</em> <span class="math inline">\(\dot{\tilde{h}} = 0\)</span>: combinaciones en las que el capital humano por unidad de trabajo efectivo no varía, porque su inversión, <span class="math inline">\(s_h\tilde{y}\)</span>, iguala su reposición. Es creciente, porque un capital físico mayor eleva la producción y la inversión en capital humano, que solo se compensan con un capital humano mayor. Es cóncavo porque, con <span class="math inline">\(\alpha + \beta &lt; 1\)</span>, ese aumento de <span class="math inline">\(\tilde{h}\)</span> es cada vez menor.</p></li>
+<li><p><em>Equilibrio</em>: en el punto 0, <span class="math inline">\((\tilde{k}^*, \tilde{h}^*)\)</span>, ambos <em>loci</em> se cortan en el estado estacionario, hacia el que la economía converge desde cualquier punto.</p></li>
+</ol>
+<div id="fig-a433-solow-hc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a433-solow-hc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a433_Solow_HC.html" style="height:580px" loading="lazy" title="fig-a433-solow-hc"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a433-solow-hc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A43.5: Estado estacionario con dos tipos de capital en el modelo de Solow-Swan con capital humano (Mankiw, Romer y Weil, 1992).
+</figcaption>
+</figure>
+</div>
+<p><strong>Estática comparativa</strong>: como en el modelo canónico, la alteración permanente de un parámetro tiene efecto nivel y no tasa, es decir, cambia la renta per cápita estacionaria, pero su tasa de crecimiento a largo plazo sigue siendo <span class="math inline">\(g_A\)</span>.</p>
+<ul>
+<li><p><em>Tasas de inversión</em>: un aumento de <span class="math inline">\(s_k\)</span> o de <span class="math inline">\(s_h\)</span> eleva <span class="math inline">\(y^*\)</span>, con elasticidades <span class="math inline">\(\alpha/(1-\alpha-\beta)\)</span> y <span class="math inline">\(\beta/(1-\alpha-\beta)\)</span>. La elasticidad respecto a <span class="math inline">\(s_k\)</span> es mayor que en el modelo canónico, <span class="math inline">\(\alpha/(1-\alpha)\)</span>, porque el mayor ahorro eleva la renta y, con ella, el capital humano estacionario, aunque <span class="math inline">\(s_h\)</span> no varíe.</p></li>
+<li><p><em>Crecimiento de la población</em>: un aumento de <span class="math inline">\(n\)</span> reduce <span class="math inline">\(y^*\)</span>, con una elasticidad respecto a <span class="math inline">\(g_A+n+\delta\)</span> de <span class="math inline">\(-(\alpha+\beta)/(1-\alpha-\beta)\)</span>, mayor en valor absoluto que en el modelo canónico.</p></li>
+</ul>
+<p><strong>Dinámica</strong>: log-linealizando en torno al estado estacionario, la tasa de crecimiento entre dos fechas depende de la renta inicial y de los determinantes del estado estacionario,</p>
+<p><span class="math display">\[\ln \tilde{y}_t - \ln \tilde{y}_0 = (1 - e^{-\lambda t})\left[\ln \tilde{y}^* - \ln \tilde{y}_0\right], \qquad \lambda = (1-\alpha-\beta)(g_A+n+\delta)\]</span></p>
+<p>de modo que la velocidad de convergencia se reduce con la participación conjunta del capital físico y humano. La literatura empírica estima esta ecuación como regresión de convergencia condicional (tema <a href="../chapters/a45-crecimiento-empirica.html">A45</a>).</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: Mankiw, Romer y Weil (MRW) obtienen <span class="math inline">\(\alpha \approx \beta \approx 1/3\)</span>, de modo que la participación del capital en sentido amplio es de unos dos tercios. Ello supone tres mejoras. La velocidad de convergencia cae, aproximadamente, del 4&nbsp;% al 2&nbsp;%, coherente con la evidencia, y el <span class="math inline">\(R^2\)</span> de las regresiones del nivel de renta por persona en edad de trabajar sube de unos 0,6 (modelo canónico, 98 países) a unos 0,8. Además, los diferenciales de renta predichos se aproximan más a los observados.</p></li>
+<li><p><em>Limitaciones</em>: MRW aproximan la tasa de inversión en capital humano, <span class="math inline">\(s_h\)</span> (un flujo, no el <em>stock</em> de capital humano), mediante el producto de la tasa de escolarización secundaria por la proporción de la población en edad de trabajar que está en edad escolar. Esta medida ha sido ampliamente criticada por imprecisa, ya que no captura la calidad de la educación, la experiencia laboral ni el aprendizaje en el puesto de trabajo.</p></li>
+</ul>
+</section>
+<section id="otras-extensiones" class="level4">
+<h4 class="anchored" data-anchor-id="otras-extensiones">2.5.2. Otras extensiones</h4>
+<p><strong>Economía abierta</strong> (Barro, Mankiw y Sala-i-Martin, 1995): en una economía pequeña y abierta con movilidad perfecta del capital, el tipo de interés mundial fija de inmediato el capital por trabajador, <span class="math inline">\(df/dk = r^w + \delta\)</span>, y la convergencia sería instantánea, lo que la evidencia desmiente. Si, por el contrario, el capital humano no puede usarse como colateral y solo el capital físico se financia en el exterior, la economía salta de inmediato al capital físico deseado, pero acumula capital humano con ahorro interno. La velocidad de convergencia es entonces mayor que en la economía cerrada, pero finita. Con la participación del capital físico en torno a un tercio, el efecto cuantitativo es pequeño y la velocidad predicha sigue próxima al 2&nbsp;%.</p>
+<p><strong>Tierra y recursos naturales</strong>: con tierra (<span class="math inline">\(T\)</span>, de oferta fija) y recursos no renovables (<span class="math inline">\(R\)</span>, que se agotan a la tasa <span class="math inline">\(b\)</span>), <span class="math inline">\(Y = AK^\alpha T^\gamma R^\eta L^{1-\alpha-\gamma-\eta}\)</span>, la tasa de crecimiento per cápita estacionaria es <span class="math inline">\(g_y^* = [g_A - (\gamma + \eta)n - \eta b]/(1-\alpha)\)</span>. La expresión se obtiene tomando tasas de crecimiento en la función de producción a lo largo de una senda de crecimiento equilibrado, con <span class="math inline">\(g_T = 0\)</span>, <span class="math inline">\(g_R = -b\)</span> y <span class="math inline">\(g_L = n\)</span>, y restando <span class="math inline">\(n\)</span>. El progreso técnico es aquí neutral en el sentido de Hicks, de modo que <span class="math inline">\(g_A\)</span> mide el crecimiento de la productividad total de los factores (PTF) y no el del progreso aumentador del trabajo.</p>
+<p>La tierra fija y el agotamiento de recursos actúan, pues, como un freno proporcional al crecimiento de la población y a la tasa de extracción, y el crecimiento per cápita solo es positivo si el progreso técnico los compensa, <span class="math inline">\(g_A &gt; (\gamma + \eta)n + \eta b\)</span>. Así responde el enfoque neoclásico a la predicción maltusiana y al Informe Meadows (1972). Los límites físicos son reales, pero la experiencia de los dos últimos siglos muestra que el progreso técnico los ha superado con holgura. La economía de los recursos agotables, de la regla de Hotelling al modelo de Solow ampliado con recursos naturales, se examina en el tema <a href="../chapters/b31-ma-bpg.html">B31</a> §2.1.</p>
+</section>
+</section>
+<section id="conclusiones-1" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-1">2.6. Conclusiones</h3>
+<p><strong>Aspectos positivos</strong>: toda la literatura posterior toma el modelo como referencia. Al admitir que capital y trabajo se sustituyen, el modelo prueba que el estado estacionario es estable y deja atrás el filo de la navaja de Harrod-Domar. Muestra, además, que solo el avance tecnológico hace que la renta por habitante siga aumentando a largo plazo, por mucho capital que se acumule.</p>
+<p><strong>Limitaciones</strong>: el modelo tiene cinco:</p>
+<ul>
+<li><p><em>Progreso tecnológico exógeno</em>: el teorema de Euler implica que, con rendimientos constantes y competencia perfecta, la innovación no tiene con qué financiarse. El propio Solow (1957) atribuyó al “residuo de Solow”, es decir, al progreso tecnológico no explicado, el 87,5&nbsp;% del crecimiento de la producción por hora trabajada en EE. UU. entre 1909 y 1949.</p></li>
+<li><p><em>Calibración</em>: con <span class="math inline">\(\alpha \approx 1/3\)</span>, la velocidad de convergencia y los diferenciales de renta son irrealistas.</p></li>
+<li><p><em>Modelo unisectorial</em>: no captura la transformación estructural (ley de Engel, industrialización en U invertida, ley de Wagner).</p></li>
+<li><p><em>Ahorro exógeno</em>: la tasa de ahorro es un parámetro y no el resultado de una decisión de las familias, carencia que corrige el modelo de Ramsey-Cass-Koopmans (sección 3).</p></li>
+<li><p><em>Rentabilidad del capital</em>: los diferenciales entre países predichos son muy superiores a los observados (paradoja de Lucas).</p></li>
+</ul>
+</section>
+</section>
+<section id="modelo-de-ramsey-cass-koopmans-1928-1965" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-de-ramsey-cass-koopmans-1928-1965">3. Modelo de Ramsey-Cass-Koopmans (1928, 1965)</h2>
+<p><strong>Origen</strong>: Frank Ramsey (1928) planteó el problema del ahorro óptimo. David Cass (1965) y Tjalling Koopmans (1965) lo formalizaron como modelo de crecimiento con optimización intertemporal, el modelo de Ramsey-Cass-Koopmans (RCK).</p>
+<p><strong>Idea</strong>: el modelo endogeniza la tasa de ahorro a partir de la decisión intertemporal de las familias. Su principal resultado es una tasa de ahorro óptima que puede subir, bajar o mantenerse a lo largo de la transición, sin que cambien las conclusiones cualitativas de Solow.</p>
+<section id="supuestos-2" class="level3">
+<h3 class="anchored" data-anchor-id="supuestos-2">3.1. Supuestos</h3>
+<p><strong>Entorno</strong>: el modelo comparte los supuestos neoclásicos de Solow (competencia perfecta, tiempo continuo, horizonte infinito).</p>
+<p><strong>Agentes</strong>:</p>
+<ul>
+<li><p><em>Familias</em>: en ellas está el principal elemento diferenciador respecto al modelo de Solow-Swan, pues la tasa de ahorro es una variable endógena. En cada momento del tiempo los consumidores-productores deciden la fracción de su renta que destinan a ahorrar. Los hogares son idénticos y su tamaño crece a la tasa de la población, <span class="math inline">\(n\)</span>, con <span class="math inline">\(L(t) = e^{nt}\)</span>. Operan bajo altruismo intergeneracional puro (dinastías), lo que justifica el horizonte infinito. Alternativamente, este puede interpretarse como el de agentes con una probabilidad de muerte constante, de tipo Poisson. Los hogares poseen activos <span class="math inline">\(a\)</span> (positivos si prestan, negativos si se endeudan) que generan un tipo de interés real <span class="math inline">\(r\)</span>, y fuerza de trabajo que alquilan a un salario real <span class="math inline">\(w\)</span>.</p></li>
+<li><p><em>Preferencias</em>: utilidad instantánea isoelástica (CRRA), <span class="math inline">\(u(c) = (c^{1-\theta} - 1)/(1-\theta)\)</span>, con <span class="math inline">\(\theta &gt; 0\)</span> el coeficiente de aversión relativa al riesgo, constante, y <span class="math inline">\(1/\theta\)</span> la elasticidad de sustitución intertemporal (ESI). Si <span class="math inline">\(\theta = 1\)</span>, la utilidad es logarítmica. Si <span class="math inline">\(\theta\)</span> es bajo, los hogares toleran más variabilidad en el consumo, mientras que si <span class="math inline">\(\theta\)</span> es alto desean alisar fuertemente. La tasa de descuento <span class="math inline">\(\rho&gt;0\)</span> cumple <span class="math inline">\(\rho &gt; n&gt;0\)</span>, lo que garantiza que la utilidad no diverge.</p></li>
+<li><p><em>Empresas</em>: alquilan <span class="math inline">\(K\)</span> a su coste de uso, <span class="math inline">\(r + \delta\)</span>, y contratan <span class="math inline">\(L\)</span> al salario <span class="math inline">\(w\)</span>.</p></li>
+</ul>
+<p><strong>Tecnología</strong>: la función de producción es la Cobb-Douglas del modelo de Solow-Swan (apartado 2.1).</p>
+</section>
+<section id="modelo-1" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-1">3.2. Modelo</h3>
+<p><strong>Hogares</strong>: eligen en cada momento cuánto consumen y, con ello, qué fracción de su renta ahorran.</p>
+<ul>
+<li><p><em>Planteamiento</em>: maximizan la utilidad descontada en un horizonte infinito, sujetos a la restricción presupuestaria dinámica, a sus activos iniciales y a la condición de no-Ponzi, que impide acabar endeudados en el límite:</p>
+<p><span class="math display">\[\max_{\{c\}} \int_0^\infty e^{-(\rho - n)t} \frac{c^{1-\theta} - 1}{1-\theta} dt, \qquad \theta &gt; 0\]</span></p>
+<p><span class="math display">\[\text{s.a.:} \begin{cases} c + \dot{a} = w + (r-n)a \\ a_0 \text{ dado} \\ \lim_{t \to \infty} \lambda(t)\, a(t) \geq 0 \end{cases}\]</span></p>
+<p>donde <span class="math inline">\(c\)</span> y <span class="math inline">\(a\)</span> son el consumo y los activos per cápita<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, <span class="math inline">\(a_0\)</span> los activos iniciales, dados, y el factor <span class="math inline">\(e^{-(\rho - n)t}\)</span> descuenta la utilidad a la tasa <span class="math inline">\(\rho\)</span> y la pondera por el tamaño del hogar, <span class="math inline">\(e^{nt}\)</span>. El hamiltoniano en valor presente u origen es <span class="math inline">\(\mathcal{H} = e^{-(\rho-n)t} u(c) + \lambda[(r-n)a + w - c]\)</span>, donde <span class="math inline">\(\lambda\)</span>, el multiplicador dinámico, actúa como precio sombra de los activos y expresa cuánto vale en <span class="math inline">\(t=0\)</span> para el consumidor disponer de una unidad más de ellos. La condición de no-Ponzi se escribe con este multiplicador<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p></li>
+<li><p><em>CPO</em>: por el principio del máximo,</p>
+<p><span class="math display">\[\frac{\partial \mathcal{H}}{\partial c} = 0 \quad \Rightarrow \quad e^{-(\rho-n)t} c^{-\theta} = \lambda \tag{1}\]</span></p>
+<p><span class="math display">\[\frac{\partial \mathcal{H}}{\partial a} = -\dot{\lambda} \quad \Rightarrow \quad (r-n)\lambda = -\dot{\lambda} \tag{2}\]</span></p>
+<p><span class="math display">\[\lim_{t \to \infty} \lambda(t)\, a(t) = 0 \tag{3}\]</span></p>
+<p>La condición (3), de transversalidad<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, excluye conservar activos sin consumirlos nunca, de manera que en el óptimo la condición de no-Ponzi se cumple con igualdad.</p>
+<p>Tomando logaritmos en (1), derivando respecto al tiempo y sustituyendo (2), se obtiene la <em>ecuación de Keynes-Ramsey</em>:</p>
+<p><span class="math display">\[g_c = \frac{\dot{c}}{c} = \frac{1}{\theta}(r - \rho) \tag{KR}\]</span></p>
+<p>Según (KR), el consumo per cápita crece cuando <span class="math inline">\(r &gt; \rho\)</span>, es decir, cuando la rentabilidad del ahorro supera a la impaciencia y los agentes ahorran hoy para consumir más mañana, y el consumo decrece en el caso contrario, <span class="math inline">\(r &lt; \rho\)</span>.</p>
+<p>En ambos casos, la variación del consumo es más pronunciada cuanto menor sea <span class="math inline">\(\theta\)</span>, es decir, cuanto mayor sea la elasticidad de sustitución intertemporal, <span class="math inline">\(1/\theta\)</span>, lo que implica también mayor volatilidad de la senda de consumo ante <em>shocks</em>.</p></li>
+<li><p><em>CSO</em>: el hamiltoniano es estrictamente cóncavo en <span class="math inline">\(c\)</span> y lineal en <span class="math inline">\(a\)</span>, lo que hace que (1), (2) y (3) sean condiciones necesarias y suficientes.</p></li>
+</ul>
+<p><strong>Empresas</strong>: maximizan el beneficio en mercados competitivos.</p>
+<ul>
+<li><p><em>Planteamiento</em>: alquilan el capital a su coste de uso y contratan el trabajo al salario, que toman como dados, <span class="math inline">\(\max_{K,\,L} \; AK^\alpha L^{1-\alpha} - (r+\delta)K - wL\)</span>, con la tecnología Cobb-Douglas del modelo de Solow-Swan (apartado 2.1).</p></li>
+<li><p><em>CPO</em>: contratan cada factor hasta que su productividad marginal iguala a su coste real, <span class="math inline">\(r = df/dk - \delta = \alpha Ak^{\alpha-1} - \delta\)</span> y <span class="math inline">\(w = f(k) - k\, df/dk = (1-\alpha)Ak^\alpha\)</span>. Con rendimientos constantes a escala, los pagos a los factores agotan el producto y el beneficio es nulo.</p></li>
+<li><p><em>CSO</em>: la tecnología Cobb-Douglas es cóncava en <span class="math inline">\((K, L)\)</span> y estrictamente cóncava en cada factor, luego las CPO caracterizan el máximo.</p></li>
+</ul>
+<p><strong>Equilibrio</strong>: en el mercado de capitales la riqueza de las familias iguala al capital, <span class="math inline">\(a = k\)</span>, porque en una economía cerrada sin sector público el único activo es el capital físico y la deuda neta entre familias es cero. La ley de acumulación del capital es, con ahorro endógeno, la restricción de recursos de la economía, <span class="math inline">\(c + \dot{k} + (n+\delta)k = f(k)\)</span>. A diferencia de Solow, <span class="math inline">\(c\)</span> no es una fracción fija de <span class="math inline">\(f(k)\)</span> sino una variable de control. El sistema en <span class="math inline">\((k, c)\)</span> formado por (KR) y esta ecuación describe el modelo.</p>
+<p>En el estado estacionario, imponiendo <span class="math inline">\(\dot{c} = 0\)</span> en (KR), el tipo de interés iguala la tasa de descuento, <span class="math inline">\(r = \rho\)</span>, y la productividad marginal del capital cubre la impaciencia y la depreciación, <span class="math inline">\(df/dk|_{k^*} = \rho + \delta\)</span>, de donde</p>
+<p><span class="math display">\[k^* = \left(\frac{\alpha A}{\rho + \delta}\right)^{1/(1-\alpha)}\]</span></p>
+<p>El <em>stock</em> de capital estacionario es inferior al de la regla de oro, <span class="math inline">\(k^* &lt; k_{\text{oro}}\)</span>, siempre que <span class="math inline">\(\rho &gt; n\)</span>, porque la regla de oro impone <span class="math inline">\(df/dk = n + \delta\)</span> mientras que RCK impone <span class="math inline">\(df/dk = \rho + \delta\)</span>, de modo que la productividad marginal exigida es mayor y, por rendimientos decrecientes, el capital menor. Intuitivamente, los agentes impacientes acumulan menos capital del que prescribe la regla de oro porque los sacrificios a corto plazo para alcanzarla son demasiado grandes. Sin progreso técnico, <span class="math inline">\(g_c^* = g_k^* = 0\)</span>.</p>
+<p>En cuanto a la tasa de ahorro, en el estado estacionario el ahorro repone exactamente el capital, <span class="math inline">\(s^* = (n+\delta)k^*/f(k^*)\)</span>, y sustituyendo <span class="math inline">\(df/dk|_{k^*} = \alpha A k^{*\alpha-1} = \rho + \delta\)</span>:</p>
+<p><span class="math display">\[s^* = \alpha \, \frac{n + \delta}{\rho + \delta}\]</span></p>
+<p>La tasa de ahorro estacionaria es inferior a la de la regla de oro, <span class="math inline">\(s^* &lt; s_{\text{oro}} = \alpha\)</span>, precisamente porque <span class="math inline">\(\rho &gt; n\)</span>, y decrece con la impaciencia.</p>
+<p>Fuera del estado estacionario, en cambio, la tasa de ahorro no es constante. Con la Cobb-Douglas se demuestra (Barro y Sala-i-Martin, 2004) que <span class="math inline">\(s(t)\)</span> es monótona a lo largo de la transición y que su sentido depende de la comparación entre <span class="math inline">\(s^*\)</span> y <span class="math inline">\(1/\theta\)</span>.</p>
+<p>La intuición descansa en los efectos sustitución y renta. En una economía pobre el capital es escaso y el tipo de interés alto, lo que por efecto sustitución incentiva el ahorro, mientras que por efecto renta los agentes, que se saben más ricos en el futuro, desean adelantar consumo y ahorrar menos. Cuanto mayor es la elasticidad de sustitución intertemporal, <span class="math inline">\(1/\theta\)</span>, más pesa el primero. Caben tres casos:</p>
+<ul>
+<li><p><em><span class="math inline">\(s^* &lt; 1/\theta\)</span></em> (elasticidad de sustitución intertemporal alta): los agentes de una economía pobre prefieren consumir poco y acumular deprisa, de modo que la tasa de ahorro decrece hacia <span class="math inline">\(s^*\)</span>.</p></li>
+<li><p><em><span class="math inline">\(s^* &gt; 1/\theta\)</span></em> (fuerte deseo de alisar): consumen relativamente más al principio y la tasa de ahorro crece.</p></li>
+<li><p><em><span class="math inline">\(s^* = 1/\theta\)</span></em>: la tasa de ahorro es constante y el modelo reproduce exactamente a Solow.</p></li>
+</ul>
+<p>Endogenizar el ahorro no altera las conclusiones cualitativas del modelo neoclásico, y en un caso particular ni siquiera las cuantitativas.</p>
+<p><strong>Desarrollo gráfico</strong>: la dinámica del modelo se representa en el plano capital por trabajador-consumo por trabajador, <span class="math inline">\(k\)</span>-<span class="math inline">\(c\)</span> (figura <a href="#fig-a434-rck-i" class="quarto-xref"><span>A43.6</span></a>):</p>
+<ol type="1">
+<li><p><em>Locus <span class="math inline">\(\dot{c} = 0\)</span></em>: línea vertical en el <span class="math inline">\(k^*\)</span> que cumple <span class="math inline">\(df/dk|_{k^*} = \rho + \delta\)</span>. A su izquierda el capital es escaso, su productividad marginal supera a <span class="math inline">\(\rho + \delta\)</span>, el tipo de interés supera a la impaciencia y el consumo crece, mientras que a su derecha ocurre lo contrario.</p></li>
+<li><p><em>Locus <span class="math inline">\(\dot{k} = 0\)</span></em>: curva cóncava <span class="math inline">\(c = f(k) - (n+\delta)k\)</span>, que alcanza su máximo en <span class="math inline">\(k_{\text{oro}}\)</span> y corta el eje horizontal, a la derecha del área representada, en el capital máximo sostenible, <span class="math inline">\(\bar{k}\)</span>, donde <span class="math inline">\(f(\bar{k}) = (n+\delta)\bar{k}\)</span>. Por encima de la curva el consumo es demasiado alto y el capital disminuye, y por debajo aumenta.</p></li>
+<li><p><em>Senda estable</em>: la trayectoria, creciente, que lleva al estado estacionario.</p></li>
+<li><p><em>Equilibrio</em>: hay tres. El origen es inestable y el punto <span class="math inline">\((\bar{k}, 0)\)</span> es estable pero indeseable, pues todo se invierte y nada se consume. El tercero, <span class="math inline">\((k^*, c^*)\)</span>, el punto 0, es un <em>punto de silla</em>.</p></li>
+</ol>
+<p>Existe una única trayectoria estable (<em>saddle path</em>) que converge al punto de silla. Las trayectorias por encima agotan el capital en un tiempo finito (sobreconsumo), tras lo cual el consumo tendría que caer bruscamente a cero, lo que incumple la ecuación de Keynes-Ramsey y la restricción de recursos. Las de abajo llevan a <span class="math inline">\(k \rightarrow \bar{k}\)</span> y <span class="math inline">\(c \rightarrow 0\)</span> (sobreahorro) e incumplen la condición de transversalidad. Así, <span class="math inline">\(c\)</span> es una <em>variable de salto</em>, que se sitúa de inmediato sobre la senda estable, y <span class="math inline">\(k\)</span> una <em>variable predeterminada</em>.</p>
+<div id="fig-a434-rck-i" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a434-rck-i-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a434_RCK_i.html" style="height:540px;max-width:555px" loading="lazy" title="fig-a434-rck-i"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a434-rck-i-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A43.6: Diagrama de fases del modelo de Ramsey-Cass-Koopmans y senda estable hacia el estado estacionario.
+</figcaption>
+</figure>
+</div>
+<p>La economía puede converger desde la región de desacumulación (<span class="math inline">\(k &gt; k^*\)</span>, <span class="math inline">\(c &gt; c^*\)</span>) o desde la de crecimiento (<span class="math inline">\(k &lt; k^*\)</span>, <span class="math inline">\(c &lt; c^*\)</span>). En esta, el capital crece a tasa decreciente, y el tipo de interés baja gradualmente hasta <span class="math inline">\(\rho\)</span> y el crecimiento del consumo, hasta cero. La forma de la senda estable depende de <span class="math inline">\(\theta\)</span>:</p>
+<ul>
+<li><p><em><span class="math inline">\(\theta\)</span> elevado</em> (fuerte deseo de alisar): la senda estable discurre muy cerca del <em>locus</em> <span class="math inline">\(\dot{k} = 0\)</span>, porque los hogares prefieren un consumo alto desde el principio aunque <span class="math inline">\(k\)</span> apenas aumente.</p></li>
+<li><p><em><span class="math inline">\(\theta\)</span> reducido</em>: la senda estable es más empinada, porque los hogares toleran un consumo variable y lo recortan al principio para acumular deprisa.</p></li>
+</ul>
+<p>Por ello la velocidad de convergencia es tanto mayor cuanto menor es <span class="math inline">\(\theta\)</span><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. Con <span class="math inline">\(\alpha \approx 1/3\)</span> y valores plausibles del resto de parámetros se obtienen velocidades muy superiores al 2&nbsp;% observado, y, como en Solow, solo un concepto amplio de capital (<span class="math inline">\(\alpha \approx 2/3\)</span>, como en el apartado 2.5.1) reconcilia el modelo con la evidencia.</p>
+<p><strong>Estática comparativa</strong>: se analizan tres perturbaciones no anticipadas:</p>
+<ul>
+<li><p><em>Caída de la tasa de descuento</em> (<span class="math inline">\(\downarrow \rho\)</span>): es el <em>shock</em> más relevante en RCK, lo más parecido a un aumento de <span class="math inline">\(s\)</span> en Solow. Gráficamente, en el plano <span class="math inline">\(k\)</span>-<span class="math inline">\(c\)</span> (figura <a href="#fig-a435-rck-ii" class="quarto-xref"><span>A43.7</span></a>), solo se desplaza el <em>locus</em> <span class="math inline">\(\dot{c} = 0\)</span>, porque el <span class="math inline">\(\dot{k} = 0\)</span> depende de la tecnología y no de las preferencias. El <em>locus</em> <span class="math inline">\(\dot{c} = 0\)</span> pasa a la derecha, de <span class="math inline">\((\dot{c} = 0)_0\)</span> a <span class="math inline">\((\dot{c} = 0)_1\)</span>, y el capital estacionario, de <span class="math inline">\(k^*_0\)</span> a <span class="math inline">\(k^*_1\)</span>.</p>
+<p>En el momento del cambio el consumo salta hacia abajo, de <span class="math inline">\(c^*_0\)</span> a <span class="math inline">\(c_{0'}\)</span> (del punto 0 al 0′), pues los agentes previsores se sitúan sobre la nueva senda estable ahorrando más. A partir de ahí, <span class="math inline">\(k\)</span> y <span class="math inline">\(c\)</span> crecen hasta el punto 1, con valores estacionarios superiores a los originales. Por tanto, a corto plazo el consumo cae y a largo plazo capital y consumo aumentan, el patrón de Solow con <span class="math inline">\(k &lt; k_{\text{oro}}\)</span>.</p></li>
+</ul>
+<div id="fig-a435-rck-ii" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a435-rck-ii-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a435_RCK_ii.html" style="height:540px;max-width:555px" loading="lazy" title="fig-a435-rck-ii"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a435-rck-ii-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A43.7: Caída no anticipada de la tasa de descuento en el modelo de Ramsey-Cass-Koopmans. El consumo salta a la nueva senda estable (0 → 0′) y la economía converge al nuevo estado estacionario (1).
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><p><em>Mejora tecnológica permanente</em> (<span class="math inline">\(\uparrow A\)</span>): afecta a ambos <em>loci</em>. El <em>locus</em> <span class="math inline">\(\dot{c} = 0\)</span> se desplaza a la derecha, pues <span class="math inline">\(df/dk\)</span> aumenta para todo <span class="math inline">\(k\)</span>, y el <span class="math inline">\(\dot{k} = 0\)</span>, hacia arriba, pues para cada <span class="math inline">\(k\)</span> hay más producción y más consumo compatible con un capital constante. El consumo salta de inmediato sobre el nuevo <em>saddle path</em>, hacia arriba o hacia abajo según la magnitud relativa de los desplazamientos, y a largo plazo <span class="math inline">\(k^*\)</span> y <span class="math inline">\(c^*\)</span> son ambos mayores.</p></li>
+<li><p><em>Mejora tecnológica transitoria</em>: si el aumento de <span class="math inline">\(A\)</span> se revierte en <span class="math inline">\(t_1\)</span>, los agentes lo anticipan. Por ello, en <span class="math inline">\(t_0\)</span> el consumo salta sobre una trayectoria intermedia, que no es el <em>saddle path</em> del estado transitorio ni el del permanente, y que garantiza que en <span class="math inline">\(t_1\)</span> la economía se encuentre exactamente sobre el <em>saddle path</em> original. Solow no puede generar este resultado, característico de RCK, en el que los agentes incorporan la naturaleza temporal del <em>shock</em> desde el primer momento.</p></li>
+</ul>
+<p><strong>Bienestar</strong>: dado que se cumplen las condiciones del primer teorema fundamental de la economía del bienestar (competencia perfecta, ausencia de externalidades, mercados completos), el equilibrio descentralizado es Pareto-eficiente y coincide con la solución del planificador benevolente. Esa solución impone <span class="math inline">\(g_c = (1/\theta)[df/dk - \delta - \rho]\)</span> y en el equilibrio descentralizado <span class="math inline">\(r = df/dk - \delta\)</span>, de modo que las ecuaciones de Euler coinciden y la asignación es la misma. A diferencia de Solow, donde nada garantiza una tasa de ahorro eficiente, en RCK el mercado genera endógenamente la tasa de ahorro óptima, que corresponde a la <em>regla de oro modificada</em>, <span class="math inline">\(df/dk|_{k^*} = \rho + \delta\)</span>, no a la regla de oro. En consecuencia, no puede darse la ineficiencia dinámica del exceso de ahorro.</p>
+<p>Con impuestos distorsionantes, externalidades o competencia imperfecta, en cambio, la equivalencia se rompe y el equilibrio descentralizado deja de ser eficiente, lo que deja margen a la política económica en los modelos de crecimiento endógeno.</p>
+<p><strong>Extensiones</strong>:</p>
+<ul>
+<li><p><em>Horizonte finito</em>: Dorfman, Samuelson y Solow (1958) formularon el <em>teorema de la autopista</em> para el modelo multisectorial de von Neumann, y Cass (1966) lo demostró para este modelo agregado. Según el teorema, cuando el final del horizonte queda muy lejos, la senda óptima se mantiene casi todo el tiempo en las proximidades del estado estacionario y solo al acercarse el final se desvía hacia el capital terminal. Si ese capital es nulo, la senda arranca por encima del <em>saddle path</em>, porque el capital ha de agotarse en el último periodo.</p></li>
+<li><p><em>Progreso técnico</em>: con progreso técnico aumentador del trabajo a la tasa <span class="math inline">\(g_A\)</span>, el modelo se escribe en unidades de trabajo efectivo y la condición de transversalidad exige <span class="math inline">\(\rho &gt; n + (1-\theta)g_A\)</span>. La ecuación de Keynes-Ramsey pasa a ser <span class="math inline">\(g_{\tilde{c}} = (1/\theta)[df/d\tilde{k} - \delta - \rho - \theta g_A]\)</span>, y el capital estacionario cumple <span class="math inline">\(df/d\tilde{k}|_{\tilde{k}^*} = \rho + \delta + \theta g_A\)</span>. El crecimiento eleva así el tipo de interés exigido, porque los agentes, que saben que serán más ricos, descuentan más el futuro. En el estado estacionario el consumo per cápita crece a la tasa <span class="math inline">\(g_A\)</span>, como en Solow, y la tasa de ahorro es <span class="math inline">\(s^* = \alpha(g_A+n+\delta)/(\rho+\delta+\theta g_A)\)</span>.</p></li>
+<li><p><em>Sector público</em>: con gasto público <span class="math inline">\(g\)</span> por trabajador financiado con impuestos de suma fija, la restricción de recursos es <span class="math inline">\(c + g + \dot{k} + (n+\delta)k = f(k)\)</span>. El <em>locus</em> <span class="math inline">\(\dot{k} = 0\)</span> se desplaza hacia abajo en <span class="math inline">\(g\)</span> y el consumo privado es expulsado uno a uno a largo plazo, sin efecto sobre <span class="math inline">\(k^*\)</span>. Por la equivalencia ricardiana, el resultado es el mismo si el gasto se financia con deuda (tema <a href="../chapters/a38-politica-fiscal.html">A38</a>).</p>
+<p>Con un impuesto proporcional sobre la renta del capital a la tasa <span class="math inline">\(\tau\)</span>, en cambio, el rendimiento neto es <span class="math inline">\((1-\tau)[df/dk - \delta]\)</span> y el capital estacionario cae, <span class="math inline">\(df/dk|_{k^*} = \delta + \rho/(1-\tau)\)</span>. El impuesto tiene efecto nivel, no tasa, y el consumo estacionario disminuye.</p></li>
+<li><p><em>Oferta de trabajo endógena</em>: si la utilidad incluye el ocio, <span class="math inline">\(u(c, 1-l)\)</span>, se añade una condición intratemporal, <span class="math inline">\(-u_l/u_c = w\)</span>, y el estado estacionario determina también las horas trabajadas. El modelo así ampliado es el núcleo de los modelos del ciclo real (tema <a href="../chapters/a42-ciclos.html">A42</a>).</p></li>
+<li><p><em>Política económica</em>: como en Solow, las políticas que alteran los parámetros, como la fiscalidad del ahorro (que actúa como <span class="math inline">\(\rho\)</span>) o las que afectan a la población, tienen efectos nivel y no tasa sobre las variables per cápita. La novedad es que, sin fallos de mercado, no hay motivo para intervenir.</p></li>
+</ul>
+</section>
+<section id="conclusiones-2" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-2">3.3. Conclusiones</h3>
+<p><strong>Aspectos positivos</strong>: el modelo dota de microfundamentos al de Solow, prueba la eficiencia del equilibrio descentralizado e incorpora las preferencias intertemporales (impaciencia y suavización del consumo) que determinan cuánto se ahorra y con qué rapidez se converge.</p>
+<p><strong>Limitaciones</strong>: comparte con Solow la exogeneidad del progreso tecnológico, y la mayor complejidad analítica no altera la conclusión de que sin tecnología exógena no hay crecimiento per cápita sostenido. También predice convergencia condicional con una velocidad similar a la de Solow. El agente representativo con horizonte infinito excluye, además, la heterogeneidad y los efectos intergeneracionales que estudian los modelos de generaciones solapadas (tema <a href="../chapters/a29-mhi-mgs.html">A29</a>).</p>
+</section>
+</section>
+<section id="conclusiones-3" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones-3">Conclusiones</h2>
+<p>Los modelos de crecimiento exógeno comparten la conclusión de que la acumulación de capital determina el nivel de la renta per cápita, pero su crecimiento sostenido solo puede proceder de un progreso técnico que los modelos no explican. Harrod y Domar plantean si el crecimiento equilibrado es estable y, con coeficientes fijos, concluyen que no lo es, pues la economía discurre por el filo de la navaja. Solow y Swan resuelven esa inestabilidad con la sustituibilidad entre factores. Con ello, el estado estacionario es estable, aunque la velocidad de convergencia que predicen duplica la observada salvo que el capital se amplíe con el humano (Mankiw, Romer y Weil). Ramsey, Cass y Koopmans endogenizan el ahorro y muestran que el equilibrio descentralizado es eficiente, sin alterar el papel exógeno de la tecnología. La predicción empírica central es la convergencia condicional, en torno al 2&nbsp;% anual, según la cual cada país converge a su estado estacionario. Que el residuo de Solow absorba el 87,5&nbsp;% del crecimiento de la productividad del trabajo resume el límite de estos modelos.</p>
+<p>El crecimiento exógeno abre un bloque que sigue con los modelos que endogenizan la tecnología (tema <a href="../chapters/a44-crecimiento-ii.html">A44</a>) y con la contrastación empírica, donde se mide el residuo y se estiman las convergencias <span class="math inline">\(\beta\)</span> y <span class="math inline">\(\sigma\)</span> (tema <a href="../chapters/a45-crecimiento-empirica.html">A45</a>). El modelo de Ramsey-Cass-Koopmans aplica al crecimiento el consumidor de horizonte infinito (tema <a href="../chapters/a29-mhi-mgs.html">A29</a>) y, sometido a perturbaciones tecnológicas, es también la base de la teoría del ciclo real (tema <a href="../chapters/a42-ciclos.html">A42</a>), de modo que crecimiento y ciclo comparten un mismo modelo. Por último, la ampliación del modelo de Solow con recursos naturales plantea si el crecimiento es compatible con un recurso agotable (tema <a href="../chapters/b31-ma-bpg.html">B31</a>).</p>
+<p>La convergencia absoluta, ausente en las muestras de 1960-1990, tiende a aparecer desde 1990 y es clara desde 2000, a la vez que las instituciones y las políticas de los países pobres se aproximan a las de los ricos (Kremer, Willis y You, 2022). Ese cambio sugiere que la falta de convergencia anterior fue un rasgo del periodo. También se discute la tasa de descuento social, que aplica la ecuación de Keynes-Ramsey al cambio climático. El Informe Stern (2006) fija por razones éticas una tasa de preferencia temporal casi nula y pide una acción inmediata, mientras que Nordhaus (2007) calibra los parámetros con los rendimientos de mercado y obtiene una senda de mitigación gradual.</p>
+</section>
+<section id="anexo.-de-los-niveles-a-las-tasas-de-crecimiento" class="level2">
+<h2 class="anchored" data-anchor-id="anexo.-de-los-niveles-a-las-tasas-de-crecimiento">Anexo. De los niveles a las tasas de crecimiento</h2>
+<p>Los modelos de crecimiento escriben cada ecuación de comportamiento en niveles, en términos per cápita o por unidad de trabajo efectivo y en tasas de crecimiento. El paso de una forma a otra descansa en una sola herramienta. La tasa de crecimiento de una variable es la derivada respecto al tiempo de su logaritmo, porque, por la regla de la cadena, <span class="math inline">\(d\ln x/dt = (1/x)(dx/dt)\)</span>:</p>
+<p><span class="math display">\[g_x \equiv \frac{\dot{x}}{x} = \frac{d \ln x}{dt}, \qquad \dot{x} \equiv \frac{dx}{dt}\]</span></p>
+<p>Como el logaritmo convierte los productos en sumas y las potencias en productos, tomar logaritmos y derivar respecto al tiempo da tres reglas:</p>
+<ol type="1">
+<li><p><em>Producto</em>: si <span class="math inline">\(z = xy\)</span>, entonces <span class="math inline">\(\ln z = \ln x + \ln y\)</span> y <span class="math inline">\(g_z = g_x + g_y\)</span>.</p></li>
+<li><p><em>Cociente</em>: si <span class="math inline">\(z = x/y\)</span>, entonces <span class="math inline">\(\ln z = \ln x - \ln y\)</span> y <span class="math inline">\(g_z = g_x - g_y\)</span>.</p></li>
+<li><p><em>Potencia</em>: si <span class="math inline">\(z = x^a\)</span>, entonces <span class="math inline">\(\ln z = a \ln x\)</span> y <span class="math inline">\(g_z = a\,g_x\)</span>.</p></li>
+</ol>
+<p>Una suma no sigue ninguna de ellas. Si <span class="math inline">\(z = x + y\)</span>, su tasa de crecimiento es la media de las tasas de los sumandos ponderada por su peso, <span class="math inline">\(g_z = \frac{x}{x+y}\,g_x + \frac{y}{x+y}\,g_y\)</span>, como en la producción del modelo Sobelow (tema <a href="../chapters/a44-crecimiento-ii.html">A44</a>).</p>
+<p>El modelo de Solow-Swan (apartado 2.2) aplica las tres reglas. En la producción, <span class="math inline">\(Y = AK^\alpha L^{1-\alpha}\)</span> con <span class="math inline">\(A\)</span> constante, las reglas del producto y de la potencia dan <span class="math inline">\(g_Y = \alpha g_K + (1-\alpha) n\)</span>. En términos per cápita, la regla del cociente da <span class="math inline">\(g_y = g_Y - n = \alpha(g_K - n) = \alpha g_k\)</span>.</p>
+<p>La acumulación del capital exige un paso más. El capital per cápita es un cociente, <span class="math inline">\(k = K/L\)</span>, de modo que <span class="math inline">\(g_k = g_K - n\)</span>. Como <span class="math inline">\(\dot{K} = sY - \delta K\)</span>, la tasa de crecimiento del capital es <span class="math inline">\(g_K = sY/K - \delta\)</span>, y, dividiendo por <span class="math inline">\(L\)</span> el numerador y el denominador, <span class="math inline">\(Y/K = y/k\)</span>. Por tanto:</p>
+<p><span class="math display">\[g_k = \frac{sy}{k} - (n+\delta) \quad \Rightarrow \quad \dot{k} = g_k\,k = sAk^\alpha - (n+\delta)k\]</span></p>
+<p>El término <span class="math inline">\(nk\)</span> aparece porque, aunque <span class="math inline">\(K\)</span> no varíe, el capital per cápita cae al ritmo al que crece la población.</p>
+<p>Con progreso técnico (apartado 2.3), el capital por unidad de trabajo efectivo es <span class="math inline">\(\tilde{k} = K/(AL)\)</span>, y las reglas del cociente y del producto dan <span class="math inline">\(g_{\tilde{k}} = g_K - g_A - n\)</span>. El mismo razonamiento lleva a <span class="math inline">\(\dot{\tilde{k}} = s\tilde{k}^\alpha - (g_A+n+\delta)\tilde{k}\)</span>. Para volver a las variables per cápita, <span class="math inline">\(y = A\tilde{y}\)</span> implica <span class="math inline">\(g_y = g_A + g_{\tilde{y}}\)</span>, de modo que, en el estado estacionario, con <span class="math inline">\(g_{\tilde{y}}^* = 0\)</span>, la renta per cápita crece a la tasa <span class="math inline">\(g_A\)</span>.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Maddison, A. (2001), <em>The World Economy: A Millennial Perspective</em>, París, OCDE.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>En tiempo continuo se omite el argumento temporal: <span class="math inline">\(c \equiv c(t)\)</span>, <span class="math inline">\(a \equiv a(t)\)</span>, <span class="math inline">\(w \equiv w(t)\)</span>, <span class="math inline">\(r \equiv r(t)\)</span> y <span class="math inline">\(\lambda \equiv \lambda(t)\)</span>; se escribe solo en las condiciones inicial y terminal.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Por la CPO (2), <span class="math inline">\(\lambda(t) = \lambda(0)\, e^{-[R(t) - nt]}\)</span>, donde <span class="math inline">\(R(t) \equiv \int_0^t r(v)\,dv\)</span> es el tipo de interés acumulado hasta <span class="math inline">\(t\)</span>, y como <span class="math inline">\(\lambda(0) &gt; 0\)</span>, la condición equivale a <span class="math inline">\(\lim_{t \to \infty} a(t)\, e^{-[R(t) - nt]} \geq 0\)</span>, es decir, que el valor presente de los activos no sea negativo en el límite.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>La condición de transversalidad es la holgura complementaria de la no-Ponzi (tema <a href="../chapters/a08-consumidor.html">A08</a>, apartado 1.4.1, condiciones (4) a (6)) llevada al límite. Con horizonte finito <span class="math inline">\(T\)</span>, la restricción terminal sería <span class="math inline">\(a(T) \geq 0\)</span>, con multiplicador <span class="math inline">\(\lambda(T) \geq 0\)</span>, y la holgura complementaria exigiría <span class="math inline">\(\lambda(T)\, a(T) = 0\)</span>, es decir, que no se dejen activos o que su valor sombra sea nulo. Con horizonte infinito, la misma condición se escribe en el límite y, como <span class="math inline">\(\lambda(t) &gt; 0\)</span>, obliga a que la no-Ponzi se cumpla con igualdad (Barro y Sala-i-Martin, 2004, apéndice matemático, A.3).<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Log-linealizando el sistema en torno al estado estacionario, la velocidad de convergencia es el valor absoluto de la raíz característica negativa de su matriz jacobiana, <span class="math inline">\(\frac{1}{2}\left[\sqrt{(\rho - n)^2 + 4\,\frac{1-\alpha}{\theta}(\rho+\delta)\left(\frac{\rho+\delta}{\alpha} - (n+\delta)\right)} - (\rho - n)\right]\)</span> (Barro y Sala-i-Martin, 2004), decreciente en <span class="math inline">\(\theta\)</span> y en <span class="math inline">\(\alpha\)</span>. Con <span class="math inline">\(\theta\)</span> bajo supera a la de Solow para la misma parametrización.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script>
+// Gráficos del libro (iframes .graph-frame).
+// 1) Escala única: los grosores, los discontinuos y el tamaño de los puntos de cada figura están fijados para verla a 680 px
+//    de ancho. Los marcos anchos (figuras de varios paneles) se estiran hasta la columna y las pantallas estrechas las encogen; aquí se
+//    compensa para que en pantalla las curvas midan siempre lo mismo (2,2 px las económicas, 1,4 las auxiliares, 1,2 ejes y flechas,
+//    0,8 las guías) y los puntos tengan el mismo tamaño en todas las figuras, sea cual sea el ancho al que se muestren.
+// 2) Ajusta la altura de cada iframe al elemento dibujado más bajo (curvas, ejes, etiquetas KaTeX).
+(function () {
+  var REF = 680;
+  function norm(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var s = d.querySelector("svg"); if (!s) return;
+      var w = s.getBoundingClientRect().width; if (!(w > 0)) return;
+      var r = REF / w;
+      var els = s.querySelectorAll("path, line, polyline, polygon, rect, circle, ellipse");
+      els.forEach(function (el) {
+        var cs = d.defaultView.getComputedStyle(el);
+        if (el.dataset.sw0 === undefined) {
+          el.dataset.sw0 = parseFloat(cs.strokeWidth) || 0;
+          el.dataset.da0 = (cs.strokeDasharray && cs.strokeDasharray !== "none") ? cs.strokeDasharray : "";
+          if (el.tagName.toLowerCase() === "circle" && el.r && el.r.baseVal.value > 0 && el.r.baseVal.value <= 9) {
+            el.dataset.r0 = el.r.baseVal.value;
+          }
+        }
+        var sw0 = +el.dataset.sw0;
+        if (sw0 > 0) el.style.strokeWidth = (sw0 * r).toFixed(3) + "px";
+        if (el.dataset.da0) {
+          el.style.strokeDasharray = el.dataset.da0.split(/[ ,]+/).map(function (v) {
+            return (parseFloat(v) * r).toFixed(3) + "px";
+          }).join(" ");
+        }
+        if (el.dataset.r0) el.setAttribute("r", (+el.dataset.r0 * r).toFixed(3));
+      });
+    } catch (e) {}
+  }
+  function fit(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var sy = d.defaultView.scrollY || 0, bottom = 0;
+      var els = d.querySelectorAll("svg path, svg line, svg circle, svg polyline, svg polygon, svg rect, svg text, svg ellipse, .katex-label");
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width > 0 || r.height > 0) bottom = Math.max(bottom, r.bottom + sy);
+      });
+      if (!(bottom > 20)) {
+        var svg = d.querySelector("svg"); var vb = svg && svg.getAttribute("viewBox");
+        if (vb) { var p = vb.split(/\s+/); bottom = f.clientWidth * (+p[3]) / (+p[2]); }
+      }
+      if (bottom > 20) f.style.height = Math.ceil(bottom + 10) + "px";
+    } catch (e) {}
+  }
+  // 3) Un gráfico de varios paneles no se amplía por encima del 110 % de su ancho de dibujo (viewBox). Los dibujados a
+  //    680 px quedan en 748 px como máximo, con rótulos de tamaño normal; los de 900 o 960 px, en el tope de 900 px del CSS.
+  function cap(f) {
+    try {
+      if (!f.parentElement || !f.parentElement.classList.contains("wide")) return;
+      var s = f.contentDocument && f.contentDocument.querySelector("svg"); if (!s) return;
+      var vb = s.viewBox && s.viewBox.baseVal; if (!vb || !(vb.width > 0)) return;
+      var m = Math.min(900, Math.round(vb.width * 1.1)) + "px";
+      if (f.style.maxWidth !== m) f.style.maxWidth = m;
+    } catch (e) {}
+  }
+  function both(f) { cap(f); norm(f); fit(f); }
+  function all() { document.querySelectorAll(".graph-frame iframe").forEach(both); }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".graph-frame iframe").forEach(function (f) {
+      f.addEventListener("load", function () { both(f); setTimeout(function () { both(f); }, 700); });
+    });
+  });
+  window.addEventListener("load", function () { setTimeout(all, 1200); });
+  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(all, 150); });
+})();
+</script>
+<style>
+.graph-frame { margin: 1.25rem 0 0.25rem; }
+.quarto-figure .graph-frame + * { margin-top: 0; }
+</style>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/librovol1\.arturolorenzo\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/a42-ciclos.html" class="pagination-link" aria-label="A42. Ciclos económicos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">A42. Ciclos económicos</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/a44-crecimiento-ii.html" class="pagination-link" aria-label="A44. Crecimiento económico endógeno">
+        <span class="nav-page-text"><span class="chapter-title">A44. Crecimiento económico endógeno</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

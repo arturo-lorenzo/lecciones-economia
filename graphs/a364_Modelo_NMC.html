@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="124" y1="460" x2="556" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="124" y1="460" x2="124" y2="60"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="dP0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dPs" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dP1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dYs" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+
+    <line id="oalp" stroke="#D85A30" stroke-width="2.2"/>
+    <line id="ad0" stroke="#378ADD" stroke-width="2.2"/>
+    <line id="ad1" stroke="#378ADD" stroke-width="2.2" stroke-dasharray="8 4"/>
+    <line id="oa0" stroke="#1D9E75" stroke-width="2.2"/>
+    <line id="oa1" stroke="#1D9E75" stroke-width="2.2" stroke-dasharray="8 4"/>
+
+
+    <line id="arDA" stroke="#378ADD" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="arOA" stroke="#1D9E75" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="mv-sur" stroke="#888" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="mv-ant" stroke="#888" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <g id="ticks"></g>
+
+    <circle id="pt0" r="5" fill="#000"/>
+    <circle id="ptS" r="5" fill="#000"/>
+    <circle id="pt1" r="5" fill="#000"/>
+  </svg>
+
+<script>
+
+
+
+
+
+
+const ybar=40, P0=35, Ys=50, Ps=45, P1=55;
+function X(y){ return 124 + y*5.4; }
+function Y(P){ return 460 - P*5; }
+const VBW=680, VBH=500;
+function seg(id,x1,y1,x2,y2){const e=document.getElementById(id);e.setAttribute('x1',x1);e.setAttribute('y1',y1);e.setAttribute('x2',x2);e.setAttribute('y2',y2);}
+function pt(id,x,y){const e=document.getElementById(id);e.setAttribute('cx',x);e.setAttribute('cy',y);}
+
+seg('oalp', X(ybar), Y(0), X(ybar), Y(76));
+seg('ad0', X(4),  Y(71), X(70), Y(5));
+seg('ad1', X(24), Y(71), X(78), Y(17));
+seg('oa0', X(10), Y(5),  X(76), Y(71));
+seg('oa1', X(1),  Y(16), X(61), Y(76));
+
+
+const kp=5/5.4, c=Math.cos(Math.atan(kp)), d=100*c, nx=kp*c, ny=c;
+function perp(id,x0,y0,dx,dy){seg(id,x0+dx*6,y0+dy*6,x0+dx*(d-7),y0+dy*(d-7));return {x:x0+dx*d/2,y:y0+dy*d/2};}
+const mDA=perp('arDA', X(54), Y(21), nx, -ny);
+const mOA=perp('arOA', X(64), Y(59), -nx, -ny);
+
+
+seg('mv-sur', X(42)-6, Y(37)-8, X(48.3)-6, Y(43.3)-8);
+seg('mv-ant', X(ybar)-9, Y(P0+2.5), X(ybar)-9, Y(P1-2.5));
+
+seg('dP0', X(0), Y(P0), X(ybar), Y(P0));
+seg('dPs', X(0), Y(Ps), X(Ys), Y(Ps));
+seg('dP1', X(0), Y(P1), X(ybar), Y(P1));
+seg('dYs', X(Ys), Y(Ps), X(Ys), Y(0));
+pt('pt0', X(ybar), Y(P0)); pt('ptS', X(Ys), Y(Ps)); pt('pt1', X(ybar), Y(P1));
+
+const ticksG=document.getElementById('ticks');
+function tick(x1,y1,x2,y2){const t=document.createElementNS('http://www.w3.org/2000/svg','line');t.setAttribute('x1',x1);t.setAttribute('y1',y1);t.setAttribute('x2',x2);t.setAttribute('y2',y2);t.setAttribute('stroke','black');t.setAttribute('stroke-width','1');ticksG.appendChild(t);}
+tick(120,Y(P0),124,Y(P0)); tick(120,Y(Ps),124,Y(Ps)); tick(120,Y(P1),124,Y(P1));
+tick(X(ybar),460,X(ybar),464); tick(X(Ys),460,X(Ys),464);
+
+function pX(x){return (x/VBW*100).toFixed(2)+'%';}
+function pY(y){return (y/VBH*100).toFixed(2)+'%';}
+const cont=document.querySelector('.graph-container');
+const labels=[
+  {id:'y', tex:'Y', x:560, y:452, size:'17px'},
+  {id:'p', tex:'P', x:117,  y:42, align:'right', size:'17px'},
+  {id:'oalp', tex:'\\text{OA}_{\\text{LP}}',   x:X(ybar)+6,  y:Y(76)-12, color:'#D85A30', size:'16px'},
+  {id:'ad0',  tex:'\\text{DA}_0',      x:X(70)+5,   y:Y(5)-12,  color:'#378ADD', size:'16px'},
+  {id:'ad1',  tex:'\\text{DA}_1',      x:X(78)+5,   y:Y(17)-12, color:'#378ADD', size:'16px'},
+  {id:'oa0',  tex:'\\text{OA}_{\\text{CP},0}', x:X(76)+5,   y:Y(71)-12, color:'#1D9E75', size:'16px'},
+  {id:'oa1',  tex:'\\text{OA}_{\\text{CP},1}', x:X(61)+5,   y:Y(76)-14, color:'#1D9E75', size:'16px'},
+  {id:'dM',   tex:'\\Delta M^s > 0', x:0, y:0, color:'#378ADD', size:'14px', tag:'DA'},
+  {id:'dPe',  tex:'\\Delta P^e > 0', x:0, y:0, color:'#1D9E75', size:'14px', tag:'OA'},
+  {id:'0',  tex:'0',  x:X(ybar)+18, y:Y(P0)-10,  color:'#000', size:'16px'},
+  {id:'S',  tex:"0'", x:X(Ys)-7,  y:Y(Ps)-36, color:'#000', size:'16px'},
+  {id:'1',  tex:'1',  x:X(ybar)-18, y:Y(P1)-40, color:'#000', size:'16px'},
+  {id:'P0', tex:'P_0',    x:117, y:Y(P0)-11, align:'right', size:'15px'},
+  {id:'Ps', tex:"P_{0'}", x:117, y:Y(Ps)-11, align:'right', size:'15px'},
+  {id:'P1', tex:'P_1',    x:117, y:Y(P1)-11, align:'right', size:'15px'},
+  {id:'ybar', tex:'\\bar{Y}', x:X(ybar)-8, y:466, size:'15px'},
+  {id:'ys',   tex:"Y_{0'}",   x:X(Ys)-10,  y:466, size:'15px'},
+  {id:'sur', tex:"\\text{no anticipada: } 0 \\to 0'", x:136, y:54, color:'#888', size:'14px'},
+  {id:'ant', tex:'\\text{anticipada: } 0 \\to 1',    x:136, y:76, color:'#888', size:'14px'},
+];
+labels.forEach(l=>{const e=document.createElement('div');e.className='katex-label';e.id='lbl-'+l.id;cont.appendChild(e);
+  katex.render(l.tex,e,{throwOnError:false});e.style.color=l.color||'black';if(l.size)e.style.fontSize=l.size;
+  let x=l.x,y=l.y;
+  if(l.tag==='DA'){
+    y=mDA.y-11; x=X(95-(460-(mDA.y+11))/5)+8; }
+  if(l.tag==='OA'){ y=mOA.y-11; x=X(((460-(mOA.y-11))/5)+5)+8; }
+  e.style.left=pX(x);e.style.top=pY(y);if(l.align==='right')e.classList.add('right-of-axis');});
+</script>
+</div>
+</body>
+</html>

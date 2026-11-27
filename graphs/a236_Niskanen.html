@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  body { margin: 0; }
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 15px; line-height: 1; }
+  .katex-label.bg { background: #fff; padding: 0 2px; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+    <path d="M124.0,100.0 L124.0,244.0 L276.0,244.0 Z" fill="#1D9E75" fill-opacity="0.16" stroke="none"/>
+    <path d="M276.0,244.0 L428.0,244.0 L428.0,388.0 Z" fill="#D85A30" fill-opacity="0.16" stroke="none"/>
+    <line x1="124" y1="460" x2="556" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="124" y1="460" x2="124" y2="60" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="276.0" y1="244.0" x2="276.0" y2="460.0" stroke="#999" stroke-width="0.8" stroke-dasharray="4 3"/>
+    <line x1="428.0" y1="388.0" x2="428.0" y2="460.0" stroke="#999" stroke-width="0.8" stroke-dasharray="4 3"/>
+    <path d="M124.0,244.0 L534.4,244.0" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M124.0,100.0 L504.0,460.0" fill="none" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="276.0" y1="460.0" x2="276.0" y2="464.0" stroke="black" stroke-width="1"/>
+    <line x1="428.0" y1="460.0" x2="428.0" y2="464.0" stroke="black" stroke-width="1"/>
+    <line x1="504.0" y1="460.0" x2="504.0" y2="464.0" stroke="black" stroke-width="1"/>
+    <circle cx="276.0" cy="244.0" r="5" fill="#000"/>
+    <circle cx="428.0" cy="244.0" r="5" fill="#000"/>
+  </svg>
+  <div class="katex-label" id="l0"></div>
+  <div class="katex-label" id="l1"></div>
+  <div class="katex-label" id="l2"></div>
+  <div class="katex-label" id="l3"></div>
+  <div class="katex-label" id="l4"></div>
+  <div class="katex-label" id="l5"></div>
+  <div class="katex-label" id="l6"></div>
+  <div class="katex-label" id="l7"></div>
+  <div class="katex-label" id="l8"></div>
+  <div class="katex-label" id="l9"></div>
+  <div class="katex-label" id="l10"></div>
+  <div class="katex-label" id="l11"></div>
+</div>
+<script>
+
+
+
+
+const W = 680, H = 500;
+const labels = [
+  {id: 'l0', tex: 'Q', x: 566.0, y: 460.0, color: 'black', tr: 'translate(0,-50%)', small: false, bg: false},
+  {id: 'l1', tex: '\\text{€}', x: 124.0, y: 48.0, color: 'black', tr: 'translate(-50%,-100%)', small: false, bg: false},
+  {id: 'l2', tex: 'O', x: 112.0, y: 472.0, color: 'black', tr: 'translate(-50%,-50%)', small: false, bg: false},
+  {id: 'l3', tex: 'Q^*', x: 276.0, y: 468.0, color: 'black', tr: 'translate(-50%,0)', small: false, bg: false},
+  {id: 'l4', tex: 'Q_N = 2Q^*', x: 428.0, y: 468.0, color: 'black', tr: 'translate(-50%,0)', small: false, bg: false},
+  {id: 'l5', tex: 'Q_{\\max}', x: 510.0, y: 468.0, color: 'black', tr: 'translate(-50%,0)', small: false, bg: false},
+  {id: 'l6', tex: '\\text{VMg}(Q)', x: 474.0, y: 402.4, color: '#378ADD', tr: 'translate(0,-50%)', small: false, bg: false},
+  {id: 'l7', tex: '\\text{Cmg}(Q)', x: 540.4, y: 244.0, color: '#534AB7', tr: 'translate(0,-50%)', small: false, bg: false},
+  {id: 'l8', tex: '0', x: 282.0, y: 228.0, color: 'black', tr: 'translate(0,-50%)', small: false, bg: false},
+  {id: 'l9', tex: '1', x: 436.0, y: 230.0, color: 'black', tr: 'translate(0,-50%)', small: false, bg: false},
+  {id: 'l10', tex: '\\text{excedente}', x: 173.4, y: 199.0, color: '#0F6E56', tr: 'translate(-50%,-50%)', small: true, bg: false},
+  {id: 'l11', tex: '\\text{pérdida}', x: 380.5, y: 290.8, color: '#B5441F', tr: 'translate(-50%,-50%)', small: true, bg: false},
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = (l.x / W * 100).toFixed(2) + '%';
+  el.style.top = (l.y / H * 100).toFixed(2) + '%';
+  el.style.transform = l.tr;
+  el.style.color = l.color;
+  if (l.small) el.style.fontSize = '13px';
+  if (l.bg) el.classList.add('bg');
+});
+</script>
+</body>
+</html>

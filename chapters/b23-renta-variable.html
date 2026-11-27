@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Arturo Lorenzo">
+<meta name="description" content="Oposiciones TCEE, tema B23. Valoración de acciones y modelo de Gordon, análisis técnico, carteras de Markowitz y Tobin, modelo de Sharpe, CAPM y APT de Ross.">
+
+<title>B23. Instrumentos de renta variable – Lecciones de economía general e internacional</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/b24-renta-fija.html" rel="next">
+<link href="../chapters/b04-crecimiento-ma.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-af206048d982c71265205c3505cca787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bec3fe2b0881f05566c9dedb60685f6d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="B23. Instrumentos de renta variable – Lecciones de economía general e internacional">
+<meta property="og:description" content="Oposiciones TCEE, tema B23. Valoración de acciones y modelo de Gordon, análisis técnico, carteras de Markowitz y Tobin, modelo de Sharpe, CAPM y APT de Ross.">
+<meta property="og:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta property="og:site_name" content="Lecciones de economía general e internacional">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:title" content="B23. Instrumentos de renta variable – Lecciones de economía general e internacional">
+<meta name="twitter:description" content="Oposiciones TCEE, tema B23. Valoración de acciones y modelo de Gordon, análisis técnico, carteras de Markowitz y Tobin, modelo de Sharpe, CAPM y APT de Ross.">
+<meta name="twitter:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="B23. Instrumentos de renta variable">
+<meta name="citation_author" content="Arturo Lorenzo">
+<meta name="citation_publication_date" content="2026-11-28">
+<meta name="citation_cover_date" content="2026-11-28">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-11-28">
+<meta name="citation_fulltext_html_url" content="https://librovol1.arturolorenzo.com/chapters/b23-renta-variable.html">
+<meta name="citation_language" content="es">
+<meta name="citation_book_title" content="Lecciones de economía general e internacional">
+<link rel="canonical" href="https://librovol1.arturolorenzo.com/chapters/b23-renta-variable.html">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/b01-estados-ratios.html">Empresa y Finanzas</a></li><li class="breadcrumb-item"><a href="../chapters/b23-renta-variable.html"><span class="chapter-title">B23. Instrumentos de renta variable</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Lecciones de economía general e internacional</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/arturo-lorenzo/lecciones-economia" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../creditos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Edición y licencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte A: Economía General</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pensamiento Económico</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a01-objeto-metodo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A1. Objeto y método de la ciencia económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a02-clasicos-marx.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A2. Los economistas clásicos y Marx</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a03-neoclasicos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A3. Los economistas neoclásicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a04-keynes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A4. Keynes: análisis comparado</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a05-monetaristas-snc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A5. La síntesis neoclásica y el monetarismo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a06-nmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A6. La nueva macroeconomía clásica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a07-nek.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A7. La nueva economía keynesiana</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Microeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a08-consumidor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A8. Teoría de la demanda del consumidor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a09-dualidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A9. Dualidad y aplicaciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a10-riesgo-incertidumbre.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A10. Elección en riesgo e incertidumbre</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a11-produccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A11. Teoría de la producción</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a12-costes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A12. Teoría de costes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a13-informacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A13. Economía de la información</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a14-juegos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A14. Teoría de juegos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a15-toi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A15. Teoría de la organización industrial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a16-competencia-perfecta.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A16. Competencia perfecta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a17-monopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A17. Monopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a18-competencia-monopolistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A18. Competencia monopolística</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a19-oligopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A19. Oligopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a20-regulacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A20. Regulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a21-equilibrio-general.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A21. Equilibrio general</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a22-eb-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A22. Economía del bienestar (I)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a23-eb-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A23. Economía del bienestar (II)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a24-eb-iii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A24. Economía del bienestar (III)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Economía Laboral</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a25-oferta-trabajo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A25. Mercado de trabajo y capital humano</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a26-desempleo-friccional.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A26. Desempleo friccional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a27-salarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A27. Determinación de salarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a28-tnp-nairu.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A28. TNP, NAIRU y persistencia</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Macroeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a29-mhi-mgs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A29. Modelos de horizonte infinito y generaciones solapadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a30-magnitudes-cn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A30. Magnitudes macroeconómicas y contabilidad nacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a32-precios-output.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A32. Precios y output en economía abierta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a33-demanda-consumo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A33. Teorías de demanda de consumo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a34-demanda-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A34. Teorías de demanda de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a35-demanda-dinero.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A35. Teorías de la demanda de dinero</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a36-politica-monetaria-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A36. Política monetaria I: diseño e instrumentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a37-politica-monetaria-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A37. Política monetaria II: transmisión y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a38-politica-fiscal.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A38. Política fiscal, crecimiento y ahorro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a39-deficit.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A39. Déficit público, su financiación y sostenibilidad</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a40-interrelacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A40. Interrelación de políticas macroeconómicas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a41-inflacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A41. Inflación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a42-ciclos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A42. Ciclos económicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a43-crecimiento-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A43. Crecimiento económico exógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a44-crecimiento-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A44. Crecimiento económico endógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a45-crecimiento-empirica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A45. Evidencia empírica sobre el crecimiento</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte B: Economía Internacional</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Empresa y Finanzas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b01-estados-ratios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B1. Estados financieros y ratios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b02-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B2. Decisiones de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b03-financiacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B3. Decisiones de financiación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b04-crecimiento-ma.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B4. Crecimiento empresarial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b23-renta-variable.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">B23. Instrumentos de renta variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b24-renta-fija.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B24. Instrumentos de renta fija</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b25-derivados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B25. Instrumentos derivados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b26-crisis-financieras.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B26. Crisis financieras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b27-regulacion-financiera.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B27. Regulación bancaria y financiera</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Comercio Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b05-tnc-comercio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B5. Teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b06-nueva-teoria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B6. Nueva teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b07-politica-comercial-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B7. Política comercial I: instrumentos y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b08-politica-comercial-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B8. Política comercial II: política estratégica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b09-comercio-crecimiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B9. Comercio internacional y crecimiento</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b10-integracion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B10. Teoría de la integración económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b11-balanza-pagos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B11. Balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b12-ajuste-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B12. Ajuste de la balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b13-mercado-divisas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B13. Mercado de divisas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b14-tipo-cambio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B14. Determinación del tipo de cambio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b15-regimenes-cambiarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B15. Regímenes cambiarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b16-integracion-monetaria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B16. Integración monetaria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b17-crisis-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B17. Crisis de balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b18-globalizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B18. Globalización</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b19-coordinacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B19. Coordinación de políticas económicas internacionales</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Sistema Económico Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b20-sei-hasta-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B20. El sistema económico internacional hasta el colapso de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b21-sei-despues-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B21. El sistema económico internacional después de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b22-fmi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B22. El Fondo Monetario Internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b28-desarrollo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B28. Desarrollo económico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b29-fod-aod.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B29. Financiación oficial del desarrollo y AOD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b30-gbm-brsd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B30. Grupo Banco Mundial y bancos regionales de desarrollo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b31-ma-bpg.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B31. El cambio climático y su impacto en la economía</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b32-perspectivas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B32. Perspectivas de la economía internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b33-omc-gatt.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B33. La OMC y el GATT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b34-gats-trips.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B34. GATS, TRIPS y acuerdos plurilaterales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b35-no-comunitarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B35. Acuerdos comerciales no comunitarios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unión Europea</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b36-tratados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B36. Los tratados de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b37-finanzas-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B37. Las finanzas de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b38-pac-ppc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B38. Política Agrícola Común y Política Pesquera Común</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b39-miue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B39. Mercado interior de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b41-comercial-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B41. Política comercial de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b42-cooperacion-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B42. Política de cooperación de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b43-politica-monetaria-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B43. Política macroeconómica I: el euro y la política monetaria única</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b44-politica-financiera-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B44. Política macroeconómica II: la Unión Bancaria y la Unión de los Mercados de Capitales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b45-politica-fiscal-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B45. Política macroeconómica III: la gobernanza económica de la UE y de la zona euro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Descargas</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Primer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/ejercicios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios prácticos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/flashcards-conceptos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de conceptos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/guia-dictamen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guía para el dictamen</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Segundo Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/segundo-ejercicio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de inglés</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Tercer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/libro-bloques.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">El libro en PDF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del tercer ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Cuarto Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del cuarto ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Más allá del libro</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/otras-publicaciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Otras publicaciones y trabajos del autor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/enlaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Enlaces de interés</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Bibliografía</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manuales y obras de referencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia-articulos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Obras citadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../fuentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fuentes normativas y documentales</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#fundamentos-del-análisis-de-renta-variable" id="toc-fundamentos-del-análisis-de-renta-variable" class="nav-link" data-scroll-target="#fundamentos-del-análisis-de-renta-variable">1. Fundamentos del análisis de renta variable</a>
+  <ul class="collapse">
+  <li><a href="#conceptos-básicos" id="toc-conceptos-básicos" class="nav-link" data-scroll-target="#conceptos-básicos">1.1. Conceptos básicos</a></li>
+  <li><a href="#métodos-de-análisis-fundamental" id="toc-métodos-de-análisis-fundamental" class="nav-link" data-scroll-target="#métodos-de-análisis-fundamental">1.2. Métodos de análisis fundamental</a></li>
+  <li><a href="#análisis-técnico" id="toc-análisis-técnico" class="nav-link" data-scroll-target="#análisis-técnico">1.3. Análisis técnico</a></li>
+  <li><a href="#conclusiones-2" id="toc-conclusiones-2" class="nav-link" data-scroll-target="#conclusiones-2">1.4. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#teoría-de-la-selección-de-carteras" id="toc-teoría-de-la-selección-de-carteras" class="nav-link" data-scroll-target="#teoría-de-la-selección-de-carteras">2. Teoría de la selección de carteras</a>
+  <ul class="collapse">
+  <li><a href="#markowitz-1952-modelo-media-varianza" id="toc-markowitz-1952-modelo-media-varianza" class="nav-link" data-scroll-target="#markowitz-1952-modelo-media-varianza">2.1. Markowitz (1952): modelo media-varianza</a></li>
+  <li><a href="#tobin-1958-sharpe-1964-y-lintner-1965-activo-sin-riesgo-cml-y-teorema-de-la-separación" id="toc-tobin-1958-sharpe-1964-y-lintner-1965-activo-sin-riesgo-cml-y-teorema-de-la-separación" class="nav-link" data-scroll-target="#tobin-1958-sharpe-1964-y-lintner-1965-activo-sin-riesgo-cml-y-teorema-de-la-separación">2.2. Tobin (1958), Sharpe (1964) y Lintner (1965): activo sin riesgo, CML y teorema de la separación</a></li>
+  <li><a href="#sharpe-1963-modelo-de-la-diagonal-y-de-mercado" id="toc-sharpe-1963-modelo-de-la-diagonal-y-de-mercado" class="nav-link" data-scroll-target="#sharpe-1963-modelo-de-la-diagonal-y-de-mercado">2.3. Sharpe (1963): modelo de la diagonal y de mercado</a></li>
+  <li><a href="#conclusiones-6" id="toc-conclusiones-6" class="nav-link" data-scroll-target="#conclusiones-6">2.4. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#modelos-de-valoración-de-activos" id="toc-modelos-de-valoración-de-activos" class="nav-link" data-scroll-target="#modelos-de-valoración-de-activos">3. Modelos de valoración de activos</a>
+  <ul class="collapse">
+  <li><a href="#capm-treynor-1962-sharpe-1964-lintner-1965-mossin-1966" id="toc-capm-treynor-1962-sharpe-1964-lintner-1965-mossin-1966" class="nav-link" data-scroll-target="#capm-treynor-1962-sharpe-1964-lintner-1965-mossin-1966">3.1. CAPM (Treynor, 1962; Sharpe, 1964; Lintner, 1965; Mossin, 1966)</a></li>
+  <li><a href="#apt-ross-1976" id="toc-apt-ross-1976" class="nav-link" data-scroll-target="#apt-ross-1976">3.2. APT (Ross, 1976)</a></li>
+  <li><a href="#medidas-de-rendimiento-ajustado-al-riesgo" id="toc-medidas-de-rendimiento-ajustado-al-riesgo" class="nav-link" data-scroll-target="#medidas-de-rendimiento-ajustado-al-riesgo">3.3. Medidas de rendimiento ajustado al riesgo</a></li>
+  <li><a href="#conclusiones-9" id="toc-conclusiones-9" class="nav-link" data-scroll-target="#conclusiones-9">3.4. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#conclusiones-10" id="toc-conclusiones-10" class="nav-link" data-scroll-target="#conclusiones-10">Conclusiones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/b01-estados-ratios.html">Empresa y Finanzas</a></li><li class="breadcrumb-item"><a href="../chapters/b23-renta-variable.html"><span class="chapter-title">B23. Instrumentos de renta variable</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">B23. Instrumentos de renta variable</span></h1>
+<p class="subtitle lead">Análisis de los instrumentos financieros de renta variable. Análisis fundamental. Teoría de la elección de cartera. El modelo de valoración de los activos de capital (CAPM). La teoría de valoración de activos por arbitraje (APT). Análisis técnico.</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Arturo Lorenzo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">noviembre de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<p>Cuando se habla de los grandes inventos de la humanidad, rara vez se mencionan los instrumentos financieros<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Sin embargo, son los ladrillos con los que se construye el <em>sistema financiero</em>, es decir, el entramado de instrumentos, mercados y participantes que traslada los fondos sobrantes de unos agentes (prestamistas) a quienes necesitan financiación (prestatarios). Un sistema financiero eficiente permite financiar la inversión, repartir el riesgo entre quienes están mejor dispuestos a asumirlo y trasladar recursos en el tiempo, y por ello es una condición del crecimiento económico.</p>
+<p>Los instrumentos que canalizan esos recursos se agrupan en dos grandes familias. Los <strong>valores</strong> incorporan un derecho frente al emisor y tienen valor por sí mismos. Según el derecho que confieren, se distinguen dos tipos:</p>
+<ol type="1">
+<li><p><em>Renta variable</em>: confiere derechos de propiedad y una retribución que depende de los resultados del emisor, por lo que su rentabilidad es incierta.</p></li>
+<li><p><em>Renta fija</em>: confiere un derecho de crédito y una retribución pactada de antemano, con independencia de esos resultados.</p></li>
+</ol>
+<p>Los <strong>derivados</strong>, por su parte, son instrumentos cuyo valor depende del de otro activo, el subyacente, y que permiten cubrir o asumir riesgos con una inversión inicial reducida en relación con la necesaria para negociar directamente ese activo.</p>
+<p>La teoría financiera moderna es relativamente joven. Louis Bachelier (1900) aplicó por primera vez el cálculo de probabilidades a los precios de los activos. La disciplina se constituye, sin embargo, a partir de la teoría de carteras de Harry Markowitz (1952), del modelo de valoración de activos de capital de Sharpe (1964), Lintner y Mossin, y de la hipótesis de los mercados eficientes (Fama, 1970). La fórmula de Black y Scholes (1973) y Merton para la valoración de opciones coincidió con la apertura del primer mercado organizado de opciones en Chicago, y, poco después, la teoría del arbitraje de Ross (1976) generalizó la valoración a múltiples factores de riesgo. En paralelo, el crecimiento de los mercados de deuda y de derivados, la innovación financiera y las crisis recurrentes han hecho de la regulación y la supervisión financieras un complemento indispensable del análisis de los instrumentos. Ambas se articulan internacionalmente en torno a los Acuerdos de Basilea desde 1988.</p>
+<p>En la <strong>renta variable</strong>, el precio de cada título depende de expectativas sobre unos beneficios futuros inciertos, y la cuestión central es si ese precio refleja bien el valor de la empresa. La <strong>hipótesis de los mercados eficientes</strong> sostiene que los precios incorporan con rapidez toda la información disponible, de modo que nadie puede batir al mercado de forma sistemática. Shiller (1981) mostró, en cambio, que los precios oscilan mucho más que los dividendos que deberían justificarlos, y abrió paso a las explicaciones conductuales. El Premio Nobel de 2013, compartido por Fama, Hansen y Shiller “por su análisis empírico de los precios de los activos”, reconoció ambas líneas de trabajo.</p>
+<p>El tema analiza los instrumentos de renta variable en tres bloques:</p>
+<ul>
+<li><p><em>Fundamentos</em>: los conceptos básicos, la hipótesis de los mercados eficientes y el análisis fundamental y técnico.</p></li>
+<li><p><em>Selección de carteras</em>: la teoría de Markowitz, Tobin y Sharpe.</p></li>
+<li><p><em>Valoración de activos</em>: los modelos CAPM y APT y las medidas de rendimiento ajustado al riesgo.</p></li>
+</ul>
+</section>
+<section id="fundamentos-del-análisis-de-renta-variable" class="level2">
+<h2 class="anchored" data-anchor-id="fundamentos-del-análisis-de-renta-variable">1. Fundamentos del análisis de renta variable</h2>
+<p>El análisis de renta variable empieza por el título considerado individualmente. Primero se presentan los conceptos básicos del mercado de renta variable y la hipótesis de eficiencia que condiciona toda la disciplina. Después se exponen los dos métodos de análisis que la práctica emplea para decidir qué comprar y cuándo hacerlo.</p>
+<section id="conceptos-básicos" class="level3">
+<h3 class="anchored" data-anchor-id="conceptos-básicos">1.1. Conceptos básicos</h3>
+<p>Los conceptos básicos van del instrumento, la acción, al mercado en que se negocia, la bolsa de valores, y de ahí a la hipótesis de los mercados eficientes y a la elección entre gestión activa y pasiva.</p>
+<section id="instrumentos-de-renta-variable-las-acciones" class="level4">
+<h4 class="anchored" data-anchor-id="instrumentos-de-renta-variable-las-acciones">1.1.1. Instrumentos de renta variable: las acciones</h4>
+<p><strong>Definición</strong>: una <em>acción</em> es una parte alícuota del capital social de una empresa, que confiere a su titular la condición de socio. De ella se derivan derechos de dos órdenes:</p>
+<ul>
+<li><p><em>Derechos económicos</em>: la participación en los beneficios mediante el dividendo, el derecho de suscripción preferente en las ampliaciones de capital y la cuota de liquidación.</p></li>
+<li><p><em>Derechos políticos</em>: la asistencia y el voto en la junta general y el derecho de información.</p></li>
+</ul>
+<p>El rasgo definitorio de la acción frente a la renta fija es que la retribución no está pactada de antemano. El accionista es <em>acreedor residual</em>, pues cobra únicamente después de que la empresa haya atendido a sus proveedores, trabajadores, acreedores financieros y a la Hacienda pública. De ahí se siguen su mayor riesgo y su mayor rendimiento esperado. La acción carece, además, de vencimiento.</p>
+<p><strong>Tipos</strong>: las acciones se clasifican según los derechos que confieren:</p>
+<ul>
+<li><p><em>Ordinarias</em>: confieren los derechos descritos en su integridad y constituyen la modalidad general.</p></li>
+<li><p><em>Preferentes o privilegiadas</em>: otorgan alguna ventaja económica, habitualmente un dividendo preferente o prioridad en la cuota de liquidación, con frecuencia a cambio de la limitación o supresión del derecho de voto.</p></li>
+<li><p><em>Sin voto</em>: privan del derecho de voto a cambio de un dividendo mínimo anual, que la sociedad debe repartir si existen beneficios distribuibles, fórmula que permite captar recursos propios sin diluir el control.</p></li>
+<li><p><em>Rescatables</em>: emitidas con la posibilidad de amortización a instancia de la sociedad, del titular o de ambos.</p></li>
+</ul>
+<p><strong>Funcionamiento</strong>: la acción se emite al constituirse la sociedad o en una ampliación de capital y se negocia después en el mercado secundario. Tres operaciones societarias sobre el capital afectan directamente a su valoración:</p>
+<ul>
+<li><p><em>Ampliación de capital</em>: emisión de nuevas acciones, que puede realizarse a la par, con prima de emisión o con cargo a reservas. Su efecto sobre el accionista existente es la <em>dilución</em>, que el derecho de suscripción preferente, o el de asignación gratuita si la ampliación es con cargo a reservas, permite compensar, pues su valor teórico equivale a la pérdida de valor de la acción antigua<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p></li>
+<li><p><em>Desdoblamiento</em> (<em>split</em>): división del nominal en un número mayor de títulos, sin alterar el capital social ni el valor de la participación. Su finalidad es mejorar la liquidez al reducir el precio unitario, y la operación inversa se denomina <em>contrasplit</em>.</p></li>
+<li><p><em>Recompra de acciones propias</em> (<em>buyback</em>): adquisición por la sociedad de sus propios títulos, habitualmente para amortizarlos. Constituye una alternativa al dividendo como forma de retribución al accionista, con tratamiento fiscal distinto, y eleva el beneficio por acción (BPA), al reducir el denominador, siempre que la rentabilidad por beneficio (<span class="math inline">\(\text{BPA}/P\)</span>) supere el coste después de impuestos de los fondos empleados.</p></li>
+</ul>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: para la empresa, la acción aporta financiación permanente, sin vencimiento ni retribución pactada, que absorbe las pérdidas y respalda el endeudamiento. Para el inversor, da acceso al beneficio residual, con un rendimiento esperado superior al de la renta fija, y a los derechos políticos de socio.</p></li>
+<li><p><em>Limitaciones</em>: el accionista soporta el mayor riesgo, porque cobra después de todos los acreedores y su retribución depende de los resultados. Para la empresa, los fondos propios son la fuente de financiación más cara, porque el accionista exige una prima por ese riesgo, y las ampliaciones de capital diluyen la participación de los socios que no acuden a ellas.</p></li>
+</ul>
+</section>
+<section id="la-bolsa-de-valores" class="level4">
+<h4 class="anchored" data-anchor-id="la-bolsa-de-valores">1.1.2. La bolsa de valores</h4>
+<p><strong>Definición</strong>: la <em>bolsa</em> es un mercado organizado que centraliza las ofertas y demandas de valores mobiliarios admitidos a cotización, bajo normas de acceso, contratación y supervisión predeterminadas. Cumple cuatro funciones económicas:</p>
+<ol type="1">
+<li><p><em>Liquidez</em>: permite convertir los valores en efectivo con rapidez y a un precio conocido, lo que reduce la rentabilidad que el inversor exige para financiar a la empresa a largo plazo. Esta función concilia el horizonte largo del proyecto empresarial con el horizonte corto del ahorrador.</p></li>
+<li><p><em>Financiación</em>: canaliza el ahorro hacia la inversión productiva mediante la emisión de capital, ya sea en la salida a bolsa, mediante una <em>oferta pública de suscripción</em> (en una <em>oferta pública de venta</em>, los fondos van a los accionistas vendedores), o en ampliaciones posteriores.</p></li>
+<li><p><em>Formación de precios</em>: la confrontación continua de órdenes genera un precio que sintetiza las expectativas del conjunto de los agentes, y que sirve de referencia para operaciones societarias, garantías y evaluación de la gestión.</p></li>
+<li><p><em>Información y disciplina</em>: la obligación de transparencia que pesa sobre las emisoras reduce la asimetría informativa, y la propia cotización opera como mecanismo de control externo de los administradores, pues una gestión deficiente se traduce en caída del precio y en riesgo de adquisición hostil.</p></li>
+</ol>
+<p><strong>Tipos</strong>: se distingue el <em>mercado primario</em> o de emisión, donde la empresa capta recursos nuevos, del <em>mercado secundario</em> o de negociación, donde los títulos ya emitidos cambian de manos sin que la sociedad reciba fondos. Este segundo no aporta financiación directa, pero es condición del desarrollo del primero, pues pocos inversores suscribirían una emisión sin la posibilidad de deshacer la posición.</p>
+<p><strong>Funcionamiento</strong>: la negociación puede organizarse de dos formas:</p>
+<ul>
+<li><p><em>Mercado dirigido por órdenes</em>: las órdenes se casan automáticamente conforme a prioridad de precio y tiempo, modalidad que predomina en los mercados europeos.</p></li>
+<li><p><em>Mercado dirigido por precios</em>: uno o varios creadores de mercado (<em>market makers</em>) cotizan permanentemente precios de compra y venta y asumen la contrapartida.</p></li>
+</ul>
+<p>La diferencia entre los precios de compra y venta, u <em>horquilla</em> (<em>bid-ask spread</em>), constituye una medida habitual de la liquidez del valor. La evolución conjunta de un mercado o segmento se sigue mediante <em>índices bursátiles</em>, medias ponderadas de las cotizaciones de una muestra de valores. La ponderación más extendida es por <em>capitalización ajustada al capital flotante</em><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, es decir, a la fracción efectivamente negociable, si bien existen índices ponderados por precio y equiponderados. Se distinguen, además, los índices de precios, que recogen solo la variación de las cotizaciones, de los de rendimiento total, que incorporan la reinversión de los dividendos y son los relevantes para medir la rentabilidad efectiva del inversor.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: al dar liquidez a los títulos, abarata la financiación de las empresas a largo plazo, y el precio que forma sirve de referencia pública para valorar la empresa y disciplinar a sus administradores.</p></li>
+<li><p><em>Limitaciones</em>: la admisión a cotización impone costes y obligaciones de información que pesan más en las empresas pequeñas, y la liquidez es desigual, pues los valores poco negociados tienen horquillas amplias. Además, el precio puede alejarse durante periodos prolongados del valor fundamental, como muestran los episodios de burbuja.</p></li>
+</ul>
+</section>
+<section id="hipótesis-de-los-mercados-eficientes-fama-1970" class="level4">
+<h4 class="anchored" data-anchor-id="hipótesis-de-los-mercados-eficientes-fama-1970">1.1.3. Hipótesis de los mercados eficientes (Fama, 1970)</h4>
+<p><strong>Origen</strong>: en su primera formulación (Fama, 1965), un mercado es <em>eficiente</em> cuando la cotización de cada activo es en todo momento una estimación fiable de su valor intrínseco y nadie consigue de forma sistemática ganancias extraordinarias ajustadas al riesgo.</p>
+<p><strong>Idea</strong>: en la definición canónica de Fama (1970), el precio incorpora al instante toda la información disponible, así que las variaciones futuras solo pueden responder a información nueva, que por definición es imprevisible.</p>
+<p><strong>Razonamiento</strong>: como el precio incorpora ya toda la información, sigue en primera aproximación un <em>paseo aleatorio</em> (<em>random walk</em>), en el que la mejor predicción del precio de mañana es el precio de hoy. En rigor, la eficiencia solo exige que los rendimientos anormales (en exceso del de equilibrio) sean impredecibles (juego equitativo o propiedad de martingala), condición más débil que el paseo aleatorio, que exige además incrementos independientes e idénticamente distribuidos.</p>
+<p>Fama distingue tres <em>formas de eficiencia</em> según el conjunto de información que el precio incorpora, ordenadas de menor a mayor exigencia, y cada una comprende a la anterior:</p>
+<ul>
+<li><p><em>Eficiencia débil</em>: el precio recoge toda la información contenida en la serie histórica de precios y volúmenes. Su implicación directa es que el análisis técnico carece de valor. Los contrastes habituales son los de autocorrelación de rendimientos, los de rachas y los de reglas de filtro.</p></li>
+<li><p><em>Eficiencia semifuerte</em>: el precio incorpora además toda la información pública disponible (estados financieros, anuncios de resultados, operaciones societarias y datos macroeconómicos). Esta forma implica que el análisis fundamental basado en información publicada tampoco permite batir al mercado de forma sistemática. Se contrasta mediante <em>estudios de acontecimientos</em> (<em>event studies</em>), que examinan la velocidad con que el precio se ajusta a una noticia. Si el mercado es eficiente, el ajuste es inmediato y no se observan rendimientos anormales después del anuncio (los previos pueden reflejar filtraciones o anticipación).</p></li>
+<li><p><em>Eficiencia fuerte</em>: el precio recoge asimismo la información privada o privilegiada, de modo que ni siquiera los iniciados podrían obtener rendimientos extraordinarios. Esta forma es la menos respaldada empíricamente, y su incumplimiento sistemático justifica la normativa sobre abuso de mercado y uso de información privilegiada.</p></li>
+</ul>
+<p><strong>Extensiones</strong>: la evidencia acumulada ha documentado <em>anomalías</em>, regularidades difícilmente compatibles con la hipótesis, entre las que destacan:</p>
+<ul>
+<li><p><em>Efecto tamaño</em> (Banz, 1981): mayor rendimiento ajustado al riesgo de las empresas de menor capitalización.</p></li>
+<li><p><em>Efecto valor</em>: superior rendimiento de los títulos con elevada ratio valor contable sobre valor de mercado.</p></li>
+<li><p><em>Momento</em> (Jegadeesh y Titman, 1993): persistencia de los rendimientos a horizontes de tres a doce meses, incompatible con la eficiencia débil.</p></li>
+<li><p><em>Efectos de calendario</em>: el de enero o el de fin de semana, entre otros.</p></li>
+<li><p><em>Reacción tardía a los anuncios de resultados</em> (<em>post-earnings announcement drift</em>): contradice la forma semifuerte.</p></li>
+</ul>
+<p>La interpretación de estas anomalías es objeto de controversia:</p>
+<ul>
+<li><p><em>Escuela eficiente</em>: son compensación por factores de riesgo omitidos en el modelo de valoración empleado, lectura que impulsó los modelos multifactoriales empíricos, como los de Fama y French, que se examinan en el apartado 3.2.</p></li>
+<li><p><em>Finanzas conductuales</em> (Kahneman y Tversky; Shiller, Nobel 2013): reflejan sesgos sistemáticos de los inversores, como el exceso de confianza, el anclaje o la aversión a las pérdidas. A ello se suma la existencia de <em>límites al arbitraje</em>, que impiden a los inversores racionales corregir las desviaciones de precio, señaladamente por el riesgo de que estas se amplíen antes de revertir.</p></li>
+</ul>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la hipótesis proporciona el marco de referencia de toda la disciplina, pues cualquier estrategia de inversión ha de justificarse frente a ella, y su contrastación ha generado la literatura empírica más extensa de las finanzas modernas.</p></li>
+<li><p><em>Limitaciones</em>: la hipótesis no es contrastable empíricamente sin un modelo de equilibrio que especifique el rendimiento esperado “normal” de cada activo, dificultad conocida como <em>problema de la hipótesis conjunta</em> (<em>joint hypothesis problem</em>). Por ello, un rendimiento anormal puede indicar ineficiencia del mercado o error de especificación del modelo, sin que quepa distinguir ambas causas. Además, los episodios de burbuja y colapso, difícilmente explicables por la llegada de información nueva, constituyen la objeción empírica más visible.</p></li>
+</ul>
+</section>
+<section id="gestión-activa-y-gestión-pasiva-de-carteras" class="level4">
+<h4 class="anchored" data-anchor-id="gestión-activa-y-gestión-pasiva-de-carteras">1.1.4. Gestión activa y gestión pasiva de carteras</h4>
+<p>De la hipótesis anterior se deriva la principal disyuntiva práctica del inversor, la elección entre dos filosofías de gestión opuestas en su premisa sobre la eficiencia del mercado.</p>
+<p><strong>Gestión activa</strong>: parte de que el mercado no es plenamente eficiente y de que existen títulos mal valorados susceptibles de identificarse mediante análisis. El gestor selecciona valores (<em>stock picking</em>), ajusta la exposición a los movimientos del mercado (<em>market timing</em>) o rota entre sectores, con el objetivo de superar al índice de referencia.</p>
+<p><strong>Gestión pasiva o indexada</strong>: parte de que el mercado incorpora ya la información disponible, de modo que el esfuerzo analítico no compensa su coste. El gestor se limita a replicar la composición de un índice, ya sea mediante réplica física, adquiriendo los valores que lo integran, o sintética, mediante derivados. La expansión de la gestión pasiva se ha canalizado a través de los fondos indexados y de los fondos cotizados (ETF).</p>
+<p><strong>Coste</strong>: es el argumento decisivo a favor de la gestión pasiva, pues la gestión activa soporta comisiones y costes de rotación sustancialmente superiores. Por construcción, el conjunto de los inversores obtiene el rendimiento del mercado antes de costes, y la gestión pasiva también lo obtiene al replicarlo. En consecuencia, la gestión activa, considerada globalmente, ha de rendir por debajo del índice una vez descontados los costes, resultado que Sharpe (1991) denominó <em>aritmética de la gestión activa</em>. La cuestión no es, por tanto, si algunos gestores baten al mercado, sino si lo hacen de forma persistente y en medida suficiente para compensar su coste.</p>
+<p><strong>Paradoja de la eficiencia</strong> (Grossman y Stiglitz, 1980): si toda la gestión fuese pasiva, nadie analizaría la información y el precio dejaría de incorporarla, con lo que el mercado perdería su eficiencia y la gestión activa volvería a resultar rentable. Ambas modalidades son, por tanto, complementarias, ya que la gestión activa produce la eficiencia de la que se aprovecha la pasiva.</p>
+</section>
+</section>
+<section id="métodos-de-análisis-fundamental" class="level3">
+<h3 class="anchored" data-anchor-id="métodos-de-análisis-fundamental">1.2. Métodos de análisis fundamental</h3>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Los métodos de valoración de empresas tienen su tema fuente en <a href="../chapters/b04-crecimiento-ma.html">B04</a>, apartado 3.3, que los desarrolla para las fusiones y adquisiciones. El coste medio ponderado del capital se estima en el tema <a href="../chapters/b03-financiacion.html">B03</a>, apartado 2.1.3. Aquí se recapitulan los métodos desde la óptica del análisis bursátil y se desarrollan el modelo general de descuento de dividendos y el efecto de la retención de beneficios sobre el precio de la acción.</p>
+</div>
+</div>
+</div>
+<p>El <strong>análisis fundamental</strong> parte de que el mercado presenta, a lo sumo, eficiencia débil, de modo que el precio no coincide necesariamente con el <strong>valor intrínseco</strong>, que es el que resulta de los fundamentos económicos de la empresa. Su objeto es estimar ese valor y compararlo con la cotización. Si el valor estimado excede al precio, el título está infravalorado y procede comprarlo, y en caso contrario, venderlo.</p>
+<p>El desarrollo del análisis fundamental puede seguir dos secuencias. El <strong>enfoque descendente</strong> (<em>top-down</em>) parte del análisis macroeconómico, desciende al sectorial y termina en la empresa, mientras que el <strong>enfoque ascendente</strong> (<em>bottom-up</em>) arranca del análisis de la compañía. Los métodos de valoración se agrupan en tres familias.</p>
+<section id="métodos-estáticos-o-patrimoniales" class="level4">
+<h4 class="anchored" data-anchor-id="métodos-estáticos-o-patrimoniales">1.2.1. Métodos estáticos o patrimoniales</h4>
+<p>Los métodos estáticos valoran la empresa a partir de su balance, sin considerar su capacidad futura de generar renta. De los tres habituales, el primero toma el patrimonio neto contable, el segundo lo corrige a valores de mercado y el tercero lo calcula en la hipótesis de cese de la actividad. Los métodos basados en el fondo de comercio, que añaden al activo neto un múltiplo del beneficio, se exponen en el tema <a href="../chapters/b04-crecimiento-ma.html">B04</a>, apartado 3.3.1.</p>
+<p><strong>Valor contable</strong>: el precio teórico es el patrimonio neto por acción, <span class="math inline">\(P_0 = \text{PN}/n_a\)</span>, siendo <span class="math inline">\(n_a\)</span> el número de acciones.</p>
+<ul>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: sencillez y objetividad, al apoyarse en un dato contable verificable.</p></li>
+<li><p><em>Limitaciones</em>: queda limitado por los criterios contables, señaladamente el coste histórico, y no recoge las expectativas de generación de valor ni los activos intangibles no registrados, que en las empresas tecnológicas o de servicios constituyen la mayor parte de su valor.</p></li>
+</ul></li>
+</ul>
+<p><strong>Valor contable ajustado</strong>: corrige el patrimonio neto con las plusvalías y minusvalías latentes de los activos y pasivos, valorados a precios de mercado, y divide el resultado entre el número de acciones.</p>
+<ul>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: corrige el principal defecto del valor contable, el coste histórico, porque refleja el valor actual de los activos y pasivos registrados.</p></li>
+<li><p><em>Limitaciones</em>: sigue sin recoger los intangibles no registrados ni la capacidad futura de generar renta, y el valor de mercado de muchos activos, como la maquinaria específica, no es observable, de modo que su estimación es subjetiva.</p></li>
+</ul></li>
+</ul>
+<p><strong>Valor de liquidación</strong>: valora la acción por lo que obtendrían los accionistas si la empresa cesara en su actividad, vendiera sus activos por separado y atendiera sus deudas y los costes de la liquidación (tema <a href="../chapters/b04-crecimiento-ma.html">B04</a>, apartado 3.3.5).</p>
+<ul>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: fija un suelo a la valoración, porque si el valor de la empresa en funcionamiento fuera inferior, a los accionistas les convendría liquidarla. El valor de liquidación constituye, además, el método de referencia en las empresas en crisis.</p></li>
+<li><p><em>Limitaciones</em>: ignora el valor de la empresa como negocio en marcha, superior en una empresa viable, y el valor de realización de los activos es incierto, pues depende de la rapidez con que deban venderse y del estado del mercado.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="métodos-dinámicos-o-de-descuento" class="level4">
+<h4 class="anchored" data-anchor-id="métodos-dinámicos-o-de-descuento">1.2.2. Métodos dinámicos o de descuento</h4>
+<p>Los métodos dinámicos valoran la empresa por el valor actual de las rentas que se espera que genere, y constituyen el fundamento teóricamente correcto de la valoración.</p>
+<p><strong>Modelo general de descuento de dividendos</strong>: el valor de la acción es el valor actual de la corriente esperada de dividendos,</p>
+<p><span class="math display">\[P_0 = \sum_{t=1}^{\infty} \frac{\text{DIV}_t}{(1+k_p)^t}\]</span></p>
+<p>donde <span class="math inline">\(k_p\)</span> es la rentabilidad exigida por el accionista (coste de los fondos propios), habitualmente estimada mediante el modelo de valoración de activos de capital (CAPM, apartado 3.1).</p>
+<ul>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: valora la acción por los flujos que efectivamente percibe el accionista y es el marco general del que los demás modelos de descuento de dividendos son casos particulares.</p></li>
+<li><p><em>Limitaciones</em>: exige prever una corriente infinita de dividendos, por lo que en la práctica requiere supuestos sobre su evolución, y no es aplicable directamente a empresas que no reparten dividendos.</p></li>
+</ul></li>
+</ul>
+<p><strong>Gordon y Shapiro</strong> (1956): si se supone que los dividendos crecen a una tasa constante <span class="math inline">\(g_D &lt; k_p\)</span>, la serie converge y la expresión se reduce a</p>
+<p><span class="math display">\[P_0 = \frac{\text{DIV}_1}{k_p - g_D}\]</span></p>
+<p>donde <span class="math inline">\(\text{DIV}_1\)</span> es el dividendo esperado del próximo periodo. La tasa de crecimiento puede estimarse endógenamente como la tasa de crecimiento sostenible (tema <a href="../chapters/b04-crecimiento-ma.html">B04</a>, apartado 2.3), <span class="math inline">\(g_D = g^* = b \cdot \text{ROE}\)</span>, siendo <span class="math inline">\(b\)</span> la tasa de retención de beneficios, lo que vincula el crecimiento a la política de dividendos y a la rentabilidad de los fondos propios.</p>
+<p>Gráficamente, en el plano tasa de retención-precio de la acción (figura <a href="#fig-b231-gordon-dividendos" class="quarto-xref"><span>B23.1</span></a>), cada curva representa el precio teórico, <span class="math inline">\(P_0 = (1-b)\,\text{BPA}_1/(k_p - b \cdot \text{ROE})\)</span>, para un valor de la ROE. Todas parten de <span class="math inline">\(\text{BPA}_1/k_p\)</span> cuando no se retienen beneficios (<span class="math inline">\(b = 0\)</span>), y su pendiente depende del rendimiento de los beneficios retenidos. El precio crece con la tasa de retención si <span class="math inline">\(\text{ROE} &gt; k_p\)</span>, porque la empresa reinvierte a una rentabilidad superior a la que exige el accionista, no varía si <span class="math inline">\(\text{ROE} = k_p\)</span> y decrece si <span class="math inline">\(\text{ROE} &lt; k_p\)</span>, porque la reinversión destruye valor.</p>
+<div id="fig-b231-gordon-dividendos" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b231-gordon-dividendos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b231_Gordon_dividendos.html" style="height:560px" loading="lazy" title="fig-b231-gordon-dividendos"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b231-gordon-dividendos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B23.1: Modelo de Gordon y Shapiro (1956). Con <span class="math inline">\(g_D = b \cdot \text{ROE}\)</span>, el valor de la acción crece con la tasa de retención <span class="math inline">\(b\)</span> si <span class="math inline">\(\text{ROE} &gt; k_p\)</span>, no depende de ella si <span class="math inline">\(\text{ROE} = k_p\)</span> y decrece si <span class="math inline">\(\text{ROE} &lt; k_p\)</span>.
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: vincula de forma transparente el precio con los fundamentos (dividendo, crecimiento y rentabilidad exigida) y resulta especialmente útil para empresas maduras con política de dividendos estable.</p></li>
+<li><p><em>Limitaciones</em>: no es aplicable si <span class="math inline">\(g_D \geq k_p\)</span> y es extremadamente sensible al valor de <span class="math inline">\(g_D\)</span>, pues pequeñas variaciones en el denominador alteran el resultado de forma desproporcionada.</p></li>
+</ul></li>
+</ul>
+<p><strong>Flujos de caja libres (DCF)</strong>: el método dinámico de referencia proyecta los flujos de caja libres en un horizonte explícito, por lo general de cinco a diez años, y les añade un valor residual, calculado habitualmente con una perpetuidad de tipo Gordon. Los flujos y el valor residual se descuentan al coste medio ponderado del capital (WACC), que pondera por sus pesos a valores de mercado el coste de los fondos propios, estimado por el CAPM, y el de la deuda después de impuestos. El resultado es el valor de la empresa, del que se resta la deuda financiera neta para obtener el de los fondos propios.</p>
+<ul>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: es el método más robusto y completo, pues valora directamente la capacidad de generar caja, magnitud menos manipulable que el beneficio contable, y permite incorporar explícitamente la estrategia y la estructura del capital.</p></li>
+<li><p><em>Limitaciones</em>: las proyecciones son subjetivas y el valor residual suele concentrar más de la mitad del valor total, de modo que conviene acompañar la valoración de un análisis de sensibilidad.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="métodos-comparativos-o-por-múltiplos" class="level4">
+<h4 class="anchored" data-anchor-id="métodos-comparativos-o-por-múltiplos">1.2.3. Métodos comparativos o por múltiplos</h4>
+<p>Los métodos comparativos valoran la empresa por referencia al precio que el mercado asigna a compañías semejantes, bajo el supuesto de que activos comparables deben tener precios comparables.</p>
+<p><strong>PER</strong> (<em>price-to-earnings ratio</em>): relaciona el precio con el beneficio por acción, <span class="math inline">\(\text{PER} = P/\text{BPA}\)</span>. A partir de Gordon, y con el BPA esperado del próximo periodo, puede expresarse como <span class="math inline">\(\text{PER} = P_0/\text{BPA}_1 = (1-b)/(k_p-g_D)\)</span>, lo que revela que un PER elevado puede obedecer tanto a expectativas de crecimiento como a una menor rentabilidad exigida, y no necesariamente a sobrevaloración<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. Su inversa, <span class="math inline">\(\text{BPA}/P\)</span>, es la rentabilidad por beneficio (<em>earnings yield</em>).</p>
+<ul>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: sencillo, muy difundido y de cálculo inmediato, permite comparar empresas y sectores sin necesidad de proyectar flujos.</p></li>
+<li><p><em>Limitaciones</em>: carece de sentido cuando la empresa tiene pérdidas, y su denominador, el BPA, varía con el endeudamiento de la empresa y con las normas contables que aplique. En la versión más usada, que toma el beneficio del último ejercicio, combina además un dato retrospectivo con el precio, que recoge expectativas.</p></li>
+</ul></li>
+</ul>
+<p><strong>Otros múltiplos</strong>: el precio sobre valor contable (P/VC), el cociente entre el valor de la empresa y el resultado bruto de explotación (EV/EBITDA)<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> y el EV sobre ventas se desarrollan en el tema <a href="../chapters/b04-crecimiento-ma.html">B04</a>, apartado 3.3.4. Allí se trata también la construcción de la muestra de comparables. La rentabilidad por dividendo (<em>dividend yield</em>) relaciona el dividendo con el precio.</p>
+<ul>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: rapidez, anclaje en precios de mercado observados y facilidad de comunicación.</p></li>
+<li><p><em>Limitaciones</em>: la valoración es relativa y discrecional, pues depende de la muestra elegida y traslada a la empresa cualquier error de valoración del sector, y no explica el valor, sino que lo presupone.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="conclusiones" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones">1.2.4. Conclusiones</h4>
+<p>En la práctica profesional, los tres enfoques se emplean de forma complementaria y no alternativa. Así, el descuento de flujos proporciona la valoración de referencia, los múltiplos actúan como contraste de verosimilitud del resultado obtenido y el valor de liquidación fija un suelo. La discrepancia significativa entre ellos es, en sí misma, información relevante sobre la naturaleza del negocio o sobre la fiabilidad de las hipótesis empleadas.</p>
+<p><strong>Aspectos positivos</strong>: el análisis fundamental proporciona una estimación del valor absoluto de la empresa, anclada en su capacidad de generar renta. Obliga también a explicitar las hipótesis sobre crecimiento, rentabilidad y riesgo, lo que lo convierte en un ejercicio de disciplina analítica con independencia de la cifra que arroje. Constituye, además, el instrumental de referencia en las operaciones societarias, en la salida a bolsa y en la fijación del precio en las fusiones y adquisiciones.</p>
+<p><strong>Limitaciones</strong>: su resultado es extremadamente sensible a las hipótesis, hasta el punto de que la elección de la tasa de descuento y de la tasa de crecimiento a perpetuidad determina buena parte del valor obtenido. Por ello, el método se presta a justificar cualquier cifra previamente decidida. Su horizonte es, además, de medio y largo plazo, por lo que no indica cuándo convergerá el precio hacia el valor estimado.</p>
+</section>
+</section>
+<section id="análisis-técnico" class="level3">
+<h3 class="anchored" data-anchor-id="análisis-técnico">1.3. Análisis técnico</h3>
+<p>El <strong>análisis técnico</strong> se remonta a las ideas de Charles Dow sobre el comportamiento de los índices bursátiles, en torno a 1900, y se contrapone al análisis fundamental, del que se distancia en su premisa de partida. Mientras el análisis fundamental busca el valor intrínseco confiando en que el precio se desvía de él, el análisis técnico sostiene que el precio ya es un buen indicador del valor y que el estudio de su comportamiento pasado permite anticipar su evolución futura.</p>
+<section id="principios-del-análisis-técnico-dow-1900-1902" class="level4">
+<h4 class="anchored" data-anchor-id="principios-del-análisis-técnico-dow-1900-1902">1.3.1. Principios del análisis técnico (Dow, 1900-1902)</h4>
+<p><strong>Origen</strong>: Charles Dow, cofundador de Dow Jones &amp; Company y del <em>Wall Street Journal</em>, elaboró los primeros índices de Dow Jones, uno industrial y otro ferroviario. Expuso sus ideas sobre ellos en los editoriales que escribió para el diario hasta su muerte, en 1902, sin presentarlas nunca como un sistema. William P. Hamilton, que había trabajado a sus órdenes como periodista y dirigió el diario desde 1908, las aplicó a la previsión del mercado en sus propios editoriales y las recogió en su libro de 1922. Robert Rhea las ordenó después en <em>The Dow Theory</em> (1932), de donde procede la formulación habitual de sus principios.</p>
+<p><strong>Idea</strong>: los índices, que resumen la información de todos los que operan, se mueven por tendencias reconocibles en su propia evolución, y quien identifica la tendencia primaria anticipa la dirección del mercado, que Hamilton veía como barómetro de la economía.</p>
+<p><strong>Razonamiento</strong>: el análisis técnico moderno parte de tres premisas:</p>
+<ul>
+<li><p><em>Descuento</em>: el mercado lo descuenta todo, de modo que el precio incorpora toda la información relevante.</p></li>
+<li><p><em>Tendencias</em>: los precios se mueven por tendencias (primaria, secundaria y terciaria) que tienden a persistir hasta dar señales de agotamiento. Una tendencia solo se confirma si la siguen los dos índices, el industrial y el ferroviario (hoy, el de transportes), y si el volumen de contratación aumenta en su dirección.</p></li>
+<li><p><em>Historia</em>: la historia se repite, porque la psicología del inversor genera pautas recurrentes. Esta premisa, ausente en Dow, procede de la sistematización moderna del análisis técnico (Murphy, 1999).</p></li>
+</ul>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: sus principios y sus índices son el punto de partida del análisis técnico. Brown, Goetzmann y Kumar (1998) hallan además en las señales de Hamilton de 1902 a 1929 ratios de Sharpe elevadas y alfas positivas.</p></li>
+<li><p><em>Limitaciones</em>: las reglas no precisan cuándo empieza o acaba una tendencia, y la doble confirmación retrasa las señales. Cowles (1933), primer contraste de la teoría, concluyó que seguir a Hamilton rendía menos que mantener el índice.</p></li>
+</ul>
+</section>
+<section id="herramientas-del-análisis-técnico" class="level4">
+<h4 class="anchored" data-anchor-id="herramientas-del-análisis-técnico">1.3.2. Herramientas del análisis técnico</h4>
+<p>El instrumental técnico, que trabaja con la serie de precios y el volumen de contratación, se agrupa en tres familias.</p>
+<ol type="1">
+<li><p><em>Patrones gráficos</em> (chartismo): figuras que tienden a repetirse, unas de cambio de tendencia (el hombro-cabeza-hombro, los dobles techos y suelos) y otras de continuación (triángulos, banderas, canales), junto con los soportes y las resistencias, cuya rotura anticipa el movimiento.</p></li>
+<li><p><em>Indicadores seguidores de tendencia</em>: confirman la dirección del mercado. Destacan las medias móviles y el MACD (<em>Moving Average Convergence Divergence</em>), cuyas señales no se modifican <em>a posteriori</em>. Estos indicadores son fiables, pero lentos para detectar los giros.</p></li>
+<li><p><em>Osciladores</em>: anticipan los cambios. Los principales son el RSI (<em>Relative Strength Index</em>, Wilder, 1978), el <em>Force Index</em> (Elder, que combina precio y volumen) y el estocástico (Lane, que mide la velocidad del precio). Todos ellos se adelantan a los giros y resultan útiles en mercados laterales, aunque generan numerosas señales falsas que exigen confirmación.</p></li>
+</ol>
+<p>A estas familias se añaden enfoques más elaborados, como las ondas de Elliott (que describen el mercado como una sucesión de impulsos y correcciones) o los retrocesos de Fibonacci (que fijan niveles probables de soporte y resistencia).</p>
+<p>Gráficamente, en el plano tiempo-precio (figura <a href="#fig-b238-analisis-tecnico" class="quarto-xref"><span>B23.2</span></a>), con dos paneles inferiores de volumen y de RSI que comparten el eje temporal, una cotización inventada pasa de una tendencia bajista a un tramo lateral y sale de él al alza:</p>
+<ol type="1">
+<li><p><em>Velas japonesas</em>: cada vela es una sesión. El cuerpo va de la apertura al cierre, hueco si la sesión cierra al alza y relleno si cierra a la baja, y las mechas llegan al máximo y al mínimo.</p></li>
+<li><p><em>Medias móviles</em> (<span class="math inline">\(\text{MM}_{10}\)</span> y <span class="math inline">\(\text{MM}_{30}\)</span>): medias de los cierres de las diez y las treinta últimas sesiones. La corta sigue antes al precio, y su cruce al alza sobre la larga se lee como señal de tendencia alcista.</p></li>
+<li><p><em>Soporte</em> (<span class="math inline">\(S\)</span>) y <em>resistencia</em> (<span class="math inline">\(R\)</span>): niveles en los que el precio se ha detenido varias veces al caer y al subir, y que delimitan el tramo lateral.</p></li>
+<li><p><em>Volumen</em> (<span class="math inline">\(\text{Vol}\)</span>): número de títulos negociados en cada sesión, que aumenta en los toques del soporte y, sobre todo, en la ruptura.</p></li>
+<li><p><em>RSI</em>: oscilador acotado entre 0 y 100, <span class="math inline">\(\text{RSI} = 100 - 100/(1 + \text{RS})\)</span>, donde <span class="math inline">\(\text{RS}\)</span> es el cociente entre la subida media y la bajada media de los cierres de las catorce últimas sesiones. Por encima de 70 señala sobrecompra y por debajo de 30, sobreventa, como en la caída hasta el primer toque del soporte.</p></li>
+<li><p><em>Señal de compra</em>: en el punto <span class="math inline">\(A\)</span>, el cierre supera la resistencia con un volumen muy superior al habitual, lo que confirma la ruptura, cuando la media corta ya está por encima de la larga y el RSI aún no ha entrado en sobrecompra. La subida posterior lleva el RSI por encima de 70, y en la corrección siguiente la antigua resistencia actúa como soporte.</p></li>
+</ol>
+<div id="fig-b238-analisis-tecnico" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b238-analisis-tecnico-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b238_Analisis_tecnico.html" style="height:690px" loading="lazy" title="fig-b238-analisis-tecnico"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b238-analisis-tecnico-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B23.2: Análisis técnico estilizado, con datos inventados. La figura combina velas japonesas, medias móviles de diez y treinta sesiones (<span class="math inline">\(\text{MM}_{10}\)</span> y <span class="math inline">\(\text{MM}_{30}\)</span>), soporte (<span class="math inline">\(S\)</span>) y resistencia (<span class="math inline">\(R\)</span>), con paneles de volumen y de RSI. En el punto <span class="math inline">\(A\)</span>, el precio rompe la resistencia con un volumen elevado, cuando la media corta ya está por encima de la larga y el RSI sigue por debajo de 70.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="conclusiones-1" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones-1">1.3.3. Conclusiones</h4>
+<p><strong>Aspectos positivos</strong>: como herramienta para elegir el momento de operar (<em>timing</em>) a corto plazo, ofrece señales operativas de entrada y salida, impone disciplina en la gestión y no exige estimar el valor intrínseco. Además, algunos patrones muestran cierto poder predictivo en determinados mercados.</p>
+<p><strong>Limitaciones</strong>: su interpretación es subjetiva y carece de fundamento teórico, y su eficacia puede deberse a la autorrealización de las expectativas. Asimismo, la mayoría de las señales no sobreviven a los costes de transacción, y el método es incompatible con la hipótesis de eficiencia, incluso en su forma débil.</p>
+</section>
+</section>
+<section id="conclusiones-2" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-2">1.4. Conclusiones</h3>
+<p>El análisis del título aislado toma como referencia la hipótesis de los mercados eficientes, de la que depende la elección entre la gestión pasiva y la activa. En la gestión activa, el análisis fundamental decide qué comprar, porque estima el valor intrínseco y lo compara con el precio, mientras que el técnico decide cuándo hacerlo, a partir de las señales que ofrecen los precios y los volúmenes pasados. Por ello la práctica profesional suele combinarlos, con el análisis fundamental para seleccionar los valores y el técnico para ejecutar la operación.</p>
+<p>Ambos métodos chocan, sin embargo, con la eficiencia en su forma correspondiente, ya que el análisis técnico exige que ni siquiera se cumpla la eficiencia débil, y el fundamental, que no se cumpla la semifuerte. La evidencia empírica es, en conjunto, más favorable a la eficiencia que a la capacidad de ambos para obtener rendimientos anormales sostenidos una vez descontados los costes.</p>
+</section>
+</section>
+<section id="teoría-de-la-selección-de-carteras" class="level2">
+<h2 class="anchored" data-anchor-id="teoría-de-la-selección-de-carteras">2. Teoría de la selección de carteras</h2>
+<p>La <strong>teoría de carteras</strong> desplaza el foco desde la valoración de un título aislado hacia la combinación óptima de varios. Hasta mediados del s. XX, la selección de inversiones se apoyaba en modelos de valoración centrados exclusivamente en el rendimiento esperado. Así, el análisis fundamental de Graham y Dodd (1934) y, sobre todo, el modelo de descuento de dividendos de Williams (1938) identificaban los títulos “mejores” por su valor intrínseco, y la cartera se limitaba a acumularlos.</p>
+<p>Markowitz (1952) advirtió la incoherencia lógica de las aportaciones teóricas de la época. Si solo importara el rendimiento esperado, el inversor debería concentrar toda su riqueza en el único título más prometedor, conducta que contradice la diversificación observada en la práctica. La aportación de Markowitz consistió en incorporar el riesgo como segunda dimensión del problema, convirtiendo la selección de carteras en un problema de optimización media-varianza. Tobin (1958) lo amplió después con un activo sin riesgo, y Sharpe (1963) lo hizo operativo con un modelo estadístico auxiliar.</p>
+<section id="markowitz-1952-modelo-media-varianza" class="level3">
+<h3 class="anchored" data-anchor-id="markowitz-1952-modelo-media-varianza">2.1. Markowitz (1952): modelo media-varianza</h3>
+<p><strong>Origen</strong>: Harry Markowitz inaugura la teoría moderna de carteras con <em>Portfolio Selection</em> (1952) y su obra posterior (1959), que le valdría el Premio Nobel en 1990.</p>
+<p><strong>Idea</strong>: el riesgo relevante de un activo no es su variabilidad aislada, sino su contribución al riesgo del conjunto de la cartera, a través de las covarianzas. Combinando activos que no evolucionan al unísono, el riesgo total resulta inferior a la media ponderada de los riesgos individuales, de donde se sigue el fundamento analítico de la diversificación.</p>
+<section id="supuestos" class="level4">
+<h4 class="anchored" data-anchor-id="supuestos">2.1.1. Supuestos</h4>
+<p><strong>Entorno</strong>: los mercados no presentan fricciones relevantes para la decisión (no hay costes de transacción ni impuestos), y los activos son perfectamente divisibles. El horizonte es común y de un único periodo. Solo se consideran activos con riesgo. El rendimiento de cada activo <span class="math inline">\(i\)</span> es una variable aleatoria, <span class="math inline">\(R_i\)</span>, que se describe por su rendimiento esperado, <span class="math inline">\(R^e_i = \mathbb{E}[R_i]\)</span>, y por su varianza, <span class="math inline">\(\sigma_i^2\)</span>, medida del riesgo. La relación entre dos activos se mide por la covarianza de sus rendimientos, <span class="math inline">\(\sigma_{ij} = \rho_{ij} \, \sigma_i \sigma_j\)</span>, donde <span class="math inline">\(\rho_{ij} \in [-1, 1]\)</span> es su coeficiente de correlación. El inversor conoce los rendimientos esperados, las varianzas y las covarianzas de todos los activos.</p>
+<p><strong>Agentes</strong>: el inversor es racional y averso al riesgo, y maximiza la utilidad esperada de su riqueza final. Evalúa las carteras exclusivamente por dos momentos de la distribución de rendimientos, la media y la varianza, lo que queda justificado si los rendimientos siguen una distribución normal o si la función de utilidad es cuadrática (condiciones suficientes, no necesarias).</p>
+<p><strong>Restricciones</strong>: una cartera reparte la riqueza entre los activos en proporciones <span class="math inline">\(w_i\)</span>, con <span class="math inline">\(\sum_i w_i = 1\)</span>. Un <span class="math inline">\(w_i &lt; 0\)</span> indica una venta en descubierto y, si esta no se admite, <span class="math inline">\(w_i \in [0, 1]\)</span>. El rendimiento esperado de la cartera es la media ponderada de los rendimientos esperados de los títulos que la componen,</p>
+<p><span class="math display">\[R^e_c = \sum_{i=1}^{n} w_i \, R^e_i\]</span></p>
+<p>pero su riesgo no es la media ponderada de los riesgos individuales, sino que incorpora las covarianzas entre pares de títulos:</p>
+<p><span class="math display">\[\sigma_c^2 = \sum_{i=1}^{n} \sum_{j=1}^{n} w_i w_j \, \sigma_{ij} = \sum_{i=1}^{n} w_i^2 \sigma_i^2 + \sum_{i=1}^{n} \sum_{j \neq i} w_i w_j \, \sigma_{ij}\]</span></p>
+<p>La intuición se aprecia con nitidez en la formulación más simple, una cartera de dos activos con una proporción <span class="math inline">\(w\)</span> en el primero,</p>
+<p><span class="math display">\[\sigma_c^2 = w^2 \sigma_1^2 + (1-w)^2 \sigma_2^2 + 2w(1-w)\,\rho_{12}\,\sigma_1 \sigma_2\]</span></p>
+<p>de donde se derivan tres casos:</p>
+<ul>
+<li><p><em>Correlación perfecta positiva</em> (<span class="math inline">\(\rho_{12} = 1\)</span>): el riesgo de la cartera es la media ponderada de los riesgos individuales y la diversificación no aporta nada.</p></li>
+<li><p><em>Correlación imperfecta</em> (<span class="math inline">\(\rho_{12} &lt; 1\)</span>): sin ventas en descubierto (<span class="math inline">\(0 &lt; w &lt; 1\)</span>), el riesgo es inferior a esa media ponderada y aparece la ganancia de diversificación, tanto mayor cuanto menor sea la correlación.</p></li>
+<li><p><em>Correlación perfecta negativa</em> (<span class="math inline">\(\rho_{12} = -1\)</span>): existe una combinación que anula por completo el riesgo de la cartera.</p></li>
+</ul>
+</section>
+<section id="modelo" class="level4">
+<h4 class="anchored" data-anchor-id="modelo">2.1.2. Modelo</h4>
+<p><strong>Planteamiento</strong>: el problema de elección combina, como cualquier otro, una restricción, que representa las oportunidades, y una función objetivo, que representa las preferencias, pero se resuelve en dos etapas. La primera, técnica, construye el conjunto de oportunidades del inversor, y en la segunda, subjetiva, el inversor elige sobre él de acuerdo con sus preferencias. La particularidad del modelo de Markowitz es que la restricción resulta, a su vez, de un programa de optimización previo.</p>
+<p>La primera etapa construye la <em>frontera eficiente</em>. Para cada nivel de rendimiento objetivo <span class="math inline">\(\bar{R}^e_c\)</span>, el inversor identifica la cartera de mínima varianza resolviendo el programa técnico:</p>
+<p><span class="math display">\[\min_{\mathbf{w}} \; \sigma_c^2 = \sum_i \sum_j w_i w_j \sigma_{ij} \quad \text{s.a.:} \begin{cases} \sum_i w_i R^e_i = \bar{R}^e_c \\ \sum_i w_i = 1 \end{cases}\]</span></p>
+<p>donde <span class="math inline">\(\mathbf{w} = (w_1, \ldots, w_n)\)</span> es el vector de proporciones invertidas en cada activo, <span class="math inline">\(\sigma_{ij}\)</span> la covarianza entre los rendimientos de <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>, <span class="math inline">\(R^e_i\)</span> el rendimiento esperado del activo <span class="math inline">\(i\)</span> y <span class="math inline">\(\bar{R}^e_c\)</span> el rendimiento objetivo de la cartera.</p>
+<p>Al resolver el programa para todos los valores posibles de <span class="math inline">\(\bar{R}^e_c\)</span> se obtiene la <em>frontera de mínima varianza</em>. Su tramo superior reúne las <em>carteras eficientes</em>, aquellas frente a las que ninguna otra ofrece más rendimiento con igual riesgo ni menos riesgo con igual rendimiento. Esta etapa es puramente técnica, ya que depende solo de los datos (rendimientos, varianzas y covarianzas) y es, por tanto, idéntica para todos los inversores.</p>
+<p>Gráficamente, en el plano desviación típica-rendimiento esperado (figura <a href="#fig-b232-markowitz" class="quarto-xref"><span>B23.3</span></a>), la frontera de mínima varianza es una hipérbola si se admiten ventas en descubierto (en el plano varianza-rendimiento sería una parábola):</p>
+<ol type="1">
+<li><p><em>Conjunto de oportunidades</em>: recoge las carteras alcanzables con los títulos disponibles, y la frontera de mínima varianza lo delimita por la izquierda.</p></li>
+<li><p><em>Frontera eficiente</em>: representa las carteras que ofrecen el máximo rendimiento esperado para cada nivel de riesgo. Es el tramo superior de la frontera de mínima varianza, pues las carteras del tramo inferior quedan dominadas, y tiene pendiente positiva porque en él solo se obtiene más rendimiento esperado a cambio de más riesgo.</p></li>
+<li><p><em>Cartera de mínima varianza global</em> (CMVG): es el vértice, el punto más a la izquierda de la frontera, con riesgo <span class="math inline">\(\sigma_{\text{CMVG}}\)</span> y rendimiento <span class="math inline">\(R^e_{\text{CMVG}}\)</span>.</p></li>
+</ol>
+<div id="fig-b232-markowitz" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b232-markowitz-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b232_Markowitz.html" style="height:540px" loading="lazy" title="fig-b232-markowitz"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b232-markowitz-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B23.3: Conjunto de oportunidades y frontera eficiente de carteras con activos con riesgo en el modelo de Markowitz (1952).
+</figcaption>
+</figure>
+</div>
+<p>La curvatura de la frontera depende de las covarianzas. Cuanto menores son las correlaciones entre los títulos, mayor es la ganancia de diversificación y más se abomba la frontera hacia la izquierda (menos riesgo para cada rendimiento). En los casos límite del ejemplo de dos activos, la frontera adopta formas extremas, y las carteras con correlaciones intermedias quedan comprendidas en el triángulo que ambas delimitan:</p>
+<ul>
+<li><p><em>Correlación perfecta positiva</em> (<span class="math inline">\(\rho_{12}=1\)</span>): la “frontera” degenera en el segmento recto que une ambos títulos.</p></li>
+<li><p><em>Correlación perfecta negativa</em> (<span class="math inline">\(\rho_{12}=-1\)</span>): la frontera se quiebra en dos segmentos que alcanzan el eje vertical (riesgo nulo).</p></li>
+</ul>
+<p>En la segunda etapa entran las preferencias sobre carteras, que se derivan de la utilidad esperada. El inversor posee una función de utilidad (de Bernoulli) definida sobre su riqueza final, <span class="math inline">\(u(W)\)</span>, y ordena las carteras según su utilidad esperada, <span class="math inline">\(\mathbb{E}[u(W)]\)</span>. Con utilidad cuadrática o rendimientos normales, como supone el modelo, la utilidad esperada solo depende de dos parámetros del rendimiento, su media y su varianza. Por ello puede representarse, de forma exacta con utilidad exponencial y rendimientos normales y aproximada en otro caso, mediante el criterio media-varianza</p>
+<p><span class="math display">\[U = R^e_c - \frac{A}{2}\,\sigma_c^2\]</span></p>
+<p>donde <span class="math inline">\(A &gt; 0\)</span> es el coeficiente de aversión al riesgo del inversor. Al estar el criterio definido sobre rendimientos y no sobre riqueza, <span class="math inline">\(A\)</span> corresponde a la aversión relativa al riesgo (<span class="math inline">\(A = a\,W_0\)</span>, siendo <span class="math inline">\(a\)</span> la aversión absoluta y <span class="math inline">\(W_0\)</span> la riqueza inicial). El valor de <span class="math inline">\(U\)</span> admite una interpretación económica precisa, el <em>equivalente cierto</em>, es decir, el rendimiento seguro que reporta al inversor la misma utilidad que la cartera arriesgada.</p>
+<p>Las curvas de indiferencia derivadas del criterio anterior, los pares (<span class="math inline">\(\sigma_c, R^e_c\)</span>) que mantienen constante <span class="math inline">\(U\)</span>, son parábolas de pendiente <span class="math inline">\(A\sigma_c\)</span> en el plano riesgo-rendimiento, tanto más inclinadas cuanto mayor es la aversión, y su ordenada en el origen (<span class="math inline">\(U_0\)</span>, el equivalente cierto) crece hacia el noroeste.</p>
+<p>El inversor maximiza, pues, su utilidad esperada tomando como restricción la frontera construida en la primera etapa:</p>
+<p><span class="math display">\[\max_{\sigma_c,\, R^e_c} \; U = R^e_c - \frac{A}{2}\,\sigma_c^2 \quad \text{s.a.:} \quad R^e_c = f(\sigma_c)\]</span></p>
+<p>donde <span class="math inline">\(R^e_c = f(\sigma_c)\)</span> es la frontera eficiente, <span class="math inline">\(A\)</span> la aversión al riesgo del inversor y <span class="math inline">\(R^e_c\)</span> y <span class="math inline">\(\sigma_c\)</span> el rendimiento esperado y la desviación típica de la cartera.</p>
+<p><strong>CPO</strong>: en la cartera óptima son tangentes la frontera eficiente y la mayor curva de indiferencia que el inversor puede alcanzar. En ese punto se igualan la compensación por riesgo que el inversor exige (pendiente de la curva de indiferencia, <span class="math inline">\(A\sigma_c\)</span>) y la que el conjunto de oportunidades ofrece (pendiente de la frontera, <span class="math inline">\(df/d(\sigma_c)\)</span>). En términos económicos, el inversor asume riesgo adicional hasta que la prima que el mercado le ofrece por la última unidad coincide con la que él exige.</p>
+<p><strong>CSO</strong>: el criterio <span class="math inline">\(U\)</span> es estrictamente cóncavo en <span class="math inline">\(\sigma_c\)</span> para <span class="math inline">\(A &gt; 0\)</span> y el tramo eficiente de la frontera es cóncavo en el plano <span class="math inline">\((\sigma_c, R^e_c)\)</span>, de modo que la condición de tangencia caracteriza un máximo.</p>
+<p><strong>Solución</strong>: de lo anterior se desprende que los inversores más aversos (curvas más inclinadas) eligen carteras más próximas a la de mínima varianza global, y los más tolerantes, carteras del tramo alto de la frontera. Por tanto, las preferencias seleccionan tanto la cantidad de riesgo como la propia composición de la cartera arriesgada.</p>
+<p><strong>Desarrollo gráfico</strong>: la elección de la cartera óptima se representa en el plano desviación típica-rendimiento esperado (figura <a href="#fig-b233-markowitz-tangencia" class="quarto-xref"><span>B23.4</span></a>):</p>
+<ol type="1">
+<li><p><em>Frontera eficiente</em>: es la restricción construida en la primera etapa, creciente y cóncava, que recoge el máximo rendimiento esperado alcanzable para cada nivel de riesgo.</p></li>
+<li><p><em>Curvas de indiferencia</em> (<span class="math inline">\(U_0\)</span>, <span class="math inline">\(U_1\)</span>): cada una reúne las carteras que dan al inversor la misma utilidad. Son crecientes porque el riesgo es un mal que solo se acepta a cambio de más rendimiento, convexas porque su pendiente, <span class="math inline">\(A\sigma_c\)</span>, aumenta con el riesgo, y representan más utilidad cuanto más arriba se sitúan.</p></li>
+<li><p><em>Óptimo</em>: en el punto 0, la frontera eficiente es tangente a la curva de indiferencia <span class="math inline">\(U_0\)</span>, con riesgo <span class="math inline">\(\sigma^*_c\)</span> y rendimiento <span class="math inline">\(R^{e*}_c\)</span>, mientras que la curva <span class="math inline">\(U_1\)</span>, más alta, no es alcanzable.</p></li>
+</ol>
+<div id="fig-b233-markowitz-tangencia" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b233-markowitz-tangencia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b233_Markowitz_tangencia.html" style="height:540px" loading="lazy" title="fig-b233-markowitz-tangencia"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b233-markowitz-tangencia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B23.4: Óptimo del inversor en el modelo de Markowitz. En el punto 0, la curva de indiferencia más elevada a su alcance, <span class="math inline">\(U_0\)</span>, es tangente a la frontera eficiente.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="conclusiones-3" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones-3">2.1.3. Conclusiones</h4>
+<p><strong>Aspectos positivos</strong>: proporciona el fundamento riguroso de la diversificación y demuestra que lo determinante para el riesgo de una cartera es la covarianza de cada título con el resto, y no su varianza aislada. Además, constituye la base de toda la teoría posterior de carteras y de valoración de activos, y su instrumental sigue empleándose en la gestión profesional.</p>
+<p><strong>Limitaciones</strong>: la estimación de sus datos de entrada es muy exigente, pues requiere <span class="math inline">\(n\)</span> rendimientos esperados, <span class="math inline">\(n\)</span> varianzas y <span class="math inline">\(n(n-1)/2\)</span> covarianzas. Los resultados son además muy sensibles a los parámetros estimados, de modo que pequeños errores en los rendimientos esperados producen carteras óptimas radicalmente distintas y con frecuencia poco diversificadas. Descansa, por último, en supuestos exigentes sobre la distribución de los rendimientos, que la evidencia desmiente al documentar asimetría y colas anchas.</p>
+</section>
+</section>
+<section id="tobin-1958-sharpe-1964-y-lintner-1965-activo-sin-riesgo-cml-y-teorema-de-la-separación" class="level3">
+<h3 class="anchored" data-anchor-id="tobin-1958-sharpe-1964-y-lintner-1965-activo-sin-riesgo-cml-y-teorema-de-la-separación">2.2. Tobin (1958), Sharpe (1964) y Lintner (1965): activo sin riesgo, CML y teorema de la separación</h3>
+<p><strong>Origen</strong>: James Tobin (1958), premio Nobel en 1981, extiende el modelo de Markowitz incorporando la posibilidad de invertir en un activo libre de riesgo.</p>
+<p><strong>Idea</strong>: al poder combinarse los activos con riesgo con un activo seguro, todos los inversores eligen la misma cartera arriesgada y se diferencian únicamente en la proporción de riqueza que destinan a ella.</p>
+<section id="supuestos-1" class="level4">
+<h4 class="anchored" data-anchor-id="supuestos-1">2.2.1. Supuestos</h4>
+<p><strong>Entorno</strong>: a los activos con riesgo de Markowitz, cuyos supuestos de entorno y agentes se mantienen, se añade un activo libre de riesgo, de rendimiento cierto <span class="math inline">\(r_f\)</span> y varianza nula, con el que puede prestarse y endeudarse de forma ilimitada al mismo tipo. En Tobin (1958) ese activo es el dinero, sin rendimiento, mientras que el supuesto de prestar y endeudarse a un mismo tipo <span class="math inline">\(r_f\)</span> procede de Sharpe (1964) y Lintner (1965).</p>
+<p><strong>Restricciones</strong>: el inversor destina una proporción <span class="math inline">\(w \geq 0\)</span> de su riqueza a una cartera arriesgada <span class="math inline">\(P\)</span> y el resto al activo seguro (con <span class="math inline">\(w &gt; 1\)</span> si se endeuda para invertir más de lo que posee). Como la varianza del activo seguro y su covarianza con <span class="math inline">\(P\)</span> son nulas, el rendimiento y el riesgo resultantes son</p>
+<p><span class="math display">\[R^e_c = (1-w)\,r_f + w\,R^e_P, \qquad \sigma_c = w\,\sigma_P\]</span></p>
+</section>
+<section id="modelo-1" class="level4">
+<h4 class="anchored" data-anchor-id="modelo-1">2.2.2. Modelo</h4>
+<p><strong>Planteamiento</strong>: el problema conserva la estructura de dos etapas del modelo de Markowitz, pero la introducción del activo seguro transforma la restricción, que deja de ser la frontera curva para convertirse en una recta. La primera etapa construye el nuevo conjunto de oportunidades, que en este caso nace de las líneas de asignación de capital y de la recta del mercado de capitales.</p>
+<p>Al ser lineales en <span class="math inline">\(w\)</span> el rendimiento y el riesgo de la cartera, todas las combinaciones se sitúan sobre una recta que parte de <span class="math inline">\(r_f\)</span> y pasa por <span class="math inline">\(P\)</span>, la <em>línea de asignación de capital</em> (CAL, <em>capital allocation line</em>) de la cartera <span class="math inline">\(P\)</span>,</p>
+<p><span class="math display">\[R^e_c = r_f + \frac{R^e_P - r_f}{\sigma_P}\,\sigma_c\]</span></p>
+<p>cuya pendiente en el plano <span class="math inline">\((\sigma_c, R^e_c)\)</span> es la prima de rendimiento por unidad de riesgo, conocida como <em>ratio de Sharpe</em> de la cartera <span class="math inline">\(P\)</span>. La ratio sirve también para evaluar carteras (apartado 3.3).</p>
+<p>Existe una CAL por cada cartera arriesgada candidata, de modo que el conjunto de oportunidades es el abanico de todas estas rectas. Un inversor racional prefiere siempre, entre todas las CAL, la de mayor pendiente, pues para cualquier nivel de riesgo ofrece el mayor rendimiento esperado.</p>
+<p>La mejor CAL alcanzable es, geométricamente, la tangente a la frontera eficiente de Markowitz desde <span class="math inline">\(r_f\)</span>. Su cartera de tangencia, <span class="math inline">\(M\)</span>, es la cartera arriesgada con máxima ratio de Sharpe (que en el equilibrio del CAPM resultará ser la cartera de mercado, apartado 3.1) y resuelve el programa</p>
+<p><span class="math display">\[\max_{P} \; \frac{R^e_P - r_f}{\sigma_P} \quad \text{s.a.:} \quad P \in \text{frontera eficiente}\]</span></p>
+<p>donde <span class="math inline">\(R^e_P\)</span> y <span class="math inline">\(\sigma_P\)</span> son el rendimiento esperado y la desviación típica de la cartera arriesgada <span class="math inline">\(P\)</span>, y <span class="math inline">\(r_f\)</span> el rendimiento del activo sin riesgo.</p>
+<p>La CAL que pasa por <span class="math inline">\(M\)</span> es la <em>recta del mercado de capitales</em> (CML, <em>capital market line</em>) y analíticamente resulta ser:</p>
+<p><span class="math display">\[R^e_c = r_f + \frac{R^e_m - r_f}{\sigma_m}\,\sigma_c\]</span></p>
+<p>El rendimiento esperado, <span class="math inline">\(R^e_c\)</span>, es la suma del rendimiento libre de riesgo, <span class="math inline">\(r_f\)</span>, y una prima de riesgo, el segundo término de la derecha, que contiene, a su vez, dos elementos:</p>
+<ul>
+<li><p><em>Precio del riesgo</em>: la pendiente de la recta, <span class="math inline">\(\frac{R^e_m - r_f}{\sigma_m}\)</span>, es decir, el exceso de rendimiento del mercado por unidad de riesgo, común a todos los inversores.</p></li>
+<li><p><em>Cantidad de riesgo</em>: el término <span class="math inline">\(\sigma_c\)</span>, que elige cada inversor.</p></li>
+</ul>
+<p>La CML domina tanto a las demás CAL como a la propia frontera eficiente (salvo en el punto <span class="math inline">\(M\)</span>, único que comparten), porque combinando el activo seguro con <span class="math inline">\(M\)</span> se alcanzan pares riesgo-rendimiento inalcanzables solo con activos arriesgados.</p>
+<p>En la segunda etapa, obtenida la CML, el inversor maximiza sobre ella su utilidad esperada:</p>
+<p><span class="math display">\[\max_{\sigma_c,\, R^e_c} \; U = R^e_c - \frac{A}{2}\,\sigma_c^2 \quad \text{s.a.:} \quad R^e_c = r_f + \frac{R^e_m - r_f}{\sigma_m}\,\sigma_c\]</span></p>
+<p>donde <span class="math inline">\(A\)</span> es la aversión al riesgo del inversor, <span class="math inline">\(R^e_m\)</span> y <span class="math inline">\(\sigma_m\)</span> el rendimiento esperado y la desviación típica de la cartera de mercado <span class="math inline">\(M\)</span>, y <span class="math inline">\(r_f\)</span> el rendimiento del activo sin riesgo.</p>
+<p><strong>CPO</strong>: en el óptimo, la condición de tangencia iguala la pendiente de la curva de indiferencia (<span class="math inline">\(A\sigma_c\)</span>) con la de la CML, es decir, la compensación por riesgo que el inversor exige coincide con el precio de mercado del riesgo.</p>
+<p><strong>CSO</strong>: la función objetivo es estrictamente cóncava en <span class="math inline">\(\sigma_c\)</span> (<span class="math inline">\(A &gt; 0\)</span>) y la restricción (la CML) es lineal, por lo que la condición de tangencia es suficiente y el óptimo es único.</p>
+<p><strong>Solución</strong>: de la CPO se obtiene <span class="math inline">\(\sigma^*_c = (R^e_m - r_f)/(A\,\sigma_m)\)</span>, es decir, una proporción invertida en <span class="math inline">\(M\)</span> de <span class="math inline">\(w^* = \sigma^*_c/\sigma_m = (R^e_m - r_f)/(A\,\sigma_m^2)\)</span>, decreciente con la aversión. De esta solución se siguen dos resultados:</p>
+<ul>
+<li><p><em>Tipos de carteras</em>: según el valor de <span class="math inline">\(w^*\)</span>, se distinguen dos:</p>
+<ul>
+<li><p><em>Prestamistas</em> (<span class="math inline">\(w^* &lt; 1\)</span>): se sitúan entre <span class="math inline">\(r_f\)</span> y <span class="math inline">\(M\)</span>, con parte de la riqueza en el activo seguro.</p></li>
+<li><p><em>Prestatarias</em> (<span class="math inline">\(w^* &gt; 1\)</span>): se sitúan a la derecha de <span class="math inline">\(M\)</span>, porque el inversor se endeuda al tipo sin riesgo para invertir en <span class="math inline">\(M\)</span> más de lo que posee (apalancamiento).</p></li>
+</ul></li>
+<li><p><em>Teorema de la separación</em>: la decisión de inversión se descompone en dos decisiones independientes, consecuencia central del modelo. La primera etapa (identificar <span class="math inline">\(M\)</span>) es puramente técnica e idéntica para todos los inversores, pues solo depende de <span class="math inline">\(r_f\)</span> y de la frontera. La segunda (el reparto entre activo seguro y <span class="math inline">\(M\)</span>) es subjetiva y depende de la aversión al riesgo. En el modelo de Markowitz, en cambio, la aversión elegía también la composición de la cartera arriesgada.</p></li>
+</ul>
+<p><strong>Desarrollo gráfico</strong>: la elección de cartera con activo sin riesgo se representa en el plano desviación típica-rendimiento esperado (figuras <a href="#fig-b234-tobin" class="quarto-xref"><span>B23.5</span></a> y <a href="#fig-b237-tobin-prestatario" class="quarto-xref"><span>B23.6</span></a>):</p>
+<ol type="1">
+<li><p><em>Frontera eficiente</em>: la hipérbola de Markowitz, con las carteras de activos con riesgo de máximo rendimiento esperado para cada nivel de riesgo.</p></li>
+<li><p><em>CAL</em>: cada recta representa las combinaciones del activo seguro con una cartera arriesgada de la frontera. Parte de <span class="math inline">\(r_f\)</span> y es recta porque el rendimiento y el riesgo de la combinación son lineales en <span class="math inline">\(w\)</span>, con pendiente igual a la ratio de Sharpe de esa cartera.</p></li>
+<li><p><em>CML</em>: la única CAL tangente a la frontera, en la cartera <span class="math inline">\(M\)</span>, con riesgo <span class="math inline">\(\sigma_m\)</span> y rendimiento <span class="math inline">\(R^e_m\)</span>.</p></li>
+<li><p><em>Curvas de indiferencia</em> (<span class="math inline">\(U_0\)</span>): las del inversor de Markowitz, crecientes y convexas, que unen las combinaciones de riesgo y rendimiento con la misma utilidad y forman su mapa de preferencias.</p></li>
+<li><p><em>Óptimo</em>: en el punto 0, la CML es tangente a la curva de indiferencia más alta alcanzable. Las curvas más inclinadas (mayor aversión) producen tangencias en el tramo prestamista (figura <a href="#fig-b234-tobin" class="quarto-xref"><span>B23.5</span></a>), y las más planas, en el prestatario (figura <a href="#fig-b237-tobin-prestatario" class="quarto-xref"><span>B23.6</span></a>). La separación se aprecia en que <span class="math inline">\(M\)</span> es el mismo punto para todos, mientras que el punto de tangencia se desliza a lo largo de la recta según las preferencias.</p></li>
+</ol>
+<div id="fig-b234-tobin" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b234-tobin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b234_Tobin.html" style="height:540px" loading="lazy" title="fig-b234-tobin"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b234-tobin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B23.5: Teorema de la separación de Tobin (1958) sobre la CML de Sharpe (1964) y Lintner (1965), inversor prestamista. El inversor más averso al riesgo (punto 0) combina el activo sin riesgo con la cartera de mercado <span class="math inline">\(M\)</span> y se sitúa en la CML entre <span class="math inline">\(r_f\)</span> y <span class="math inline">\(M\)</span>.
+</figcaption>
+</figure>
+</div>
+<div id="fig-b237-tobin-prestatario" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b237-tobin-prestatario-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b237_Tobin_prestatario.html" style="height:540px" loading="lazy" title="fig-b237-tobin-prestatario"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b237-tobin-prestatario-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B23.6: Teorema de la separación de Tobin (1958) sobre la CML de Sharpe (1964) y Lintner (1965), inversor prestatario. El inversor menos averso al riesgo (punto 0) se endeuda al tipo sin riesgo para invertir en la cartera de mercado <span class="math inline">\(M\)</span> más de lo que posee y se sitúa en la CML a la derecha de <span class="math inline">\(M\)</span>.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="conclusiones-4" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones-4">2.2.3. Conclusiones</h4>
+<p><strong>Aspectos positivos</strong>: el teorema de la separación distingue dos decisiones independientes, lo cual simplifica el problema y justifica la separación entre el gestor de la cartera y el inversor final.</p>
+<p><strong>Limitaciones</strong>: el supuesto de un tipo único al que prestar y endeudarse de forma ilimitada es poco realista, pues el tipo de endeudamiento excede en la práctica al de préstamo. La diferencia quiebra la linealidad de la recta a la derecha de <span class="math inline">\(M\)</span> y produce un tramo curvo intermedio.</p>
+</section>
+</section>
+<section id="sharpe-1963-modelo-de-la-diagonal-y-de-mercado" class="level3">
+<h3 class="anchored" data-anchor-id="sharpe-1963-modelo-de-la-diagonal-y-de-mercado">2.3. Sharpe (1963): modelo de la diagonal y de mercado</h3>
+<p><strong>Origen</strong>: William Sharpe (1963) responde al número de covarianzas que hay que estimar, principal obstáculo práctico del modelo de Markowitz.</p>
+<p><strong>Idea</strong>: si se relaciona cada título con un único índice común en lugar de con todos los demás, basta estimar su sensibilidad (el coeficiente <span class="math inline">\(b_i\)</span> de la regresión) a ese índice, lo que reduce drásticamente los cálculos.</p>
+<section id="supuestos-2" class="level4">
+<h4 class="anchored" data-anchor-id="supuestos-2">2.3.1. Supuestos</h4>
+<p><strong>Entorno</strong>: la única fuente de covariación entre los títulos es su relación común con el índice, de modo que las perturbaciones específicas <span class="math inline">\(\varepsilon_i\)</span> son independientes entre sí, <span class="math inline">\(\text{cov}(\varepsilon_i, \varepsilon_j) = 0\)</span>, e independientes del índice, con media nula.</p>
+</section>
+<section id="modelo-2" class="level4">
+<h4 class="anchored" data-anchor-id="modelo-2">2.3.2. Modelo</h4>
+<p><strong>Planteamiento</strong>: en el <em>modelo de la diagonal</em>, el rendimiento de cada título se expresa como una función lineal de un índice común:</p>
+<p><span class="math display">\[R_i = a_i + b_i I + \varepsilon_i\]</span></p>
+<p>donde</p>
+<ul>
+<li><p><span class="math inline">\(a_i\)</span> es el término constante de la regresión, que refleja la parte del rendimiento del título independiente del índice;</p></li>
+<li><p><span class="math inline">\(b_i\)</span> es la pendiente de la regresión, que mide la sensibilidad del título a las variaciones del índice;</p></li>
+<li><p><span class="math inline">\(\varepsilon_i \sim N(0, \sigma_{\varepsilon_i}^{2})\)</span> es el término de error, que recoge las perturbaciones específicas del título.</p></li>
+</ul>
+<p>Los parámetros <span class="math inline">\(a_i\)</span> y <span class="math inline">\(b_i\)</span> pueden estimarse por mínimos cuadrados ordinarios (MCO). El <em>modelo de mercado</em> resulta de emplear como índice el rendimiento de la cartera de mercado<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> y se expresa en excesos sobre el tipo sin riesgo,</p>
+<p><span class="math display">\[R_i - r_f = \alpha_i + \beta_i (R_m - r_f) + \varepsilon_i\]</span></p>
+<p>donde</p>
+<ul>
+<li><p><span class="math inline">\(\alpha_i\)</span> es el término constante, que refleja el exceso de rendimiento del título sobre <span class="math inline">\(r_f\)</span> cuando el del mercado es nulo y coincide, por tanto, con el alfa de Jensen;</p></li>
+<li><p><span class="math inline">\(\beta_i\)</span> es la pendiente de la regresión, que en este caso es la <em>beta del título</em>, es decir, su sensibilidad a los movimientos del mercado, protagonista del CAPM. La estimación por MCO la proporciona directamente;</p></li>
+<li><p><span class="math inline">\(\varepsilon_i \sim N(0, \sigma_{\varepsilon_i}^{2})\)</span>, de nuevo, es el término de error.</p></li>
+</ul>
+<p><strong>Solución</strong>: de la especificación anterior y de la independencia de las perturbaciones se siguen tres resultados para la valoración de activos financieros. El primero es la <em>descomposición del riesgo</em> de cada título:</p>
+<p><span class="math display">\[\sigma_i^2 = \underbrace{\beta_i^2 \, \sigma_m^2}_{\text{riesgo sistemático}} + \underbrace{\sigma_{\varepsilon_i}^2}_{\text{riesgo específico}}\]</span></p>
+<p>es decir, la varianza de cada título se descompone en una parte atribuible a su sensibilidad al mercado y otra propia, que es la que se elimina al diversificar. La proporción explicada por el primer término es el coeficiente de determinación <span class="math inline">\(R^2\)</span> de la regresión.</p>
+<p>Los otros dos resultados son:</p>
+<ul>
+<li><p><em>Covarianzas</em>: la covarianza entre dos títulos cualesquiera queda reducida a <span class="math inline">\(\sigma_{ij} = \beta_i \beta_j \sigma_m^2\)</span>, de modo que no es necesario estimarla directamente.</p></li>
+<li><p><em>Ahorro de parámetros</em>: en lugar de las <span class="math inline">\(n(n-1)/2\)</span> covarianzas del modelo original, basta estimar <span class="math inline">\(\alpha_i\)</span>, <span class="math inline">\(\beta_i\)</span> y <span class="math inline">\(\sigma_{\varepsilon_i}^2\)</span> para cada título, más la media y la varianza del índice, en total <span class="math inline">\(3n + 2\)</span> parámetros. Este ahorro resultó decisivo en el contexto de la época, con una capacidad de computación muy limitada. Por ejemplo, para 500 títulos, la estimación pasa de cerca de 125.000 covarianzas a poco más de 1500 parámetros.</p></li>
+</ul>
+<p><strong>Desarrollo gráfico</strong>: en el plano número de títulos-riesgo de la cartera (figura <a href="#fig-b235-riesgos" class="quarto-xref"><span>B23.7</span></a>), la curva <span class="math inline">\(\sigma_c(n)\)</span> representa el riesgo total de una cartera de <span class="math inline">\(n\)</span> títulos con el mismo peso. Decrece con el número de títulos, porque la diversificación elimina el riesgo específico, y tiende al nivel del riesgo sistemático, que no puede diversificarse.</p>
+<div id="fig-b235-riesgos" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b235-riesgos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b235_Riesgos.html" style="height:540px" loading="lazy" title="fig-b235-riesgos"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b235-riesgos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B23.7: Diversificación. El riesgo específico se reduce con el número de activos, mientras que el riesgo sistemático permanece.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="conclusiones-5" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones-5">2.3.3. Conclusiones</h4>
+<p><strong>Aspectos positivos</strong>: hace operativo el modelo de Markowitz y proporciona la base empírica para estimar la beta, además de introducir la distinción entre riesgo sistemático y específico que vertebrará el CAPM.</p>
+<p><strong>Limitaciones</strong>: atribuir toda la covariación a un único índice puede resultar una simplificación excesiva, pues existe covariación residual entre títulos del mismo sector que el modelo no captura. Ello dio lugar a los modelos multiíndice y, posteriormente, a la teoría de valoración de activos por arbitraje (APT).</p>
+</section>
+</section>
+<section id="conclusiones-6" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-6">2.4. Conclusiones</h3>
+<p><strong>Aspectos positivos</strong>: la teoría de carteras produce el desplazamiento conceptual decisivo de las finanzas modernas, del título aislado a su covarianza con el resto, y de él se derivan la diversificación, el riesgo no diversificable y el teorema de la separación.</p>
+<p><strong>Limitaciones</strong>: el planteamiento es normativo y no explicativo, pues indica cómo debería componerse una cartera óptima, pero no determina qué rendimiento ha de ofrecer cada activo en equilibrio. Arrastra además la elevada sensibilidad del modelo original a los parámetros estimados, aunque el modelo de Sharpe reduce su exigencia computacional.</p>
+</section>
+</section>
+<section id="modelos-de-valoración-de-activos" class="level2">
+<h2 class="anchored" data-anchor-id="modelos-de-valoración-de-activos">3. Modelos de valoración de activos</h2>
+<p>Si la teoría de carteras indica cómo combinar los activos disponibles, los modelos que siguen determinan el rendimiento que cada activo debe ofrecer en equilibrio. Los dos modelos de valoración, el CAPM y la APT, se construyen sobre el instrumental que aporta el modelo de Sharpe (apartado 2.3): la beta y la distinción entre riesgo sistemático y específico. El apartado se cierra con las medidas de rendimiento ajustado al riesgo, con las que se evalúa la gestión de una cartera.</p>
+<section id="capm-treynor-1962-sharpe-1964-lintner-1965-mossin-1966" class="level3">
+<h3 class="anchored" data-anchor-id="capm-treynor-1962-sharpe-1964-lintner-1965-mossin-1966">3.1. CAPM (Treynor, 1962; Sharpe, 1964; Lintner, 1965; Mossin, 1966)</h3>
+<p><strong>Origen</strong>: desarrollado de forma independiente por los cuatro autores, el <em>modelo de valoración de activos de capital</em> (<em>Capital Asset Pricing Model</em>) es el primer modelo de equilibrio del mercado de capitales y determina el rendimiento que un activo debe ofrecer en función de su riesgo.</p>
+<p><strong>Idea</strong>: en equilibrio, el mercado solo remunera aquel riesgo que no puede eliminarse mediante diversificación. Puesto que el riesgo específico puede evitarse sin coste, ningún inversor obtendría compensación por soportarlo, de modo que la prima de rentabilidad de un activo depende exclusivamente de su riesgo sistemático.</p>
+<section id="supuestos-3" class="level4">
+<h4 class="anchored" data-anchor-id="supuestos-3">3.1.1. Supuestos</h4>
+<p><strong>Entorno</strong>: mercados perfectos, sin impuestos ni costes de transacción, con información gratuita y simultánea, y competencia perfecta, de modo que los inversores son precio-aceptantes. Los inversores comparten un horizonte de un único periodo, los activos son perfectamente divisibles y se puede prestar y endeudarse sin límite al tipo libre de riesgo.</p>
+<p><strong>Agentes</strong>: inversores racionales con preferencias media-varianza y <em>expectativas homogéneas</em> sobre rendimientos, varianzas y covarianzas, lo que garantiza que todos identifiquen la misma frontera eficiente.</p>
+</section>
+<section id="modelo-3" class="level4">
+<h4 class="anchored" data-anchor-id="modelo-3">3.1.2. Modelo</h4>
+<p><strong>Planteamiento</strong>: el modelo parte del de Tobin y pasa del equilibrio individual al de mercado. Cada inversor reparte su riqueza entre el activo sin riesgo, en la proporción <span class="math inline">\(w_f\)</span>, y los <span class="math inline">\(n\)</span> activos con riesgo, en proporciones <span class="math inline">\(w_i\)</span>, y maximiza el criterio media-varianza del apartado 2.1.2 con el lagrangiano</p>
+<p><span class="math display">\[\mathcal{L} = w_f r_f + \sum_i w_i R^e_i - \frac{A}{2} \sum_i \sum_j w_i w_j \sigma_{ij} + \lambda \Big(1 - w_f - \sum_i w_i\Big)\]</span></p>
+<p>donde los dos primeros términos son el rendimiento esperado de la cartera y la doble suma su varianza, porque el activo seguro, de rendimiento <span class="math inline">\(r_f\)</span>, no tiene varianza ni covarianza. <span class="math inline">\(R^e_i\)</span> y <span class="math inline">\(\sigma_{ij}\)</span> son los rendimientos esperados y las covarianzas de los activos con riesgo, <span class="math inline">\(A\)</span> la aversión y <span class="math inline">\(\lambda\)</span> el multiplicador de la restricción de riqueza.</p>
+<p><strong>CPO</strong>: con solución interior y la restricción agotada, la derivada respecto de <span class="math inline">\(w_f\)</span> da <span class="math inline">\(\lambda = r_f\)</span>, y la derivada respecto de cada <span class="math inline">\(w_i\)</span>, con <span class="math inline">\(\sigma_{ic} = \sum_j w_j \sigma_{ij}\)</span> como covarianza del activo <span class="math inline">\(i\)</span> con la cartera, da</p>
+<p><span class="math display">\[R^e_i - r_f = A\,\sigma_{ic}\]</span></p>
+<p>La riqueza invertida vale en el margen lo que rinde el activo seguro, y cada activo con riesgo se mantiene hasta que su prima iguala el coste en utilidad del riesgo que añade a la cartera, medido por su covarianza con ella.</p>
+<p><strong>CSO</strong>: la hessiana respecto de las <span class="math inline">\(w_i\)</span>, la matriz de covarianzas multiplicada por <span class="math inline">\(-A\)</span>, es definida negativa si ningún activo es combinación lineal de los demás, y la restricción es lineal, así que las CPO dan un máximo único.</p>
+<p><strong>Solución</strong>: al despejar las CPO, las posiciones con riesgo resultan proporcionales a <span class="math inline">\(1/A\)</span>, y la aversión las escala sin alterar su composición. Con expectativas homogéneas, todos los inversores mantienen así la cartera tangente <span class="math inline">\(M\)</span> del apartado 2.2.2 y difieren solo en la proporción <span class="math inline">\(w = \sum_i w_i\)</span> que destinan a ella.</p>
+<p><strong>Equilibrio</strong>: como todos los activos deben estar en manos de alguien, la agregación de las demandas individuales exige que esa cartera común sea la <em>cartera de mercado</em>, es decir, la formada por todos los activos arriesgados ponderados por su valor de capitalización. La CML pasa a ser, así, la relación de equilibrio para las carteras eficientes.</p>
+<p>Con la proporción <span class="math inline">\(w\)</span> en <span class="math inline">\(M\)</span>, <span class="math inline">\(\sigma_{ic} = w\,\sigma_{im}\)</span> y la CPO queda <span class="math inline">\(R^e_i - r_f = A\,w\,\sigma_{im}\)</span>. Ponderada con las proporciones de <span class="math inline">\(M\)</span> y sumada, da <span class="math inline">\(R^e_m - r_f = A\,w\,\sigma_m^2\)</span>, de donde sale la misma <span class="math inline">\(w^*\)</span>. El cociente de ambas expresiones es la relación de equilibrio para cualquier activo, la <em>recta del mercado de títulos</em> (<em>Security Market Line</em>, SML):</p>
+<p><span class="math display">\[R^e_i = r_f + \beta_i \, (R^e_m - r_f), \qquad \beta_i = \frac{\sigma_{im}}{\sigma_m^2}\]</span></p>
+<p>donde <span class="math inline">\((R^e_m - r_f)\)</span> es la <em>prima de riesgo del mercado</em> y <span class="math inline">\(\beta_i\)</span> mide la sensibilidad del activo a los movimientos de este. Según el valor de la beta, se distinguen cuatro casos:</p>
+<ul>
+<li><p><em>Réplica</em> (<span class="math inline">\(\beta = 1\)</span>): el título se mueve como el mercado.</p></li>
+<li><p><em>Agresivo</em> (<span class="math inline">\(\beta &gt; 1\)</span>): lo amplifica.</p></li>
+<li><p><em>Defensivo</em> (<span class="math inline">\(0 &lt; \beta &lt; 1\)</span>): lo atenúa.</p></li>
+<li><p><em>Cobertura</em> (<span class="math inline">\(\beta &lt; 0\)</span>): caso infrecuente, el título se mueve en sentido contrario al mercado.</p></li>
+</ul>
+<p>De la SML se siguen dos lecturas:</p>
+<ul>
+<li><p><em>Diferencia con la CML</em>: ambas rectas no deben confundirse. La CML relaciona rendimiento con riesgo total (<span class="math inline">\(\sigma\)</span>) y solo es aplicable a carteras eficientes, que son las únicas situadas sobre ella. La SML, por el contrario, relaciona rendimiento con riesgo sistemático (<span class="math inline">\(\beta\)</span>) y es aplicable a cualquier activo o cartera, eficiente o no<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>, pues en equilibrio todos han de situarse sobre ella.</p></li>
+<li><p><em>Infravaloración y sobrevaloración</em>: la SML proporciona un criterio operativo de selección. Un título situado por encima de la recta ofrece un rendimiento superior al que le corresponde por su beta, por lo que está infravalorado y conviene comprarlo. Uno situado por debajo, en cambio, está sobrevalorado. La distancia vertical a la recta es el <em>alfa de Jensen</em>, <span class="math inline">\(\alpha_i\)</span>, y en equilibrio debería ser nula para todos los activos.</p></li>
+</ul>
+<p><strong>Desarrollo gráfico</strong>: el equilibrio del CAPM se representa en el plano beta-rendimiento esperado (figura <a href="#fig-b236-capm" class="quarto-xref"><span>B23.8</span></a>):</p>
+<ol type="1">
+<li><p><em>SML</em>: representa el rendimiento esperado que el equilibrio asigna a cada nivel de riesgo sistemático. Parte de <span class="math inline">\(r_f\)</span> y pasa por la cartera de mercado, <span class="math inline">\(M\)</span>, con <span class="math inline">\(\beta_m = 1\)</span> y rendimiento <span class="math inline">\(R^e_m\)</span>, de modo que su pendiente es la prima de riesgo del mercado, positiva porque los inversores solo aceptan más riesgo sistemático a cambio de más rendimiento.</p></li>
+<li><p><em>Títulos fuera de la recta</em>: el título <span class="math inline">\(i\)</span>, por encima de la SML (<span class="math inline">\(\alpha_i &gt; 0\)</span>), está infravalorado, y el <span class="math inline">\(j\)</span>, por debajo (<span class="math inline">\(\alpha_j &lt; 0\)</span>), sobrevalorado.</p></li>
+</ol>
+<div id="fig-b236-capm" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b236-capm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b236_CAPM.html" style="height:540px" loading="lazy" title="fig-b236-capm"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b236-capm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B23.8: CAPM. La recta del mercado de títulos (SML) es la relación lineal entre rentabilidad esperada y beta. El activo <span class="math inline">\(i\)</span> (<span class="math inline">\(\alpha_i &gt; 0\)</span>) está infravalorado y el <span class="math inline">\(j\)</span> (<span class="math inline">\(\alpha_j &lt; 0\)</span>), sobrevalorado.
+</figcaption>
+</figure>
+</div>
+<p><strong>Estática comparativa</strong>: en el agregado, el vaciado del mercado fija <span class="math inline">\(w\)</span> (con el activo sin riesgo en oferta neta nula, <span class="math inline">\(w = 1\)</span>). La pendiente de la SML es entonces la prima de riesgo del mercado, <span class="math inline">\(R^e_m - r_f = A\,w\,\sigma_m^2\)</span>, y su ordenada en el origen, <span class="math inline">\(r_f\)</span>:</p>
+<ul>
+<li><p><em>Mayor aversión al riesgo o mayor varianza del mercado</em> (<span class="math inline">\(A\)</span> o <span class="math inline">\(\sigma_m^2\)</span>): la prima sube y la SML gira hacia arriba sobre <span class="math inline">\(r_f\)</span>. El rendimiento exigido aumenta para todo activo con <span class="math inline">\(\beta_i &gt; 0\)</span>, tanto más cuanto mayor es su beta, y su precio cae.</p></li>
+<li><p><em>Subida del tipo sin riesgo con la prima constante</em> (<span class="math inline">\(r_f\)</span>): la SML se desplaza en paralelo hacia arriba y el rendimiento exigido sube lo mismo para todos los activos.</p></li>
+</ul>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo: rendimiento exigido con el CAPM y precio de una acción">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo: rendimiento exigido con el CAPM y precio de una acción
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>El tipo sin riesgo es del 3&nbsp;%, el rendimiento esperado del mercado, del 8&nbsp;%, y su desviación típica, del 20&nbsp;%. Una acción tiene una covarianza con el mercado de 0,048 y pagará el próximo año un dividendo de 2 €, que después crecerá al 4&nbsp;% anual.</p>
+<ul>
+<li><p><em>Beta y rendimiento exigido</em>: <span class="math inline">\(\beta_i = 0{,}048/0{,}2^2 = 1{,}2\)</span>, un título agresivo, y la SML da <span class="math inline">\(R^e_i = 3 + 1{,}2 \cdot (8 - 3) = 9\)</span>&nbsp;%.</p></li>
+<li><p><em>Precio teórico</em>: con ese rendimiento como <span class="math inline">\(k_p\)</span> en el modelo de Gordon y Shapiro (apartado 1.2.2), <span class="math inline">\(P_0 = \text{DIV}_1/(k_p - g_D) = 2/(0{,}09 - 0{,}04) = 40\)</span> €.</p></li>
+<li><p><em>Selección</em>: si la acción cotiza a 33,33 €, su rendimiento esperado es <span class="math inline">\(2/33{,}33 + 0{,}04 = 10\)</span>&nbsp;%, por encima de la SML. Su alfa es de un punto, por lo que está infravalorada y conviene comprarla.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="extensiones-del-capm-black-1972-merton-1973-breeden-1979" class="level4">
+<h4 class="anchored" data-anchor-id="extensiones-del-capm-black-1972-merton-1973-breeden-1979">3.1.3. Extensiones del CAPM (Black, 1972; Merton, 1973; Breeden, 1979)</h4>
+<p>Las extensiones del CAPM relajan dos de sus supuestos, el endeudamiento ilimitado al tipo sin riesgo y el horizonte de un solo periodo.</p>
+<p><strong>CAPM de beta cero</strong> (Black, 1972): si no existe un activo sin riesgo o no se puede tomar prestado a ese tipo, la SML se mantiene sustituyendo <span class="math inline">\(r_f\)</span> por el rendimiento esperado de la <em>cartera de beta cero</em>, <span class="math inline">\(R^e_z\)</span>, la de mínima varianza entre las no correlacionadas con la cartera de mercado:</p>
+<p><span class="math display">\[R^e_i = R^e_z + \beta_i\,(R^e_m - R^e_z), \qquad R^e_z &gt; r_f\]</span></p>
+<p>Como <span class="math inline">\(R^e_z\)</span> supera al tipo sin riesgo, la SML parte de una ordenada mayor y es más plana, como habían encontrado Black, Jensen y Scholes (1972) al contrastar el modelo (apartado 3.1.4).</p>
+<p><strong>CAPM intertemporal</strong> (ICAPM; Merton, 1973): en tiempo continuo, los inversores temen también que empeoren las oportunidades de inversión futuras, p.&nbsp;ej. que caigan los tipos de interés, y demandan activos que los cubran de ese riesgo<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>. El rendimiento esperado depende entonces, además de la beta de mercado, de las betas respecto a las variables de estado que describen esas oportunidades:</p>
+<p><span class="math display">\[R^e_i - r_f = \beta_{im}\,(R^e_m - r_f) + \sum_{j} \beta_{ij}\,(R^e_j - r_f)\]</span></p>
+<p>donde <span class="math inline">\(R^e_j\)</span> es el rendimiento esperado de la cartera que mejor cubre la variable de estado <span class="math inline">\(j\)</span>, de modo que el modelo es multifactorial.</p>
+<p><strong>CAPM de consumo</strong> (CCAPM; Breeden, 1979): Douglas Breeden reduce las betas de Merton a una sola, medida respecto al consumo agregado. Un activo que rinde poco cuando el consumo cae, justo cuando más se valora la riqueza, exige una prima mayor, de modo que el riesgo relevante es la <em>beta de consumo</em>, <span class="math inline">\(\beta_{iC} = \sigma_{iC}/\sigma_C^2\)</span>, con <span class="math inline">\(\sigma_{iC}\)</span> la covarianza del rendimiento del activo con el crecimiento del consumo, y no la beta de mercado.</p>
+<p>El ICAPM da fundamento de equilibrio a los modelos multifactoriales, que la APT (apartado 3.2) justifica, en cambio, solo por la ausencia de arbitraje. El respaldo empírico de ambas versiones es, no obstante, limitado. En particular, con una aversión al riesgo razonable, la escasa covarianza del consumo con la bolsa no basta para explicar la elevada prima de las acciones, el llamado <em>equity premium puzzle</em> (Mehra y Prescott, 1985).</p>
+</section>
+<section id="conclusiones-7" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones-7">3.1.4. Conclusiones</h4>
+<p><strong>Aspectos positivos</strong>: es un modelo operativo, de amplia influencia teórica y práctica. Su principal aplicación es la estimación del coste de los fondos propios en la valoración de empresas y en el cálculo del coste medio ponderado del capital, además de proporcionar la referencia para evaluar la gestión de carteras.</p>
+<p><strong>Limitaciones</strong>: el modelo presenta tres debilidades principales:</p>
+<ul>
+<li><p><em>Supuestos</em>: son poco realistas, señaladamente las expectativas homogéneas y el endeudamiento ilimitado al tipo sin riesgo.</p></li>
+<li><p><em>Crítica de Roll</em> (1977): la verdadera cartera de mercado debería comprender todos los activos con valor, incluidos el capital humano y los bienes no negociados, de modo que es inobservable. En consecuencia, el modelo no es estrictamente contrastable, pues lo que se contrasta al emplear un índice bursátil es la eficiencia media-varianza de ese índice y no la validez del CAPM.</p></li>
+<li><p><em>Evidencia empírica</em>: la relación entre beta y rendimiento es más débil y plana de lo que el modelo predice, y existen variables ajenas al modelo, como el tamaño y la ratio valor contable sobre valor de mercado, con capacidad explicativa adicional.</p></li>
+</ul>
+</section>
+</section>
+<section id="apt-ross-1976" class="level3">
+<h3 class="anchored" data-anchor-id="apt-ross-1976">3.2. APT (Ross, 1976)</h3>
+<p><strong>Origen</strong>: Stephen Ross propone la <em>Arbitrage Pricing Theory</em> como alternativa al CAPM, fundada en el principio de <em>ausencia de arbitraje</em> en lugar de en el equilibrio de la utilidad esperada.</p>
+<p><strong>Idea</strong>: la rentabilidad de un activo depende de su sensibilidad a varios factores de riesgo sistemático, y no a uno solo. Si no existen oportunidades de arbitraje, la prima esperada ha de ser una combinación lineal de esas sensibilidades.</p>
+<section id="supuestos-4" class="level4">
+<h4 class="anchored" data-anchor-id="supuestos-4">3.2.1. Supuestos</h4>
+<p><strong>Entorno</strong>: los rendimientos se generan mediante un modelo factorial lineal, no existen oportunidades de arbitraje y los mercados son competitivos. El número de activos es suficientemente elevado como para diversificar el riesgo idiosincrásico.</p>
+</section>
+<section id="modelo-4" class="level4">
+<h4 class="anchored" data-anchor-id="modelo-4">3.2.2. Modelo</h4>
+<p><strong>Planteamiento</strong>: el punto de partida es una hipótesis estadística sobre cómo se generan los rendimientos (<em>proceso generador de rendimientos</em>), no sobre las preferencias de los inversores:</p>
+<p><span class="math display">\[R_i = R^e_i + \sum_{j=1}^{k} \beta_{ij} \, F_j + \varepsilon_i\]</span></p>
+<p>donde</p>
+<ul>
+<li><p><span class="math inline">\(R^e_i\)</span> es el rendimiento esperado del título, lo que el mercado anticipa. Los términos restantes recogen las <em>sorpresas</em> que lo desvían de esa expectativa;</p></li>
+<li><p><span class="math inline">\(F_j\)</span> son los <span class="math inline">\(k\)</span> factores de riesgo sistemático, comunes a todos los títulos, definidos como sorpresas y, por tanto, de media nula (p.&nbsp;ej. una inflación superior a la anticipada, no la inflación en sí);</p></li>
+<li><p><span class="math inline">\(\beta_{ij}\)</span> es la sensibilidad (carga factorial) del título <span class="math inline">\(i\)</span> al factor <span class="math inline">\(j\)</span>: cuánto responde su rendimiento a una sorpresa unitaria en dicho factor;</p></li>
+<li><p><span class="math inline">\(\varepsilon_i\)</span> es la perturbación específica del título, de media nula e independiente entre títulos, que, a diferencia de los factores, es diversificable.</p></li>
+</ul>
+<p>La estructura generaliza el modelo de mercado de Sharpe, ya que, en lugar de una única fuente común de covariación (el mercado), admite <span class="math inline">\(k\)</span> fuentes.</p>
+<p>La APT no necesita equilibrio de utilidad, sino solo que se cumpla la <em>condición de no arbitraje</em>. Intuitivamente, esto exige que no existan “máquinas de hacer dinero”, en el sentido de oportunidades de beneficio seguro (rendimiento positivo con riesgo nulo) sin desembolso alguno (inversión neta nula).</p>
+<p>En una economía con muchos activos, un inversor puede construir <em>carteras de arbitraje</em>, es decir, combinaciones con <em>inversión neta nula</em> (las compras se financian con ventas en descubierto) y <em>riesgo nulo</em>. El riesgo factorial se anula eligiendo las ponderaciones para que se cancelen las sensibilidades a todos los factores, y el específico desaparece por diversificación. <em>A priori</em>, nada impide que una de estas carteras ofrezca un rendimiento esperado distinto de cero.</p>
+<p>La condición establece, sin embargo, que una cartera que no cuesta nada y no arriesga nada no puede rendir nada. Si su rendimiento esperado no fuese nulo, los inversores la replicarían sin límite (en un sentido o en el contrario) y los precios se ajustarían de inmediato hasta eliminarlo.</p>
+<p><strong>Solución</strong>: imponer esta condición sobre todos los activos obliga a que los rendimientos esperados guarden una relación lineal con las sensibilidades, exacta para las carteras bien diversificadas y aproximada para los títulos individuales. Sin embargo, para la mayoría de ellos, los errores de valoración se hacen despreciables cuando el número de activos es grande. De ahí resulta la ecuación fundamental de la APT, la <em>relación de valoración</em>,</p>
+<p><span class="math display">\[R^e_i = r_f + \sum_{j=1}^{k} \lambda_j \, \beta_{ij}\]</span></p>
+<p>donde</p>
+<ul>
+<li><p><span class="math inline">\(r_f\)</span> es el rendimiento del activo sin riesgo, que corresponde a una cartera con todas las sensibilidades nulas;</p></li>
+<li><p><span class="math inline">\(\lambda_j\)</span> es la <em>prima de riesgo del factor</em> <span class="math inline">\(j\)</span>, es decir, el rendimiento adicional que el mercado exige por unidad de sensibilidad a ese factor, común a todos los títulos;</p></li>
+<li><p><span class="math inline">\(\beta_{ij}\)</span> es la cantidad de exposición del título a cada factor.</p></li>
+</ul>
+<p>La estructura es, así, la misma que la de la SML (rendimiento = tipo sin riesgo + precio del riesgo × cantidad de riesgo), pero con <span class="math inline">\(k\)</span> precios y <span class="math inline">\(k\)</span> cantidades. El CAPM es, por tanto, el caso particular con un único factor, el mercado.</p>
+<p>La diferencia de fundamento es, no obstante, profunda. La SML se deriva del equilibrio (todos los inversores optimizando y los mercados vaciándose), mientras que la APT solo exige que unos pocos arbitrajistas eliminen las oportunidades de beneficio sin riesgo, condición mucho más débil y verosímil. Por eso la APT no resuelve el programa de ningún inversor y carece de CPO y CSO.</p>
+<p><strong>Extensiones</strong>: como la teoría no dice cuáles son los factores, su aplicación ha seguido dos vías:</p>
+<ul>
+<li><p><em>Factores macroeconómicos</em>: Chen, Roll y Ross (1986) emplearon, entre otros, la producción industrial, la inflación no anticipada, la estructura temporal de tipos y las primas de riesgo crediticio.</p></li>
+<li><p><em>Factores empíricos</em>: construidos a partir de características de las empresas, culminan en los modelos de Fama y French de tres factores (1993), que añaden al mercado el tamaño y el valor, y de cinco factores (2015), que incorporan la rentabilidad y la inversión. A ellos suele sumarse el momento (Carhart, 1997).</p></li>
+</ul>
+</section>
+<section id="conclusiones-8" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones-8">3.2.3. Conclusiones</h4>
+<p><strong>Aspectos positivos</strong>: generaliza el CAPM a múltiples fuentes de riesgo, descansa en un principio más robusto que el equilibrio de utilidad, exige supuestos considerablemente menos restrictivos y no requiere identificar la cartera de mercado, con lo que sortea la crítica de Roll.</p>
+<p><strong>Limitaciones</strong>: la teoría no especifica cuáles ni cuántos son los factores, que deben identificarse empíricamente, lo que le resta contenido predictivo y la expone al riesgo de sobreajuste. De hecho, la proliferación de factores propuestos, más de trescientos, ha dado lugar a lo que Cochrane (2011) denominó el <em>zoo de factores</em>, y buena parte de ellos no supera los contrastes fuera de muestra.</p>
+</section>
+</section>
+<section id="medidas-de-rendimiento-ajustado-al-riesgo" class="level3">
+<h3 class="anchored" data-anchor-id="medidas-de-rendimiento-ajustado-al-riesgo">3.3. Medidas de rendimiento ajustado al riesgo</h3>
+<p>Una vez construida la cartera con base en la teoría de la selección y la valoración de activos, su gestión puede evaluarse mediante medidas de rentabilidad ajustada al riesgo.</p>
+<p><strong>Definición</strong>: una medida de rendimiento ajustado al riesgo relaciona la prima que obtiene una cartera, sobre el activo sin riesgo o sobre su índice de referencia, con el riesgo asumido para obtenerla. Permite así comparar carteras y gestores que asumen riesgos distintos.</p>
+<p><strong>Cálculo</strong>: las cuatro medidas habituales difieren en la noción de riesgo que emplean:</p>
+<ul>
+<li><p><em>Ratio de Sharpe</em>: <span class="math inline">\(S_c = (R^e_c - r_f)/\sigma_c\)</span>, la prima obtenida por unidad de riesgo total.</p></li>
+<li><p><em>Ratio de Treynor</em>: <span class="math inline">\(T_c = (R^e_c - r_f)/\beta_c\)</span>, la prima por unidad de riesgo sistemático.</p></li>
+<li><p><em>Alfa de Jensen</em>: <span class="math inline">\(\alpha_c = R^e_c - [r_f + \beta_c(R^e_m - r_f)]\)</span>, el rendimiento obtenido por encima del que corresponde a la cartera según el CAPM.</p></li>
+<li><p><em>Ratio de información</em>: <span class="math inline">\(\text{IR} = (R^e_c - R^e_b)/\sigma_{(R_c - R_b)}\)</span>, el exceso de rendimiento sobre el índice de referencia, de rendimiento <span class="math inline">\(R_b\)</span>, por unidad de riesgo de seguimiento (<em>tracking error</em>).</p></li>
+</ul>
+<p><strong>Interpretación</strong>: cuanto mayor es la medida, mejor es la gestión, pero cada una conviene a un tipo de cartera:</p>
+<ul>
+<li><p><em>Ratio de Sharpe</em>: resulta apropiada para evaluar carteras que constituyen la inversión completa del sujeto, porque entonces importa su riesgo total.</p></li>
+<li><p><em>Ratio de Treynor</em>: conviene cuando la cartera es solo una parte de un conjunto ya diversificado, pues entonces el riesgo específico resulta irrelevante.</p></li>
+<li><p><em>Alfa de Jensen</em>: si el CAPM es correcto, el exceso refleja la aportación atribuible a la habilidad del gestor, y un alfa positivo y estadísticamente significativo señala una gestión superior.</p></li>
+<li><p><em>Ratio de información</em>: se emplea habitualmente en la gestión activa referenciada a un índice, porque mide lo que el gestor añade al índice por unidad de desviación respecto de él.</p></li>
+</ul>
+<p>Medida con estos indicadores, la evidencia sobre la gestión activa es desfavorable de forma persistente. Así, una proporción muy elevada de los fondos de gestión activa no supera a su índice de referencia una vez descontadas las comisiones. Además, los que lo consiguen en un periodo rara vez repiten en el siguiente, lo que sugiere que el resultado responde al azar antes que a la habilidad. Este hallazgo, coherente con la hipótesis de eficiencia, constituye el fundamento empírico de la expansión de la gestión pasiva examinada en el apartado 1.1.4.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: resumen en una cifra el rendimiento y el riesgo de una cartera, se calculan con datos públicos y permiten contrastar la gestión activa con la pasiva.</p></li>
+<li><p><em>Limitaciones</em>: la ratio de Treynor y el alfa de Jensen dependen del CAPM y del índice elegido como cartera de mercado, de modo que les alcanza la crítica de Roll. Por su parte, la ratio de Sharpe mide el riesgo con la desviación típica, que no recoge la asimetría ni las colas anchas de los rendimientos (apartado 2.1.3). Además, todas se calculan con rendimientos históricos, sujetos a error de estimación.</p></li>
+</ul>
+</section>
+<section id="conclusiones-9" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-9">3.4. Conclusiones</h3>
+<p>Los modelos de valoración completan la teoría de carteras al pasar de lo normativo a lo positivo, ya que determinan el rendimiento que cada activo debe ofrecer en equilibrio en función de su riesgo sistemático. La evidencia empírica y la crítica de Roll debilitan, sin embargo, el CAPM, y los modelos multifactoriales, como la APT, resuelven parte del problema a costa de perder contenido predictivo.</p>
+<p>Pese a ello, el CAPM sigue siendo el instrumento dominante en la valoración de empresas y la base de la ratio de Treynor y del alfa de Jensen (apartado 3.3). En la gestión de carteras y en la evaluación de resultados ganan peso, en cambio, los modelos multifactoriales.</p>
+</section>
+</section>
+<section id="conclusiones-10" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones-10">Conclusiones</h2>
+<p>La hipótesis de los mercados eficientes (Fama, 1970) es la referencia del tema. Si el precio incorpora la información disponible, ni el análisis fundamental, que estima el valor intrínseco, ni el técnico, que busca pautas en la serie de precios, permiten obtener rendimientos extraordinarios de forma sistemática. De ahí procede el argumento de coste a favor de la gestión pasiva. Por su parte, la teoría de carteras traslada la atención del título aislado a su covarianza con el resto. En ella, Markowitz fundamenta la diversificación, Tobin añade el activo sin riesgo y el teorema de la separación y Sharpe reduce la covariación a un índice. Sobre esa base, el CAPM concluye que solo se remunera el riesgo sistemático, medido por la beta, y la APT lo generaliza a varios factores sin exigir la cartera de mercado, a costa de no decir cuáles son.</p>
+<p>La teoría de carteras aplica la utilidad esperada, cuya curvatura determina la disposición a cambiar rentabilidad por riesgo (tema <a href="../chapters/a10-riesgo-incertidumbre.html">A10</a>), y el modelo de Tobin (1958) fundamenta también la demanda especulativa de dinero como parte de una cartera diversificada (tema <a href="../chapters/a35-demanda-dinero.html">A35</a>). En la empresa, el CAPM estima el coste de los fondos propios con el que se descuentan los proyectos (tema <a href="../chapters/b03-financiacion.html">B03</a>). Por su parte, la hipótesis de eficiencia se contrasta también en el mercado de divisas, donde el <em>puzzle</em> de Fama la pone en duda (tema <a href="../chapters/b13-mercado-divisas.html">B13</a>), y el descuento de flujos que valora las acciones valora igualmente los bonos (tema <a href="../chapters/b24-renta-fija.html">B24</a>).</p>
+<p>La proliferación de factores (el <em>zoo de factores</em> del apartado 3.2.3) ha puesto en duda la validez de muchos de ellos. Harvey, Liu y Zhu (2016) sostienen que, corregido el sesgo de contrastar muchas hipótesis a la vez, buena parte de los factores propuestos son falsos descubrimientos, por lo que proponen exigir un estadístico <em>t</em> superior a tres. Sigue abierto, además, si esas primas remuneran riesgos omitidos o reflejan sesgos de los inversores y límites al arbitraje. En cambio, la expansión de la gestión pasiva tiene una explicación clara en la aritmética de Sharpe, aunque encuentra su límite en la paradoja de Grossman y Stiglitz (apartado 1.1.4). Queda por saber, sin embargo, a partir de qué peso de los fondos indexados los precios pierden contenido informativo.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>La innovación financiera comienza ya en la Baja Edad Media con la letra de cambio y continúa, siglos después, con la sociedad por acciones. Un instrumento financiero es un documento real o virtual (contrato) que da lugar a un activo financiero para una parte y, simultáneamente, a un pasivo financiero o a un instrumento de patrimonio para la otra (Norma Internacional de Contabilidad 32).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>En una ampliación de capital, el valor teórico del derecho de suscripción preferente es <span class="math inline">\(d = (P_0 - P_{\text{em}})\,\dfrac{n_n}{n_a+n_n}\)</span>, donde <span class="math inline">\(P_0\)</span> es la cotización previa a la ampliación, <span class="math inline">\(P_{\text{em}}\)</span> el precio de emisión de las nuevas acciones, <span class="math inline">\(n_a\)</span> el número de acciones antiguas y <span class="math inline">\(n_n\)</span> el de nuevas.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><em>Free float</em>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Un PER alto puede reflejar también un BPA transitoriamente bajo. Si la caída del BPA no altera las expectativas de beneficios futuros, el precio apenas varía y el PER sube en proporción inversa.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>EV (<em>enterprise value</em>): valor de la empresa, igual a la capitalización bursátil más la deuda financiera neta y las participaciones no dominantes, menos los activos no operativos (tema <a href="../chapters/b04-crecimiento-ma.html">B04</a>, apartado 3.3.4).<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>La variable exógena del modelo de la diagonal es el valor del índice, <span class="math inline">\(I\)</span>, y la del modelo de mercado, su rendimiento, <span class="math inline">\(R_m\)</span>. La diferencia es relevante porque, aunque ambos pueden estimarse por MCO con series históricas, solo en el segundo la pendiente es la beta que emplea el CAPM.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Cuando una cartera es eficiente (<span class="math inline">\(\rho_{c,m} = 1\)</span>), <span class="math inline">\(\beta_c = \sigma_c/\sigma_m\)</span>, de modo que la CML y la SML le asignan el mismo rendimiento esperado.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Merton (1973) designa aquí el artículo publicado en <em>Econometrica</em>, distinto del que su autor dedicó el mismo año a la valoración de opciones (tema <a href="../chapters/b25-derivados.html">B25</a>).<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script>
+// Gráficos del libro (iframes .graph-frame).
+// 1) Escala única: los grosores, los discontinuos y el tamaño de los puntos de cada figura están fijados para verla a 680 px
+//    de ancho. Los marcos anchos (figuras de varios paneles) se estiran hasta la columna y las pantallas estrechas las encogen; aquí se
+//    compensa para que en pantalla las curvas midan siempre lo mismo (2,2 px las económicas, 1,4 las auxiliares, 1,2 ejes y flechas,
+//    0,8 las guías) y los puntos tengan el mismo tamaño en todas las figuras, sea cual sea el ancho al que se muestren.
+// 2) Ajusta la altura de cada iframe al elemento dibujado más bajo (curvas, ejes, etiquetas KaTeX).
+(function () {
+  var REF = 680;
+  function norm(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var s = d.querySelector("svg"); if (!s) return;
+      var w = s.getBoundingClientRect().width; if (!(w > 0)) return;
+      var r = REF / w;
+      var els = s.querySelectorAll("path, line, polyline, polygon, rect, circle, ellipse");
+      els.forEach(function (el) {
+        var cs = d.defaultView.getComputedStyle(el);
+        if (el.dataset.sw0 === undefined) {
+          el.dataset.sw0 = parseFloat(cs.strokeWidth) || 0;
+          el.dataset.da0 = (cs.strokeDasharray && cs.strokeDasharray !== "none") ? cs.strokeDasharray : "";
+          if (el.tagName.toLowerCase() === "circle" && el.r && el.r.baseVal.value > 0 && el.r.baseVal.value <= 9) {
+            el.dataset.r0 = el.r.baseVal.value;
+          }
+        }
+        var sw0 = +el.dataset.sw0;
+        if (sw0 > 0) el.style.strokeWidth = (sw0 * r).toFixed(3) + "px";
+        if (el.dataset.da0) {
+          el.style.strokeDasharray = el.dataset.da0.split(/[ ,]+/).map(function (v) {
+            return (parseFloat(v) * r).toFixed(3) + "px";
+          }).join(" ");
+        }
+        if (el.dataset.r0) el.setAttribute("r", (+el.dataset.r0 * r).toFixed(3));
+      });
+    } catch (e) {}
+  }
+  function fit(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var sy = d.defaultView.scrollY || 0, bottom = 0;
+      var els = d.querySelectorAll("svg path, svg line, svg circle, svg polyline, svg polygon, svg rect, svg text, svg ellipse, .katex-label");
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width > 0 || r.height > 0) bottom = Math.max(bottom, r.bottom + sy);
+      });
+      if (!(bottom > 20)) {
+        var svg = d.querySelector("svg"); var vb = svg && svg.getAttribute("viewBox");
+        if (vb) { var p = vb.split(/\s+/); bottom = f.clientWidth * (+p[3]) / (+p[2]); }
+      }
+      if (bottom > 20) f.style.height = Math.ceil(bottom + 10) + "px";
+    } catch (e) {}
+  }
+  // 3) Un gráfico de varios paneles no se amplía por encima del 110 % de su ancho de dibujo (viewBox). Los dibujados a
+  //    680 px quedan en 748 px como máximo, con rótulos de tamaño normal; los de 900 o 960 px, en el tope de 900 px del CSS.
+  function cap(f) {
+    try {
+      if (!f.parentElement || !f.parentElement.classList.contains("wide")) return;
+      var s = f.contentDocument && f.contentDocument.querySelector("svg"); if (!s) return;
+      var vb = s.viewBox && s.viewBox.baseVal; if (!vb || !(vb.width > 0)) return;
+      var m = Math.min(900, Math.round(vb.width * 1.1)) + "px";
+      if (f.style.maxWidth !== m) f.style.maxWidth = m;
+    } catch (e) {}
+  }
+  function both(f) { cap(f); norm(f); fit(f); }
+  function all() { document.querySelectorAll(".graph-frame iframe").forEach(both); }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".graph-frame iframe").forEach(function (f) {
+      f.addEventListener("load", function () { both(f); setTimeout(function () { both(f); }, 700); });
+    });
+  });
+  window.addEventListener("load", function () { setTimeout(all, 1200); });
+  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(all, 150); });
+})();
+</script>
+<style>
+.graph-frame { margin: 1.25rem 0 0.25rem; }
+.quarto-figure .graph-frame + * { margin-top: 0; }
+</style>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/librovol1\.arturolorenzo\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/b04-crecimiento-ma.html" class="pagination-link" aria-label="B4. Crecimiento empresarial">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">B4. Crecimiento empresarial</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/b24-renta-fija.html" class="pagination-link" aria-label="B24. Instrumentos de renta fija">
+        <span class="nav-page-text"><span class="chapter-title">B24. Instrumentos de renta fija</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

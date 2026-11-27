@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+  .katex-label .katex { font-size: 1em; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="122" y1="460" x2="584" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="122" y1="460" x2="122" y2="40" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="d-pi1" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line id="d-pi2" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line id="d-pi3" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line id="d-u1" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+
+    <line id="lrpc" stroke="#222" stroke-width="2.2"/>
+
+    <path id="cp0" fill="none" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="cp1" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="cp2" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <path id="mv1" fill="none" stroke="#888" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <line id="sh1" stroke="#555" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="sh2" stroke="#555" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <line id="dy1" stroke="#5a5a5a" stroke-width="1.2" stroke-dasharray="5 3" marker-end="url(#arrow)"/>
+    <line id="dy2" stroke="#5a5a5a" stroke-width="1.2" stroke-dasharray="5 3" marker-end="url(#arrow)"/>
+
+    <g id="ticks"></g>
+    <circle id="pt0" r="5" fill="#000"/>
+    <circle id="pt1" r="5" fill="#000"/>
+    <circle id="pt2" r="5" fill="#000"/>
+    <circle id="pt3" r="5" fill="#000"/>
+  </svg>
+</div>
+
+<script>
+
+
+
+
+const ubar = 6, K = 10/3;
+const cp = (u, pe) => pe + K*(14/(u + 1) - 2);
+const u1 = 3;
+const pe = [0, 5, 10];
+const pi = [cp(u1, pe[0]), cp(u1, pe[1]), cp(u1, pe[2])];
+
+
+const VBW = 680, VBH = 520;
+const kx = 40, ky = 21, piTop = 18.2;
+const sx = u => 122 + u*kx;
+const sy = p => 460 - p*ky;
+const $ = id => document.getElementById(id);
+function setL(id, x1, y1, x2, y2) { const e = $(id); e.setAttribute('x1', x1); e.setAttribute('y1', y1); e.setAttribute('x2', x2); e.setAttribute('y2', y2); }
+const uAt = (p, e) => 14/((p - e)/K + 2) - 1;
+function curve(id, e, uB) {
+  const uA = uAt(piTop, e), p = [];
+  for (let i = 0; i <= 240; i++) { const u = uA + (i/240)*(uB - uA); p.push(sx(u).toFixed(1) + ',' + sy(cp(u, e)).toFixed(1)); }
+  $(id).setAttribute('d', 'M' + p.join(' L'));
+}
+const uEnd = [7.0, 9.2, 9.2];
+curve('cp0', pe[0], uEnd[0]); curve('cp1', pe[1], uEnd[1]); curve('cp2', pe[2], uEnd[2]);
+setL('lrpc', sx(ubar), sy(0), sx(ubar), sy(17.6));
+
+function normal(u, e) {
+  const d = -K*14/((u + 1)*(u + 1));
+  const tx = kx, ty = -d*ky;
+  const n = Math.hypot(tx, ty);
+  return [ty/n, -tx/n];
+}
+function shiftArrow(id, uA, e0, e1) {
+  const x0 = sx(uA), y0 = sy(cp(uA, e0));
+  let dir = normal(uA, e0), hit = null;
+  for (let it = 0; it < 4; it++) {
+    let t = 0;
+    for (; t < 400; t += 0.25) { const x = x0 + dir[0]*t, y = y0 + dir[1]*t; const u = (x - 122)/kx; if (sy(cp(u, e1)) >= y) break; }
+    hit = [x0 + dir[0]*t, y0 + dir[1]*t, t];
+    const n0 = normal(uA, e0), n1 = normal((hit[0] - 122)/kx, e1);
+    const m = [n0[0] + n1[0], n0[1] + n1[1]], mn = Math.hypot(m[0], m[1]);
+    dir = [m[0]/mn, m[1]/mn];
+  }
+  const L = hit[2];
+  setL(id, x0 + dir[0]*6, y0 + dir[1]*6, x0 + dir[0]*(L - 6), y0 + dir[1]*(L - 6));
+  return {x0, y0, x1: x0 + dir[0]*L, y1: y0 + dir[1]*L, dir};
+}
+const A1 = shiftArrow('sh1', 4.8, pe[0], pe[1]);
+const A2 = shiftArrow('sh2', 8.1, pe[1], pe[2]);
+
+function along(id, e, uA, uB) {
+  const p = [];
+  for (let i = 0; i <= 60; i++) { const u = uA + (i/60)*(uB - uA); const n = normal(u, e); p.push((sx(u) - n[0]*10).toFixed(1) + ',' + (sy(cp(u, e)) - n[1]*10).toFixed(1)); }
+  $(id).setAttribute('d', 'M' + p.join(' L'));
+}
+along('mv1', pe[0], 5.5, 3.5);
+
+setL('d-pi1', sx(0), sy(pi[0]), sx(u1), sy(pi[0]));
+setL('d-pi2', sx(0), sy(pi[1]), sx(u1), sy(pi[1]));
+setL('d-pi3', sx(0), sy(pi[2]), sx(u1), sy(pi[2]));
+setL('d-u1', sx(u1), sy(pi[0]), sx(u1), sy(0));
+
+setL('dy1', sx(u1) - 12, sy(pi[0]) - 8, sx(u1) - 12, sy(pi[1]) + 8);
+setL('dy2', sx(u1) - 12, sy(pi[1]) - 8, sx(u1) - 12, sy(pi[2]) + 8);
+
+const tg = $('ticks');
+function tick(x1, y1, x2, y2) { const t = document.createElementNS('http://www.w3.org/2000/svg', 'line'); t.setAttribute('x1', x1); t.setAttribute('y1', y1); t.setAttribute('x2', x2); t.setAttribute('y2', y2); t.setAttribute('stroke', 'black'); t.setAttribute('stroke-width', '1'); tg.appendChild(t); }
+pi.forEach(p => tick(118, sy(p), 122, sy(p)));
+tick(sx(u1), 460, sx(u1), 464); tick(sx(ubar), 460, sx(ubar), 464);
+
+function pt(id, u, p) { $(id).setAttribute('cx', sx(u)); $(id).setAttribute('cy', sy(p)); }
+pt('pt0', ubar, 0); pt('pt1', u1, pi[0]); pt('pt2', u1, pi[1]); pt('pt3', u1, pi[2]);
+
+
+const cont = document.querySelector('.graph-container');
+function put(id, tex, x, y, o = {}) {
+  const e = document.createElement('div');
+  e.className = 'katex-label'; e.id = id;
+  katex.render(tex, e, {throwOnError: false});
+  e.style.left = (x/VBW*100).toFixed(2) + '%';
+  e.style.top = (y/VBH*100).toFixed(2) + '%';
+  e.style.color = o.c || 'black';
+  if (o.s) e.style.fontSize = o.s + 'px';
+  const tx = {l: '0', c: '-50%', r: '-100%'}[o.ha || 'l'], ty = {t: '0', m: '-50%', b: '-100%'}[o.va || 't'];
+  e.style.transform = `translate(${tx},${ty})`;
+  if (o.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  cont.appendChild(e);
+}
+const C = ['#378ADD', '#534AB7', '#1D9E75'];
+put('lbl-pi', '\\pi', 112, 36, {ha: 'r', s: 17});
+put('lbl-u', 'u', 588, 468, {s: 17});
+put('lbl-o', 'O', 114, 468, {ha: 'r'});
+put('lbl-pi1', '\\pi = 5\\,\\%', 114, sy(pi[0]), {ha: 'r', va: 'm', s: 15});
+put('lbl-pi2', '\\pi = 10\\,\\%', 114, sy(pi[1]), {ha: 'r', va: 'm', s: 15});
+put('lbl-pi3', '\\pi = 15\\,\\%', 114, sy(pi[2]), {ha: 'r', va: 'm', s: 15});
+put('lbl-u1', 'u_1', sx(u1), 468, {ha: 'c'});
+put('lbl-ubar', '\\bar{u}', sx(ubar), 468, {ha: 'c'});
+put('lbl-lrpc', '\\text{CP}_{\\text{LP}}', sx(ubar), sy(17.6) - 6, {ha: 'c', va: 'b', c: '#222'});
+put('lbl-cp0', '\\text{CP}_{\\text{CP},0}\\,(\\pi^e = 0\\,\\%)', sx(uEnd[0]) + 6, sy(cp(uEnd[0], pe[0])), {va: 'm', c: C[0], s: 15});
+put('lbl-cp1', '\\text{CP}_{\\text{CP},1}\\,(\\pi^e = 5\\,\\%)', sx(uEnd[1]) + 6, sy(cp(uEnd[1], pe[1])), {va: 'm', c: C[1], s: 15});
+put('lbl-cp2', '\\text{CP}_{\\text{CP},2}\\,(\\pi^e = 10\\,\\%)', sx(uEnd[2]) + 6, sy(cp(uEnd[2], pe[2])), {va: 'm', c: C[2], s: 15});
+put('lbl-sh1', '\\Delta \\pi^e > 0', (A1.x0 + A1.x1)/2 - 8, sy(3.6), {ha: 'r', va: 'm', c: '#555', s: 14});
+put('lbl-sh2', '\\Delta \\pi^e > 0', Math.max(A2.x0, A2.x1) + 8, (A2.y0 + A2.y1)/2, {va: 'm', c: '#555', s: 14});
+put('lbl-p0', '0', sx(ubar) + 8, sy(0) - 5, {va: 'b'});
+put('lbl-p1', '1', sx(u1) + 8, sy(pi[0]) - 5, {va: 'b'});
+put('lbl-p2', '2', sx(u1) + 8, sy(pi[1]) - 5, {va: 'b'});
+put('lbl-p3', '3', sx(u1) + 8, sy(pi[2]) - 5, {va: 'b'});
+</script>
+</body>
+</html>

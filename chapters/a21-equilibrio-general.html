@@ -1,0 +1,2067 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Arturo Lorenzo">
+<meta name="description" content="Tema A21 de las oposiciones TCEE. Equilibrio general walrasiano, existencia y estabilidad, tâtonnement, óptimo de Pareto, núcleo y modelo de Arrow y Debreu.">
+
+<title>A21. Equilibrio general – Lecciones de economía general e internacional</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/a22-eb-i.html" rel="next">
+<link href="../chapters/a20-regulacion.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-af206048d982c71265205c3505cca787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bec3fe2b0881f05566c9dedb60685f6d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="A21. Equilibrio general – Lecciones de economía general e internacional">
+<meta property="og:description" content="Tema A21 de las oposiciones TCEE. Equilibrio general walrasiano, existencia y estabilidad, tâtonnement, óptimo de Pareto, núcleo y modelo de Arrow y Debreu.">
+<meta property="og:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta property="og:site_name" content="Lecciones de economía general e internacional">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:title" content="A21. Equilibrio general – Lecciones de economía general e internacional">
+<meta name="twitter:description" content="Tema A21 de las oposiciones TCEE. Equilibrio general walrasiano, existencia y estabilidad, tâtonnement, óptimo de Pareto, núcleo y modelo de Arrow y Debreu.">
+<meta name="twitter:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="A21. Equilibrio general">
+<meta name="citation_author" content="Arturo Lorenzo">
+<meta name="citation_publication_date" content="2026-11-28">
+<meta name="citation_cover_date" content="2026-11-28">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-11-28">
+<meta name="citation_fulltext_html_url" content="https://librovol1.arturolorenzo.com/chapters/a21-equilibrio-general.html">
+<meta name="citation_language" content="es">
+<meta name="citation_book_title" content="Lecciones de economía general e internacional">
+<link rel="canonical" href="https://librovol1.arturolorenzo.com/chapters/a21-equilibrio-general.html">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/a08-consumidor.html">Microeconomía</a></li><li class="breadcrumb-item"><a href="../chapters/a21-equilibrio-general.html"><span class="chapter-title">A21. Equilibrio general</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Lecciones de economía general e internacional</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/arturo-lorenzo/lecciones-economia" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../creditos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Edición y licencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte A: Economía General</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pensamiento Económico</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a01-objeto-metodo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A1. Objeto y método de la ciencia económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a02-clasicos-marx.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A2. Los economistas clásicos y Marx</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a03-neoclasicos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A3. Los economistas neoclásicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a04-keynes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A4. Keynes: análisis comparado</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a05-monetaristas-snc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A5. La síntesis neoclásica y el monetarismo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a06-nmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A6. La nueva macroeconomía clásica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a07-nek.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A7. La nueva economía keynesiana</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Microeconomía</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a08-consumidor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A8. Teoría de la demanda del consumidor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a09-dualidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A9. Dualidad y aplicaciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a10-riesgo-incertidumbre.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A10. Elección en riesgo e incertidumbre</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a11-produccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A11. Teoría de la producción</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a12-costes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A12. Teoría de costes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a13-informacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A13. Economía de la información</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a14-juegos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A14. Teoría de juegos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a15-toi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A15. Teoría de la organización industrial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a16-competencia-perfecta.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A16. Competencia perfecta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a17-monopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A17. Monopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a18-competencia-monopolistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A18. Competencia monopolística</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a19-oligopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A19. Oligopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a20-regulacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A20. Regulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a21-equilibrio-general.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">A21. Equilibrio general</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a22-eb-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A22. Economía del bienestar (I)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a23-eb-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A23. Economía del bienestar (II)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a24-eb-iii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A24. Economía del bienestar (III)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Economía Laboral</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a25-oferta-trabajo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A25. Mercado de trabajo y capital humano</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a26-desempleo-friccional.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A26. Desempleo friccional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a27-salarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A27. Determinación de salarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a28-tnp-nairu.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A28. TNP, NAIRU y persistencia</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Macroeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a29-mhi-mgs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A29. Modelos de horizonte infinito y generaciones solapadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a30-magnitudes-cn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A30. Magnitudes macroeconómicas y contabilidad nacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a32-precios-output.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A32. Precios y output en economía abierta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a33-demanda-consumo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A33. Teorías de demanda de consumo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a34-demanda-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A34. Teorías de demanda de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a35-demanda-dinero.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A35. Teorías de la demanda de dinero</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a36-politica-monetaria-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A36. Política monetaria I: diseño e instrumentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a37-politica-monetaria-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A37. Política monetaria II: transmisión y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a38-politica-fiscal.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A38. Política fiscal, crecimiento y ahorro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a39-deficit.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A39. Déficit público, su financiación y sostenibilidad</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a40-interrelacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A40. Interrelación de políticas macroeconómicas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a41-inflacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A41. Inflación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a42-ciclos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A42. Ciclos económicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a43-crecimiento-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A43. Crecimiento económico exógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a44-crecimiento-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A44. Crecimiento económico endógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a45-crecimiento-empirica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A45. Evidencia empírica sobre el crecimiento</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte B: Economía Internacional</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Empresa y Finanzas</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b01-estados-ratios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B1. Estados financieros y ratios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b02-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B2. Decisiones de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b03-financiacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B3. Decisiones de financiación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b04-crecimiento-ma.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B4. Crecimiento empresarial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b23-renta-variable.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B23. Instrumentos de renta variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b24-renta-fija.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B24. Instrumentos de renta fija</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b25-derivados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B25. Instrumentos derivados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b26-crisis-financieras.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B26. Crisis financieras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b27-regulacion-financiera.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B27. Regulación bancaria y financiera</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Comercio Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b05-tnc-comercio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B5. Teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b06-nueva-teoria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B6. Nueva teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b07-politica-comercial-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B7. Política comercial I: instrumentos y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b08-politica-comercial-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B8. Política comercial II: política estratégica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b09-comercio-crecimiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B9. Comercio internacional y crecimiento</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b10-integracion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B10. Teoría de la integración económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b11-balanza-pagos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B11. Balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b12-ajuste-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B12. Ajuste de la balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b13-mercado-divisas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B13. Mercado de divisas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b14-tipo-cambio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B14. Determinación del tipo de cambio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b15-regimenes-cambiarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B15. Regímenes cambiarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b16-integracion-monetaria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B16. Integración monetaria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b17-crisis-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B17. Crisis de balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b18-globalizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B18. Globalización</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b19-coordinacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B19. Coordinación de políticas económicas internacionales</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Sistema Económico Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b20-sei-hasta-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B20. El sistema económico internacional hasta el colapso de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b21-sei-despues-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B21. El sistema económico internacional después de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b22-fmi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B22. El Fondo Monetario Internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b28-desarrollo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B28. Desarrollo económico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b29-fod-aod.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B29. Financiación oficial del desarrollo y AOD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b30-gbm-brsd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B30. Grupo Banco Mundial y bancos regionales de desarrollo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b31-ma-bpg.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B31. El cambio climático y su impacto en la economía</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b32-perspectivas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B32. Perspectivas de la economía internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b33-omc-gatt.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B33. La OMC y el GATT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b34-gats-trips.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B34. GATS, TRIPS y acuerdos plurilaterales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b35-no-comunitarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B35. Acuerdos comerciales no comunitarios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unión Europea</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b36-tratados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B36. Los tratados de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b37-finanzas-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B37. Las finanzas de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b38-pac-ppc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B38. Política Agrícola Común y Política Pesquera Común</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b39-miue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B39. Mercado interior de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b41-comercial-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B41. Política comercial de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b42-cooperacion-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B42. Política de cooperación de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b43-politica-monetaria-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B43. Política macroeconómica I: el euro y la política monetaria única</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b44-politica-financiera-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B44. Política macroeconómica II: la Unión Bancaria y la Unión de los Mercados de Capitales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b45-politica-fiscal-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B45. Política macroeconómica III: la gobernanza económica de la UE y de la zona euro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Descargas</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Primer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/ejercicios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios prácticos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/flashcards-conceptos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de conceptos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/guia-dictamen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guía para el dictamen</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Segundo Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/segundo-ejercicio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de inglés</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Tercer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/libro-bloques.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">El libro en PDF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del tercer ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Cuarto Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del cuarto ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Más allá del libro</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/otras-publicaciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Otras publicaciones y trabajos del autor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/enlaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Enlaces de interés</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Bibliografía</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manuales y obras de referencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia-articulos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Obras citadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../fuentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fuentes normativas y documentales</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#el-modelo-walrasiano-de-competencia-perfecta" id="toc-el-modelo-walrasiano-de-competencia-perfecta" class="nav-link" data-scroll-target="#el-modelo-walrasiano-de-competencia-perfecta">1. El modelo walrasiano de competencia perfecta</a>
+  <ul class="collapse">
+  <li><a href="#supuestos" id="toc-supuestos" class="nav-link" data-scroll-target="#supuestos">1.1. Supuestos</a></li>
+  <li><a href="#modelo-descentralizado-con-producción" id="toc-modelo-descentralizado-con-producción" class="nav-link" data-scroll-target="#modelo-descentralizado-con-producción">1.2. Modelo descentralizado con producción</a></li>
+  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link" data-scroll-target="#conclusiones">1.3. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#análisis-del-equilibrio" id="toc-análisis-del-equilibrio" class="nav-link" data-scroll-target="#análisis-del-equilibrio">2. Análisis del equilibrio</a>
+  <ul class="collapse">
+  <li><a href="#análisis-positivo" id="toc-análisis-positivo" class="nav-link" data-scroll-target="#análisis-positivo">2.1. Análisis positivo</a></li>
+  <li><a href="#análisis-normativo-optimalidad-de-pareto" id="toc-análisis-normativo-optimalidad-de-pareto" class="nav-link" data-scroll-target="#análisis-normativo-optimalidad-de-pareto">2.2. Análisis normativo: optimalidad de Pareto</a></li>
+  <li><a href="#conclusiones-1" id="toc-conclusiones-1" class="nav-link" data-scroll-target="#conclusiones-1">2.3. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#extensiones-y-aplicaciones" id="toc-extensiones-y-aplicaciones" class="nav-link" data-scroll-target="#extensiones-y-aplicaciones">3. Extensiones y aplicaciones</a>
+  <ul class="collapse">
+  <li><a href="#procesos-de-ajuste-distintos-al-subastador" id="toc-procesos-de-ajuste-distintos-al-subastador" class="nav-link" data-scroll-target="#procesos-de-ajuste-distintos-al-subastador">3.1. Procesos de ajuste distintos al subastador</a></li>
+  <li><a href="#modelo-de-equilibrio-general-con-dinero" id="toc-modelo-de-equilibrio-general-con-dinero" class="nav-link" data-scroll-target="#modelo-de-equilibrio-general-con-dinero">3.2. Modelo de equilibrio general con dinero</a></li>
+  <li><a href="#modelo-de-equilibrio-general-en-incertidumbre-arrow-debreu" id="toc-modelo-de-equilibrio-general-en-incertidumbre-arrow-debreu" class="nav-link" data-scroll-target="#modelo-de-equilibrio-general-en-incertidumbre-arrow-debreu">3.3. Modelo de equilibrio general en incertidumbre (Arrow-Debreu)</a></li>
+  <li><a href="#aplicaciones" id="toc-aplicaciones" class="nav-link" data-scroll-target="#aplicaciones">3.4. Aplicaciones</a></li>
+  </ul></li>
+  <li><a href="#conclusiones-2" id="toc-conclusiones-2" class="nav-link" data-scroll-target="#conclusiones-2">Conclusiones</a></li>
+  <li><a href="#anexo.-ejemplos-resueltos" id="toc-anexo.-ejemplos-resueltos" class="nav-link" data-scroll-target="#anexo.-ejemplos-resueltos">Anexo. Ejemplos resueltos</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/a08-consumidor.html">Microeconomía</a></li><li class="breadcrumb-item"><a href="../chapters/a21-equilibrio-general.html"><span class="chapter-title">A21. Equilibrio general</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">A21. Equilibrio general</span></h1>
+<p class="subtitle lead">La teoría del equilibrio general.</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Arturo Lorenzo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">noviembre de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Introducción común.</strong> Los temas A15 a A21 comparten una introducción, que se desarrolla al comienzo del tema <a href="../chapters/a15-toi.html"><strong>A15</strong></a>. Ordena los mercados en cuatro estructuras según el poder de mercado (competencia perfecta, competencia monopolística, oligopolio y monopolio) y resume la evolución de su análisis, de Cournot y Marshall a la nueva organización industrial y la teoría de la regulación.</p>
+</div>
+</div>
+</div>
+<p>El enfoque de <strong>equilibrio parcial</strong> o marshalliano estudia cada mercado por separado y hace abstracción del resto de la economía, pero los mercados están interrelacionados. Frente a ese enfoque, la <strong>teoría del equilibrio general</strong> incorpora la interdependencia entre los agentes y considera las relaciones de complementariedad y sustitución entre bienes.</p>
+<p>Léon Walras (1874) planteó por primera vez la economía como un sistema de ecuaciones simultáneas, una por mercado, cuyos precios se determinan a la vez. La pregunta de si ese sistema tiene solución no se resolvió hasta que Arrow y Debreu (1954) demostraron la existencia del equilibrio con instrumentos de topología, y la de si es único y estable quedó en buena medida abierta tras los resultados de Sonnenschein, Mantel y Debreu, según los cuales la teoría impone pocas restricciones a la forma de la demanda agregada. Arrow (1972) y Debreu (1983) recibieron el Premio Nobel por estos trabajos.</p>
+<p>El equilibrio general es también el marco en el que se demuestran los <strong>teoremas fundamentales del bienestar</strong>. El primero establece que todo equilibrio competitivo es eficiente en el sentido de Pareto, y el segundo, que cualquier asignación eficiente puede alcanzarse como equilibrio competitivo con una redistribución adecuada de las dotaciones iniciales (tema <a href="../chapters/a22-eb-i.html">A22</a>). La principal limitación de la teoría es, sin embargo, el subastador walrasiano, que ajusta los precios hasta vaciar todos los mercados a la vez y no describe ningún mecanismo real. La teoría ha estudiado por ello otros procesos de ajuste, como el recontrato de Edgeworth, cuyo <strong>núcleo</strong> se reduce al equilibrio competitivo cuando el número de agentes crece, y ha incorporado el dinero (Patinkin, 1956) y la incertidumbre.</p>
+<p>En la práctica, estos modelos permiten cuantificar el impacto de medidas de política económica, como el Tratado de Libre Comercio de América del Norte (TLCAN) o la Asociación Transatlántica de Comercio e Inversión (TTIP), y constituyen el vínculo entre la microeconomía y la macroeconomía.</p>
+<p>El objeto del tema es comprender los aspectos fundamentales de la teoría del equilibrio general:</p>
+<ul>
+<li><p><em>Modelo walrasiano</em>: la competencia perfecta y el concepto de equilibrio general competitivo (EGC).</p></li>
+<li><p><em>Análisis del equilibrio</em>: sus propiedades positivas (existencia, unicidad y estabilidad) y normativas (optimalidad de Pareto y teoremas fundamentales del bienestar).</p></li>
+<li><p><em>Extensiones y aplicaciones</em>: procesos de ajuste distintos del subastador (Marshall, Edgeworth y el núcleo), introducción del dinero (Patinkin), incertidumbre (Arrow-Debreu) y modelos de equilibrio general computable.</p></li>
+</ul>
+</section>
+<section id="el-modelo-walrasiano-de-competencia-perfecta" class="level2">
+<h2 class="anchored" data-anchor-id="el-modelo-walrasiano-de-competencia-perfecta">1. El modelo walrasiano de competencia perfecta</h2>
+<p><strong>Origen</strong>: la teoría del equilibrio general nace con Léon Walras (<em>Elementos de economía política pura</em>, 1874), que la construyó sobre la competencia perfecta porque buscaba justificarla como mecanismo de asignación óptimo<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p><strong>Idea</strong>: los mercados de bienes y de factores se analizan conjuntamente, y un vector de precios que cada agente toma como dado coordina las decisiones de consumidores y empresas hasta vaciar todos los mercados a la vez.</p>
+<section id="supuestos" class="level3">
+<h3 class="anchored" data-anchor-id="supuestos">1.1. Supuestos</h3>
+<p><strong>Metodología</strong>: se adopta el enfoque de equilibrio general. A diferencia del modelo de equilibrio parcial (un mercado), existen <span class="math inline">\(n\)</span> mercados interrelacionados, de bienes y de factores, que se analizan simultáneamente.</p>
+<p><strong>Entorno</strong>: no hay fallos de mercado, es decir, no existen externalidades, bienes públicos, poder de mercado, costes de transacción ni rigideces, pues existe plena flexibilidad de precios, salarios y tipos de interés, y la información es perfecta. Las dotaciones iniciales de bienes y de factores pertenecen a los consumidores, que son también los propietarios de las empresas.</p>
+<p><strong>Agentes</strong>: existen consumidores racionales, que maximizan su utilidad, y empresas gestionadas por sus propietarios, que maximizan el beneficio. Ambos tipos son numerosos, de modo que el mercado está atomizado y todos actúan como precio-aceptantes (<span class="math inline">\(\partial p / \partial x = 0\)</span>). El sector público no participa.</p>
+<p><strong>Tecnología</strong>: cada empresa produce un único bien, <span class="math inline">\(x = f(\mathbf{z})\)</span>, homogéneo y perfectamente divisible, con rendimientos estrictamente decrecientes<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, y todas las empresas de un mismo mercado comparten la misma tecnología. En conjunción con los supuestos sobre el entorno, ello garantiza la ley del precio único en cada mercado.</p>
+<p><strong>Mercado de factores</strong>: es también perfecto, con agentes precio-aceptantes (<span class="math inline">\(\partial p_l^z / \partial z_l = 0\)</span>). La oferta de factores procede de las dotaciones de los consumidores. Los precios de los factores, <span class="math inline">\(\mathbf{p}^z\)</span>, aunque cada agente los toma como dados, se determinan endógenamente en el equilibrio.</p>
+</section>
+<section id="modelo-descentralizado-con-producción" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-descentralizado-con-producción">1.2. Modelo descentralizado con producción</h3>
+<p>El sistema walrasiano admite varias presentaciones, como el modelo de intercambio puro (sin producción), de las que aquí se sigue la del modelo descentralizado con producción.</p>
+<section id="demanda-comportamiento-de-los-consumidores" class="level4">
+<h4 class="anchored" data-anchor-id="demanda-comportamiento-de-los-consumidores">1.2.1. Demanda: comportamiento de los consumidores</h4>
+<p><strong>Planteamiento</strong>: los consumidores tienen preferencias racionales, monótonas, continuas y estrictamente convexas. La utilidad es estrictamente cuasicóncava, creciente, continua, ordinal e independiente entre consumidores (no hay externalidades en el consumo).</p>
+<p>La renta monetaria de cada individuo, <span class="math inline">\(M_0^h\)</span>, es endógena, porque depende de los precios a los que se valoran sus dotaciones, y se compone de tres tipos:</p>
+<ul>
+<li><p><em>Renta dotacional de bienes</em>: <span class="math inline">\(\sum_i p_i x_{i0}^h\)</span> (valor de mercado de las dotaciones iniciales de bienes).</p></li>
+<li><p><em>Renta dotacional de factores</em>: <span class="math inline">\(\sum_l p_l^z z_{l0}^h\)</span> (valor de las dotaciones de factores).</p></li>
+<li><p><em>Renta de las participaciones</em>: <span class="math inline">\(\sum_f \alpha_f^h \pi^{f*}\)</span> (participaciones en los beneficios máximos de las empresas, que se obtienen a continuación, con <span class="math inline">\(\sum_h \alpha_f^h = 1\)</span>).</p></li>
+</ul>
+<p>Formalmente, el consumidor <span class="math inline">\(h\)</span> resuelve:</p>
+<p><span class="math display">\[\max_{\mathbf{x}^h} \; u^h(\mathbf{x}^h) \quad \text{s.a.:} \; \sum_i p_i x_i^h \leq \underbrace{\sum_i p_i x_{i0}^h + \sum_l p_l^z z_{l0}^h + \sum_f \alpha_f^h \pi^{f*}}_{M_0^h}\]</span></p>
+<p>donde <span class="math inline">\(\mathbf{x}^h = (x_1^h, \ldots, x_n^h)\)</span> es la cesta de consumo del consumidor <span class="math inline">\(h\)</span> (variables de decisión), <span class="math inline">\(u^h(\cdot)\)</span> su función de utilidad, <span class="math inline">\(p_i\)</span> el precio del bien <span class="math inline">\(i\)</span>, <span class="math inline">\(x_{i0}^h\)</span> y <span class="math inline">\(z_{l0}^h\)</span> sus dotaciones iniciales del bien <span class="math inline">\(i\)</span> y del factor <span class="math inline">\(l\)</span>, <span class="math inline">\(p_l^z\)</span> el precio del factor <span class="math inline">\(l\)</span>, <span class="math inline">\(\alpha_f^h\)</span> su participación en el beneficio <span class="math inline">\(\pi^{f*}\)</span> de la empresa <span class="math inline">\(f\)</span> y <span class="math inline">\(M_0^h\)</span> su renta monetaria endógena.</p>
+<p><strong>CPO</strong>: con solución interior y la restricción agotada, derivando el lagrangiano respecto a cada bien y eliminando el multiplicador:</p>
+<p><span class="math display">\[ \frac{\partial u/\partial x_i}{\partial u/\partial x_j} = \frac{p_i}{p_j}, \qquad \forall \, i \neq j, \quad \forall \, h = 1, \ldots, H\]</span></p>
+<p>El cociente <span class="math inline">\((\partial u/\partial x_i)/(\partial u/\partial x_j)\)</span> mide la relación marginal de sustitución (<span class="math inline">\(\text{RMS}_{ji}^h\)</span>) entre <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>, es decir, cuántas unidades del bien <span class="math inline">\(j\)</span> cedería el consumidor <span class="math inline">\(h\)</span>, según su propia valoración (subjetiva), para obtener una unidad más de <span class="math inline">\(i\)</span> sin que su utilidad varíe. Depende de las preferencias de cada consumidor, de modo que, en general, varía de un consumidor a otro y de una cesta a otra.</p>
+<p>El cociente <span class="math inline">\(p_i/p_j\)</span> es el precio relativo, es decir, la tasa a la que el mercado permite intercambiar ambos bienes. A diferencia de la <span class="math inline">\(\text{RMS}\)</span>, es una tasa objetiva y común a todos los consumidores, que la toman como dada porque son precio-aceptantes.</p>
+<p>Para cualquier consumidor considerado en el modelo, en el óptimo ambas tasas se igualan, porque, si su <span class="math inline">\(\text{RMS}\)</span> fuese superior al precio relativo, ese consumidor podría aumentar su utilidad comprando más de <span class="math inline">\(i\)</span> y menos de <span class="math inline">\(j\)</span>, y viceversa. Por tanto, cualquier desviación respecto de esta igualdad implica que existe una reasignación del gasto que mejora la utilidad del consumidor.</p>
+<p><strong>CSO</strong>: la cuasiconcavidad estricta de la utilidad y la linealidad de la restricción presupuestaria hacen suficiente la CPO y única la demanda de cada consumidor.</p>
+<p><strong>Solución</strong>: cada consumidor obtiene una función de demanda <span class="math inline">\(x_i^h(p, M_0^h)\)</span> homogénea de grado cero en precios y renta. Si todos los precios y la renta se multiplican por una misma constante positiva, las cantidades demandadas no varían (ausencia de ilusión monetaria).</p>
+<p>De la agregación horizontal de las funciones de demanda individuales se obtiene la demanda de mercado <span class="math inline">\(D_i(p) = \sum_h x_i^h(p, M_0^h)\)</span>. Como la renta de cada consumidor es el valor de sus dotaciones y participaciones a los precios vigentes, la demanda de mercado depende, en último término, solo del vector de precios y es homogénea de grado cero en él.</p>
+<p><strong>Equilibrio</strong>: en un contexto de equilibrio general, la optimización individual de cada consumidor, dado un vector de precios de mercado común, conduce a una condición de equilibrio agregada. Las decisiones que cada consumidor toma por separado quedan así ligadas entre sí a través de los precios.</p>
+<p>El consumo estará en equilibrio cuando todos los consumidores estén maximizando simultáneamente su utilidad frente al mismo vector de precios. Puesto que cada consumidor iguala su <span class="math inline">\(\text{RMS}\)</span> al precio relativo, y el precio relativo es el mismo para todos, se obtiene, con dos consumidores <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>:</p>
+<p><span class="math display">\[ \text{RMS}_{ji}^{A} = \frac{u_i^{' A}}{u_j^{' A}} = \frac{p_i}{p_j} = \frac{u_i^{' B}}{u_j^{' B}} = \text{RMS}_{ji}^{B}\]</span></p>
+<p>Esta condición se generaliza a <span class="math inline">\(H\)</span> consumidores, de modo que <span class="math inline">\(\text{RMS}_{ji}^{h} = p_i/p_j\)</span> para todo <span class="math inline">\(h = 1, \ldots, H\)</span>. El vector de precios actúa así como mecanismo de coordinación, pues el precio relativo obliga a todos los consumidores a ajustar sus valoraciones subjetivas a una misma tasa objetiva de intercambio. Sin precios comunes, no habría razón para que las <span class="math inline">\(\text{RMS}\)</span> se igualaran.</p>
+<p><strong>Desarrollo gráfico</strong>: con dos bienes y dos consumidores, el equilibrio en el consumo se representa en el plano bien <span class="math inline">\(x\)</span>-bien <span class="math inline">\(y\)</span> de la caja de Edgeworth-Bowley en el espacio de bienes (figura <a href="#fig-a211-edgeworth-consumo" class="quarto-xref"><span>A21.1</span></a>):</p>
+<ol type="1">
+<li><p><em>Caja</em>: sus dimensiones son las dotaciones totales de cada bien (<span class="math inline">\(X = x_0^A + x_0^B\)</span>, <span class="math inline">\(Y = y_0^A + y_0^B\)</span>). Las cantidades de <span class="math inline">\(A\)</span> se miden desde el origen <span class="math inline">\(O_A\)</span>, en el vértice inferior izquierdo, y las de <span class="math inline">\(B\)</span> desde <span class="math inline">\(O_B\)</span>, en el vértice opuesto, de modo que cada punto de la caja es un reparto factible de las cantidades totales (<span class="math inline">\(x^A + x^B = X\)</span>, <span class="math inline">\(y^A + y^B = Y\)</span>).</p></li>
+<li><p><em>Dotación inicial</em>: el punto <span class="math inline">\(W\)</span> recoge el reparto de partida.</p></li>
+<li><p><em>Curvas de indiferencia</em>: <span class="math inline">\(u_0^A\)</span> reúne las cestas que dan a <span class="math inline">\(A\)</span> una misma utilidad, y <span class="math inline">\(u_0^B\)</span>, las que dan a <span class="math inline">\(B\)</span> una misma utilidad. Son convexas hacia su origen (<span class="math inline">\(O_A\)</span> y <span class="math inline">\(O_B\)</span>), porque las preferencias son estrictamente convexas.</p></li>
+<li><p><em>Recta presupuestaria</em>: común a ambos consumidores, reúne las cestas cuyo valor a los precios de mercado iguala al de la dotación. Pasa por <span class="math inline">\(W\)</span> y tiene pendiente <span class="math inline">\(-p_x/p_y\)</span>, determinada por el vector de precios de mercado.</p></li>
+<li><p><em>Curva de contratos</em> (<span class="math inline">\(\text{CC}\)</span>): une las tangencias entre las curvas de indiferencia de ambos consumidores, los repartos en los que sus <span class="math inline">\(\text{RMS}\)</span> coinciden.</p></li>
+<li><p><em>Equilibrio</em>: en el punto <span class="math inline">\(0\)</span>, la recta presupuestaria es tangente a la vez a <span class="math inline">\(u_0^A\)</span> y a <span class="math inline">\(u_0^B\)</span>. El vector de precios selecciona este punto entre las infinitas asignaciones factibles de la caja y lo sitúa sobre la curva de contratos. El vector de precios, tanto de los bienes finales como de los factores productivos, se ajusta mediante un proceso de tanteo hasta equilibrar cada uno de los mercados.</p></li>
+</ol>
+<div id="fig-a211-edgeworth-consumo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a211-edgeworth-consumo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a211_Edgeworth_Consumo.html" style="height:580px" loading="lazy" title="fig-a211-edgeworth-consumo"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a211-edgeworth-consumo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A21.1: Elección óptima del consumidor en el modelo walrasiano, dadas la dotación inicial y los precios.
+</figcaption>
+</figure>
+</div>
+<p><strong>Bienestar</strong>: la igualdad de las <span class="math inline">\(\text{RMS}\)</span> de todos los consumidores es, a su vez, la condición de eficiencia de Pareto en el consumo, de modo que la asignación de equilibrio está sobre la curva de contratos en el consumo (apartado 2.2). En cada uno de sus puntos, la <span class="math inline">\(\text{RMS}\)</span> común indica el precio relativo que sostendría ese reparto como equilibrio competitivo.</p>
+<p>Si cada punto de la curva de contratos se lleva al plano de utilidades <span class="math inline">\((u^A, u^B)\)</span>, se obtiene la <em>frontera de posibilidades de utilidad</em> (FPU). Para cada nivel de utilidad de <span class="math inline">\(B\)</span>, la frontera indica el máximo de utilidad al que puede llegar <span class="math inline">\(A\)</span> con las cantidades totales de bienes disponibles. Tiene pendiente negativa, porque a lo largo de la curva de contratos mejorar a un consumidor exige empeorar al otro. El equilibrio competitivo es un punto de la FPU, y cuál de ellos depende de la dotación inicial, que fija la renta de cada consumidor a los precios de equilibrio (apartado 2.2.2).</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La curva de contratos en el consumo y su proyección en la frontera de posibilidades de utilidad se desarrollan, con sus gráficos, en el tema <a href="../chapters/a22-eb-i.html">A22</a>, apartado 1.2.2.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="oferta-comportamiento-de-las-empresas" class="level4">
+<h4 class="anchored" data-anchor-id="oferta-comportamiento-de-las-empresas">1.2.2. Oferta: comportamiento de las empresas</h4>
+<p><strong>Planteamiento</strong>: la tecnología presenta rendimientos estrictamente decrecientes, cada empresa usa varios factores para producir un único bien, y las funciones de producción son independientes (no hay externalidades en la producción). Cada empresa <span class="math inline">\(f\)</span> que produce el bien <span class="math inline">\(i\)</span> elige las cantidades de factores que maximizan su beneficio, dados el precio de su producto y los de los factores (enfoque de la producción):</p>
+<p><span class="math display">\[\max_{\mathbf{z}^f} \; \pi^f = p_i \, f_i(\mathbf{z}^f) - \sum_{l} p_l^z z_l^f\]</span></p>
+<p>donde <span class="math inline">\(\mathbf{z}^f\)</span> es el vector de cantidades de factores que emplea la empresa <span class="math inline">\(f\)</span> (variables de decisión), <span class="math inline">\(z_l^f\)</span> su cantidad del factor <span class="math inline">\(l\)</span>, <span class="math inline">\(f_i(\cdot)\)</span> la función de producción del bien <span class="math inline">\(i\)</span>, común a todas las empresas de ese mercado, <span class="math inline">\(p_i\)</span> el precio del bien, <span class="math inline">\(p_l^z\)</span> el precio del factor <span class="math inline">\(l\)</span> y <span class="math inline">\(\pi^f\)</span> el beneficio de la empresa.</p>
+<p><strong>CPO</strong>:</p>
+<p><span class="math display">\[p_i \, \text{Pmg}_l^f \equiv p_i \, \frac{\partial f_i(\mathbf{z}^f)}{\partial z_l^f} = p_l^z, \qquad \forall \, l, \quad \forall \, f = 1, \ldots, F \tag{1}\]</span></p>
+<p>Dividiendo (1) para dos factores <span class="math inline">\(k\)</span> y <span class="math inline">\(l\)</span>, y despejando en ella el precio del producto, se obtienen dos formas equivalentes:</p>
+<p><span class="math display">\[\text{RMST}_{kl}^f = \frac{\text{Pmg}_l^f}{\text{Pmg}_k^f} = \frac{p_l^z}{p_k^z} \tag{2}\]</span></p>
+<p><span class="math display">\[p_i = \frac{p_l^z}{\text{Pmg}_l^f} = \text{Cmg}_i \tag{3}\]</span></p>
+<p>Las tres condiciones se cumplen para cualquier empresa considerada en el modelo y se leen como sigue:</p>
+<ol type="1">
+<li><p><em>Maximización del beneficio</em>: (1) establece que cada factor se contrata hasta que el valor de su productividad marginal (<span class="math inline">\(\text{VPmg}_l\)</span>) iguala a su precio. Mientras lo que aporta la última unidad de un factor supere a lo que cuesta, la empresa aumenta su beneficio contratando más.</p></li>
+<li><p><em>Minimización del coste</em>: (2) establece que la relación marginal de sustitución técnica (tasa a la que la empresa puede sustituir un factor por otro manteniendo constante la producción) iguala al precio relativo de los factores. Si ambas tasas fuesen distintas, la empresa podría producir la misma cantidad a menor coste reasignando factores.</p></li>
+<li><p><em>Regla de precios</em>: (3) muestra que el precio del bien iguala a su coste marginal de producción, pues producir una unidad más con el factor <span class="math inline">\(l\)</span> cuesta su precio dividido por su productividad marginal. Esta igualdad es la condición estándar de oferta competitiva, según la cual la empresa produce hasta que el ingreso adicional de la última unidad iguala al coste adicional de producirla.</p></li>
+</ol>
+<p><strong>CSO</strong>: la concavidad estricta de <span class="math inline">\(f_i(\cdot)\)</span> (que implica rendimientos estrictamente decrecientes a escala, aunque no se sigue de ellos) hace suficientes las CPO, de modo que la oferta y las demandas de factores de cada empresa están bien definidas para cualquier vector de precios.</p>
+<p><strong>Solución</strong>: de las CPO se obtienen la función de oferta de cada empresa, <span class="math inline">\(x_i^f(p_i, \mathbf{p}^z)\)</span>, y sus funciones de demanda de factores, <span class="math inline">\(z_l^f(p_i, \mathbf{p}^z)\)</span>, cuya suma horizontal da la oferta de mercado del bien y la demanda de cada factor. Todas cumplen tres propiedades: unicidad (para un vector de precios dado, cada oferta o demanda es única), continuidad (cambian de forma continua con los precios <span class="math inline">\(\forall p &gt; 0\)</span>) y homogeneidad de grado cero en precios (ausencia de ilusión monetaria: si todos los precios cambian en la misma proporción, las cantidades no varían).</p>
+<p>Para el análisis del equilibrio general conviene reunir ambas funciones en el <em>vector de producción neta</em> de la empresa, <span class="math inline">\(\mathbf{y}^f(\mathbf{p})\)</span>, cuyos componentes son positivos para el bien que produce (<span class="math inline">\(y_i^f = x_i^f\)</span>) y negativos para los factores que emplea (<span class="math inline">\(y_l^f = -z_l^f\)</span>). El beneficio se escribe entonces <span class="math inline">\(\pi^f = \mathbf{p} \cdot \mathbf{y}^f\)</span>, con <span class="math inline">\(\mathbf{p}\)</span> el vector de precios de bienes y factores<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, y la función de exceso de demanda puede sumar en una sola expresión la oferta de bienes y la demanda de factores de las empresas.</p>
+<p><strong>Equilibrio</strong>: de manera análoga al caso del consumo, cuando existen múltiples empresas que emplean los mismos factores, la optimización individual de cada empresa frente a un vector común de precios de factores conduce a una condición de equilibrio agregada. Considerando dos empresas <span class="math inline">\(1\)</span> y <span class="math inline">\(2\)</span> que emplean capital (<span class="math inline">\(K\)</span>) y trabajo (<span class="math inline">\(L\)</span>), la producción estará en equilibrio cuando ambas estén minimizando costes simultáneamente, es decir, cumpliendo (2), frente al mismo precio relativo de factores:</p>
+<p><span class="math display">\[ \text{RMST}_{KL}^{1} = \frac{w}{r} = \text{RMST}_{KL}^{2}\]</span></p>
+<p>Esta condición se generaliza a <span class="math inline">\(F\)</span> empresas, de modo que <span class="math inline">\(\text{RMST}_{KL}^f = w/r\)</span> para todo <span class="math inline">\(f = 1, \ldots, F\)</span>. De nuevo, el vector de precios de factores actúa como mecanismo de coordinación, ya que el precio relativo <span class="math inline">\(w/r\)</span> obliga a todas las empresas a ajustar su combinación de factores a la misma tasa de sustitución técnica.</p>
+<p><strong>Desarrollo gráfico</strong>: el equilibrio en la producción se representa en el plano trabajo-capital de la caja de Edgeworth-Bowley en el espacio de factores (figura <a href="#fig-a213-edgeworth-produccion" class="quarto-xref"><span>A21.2</span></a>):</p>
+<ol type="1">
+<li><p><em>Caja</em>: sus dimensiones son las dotaciones totales de cada factor (<span class="math inline">\(L_0 = L^1 + L^2\)</span>, <span class="math inline">\(K_0 = K^1 + K^2\)</span>). Las cantidades de la empresa 1 se miden desde el origen <span class="math inline">\(O_1\)</span>, en el vértice inferior izquierdo, y las de la empresa 2 desde <span class="math inline">\(O_2\)</span>, en el vértice opuesto. De este modo, cada punto interior es una asignación factible, de pleno empleo de ambos factores, entre las dos empresas.</p></li>
+<li><p><em>Isocuantas</em>: <span class="math inline">\(x^1\)</span> reúne las combinaciones de factores con las que la empresa 1 obtiene una misma producción, y <span class="math inline">\(x^2\)</span>, las de la empresa 2. Son convexas hacia su origen (<span class="math inline">\(O_1\)</span> y <span class="math inline">\(O_2\)</span>), porque las funciones de producción son estrictamente cóncavas.</p></li>
+<li><p><em>Recta isocoste</em>: común a ambas empresas, reúne las combinaciones de factores de igual coste y tiene pendiente <span class="math inline">\(-w/r\)</span>, determinada por el vector de precios de factores.</p></li>
+<li><p><em>Curva de contratos</em> (<span class="math inline">\(\text{CC}\)</span>): une las tangencias entre las isocuantas de ambas empresas, las asignaciones en las que sus <span class="math inline">\(\text{RMST}\)</span> coinciden.</p></li>
+<li><p><em>Equilibrio</em>: en el punto <span class="math inline">\(0\)</span>, la recta isocoste es tangente a la vez a <span class="math inline">\(x^1\)</span> y a <span class="math inline">\(x^2\)</span>. El precio relativo de los factores selecciona este punto de la curva de contratos.</p></li>
+</ol>
+<div id="fig-a213-edgeworth-produccion" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a213-edgeworth-produccion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a213_Edgeworth_Produccion.html" style="height:580px" loading="lazy" title="fig-a213-edgeworth-produccion"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a213-edgeworth-produccion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A21.2: Equilibrio en la producción. En la caja de Edgeworth-Bowley de factores, la recta isocoste común es tangente a las isocuantas de ambas empresas en un punto de la curva de contratos.
+</figcaption>
+</figure>
+</div>
+<p><strong>Bienestar</strong>: la igualdad de las <span class="math inline">\(\text{RMST}\)</span> de todas las empresas es la condición de eficiencia de Pareto en la producción, de modo que la asignación de factores de equilibrio está sobre la curva de contratos en la producción. En cada uno de sus puntos, la <span class="math inline">\(\text{RMST}\)</span> común indica el precio relativo de los factores que sostendría esa asignación como equilibrio.</p>
+<p>Si cada punto de la curva de contratos se lleva al plano de bienes <span class="math inline">\((x, y)\)</span>, se obtiene la <em>frontera de posibilidades de producción</em> (FPP), o curva de transformación. La frontera da la máxima cantidad de un bien que puede producirse para cada cantidad del otro, dadas la tecnología y las dotaciones de factores. El valor absoluto de su pendiente es la relación marginal de transformación, <span class="math inline">\(\text{RMT}_{yx} = \text{Cmg}_x/\text{Cmg}_y\)</span>, el coste de oportunidad de <span class="math inline">\(x\)</span> en unidades de <span class="math inline">\(y\)</span>, y con los rendimientos decrecientes supuestos la FPP es cóncava.</p>
+<p>Puesto que cada empresa iguala el precio de su bien a su coste marginal, por (3), en el equilibrio se cumple <span class="math inline">\(\text{RMT}_{yx} = p_x/p_y\)</span>. La producción de equilibrio es, así, el punto de la FPP tangente a la recta isoingreso más alejada del origen, de pendiente <span class="math inline">\(-p_x/p_y\)</span>.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La curva de contratos en la producción y su proyección en la frontera de posibilidades de producción se desarrollan, con sus gráficos, en el tema <a href="../chapters/a22-eb-i.html">A22</a>, apartado 1.2.1.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="el-ajuste-del-sistema" class="level4">
+<h4 class="anchored" data-anchor-id="el-ajuste-del-sistema">1.2.3. El ajuste del sistema</h4>
+<p>Los planes de consumidores y empresas dependen solo del vector de precios, pero nada garantiza que, a un vector arbitrario, sean compatibles entre sí, pues lo que unos desean comprar puede no coincidir con lo que otros desean vender. Hace falta, por ello, una medida de esa discrepancia, la función de exceso de demanda, y un mecanismo que corrija los precios hasta eliminarla. El enfoque walrasiano propone un ajuste vía precios, en contraste con el enfoque marshalliano, que opera vía cantidades.</p>
+<p><strong>Función de exceso de demanda y ley de Walras</strong> (1874): la primera es la diferencia entre la demanda de mercado y la oferta total (producción de las empresas más dotaciones iniciales de los consumidores) para cada bien <span class="math inline">\(i\)</span>:</p>
+<p><span class="math display">\[Z_i(p) = \underbrace{\sum_{h=1}^{H} x_i^h(p)}_{D_i(p)} - \underbrace{\left(\sum_{f=1}^{F} y_i^f(p) + \sum_{h=1}^{H} x_{i0}^h\right)}_{S_i(p)}\]</span></p>
+<p>donde <span class="math inline">\(y_i^f(p)\)</span> es la producción neta de la empresa <span class="math inline">\(f\)</span> en el bien <span class="math inline">\(i\)</span>, negativa cuando <span class="math inline">\(i\)</span> es un factor, de modo que la demanda de factores de las empresas entra restando en la oferta.</p>
+<p>Si <span class="math inline">\(Z_i(p) &gt; 0\)</span>, hay exceso de demanda, y si <span class="math inline">\(Z_i(p) &lt; 0\)</span>, exceso de oferta. Las propiedades de la función de exceso de demanda son las siguientes:</p>
+<ol type="1">
+<li><p><em>Continuidad y diferenciabilidad</em>: es una función, y no una correspondencia, porque las demandas y ofertas individuales son únicas. Es continua para precios positivos y diferenciable cuando lo son esas demandas y ofertas. En los precios nulos de los bienes libres, en cambio, la continuidad requiere la saciabilidad condicional del apartado 2.1.1.</p></li>
+<li><p><em>Transformaciones</em>: es homogénea de grado cero en precios, <span class="math inline">\(Z_i(kp) = Z_i(p)\)</span> para todo <span class="math inline">\(k &gt; 0\)</span>, porque las rentas de los consumidores son el valor de sus dotaciones y participaciones a esos mismos precios. Por ello el sistema solo determina precios relativos.</p></li>
+<li><p><em>Inclinación</em>: la teoría no le impone un signo general. Con todo, si todos los bienes son sustitutivos brutos, <span class="math inline">\(\partial Z_i / \partial p_j &gt; 0\)</span> para todo <span class="math inline">\(j \neq i\)</span>, la homogeneidad de grado cero implica además <span class="math inline">\(\partial Z_i / \partial p_i &lt; 0\)</span>, y el equilibrio es único (apartado 2.1.2) y estable (apartado 2.1.3).</p></li>
+<li><p><em>Forma</em>: la teoría no restringe su curvatura, igual que ocurre con las demandas individuales que agrega.</p></li>
+<li><p><em>Otras propiedades</em>:</p>
+<ul>
+<li><p><em>Agotamiento de la renta</em>: el valor de los excesos de demanda es nulo para cualquier vector de precios (<em>ley de Walras</em>), como se desarrolla, con sus corolarios, tras la figura <a href="#fig-a218-exceso-demanda" class="quarto-xref"><span>A21.3</span></a>.</p></li>
+<li><p><em>Integrabilidad</em>: no hereda la simetría ni la ley de la demanda compensada de las demandas individuales, como demuestra el teorema de Sonnenschein, Mantel y Debreu (1972-1974). Según este teorema, cualquier función continua, homogénea de grado cero y que cumpla la ley de Walras es, lejos de los precios nulos, la función de exceso de demanda de alguna economía de intercambio con al menos tantos consumidores como bienes. Por ello, la función agregada no puede tratarse como la de un consumidor representativo.</p></li>
+<li><p><em>Observabilidad</em>: solo puede medirse en el equilibrio, porque fuera de él recoge demandas y ofertas nocionales, que no llegan a ejecutarse (<em>tâtonnement</em>).</p></li>
+</ul></li>
+</ol>
+<p>Gráficamente, en el plano <span class="math inline">\(Z_i\)</span>-<span class="math inline">\(p_i\)</span> (figura <a href="#fig-a218-exceso-demanda" class="quarto-xref"><span>A21.3</span></a>) y dados los demás precios, la curva <span class="math inline">\(Z_i(p)\)</span> representa el exceso de demanda del bien <span class="math inline">\(i\)</span> a cada precio, y caben dos casos según el tipo de bien:</p>
+<ul>
+<li><p><em>Bien escaso</em>: la función corta al eje (<span class="math inline">\(Z_i = 0\)</span>) para algún precio positivo, por lo que existe un precio de equilibrio <span class="math inline">\(p_i^* &gt; 0\)</span>. Cuando la función es decreciente, por debajo de ese precio hay exceso de demanda y, por encima, exceso de oferta (panel a).</p></li>
+<li><p><em>Bien libre</em>: la función no corta al eje y siempre existe exceso de oferta, incluso a precio nulo. Por ello, para incluir bienes libres en el modelo, su precio de equilibrio debe ser nulo, con <span class="math inline">\(Z_i(0) &lt; 0\)</span> (panel b)<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p></li>
+</ul>
+<div id="fig-a218-exceso-demanda" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a218-exceso-demanda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame wide">
+<iframe src="../graphs/a218_Exceso_demanda.html" style="--r:1.581" loading="lazy" title="fig-a218-exceso-demanda"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a218-exceso-demanda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A21.3: Función de exceso de demanda del bien <span class="math inline">\(i\)</span>, dados los demás precios. Si el bien es escaso, <span class="math inline">\(Z_i(p)\)</span> corta al eje en un precio positivo, <span class="math inline">\(p_i^*\)</span> (panel a). Si es libre, hay exceso de oferta a cualquier precio y el equilibrio exige <span class="math inline">\(p_i^* = 0\)</span>, con <span class="math inline">\(Z_i(0) &lt; 0\)</span> (panel b).
+</figcaption>
+</figure>
+</div>
+<p>El número de cortes de la función con el eje, que determina si el equilibrio es único o múltiple, depende a su vez de la relación entre los bienes (sustitutivos brutos o no) y se estudia más adelante (figura <a href="#fig-a215-unicidad" class="quarto-xref"><span>A21.5</span></a>).</p>
+<p>La función de exceso de demanda cumple la ley de Walras, según la cual el valor total de los excesos de demanda es nulo para cualquier vector de precios. Formalmente:</p>
+<p><span class="math display">\[\sum_{i=1}^{n} p_i Z_i(p) = 0\]</span></p>
+<p>La ley se cumple para cualquier vector de precios, no solo en equilibrio. El resultado se deriva directamente de la agregación de las restricciones presupuestarias de todos los consumidores. Puesto que cada consumidor gasta exactamente su renta, el valor total de lo que se demanda debe igualar al valor total de lo que se ofrece.</p>
+<p>Económicamente, esto significa que los mercados están interconectados, en el sentido de que toda unidad monetaria gastada en un mercado es una unidad que deja de gastarse en otro. Por eso, no puede haber excesos de demanda (o de oferta) para todos los bienes simultáneamente.</p>
+<p>De esta ley se siguen cuatro corolarios:</p>
+<ol type="1">
+<li><p><em>Excesos compensadores</em>: para un vector de precios cualquiera, si existe un exceso en un mercado, existirá un exceso compensador en otro. Para el vector de equilibrio, no pueden existir excesos de bienes escasos, aunque sí excesos de oferta de bienes libres.</p></li>
+<li><p><em>Indeterminación de precios absolutos</em>: dado que hay <span class="math inline">\(n-1\)</span> ecuaciones independientes con <span class="math inline">\(n\)</span> incógnitas y los excesos de demanda son homogéneos de grado cero, solo se determinan precios relativos. Por ello, se fija un bien como <em>numerario</em> (unidad de cuenta) y el resto se define en relación con él.</p></li>
+<li><p><em>El dinero es un velo</em>: en el modelo walrasiano, que es una economía de trueque, el numerario solo cumple el papel de unidad de cuenta, por lo que no se requiere la presencia efectiva del dinero como medio de pago.</p></li>
+<li><p><em>Economía abierta</em>: <span class="math inline">\(\sum_i p_i Z_i(p) = -\text{BC}\)</span>, donde <span class="math inline">\(Z_i(p)\)</span> es ahora el exceso de demanda interna del bien <span class="math inline">\(i\)</span> y <span class="math inline">\(\text{BC}\)</span> el saldo de la balanza comercial, de modo que un exceso de demanda interna agregado se cubre con importaciones netas (déficit comercial). Si <span class="math inline">\(\text{BC} = 0\)</span>, se da el equilibrio externo. En el modelo de dos países y dos bienes, la ley de Walras permite obtener la relación real de intercambio internacional a partir del vaciado de un solo mercado, porque, si se vacía el mercado mundial de un bien, se vacía también el del otro. Gráficamente, la restricción de comercio equilibrado de cada país (valor de las exportaciones igual al de las importaciones) es una recta que pasa por el origen y cuya pendiente es el precio relativo de los bienes. La relación real de intercambio de equilibrio es la pendiente de la recta sobre la que son compatibles las ofertas de exportación y las demandas de importación de ambos países.</p></li>
+</ol>
+<p><strong>El mecanismo de <em>tâtonnement</em> y la función del subastador</strong>: en la reconstrucción habitual del modelo de Walras, el <em>tâtonnement</em> es un proceso de ajuste previo a las transacciones en el que un subastador ficticio guía la economía hacia el equilibrio. El proceso opera del siguiente modo:</p>
+<ol type="1">
+<li><p><em>Anuncio de precios</em>: el subastador propone un vector de precios.</p></li>
+<li><p><em>Demandas nocionales</em>: los agentes calculan sus demandas y ofertas óptimas a esos precios.</p></li>
+<li><p><em>Observación de excesos</em>: el subastador comprueba si hay excesos de demanda u oferta en cada mercado.</p></li>
+<li><p><em>Revisión de precios</em>: si algún mercado no se vacía, no se realizan transacciones y el subastador sube los precios en los mercados con exceso de demanda y los baja en los mercados con exceso de oferta.</p></li>
+<li><p><em>Iteración</em>: el proceso se repite hasta que todos los mercados se vacían simultáneamente, momento en el cual se ejecutan las transacciones<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p></li>
+</ol>
+<p>Este mecanismo difiere esencialmente del ajuste marshalliano vía cantidades (apartado 3.1.1). En Walras, el ajuste es simultáneo en todos los mercados, se realiza vía precios y las transacciones solo ocurren en equilibrio. Bajo <em>tâtonnement</em>, por tanto, las demandas planeadas (nocionales) coinciden con las efectivas. Esta propiedad se pierde cuando existen rigideces de precios, lo que constituye uno de los puntos de partida de los neokeynesianos del desequilibrio.</p>
+<p>Formalmente, la regla de ajuste del subastador puede expresarse como una función que, dado un vector de precios normalizados <span class="math inline">\(p'\)</span>, genera un nuevo vector de precios <span class="math inline">\(p''\)</span>:</p>
+<p><span class="math display">\[p_i'' \equiv T_i(p') = \frac{\max\{p_i' + \lambda_i Z_i(p'), \; 0\}}{\sum_{j=1}^{n} \max\{p_j' + \lambda_j Z_j(p'), \; 0\}}\]</span></p>
+<p>donde <span class="math inline">\(\lambda_i &gt; 0\)</span> es el factor de velocidad de ajuste. El operador <span class="math inline">\(\max\)</span> garantiza precios no negativos (un precio no puede caer por debajo de cero). La función está normalizada (<span class="math inline">\(\sum p_i'' = 1\)</span>), de manera que transforma precios normalizados en precios normalizados.</p>
+<p>Si <span class="math inline">\(Z_i &gt; 0\)</span> (exceso de demanda), el precio del bien <span class="math inline">\(i\)</span> sube, y si <span class="math inline">\(Z_i &lt; 0\)</span> (exceso de oferta), baja. El equilibrio se alcanza cuando el subastador aplica la regla y el vector de precios se reproduce a sí mismo (<span class="math inline">\(T(p^*) = p^*\)</span>). Esta propiedad de <em>punto fijo</em> permite conectar el mecanismo del subastador con la prueba de existencia del equilibrio.</p>
+</section>
+<section id="el-equilibrio-general-competitivo" class="level4">
+<h4 class="anchored" data-anchor-id="el-equilibrio-general-competitivo">1.2.4. El equilibrio general competitivo</h4>
+<p>El ajuste se detiene cuando el subastador ya no tiene precios que corregir. Se habla entonces de <strong>equilibrio general competitivo</strong>, porque todos los mercados se vacían. Las empresas maximizan su beneficio y ofrecen exactamente lo que se les demanda, mientras los consumidores, al maximizar su utilidad, demandan exactamente lo que se ofrece<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p>
+<p>Al considerar todos los mercados, hay tantos mercados como mercancías y factores productivos. Dentro de cada mercado hay tres tipos de funciones (demanda, oferta, condición de equilibrio) y dos tipos de incógnitas (precios y cantidades), con lo que se forma un sistema de ecuaciones simultáneas<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>.</p>
+<p>El equilibrio general emerge como solución a este sistema, en forma de un vector de precios que vacía todos los mercados simultáneamente. Sin embargo, que el número de ecuaciones iguale al de incógnitas no es condición suficiente, ya que se requiere que las ecuaciones sean independientes. De hecho, en un sistema walrasiano, una ecuación es redundante por la ley de Walras y solo se determinan precios relativos.</p>
+<p><strong>Definición</strong>: el EGC es un vector de precios <span class="math inline">\(p^* = (p_1^*, \ldots, p_n^*)\)</span> tal que consumidores y productores maximizan sus respectivos programas y todos los mercados (bienes, servicios, factores) se vacían. Esta condición puede plantearse formalmente de dos formas:</p>
+<ul>
+<li><p><em>Igualación de valoraciones</em>: en el EGC, la valoración subjetiva de los consumidores (tasa a la que están dispuestos a intercambiar bienes, la <span class="math inline">\(\text{RMS}\)</span>) coincide con la valoración objetiva del mercado (precio relativo). La valoración del mercado, a su vez, coincide con el coste de oportunidad de la producción, es decir, con la <span class="math inline">\(\text{RMT}\)</span>, expresada como cociente de costes marginales <span class="math inline">\((d\text{CT}_i/dx_i)/(d\text{CT}_j/dx_j)\)</span>, donde <span class="math inline">\(d\text{CT}_i/dx_i \equiv \text{Cmg}_i\)</span> es el coste marginal del bien <span class="math inline">\(i\)</span>. Formalmente: <span class="math display">\[ \text{RMS}_{ji}(p^*) = \frac{p_i^*}{p_j^*} = \frac{d\text{CT}_i/dx_i}{d\text{CT}_j/dx_j} = \text{RMT}_{ji}(p^*)\]</span> Esta triple igualdad sintetiza la eficiencia del sistema competitivo (primer teorema del bienestar).</p></li>
+<li><p><em>Ausencia de excesos</em>: <span class="math display">\[Z_i^* \equiv Z_i(p^*) = 0 \;\; \forall \, p_i^* &gt; 0 \qquad Z_i^* \equiv Z_i(p^*) \leq 0 \;\; \forall \, p_i^* = 0\]</span> Es decir, los mercados de bienes escasos se vacían (<span class="math inline">\(Z_i = 0\)</span>) y se admiten excesos de oferta de bienes libres (<span class="math inline">\(Z_i \leq 0\)</span> con <span class="math inline">\(p_i = 0\)</span>). El ajuste ante excesos se supone instantáneo. En forma concisa, <span class="math inline">\(Z_i^* \leq 0\)</span>, <span class="math inline">\(p_i^* \geq 0\)</span>, <span class="math inline">\(p_i^* Z_i^* = 0\)</span>.</p></li>
+</ul>
+<p>El equilibrio general competitivo se caracteriza por cuatro condiciones:</p>
+<ul>
+<li><p><em>Consumidores</em>: cada uno maximiza su utilidad dados los precios.</p></li>
+<li><p><em>Empresas</em>: cada una maximiza su beneficio dados los precios.</p></li>
+<li><p><em>Mercados</em>: todos se vacían simultáneamente.</p></li>
+<li><p><em>Precios relativos</em>: son los únicos que el sistema determina, y un bien se toma como numerario.</p></li>
+</ul>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo: equilibrio walrasiano en una economía de intercambio Cobb-Douglas">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo: equilibrio walrasiano en una economía de intercambio Cobb-Douglas
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sean <span class="math inline">\(u^h = (x^h)^{1/2} (y^h)^{1/2}\)</span> para <span class="math inline">\(h = A, B\)</span>, con dotaciones <span class="math inline">\((x_0^A, y_0^A) = (3, 0)\)</span> y <span class="math inline">\((x_0^B, y_0^B) = (1, 8)\)</span>, por lo que la caja mide <span class="math inline">\(X = 4\)</span> e <span class="math inline">\(Y = 8\)</span>. Tomando <span class="math inline">\(y\)</span> como numerario (<span class="math inline">\(p_y = 1\)</span>) y llamando <span class="math inline">\(p \equiv p_x/p_y\)</span>, cada consumidor gasta la mitad de su renta <span class="math inline">\(M_0^h = p\, x_0^h + y_0^h\)</span> en cada bien, de modo que <span class="math inline">\(x^h = M_0^h/(2p)\)</span> e <span class="math inline">\(y^h = M_0^h/2\)</span>. Por la ley de Walras basta vaciar el mercado de <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[\frac{3p}{2p} + \frac{p + 8}{2p} = 4 \;\Rightarrow\; p^* = \frac{p_x^*}{p_y^*} = 2 = \frac{Y}{X}\]</span></p>
+<p>Con <span class="math inline">\(p^* = 2\)</span>, las rentas son <span class="math inline">\(M_0^A = 6\)</span> y <span class="math inline">\(M_0^B = 10\)</span>, y la asignación de equilibrio es</p>
+<p><span class="math display">\[(x^A, y^A) = \left(\tfrac{3}{2},\, 3\right), \qquad (x^B, y^B) = \left(\tfrac{5}{2},\, 5\right)\]</span></p>
+<p>que vacía también el mercado de <span class="math inline">\(y\)</span> (<span class="math inline">\(3 + 5 = 8\)</span>) y cumple <span class="math inline">\(\text{RMS}_{yx}^A = y^A/x^A = 2 = y^B/x^B = \text{RMS}_{yx}^B\)</span>. Así, el precio relativo iguala las RMS de ambos consumidores y la asignación está sobre la curva de contratos.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusiones" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones">1.3. Conclusiones</h3>
+<p><strong>Aspectos positivos</strong>: el modelo walrasiano integra en un único sistema las decisiones de consumidores y empresas estudiadas en los temas anteriores y muestra que un vector de precios puede coordinarlas todas simultáneamente. Asimismo, las funciones de exceso de demanda conservan la continuidad y la homogeneidad de grado cero de las demandas individuales y cumplen la ley de Walras, aunque no heredan el resto de su estructura (teorema de Sonnenschein, Mantel y Debreu). Ello basta para plantear con precisión las cuestiones de existencia, unicidad y estabilidad.</p>
+<p><strong>Limitaciones</strong>: el mecanismo de <em>tâtonnement</em> es una ficción (no hay intercambio fuera del equilibrio ni un subastador real), y el modelo es estático y con mercados completos. Además, las condiciones que garantizan sus propiedades (convexidad, ausencia de externalidades y de poder de mercado) son las que los temas <a href="../chapters/a22-eb-i.html">A22</a> y <a href="../chapters/a23-eb-ii.html">A23</a> relajan.</p>
+</section>
+</section>
+<section id="análisis-del-equilibrio" class="level2">
+<h2 class="anchored" data-anchor-id="análisis-del-equilibrio">2. Análisis del equilibrio</h2>
+<p>Definido el equilibrio, quedan por responder tres preguntas, relativas a su existencia, su unicidad y su estabilidad. Existencia, unicidad y estabilidad son propiedades deseables del sistema competitivo como mecanismo de asignación y constituyen la base para su valoración normativa. Por ello, en esta sección se introduce el análisis positivo del equilibrio, seguido del análisis normativo.</p>
+<section id="análisis-positivo" class="level3">
+<h3 class="anchored" data-anchor-id="análisis-positivo">2.1. Análisis positivo</h3>
+<p>Se estudian, por este orden, la existencia del equilibrio (que algún vector de precios vacíe todos los mercados), su unicidad (que ese vector sea el único) y su estabilidad (que el ajuste de precios conduzca a él tras una perturbación).</p>
+<section id="existencia-el-teorema-del-punto-fijo-de-brouwer-1912" class="level4">
+<h4 class="anchored" data-anchor-id="existencia-el-teorema-del-punto-fijo-de-brouwer-1912">2.1.1. Existencia: el teorema del punto fijo de Brouwer (1912)</h4>
+<p><strong>Origen</strong>: Walras (1874) no llegó a demostrar la existencia del equilibrio, pues se apoyó en la igualdad entre el número de ecuaciones y el de incógnitas, que no la garantiza.</p>
+<p>Wald (1936) ofreció una primera prueba formal, aunque laboriosa. La prueba definitiva se debe a Arrow y Debreu (1954), que se apoyaron en la teoría de juegos, con preferencias convexas y conjuntos de producción convexos. Posteriormente, la prueba se simplificó y se extendió:</p>
+<ul>
+<li><p><em>Gale (1955) y Nikaido (1956)</em>: prueba más sencilla, basada directamente en la función de exceso de demanda.</p></li>
+<li><p><em>Debreu (1959)</em>: existencia con incertidumbre, mediante bienes contingentes.</p></li>
+</ul>
+<p><strong>Idea</strong>: en la actualidad, la existencia se ilustra mediante el <em>teorema del punto fijo de Brouwer</em> (1912). Según este resultado, toda función continua de un conjunto no vacío, cerrado, acotado y convexo de <span class="math inline">\(\mathbb{R}^n\)</span> en sí mismo tiene al menos un punto fijo <span class="math inline">\(x^*\)</span> tal que <span class="math inline">\(f(x^*) = x^*\)</span> (figura <a href="#fig-a214-existencia-brouwer" class="quarto-xref"><span>A21.4</span></a>). El teorema constituye condición suficiente para la existencia del EGC.</p>
+<p><strong>Razonamiento</strong>: la conexión con el mecanismo del subastador es directa, pues la función del subastador <span class="math inline">\(T(p)\)</span> definida en el apartado 1.2.3 transforma un vector de precios normalizados en otro vector de precios normalizados. Si se puede demostrar que esta función es continua y que su dominio (el conjunto de precios normalizados) es cerrado, acotado y convexo, entonces el teorema de Brouwer garantiza la existencia de un punto fijo <span class="math inline">\(p^*\)</span> tal que <span class="math inline">\(T(p^*) = p^*\)</span>.</p>
+<p>La condición <span class="math inline">\(T(p^*) = p^*\)</span> equivale precisamente a <span class="math inline">\(Z_i(p^*) = 0\)</span> para todos los bienes escasos, es decir, al vaciamiento de todos los mercados. Por tanto, demostrar la existencia del EGC se reduce a verificar las tres condiciones del teorema de Brouwer aplicadas a la función del subastador, lo que se hace en tres pasos:</p>
+<ol type="1">
+<li><p><em>Vector de precios (cerrado, acotado y convexo)</em>: los precios deben ser no negativos (<span class="math inline">\(p_i \geq 0\)</span>), lo que acota el conjunto por debajo. Para acotarlo también por arriba, y dado que solo importan los precios relativos, se normalizan para que sumen uno: <span class="math display">\[p_i' = \frac{p_i}{\sum_{j=1}^{n} p_j}\]</span> Los precios normalizados mantienen sus valores relativos (<span class="math inline">\(p_i'/p_j' = p_i/p_j\)</span>) y su suma es unitaria (<span class="math inline">\(\sum p_i' = 1\)</span>). El vector de precios normalizados está definido siempre que al menos un <span class="math inline">\(p_i &gt; 0\)</span> (al menos un bien debe ser escaso). Cada <span class="math inline">\(p_i' \in [0, 1]\)</span>, de modo que el conjunto está acotado, y es cerrado y convexo porque lo definen la igualdad <span class="math inline">\(\sum p_i' = 1\)</span> y las desigualdades <span class="math inline">\(p_i' \geq 0\)</span>.</p></li>
+<li><p><em>Función del subastador (continuidad)</em>: la función <span class="math inline">\(T(p')\)</span> transforma precios normalizados en precios normalizados, por lo que su imagen pertenece al mismo conjunto que su dominio. Para bienes escasos (<span class="math inline">\(p_i &gt; 0\)</span>) no hay problema de continuidad, mientras que para bienes libres (<span class="math inline">\(p_i = 0\)</span>) la demanda podría ser infinita, lo que haría la función discontinua. Para resolver esto, se establece <em>saciabilidad condicional</em>, según la cual los consumidores se sacian de todos los bienes excepto de al menos uno de los bienes escasos. Esto garantiza que el exceso de demanda de bienes libres sea finito y, por tanto, que la función del subastador sea continua en todo su dominio.</p></li>
+<li><p><em>Demostración del punto fijo</em>: verificadas las condiciones del teorema, la función del subastador posee un punto fijo <span class="math inline">\(p^*\)</span> tal que <span class="math inline">\(T(p^*) = p^*\)</span>. Resta comprobar que este punto fijo implica efectivamente <span class="math inline">\(Z_i(p^*) = 0\)</span> para bienes escasos y <span class="math inline">\(Z_i(p^*) \leq 0\)</span> para bienes libres:</p>
+<ul>
+<li><p><em>Bien libre</em> (<span class="math inline">\(p_i^* = 0\)</span>): la función toma <span class="math inline">\(T_i(p^*) = \max\{\lambda_i Z_i(p^*), 0\} / \sum(\cdot)\)</span>. Como <span class="math inline">\(p_i^* = 0\)</span>, el punto fijo exige <span class="math inline">\(T_i = 0\)</span>, lo cual requiere <span class="math inline">\(\lambda_i Z_i(p^*) \leq 0\)</span>. Dado que <span class="math inline">\(\lambda_i &gt; 0\)</span>, esto implica <span class="math inline">\(Z_i(p^*) \leq 0\)</span>, es decir, el bien libre tiene exceso de oferta o está en equilibrio.</p></li>
+<li><p><em>Bien escaso</em> (<span class="math inline">\(p_i^* &gt; 0\)</span>): sea <span class="math inline">\(D \equiv \sum_{j=1}^{n} \max\{p_j^* + \lambda_j Z_j(p^*), 0\}\)</span> el denominador de la función. El punto fijo exige <span class="math inline">\(p_i^* D = p_i^* + \lambda_i Z_i(p^*)\)</span>, de donde <span class="math inline">\(Z_i(p^*) = p_i^*(D - 1)/\lambda_i\)</span>. Sustituyendo en la ley de Walras (<span class="math inline">\(\sum p_i^* Z_i(p^*) = 0\)</span>, a la que los bienes libres no contribuyen por tener precio nulo) se obtiene <span class="math inline">\((D - 1)\sum_{p_i^* &gt; 0} (p_i^*)^2/\lambda_i = 0\)</span>, luego <span class="math inline">\(D = 1\)</span> y el punto fijo se reduce a <span class="math inline">\(T_i(p^*) = p_i^* + \lambda_i Z_i(p^*)\)</span>. La igualdad <span class="math inline">\(T_i = p_i^*\)</span> solo se cumple si <span class="math inline">\(Z_i(p^*) = 0\)</span>, lo cual es precisamente la condición de vaciamiento del mercado.</p></li>
+</ul></li>
+</ol>
+<p><strong>Desarrollo gráfico</strong>: en el caso unidimensional, el teorema del punto fijo se representa en el plano <span class="math inline">\(x\)</span>-<span class="math inline">\(f(x)\)</span> (figura <a href="#fig-a214-existencia-brouwer" class="quarto-xref"><span>A21.4</span></a>):</p>
+<ol type="1">
+<li><p><em>Función</em> <span class="math inline">\(f(x)\)</span>: es cualquier aplicación continua de <span class="math inline">\([0,1]\)</span> en sí mismo. Parte de la bisectriz o de un punto por encima de ella en <span class="math inline">\(x = 0\)</span> y llega a la bisectriz o a un punto por debajo en <span class="math inline">\(x = 1\)</span>.</p></li>
+<li><p><em>Bisectriz</em> (<span class="math inline">\(45^\circ\)</span>): recoge los puntos en los que la función devuelve el mismo valor, <span class="math inline">\(f(x) = x\)</span>.</p></li>
+<li><p><em>Punto fijo</em>: como <span class="math inline">\(f\)</span> es continua, necesariamente corta la bisectriz en algún <span class="math inline">\(x^* = f(x^*)\)</span>. En la economía, ese punto es el vector de precios que la función del subastador reproduce, <span class="math inline">\(T(p^*) = p^*\)</span>.</p></li>
+</ol>
+<div id="fig-a214-existencia-brouwer" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a214-existencia-brouwer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a214_Existencia_Brouwer.html" style="height:600px" loading="lazy" title="fig-a214-existencia-brouwer"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a214-existencia-brouwer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A21.4: Existencia del equilibrio. Toda función continua del simplex en sí mismo tiene un punto fijo (Brouwer), lo que garantiza un vector de precios de equilibrio.
+</figcaption>
+</figure>
+</div>
+<p>La misma lógica se aplica a la función de exceso de demanda. En efecto, si es continua, para pasar de exceso de oferta a exceso de demanda necesariamente cruza el eje, lo que garantiza la existencia de un precio de equilibrio (figura <a href="#fig-a218-exceso-demanda" class="quarto-xref"><span>A21.3</span></a>, panel a).</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: demuestra la coherencia lógica del sistema walrasiano, al garantizar que existe al menos un vector de precios que vacía todos los mercados, y sustituye el recuento de ecuaciones e incógnitas por una prueba rigurosa. El argumento de punto fijo, el mismo que garantiza la existencia del equilibrio de Nash, es además la herramienta habitual para probar la existencia de equilibrio en economía.</p></li>
+<li><p><em>Limitaciones</em>: el resultado es solo de existencia, pues no dice cuántos equilibrios hay ni si el ajuste de precios los alcanza, cuestiones que se tratan a continuación. Descansa, además, en supuestos de convexidad y continuidad que excluyen los rendimientos crecientes y las indivisibilidades.</p></li>
+</ul>
+</section>
+<section id="unicidad" class="level4">
+<h4 class="anchored" data-anchor-id="unicidad">2.1.2. Unicidad</h4>
+<p>La unicidad importa por dos razones. Si hay equilibrios múltiples, no hay punto de referencia para la estática comparativa, y las propiedades normativas podrían verse afectadas. Para garantizarla se dispone de dos teoremas, que ofrecen condiciones suficientes, no necesarias<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>.</p>
+<p><strong>Teorema de la preferencia revelada</strong>: si la función de exceso de demanda agregada cumple el axioma débil de la preferencia revelada (ADPR, según el cual si <span class="math inline">\(Z(p) \neq Z(p')\)</span> y <span class="math inline">\(p Z(p') \leq 0\)</span>, entonces <span class="math inline">\(p' Z(p) &gt; 0\)</span>), el conjunto de vectores de precios de EGC es convexo. Si además los equilibrios están localmente aislados (con los precios normalizados), el EGC es único.</p>
+<p>La demostración parte de una consecuencia del ADPR. Si <span class="math inline">\(p^*\)</span> es de equilibrio y <span class="math inline">\(p\)</span> no lo es, <span class="math inline">\(Z(p) \neq Z(p^*)\)</span> y <span class="math inline">\(p Z(p^*) \leq 0 = p Z(p)\)</span> (ley de Walras), luego <span class="math inline">\(p^* Z(p) &gt; 0\)</span>.</p>
+<p>Sean <span class="math inline">\(p^1\)</span> y <span class="math inline">\(p^2\)</span> dos EGC y <span class="math inline">\(p = \alpha p^1 + (1 - \alpha) p^2\)</span>, con <span class="math inline">\(0 &lt; \alpha &lt; 1\)</span>. Por la ley de Walras, <span class="math inline">\(p Z(p) = \alpha\, p^1 Z(p) + (1 - \alpha)\, p^2 Z(p) = 0\)</span>, lo que sería imposible si <span class="math inline">\(p\)</span> no fuese de equilibrio, pues ambos sumandos serían positivos. Toda combinación convexa de equilibrios es, por tanto, un equilibrio, y si los equilibrios están aislados solo puede haber uno.</p>
+<p><strong>Teorema de los sustitutivos brutos</strong>: si todos los bienes son sustitutivos brutos en sentido estricto (<span class="math inline">\(\partial Z_i / \partial p_j &gt; 0\)</span>, <span class="math inline">\(\forall i \neq j\)</span>), el EGC es único.</p>
+<p>La idea de la demostración, con dos bienes, es la siguiente. Si se parte de un EGC <span class="math inline">\(p^*\)</span> y se considera un precio alternativo <span class="math inline">\(p_2 &lt; p_2^*\)</span>, el encarecimiento relativo del bien 1 produce <span class="math inline">\(Z_1 &lt; 0\)</span> (exceso de oferta). Por la ley de Walras, necesariamente <span class="math inline">\(Z_2 &gt; 0\)</span>, de modo que ese vector de precios no puede ser un EGC.</p>
+<p><strong>Casos de equilibrios múltiples</strong>: pueden darse con ausencia de sustituibilidad bruta (efectos renta intensos), rendimientos crecientes o curvas de oferta de trabajo con pendiente negativa (efecto renta domina al efecto sustitución a salarios altos). En esas situaciones, la función de exceso de demanda corta el eje más de una vez.</p>
+<p>Gráficamente, en el plano <span class="math inline">\(Z\)</span>-<span class="math inline">\(p\)</span> (figura <a href="#fig-a215-unicidad" class="quarto-xref"><span>A21.5</span></a>), cada corte de la función de exceso de demanda <span class="math inline">\(Z(p)\)</span> con el eje vertical (<span class="math inline">\(Z = 0\)</span>) es un equilibrio. Con sustitutivos brutos la función lo corta una sola vez, en <span class="math inline">\(p^*\)</span> (panel izquierdo). Sin ellos, en cambio, puede cortarlo varias veces, en <span class="math inline">\(p^1\)</span>, <span class="math inline">\(p^2\)</span> y <span class="math inline">\(p^3\)</span> (panel derecho).</p>
+<div id="fig-a215-unicidad" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a215-unicidad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame wide">
+<iframe src="../graphs/a215_Unicidad.html" style="--r:1.619" loading="lazy" title="fig-a215-unicidad"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a215-unicidad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A21.5: Unicidad del equilibrio. El teorema de existencia no la garantiza. Con sustituibilidad bruta entre todos los bienes, la función de exceso de demanda corta una sola vez al eje y el equilibrio es único, pero en otro caso pueden existir equilibrios múltiples.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: los dos teoremas garantizan la unicidad, y con ella un punto de referencia para la estática comparativa, con condiciones sobre la función de exceso de demanda agregada. Ninguno de los dos exige preferencias homotéticas idénticas, aunque estas bastan para que se cumpla el ADPR en el agregado.</p></li>
+<li><p><em>Limitaciones</em>: el ADPR solo está garantizado para la demanda agregada en casos muy restrictivos, por ejemplo, cuando todos los consumidores tienen preferencias homotéticas idénticas (elasticidad-renta unitaria). La sustituibilidad bruta, por su parte, es también muy restrictiva, ya que excluye la complementariedad bruta entre cualquier par de bienes y exige que los efectos renta no dominen a los efectos sustitución.</p></li>
+</ul>
+</section>
+<section id="estabilidad" class="level4">
+<h4 class="anchored" data-anchor-id="estabilidad">2.1.3. Estabilidad</h4>
+<p>La <strong>estabilidad</strong> se refiere a que, ante una perturbación, el sistema regrese al equilibrio mediante un proceso de ajuste. Se distingue entre estabilidad global (convergencia desde cualquier vector de precios inicial) y local (convergencia solo en un entorno cercano)<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>.</p>
+<p><strong>Función de distancia al equilibrio</strong>: el equilibrio es estable si <span class="math inline">\(\lim_{t \rightarrow \infty} p(t) = p^*\)</span>. En un mercado aislado, ello exige <span class="math inline">\(\partial Z_i(p) / \partial p_i &lt; 0\)</span> en el entorno de <span class="math inline">\(p^*\)</span>. Para estudiar la estabilidad dinámica se emplea la función de distancia al equilibrio, bajo los supuestos de ley de Walras, bienes sustitutivos brutos y dos bienes, con la regla de ajuste <span class="math inline">\(\dot p_i = \lambda_i Z_i(p)\)</span>, <span class="math inline">\(\lambda_i &gt; 0\)</span>:</p>
+<p><span class="math display">\[\Phi(p(t), p^*) = \frac{1}{2\lambda_1} (p_1(t) - p_1^*)^2 + \frac{1}{2\lambda_2} (p_2(t) - p_2^*)^2\]</span></p>
+<p>Para que haya estabilidad basta con que <span class="math inline">\(\Phi\)</span> caiga monótonamente con el tiempo (<span class="math inline">\(d\Phi / dt &lt; 0\)</span>, <span class="math inline">\(\forall p(t) \neq p^*\)</span>), lo cual queda garantizado por los supuestos. En tal caso, el EGC es estable desde el punto de vista walrasiano (Arrow, Block y Hurwicz, 1959).</p>
+<p>Gráficamente, la estabilidad del equilibrio se representa en el plano <span class="math inline">\(X\)</span>-<span class="math inline">\(p\)</span> (panel izquierdo) y en el plano <span class="math inline">\(Z\)</span>-<span class="math inline">\(p\)</span> (panel derecho) de las figuras <a href="#fig-a216-estabilidad-i" class="quarto-xref"><span>A21.6</span></a> y <a href="#fig-a217-estabilidad-ii" class="quarto-xref"><span>A21.7</span></a>:</p>
+<ol type="1">
+<li><p><em>Oferta y demanda</em>: <span class="math inline">\(D(X)\)</span> recoge la cantidad que se demanda a cada precio y <span class="math inline">\(S(X)\)</span>, la que se ofrece, y las dos curvas se cortan en el punto <span class="math inline">\(0\)</span>, con precio <span class="math inline">\(p^*\)</span> y cantidad <span class="math inline">\(X^*\)</span>.</p></li>
+<li><p><em>Exceso de demanda</em>: <span class="math inline">\(Z(p)\)</span> recoge, para cada precio, la diferencia entre la cantidad demandada y la ofrecida.</p></li>
+<li><p><em>Equilibrio</em>: <span class="math inline">\(Z(p)\)</span> corta el eje vertical (<span class="math inline">\(Z = 0\)</span>) en <span class="math inline">\(p^*\)</span>.</p>
+<ul>
+<li><p><em>Equilibrio estable</em> (figura <a href="#fig-a216-estabilidad-i" class="quarto-xref"><span>A21.6</span></a>): <span class="math inline">\(Z(p)\)</span> es decreciente. Por encima de <span class="math inline">\(p^*\)</span> hay exceso de oferta y el subastador baja el precio (<span class="math inline">\(\Delta p &lt; 0\)</span>), y por debajo hay exceso de demanda y lo sube (<span class="math inline">\(\Delta p &gt; 0\)</span>), de modo que el precio vuelve a <span class="math inline">\(p^*\)</span>.</p></li>
+<li><p><em>Equilibrio inestable</em> (figura <a href="#fig-a217-estabilidad-ii" class="quarto-xref"><span>A21.7</span></a>): <span class="math inline">\(Z(p)\)</span> es creciente. Por encima de <span class="math inline">\(p^*\)</span> hay exceso de demanda y el precio sigue subiendo (<span class="math inline">\(\Delta p &gt; 0\)</span>), y por debajo sigue bajando (<span class="math inline">\(\Delta p &lt; 0\)</span>), de modo que el tanteo aleja el precio de <span class="math inline">\(p^*\)</span>.</p></li>
+</ul></li>
+</ol>
+<div id="fig-a216-estabilidad-i" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a216-estabilidad-i-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame wide">
+<iframe src="../graphs/a216_Estabilidad_i.html" style="--r:1.744" loading="lazy" title="fig-a216-estabilidad-i"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a216-estabilidad-i-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A21.6: Estabilidad walrasiana. El subastador eleva el precio con exceso de demanda y lo reduce con exceso de oferta.
+</figcaption>
+</figure>
+</div>
+<div id="fig-a217-estabilidad-ii" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a217-estabilidad-ii-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame wide">
+<iframe src="../graphs/a217_Estabilidad_ii.html" style="--r:1.744" loading="lazy" title="fig-a217-estabilidad-ii"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a217-estabilidad-ii-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A21.7: Equilibrio inestable. Cuando la función de exceso de demanda es creciente en el precio, el tanteo walrasiano aleja a la economía del equilibrio.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: con sustitutivos brutos, el propio mercado, a través del <em>tâtonnement</em>, tiende de forma monótona hacia el equilibrio, y la estabilidad permite el análisis de estática comparativa.</p></li>
+<li><p><em>Limitaciones</em>: sin sustituibilidad bruta, la estabilidad no está garantizada (contraejemplo de Scarf, 1960). El resultado descansa, además, en el ajuste de un subastador ficticio, sin intercambio fuera del equilibrio.</p></li>
+</ul>
+</section>
+</section>
+<section id="análisis-normativo-optimalidad-de-pareto" class="level3">
+<h3 class="anchored" data-anchor-id="análisis-normativo-optimalidad-de-pareto">2.2. Análisis normativo: optimalidad de Pareto</h3>
+<p>Una asignación se considera <strong>eficiente en el sentido de Pareto</strong> cuando no hay ninguna otra asignación factible que permita mejorar a algún individuo sin empeorar a otro. La eficiencia de Pareto tiene tres dimensiones, que pueden examinarse por separado utilizando la caja de Edgeworth-Bowley introducida en el apartado 1.2.</p>
+<p><strong>Eficiencia en el consumo</strong>: en la caja de Edgeworth-Bowley en el espacio de bienes, la <em>curva de contratos en el consumo</em> es el lugar geométrico de los puntos de tangencia entre las curvas de indiferencia de ambos consumidores. Cada uno de esos puntos es una asignación en la que <span class="math inline">\(\text{RMS}_{yx}^A = \text{RMS}_{yx}^B\)</span>. Esta condición de eficiencia no involucra precios, sino que es una propiedad puramente geométrica de las preferencias. En cualquier punto fuera de la curva de contratos, las curvas de indiferencia se cortan y delimitan una “lente” de asignaciones que mejorarían a ambos consumidores (figura <a href="#fig-a212-edgeworth-box" class="quarto-xref"><span>A21.9</span></a>), con lo que quedan ganancias del intercambio sin realizar. A lo largo de la curva de contratos, en cambio, toda mejora para un agente implica necesariamente un empeoramiento para el otro.</p>
+<p><strong>Eficiencia en la producción</strong>: de manera análoga, en la caja de Edgeworth-Bowley en el espacio de factores, la <em>curva de contratos en la producción</em> es el lugar geométrico de las tangencias entre isocuantas (figura <a href="#fig-a213-edgeworth-produccion" class="quarto-xref"><span>A21.2</span></a>), donde <span class="math inline">\(\text{RMST}_{KL}^1 = \text{RMST}_{KL}^2\)</span>. A lo largo de esta curva, la asignación de factores es Pareto-eficiente, ya que no es posible aumentar la producción de un bien sin reducir la del otro. De nuevo, esta es una condición técnica que no requiere la presencia de precios.</p>
+<p><strong>Eficiencia global</strong>: exige, además de la eficiencia en el consumo y en la producción, la eficiencia en la combinación de producto. La combinación de producto es eficiente si la tasa a la que los consumidores están dispuestos a intercambiar bienes (<span class="math inline">\(\text{RMS}\)</span>) iguala la tasa a la que la economía puede transformar un bien en otro (<span class="math inline">\(\text{RMT}\)</span>). Formalmente, <span class="math inline">\(\text{RMS}_{ji} = \text{RMT}_{ji}\)</span>.</p>
+<section id="primer-teorema-fundamental-del-bienestar-1tfeb" class="level4">
+<h4 class="anchored" data-anchor-id="primer-teorema-fundamental-del-bienestar-1tfeb">2.2.1. Primer teorema fundamental del bienestar (1TFEB)</h4>
+<p>Con preferencias localmente no saciables y sin fallos de mercado, todo equilibrio competitivo <span class="math inline">\((p^*, \mathbf{x}^*)\)</span> es una asignación eficiente en el sentido de Pareto<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>. El teorema se ha visto como la formalización de la <em>mano invisible</em> de Adam Smith, si bien se refiere a la optimalidad paretiana y no necesariamente a la optimalidad social.</p>
+<p>El 1TFEB establece el vínculo entre las condiciones de equilibrio (con precios) ya desarrolladas y las condiciones de eficiencia (sin precios) que se acaban de exponer. En el consumo, como se mostró en el apartado 1.2.1, cada consumidor iguala su <span class="math inline">\(\text{RMS}\)</span> al precio relativo (<span class="math inline">\(\text{RMS}_{yx}^h = p_x/p_y\)</span> para todo <span class="math inline">\(h\)</span>). Puesto que todos se enfrentan al mismo vector de precios, la condición de equilibrio (<span class="math inline">\(\text{RMS}_{yx}^A = p_x/p_y = \text{RMS}_{yx}^B\)</span>) implica automáticamente la condición de eficiencia (<span class="math inline">\(\text{RMS}_{yx}^A = \text{RMS}_{yx}^B\)</span>). Por ello, el equilibrio competitivo selecciona necesariamente un punto sobre la curva de contratos, una asignación Pareto-eficiente.</p>
+<p>Lo mismo ocurre en la producción, donde la condición de equilibrio (<span class="math inline">\(\text{RMST}_{KL}^1 = w/r = \text{RMST}_{KL}^2\)</span>) implica la condición de eficiencia (<span class="math inline">\(\text{RMST}_{KL}^1 = \text{RMST}_{KL}^2\)</span>). Por último, la condición de equilibrio global <span class="math inline">\(\text{RMS}_{ji} = p_i/p_j = \text{RMT}_{ji}\)</span> implica <span class="math inline">\(\text{RMS}_{ji} = \text{RMT}_{ji}\)</span>, con lo que se cumplen las tres dimensiones de la eficiencia.</p>
+<p>Así, cuando cada agente persigue por separado lo que más le conviene y se orienta únicamente por el vector de precios, el resultado conjunto es una asignación en la que nadie puede ganar sin que otro pierda. Los precios, que aparecían como mecanismo de coordinación del equilibrio, resultan ser también el vehículo a través del cual se alcanza la eficiencia.</p>
+<p>Del primer teorema se siguen cuatro corolarios:</p>
+<ol type="1">
+<li><p><em>Eficiencia sin equidad</em>: el equilibrio competitivo no desperdicia recursos, aunque puede no ser equitativo.</p></li>
+<li><p><em>Eficiencia sin intervención</em>: el mercado alcanza por sí solo un óptimo de Pareto.</p></li>
+<li><p><em>Información mínima</em>: cada agente solo necesita conocer los precios para alcanzar el óptimo.</p></li>
+<li><p><em>Fallos de mercado</em>: el incumplimiento de las condiciones suficientes del teorema hace que el equilibrio pueda no ser eficiente, lo que puede justificar la intervención del Estado por motivos de eficiencia.</p></li>
+</ol>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La demostración general del teorema, que solo exige la no saciedad local de las preferencias, se desarrolla en el tema <a href="../chapters/a22-eb-i.html">A22</a>, apartado 2.1.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="segundo-teorema-fundamental-del-bienestar-2tfeb" class="level4">
+<h4 class="anchored" data-anchor-id="segundo-teorema-fundamental-del-bienestar-2tfeb">2.2.2. Segundo teorema fundamental del bienestar (2TFEB)</h4>
+<p>Bajo ciertas condiciones (convexidad de preferencias y conjuntos de producción)<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>, cualquier óptimo de Pareto puede alcanzarse como equilibrio competitivo tras una redistribución adecuada de las dotaciones iniciales mediante transferencias de suma fija.</p>
+<p>La curva de contratos contiene todas las asignaciones Pareto-eficientes, cada una de las cuales corresponde a una distribución diferente de bienestar entre los agentes. El 1TFEB garantiza que el equilibrio competitivo se sitúa sobre la curva de contratos, pero no dice qué punto de esa curva se alcanzará, algo que depende de las dotaciones iniciales. El 2TFEB completa el argumento al mostrar que cualquier punto de la curva de contratos puede ser alcanzado como equilibrio competitivo, siempre que se redistribuyan adecuadamente las dotaciones iniciales.</p>
+<p>En la caja de Edgeworth-Bowley (figura <a href="#fig-a2110-segundo-teorema" class="quarto-xref"><span>A21.8</span></a>), un cambio en la dotación inicial (una transferencia de suma fija que lleva <span class="math inline">\(W\)</span> a <span class="math inline">\(W'\)</span>) modifica la posición de la recta presupuestaria y, con ello, selecciona como equilibrio un punto diferente de la curva de contratos, como <span class="math inline">\(\mathbf{x}^*\)</span>. Así, el Gobierno podría elegir cualquier distribución de bienestar deseada sobre la curva de contratos, redistribuir las dotaciones <em>ex ante</em> mediante transferencias de suma fija, y dejar que el mecanismo competitivo alcance esa asignación como equilibrio descentralizado.</p>
+<div id="fig-a2110-segundo-teorema" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a2110-segundo-teorema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a2110_Segundo_teorema.html" style="height:620px" loading="lazy" title="fig-a2110-segundo-teorema"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a2110-segundo-teorema-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A21.8: Segundo teorema fundamental del bienestar. Desde la dotación inicial <span class="math inline">\(W\)</span>, el intercambio voluntario lleva a un punto del núcleo, como <span class="math inline">\(C\)</span>, dentro de la lente entre <span class="math inline">\(u^A(W)\)</span> y <span class="math inline">\(u^B(W)\)</span>. Una transferencia de suma fija lleva la dotación a <span class="math inline">\(W'\)</span>, y la recta de precios que pasa por <span class="math inline">\(W'\)</span>, de pendiente <span class="math inline">\(-p_x^*/p_y^*\)</span> y tangente en <span class="math inline">\(\mathbf{x}^*\)</span> a <span class="math inline">\(u^A(\mathbf{x}^*)\)</span> y <span class="math inline">\(u^B(\mathbf{x}^*)\)</span>, sostiene como equilibrio competitivo ese otro punto de la curva de contratos (CC).
+</figcaption>
+</figure>
+</div>
+<p>Del segundo teorema se siguen dos corolarios:</p>
+<ol type="1">
+<li><p><em>Separación entre eficiencia y equidad</em>: un planificador benevolente redistribuye <em>ex ante</em> y deja actuar al mercado.</p></li>
+<li><p><em>Planificación Lange-Lerner</em>: con precios sombra, una autoridad central podría alcanzar, en teoría, los mismos resultados<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>.</p></li>
+</ol>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La demostración del teorema mediante el teorema del hiperplano separador, el papel que en ella desempeña la convexidad y su representación gráfica en la caja de Edgeworth se desarrollan en el tema <a href="../chapters/a22-eb-i.html">A22</a>, apartado 2.2.</p>
+</div>
+</div>
+</div>
+<p>La tensión entre ambos teoremas, eficiencia sin equidad en el primero y redistribución previa de las dotaciones en el segundo, define el marco normativo del análisis del equilibrio general. Sin embargo, los corolarios afrontan dos objeciones prácticas. Las transferencias de suma fija exigen información sobre las características individuales de cada agente que ningún gobierno posee, y los instrumentos redistributivos disponibles (impuestos, subsidios) son inevitablemente distorsionantes, de modo que surge la disyuntiva entre eficiencia y equidad. En cuanto a la planificación, Hayek señaló los elevados costes de información que exigiría. Por ello, los dos teoremas juntos definen un <em>ideal regulativo</em> (un punto de referencia teórico) más que una prescripción de política directamente aplicable.</p>
+</section>
+</section>
+<section id="conclusiones-1" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-1">2.3. Conclusiones</h3>
+<p>El análisis positivo establece que el sistema walrasiano tiene solución. La función del subastador es continua sobre el símplex de precios normalizados, de modo que tiene un punto fijo (Brouwer) que, por la ley de Walras, vacía los mercados de bienes escasos. La existencia no asegura, sin embargo, que el equilibrio sea único ni que el tanteo lo alcance. Ambas propiedades solo se garantizan con condiciones restrictivas, como el axioma débil de la preferencia revelada en el agregado o la sustituibilidad bruta, sin la cual el ajuste puede no converger (Scarf, 1960).</p>
+<p>El análisis normativo enlaza las condiciones de equilibrio, que contienen precios, con las de eficiencia, que no los requieren. Con precios comunes para todos, el equilibrio competitivo es un óptimo de Pareto, y con convexidad cualquier óptimo puede sostenerse como equilibrio tras transferencias de suma fija. Estas transferencias exigen, no obstante, conocer las características de cada agente, de ahí que los teoremas sirvan de referencia más que de prescripción. El análisis supone, además, un subastador ficticio y una economía sin dinero ni incertidumbre, supuestos que levanta la sección 3.</p>
+</section>
+</section>
+<section id="extensiones-y-aplicaciones" class="level2">
+<h2 class="anchored" data-anchor-id="extensiones-y-aplicaciones">3. Extensiones y aplicaciones</h2>
+<p>El modelo walrasiano admite varias extensiones: otros procesos de ajuste distintos del subastador, la introducción del dinero y de la incertidumbre, y las aplicaciones de los modelos de equilibrio general computable.</p>
+<section id="procesos-de-ajuste-distintos-al-subastador" class="level3">
+<h3 class="anchored" data-anchor-id="procesos-de-ajuste-distintos-al-subastador">3.1. Procesos de ajuste distintos al subastador</h3>
+<p>Además del <em>tâtonnement</em> walrasiano, el equilibrio puede alcanzarse por otras vías, como el ajuste vía cantidades de Marshall y la negociación directa entre los agentes, sin acuerdos vinculantes o con ellos.</p>
+<section id="ajuste-vía-cantidades-marshall-1890" class="level4">
+<h4 class="anchored" data-anchor-id="ajuste-vía-cantidades-marshall-1890">3.1.1. Ajuste vía cantidades (Marshall, 1890)</h4>
+<p><strong>Origen</strong>: Alfred Marshall (1890) analizó el ajuste de un mercado aislado desde el lado de la producción, con la cantidad como variable que se ajusta.</p>
+<p><strong>Idea</strong>: los productores, y no un subastador, ajustan las cantidades según la diferencia entre el precio de demanda y el precio de oferta de la cantidad corriente.</p>
+<p><strong>Razonamiento</strong>: si el precio de demanda (lo que los consumidores están dispuestos a pagar por la cantidad corriente) supera al precio de oferta (el coste marginal de producirla), las empresas amplían la producción, y la reducen en el caso contrario. A diferencia del <em>tâtonnement</em>, el ajuste es gradual, se produce mercado a mercado y las transacciones se realizan a precios de desequilibrio (apartado 1.2.3).</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>El mecanismo de ajuste marshalliano, sus condiciones de estabilidad y su comparación con el walrasiano se desarrollan, en equilibrio parcial, en el tema <a href="../chapters/a16-competencia-perfecta.html">A16</a>, apartados 2.4.2 y 2.4.4.</p>
+</div>
+</div>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: se adapta bien a los mercados en los que la producción se decide antes de conocer el precio y se corrige de forma gradual, como los industriales.</p></li>
+<li><p><em>Limitaciones</em>: es un análisis de equilibrio parcial, que no recoge la interdependencia entre mercados. Además, cuando la oferta y la demanda tienen pendientes del mismo signo, su criterio de estabilidad es el contrario del walrasiano.</p></li>
+</ul>
+</section>
+<section id="negociación-bilateral-sin-acuerdos-vinculantes-caja-de-edgeworth-bowley-edgeworth-1881-bowley-1924" class="level4">
+<h4 class="anchored" data-anchor-id="negociación-bilateral-sin-acuerdos-vinculantes-caja-de-edgeworth-bowley-edgeworth-1881-bowley-1924">3.1.2. Negociación bilateral sin acuerdos vinculantes: caja de Edgeworth-Bowley (Edgeworth, 1881; Bowley, 1924)</h4>
+<p><strong>Origen</strong>: Francis Edgeworth (1881) introdujo las curvas de indiferencia y la curva de contratos en el análisis del intercambio entre dos agentes. Estas curvas se representan en la caja de Edgeworth-Bowley, dibujada por primera vez por Pareto en 1906 y popularizada por Bowley en 1924.</p>
+<p><strong>Idea</strong>: sin precios ni subastador, dos agentes que negocian libremente a partir de sus dotaciones intercambian hasta agotar las ganancias mutuas y acaban en un punto de la curva de contratos.</p>
+<p><strong>Razonamiento</strong>: la <em>caja de Edgeworth-Bowley</em> es un diagrama de las asignaciones factibles de un proceso de intercambio entre dos agentes (o de producción con dos factores). Las dimensiones de la caja están determinadas por las dotaciones totales, y la condición de factibilidad es <span class="math inline">\(x^A + x^B = X\)</span>, <span class="math inline">\(y^A + y^B = Y\)</span>.</p>
+<p>La curva de contratos reúne las asignaciones Pareto-eficientes (apartado 2.2). Desde cualquier asignación fuera de la curva de contratos, existen intercambios mutuamente beneficiosos (la “lente” entre las curvas de indiferencia que pasan por la asignación inicial). Por eso, los individuos negocian hasta alcanzar una asignación sin ganancias potenciales, en el tramo de la curva de contratos comprendido dentro de esa lente. Sin embargo, qué punto de ese tramo se alcanza depende del poder de negociación de cada agente, de modo que el resultado es indeterminado.</p>
+<p><strong>Desarrollo gráfico</strong>: la negociación bilateral se representa en el plano bien <span class="math inline">\(x\)</span>-bien <span class="math inline">\(y\)</span> de la caja de Edgeworth-Bowley (figura <a href="#fig-a212-edgeworth-box" class="quarto-xref"><span>A21.9</span></a>):</p>
+<ol type="1">
+<li><p><em>Dotación inicial</em>: el punto <span class="math inline">\(W\)</span>, cuyas cantidades se miden desde <span class="math inline">\(O_A\)</span> para el agente <span class="math inline">\(A\)</span> y desde <span class="math inline">\(O_B\)</span> para el agente <span class="math inline">\(B\)</span>.</p></li>
+<li><p><em>Curvas de indiferencia por la dotación</em>: <span class="math inline">\(u^A(W)\)</span> reúne las cestas que dan a <span class="math inline">\(A\)</span> la misma utilidad que su dotación, y <span class="math inline">\(u^B(W)\)</span>, las que dan a <span class="math inline">\(B\)</span> la misma utilidad que la suya. Las dos curvas se cortan en <span class="math inline">\(W\)</span> y encierran la lente de mejoras paretianas.</p></li>
+<li><p><em>Curva de contratos</em> (<span class="math inline">\(\text{CC}\)</span>): une las tangencias entre las curvas de indiferencia de ambos agentes, las asignaciones Pareto-eficientes.</p></li>
+<li><p><em>Equilibrio</em>: la negociación termina en el núcleo, el tramo de <span class="math inline">\(\text{CC}\)</span> comprendido dentro de la lente, y el punto exacto depende del poder de negociación de cada agente.</p></li>
+</ol>
+<div id="fig-a212-edgeworth-box" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a212-edgeworth-box-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a212_Edgeworth_Box.html" style="height:620px" loading="lazy" title="fig-a212-edgeworth-box"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a212-edgeworth-box-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A21.9: Negociación en la caja de Edgeworth-Bowley. El núcleo es el segmento de la curva de contratos limitado por las curvas de indiferencia que pasan por la dotación inicial.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: muestra que el intercambio voluntario agota las ganancias mutuas y conduce a una asignación eficiente sin necesidad de precios, y ofrece la herramienta gráfica básica del análisis del equilibrio general y del bienestar.</p></li>
+<li><p><em>Limitaciones</em>: con solo dos agentes, el resultado queda indeterminado y depende del poder de negociación, y el diagrama no admite más de dos agentes y dos bienes.</p></li>
+</ul>
+</section>
+<section id="negociación-con-acuerdos-vinculantes-coaliciones-y-núcleo-debreu-y-scarf-1963" class="level4">
+<h4 class="anchored" data-anchor-id="negociación-con-acuerdos-vinculantes-coaliciones-y-núcleo-debreu-y-scarf-1963">3.1.3. Negociación con acuerdos vinculantes: coaliciones y núcleo (Debreu y Scarf, 1963)</h4>
+<p><strong>Origen</strong>: Edgeworth (1881) conjeturó que el tramo de la curva de contratos alcanzable por negociación se reduce a medida que aumenta el número de agentes, y Debreu y Scarf (1963) lo demostraron con generalidad.</p>
+<p><strong>Idea</strong>: cuando los agentes pueden formar coaliciones con acuerdos vinculantes, solo sobreviven las asignaciones que ninguna coalición puede mejorar por su cuenta, y en una economía grande esas asignaciones son las del equilibrio competitivo.</p>
+<p><strong>Razonamiento</strong>: el <em>núcleo económico</em> es el conjunto de asignaciones alcanzables no bloqueadas por ninguna coalición, de modo que toda asignación del núcleo es individualmente racional (no la bloquea ningún agente aislado) y Pareto-eficiente (no la bloquea la coalición formada por todos los agentes).</p>
+<p>Debreu y Scarf (1963) demostraron que, partiendo de cualquier número finito de agentes y bienes, si se replica la economía infinitamente, el núcleo converge al conjunto de asignaciones de equilibrio competitivo. Además, la asignación walrasiana pertenece al núcleo, lo que demuestra que ningún grupo desearía retirarse para comerciar entre sus miembros.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: ofrece una validación de la competencia perfecta en un entorno más general y natural, pues, aunque la aproximación de Walras es menos realista que la de Edgeworth, en el límite los resultados coinciden. Los precios competitivos surgen así de la negociación entre muchos agentes, sin necesidad de subastador.</p></li>
+<li><p><em>Limitaciones</em>: el resultado es asintótico, porque exige replicar la economía hasta el infinito, y con pocos agentes el núcleo puede ser amplio. El modelo supone, además, que formar coaliciones no tiene coste.</p></li>
+</ul>
+</section>
+</section>
+<section id="modelo-de-equilibrio-general-con-dinero" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-de-equilibrio-general-con-dinero">3.2. Modelo de equilibrio general con dinero</h3>
+<p>Según cómo modelicen el dinero, los modelos de equilibrio general son de dos tipos:</p>
+<ul>
+<li><p><em>Modelos no monetarios</em>: en los que no aparece el dinero (economía de trueque) o en los que aparece, pero como un bien más.</p></li>
+<li><p><em>Modelos monetarios</em>: en los que el dinero aparece como una entidad con su propia naturaleza (p.&nbsp;ej. dinero fiat). Este último caso es de especial interés, dado que las economías actuales son monetarias, con dinero fiduciario cuya base emite en monopolio el banco central.</p></li>
+</ul>
+<p>La modelización del dinero en el equilibrio general ha seguido dos tradiciones principales. Desde la perspectiva neoclásica, el dinero queda fuera de la economía real y se mantiene la dicotomía entre el sector real (determinado por precios relativos) y el sector monetario (que fija el nivel absoluto de precios). Desde perspectivas posteriores, generalmente keynesianas o poskeynesianas, el dinero se integra, en cambio, en la economía real y su presencia afecta a las decisiones de los agentes, lo que exige una modelización diferente.</p>
+<section id="tradición-neoclásica-y-dicotomía-clásica" class="level4">
+<h4 class="anchored" data-anchor-id="tradición-neoclásica-y-dicotomía-clásica">3.2.1. Tradición neoclásica y dicotomía clásica</h4>
+<p><strong>Origen</strong>: los autores fieles a la teoría neoclásica incorporaron el dinero al sistema walrasiano a partir de la teoría cuantitativa, en la versión de los saldos de caja de la escuela de Cambridge (tema <a href="../chapters/a35-demanda-dinero.html">A35</a>, apartado 1.1.2).</p>
+<p><strong>Idea</strong>: cada agente demanda como saldos monetarios una fracción del valor de su riqueza, de modo que el dinero se añade al sistema como un mercado más, que fija el nivel absoluto de precios sin alterar la determinación de los precios relativos (dicotomía clásica).</p>
+<p><strong>Razonamiento</strong>: formalmente, la demanda individual de saldos monetarios puede escribirse como:</p>
+<p><span class="math display">\[ m^{d,h} = k \left( \sum_i p_i x_{i0}^h + \sum_l p_l^z z_{l0}^h \right)\]</span></p>
+<p>donde <span class="math inline">\(m^{d,h}\)</span> refleja la demanda de dinero del agente <span class="math inline">\(h\)</span> y <span class="math inline">\(k \in (0, 1)\)</span> es la fracción de riqueza (o renta) que el agente desea mantener en forma de saldos monetarios, es decir, el inverso de la velocidad de circulación en la tradición de Cambridge. El término entre paréntesis recoge el valor de mercado de las dotaciones del agente. Agregando sobre todos los agentes, se obtiene la demanda agregada de dinero <span class="math inline">\(M^d = k \cdot PY\)</span>, donde <span class="math inline">\(P\)</span> es el nivel general de precios e <span class="math inline">\(Y\)</span> la renta real.</p>
+<p>A partir de esta idea, se puede introducir una condición de vaciado en el mercado monetario con la función de exceso de demanda <span class="math inline">\(Z_M = M^d - M^s = 0\)</span>. Sin embargo, la demanda de dinero así definida es homogénea de grado uno en precios, y, con <span class="math inline">\(M^s\)</span> dado, el exceso de demanda de dinero no es homogéneo de grado cero. Si todos los precios se duplican, la demanda de dinero se duplica, puesto que los agentes necesitan el doble de saldos nominales para financiar las mismas transacciones reales.</p>
+<p>La inconsistencia aparece al combinar esa función con la ley de Walras (Patinkin, 1956). Si los excesos de demanda de bienes dependen solo de los precios relativos (son homogéneos de grado cero) y la suma de todos los excesos de demanda valorados, dinero incluido, es idénticamente nula, el exceso de demanda de dinero queda determinado por los de los bienes:</p>
+<p><span class="math display">\[Z_M = -\sum_i p_i Z_i(\mathbf{p})\]</span></p>
+<p>Una vez vaciados los mercados de bienes, <span class="math inline">\(Z_M = 0\)</span> se cumple, por tanto, para cualquier nivel de precios. En cambio, la ecuación de Cambridge, <span class="math inline">\(Z_M = kPY - M^s\)</span>, solo se anula en un nivel concreto, <span class="math inline">\(P = M^s/(kY)\)</span>. Las dos condiciones son incompatibles, de modo que el sistema es inconsistente o deja indeterminado el nivel absoluto de precios. Patinkin resuelve la inconsistencia haciendo depender las demandas de bienes de los saldos reales, <span class="math inline">\(M/P\)</span>.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: integra el dinero en el equilibrio general con un supuesto sencillo y coherente con la teoría cuantitativa, y separa la determinación de los precios relativos, en el sector real, de la del nivel absoluto de precios, en el sector monetario.</p></li>
+<li><p><em>Limitaciones</em>: la dicotomía es inválida en sentido estricto, porque, con la ley de Walras, el sector real no puede determinar los precios relativos sin determinar a la vez el equilibrio del mercado de dinero, que entonces ya no fija el nivel absoluto de precios.</p></li>
+</ul>
+</section>
+<section id="la-controversia-patinkin-1956" class="level4">
+<h4 class="anchored" data-anchor-id="la-controversia-patinkin-1956">3.2.2. La controversia Patinkin (1956)</h4>
+<p><strong>Origen</strong>: Don Patinkin (1956) intentó resolver la inconsistencia de la dicotomía clásica e integrar la teoría monetaria con la walrasiana.</p>
+<p><strong>Idea</strong>: su contribución central fue incorporar al equilibrio general walrasiano el <em>efecto saldos reales</em> (efecto Pigou), extendido a todas las funciones de exceso de demanda. Según este efecto, los saldos monetarios reales <span class="math inline">\(M/P\)</span> entran directamente en la función de utilidad de los consumidores y, por esa vía, influyen en las decisiones de demanda de bienes.</p>
+<p><strong>Razonamiento</strong>: de este modo, un cambio en el nivel de precios altera la riqueza real de los agentes (medida en términos de su poder adquisitivo monetario), lo que modifica sus demandas de bienes y servicios. De ahí que el sector monetario y el sector real dejen de estar dicotomizados.</p>
+<p>Formalmente, Patinkin añadió una ecuación que hace del nivel general de precios una media ponderada, <span class="math inline">\(P = \sum \omega_i p_i\)</span> (<span class="math inline">\(\omega_i \in (0, 1)\)</span>, <span class="math inline">\(\sum \omega_i = 1\)</span>). Después expresó todas las funciones de exceso de demanda (bienes y dinero) como funciones de los precios deflactados por <span class="math inline">\(P\)</span>:</p>
+<p><span class="math display">\[Z_i = f_i\!\left(\frac{p_1}{P}, \frac{p_2}{P}, \ldots, \frac{M}{P}\right) \qquad i = 1, \ldots, n+1\]</span></p>
+<p>Con ello se obtienen dos resultados, que resuelven la inconsistencia de la dicotomía clásica:</p>
+<ul>
+<li><p><em>Determinación del sistema</em>: con <span class="math inline">\(n+2\)</span> ecuaciones, una de ellas redundante por la ley de Walras, y <span class="math inline">\(n+1\)</span> incógnitas, pueden calcularse los precios absolutos.</p></li>
+<li><p><em>Homogeneidad de grado cero</em>: ahora lo son todas las funciones de exceso de demanda, tomando como argumentos los precios absolutos y el dinero. Multiplicar por un mismo factor cada precio y <span class="math inline">\(M\)</span> no altera ni los precios relativos ni los saldos reales, así que tampoco cambian las cantidades demandadas.</p></li>
+</ul>
+<p><strong>Extensiones</strong>: Patinkin observó además que, si el dinero no reporta utilidad alguna, no hay razón para que los agentes mantengan saldos monetarios. Por ello, una forma habitual de fundamentar teóricamente el dinero es incluirlo en la función de utilidad (<em>money in utility</em>), aunque existen otras (la restricción de liquidez o <em>cash-in-advance</em>, las generaciones solapadas o los modelos de búsqueda). Dar al dinero un papel propio exige levantar supuestos neoclásicos (p.&nbsp;ej. información perfecta, mercados completos), dado que en un mundo de información perfecta y sin costes de transacción, los agentes podrían intercambiar bienes directamente sin necesidad de dinero.</p>
+<p>El dinero solo adquiere, por tanto, un papel económico sustantivo cuando existen fricciones (incertidumbre, costes de transacción, asimetrías de información) que hacen del medio de pago un activo con valor propio. Estas observaciones fueron centrales para el desarrollo de los neokeynesianos del desequilibrio, que enfatizaron las consecuencias de las transacciones a precios de no equilibrio, y para la nueva economía keynesiana (NEK), que modeló explícitamente las rigideces nominales y las fricciones de mercado.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: integra el dinero en el sistema walrasiano y permite determinar los precios absolutos sin perder la homogeneidad de grado cero, con lo que muestra que la neutralidad del dinero es compatible con el abandono de la dicotomía clásica. El efecto saldos reales se incorporó, además, a la síntesis neoclásica.</p></li>
+<li><p><em>Limitaciones</em>: incluir el dinero en la función de utilidad es un atajo que postula su demanda sin derivarla de las fricciones que le dan un papel sustantivo. Además, el efecto saldos reales en que se apoya es débil en la práctica, pues exige caídas de precios muy intensas para alterar la demanda de forma apreciable (tema <a href="../chapters/a04-keynes.html">A04</a>, apartado 3.1).</p></li>
+</ul>
+</section>
+</section>
+<section id="modelo-de-equilibrio-general-en-incertidumbre-arrow-debreu" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-de-equilibrio-general-en-incertidumbre-arrow-debreu">3.3. Modelo de equilibrio general en incertidumbre (Arrow-Debreu)</h3>
+<p><strong>Origen</strong>: Arrow (1953) y Debreu (<em>Theory of Value</em>, 1959) llevaron el modelo walrasiano a un mundo incierto, en el que los bienes de que se dispondrá mañana dependen de qué estado de la naturaleza se dé, algo que ningún agente controla.</p>
+<p><strong>Idea</strong>: basta redefinir los bienes para que la teoría con certidumbre se aplique sin cambios. Para ello, un mismo bien físico disponible en fechas o estados de la naturaleza distintos se trata como bienes distintos, los <em>bienes contingentes</em>, definidos por su especificación física, su fecha y su estado de la naturaleza<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>.</p>
+<p><strong>Razonamiento</strong>: para probar que el EGC existe también con incertidumbre, Debreu (1959) necesitó tres requisitos. Debe haber un mercado para cada bien contingente concebible (mercados completos), las preferencias sobre esos bienes han de ser convexas (lo que, con utilidad esperada, equivale a aversión al riesgo) y siguen exigiéndose los axiomas de preferencias del caso con certidumbre.</p>
+<p>Por su parte, Arrow (1953), en una economía de intercambio, probó que no hace falta un mercado para cada bien contingente. Basta, en efecto, un título por estado de la naturaleza, pagadero en dinero, junto con mercados al contado abiertos una vez conocido el estado, para que la competencia asigne el riesgo de forma eficiente (tema <a href="../chapters/a10-riesgo-incertidumbre.html">A10</a>, apartado 1.4.2). Hacen falta así <span class="math inline">\(S + C\)</span> mercados en lugar de <span class="math inline">\(S \times C\)</span>, con <span class="math inline">\(S\)</span> estados y <span class="math inline">\(C\)</span> bienes.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: extiende la existencia y la eficiencia del equilibrio competitivo a la incertidumbre sin nuevos instrumentos analíticos, y ofrece el marco de referencia de la asignación del riesgo a través de los mercados.</p></li>
+<li><p><em>Limitaciones</em>: necesita mercados completos, un mercado para cada bien contingente o, con Arrow (1953), un título para cada estado de la naturaleza, algo que ninguna economía real ofrece. Además, supone que todos los agentes tienen la misma información, de modo que deja fuera el riesgo moral y la selección adversa<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>.</p></li>
+</ul>
+</section>
+<section id="aplicaciones" class="level3">
+<h3 class="anchored" data-anchor-id="aplicaciones">3.4. Aplicaciones</h3>
+<p>Desde la década de 1970, tras el algoritmo de Scarf (1967), los <strong>modelos de equilibrio general computable</strong> (MEGC) han permitido aplicar la teoría a la práctica. Sus principales aplicaciones son las siguientes:</p>
+<p><strong>Modelos de crecimiento y decisión intertemporal</strong>: aplican el marco de equilibrio general a las decisiones de consumo, ahorro e inversión a lo largo del tiempo, como los modelos de horizonte infinito y de generaciones solapadas (tema <a href="../chapters/a29-mhi-mgs.html">A29</a>, apartados 3.1 y 3.2).</p>
+<p><strong>Comercio internacional</strong>: se evalúa el impacto de las barreras comerciales sobre los salarios reales y el bienestar (tema <a href="../chapters/b07-politica-comercial-i.html">B07</a>, apartado 2.3), con estudios sobre el TLCAN, sustituido en 2020 por el Tratado entre México, Estados Unidos y Canadá (T-MEC), y sobre el TTIP. Las negociaciones del TTIP se interrumpieron en 2016, y el Consejo declaró obsoletas sus directrices de negociación en 2019. Estos modelos son también el instrumento habitual de la evaluación <em>ex ante</em> de los acuerdos de integración (tema <a href="../chapters/b10-integracion.html">B10</a>, anexo A.1).</p>
+<p><strong>Política tributaria</strong>: los MEGC permiten evaluar el impacto de cambios impositivos y de transferencias sobre el conjunto de la economía, como en los modelos de equilibrio general con sector público (tema <a href="../chapters/a38-politica-fiscal.html">A38</a>, apartado 1.2).</p>
+<p><strong>Política medioambiental</strong>: los modelos de equilibrio general aplicado permiten simular los efectos de las políticas medioambientales sobre todos los sectores a la vez, como hizo el modelo GREEN de la OCDE (1992) para las políticas de reducción de emisiones. El fundamento de estas políticas es la corrección de externalidades (tema <a href="../chapters/a23-eb-ii.html">A23</a>, apartado 2.2.5).</p>
+<p><strong>Planificación regional y urbana</strong>: los MEGC incorporan costes de transporte y movilidad laboral, como en la nueva economía geográfica (tema <a href="../chapters/b10-integracion.html">B10</a>, apartado 3.1.4).</p>
+<p><strong>Modelos institucionales actuales</strong>: numerosas instituciones utilizan modelos de equilibrio general (p.&nbsp;ej. QUEST, de la Comisión Europea, o el NAWM, del BCE). QUEST y el NAWM son modelos dinámicos estocásticos de equilibrio general (DSGE), como los de los temas <a href="../chapters/a06-nmc.html">A06</a>, apartado 2.3, y <a href="../chapters/a07-nek.html">A07</a>, apartado 2.1. En cambio, otros modelos muy utilizados para la economía mundial, como el NiGEM del National Institute of Economic and Social Research (NIESR), son modelos macroeconométricos y no de equilibrio general en sentido estricto.</p>
+</section>
+</section>
+<section id="conclusiones-2" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones-2">Conclusiones</h2>
+<p>La teoría del equilibrio general estudia la economía como un sistema de mercados interdependientes. En el modelo walrasiano, consumidores y empresas precio-aceptantes optimizan frente a un vector común de precios, que coordina sus decisiones e iguala sus valoraciones marginales, y la ley de Walras deja un mercado redundante, de modo que solo se determinan precios relativos. El teorema del punto fijo de Brouwer garantiza la existencia del equilibrio, y la sustituibilidad bruta, su unicidad y su estabilidad. Por el primer teorema del bienestar, el equilibrio es eficiente en el sentido de Pareto, y por el segundo, cualquier óptimo puede alcanzarse redistribuyendo las dotaciones, aunque la imposibilidad práctica de las transferencias de suma fija hace del marco un ideal regulativo.</p>
+<p>El equilibrio general extiende a todos los mercados el análisis de la competencia perfecta en equilibrio parcial (tema <a href="../chapters/a16-competencia-perfecta.html">A16</a>) y es la base del análisis normativo. Las condiciones de eficiencia y los teoremas del bienestar precisan qué garantiza el equilibrio walrasiano (tema <a href="../chapters/a22-eb-i.html">A22</a>), y los fallos de mercado, cuándo deja de hacerlo (tema <a href="../chapters/a23-eb-ii.html">A23</a>). La introducción del dinero plantea por qué se demanda un activo sin rendimiento propio (tema <a href="../chapters/a35-demanda-dinero.html">A35</a>), y los bienes contingentes de Arrow y Debreu trasladan al marco la elección con riesgo (tema <a href="../chapters/a10-riesgo-incertidumbre.html">A10</a>). Por último, el mismo razonamiento sobre mercados interdependientes fundamenta los modelos DSGE de la macroeconomía (tema <a href="../chapters/a06-nmc.html">A06</a>) y el análisis de la política comercial en la economía internacional (tema <a href="../chapters/b07-politica-comercial-i.html">B07</a>).</p>
+<p>Los fundamentos del equilibrio agregado siguen en discusión. El teorema de Sonnenschein, Mantel y Debreu (1972-1974) muestra que la optimización individual apenas restringe la forma de la función de exceso de demanda agregada, de modo que la unicidad y la estabilidad no están garantizadas en general. La macroeconomía ha respondido sustituyendo el agente representativo por agentes heterogéneos, como en los modelos neokeynesianos HANK (<em>heterogeneous agent New Keynesian</em>) de Kaplan, Moll y Violante (2018). Sigue abierta, además, la cuantificación de las ganancias del comercio. En una amplia clase de modelos cuantitativos de comercio, esas ganancias dependen solo de la participación del gasto interior y de la elasticidad del comercio (Arkolakis, Costinot y Rodríguez-Clare, 2012). El resultado ha renovado el uso del equilibrio general para evaluar aranceles y acuerdos comerciales.</p>
+</section>
+<section id="anexo.-ejemplos-resueltos" class="level2">
+<h2 class="anchored" data-anchor-id="anexo.-ejemplos-resueltos">Anexo. Ejemplos resueltos</h2>
+<p>Los ejercicios de equilibrio general en una economía de intercambio siguen casi siempre los mismos pasos. Primero, cada consumidor iguala su <span class="math inline">\(\text{RMS}\)</span> al precio relativo y combina esa condición con su restricción presupuestaria, cuya renta es el valor de su dotación, para obtener sus demandas. Después, se vacía un mercado (el otro se vacía por la ley de Walras) y se despeja el precio relativo de equilibrio. Por último, se calcula la asignación y se comprueba que las <span class="math inline">\(\text{RMS}\)</span> coinciden. En todos los ejemplos, <span class="math inline">\(y\)</span> es el numerario (<span class="math inline">\(p_y = 1\)</span>) y <span class="math inline">\(p \equiv p_x/p_y\)</span>.</p>
+<p><strong>Ejemplo: demandas Cobb-Douglas con pesos distintos y curva de contratos</strong></p>
+<p>Sean <span class="math inline">\(u^A = (x^A)^{1/3} (y^A)^{2/3}\)</span>, con dotación <span class="math inline">\((x_0^A, y_0^A) = (6, 0)\)</span>, y <span class="math inline">\(u^B = (x^B)^{1/2} (y^B)^{1/2}\)</span>, con dotación <span class="math inline">\((x_0^B, y_0^B) = (0, 6)\)</span>, de modo que la caja mide <span class="math inline">\(X = Y = 6\)</span>. Las rentas son <span class="math inline">\(M_0^A = 6p\)</span> y <span class="math inline">\(M_0^B = 6\)</span>.</p>
+<p>Para <span class="math inline">\(A\)</span>, la condición de tangencia es</p>
+<p><span class="math display">\[\text{RMS}_{yx}^A = \frac{\partial u^A/\partial x^A}{\partial u^A/\partial y^A} = \frac{y^A}{2x^A} = p \;\Rightarrow\; y^A = 2p\,x^A\]</span></p>
+<p>y, sustituida en la restricción <span class="math inline">\(p\,x^A + y^A = M_0^A\)</span>, da <span class="math inline">\(x^A = M_0^A/(3p)\)</span> e <span class="math inline">\(y^A = 2M_0^A/3\)</span>. Para <span class="math inline">\(B\)</span>, <span class="math inline">\(\text{RMS}_{yx}^B = y^B/x^B = p\)</span> da <span class="math inline">\(x^B = M_0^B/(2p)\)</span> e <span class="math inline">\(y^B = M_0^B/2\)</span>. En general, con <span class="math inline">\(u = x^{a} y^{1-a}\)</span> el consumidor gasta en cada bien una fracción fija de su renta, <span class="math inline">\(a\)</span> en <span class="math inline">\(x\)</span> y <span class="math inline">\(1-a\)</span> en <span class="math inline">\(y\)</span>.</p>
+<p>Vaciando el mercado de <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[\frac{6p}{3p} + \frac{6}{2p} = 6 \;\Rightarrow\; 2 + \frac{3}{p} = 6 \;\Rightarrow\; p^* = \frac{3}{4}\]</span></p>
+<p>Con <span class="math inline">\(p^* = 3/4\)</span>, las rentas son <span class="math inline">\(M_0^A = 9/2\)</span> y <span class="math inline">\(M_0^B = 6\)</span>, y la asignación de equilibrio es <span class="math inline">\((x^A, y^A) = (2, 3)\)</span> y <span class="math inline">\((x^B, y^B) = (4, 3)\)</span>, que vacía también el mercado de <span class="math inline">\(y\)</span>. Ambas <span class="math inline">\(\text{RMS}\)</span> valen <span class="math inline">\(3/4\)</span>, el precio relativo.</p>
+<p>La curva de contratos reúne las asignaciones en las que las <span class="math inline">\(\text{RMS}\)</span> coinciden. Con <span class="math inline">\(x^B = 6 - x^A\)</span> e <span class="math inline">\(y^B = 6 - y^A\)</span>:</p>
+<p><span class="math display">\[\frac{y^A}{2x^A} = \frac{6 - y^A}{6 - x^A} \;\Rightarrow\; y^A = \frac{12\,x^A}{6 + x^A}\]</span></p>
+<p>Une los vértices <span class="math inline">\((0, 0)\)</span> y <span class="math inline">\((6, 6)\)</span> de la caja y pasa por la asignación de equilibrio, pues <span class="math inline">\(12 \cdot 2/(6 + 2) = 3\)</span>.</p>
+<p><strong>Ejemplo: preferencias cuasilineales, sin efecto renta</strong></p>
+<p>Sean <span class="math inline">\(u^h = \alpha_h \ln x^h + y^h\)</span>, con <span class="math inline">\(\alpha_A = 2\)</span> y <span class="math inline">\(\alpha_B = 4\)</span>, y dotaciones <span class="math inline">\((x_0^A, y_0^A) = (5, 2)\)</span> y <span class="math inline">\((x_0^B, y_0^B) = (1, 6)\)</span>, de modo que <span class="math inline">\(X = 6\)</span> e <span class="math inline">\(Y = 8\)</span>. La condición de tangencia,</p>
+<p><span class="math display">\[\text{RMS}_{yx}^h = \frac{\alpha_h}{x^h} = p \;\Rightarrow\; x^h = \frac{\alpha_h}{p}, \qquad y^h = M_0^h - \alpha_h\]</span></p>
+<p>da una demanda de <span class="math inline">\(x\)</span> que no depende de la renta, siempre que esta alcance para pagarla (<span class="math inline">\(M_0^h \geq \alpha_h\)</span>). Vaciando el mercado de <span class="math inline">\(x\)</span>, <span class="math inline">\((2 + 4)/p = 6\)</span>, de modo que <span class="math inline">\(p^* = 1\)</span>. Las rentas son <span class="math inline">\(M_0^A = M_0^B = 7\)</span>, y la asignación es <span class="math inline">\((x^A, y^A) = (2, 5)\)</span> y <span class="math inline">\((x^B, y^B) = (4, 3)\)</span>.</p>
+<p>El precio de equilibrio, <span class="math inline">\(p^* = (\alpha_A + \alpha_B)/X\)</span>, no depende del reparto de las dotaciones, que solo altera el reparto del numerario. Por la misma razón, la curva de contratos, <span class="math inline">\(\alpha_A/x^A = \alpha_B/(X - x^A)\)</span>, es la recta vertical <span class="math inline">\(x^A = 2\)</span>.</p>
+<p><strong>Ejemplo: complementarios perfectos, sin RMS definida en el óptimo</strong></p>
+<p>Sean <span class="math inline">\(u^A = \min\{x^A, y^A\}\)</span>, con dotación <span class="math inline">\((4, 0)\)</span>, y <span class="math inline">\(u^B = (x^B)^{1/2} (y^B)^{1/2}\)</span>, con dotación <span class="math inline">\((0, 4)\)</span>. Las curvas de indiferencia de <span class="math inline">\(A\)</span> forman un ángulo recto, de modo que su <span class="math inline">\(\text{RMS}\)</span> no está definida en el vértice y la tangencia no sirve. Su óptimo está siempre en el vértice, <span class="math inline">\(x^A = y^A\)</span>, y con la restricción <span class="math inline">\(p\,x^A + y^A = 4p\)</span> resulta <span class="math inline">\(x^A = y^A = 4p/(1 + p)\)</span>. Para <span class="math inline">\(B\)</span>, como en el primer ejemplo, <span class="math inline">\(x^B = 4/(2p)\)</span> e <span class="math inline">\(y^B = 2\)</span>.</p>
+<p>Vaciando el mercado de <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[\frac{4p}{1 + p} + \frac{2}{p} = 4 \;\Rightarrow\; 4p^2 + 2p + 2 = 4p^2 + 4p \;\Rightarrow\; p^* = 1\]</span></p>
+<p>La asignación es <span class="math inline">\((x^A, y^A) = (2, 2)\)</span> y <span class="math inline">\((x^B, y^B) = (2, 2)\)</span>. La <span class="math inline">\(\text{RMS}\)</span> de <span class="math inline">\(B\)</span> iguala el precio relativo, y la recta de balance pasa por el vértice de la curva de indiferencia de <span class="math inline">\(A\)</span>, que es su óptimo para cualquier precio.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Walras no era, sin embargo, partidario de un <em>laissez faire</em> estricto, pues defendía la intervención pública en numerosos ámbitos (por ejemplo, la propiedad estatal de la tierra).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Los pagos de los factores no agotan el producto y los beneficios son positivos, pero se preserva la concavidad de la frontera de posibilidades de producción. Con rendimientos crecientes, en cambio, podría ser convexa.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>El programa en términos de producción neta, <span class="math inline">\(\max_{\mathbf{y}^f} \mathbf{p} \cdot \mathbf{y}^f\)</span> sujeto a <span class="math inline">\(g^f(\mathbf{y}^f) \leq 0\)</span>, donde <span class="math inline">\(g^f(\cdot)\)</span> es la función de transformación de la empresa, equivale al de la producción cuando la empresa obtiene un solo bien, pues basta definir <span class="math inline">\(g^f(\mathbf{y}^f) = y_i^f - f_i(\mathbf{z}^f)\)</span>, con <span class="math inline">\(z_l^f = -y_l^f\)</span>. Su CPO, <span class="math inline">\(g_i'/g_j' = p_i/p_j\)</span> para cada par de bienes, reúne en una sola expresión las condiciones (1) a (3). Este planteamiento es más general, porque admite la producción conjunta y que lo que es factor para una empresa sea producto para otra. Supone, además, que las decisiones de producción y de elección de factores se toman simultáneamente (Gravelle y Rees, 2004, p.&nbsp;168; Mas-Colell, Whinston y Green, 1995, caps. 5 y 16).<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Si los productores obtienen un precio nulo pero pueden eliminar el exceso de producción sin coste, estos bienes se incorporan al modelo (Gravelle y Rees, 2004).<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Argandoña et al.&nbsp;(1997, p.&nbsp;104).<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>“Todos los mercados se vacían” se apoya en la noción de equilibrio general, y “las empresas maximizan…”, en la de competitivo. En competencia imperfecta, se hablaría de equilibrio de Nash.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>En el modelo 2x2x2x2 (dos bienes, dos factores, dos empresas, dos consumidores) hay 14 incógnitas (cuatro demandas de factores, dos ofertas de bienes, cuatro demandas de bienes y cuatro precios). Las ecuaciones son también 14 (cuatro funciones de demanda de factores, dos de oferta de bienes, cuatro de demanda de bienes y cuatro condiciones de equilibrio).<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Segura (1986, p.&nbsp;241).<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Sin estabilidad, la estática comparativa carece de sentido (Segura, 1986, p.&nbsp;244).<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Los supuestos son la ausencia de fallos de mercado, los mercados completos y los agentes precio-aceptantes. En ese marco, basta la insaciabilidad local de las preferencias, sin necesidad de convexidad (Mas-Colell et al., 1995, pp.&nbsp;549-550).<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>La convexidad garantiza que la tangente común a las curvas de nivel en la caja de Edgeworth sea una recta de precios que sostiene el óptimo como equilibrio (Gravelle y Rees, 2004; Mas-Colell, Whinston y Green, 1995).<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Barone (1908), siguiendo a Pareto, mostró que un “ministro de la producción” que fijase precios iguales al coste mínimo alcanzaría una asignación óptima.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>Esto amplía la lista de bienes pero no afecta a las propiedades de los conjuntos de producción, ya que la empresa elige el plan de producción que maximiza su beneficio, valorado a los precios de los bienes contingentes, sin necesidad de considerar probabilidades.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>Si la estructura informacional puede cambiar entre periodos, el modelo de Debreu no es válido, porque los mercados se reabrirían, y el modelo exige que se abran y cierren definitivamente en el periodo inicial.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script>
+// Gráficos del libro (iframes .graph-frame).
+// 1) Escala única: los grosores, los discontinuos y el tamaño de los puntos de cada figura están fijados para verla a 680 px
+//    de ancho. Los marcos anchos (figuras de varios paneles) se estiran hasta la columna y las pantallas estrechas las encogen; aquí se
+//    compensa para que en pantalla las curvas midan siempre lo mismo (2,2 px las económicas, 1,4 las auxiliares, 1,2 ejes y flechas,
+//    0,8 las guías) y los puntos tengan el mismo tamaño en todas las figuras, sea cual sea el ancho al que se muestren.
+// 2) Ajusta la altura de cada iframe al elemento dibujado más bajo (curvas, ejes, etiquetas KaTeX).
+(function () {
+  var REF = 680;
+  function norm(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var s = d.querySelector("svg"); if (!s) return;
+      var w = s.getBoundingClientRect().width; if (!(w > 0)) return;
+      var r = REF / w;
+      var els = s.querySelectorAll("path, line, polyline, polygon, rect, circle, ellipse");
+      els.forEach(function (el) {
+        var cs = d.defaultView.getComputedStyle(el);
+        if (el.dataset.sw0 === undefined) {
+          el.dataset.sw0 = parseFloat(cs.strokeWidth) || 0;
+          el.dataset.da0 = (cs.strokeDasharray && cs.strokeDasharray !== "none") ? cs.strokeDasharray : "";
+          if (el.tagName.toLowerCase() === "circle" && el.r && el.r.baseVal.value > 0 && el.r.baseVal.value <= 9) {
+            el.dataset.r0 = el.r.baseVal.value;
+          }
+        }
+        var sw0 = +el.dataset.sw0;
+        if (sw0 > 0) el.style.strokeWidth = (sw0 * r).toFixed(3) + "px";
+        if (el.dataset.da0) {
+          el.style.strokeDasharray = el.dataset.da0.split(/[ ,]+/).map(function (v) {
+            return (parseFloat(v) * r).toFixed(3) + "px";
+          }).join(" ");
+        }
+        if (el.dataset.r0) el.setAttribute("r", (+el.dataset.r0 * r).toFixed(3));
+      });
+    } catch (e) {}
+  }
+  function fit(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var sy = d.defaultView.scrollY || 0, bottom = 0;
+      var els = d.querySelectorAll("svg path, svg line, svg circle, svg polyline, svg polygon, svg rect, svg text, svg ellipse, .katex-label");
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width > 0 || r.height > 0) bottom = Math.max(bottom, r.bottom + sy);
+      });
+      if (!(bottom > 20)) {
+        var svg = d.querySelector("svg"); var vb = svg && svg.getAttribute("viewBox");
+        if (vb) { var p = vb.split(/\s+/); bottom = f.clientWidth * (+p[3]) / (+p[2]); }
+      }
+      if (bottom > 20) f.style.height = Math.ceil(bottom + 10) + "px";
+    } catch (e) {}
+  }
+  // 3) Un gráfico de varios paneles no se amplía por encima del 110 % de su ancho de dibujo (viewBox). Los dibujados a
+  //    680 px quedan en 748 px como máximo, con rótulos de tamaño normal; los de 900 o 960 px, en el tope de 900 px del CSS.
+  function cap(f) {
+    try {
+      if (!f.parentElement || !f.parentElement.classList.contains("wide")) return;
+      var s = f.contentDocument && f.contentDocument.querySelector("svg"); if (!s) return;
+      var vb = s.viewBox && s.viewBox.baseVal; if (!vb || !(vb.width > 0)) return;
+      var m = Math.min(900, Math.round(vb.width * 1.1)) + "px";
+      if (f.style.maxWidth !== m) f.style.maxWidth = m;
+    } catch (e) {}
+  }
+  function both(f) { cap(f); norm(f); fit(f); }
+  function all() { document.querySelectorAll(".graph-frame iframe").forEach(both); }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".graph-frame iframe").forEach(function (f) {
+      f.addEventListener("load", function () { both(f); setTimeout(function () { both(f); }, 700); });
+    });
+  });
+  window.addEventListener("load", function () { setTimeout(all, 1200); });
+  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(all, 150); });
+})();
+</script>
+<style>
+.graph-frame { margin: 1.25rem 0 0.25rem; }
+.quarto-figure .graph-frame + * { margin-top: 0; }
+</style>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/librovol1\.arturolorenzo\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/a20-regulacion.html" class="pagination-link" aria-label="A20. Regulación">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">A20. Regulación</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/a22-eb-i.html" class="pagination-link" aria-label="A22. Economía del bienestar (I)">
+        <span class="nav-page-text"><span class="chapter-title">A22. Economía del bienestar (I)</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

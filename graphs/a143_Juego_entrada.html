@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+
+
+  <svg viewBox="0 0 680 500">
+
+
+    <line x1="250" y1="90"  x2="130" y2="250" stroke="black" stroke-width="1.5"/>
+    <line x1="370" y1="250" x2="290" y2="410" stroke="black" stroke-width="1.5"/>
+
+
+    <line x1="250" y1="90"  x2="370" y2="250" stroke="#D85A30" stroke-width="2.2"/>
+    <line x1="370" y1="250" x2="450" y2="410" stroke="#D85A30" stroke-width="2.2"/>
+
+
+    <circle cx="250" cy="90"  r="5.5" fill="#1D9E75"/>
+    <circle cx="370" cy="250" r="5.5" fill="#534AB7"/>
+
+
+    <circle cx="130" cy="250" r="3" fill="black"/>
+    <circle cx="290" cy="410" r="3" fill="black"/>
+    <circle cx="450" cy="410" r="3" fill="black"/>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-ee"></div>
+  <div class="katex-label" id="lbl-ei"></div>
+  <div class="katex-label" id="lbl-ne"></div>
+  <div class="katex-label" id="lbl-e"></div>
+  <div class="katex-label" id="lbl-l"></div>
+  <div class="katex-label" id="lbl-a"></div>
+  <div class="katex-label" id="lbl-p1"></div>
+  <div class="katex-label" id="lbl-p2"></div>
+  <div class="katex-label" id="lbl-p3"></div>
+  <div class="katex-label" id="lbl-enps"></div>
+  <div class="katex-label" id="lbl-amenaza"></div>
+  <div class="katex-label" id="lbl-conv"></div>
+
+</div>
+
+<script>
+const labels = [
+
+  {id: 'lbl-ee', tex: 'J_E', left: '29%',   top: '14%', color: '#0F6E56'},
+  {id: 'lbl-ei', tex: 'J_I', left: '56.5%', top: '47%', color: '#534AB7'},
+
+
+  {id: 'lbl-ne', tex: '\\text{NE}', left: '21.5%',   top: '31%', color: 'black'},
+  {id: 'lbl-e',  tex: '\\text{E}',  left: '47.5%', top: '30%', color: '#D85A30'},
+  {id: 'lbl-l',  tex: '\\text{L}',  left: '44%',   top: '64%', color: 'black'},
+  {id: 'lbl-a',  tex: '\\text{A}',  left: '62.5%', top: '64%', color: '#D85A30'},
+
+
+  {id: 'lbl-p1', tex: '(0,\\, 2)',   left: '16%', top: '54%', color: '#444'},
+  {id: 'lbl-p2', tex: '(-3,\\, -1)', left: '37%', top: '86%', color: '#444'},
+  {id: 'lbl-p3', tex: '(2,\\, 1)',   left: '62%', top: '86%', color: '#444'},
+
+
+  {id: 'lbl-enps',    tex: '\\text{ENPS: } (\\text{E},\\, \\text{A})',   left: '68%', top: '17%', color: '#D85A30'},
+  {id: 'lbl-amenaza', tex: '\\text{Amenaza no creíble}',                 left: '18%', top: '70%', color: '#888'},
+  {id: 'lbl-conv',    tex: '(\\pi_E,\\, \\pi_I)',                        left: '9%',  top: '9%',  color: '#888'}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = l.left;
+  el.style.top = l.top;
+  if (l.color) el.style.color = l.color;
+});
+</script>
+</body>
+</html>

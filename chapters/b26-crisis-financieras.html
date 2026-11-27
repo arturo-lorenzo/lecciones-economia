@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Arturo Lorenzo">
+<meta name="description" content="Tema B26 de las oposiciones TCEE. Pánicos bancarios de Diamond y Dybvig, Minsky, crisis financiera de 2007-2008, crisis de deuda europea y gestión de riesgos.">
+
+<title>B26. Crisis financieras – Lecciones de economía general e internacional</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/b27-regulacion-financiera.html" rel="next">
+<link href="../chapters/b25-derivados.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-af206048d982c71265205c3505cca787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bec3fe2b0881f05566c9dedb60685f6d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="B26. Crisis financieras – Lecciones de economía general e internacional">
+<meta property="og:description" content="Tema B26 de las oposiciones TCEE. Pánicos bancarios de Diamond y Dybvig, Minsky, crisis financiera de 2007-2008, crisis de deuda europea y gestión de riesgos.">
+<meta property="og:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta property="og:site_name" content="Lecciones de economía general e internacional">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:title" content="B26. Crisis financieras – Lecciones de economía general e internacional">
+<meta name="twitter:description" content="Tema B26 de las oposiciones TCEE. Pánicos bancarios de Diamond y Dybvig, Minsky, crisis financiera de 2007-2008, crisis de deuda europea y gestión de riesgos.">
+<meta name="twitter:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="B26. Crisis financieras">
+<meta name="citation_author" content="Arturo Lorenzo">
+<meta name="citation_publication_date" content="2026-11-28">
+<meta name="citation_cover_date" content="2026-11-28">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-11-28">
+<meta name="citation_fulltext_html_url" content="https://librovol1.arturolorenzo.com/chapters/b26-crisis-financieras.html">
+<meta name="citation_language" content="es">
+<meta name="citation_book_title" content="Lecciones de economía general e internacional">
+<link rel="canonical" href="https://librovol1.arturolorenzo.com/chapters/b26-crisis-financieras.html">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/b01-estados-ratios.html">Empresa y Finanzas</a></li><li class="breadcrumb-item"><a href="../chapters/b26-crisis-financieras.html"><span class="chapter-title">B26. Crisis financieras</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Lecciones de economía general e internacional</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/arturo-lorenzo/lecciones-economia" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../creditos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Edición y licencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte A: Economía General</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pensamiento Económico</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a01-objeto-metodo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A1. Objeto y método de la ciencia económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a02-clasicos-marx.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A2. Los economistas clásicos y Marx</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a03-neoclasicos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A3. Los economistas neoclásicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a04-keynes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A4. Keynes: análisis comparado</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a05-monetaristas-snc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A5. La síntesis neoclásica y el monetarismo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a06-nmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A6. La nueva macroeconomía clásica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a07-nek.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A7. La nueva economía keynesiana</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Microeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a08-consumidor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A8. Teoría de la demanda del consumidor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a09-dualidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A9. Dualidad y aplicaciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a10-riesgo-incertidumbre.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A10. Elección en riesgo e incertidumbre</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a11-produccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A11. Teoría de la producción</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a12-costes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A12. Teoría de costes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a13-informacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A13. Economía de la información</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a14-juegos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A14. Teoría de juegos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a15-toi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A15. Teoría de la organización industrial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a16-competencia-perfecta.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A16. Competencia perfecta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a17-monopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A17. Monopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a18-competencia-monopolistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A18. Competencia monopolística</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a19-oligopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A19. Oligopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a20-regulacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A20. Regulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a21-equilibrio-general.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A21. Equilibrio general</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a22-eb-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A22. Economía del bienestar (I)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a23-eb-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A23. Economía del bienestar (II)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a24-eb-iii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A24. Economía del bienestar (III)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Economía Laboral</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a25-oferta-trabajo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A25. Mercado de trabajo y capital humano</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a26-desempleo-friccional.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A26. Desempleo friccional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a27-salarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A27. Determinación de salarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a28-tnp-nairu.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A28. TNP, NAIRU y persistencia</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Macroeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a29-mhi-mgs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A29. Modelos de horizonte infinito y generaciones solapadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a30-magnitudes-cn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A30. Magnitudes macroeconómicas y contabilidad nacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a32-precios-output.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A32. Precios y output en economía abierta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a33-demanda-consumo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A33. Teorías de demanda de consumo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a34-demanda-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A34. Teorías de demanda de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a35-demanda-dinero.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A35. Teorías de la demanda de dinero</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a36-politica-monetaria-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A36. Política monetaria I: diseño e instrumentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a37-politica-monetaria-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A37. Política monetaria II: transmisión y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a38-politica-fiscal.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A38. Política fiscal, crecimiento y ahorro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a39-deficit.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A39. Déficit público, su financiación y sostenibilidad</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a40-interrelacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A40. Interrelación de políticas macroeconómicas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a41-inflacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A41. Inflación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a42-ciclos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A42. Ciclos económicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a43-crecimiento-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A43. Crecimiento económico exógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a44-crecimiento-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A44. Crecimiento económico endógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a45-crecimiento-empirica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A45. Evidencia empírica sobre el crecimiento</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte B: Economía Internacional</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Empresa y Finanzas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b01-estados-ratios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B1. Estados financieros y ratios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b02-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B2. Decisiones de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b03-financiacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B3. Decisiones de financiación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b04-crecimiento-ma.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B4. Crecimiento empresarial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b23-renta-variable.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B23. Instrumentos de renta variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b24-renta-fija.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B24. Instrumentos de renta fija</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b25-derivados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B25. Instrumentos derivados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b26-crisis-financieras.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">B26. Crisis financieras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b27-regulacion-financiera.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B27. Regulación bancaria y financiera</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Comercio Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b05-tnc-comercio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B5. Teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b06-nueva-teoria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B6. Nueva teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b07-politica-comercial-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B7. Política comercial I: instrumentos y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b08-politica-comercial-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B8. Política comercial II: política estratégica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b09-comercio-crecimiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B9. Comercio internacional y crecimiento</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b10-integracion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B10. Teoría de la integración económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b11-balanza-pagos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B11. Balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b12-ajuste-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B12. Ajuste de la balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b13-mercado-divisas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B13. Mercado de divisas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b14-tipo-cambio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B14. Determinación del tipo de cambio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b15-regimenes-cambiarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B15. Regímenes cambiarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b16-integracion-monetaria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B16. Integración monetaria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b17-crisis-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B17. Crisis de balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b18-globalizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B18. Globalización</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b19-coordinacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B19. Coordinación de políticas económicas internacionales</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Sistema Económico Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b20-sei-hasta-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B20. El sistema económico internacional hasta el colapso de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b21-sei-despues-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B21. El sistema económico internacional después de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b22-fmi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B22. El Fondo Monetario Internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b28-desarrollo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B28. Desarrollo económico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b29-fod-aod.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B29. Financiación oficial del desarrollo y AOD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b30-gbm-brsd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B30. Grupo Banco Mundial y bancos regionales de desarrollo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b31-ma-bpg.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B31. El cambio climático y su impacto en la economía</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b32-perspectivas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B32. Perspectivas de la economía internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b33-omc-gatt.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B33. La OMC y el GATT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b34-gats-trips.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B34. GATS, TRIPS y acuerdos plurilaterales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b35-no-comunitarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B35. Acuerdos comerciales no comunitarios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unión Europea</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b36-tratados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B36. Los tratados de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b37-finanzas-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B37. Las finanzas de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b38-pac-ppc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B38. Política Agrícola Común y Política Pesquera Común</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b39-miue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B39. Mercado interior de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b41-comercial-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B41. Política comercial de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b42-cooperacion-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B42. Política de cooperación de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b43-politica-monetaria-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B43. Política macroeconómica I: el euro y la política monetaria única</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b44-politica-financiera-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B44. Política macroeconómica II: la Unión Bancaria y la Unión de los Mercados de Capitales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b45-politica-fiscal-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B45. Política macroeconómica III: la gobernanza económica de la UE y de la zona euro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Descargas</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Primer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/ejercicios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios prácticos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/flashcards-conceptos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de conceptos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/guia-dictamen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guía para el dictamen</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Segundo Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/segundo-ejercicio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de inglés</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Tercer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/libro-bloques.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">El libro en PDF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del tercer ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Cuarto Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del cuarto ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Más allá del libro</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/otras-publicaciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Otras publicaciones y trabajos del autor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/enlaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Enlaces de interés</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Bibliografía</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manuales y obras de referencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia-articulos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Obras citadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../fuentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fuentes normativas y documentales</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#el-sistema-financiero-y-las-teorías-de-las-crisis" id="toc-el-sistema-financiero-y-las-teorías-de-las-crisis" class="nav-link" data-scroll-target="#el-sistema-financiero-y-las-teorías-de-las-crisis">1. El sistema financiero y las teorías de las crisis</a>
+  <ul class="collapse">
+  <li><a href="#elementos-básicos-del-sistema-financiero" id="toc-elementos-básicos-del-sistema-financiero" class="nav-link" data-scroll-target="#elementos-básicos-del-sistema-financiero">1.1. Elementos básicos del sistema financiero</a></li>
+  <li><a href="#teorías-de-la-inestabilidad-financiera-y-de-los-pánicos-bancarios" id="toc-teorías-de-la-inestabilidad-financiera-y-de-los-pánicos-bancarios" class="nav-link" data-scroll-target="#teorías-de-la-inestabilidad-financiera-y-de-los-pánicos-bancarios">1.2. Teorías de la inestabilidad financiera y de los pánicos bancarios</a></li>
+  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link" data-scroll-target="#conclusiones">1.3. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#crisis-financieras-y-bancarias" id="toc-crisis-financieras-y-bancarias" class="nav-link" data-scroll-target="#crisis-financieras-y-bancarias">2. Crisis financieras y bancarias</a>
+  <ul class="collapse">
+  <li><a href="#etapa-de-bretton-woods-y-no-sistema" id="toc-etapa-de-bretton-woods-y-no-sistema" class="nav-link" data-scroll-target="#etapa-de-bretton-woods-y-no-sistema">2.1. Etapa de Bretton Woods y no sistema</a></li>
+  <li><a href="#crisis-financiera-de-2007-2007-2009-y-crisis-de-deuda-soberana-europea-2010-2014" id="toc-crisis-financiera-de-2007-2007-2009-y-crisis-de-deuda-soberana-europea-2010-2014" class="nav-link" data-scroll-target="#crisis-financiera-de-2007-2007-2009-y-crisis-de-deuda-soberana-europea-2010-2014">2.2. Crisis financiera de 2007 (2007-2009) y crisis de deuda soberana europea (2010-2014)</a></li>
+  <li><a href="#de-la-covid-19-a-la-actualidad" id="toc-de-la-covid-19-a-la-actualidad" class="nav-link" data-scroll-target="#de-la-covid-19-a-la-actualidad">2.3. De la COVID-19 a la actualidad</a></li>
+  <li><a href="#conclusiones-1" id="toc-conclusiones-1" class="nav-link" data-scroll-target="#conclusiones-1">2.4. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#gestión-de-riesgos-de-las-instituciones-financieras" id="toc-gestión-de-riesgos-de-las-instituciones-financieras" class="nav-link" data-scroll-target="#gestión-de-riesgos-de-las-instituciones-financieras">3. Gestión de riesgos de las instituciones financieras</a>
+  <ul class="collapse">
+  <li><a href="#tipos-de-riesgos-financieros" id="toc-tipos-de-riesgos-financieros" class="nav-link" data-scroll-target="#tipos-de-riesgos-financieros">3.1. Tipos de riesgos financieros</a></li>
+  <li><a href="#medición-de-riesgos" id="toc-medición-de-riesgos" class="nav-link" data-scroll-target="#medición-de-riesgos">3.2. Medición de riesgos</a></li>
+  <li><a href="#gestión-y-mitigación-microeconómica-de-riesgos" id="toc-gestión-y-mitigación-microeconómica-de-riesgos" class="nav-link" data-scroll-target="#gestión-y-mitigación-microeconómica-de-riesgos">3.3. Gestión y mitigación microeconómica de riesgos</a></li>
+  <li><a href="#gestión-y-mitigación-macroeconómica-de-riesgos" id="toc-gestión-y-mitigación-macroeconómica-de-riesgos" class="nav-link" data-scroll-target="#gestión-y-mitigación-macroeconómica-de-riesgos">3.4. Gestión y mitigación macroeconómica de riesgos</a></li>
+  </ul></li>
+  <li><a href="#conclusiones-2" id="toc-conclusiones-2" class="nav-link" data-scroll-target="#conclusiones-2">Conclusiones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/b01-estados-ratios.html">Empresa y Finanzas</a></li><li class="breadcrumb-item"><a href="../chapters/b26-crisis-financieras.html"><span class="chapter-title">B26. Crisis financieras</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">B26. Crisis financieras</span></h1>
+<p class="subtitle lead">Crisis financieras y pánicos bancarios; especial referencia a la crisis financiera internacional iniciada en 2007-2008. Gestión de riesgos de las instituciones financieras.</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Arturo Lorenzo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">noviembre de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<p>Las crisis económicas internacionales adoptan formas muy diversas y carecen de una tipología unánime. Siguiendo al FMI<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, cabe agruparlas en dos grandes categorías. Las <strong>crisis monetarias o cambiarias</strong> son aquellas en las que un ataque especulativo contra el tipo de cambio genera intensas presiones hacia la depreciación. Las autoridades se ven entonces obligadas a renunciar a la paridad o a defenderla con un fuerte gasto de reservas, subidas bruscas de los tipos de interés o controles de capital. Las <strong>crisis financieras</strong> constituyen un concepto más amplio, que abarca las fuertes variaciones del crédito y del precio de los activos, las perturbaciones graves de la intermediación financiera, los problemas de balance a gran escala de empresas, hogares, entidades financieras y Gobiernos, y el apoyo público en forma de liquidez o de recapitalizaciones. Dentro de ellas se distinguen, a su vez, las <em>crisis bancarias</em> y las <em>crisis de deuda</em>. En las primeras, una retirada masiva de depósitos por pánico o unas pérdidas generalizadas ponen en riesgo la solvencia o la liquidez de las entidades. En las segundas, un país no puede (o no quiere) atender el pago de los intereses o la devolución del principal de su deuda.</p>
+<p>Estas categorías rara vez aparecen aisladas. Kaminsky y Reinhart (1999) mostraron que las crisis bancarias y cambiarias tienden a producirse conjuntamente, como <strong>crisis gemelas</strong>. Además, Reinhart y Rogoff (<em>This Time Is Different</em>, 2009) documentaron, con ocho siglos de datos, que las crisis financieras son un fenómeno recurrente que cada generación tiende a considerar superado.</p>
+<p>La historia reciente lo confirma, pues la crisis de la deuda latinoamericana de 1982, las crisis del Sistema Monetario Europeo de 1992-1993, la crisis mexicana de 1994, la crisis asiática de 1997, las crisis rusa (1998) y argentina (2001), la crisis financiera global (2008-2014) y la crisis de deuda soberana europea (2010-2014) han revelado, cada una, mecanismos distintos, desde políticas macroeconómicas incompatibles con el tipo de cambio fijo y expectativas que se autocumplen hasta fragilidades bancarias que se retroalimentan con las cambiarias y sistemas financieros sobreapalancados cuyo colapso se transmite al conjunto de la economía y a las finanzas públicas. La frecuencia de estas crisis, sus costes y su rápido contagio entre países explican que su prevención y su gestión se encuentren en el centro del debate económico. Ambas se apoyan en la teoría económica, en la gestión de riesgos de las entidades y en la regulación macroprudencial.</p>
+<p>El <strong>sistema financiero</strong>, que lleva el ahorro a la inversión mediante mercados, instrumentos y operadores, tiene una dimensión internacional. Los agentes acuden a mercados financieros internacionales por varios motivos: menor coste de emisión (fiscalidad favorable, regulación más laxa), expectativas cambiarias favorables, estrechez de mercados nacionales (falta de diversidad de activos, que lastra la diversificación) y falta de profundidad (escaso volumen, que genera volatilidad). Operar más allá de las fronteras añade, no obstante, dos riesgos propios, el riesgo país (soberano, político) y el cambiario. El objetivo del tema es triple:</p>
+<ul>
+<li><p><em>Sistema financiero</em>: ofrecer una visión estilizada del sistema financiero internacional (mercados, emisores, instrumentos y teorías de la inestabilidad).</p></li>
+<li><p><em>Crisis financieras</em>: repasar las principales crisis financieras y bancarias, con especial referencia a la crisis financiera internacional iniciada en 2007-2008.</p></li>
+<li><p><em>Gestión de riesgos</em>: analizar la gestión de riesgos en las instituciones financieras, tanto en su vertiente microeconómica como macroprudencial.</p></li>
+</ul>
+</section>
+<section id="el-sistema-financiero-y-las-teorías-de-las-crisis" class="level2">
+<h2 class="anchored" data-anchor-id="el-sistema-financiero-y-las-teorías-de-las-crisis">1. El sistema financiero y las teorías de las crisis</h2>
+<p>La sección combina dos planos. El descriptivo recoge los elementos básicos del sistema financiero, y el teórico, las teorías que explican la inestabilidad de sus mercados y los pánicos bancarios.</p>
+<section id="elementos-básicos-del-sistema-financiero" class="level3">
+<h3 class="anchored" data-anchor-id="elementos-básicos-del-sistema-financiero">1.1. Elementos básicos del sistema financiero</h3>
+<p>El sistema financiero se describe a través de sus mercados, de quienes emiten en ellos, de los formatos de emisión y de los instrumentos que se negocian. Aquí se recoge solo el marco que necesitan las crisis de la sección 2 y la gestión de riesgos de la sección 3, porque los instrumentos se estudian en los temas <a href="../chapters/b23-renta-variable.html">B23</a> (renta variable), <a href="../chapters/b24-renta-fija.html">B24</a> (renta fija) y <a href="../chapters/b25-derivados.html">B25</a> (derivados).</p>
+<p><strong>Mercado financiero</strong>: un <em>mercado financiero</em> es un espacio (físico o virtual) donde los agentes emiten, colocan e intercambian activos financieros. Su origen moderno suele situarse en la Bolsa de Ámsterdam (1602), pero su desarrollo comienza a acelerarse en los años setenta del s. XX a raíz del avance de la globalización, cuando nacen los primeros mercados de futuros y de opciones financieros (tema <a href="../chapters/b25-derivados.html">B25</a>). El resultado de este proceso es la existencia en la actualidad de un mercado financiero internacional integrado, caracterizado por la globalización y la interconexión, el predominio de instrumentos negociables sobre los no negociables, la creación de nuevos instrumentos y la aparición de nuevos participantes<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p><strong>Tipos de mercado</strong>: los mercados financieros admiten varias clasificaciones según el criterio utilizado:</p>
+<ol type="1">
+<li><p><em>Por fase de negociación</em>: se distingue entre <em>mercado primario</em>, donde se emiten o se colocan por primera vez los títulos (generalmente vía oferta pública o subasta)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, y <em>mercado secundario</em>, donde se realiza el intercambio de títulos y la bolsa actúa como garante de liquidez.</p></li>
+<li><p><em>Por plazo</em>: en el <em>mercado monetario</em>, los títulos vencen generalmente a un año o menos, tienen bajo riesgo y alta liquidez y son instrumentales para la política monetaria. En el <em>mercado de capitales</em>, en cambio, tienen vencimientos más largos o carecen de vencimiento (p.&nbsp;ej. acciones).</p></li>
+<li><p><em>Por volumen</em>: se distingue entre el <em>mercado mayorista</em>, donde participan inversores institucionales y se negocia deuda pública y deuda empresarial, en el que se inscribe el mercado interbancario, y el <em>mercado minorista</em>, donde participan inversores minoristas.</p></li>
+<li><p><em>Por marco normativo</em>: se distingue entre <em>mercados organizados</em>, en los que los títulos están estandarizados y existen cámaras de compensación y liquidación, y <em>mercados OTC</em> (<em>over-the-counter</em>), en los que los títulos no están necesariamente estandarizados y se negocian bilateralmente, a menudo en contratos y formatos a medida (tema <a href="../chapters/b25-derivados.html">B25</a>, apartado 1.1.3).</p></li>
+<li><p><em>Por localización jurisdiccional</em>: se distingue entre el <em>mercado interno</em>, con emisores nacionales (segmento local) o no residentes (segmento extranjero) en la moneda del país, y los <em>euromercados</em> (<em>offshore</em>), en los que la moneda de denominación de los títulos no coincide con la moneda de curso legal del país de negociación. Los euromercados nacen en los años cincuenta con los depósitos en dólares en Londres (apartado 2.1.1). La gama de productos se amplió después de forma sucesiva: depósitos y préstamos sindicados (años cincuenta y sesenta), eurobonos (años sesenta), reciclaje de petrodólares (años setenta) y, finalmente, todo tipo de productos derivados de la innovación financiera (años ochenta y noventa)<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p></li>
+</ol>
+<p><strong>Emisores</strong>: emiten las instituciones financieras, monetarias (bancos centrales, bancos comerciales, fondos del mercado monetario) o no monetarias, como los fondos de titulización y las agencias financieras públicas o con respaldo público (en EE. UU., Fannie Mae y Freddie Mac, que compran y garantizan hipotecas); las sociedades no financieras, que sustituyen cada vez más el crédito bancario por renta fija (desintermediación); el sector público, y las organizaciones internacionales, como el Banco Mundial o el Banco Europeo de Inversiones (BEI), con alta calificación crediticia por su estatuto de acreedor preferente.</p>
+<p><strong>Formatos de emisión</strong>: las acciones se colocan mediante oferta pública de venta (OPV), de acciones ya existentes, o de suscripción (OPS), de acciones nuevas (tema <a href="../chapters/b23-renta-variable.html">B23</a>, apartado 1.1.2), y la deuda, mediante subasta o sindicación (tema <a href="../chapters/b24-renta-fija.html">B24</a>, apartado 1.1.1). La <em>titulización</em> transforma activos poco líquidos en bonos negociables, los de titulización hipotecaria (MBS, <em>mortgage-backed securities</em>) si el activo son hipotecas y los de titulización de activos (ABS, <em>asset-backed securities</em>) si son otros préstamos. Transmite el riesgo del originador al fondo de titulización y de este a los compradores<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p>
+<p><strong>Instrumentos</strong>: la renta fija concentra la gran mayoría de las emisiones internacionales. En el mercado monetario se negocian depósitos interbancarios, base de los índices de referencia (el euríbor y el tipo de interés a corto plazo del euro, €STR)<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>, certificados de depósito, papel comercial, letras del Tesoro y <em>repos</em>, cesiones temporales de activos con pacto de recompra. En el de capitales, préstamos sindicados a tipo variable, referenciados históricamente al London Interbank Offered Rate (LIBOR) y hoy al Secured Overnight Financing Rate (SOFR), el €STR o el euríbor (tema <a href="../chapters/b27-regulacion-financiera.html">B27</a>, apartado 3.4), bonos corporativos y del Estado, bonos extranjeros, eurobonos, bonos verdes y bonos Brady (Plan Brady, 1989), cuyos bonos par y de descuento llevaban el principal colateralizado con T-bonds cupón cero<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. En renta variable se negocian acciones, fondos cotizados (ETF), recibos de depósito y euroacciones, y en los mercados de derivados, futuros, <em>forwards</em>, opciones y <em>swaps</em>.</p>
+<p>Entre los instrumentos híbridos, junto a las participaciones preferentes y la deuda subordinada (tema <a href="../chapters/b27-regulacion-financiera.html">B27</a>, apartado 3.2.2), dos importan para la absorción de pérdidas (apartados 2.3.3 y 3.4):</p>
+<ul>
+<li><p><em>CoCos</em> (bonos contingentes convertibles): se convierten en acciones o se amortizan si la ratio de capital ordinario de nivel 1 (CET1) cae por debajo de un umbral. Absorben así pérdidas con la entidad aún en funcionamiento (<em>going concern</em>) mediante un disparador contractual (de ahí que a veces se hable de <em>bail-in</em> contractual) y son la forma típica del capital adicional de nivel 1 (AT1) de Basilea III. En resolución, quedan además sujetos al <em>bail-in</em> legal.</p></li>
+<li><p><em>Deuda senior no preferente</em>: absorbe pérdidas antes que la senior preferente en caso de resolución y computa a efectos del requisito mínimo de fondos propios y pasivos admisibles (MREL, <em>Minimum Requirement for Own Funds and Eligible Liabilities</em>).</p></li>
+</ul>
+</section>
+<section id="teorías-de-la-inestabilidad-financiera-y-de-los-pánicos-bancarios" class="level3">
+<h3 class="anchored" data-anchor-id="teorías-de-la-inestabilidad-financiera-y-de-los-pánicos-bancarios">1.2. Teorías de la inestabilidad financiera y de los pánicos bancarios</h3>
+<p>Cuatro teorías explican la inestabilidad de los mercados financieros: la inestabilidad financiera de Minsky, las profecías autocumplidas de Obstfeld, el racionamiento del crédito de Stiglitz y Weiss y los pánicos bancarios de Diamond y Dybvig.</p>
+<section id="inestabilidad-financiera-minsky-1972-1982-1986" class="level4">
+<h4 class="anchored" data-anchor-id="inestabilidad-financiera-minsky-1972-1982-1986">1.2.1. Inestabilidad financiera (Minsky, 1972; 1982; 1986)</h4>
+<p><strong>Origen</strong>: la hipótesis de la inestabilidad financiera se debe a Hyman Minsky (1972; 1982; 1986), cuyas tesis se apoyan en Fisher y Keynes.</p>
+<p><strong>Idea</strong>: las crisis financieras son fenómenos endógenos, sistémicos y no accidentales, debidos a la incertidumbre sobre los flujos de caja esperados y a la volatilidad de los precios de los activos. La estabilidad es, paradójicamente, desestabilizadora, porque los periodos prolongados de bonanza inducen a los agentes a asumir estructuras financieras progresivamente más frágiles (“hipótesis de la inestabilidad financiera”)<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>.</p>
+<p><strong>Razonamiento</strong>: Minsky distingue tres posiciones financieras según la relación entre los flujos de caja esperados y los compromisos de deuda:</p>
+<ol type="1">
+<li><p><em>Financiación cubierta</em> (<em>hedge finance</em>): los flujos de caja esperados bastan para atender tanto los intereses como la amortización del principal. Esta posición domina tras una crisis, cuando la prudencia impera.</p></li>
+<li><p><em>Financiación especulativa</em> (<em>speculative finance</em>): los flujos de caja cubren los intereses, pero no la devolución del principal, que debe refinanciarse a su vencimiento. Por ello, el agente depende del funcionamiento normal de los mercados de crédito.</p></li>
+<li><p><em>Financiación Ponzi</em> (<em>Ponzi finance</em>): los flujos de caja no cubren siquiera los intereses, de modo que el agente necesita endeudarse adicionalmente o vender activos para atender el servicio de la deuda. Su solvencia depende de que el precio de los activos siga subiendo.</p></li>
+</ol>
+<p>En las fases de auge, la memoria de la última crisis se difumina, con lo que las decisiones de inversión se vuelven más arriesgadas, aumenta el apalancamiento y suben los precios de los activos. Esa subida valida retrospectivamente las apuestas más agresivas y desplaza la estructura financiera agregada desde posiciones cubiertas hacia posiciones especulativas y Ponzi. La euforia especulativa lleva a la generación de deuda para mantener posiciones.</p>
+<p>Basta entonces una perturbación (una subida de tipos, una pérdida de confianza) para poner en cuestión la sostenibilidad de la deuda. Los agentes Ponzi se ven forzados a liquidar activos, el precio de estos colapsa (<em>momento Minsky</em>) y las ventas forzosas se retroalimentan en una espiral recesiva de deflación de deuda, en la línea de Fisher (1933).</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: anticipa el carácter endógeno y recurrente de las crisis financieras, frente a la visión de perturbaciones exógenas, y ofrece una taxonomía (cubierta, especulativa, Ponzi) útil para el diagnóstico macroprudencial. Fundamenta, además, la intervención pública (prestamista de última instancia, <em>big government</em>) como estabilizador de los beneficios y de los precios de los activos. La crisis financiera global revitalizó su influencia.</p></li>
+<li><p><em>Limitaciones</em>: la tesis se centra en la fase de auge y especulativa, pero no da cuenta de todo el ciclo. Carece también de una formalización canónica, lo que dificulta su contraste empírico, y, aunque atribuye a la innovación financiera la elusión de la regulación, no ofrece un diseño regulatorio que impida de forma sistemática la migración hacia posiciones frágiles.</p></li>
+</ul>
+</section>
+<section id="profecías-autocumplidas-obstfeld-1994" class="level4">
+<h4 class="anchored" data-anchor-id="profecías-autocumplidas-obstfeld-1994">1.2.2. Profecías autocumplidas (Obstfeld, 1994)</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>El desarrollo completo de este modelo se encuentra en el tema <a href="../chapters/b17-crisis-bp.html">B17</a>, apartado 2, y su aplicación a las uniones monetarias incompletas, en el tema <a href="../chapters/b16-integracion-monetaria.html">B16</a>, apartado 3.1.</p>
+</div>
+</div>
+</div>
+<p><strong>Origen</strong>: los modelos de segunda generación tratan de explicar la crisis del Sistema Monetario Europeo (SME) de 1992-1993 (apartado 2.1.3). Destaca la aportación de Maurice Obstfeld (1994), que formaliza la idea de crisis autocumplidas que él mismo había planteado en 1986.</p>
+<p><strong>Idea</strong>: puede producirse un ataque especulativo aunque los fundamentos no hagan inevitable la devaluación, porque abandonar la paridad es una decisión racional del Gobierno y el coste de mantenerla depende de las expectativas del mercado.</p>
+<p><strong>Razonamiento</strong>: el Gobierno compara los costes y los beneficios de devaluar, y si el mercado espera una devaluación, defender la paridad se encarece (mayores tipos de interés, más desempleo). Un cambio de expectativas puede así llevar la economía del equilibrio “bueno” (paridad creíble) al “malo” (devaluación), que confirma <em>ex post</em> esas expectativas. Por ello, las crisis pueden ser <em>profecías autocumplidas</em>.</p>
+<p>La versión de 1994 (figura <a href="#fig-b263-obstfeld" class="quarto-xref"><span>B26.1</span></a>) supone un coste de devaluar fijo y un beneficio que crece con la intensidad del <em>shock</em>. Con ello, los <em>shocks</em> débiles nunca justifican la devaluación y los intensos la hacen inevitable, de modo que los equilibrios múltiples solo aparecen en el tramo intermedio (el “purgatorio”).</p>
+<div id="fig-b263-obstfeld" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b263-obstfeld-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b263_Obstfeld.html" style="height:560px" loading="lazy" title="fig-b263-obstfeld"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b263-obstfeld-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B26.1: Modelo de Obstfeld (1994). El Gobierno compara el coste fijo de devaluar, <span class="math inline">\(C_D\)</span>, con el beneficio de hacerlo, que crece con la intensidad del <em>shock</em>, <span class="math inline">\(S\)</span>, y es mayor si los inversores no confían en la paridad (<span class="math inline">\(B^{\text{NC}}\)</span>) que si confían (<span class="math inline">\(B^{\text{C}}\)</span>). Por debajo de <span class="math inline">\(S_1\)</span> nunca compensa devaluar y por encima de <span class="math inline">\(S_2\)</span> siempre compensa. En el “purgatorio”, entre ambos, como en <span class="math inline">\(S'\)</span>, caben el equilibrio bueno, <span class="math inline">\(N\)</span>, y el malo, <span class="math inline">\(D\)</span>, con devaluación.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: explica ataques que los modelos de primera generación no podían explicar, como el que sufrió la libra esterlina en 1992 sin una expansión monetaria incompatible con la paridad. Traslada, además, el análisis a la interacción estratégica entre la autoridad y el mercado.</p></li>
+<li><p><em>Limitaciones</em>: no determina qué equilibrio se alcanza en el tramo intermedio, lo que limita su capacidad predictiva. Tampoco explica bien la crisis asiática de 1997, porque aquellas economías no tenían incentivos a devaluar y su fragilidad estaba en los balances de bancos y empresas.</p></li>
+</ul>
+</section>
+<section id="racionamiento-del-crédito-stiglitz-y-weiss-1981" class="level4">
+<h4 class="anchored" data-anchor-id="racionamiento-del-crédito-stiglitz-y-weiss-1981">1.2.3. Racionamiento del crédito (Stiglitz y Weiss, 1981)</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>El desarrollo completo de este modelo se encuentra en el tema <a href="../chapters/a42-ciclos.html">A42</a>, apartado 2.3.1.</p>
+</div>
+</div>
+</div>
+<p><strong>Origen</strong>: el modelo se debe a Joseph Stiglitz y Andrew Weiss (<em>Credit Rationing in Markets with Imperfect Information</em>, 1981), en la línea de la nueva economía keynesiana.</p>
+<p><strong>Idea</strong>: en presencia de información asimétrica, el tipo de interés no solo es el precio del crédito, sino que actúa como mecanismo de selección.</p>
+<p><strong>Razonamiento</strong>: las subidas del tipo de interés atraen a prestatarios de mayor riesgo (selección adversa) e inducen a los ya financiados a acometer proyectos más arriesgados (riesgo moral), de modo que el rendimiento esperado del banco no es monótonamente creciente en el tipo de interés. El banco maximiza su rendimiento esperado en un tipo <span class="math inline">\(i^*\)</span> (figura <a href="#fig-b264-stiglitz-weiss" class="quarto-xref"><span>B26.2</span></a>, cuadrante I). Si este tipo es inferior al que vaciaría el mercado (<span class="math inline">\(i^W\)</span>), el banco raciona el crédito, es decir, existe exceso de demanda en equilibrio (cuadrante IV).</p>
+<div id="fig-b264-stiglitz-weiss" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b264-stiglitz-weiss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b264_Stiglitz_Weiss.html" style="height:700px" loading="lazy" title="fig-b264-stiglitz-weiss"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b264-stiglitz-weiss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B26.2: Racionamiento del crédito (Stiglitz y Weiss, 1981). El rendimiento esperado del banco, <span class="math inline">\(\bar{R}^e(i)\)</span>, es máximo en <span class="math inline">\(i^*\)</span> (cuadrante I). A través de la oferta de depósitos, <span class="math inline">\(D^s(\bar{R}^e)\)</span> (cuadrante II), y de su conversión en créditos, <span class="math inline">\(L = \chi D\)</span> (cuadrante III), la oferta de crédito, <span class="math inline">\(L^s(i)\)</span>, es también máxima en <span class="math inline">\(i^*\)</span> (cuadrante IV). En <span class="math inline">\(i^*\)</span>, inferior al tipo <span class="math inline">\(i^W\)</span> que vaciaría el mercado, la demanda de crédito, <span class="math inline">\(L^d(i)\)</span>, supera a la oferta, y ese exceso, <span class="math inline">\(Z\)</span>, es el crédito racionado.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: explica que el crédito se racione en equilibrio sin rigideces de precios. Su implicación para la estabilidad financiera es directa, pues las perturbaciones que deterioren la información o el valor del colateral pueden contraer bruscamente la oferta de crédito (<em>credit crunch</em>).</p></li>
+<li><p><em>Limitaciones</em>: el racionamiento depende de que los bancos no puedan discriminar entre prestatarios, cuando en la práctica exigen garantías que revelan parcialmente el riesgo de los prestatarios y atenúan la asimetría. Además, es un modelo estático de equilibrio parcial.</p></li>
+</ul>
+</section>
+<section id="pánicos-bancarios-diamond-y-dybvig-1983" class="level4">
+<h4 class="anchored" data-anchor-id="pánicos-bancarios-diamond-y-dybvig-1983">1.2.4. Pánicos bancarios (Diamond y Dybvig, 1983)</h4>
+<p><strong>Origen</strong>: el modelo se debe a Douglas Diamond y Philip Dybvig (<em>Bank Runs, Deposit Insurance, and Liquidity</em>, 1983).</p>
+<p><strong>Idea</strong>: al transformar activos ilíquidos en depósitos a la vista, los bancos aseguran a los depositantes frente a necesidades imprevistas de liquidez, pero prometen a corto plazo más de lo que valen sus activos liquidados anticipadamente. Por eso, junto al equilibrio eficiente, existe otro en el que todos retiran porque esperan que los demás lo hagan, y el banco quiebra aun siendo solvente.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Entorno</em>: tres fechas, <span class="math inline">\(T = 0, 1, 2\)</span>, y un único bien. Existe un continuo de depositantes <em>ex ante</em> idénticos, cada uno con una unidad de dotación en <span class="math inline">\(T = 0\)</span>. El tipo (paciente o impaciente) no es observable, de modo que ningún contrato puede condicionarse a él.</p></li>
+<li><p><em>Agentes</em>: en <span class="math inline">\(T = 1\)</span> cada agente descubre, de forma privada, su tipo. Con probabilidad <span class="math inline">\(\pi\)</span> es impaciente y solo valora consumir en <span class="math inline">\(T = 1\)</span>, y con probabilidad <span class="math inline">\(1 - \pi\)</span> es paciente y valora consumir en <span class="math inline">\(T = 2\)</span>, aunque puede retirar antes y guardar lo retirado. Por la ley de los grandes números, <span class="math inline">\(\pi\)</span> es también la fracción de impacientes. La utilidad, <span class="math inline">\(u(c)\)</span>, es creciente y estrictamente cóncava, con aversión relativa al riesgo, <span class="math inline">\(-c\,u''(c)/u'(c)\)</span>, mayor que uno.</p></li>
+<li><p><em>Tecnología</em>: una unidad invertida en <span class="math inline">\(T = 0\)</span> rinde <span class="math inline">\(R &gt; 1\)</span> en <span class="math inline">\(T = 2\)</span>, pero liquidada en <span class="math inline">\(T = 1\)</span> solo devuelve la unidad invertida. Existe, además, un almacenamiento sin rendimiento.</p></li>
+</ul>
+<p><strong>Planteamiento</strong>: en autarquía, el impaciente liquida su inversión y consume 1, y el paciente consume <span class="math inline">\(R\)</span>. Un planificador puede mejorar ese resultado repartiendo el riesgo de liquidez:</p>
+<p><span class="math display">\[\max_{c_1,\, c_2} \; \pi\, u(c_1) + (1-\pi)\, u(c_2) \quad \text{s.a.:} \quad \pi c_1 + (1-\pi)\frac{c_2}{R} = 1\]</span></p>
+<p>donde <span class="math inline">\(c_1\)</span> es el consumo de cada impaciente en <span class="math inline">\(T = 1\)</span>, <span class="math inline">\(c_2\)</span> el de cada paciente en <span class="math inline">\(T = 2\)</span>, <span class="math inline">\(\pi\)</span> la fracción de impacientes, <span class="math inline">\(u\)</span> la función de utilidad y <span class="math inline">\(R\)</span> el rendimiento bruto del activo a largo plazo. La restricción reparte la dotación per cápita entre lo que se mantiene líquido, <span class="math inline">\(\pi c_1\)</span>, y lo que se invierte para pagar a los pacientes<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>.</p>
+<p><strong>CPO</strong>: con solución interior, sustituyendo la restricción en la función objetivo y derivando respecto a <span class="math inline">\(c_1\)</span>, se obtiene <span class="math inline">\((du/dc_1)|_{c_1^*} = R\,(du/dc_2)|_{c_2^*}\)</span>. La relación marginal de sustitución entre consumo temprano y tardío se iguala a la de transformación, pues dar una unidad más a los impacientes obliga a quitar <span class="math inline">\(R\)</span> a los pacientes. Como <span class="math inline">\(R &gt; 1\)</span> y <span class="math inline">\(u'\)</span> es decreciente, <span class="math inline">\(c_2^* &gt; c_1^*\)</span>, de modo que al paciente no le interesa hacerse pasar por impaciente. Con aversión relativa al riesgo mayor que uno, <span class="math inline">\(c\,u'(c)\)</span> es decreciente y, en la asignación de autarquía, <span class="math inline">\((1, R)\)</span>, se cumple <span class="math inline">\(u'(1) &gt; R\,u'(R)\)</span>. Conviene, por tanto, transferir consumo a los impacientes, con <span class="math inline">\(c_1^* &gt; 1\)</span> y <span class="math inline">\(c_2^* &lt; R\)</span>, y el óptimo asegura así frente al riesgo de necesitar liquidez pronto.</p>
+<p><strong>CSO</strong>: la función objetivo es estrictamente cóncava, por serlo <span class="math inline">\(u\)</span>, y la restricción es lineal, por lo que la condición de primer orden caracteriza un máximo único.</p>
+<p><strong>Equilibrio</strong>: el banco implementa el óptimo con un <em>contrato de depósito a la vista</em>, en el que quien retira en <span class="math inline">\(T = 1\)</span> cobra <span class="math inline">\(r_1 = c_1^*\)</span>, por orden de llegada (servicio secuencial) mientras queden fondos, y quienes esperan se reparten en <span class="math inline">\(T = 2\)</span> lo que quede. Si retira en <span class="math inline">\(T = 1\)</span> una fracción <span class="math inline">\(f\)</span> de los depositantes y <span class="math inline">\(f r_1 &lt; 1\)</span>, cada uno de los que esperan cobra:</p>
+<p><span class="math display">\[r_2(f) = \frac{R\,(1 - f\,r_1)}{1 - f}\]</span></p>
+<p>donde <span class="math inline">\(r_1\)</span> es el pago por unidad depositada en <span class="math inline">\(T = 1\)</span>, <span class="math inline">\(f\)</span> la fracción de depositantes que retira en <span class="math inline">\(T = 1\)</span> y <span class="math inline">\(R\)</span> el rendimiento del activo. En cambio, si <span class="math inline">\(f r_1 \geq 1\)</span>, el banco agota sus activos y <span class="math inline">\(r_2 = 0\)</span>. Un paciente prefiere retirar si <span class="math inline">\(r_2(f) &lt; r_1\)</span>, es decir, si <span class="math inline">\(f\)</span> supera el umbral <span class="math inline">\(\bar f = (R - r_1)/[r_1(R - 1)]\)</span> (figura <a href="#fig-b265-diamond-dybvig" class="quarto-xref"><span>B26.3</span></a>). Hay, pues, dos equilibrios:</p>
+<ul>
+<li><p><em>Equilibrio eficiente</em>: si cada paciente espera que solo retiren los impacientes (<span class="math inline">\(f = \pi\)</span>), le conviene esperar, pues <span class="math inline">\(r_2(\pi) = c_2^* &gt; r_1\)</span>, y se alcanza el óptimo.</p></li>
+<li><p><em>Pánico bancario</em>: si cada paciente espera que retiren todos (<span class="math inline">\(f = 1\)</span>), el banco solo puede pagar 1 por depositante en promedio, menos de lo prometido, <span class="math inline">\(r_1 &gt; 1\)</span>, y los últimos de la cola no cobran. Retirar es, entonces, la mejor respuesta y la expectativa se autovalida. El pánico es posible precisamente porque <span class="math inline">\(r_1 &gt; 1\)</span>. Por eso, la transformación de plazos que crea valor crea también la fragilidad, y qué equilibrio se selecciona depende de expectativas ajenas a los fundamentos (“manchas solares”).</p></li>
+</ul>
+<div id="fig-b265-diamond-dybvig" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b265-diamond-dybvig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b265_Diamond_Dybvig.html" style="height:560px" loading="lazy" title="fig-b265-diamond-dybvig"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b265-diamond-dybvig-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B26.3: Pánicos bancarios (Diamond y Dybvig, 1983). Con los datos del ejemplo (<span class="math inline">\(R = 2\)</span>, <span class="math inline">\(\pi = 1/4\)</span>), el pago a quien espera, <span class="math inline">\(r_2(f)\)</span>, decrece con la fracción <span class="math inline">\(f\)</span> de depositantes que retira en <span class="math inline">\(T = 1\)</span> y cae por debajo de <span class="math inline">\(r_1\)</span> en el umbral <span class="math inline">\(\bar f\)</span>, a partir del cual al paciente le conviene retirar (zona sombreada). Por el servicio secuencial, quien retira cobra <span class="math inline">\(r_1\)</span> mientras el banco puede atender a todos, hasta <span class="math inline">\(f = 1/r_1\)</span>, y en promedio <span class="math inline">\(1/f\)</span> a partir de ahí. Hay dos equilibrios, el eficiente (punto 0), con <span class="math inline">\(f = \pi\)</span> y <span class="math inline">\(r_2 = c_2^*\)</span>, y el pánico (punto 1), con <span class="math inline">\(f = 1\)</span>, en el que quien retira cobra en promedio 1, más que quien espera, que no cobra nada.
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo: depósito óptimo y umbral de pánico">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo: depósito óptimo y umbral de pánico
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Con <span class="math inline">\(u(c) = 1 - 1/c\)</span> (aversión relativa al riesgo igual a dos), <span class="math inline">\(R = 2\)</span> y <span class="math inline">\(\pi = 1/4\)</span>, la CPO da <span class="math inline">\(c_2 = \sqrt{2}\,c_1\)</span> y, con la restricción, <span class="math inline">\(c_1^* \approx 1{,}28\)</span> y <span class="math inline">\(c_2^* \approx 1{,}81\)</span>. El umbral es <span class="math inline">\(\bar f = (2 - 1{,}28)/[1{,}28\,(2 - 1)] \approx 0{,}56\)</span>. Si un paciente cree que retirará más del 56&nbsp;% de los depositantes, le conviene retirar también, aunque solo el 25&nbsp;% necesite liquidez (Diamond, 2007).</p>
+</div>
+</div>
+</div>
+<p><strong>Estática comparativa</strong>: el umbral, <span class="math inline">\(\bar f = (R/r_1 - 1)/(R - 1)\)</span>, mide la robustez del banco:</p>
+<ul>
+<li><p><em>Pago prometido</em> (<span class="math inline">\(r_1\)</span>): <span class="math inline">\(\bar f\)</span> decrece con <span class="math inline">\(r_1\)</span>. Cuanto más seguro de liquidez ofrece el contrato, menos depositantes que retiren bastan para desencadenar el pánico. En el límite sin seguro, <span class="math inline">\(r_1 = 1\)</span>, el umbral vale uno, de acuerdo con la condición <span class="math inline">\(r_1 &gt; 1\)</span> del pánico bancario (véase el Equilibrio).</p></li>
+<li><p><em>Rendimiento del activo</em> (<span class="math inline">\(R\)</span>): con <span class="math inline">\(r_1 &gt; 1\)</span>, como en el contrato óptimo, y <span class="math inline">\(r_1\)</span> dado, <span class="math inline">\(\bar f\)</span> crece con <span class="math inline">\(R\)</span>, porque un activo más rentable deja más para los que esperan y hace falta una retirada mayor para que esperar deje de compensar.</p></li>
+</ul>
+<p><strong>Extensiones</strong>:</p>
+<ul>
+<li><p><em>Soluciones</em>: el modelo permite evaluar tres:</p>
+<ul>
+<li><p><em>Suspensión de la convertibilidad</em>: si el banco anuncia que dejará de pagar tras atender a una fracción <span class="math inline">\(\pi\)</span> de depositantes, el pago en <span class="math inline">\(T = 2\)</span> queda asegurado, ningún paciente gana retirando y el pánico desaparece sin coste. No obstante, si <span class="math inline">\(\pi\)</span> es aleatoria, el banco no sabe dónde detenerse, de modo que o deja sin liquidez a impacientes, o el pánico vuelve a ser posible.</p></li>
+<li><p><em>Seguro de depósitos</em>: una garantía pública elimina el equilibrio de pánico incluso con <span class="math inline">\(\pi\)</span> aleatoria, porque el Estado puede ajustar <em>ex post</em>, mediante un impuesto sobre las retiradas en <span class="math inline">\(T = 1\)</span>, el pago a la fracción realizada de impacientes. Así, el pánico no llega a producirse y no hay que pagar rescate alguno. Sin embargo, el coste del seguro, ausente del modelo, es el riesgo moral (apartado 3.1).</p></li>
+<li><p><em>Prestamista de última instancia</em>: el banco central presta al banco solvente y hace innecesaria la liquidación anticipada, conforme a la regla de Bagehot (1873), que consiste en prestar sin límite, a un tipo de penalización y contra buenas garantías.</p></li>
+</ul></li>
+<li><p><em>Aplicaciones</em>: en el pánico de 1907, la retirada de depósitos del Knickerbocker Trust se propagó a otras entidades de Nueva York y solo cedió con el rescate privado coordinado por J.P. Morgan, lo que condujo a la creación de la Reserva Federal (1913). Entre 1930 y 1933, las oleadas de pánicos que Friedman y Schwartz (1963) situaron en el centro de la Gran Depresión llevaron a la suspensión de unos 9000 bancos estadounidenses y al seguro federal de depósitos (1934). Northern Rock (2007) sufrió el primer pánico bancario británico desde la época victoriana, con un seguro que solo cubría íntegramente las primeras 2000 libras (apartado 2.2.1), y el Silicon Valley Bank (SVB, marzo de 2023) reprodujo el mecanismo a velocidad digital (apartado 2.3.3).</p></li>
+</ul>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: es la primera microfundamentación rigurosa de la banca, pues explica a la vez por qué existen los depósitos a la vista y por qué son frágiles. Muestra, asimismo, que un pánico puede ser racional sin insolvencia previa y justifica las redes de seguridad como mecanismos que seleccionan el equilibrio eficiente.</p></li>
+<li><p><em>Limitaciones</em>: el modelo no predice cuándo se produce un pánico, porque la selección del equilibrio queda indeterminada. Goldstein y Pauzner (2005) la resuelven con juegos globales, en los que la probabilidad del pánico depende de los fundamentos. Al ser el activo seguro, el modelo no distingue iliquidez de insolvencia, mientras que la evidencia histórica asocia los pánicos a malas noticias sobre la solvencia bancaria. Además, el contrato solo es sostenible si los depositantes no pueden negociar sus derechos en <span class="math inline">\(T = 1\)</span> (Jacklin, 1987), y se omite el riesgo moral que generan las propias redes de seguridad.</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusiones" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones">1.3. Conclusiones</h3>
+<p>Del análisis teórico se extraen tres conclusiones:</p>
+<p><strong>Inestabilidad como propiedad</strong>: no es una anomalía, sino un rasgo endógeno de los sistemas basados en la transformación de plazos, el apalancamiento y las expectativas (Minsky; Diamond y Dybvig).</p>
+<p><strong>Racionamiento y equilibrios múltiples</strong>: la información asimétrica y los fallos de coordinación impiden que los mercados financieros se vacíen o generan equilibrios múltiples. Así, el crédito puede quedar racionado en equilibrio, con un exceso de demanda persistente (Stiglitz y Weiss), y el pesimismo puede ser autovalidante tanto en el mercado cambiario (Obstfeld) como en el bancario (Diamond y Dybvig).</p>
+<p><strong>Necesidad de intervención</strong>: estas características justifican la intervención pública en forma de redes de seguridad (seguro de depósitos, prestamista de última instancia) y de regulación y supervisión prudencial. Esas mismas redes generan, sin embargo, riesgo moral, lo que explica el péndulo histórico entre liberalización y rerregulación.</p>
+</section>
+</section>
+<section id="crisis-financieras-y-bancarias" class="level2">
+<h2 class="anchored" data-anchor-id="crisis-financieras-y-bancarias">2. Crisis financieras y bancarias</h2>
+<p>A lo largo de la historia reciente, el sistema financiero internacional se ha enfrentado a crisis de diferente índole. Su examen cronológico permite comprobar que, bajo formas siempre nuevas, operan mecanismos antiguos y recurrentes: el apalancamiento excesivo, el descalce de plazos y de divisas, y las expectativas autovalidantes descritas en el apartado 1.2.</p>
+<section id="etapa-de-bretton-woods-y-no-sistema" class="level3">
+<h3 class="anchored" data-anchor-id="etapa-de-bretton-woods-y-no-sistema">2.1. Etapa de Bretton Woods y no sistema</h3>
+<p>La primera etapa va desde el desarrollo de los euromercados y las perturbaciones de los años setenta, pasando por la crisis de deuda latinoamericana, hasta las crisis del SME y del sudeste asiático.</p>
+<section id="desarrollo-de-los-euromercados-y-perturbaciones-de-los-años-setenta" class="level4">
+<h4 class="anchored" data-anchor-id="desarrollo-de-los-euromercados-y-perturbaciones-de-los-años-setenta">2.1.1. Desarrollo de los euromercados y perturbaciones de los años setenta</h4>
+<p>El punto de partida de las crisis financieras en la historia reciente es el desarrollo de los euromercados, que explica buena parte de la vulnerabilidad posterior. Su origen se sitúa en los años cincuenta, cuando los bancos del bloque soviético comenzaron a mantener sus depósitos en dólares en la plaza de Londres, fuera del alcance de las autoridades estadounidenses y a resguardo de eventuales confiscaciones durante la Guerra Fría.</p>
+<p>Lo que nació como una precaución política dio lugar a un pujante mercado internacional de dólares al margen de toda jurisdicción nacional, que se amplió a los eurobonos a partir de la emisión de Autostrade (1963) y creció impulsado, paradójicamente, por la propia regulación estadounidense. En concreto, los topes a la remuneración de los depósitos (Regulation Q) y el impuesto de igualación de intereses (1963) desplazaron la intermediación en dólares hacia Londres.</p>
+<p>Sobre este mercado se proyectaron dos perturbaciones de la década siguiente:</p>
+<ul>
+<li><p><em>Nixon Shock</em>: la primera fue el colapso del sistema de Bretton Woods, iniciado con la suspensión de la convertibilidad del dólar en oro (agosto de 1971) y culminado con la flotación generalizada de 1973, sancionada en los Acuerdos de Jamaica (1976). La desaparición del ancla cambiaria introdujo una volatilidad de tipos de cambio y de tipos de interés hasta entonces desconocida, que es precisamente el origen de la innovación en productos derivados descrita en el apartado 1.1.</p></li>
+<li><p><em>Crisis del petróleo</em>: la segunda fue el primer choque del petróleo (1973). Los excedentes de los países exportadores (petrodólares) se depositaron en la banca internacional y se reciclaron en forma de crédito sindicado hacia los países en desarrollo, lo que sentó las bases de la crisis de 1982.</p></li>
+</ul>
+</section>
+<section id="crisis-de-deuda-latinoamericana-1982-1989" class="level4">
+<h4 class="anchored" data-anchor-id="crisis-de-deuda-latinoamericana-1982-1989">2.1.2. Crisis de deuda latinoamericana (1982-1989)</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La mecánica cambiaria del episodio mexicano de 1982 (modelo de primera generación) se desarrolla en el tema <a href="../chapters/b17-crisis-bp.html">B17</a>, apartado 1.4.2, y su vertiente de deuda externa (Plan Baker y Plan Brady), en el tema <a href="../chapters/b29-fod-aod.html">B29</a>, apartado 3.1.</p>
+</div>
+</div>
+</div>
+<p><strong>Causas</strong>: el reciclaje de petrodólares de los años setenta canalizó abundante crédito bancario sindicado, a tipo variable y en dólares, hacia América Latina.</p>
+<p><strong>Estallido</strong>: el endurecimiento monetario de Volcker (1979-1981) elevó simultáneamente el servicio de la deuda y apreció el dólar, mientras se hundían los precios de las materias primas. Por ello, México devaluó en febrero de 1982 y en agosto declaró la imposibilidad de atender sus pagos.</p>
+<p><strong>Consecuencias</strong>: la suspensión mexicana se propagó al conjunto de la región por la retirada simultánea del crédito bancario sindicado y abrió la “década perdida”, en la que la renta real por habitante retrocedió en muchos países latinoamericanos.</p>
+<p><strong>Soluciones</strong>: la gestión evolucionó desde las reprogramaciones sucesivas (<em>muddling through</em>) y el Plan Baker (1985, nueva financiación condicionada a reformas) hasta el Plan Brady (1989), que reconoció la necesidad de quitas y convirtió los préstamos bancarios en bonos negociables colateralizados.</p>
+</section>
+<section id="crisis-del-sme-1992-1993-y-crisis-del-sudeste-asiático-1997-1998" class="level4">
+<h4 class="anchored" data-anchor-id="crisis-del-sme-1992-1993-y-crisis-del-sudeste-asiático-1997-1998">2.1.3. Crisis del SME (1992-1993) y crisis del sudeste asiático (1997-1998)</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>El desarrollo completo de estas crisis se encuentra en el tema <a href="../chapters/b17-crisis-bp.html">B17</a>, apartados 2.4.1 (SME) y 3.4.1 (sudeste asiático).</p>
+</div>
+</div>
+</div>
+<p><strong>Crisis del SME</strong> (1992-1993):</p>
+<ul>
+<li><p><em>Causas</em>: como describen los modelos de segunda generación (apartado 1.2.2), la combinación de tipos de interés elevados en Alemania tras la reunificación y la incertidumbre sobre la ratificación de Maastricht hizo dudar al mercado del compromiso de varios países con sus paridades.</p></li>
+<li><p><em>Estallido</em>: los ataques especulativos forzaron la salida de la libra y la lira del mecanismo de cambios (septiembre de 1992).</p></li>
+<li><p><em>Consecuencias</em>: siguieron nuevas devaluaciones de la peseta, el escudo y la libra irlandesa, entre noviembre de 1992 y mayo de 1993.</p></li>
+<li><p><em>Soluciones</em>: la ampliación de las bandas de fluctuación al ±15&nbsp;% (agosto de 1993) y, a más largo plazo, la sustitución de las paridades ajustables por la moneda única.</p></li>
+</ul>
+<p><strong>Crisis del sudeste asiático</strong> (1997-1998):</p>
+<ul>
+<li><p><em>Causas</em>: a diferencia de las crisis anteriores, sus protagonistas presentaban fundamentos fiscales sólidos. El problema residía, en cambio, en los balances privados, con fuerte endeudamiento exterior a corto plazo y en divisa (doble descalce, de moneda y de vencimiento), banca frágil y garantías implícitas.</p></li>
+<li><p><em>Estallido</em>: la crisis se inició con la flotación del baht tailandés en julio de 1997 y se extendió por contagio a Indonesia, Corea, Malasia y Filipinas.</p></li>
+<li><p><em>Consecuencias</em>: la depreciación cambiaria destruyó los balances y convirtió la crisis cambiaria en crisis bancaria (“crisis gemelas”), episodio que dio lugar a los modelos de tercera generación (Krugman, 1999).</p></li>
+<li><p><em>Soluciones</em>: el FMI concedió paquetes de rescate sin precedentes, condicionados a un fuerte ajuste y a subidas de los tipos de interés para frenar la salida de capitales, y esas subidas agravaron la caída de la inversión y del producto.</p></li>
+</ul>
+</section>
+</section>
+<section id="crisis-financiera-de-2007-2007-2009-y-crisis-de-deuda-soberana-europea-2010-2014" class="level3">
+<h3 class="anchored" data-anchor-id="crisis-financiera-de-2007-2007-2009-y-crisis-de-deuda-soberana-europea-2010-2014">2.2. Crisis financiera de 2007 (2007-2009) y crisis de deuda soberana europea (2010-2014)</h3>
+<p>La crisis financiera internacional iniciada en 2007 se estudia junto con su prolongación en la zona del euro, la crisis de deuda soberana.</p>
+<section id="crisis-financiera-internacional" class="level4">
+<h4 class="anchored" data-anchor-id="crisis-financiera-internacional">2.2.1. Crisis financiera internacional</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Su encaje en la tipología de los modelos de crisis se examina en el tema <a href="../chapters/b17-crisis-bp.html">B17</a>, apartado 3.4.2; el papel del Fondo Monetario Internacional (FMI), en el tema <a href="../chapters/b22-fmi.html">B22</a>, apartado 3.3.2; la respuesta monetaria del Banco Central Europeo (BCE), en el tema <a href="../chapters/b43-politica-monetaria-ue.html">B43</a>, apartados 2.3.3 y 3.3.2; y la respuesta regulatoria, en el tema <a href="../chapters/b27-regulacion-financiera.html">B27</a>, apartado 3.</p>
+</div>
+</div>
+</div>
+<p>La crisis <em>subprime</em> (2007-2009) nació en el segmento de mayor riesgo del mercado hipotecario estadounidense y, tras la quiebra de Lehman Brothers, se convirtió en la crisis financiera global o Gran Recesión (2008-2014). Reprodujo, sobre todo fuera del perímetro bancario, el pánico del apartado 1.2.4 y la fragilidad endógena descrita por Minsky (apartado 1.2.1).</p>
+<p><strong>Causas</strong>: en el plano macroeconómico, los tipos de interés se mantuvieron bajos tras la crisis puntocom (la Reserva Federal dejó el tipo oficial en el 1&nbsp;% hasta 2004). A ello se sumó el exceso de ahorro de las economías emergentes y exportadoras de petróleo, canalizado hacia activos estadounidenses (<em>saving glut</em>; Bernanke, 2005). Ambos factores comprimieron las primas de riesgo y alimentaron la búsqueda de rentabilidad. Sobre ese fondo se formó en EE. UU. una burbuja inmobiliaria apoyada en hipotecas de alto riesgo (<em>subprime</em>), cuyo pago dependía de que la revalorización de la vivienda permitiera refinanciarlas. En el plano microfinanciero, cuatro rasgos hicieron frágil el sistema:</p>
+<ul>
+<li><p><em>Originar para distribuir</em>: las hipotecas se concedían para titulizarlas en MBS, cuyos tramos se reempaquetaban en obligaciones de deuda garantizadas (CDO, <em>collateralized debt obligations</em>). La cadena dispersaba el riesgo, pero debilitaba el incentivo a evaluar al deudor.</p></li>
+<li><p><em>Calificaciones</em>: las agencias dieron la máxima calificación a tramos preferentes de CDO respaldados por hipotecas <em>subprime</em>, con modelos que infravaloraban la correlación entre impagos y bajo el conflicto de interés de que pague el emisor.</p></li>
+<li><p><em>Vehículos fuera de balance</em>: los vehículos de inversión estructurada (SIV) y los <em>conduits</em> compraban activos titulizados a largo plazo con papel comercial respaldado por activos (ABCP, <em>asset-backed commercial paper</em>) a pocas semanas y líneas de liquidez del banco patrocinador. Así, el riesgo salía del cómputo de capital, pero no del grupo.</p></li>
+<li><p><em>Apalancamiento y financiación mayorista</em>: los bancos de inversión y la banca en la sombra, muy apalancados, se financiaban a muy corto plazo en el mercado de cesiones temporales (<em>repo</em>) con los propios títulos como colateral. Transformaban plazos como un banco, pero sin seguro de depósitos ni prestamista de última instancia.</p></li>
+</ul>
+<p><strong>Estallido</strong>: las subidas de tipos de la Reserva Federal desde 2004 elevaron la morosidad <em>subprime</em> en cuanto la vivienda dejó de revalorizarse (2006). Tras la quiebra de New Century, gran originadora <em>subprime</em> (abril de 2007), las tensiones pasaron a los vehículos, a los bancos y al conjunto del sistema:</p>
+<ul>
+<li><p><em>Agosto de 2007</em>: el día 9, BNP Paribas suspendió los reembolsos de tres fondos con titulizaciones que ya no podía valorar. El mercado interbancario se tensionó y ese mismo día el BCE inyectó 94.800&nbsp;M€ a un día.</p></li>
+<li><p><em>Septiembre de 2007</em>: el apoyo de liquidez del Banco de Inglaterra (día 14) a Northern Rock, que se financiaba sobre todo en mercados mayoristas, desató el primer pánico bancario británico desde la época victoriana. El pánico solo cesó con la garantía pública de los depósitos de Northern Rock (día 17).</p></li>
+<li><p><em>Marzo de 2008</em>: Bear Stearns, sin financiación <em>repo</em>, fue absorbido por JPMorgan Chase con apoyo de la Reserva Federal, que abrió su crédito a los intermediarios no bancarios por primera vez desde los años treinta.</p></li>
+<li><p><em>Septiembre de 2008</em>: el día 7, Fannie Mae y Freddie Mac pasaron a tutela pública. El 15 quebró Lehman Brothers, con 639.000&nbsp;M$ de activos, la mayor quiebra de la historia de EE. UU.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> El 16, la Reserva Federal abrió a AIG una línea de crédito de hasta 85.000&nbsp;M$. Ese mismo día, el fondo monetario Reserve Primary “rompió el dólar” (su valor liquidativo cayó por debajo de un dólar por participación) por sus pérdidas en papel comercial de Lehman.</p></li>
+<li><p><em>Octubre de 2008</em>: EE. UU. aprobó el TARP (Troubled Asset Relief Program), dotado con 700.000&nbsp;M$ (día 3), y los grandes bancos centrales recortaron tipos de forma coordinada (día 8).</p></li>
+</ul>
+<p>La propagación siguió la lógica de un pánico bancario, pero en los mercados mayoristas y entre intermediarios sin seguro de depósitos:</p>
+<ul>
+<li><p><em>Repo</em>: los prestamistas elevaron los recortes de valoración (<em>haircuts</em>) del colateral titulizado, lo que equivalía a retirar financiación y forzaba a desapalancarse.</p></li>
+<li><p><em>ABCP</em>: los inversores dejaron de renovarlo, y los activos de los vehículos volvieron a los balances bancarios a través de las líneas de liquidez (apartado 3.3).</p></li>
+<li><p><em>Fondos monetarios</em>: en la semana del 15 de septiembre de 2008, los que invertían en deuda privada sufrieron reembolsos de unos 300.000&nbsp;M$, el 14&nbsp;% de su patrimonio, según la Comisión de Bolsa y Valores estadounidense (SEC), y dejaron de comprar papel comercial.</p></li>
+<li><p><em>CDS y AIG</em>: AIG había vendido protección mediante permutas de incumplimiento crediticio (CDS, <em>credit default swaps</em>) por un nocional de 527.000&nbsp;M$ en su máximo de 2007. Las rebajas de su calificación le exigieron garantías que no podía aportar, en un mercado OTC sin visibilidad sobre las exposiciones (tema <a href="../chapters/b25-derivados.html">B25</a>, apartado 3.1).</p></li>
+<li><p><em>Ventas forzosas e interbancario</em>: las ventas de activos deprimían sus precios y contagiaban pérdidas a otras entidades (apartado 3.1). Antes de agosto de 2007, el diferencial entre el LIBOR a tres meses y el tipo fijo de los <em>swaps</em> indexados al tipo a un día (OIS, <em>overnight index swap</em>) del mismo plazo rondaba los 10 puntos básicos. El 10 de octubre de 2008 alcanzó los 365 (Sengupta y Tam, 2008).</p></li>
+</ul>
+<p><strong>Consecuencias</strong>: en 2009, el PIB de las economías avanzadas cayó un 3,4&nbsp;% y el mundial retrocedió un 0,1&nbsp;% a paridad de poder adquisitivo (FMI, <em>World Economic Outlook</em>, octubre de 2017). El volumen del comercio mundial de mercancías se contrajo un 12,2&nbsp;%, la mayor caída desde la Segunda Guerra Mundial (Organización Mundial del Comercio, 2010). En EE. UU., el desempleo se duplicó hasta el 10&nbsp;% en octubre de 2009 (Oficina de Estadísticas Laborales, BLS), y el precio de la vivienda cayó en torno a un 27&nbsp;% entre julio de 2006 y febrero de 2012 (índice nacional S&amp;P Case-Shiller).</p>
+<p>Las pérdidas bancarias no tenían precedentes. El FMI llegó a estimar en unos 4 billones de dólares las depreciaciones de activos de las entidades financieras de todo el mundo (abril de 2009). En octubre de 2010 situó las de la banca entre 2007 y 2010 en unos 2,2 billones (<em>Global Financial Stability Report</em>). El coste de los rescates y de la recesión deterioró las cuentas públicas y, en la zona del euro, abrió paso a la crisis de deuda soberana.</p>
+<p><strong>Soluciones</strong>: tras la quiebra de Lehman, la respuesta dejó de decidirse caso por caso y combinó cinco frentes:</p>
+<ul>
+<li><p><em>Liquidez</em>: el BCE pasó a adjudicar a tipo fijo toda la liquidez solicitada contra colateral (octubre de 2008). La Reserva Federal, por su parte, abrió facilidades para fondos monetarios y emisores de papel comercial y amplió sin límite (octubre de 2008) las líneas <em>swap</em> en dólares con otros bancos centrales abiertas en diciembre de 2007. Bajó, además, su tipo oficial al 0-0,25&nbsp;% (diciembre de 2008) y emprendió compras masivas de activos.</p></li>
+<li><p><em>Garantías</em>: se ampliaron los seguros de depósitos (en EE. UU., de 100.000 a 250.000 dólares en octubre de 2008; en la UE, la Directiva 2009/14/CE elevó el mínimo a 50.000 euros y después a 100.000 euros). Se avalaron también la deuda bancaria nueva y las participaciones en fondos monetarios.</p></li>
+<li><p><em>Recapitalizaciones</em>: el Tesoro estadounidense anunció el 14 de octubre de 2008 la inversión, con cargo al TARP, de 125.000&nbsp;M$ en el capital de nueve grandes bancos (115.000 millones se desembolsaron el 28 de octubre), y los países europeos aprobaron planes nacionales análogos.</p></li>
+<li><p><em>Estímulo fiscal</em>: la ley de recuperación estadounidense (ARRA, febrero de 2009; 787.000&nbsp;M$ en su estimación inicial) y el Plan Europeo de Recuperación Económica (noviembre de 2008) se sumaron a los estabilizadores automáticos. El plan europeo suponía unos 200.000&nbsp;M€, el 1,5&nbsp;% del PIB de la UE.</p></li>
+<li><p><em>Coordinación internacional</em>: el G20 pasó a reunirse en cumbres de jefes de Estado y de Gobierno (Washington, noviembre de 2008), y en Londres (abril de 2009) acordó un programa de 1,1 billones de dólares, que incluía triplicar los recursos del FMI. Allí nació también el Consejo de Estabilidad Financiera (FSB), motor de la reforma regulatoria resumida en el apartado 3.4.</p></li>
+</ul>
+</section>
+<section id="crisis-de-deuda-soberana" class="level4">
+<h4 class="anchored" data-anchor-id="crisis-de-deuda-soberana">2.2.2. Crisis de deuda soberana</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>El relato de la crisis de deuda soberana europea y la respuesta monetaria se desarrollan en el tema <a href="../chapters/b43-politica-monetaria-ue.html">B43</a>; la respuesta fiscal y de gobernanza, en el tema <a href="../chapters/b45-politica-fiscal-ue.html">B45</a>; y la respuesta bancaria, en el tema <a href="../chapters/b44-politica-financiera-ue.html">B44</a>. El modelo de equilibrios múltiples de una unión monetaria incompleta (De Grauwe, 2011) y el círculo vicioso entre bancos y soberanos (<em>doom loop</em>) se desarrollan en el tema <a href="../chapters/b16-integracion-monetaria.html">B16</a>, apartados 3.1 y 3.2.1.</p>
+</div>
+</div>
+</div>
+<p><strong>Causas</strong>: en la zona del euro, la crisis financiera mutó en crisis de deuda soberana por la vía del círculo vicioso entre bancos y soberanos. En ese círculo, el rescate bancario deterioró las cuentas públicas y, a su vez, la caída del precio de la deuda soberana erosionó los balances bancarios que la mantenían en cartera.</p>
+<p><strong>Estallido</strong>: la revisión del déficit griego (finales de 2009) abrió una etapa de rescates sucesivos (Grecia, Irlanda y Portugal en 2010-2011, el sector bancario español en 2012, con el Memorando de Entendimiento, y Chipre en 2013).</p>
+<p><strong>Consecuencias</strong>: la crisis fragmentó financieramente la zona del euro, con primas de riesgo periféricas en máximos. Economías con niveles de deuda comparables, como el Reino Unido y España en 2011, afrontaron condiciones de financiación muy distintas, porque solo el Reino Unido emitía en una moneda que controlaba su banco central (tema <a href="../chapters/b16-integracion-monetaria.html">B16</a>, apartado 3).</p>
+<p><strong>Soluciones</strong>: la crisis quedó contenida con el “whatever it takes” de Draghi (julio de 2012) y el anuncio de las operaciones monetarias de compraventa (OMT), que redujo las primas sin que el BCE llegara a comprar un solo bono. El resultado es coherente con el modelo de equilibrios múltiples, porque un prestamista de última instancia creíble elimina el equilibrio “malo” (tema <a href="../chapters/b16-integracion-monetaria.html">B16</a>, apartado 3.2.2). La crisis motivó, además, reformas estructurales de la arquitectura del euro: el Mecanismo Europeo de Estabilidad (MEDE), la Unión Bancaria y el refuerzo de la gobernanza fiscal.</p>
+</section>
+</section>
+<section id="de-la-covid-19-a-la-actualidad" class="level3">
+<h3 class="anchored" data-anchor-id="de-la-covid-19-a-la-actualidad">2.3. De la COVID-19 a la actualidad</h3>
+<p>El último periodo recoge los efectos sobre el sistema financiero de la COVID-19 y de la guerra de Ucrania, y dos episodios más recientes, la quiebra del SVB (marzo de 2023) y la crisis del <em>carry trade</em> (agosto de 2024).</p>
+<section id="efectos-de-la-covid-19-sobre-el-sistema-financiero-2020-2021" class="level4">
+<h4 class="anchored" data-anchor-id="efectos-de-la-covid-19-sobre-el-sistema-financiero-2020-2021">2.3.1. Efectos de la COVID-19 sobre el sistema financiero (2020-2021)</h4>
+<p><strong>Volatilidad de mercado</strong>: en marzo de 2020 las bolsas mundiales sufrieron caídas superiores al 30&nbsp;% en pocas semanas y el índice VIX alcanzó máximos históricos. Hubo, además, episodios de iliquidez incluso en mercados habitualmente profundos, como el de deuda pública estadounidense (la llamada <em>carrera por el efectivo</em> o <em>dash for cash</em>).</p>
+<p><strong>Huida hacia la calidad</strong> (<em>flight to quality</em>): los inversores rotaron masivamente hacia activos refugio (p.&nbsp;ej. T-bills, dólar, oro). La rotación llevó las rentabilidades de la deuda pública a mínimos históricos y tensionó la financiación en dólares de bancos no estadounidenses, lo que obligó a reactivar las líneas <em>swap</em> entre bancos centrales.</p>
+<p><strong>Política monetaria no convencional</strong>: los bancos centrales respondieron con una contundencia y rapidez inéditas. La Reserva Federal recortó tipos a cero y relanzó las compras de activos. El BCE, por su parte, lanzó el programa de compras de emergencia frente a la pandemia (PEPP), dotado inicialmente con 750.000&nbsp;M€ y ampliado hasta 1,85 billones. Lo completó con la tercera serie de operaciones de refinanciación a largo plazo condicionadas (TLTRO III), en condiciones ultralaxas. La intervención evitó que la crisis sanitaria degenerara en crisis financiera.</p>
+<p><strong>Disrupciones de precios financieros</strong>: el colapso de la demanda y la saturación de la capacidad de almacenamiento llevaron al futuro del crudo West Texas Intermediate (WTI) con vencimiento en mayo de 2020 a cotizar en negativo el 20 de abril (tema <a href="../chapters/b25-derivados.html">B25</a>, apartado 1.2.2). El hecho, sin precedentes, evidenció la interacción entre fundamentos físicos y posiciones financieras en los mercados de materias primas.</p>
+</section>
+<section id="efectos-de-la-guerra-de-ucrania-sobre-el-sistema-financiero-2022-hoy" class="level4">
+<h4 class="anchored" data-anchor-id="efectos-de-la-guerra-de-ucrania-sobre-el-sistema-financiero-2022-hoy">2.3.2. Efectos de la guerra de Ucrania sobre el sistema financiero (2022-hoy)</h4>
+<p><strong>Disrupción de los mercados de derivados de materias primas</strong>: la invasión elevó los precios de la energía (gas natural licuado y referencia neerlandesa Title Transfer Facility, TTF, en máximos históricos) y de metales y cereales. Por ello, las cámaras de compensación exigieron márgenes extraordinarios a los operadores de derivados energéticos, lo que generó tensiones de liquidez que requirieron avales públicos en varios países europeos. En el mercado del níquel, la Bolsa de Metales de Londres (LME) llegó a suspender la negociación y cancelar operaciones (marzo de 2022) tras una subida superior al 200&nbsp;% en dos sesiones.</p>
+<p><strong>Alza de las cotizaciones de la industria armamentística</strong>: el rearme europeo y el giro en la política de defensa (p.&nbsp;ej. el <em>Zeitenwende</em> alemán) revalorizaron con fuerza las acciones de empresas como Rheinmetall, Leonardo o BAE Systems. El alza contrasta con el debate sobre el encaje del sector en los criterios de inversión sostenible.</p>
+<p><strong>Disrupción de los mercados de divisas</strong>: las sanciones, con la congelación de reservas del banco central ruso y la exclusión de bancos rusos de la red de mensajería interbancaria SWIFT, provocaron el desplome inicial del rublo, seguido de una recuperación artificial sostenida por controles de capital. El dólar se apreció con intensidad como divisa refugio y se aceleró el debate sobre la fragmentación del sistema monetario internacional y la búsqueda de alternativas al dólar por parte de algunos países emergentes.</p>
+</section>
+<section id="otras-crisis-quiebra-del-svb-marzo-de-2023-y-crisis-del-carry-trade-agosto-de-2024" class="level4">
+<h4 class="anchored" data-anchor-id="otras-crisis-quiebra-del-svb-marzo-de-2023-y-crisis-del-carry-trade-agosto-de-2024">2.3.3. Otras crisis: quiebra del SVB (marzo de 2023) y crisis del <em>carry trade</em> (agosto de 2024)</h4>
+<p><strong>Quiebra del SVB</strong> (marzo de 2023):</p>
+<ul>
+<li><p><em>Causas</em>: el Silicon Valley Bank, decimosexto banco estadounidense por activos, presentaba una base de depósitos muy concentrada (empresas tecnológicas y capital riesgo) y mayoritariamente no asegurada, invertida en una cartera de bonos a largo plazo. Las subidas de tipos de la Reserva Federal generaron abultadas pérdidas latentes en esa cartera.</p></li>
+<li><p><em>Estallido</em>: cuando el banco intentó recomponer su liquidez vendiendo bonos con pérdidas y ampliando capital, se desató una retirada de depósitos fulminante, amplificada por la banca digital y las redes sociales. La retirada fue un pánico bancario como el de Diamond y Dybvig (apartado 1.2.4), pero a velocidad digital. El 9 de marzo salieron más de 42.000&nbsp;M$ y, con otros 100.000 millones de retiradas previstas para el día siguiente, el banco fue intervenido el 10 de marzo.</p></li>
+<li><p><em>Consecuencias</em>: cayeron también Signature Bank y First Republic y, en Europa, UBS absorbió Credit Suisse en una operación que incluyó la amortización íntegra de los CoCos AT1 de Credit Suisse<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>.</p></li>
+<li><p><em>Soluciones</em>: las autoridades invocaron la excepción de riesgo sistémico para garantizar la totalidad de los depósitos y la Reserva Federal habilitó una facilidad de liquidez extraordinaria, el Bank Term Funding Program (BTFP).</p></li>
+</ul>
+<p><strong>Crisis del <em>carry trade</em></strong> (agosto de 2024):</p>
+<ul>
+<li><p><em>Causas</em>: durante años, el Banco de Japón mantuvo tipos de interés en torno a cero (o negativos) para combatir la deflación. Los tipos bajos debilitaron el yen y alimentaron el <em>carry trade</em> yen-dólar (endeudarse en yenes a tipos de interés bajos e invertir en dólares a tipos de interés altos). Entre enero de 2022 y julio de 2024, con las subidas de tipos de la Reserva Federal, el yen perdió, en términos acumulados, más de un 20&nbsp;% de su valor frente al dólar.</p></li>
+<li><p><em>Estallido</em>: el 31 de julio de 2024, el Banco de Japón sorprendió al mercado con un giro restrictivo y subió su tipo de interés oficial del 0-0,1&nbsp;% al 0,25&nbsp;%.</p></li>
+<li><p><em>Consecuencias</em>: ese giro tuvo dos efectos:</p>
+<ul>
+<li><p><em>Cierre de posiciones</em>: se deshicieron masivamente posiciones de <em>carry trade</em> para hacer frente a la deuda en yenes.</p></li>
+<li><p><em>Apreciación del yen y contagio</em>: en pocas sesiones, la moneda japonesa ganó en torno a un 12&nbsp;% frente al dólar desde sus mínimos de julio, y la volatilidad se propagó a las bolsas mundiales. El 5 de agosto de 2024, el Nikkei registró su mayor caída diaria desde 1987 (superior al 12&nbsp;%).</p></li>
+</ul></li>
+<li><p><em>Soluciones</em>: el 7 de agosto, el subgobernador Shinichi Uchida aseguró que el Banco de Japón no subiría los tipos mientras los mercados financieros siguieran inestables, palabras que debilitaron el yen e impulsaron la bolsa japonesa.</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusiones-1" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-1">2.4. Conclusiones</h3>
+<p>El recorrido cronológico encuentra en cada episodio alguno de los mecanismos del apartado 1.2. Los euromercados crecieron al margen de toda jurisdicción, impulsados por la misma regulación estadounidense que esquivaban. El reciclaje de petrodólares llevó después a América Latina crédito a tipo variable y en dólares, que el endurecimiento monetario de Volcker encareció hasta la suspensión de pagos mexicana. En el SME, las expectativas forzaron devaluaciones que los fundamentos no hacían inevitables, y en el sudeste asiático el doble descalce de los balances privados convirtió la crisis cambiaria en bancaria.</p>
+<p>La crisis de 2007 trasladó el pánico bancario a los mercados mayoristas, donde la banca en la sombra transformaba plazos sin seguro de depósitos ni prestamista de última instancia. En la zona del euro se prolongó en el círculo vicioso entre bancos y soberanos, y la quiebra del SVB (2023) mostró que la banca digital acelera las retiradas. Esa recurrencia plantea la pregunta del apartado 3, cómo se miden y se gestionan los riesgos de los que nacen las crisis.</p>
+</section>
+</section>
+<section id="gestión-de-riesgos-de-las-instituciones-financieras" class="level2">
+<h2 class="anchored" data-anchor-id="gestión-de-riesgos-de-las-instituciones-financieras">3. Gestión de riesgos de las instituciones financieras</h2>
+<p>Queda por ver cuáles son los principales riesgos para la estabilidad del sistema financiero, cómo se miden y cómo pueden gestionarse y mitigarse.</p>
+<section id="tipos-de-riesgos-financieros" class="level3">
+<h3 class="anchored" data-anchor-id="tipos-de-riesgos-financieros">3.1. Tipos de riesgos financieros</h3>
+<p><strong>Según las posibilidades de diversificación</strong>: cabe distinguir entre el riesgo sistemático o de mercado, que afecta al conjunto de los activos y no puede eliminarse mediante diversificación, y el riesgo específico o propio de cada emisor, que sí puede eliminarse combinando activos imperfectamente correlacionados.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Sobre esta distinción y su formalización en el binomio media-varianza, véase el tema <a href="../chapters/b23-renta-variable.html">B23</a>.</p>
+</div>
+</div>
+</div>
+<p><strong>Según el origen del riesgo</strong>: se distinguen los riesgos de crédito o impago, de inflación, de liquidez, operacional, legal o político, y de evento. Los bonos están expuestos, además, al riesgo de tipo de interés, ya sea de mercado o de reinversión, y al riesgo de tipo de cambio.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Sobre los riesgos de los instrumentos de renta fija, véase el tema <a href="../chapters/b24-renta-fija.html">B24</a>.</p>
+</div>
+</div>
+</div>
+<p><strong>Según el alcance de sus efectos</strong>: la distinción decisiva para este tema, y la que separa la gestión microeconómica de la macroprudencial, es la que opone el riesgo idiosincrásico de cada entidad al <em>riesgo sistémico</em>. Este se entiende como la probabilidad de que la inviabilidad de una entidad o la materialización de una perturbación comprometa el funcionamiento del conjunto del sistema financiero y, con él, la financiación de la economía real. Su rasgo distintivo es que no resulta de la suma de los riesgos individuales, sino de las relaciones entre entidades, de modo que una gestión de riesgos impecable entidad por entidad no garantiza la estabilidad del conjunto. Tres mecanismos lo generan:</p>
+<ul>
+<li><p><em>Interconexión</em>: las exposiciones bilaterales (interbancario, derivados, sistemas de pago) transmiten la caída de una entidad a sus contrapartes, como ilustraron Lehman Brothers y AIG.</p></li>
+<li><p><em>Exposiciones comunes</em>: entidades sin vínculos directos entre sí pueden verse afectadas simultáneamente por tener carteras similares, lo que convierte la venta forzosa de activos de unas en pérdidas latentes de otras (<em>fire sales</em>).</p></li>
+<li><p><em>Prociclicidad</em>: los propios mecanismos de gestión del riesgo amplifican el ciclo, pues las medidas basadas en volatilidades y probabilidades de impago recientes permiten mayor apalancamiento en el auge y lo restringen bruscamente en la recesión, cuestión que se retoma en los apartados 3.2.2 y 3.2.4.</p></li>
+</ul>
+<p>De la existencia de riesgo sistémico se deriva el problema del <em>riesgo moral</em> asociado a las entidades demasiado grandes para caer (<em>too big to fail</em>). Cuando el mercado anticipa que la autoridad no permitirá la quiebra de una entidad por sus efectos sobre el conjunto, esta se financia más barato de lo que justificaría su perfil de riesgo. Tiene, además, incentivos a asumir riesgos mayores, con beneficios privados y pérdidas socializadas. A resolver este problema se dirigen los recargos de capital a las entidades sistémicas y los regímenes de resolución (apartado 3.4).</p>
+</section>
+<section id="medición-de-riesgos" class="level3">
+<h3 class="anchored" data-anchor-id="medición-de-riesgos">3.2. Medición de riesgos</h3>
+<p>Se exponen las pruebas de estrés, los modelos de valor en riesgo y de valor en riesgo condicional, la medición del riesgo de crédito y la de otros riesgos.</p>
+<section id="pruebas-de-estrés" class="level4">
+<h4 class="anchored" data-anchor-id="pruebas-de-estrés">3.2.1. Pruebas de estrés</h4>
+<p><strong>Definición</strong>: las <em>pruebas de estrés</em> (<em>stress tests</em>) evalúan la resistencia de una entidad, o del sistema en su conjunto, ante escenarios adversos pero plausibles, midiendo el impacto sobre su solvencia (capital), su liquidez o su cuenta de resultados. A diferencia de las medidas estadísticas basadas en la experiencia histórica reciente, se preguntan explícitamente “qué pasaría si” se materializara una perturbación severa.</p>
+<p><strong>Cálculo</strong>: las pruebas de estrés admiten tres modalidades:</p>
+<ul>
+<li><p><em>Análisis de sensibilidad</em>: mide el impacto de la variación de un único factor (p.&nbsp;ej. una subida de 200 puntos básicos de los tipos).</p></li>
+<li><p><em>Análisis de escenarios</em>: mide perturbaciones macrofinancieras coherentes y multivariantes, históricas o hipotéticas.</p></li>
+<li><p><em>Pruebas inversas</em> (<em>reverse stress tests</em>): invierten la lógica del ejercicio, pues parten del evento de inviabilidad y buscan identificar los escenarios capaces de provocarlo.</p></li>
+</ul>
+<p>Independientemente de la técnica empleada, las pruebas de estrés pueden clasificarse según su ejecución:</p>
+<ul>
+<li><p><em>Pruebas de abajo a arriba</em> (<em>bottom-up</em>): calculadas por las propias entidades con sus modelos internos, bajo supuestos y escenarios comunes fijados por el supervisor.</p></li>
+<li><p><em>Pruebas de arriba a abajo</em> (<em>top-down</em>): calculadas por el propio supervisor con modelos centralizados, aplicados de forma homogénea al conjunto de las entidades.</p></li>
+</ul>
+<p>En la práctica, los grandes ejercicios supervisores nacidos de la crisis financiera global combinan ambas modalidades. En EE.&nbsp;UU., el Supervisory Capital Assessment Program (SCAP, 2009) y sus continuadores, los ejercicios Comprehensive Capital Analysis and Review (CCAR) y Dodd-Frank Act Stress Tests (DFAST), contrastan las proyecciones de las propias entidades con las de la Reserva Federal. En la UE, en cambio, las pruebas bienales de la Autoridad Bancaria Europea (EBA) se ejecutan de abajo a arriba por las entidades bajo escenarios comunes, mientras que el supervisor emplea sus propios modelos como herramienta de contraste y control de calidad.</p>
+<p><strong>Interpretación</strong>: el resultado es la caída que sufriría la ratio de capital (o la posición de liquidez) de la entidad entre el punto de partida y el peor momento del escenario adverso, y se lee frente a los mínimos regulatorios. En EE. UU., desde 2020 esa caída, proyectada con los modelos de la Reserva Federal y sumada a cuatro trimestres de dividendos previstos, fija el colchón de capital de estrés (<em>stress capital buffer</em>) de cada banco. Ese colchón tiene un mínimo del 2,5&nbsp;% de los activos ponderados por riesgo. La prueba de la EBA no fija, en cambio, un umbral de aprobado y su resultado alimenta el proceso de revisión supervisora (Pilar 2).</p>
+<p>Gráficamente, en el plano años del horizonte-ratio CET1 (figura <a href="#fig-b261-pruebas-estres" class="quarto-xref"><span>B26.4</span></a>), cada curva representa la senda proyectada de la ratio CET1 de una entidad hasta el final del ejercicio (tres años en la prueba de la EBA de 2025). La del escenario base sube levemente, porque la entidad genera beneficios, y la del adverso cae por las pérdidas de crédito y de mercado hasta un punto mínimo. La recta horizontal es el mínimo regulatorio. La distancia del punto de partida al punto más bajo del escenario adverso mide la caída máxima de capital, y la de ese punto a la recta, la holgura de la entidad.</p>
+<div id="fig-b261-pruebas-estres" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b261-pruebas-estres-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b261_Pruebas_estres.html" style="height:480px" loading="lazy" title="fig-b261-pruebas-estres"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b261-pruebas-estres-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B26.4: Prueba de estrés. La ratio CET1 sube en el escenario base y cae en el adverso, cuyo punto más bajo mide la caída máxima de capital y la holgura frente al mínimo regulatorio.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: capturan eventos extremos fuera de la muestra histórica y obligan a las entidades a mapear sus vulnerabilidades. Publicadas con transparencia, además, contribuyen a restaurar la confianza del mercado, como ocurrió con el SCAP de 2009.</p></li>
+<li><p><em>Limitaciones</em>: sus resultados dependen críticamente del diseño del escenario, que puede pecar de benévolo por razones de economía política. El supuesto habitual de balance estático ignora, además, las reacciones de las entidades, y las pruebas no capturan bien los efectos de segunda ronda, el contagio ni las espirales de liquidez.</p></li>
+</ul>
+</section>
+<section id="modelos-de-valor-en-riesgo-var" class="level4">
+<h4 class="anchored" data-anchor-id="modelos-de-valor-en-riesgo-var">3.2.2. Modelos de valor en riesgo (VaR)</h4>
+<p><strong>Definición</strong>: el <em>valor en riesgo</em> (VaR) es la pérdida máxima que una cartera no superará, con un nivel de confianza determinado, en un horizonte temporal dado. Formalmente, el VaR al nivel <span class="math inline">\(\alpha\)</span> es el cuantil de la distribución de pérdidas tal que <span class="math inline">\(P(L &gt; \text{VaR}_\alpha) = 1 - \alpha\)</span>.</p>
+<p><strong>Cálculo</strong>: existen tres grandes familias de modelos VaR:</p>
+<ul>
+<li><p><em>VaR paramétrico</em> o de varianzas-covarianzas (popularizado por RiskMetrics de JP Morgan, 1994): supone normalidad de los rendimientos y obtiene la desviación típica de la cartera de la matriz de varianzas y covarianzas. Si la variación del valor de la cartera en el horizonte, <span class="math inline">\(\Delta V\)</span>, es normal, de media <span class="math inline">\(\mu\)</span> y desviación típica <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\text{VaR}_\alpha = z_\alpha\,\sigma - \mu\)</span>, donde <span class="math inline">\(z_\alpha\)</span> es el cuantil <span class="math inline">\(\alpha\)</span> de la normal estándar (2,33 al 99&nbsp;%).</p></li>
+<li><p><em>VaR de simulación histórica</em>: aplica a la cartera actual las variaciones observadas de los factores de riesgo en una ventana pasada, sin supuestos distribucionales.</p></li>
+<li><p><em>VaR de simulación de Montecarlo</em>: genera miles de trayectorias a partir de procesos estocásticos calibrados. Este modelo es el más flexible, pues admite no linealidades y opciones, y también el más costoso computacionalmente.</p></li>
+</ul>
+<p><strong>Interpretación</strong>: un VaR diario de 10&nbsp;M€ al 99&nbsp;% indica que solo en el 1&nbsp;% de los días se espera perder más de esa cifra. La enmienda de 1996 al Acuerdo de Basilea I (Market Risk Amendment) lo consagró como base de los modelos internos de riesgo de mercado (VaR al 99&nbsp;% con horizonte de diez días).</p>
+<p>Gráficamente, en el plano variación del valor de la cartera-densidad (figura <a href="#fig-b262-var" class="quarto-xref"><span>B26.5</span></a>), la curva representa la distribución de pérdidas y ganancias de la cartera en el horizonte, con las pérdidas a la izquierda del origen. En el VaR paramétrico es una normal de media <span class="math inline">\(\mu\)</span> y desviación típica <span class="math inline">\(\sigma\)</span>. La cola sombreada acumula la probabilidad <span class="math inline">\(1 - \alpha\)</span> y empieza en <span class="math inline">\(-\text{VaR}_\alpha\)</span>, a <span class="math inline">\(z_\alpha\,\sigma\)</span> de la media, así que el VaR es esa distancia menos la ganancia esperada.</p>
+<div id="fig-b262-var" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b262-var-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b262_VaR.html" style="height:510px" loading="lazy" title="fig-b262-var"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b262-var-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B26.5: Valor en riesgo (VaR). La cola izquierda de la distribución de pérdidas y ganancias, de probabilidad <span class="math inline">\(1 - \alpha\)</span>, empieza en <span class="math inline">\(-\text{VaR}_\alpha\)</span>.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: resume el riesgo de carteras heterogéneas en una única cifra monetaria, comparable entre mesas, entidades y periodos. Facilita, además, la asignación de límites y de capital y es contrastable mediante <em>backtesting</em>.</p></li>
+<li><p><em>Limitaciones</em>: no informa de la magnitud de las pérdidas más allá del umbral (silencio sobre la cola) y no es, en general, una medida coherente de riesgo (puede violar la subaditividad, penalizando la diversificación). Además, el supuesto de normalidad infraestima las colas gruesas, y el VaR es procíclico, porque las volatilidades bajas del auge lo reducen y permiten más apalancamiento. Su aparente precisión, por último, genera falsa seguridad, como evidenció la crisis financiera global.</p></li>
+</ul>
+</section>
+<section id="riesgo-de-pérdida-en-cola-valor-en-riesgo-condicional-cvar" class="level4">
+<h4 class="anchored" data-anchor-id="riesgo-de-pérdida-en-cola-valor-en-riesgo-condicional-cvar">3.2.3. Riesgo de pérdida en cola: valor en riesgo condicional (CVaR)</h4>
+<p><strong>Definición</strong>: el <em>valor en riesgo condicional</em> (CVaR) mide la pérdida esperada condicionada a que la pérdida supere el VaR: <span class="math inline">\(\text{CVaR}_\alpha = \mathbb{E}[L \mid L \geq \text{VaR}_\alpha]\)</span>, expresión que coincide con el <em>expected shortfall</em> (ES) cuando la distribución de pérdidas es continua.</p>
+<p><strong>Cálculo</strong>: se estima con las mismas tres familias de métodos que el VaR (paramétrico, simulación histórica y Montecarlo), promediando en cada caso las pérdidas situadas más allá del cuantil.</p>
+<p><strong>Interpretación</strong>: responde a la pregunta que el VaR deja abierta, la de cuánto se pierde, en promedio, en los peores escenarios. Tras la crisis financiera global, la revisión fundamental de la cartera de negociación (FRTB, 2016; revisada en 2019) sustituyó el VaR al 99&nbsp;% por el <em>expected shortfall</em> al 97,5&nbsp;% para medir el riesgo de mercado, porque el <em>expected shortfall</em> trata mejor el riesgo de cola. En la figura <a href="#fig-b262-var" class="quarto-xref"><span>B26.5</span></a>, el CVaR es la pérdida media dentro de la cola sombreada.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>:</p>
+<ul>
+<li><p><em>Coherencia</em>: si la distribución de pérdidas es continua, es una medida coherente de riesgo, conforme a los axiomas de Artzner et al.&nbsp;(1999), por lo que satisface la subaditividad y premia la diversificación. Captura, además, la severidad de las pérdidas extremas y no solo su frecuencia. El <em>expected shortfall</em>, en cambio, es coherente con cualquier distribución (Acerbi y Tasche, 2002).</p></li>
+<li><p><em>Resistencia a la manipulación</em>: es más difícil de eludir mediante posiciones que concentran las pérdidas en la cola, más allá del umbral del VaR.</p></li>
+</ul></li>
+<li><p><em>Limitaciones</em>: es más difícil de contrastar mediante <em>backtesting</em>, pues el número de observaciones en la cola es, por construcción, reducido. Sus estimaciones son, además, más sensibles a errores de modelo y de muestra, y el CVaR hereda del VaR la dependencia de la calidad de los datos y de los supuestos distribucionales.</p></li>
+</ul>
+</section>
+<section id="medición-del-riesgo-de-crédito-pérdida-esperada" class="level4">
+<h4 class="anchored" data-anchor-id="medición-del-riesgo-de-crédito-pérdida-esperada">3.2.4. Medición del riesgo de crédito: pérdida esperada</h4>
+<p><strong>Definición</strong>: a diferencia del riesgo de mercado, cuya medición se apoya en precios observables y series de alta frecuencia, el riesgo de crédito se caracteriza por acontecimientos infrecuentes y distribuciones fuertemente asimétricas. Su medida básica es la <em>pérdida esperada</em>, la pérdida media que cabe anticipar en una exposición o una cartera en un horizonte dado, normalmente un año.</p>
+<p><strong>Cálculo</strong>: la pérdida esperada se descompone en tres parámetros:</p>
+<p><span class="math display">\[\text{PE} = \text{PD} \cdot \text{LGD} \cdot \text{EAD}\]</span></p>
+<p>donde <span class="math inline">\(\text{PD}\)</span> es la probabilidad de impago, <span class="math inline">\(\text{LGD}\)</span> (<em>loss given default</em>) la severidad o porcentaje no recuperado, y <span class="math inline">\(\text{EAD}\)</span> (<em>exposure at default</em>) la exposición en el momento del impago. Los parámetros y las ponderaciones de riesgo se obtienen por tres vías:</p>
+<ul>
+<li><p><em>Enfoque estándar</em>: las ponderaciones de riesgo vienen fijadas por el regulador en función de la calificación crediticia externa de la contraparte.</p></li>
+<li><p><em>Enfoque IRB</em> (<em>internal ratings-based</em>, Basilea II): las entidades estiman internamente los parámetros, ya sea solo la <span class="math inline">\(\text{PD}\)</span> (modalidad <em>foundation</em>) o también la <span class="math inline">\(\text{LGD}\)</span>, la <span class="math inline">\(\text{EAD}\)</span> y el vencimiento (modalidad <em>advanced</em>). Sin embargo, la finalización de Basilea III restringió esta última para grandes empresas y entidades financieras.</p></li>
+<li><p><em>Modelos de cartera</em>: incorporan la correlación entre impagos para obtener la distribución de pérdidas del conjunto (p.&nbsp;ej. CreditMetrics, CreditRisk+), sobre la que se calculan el VaR y el CVaR de crédito.</p></li>
+</ul>
+<p><strong>Interpretación</strong>: la pérdida esperada se cubre con provisiones, mientras que la <em>pérdida inesperada</em>, obtenida de la distribución de pérdidas de la cartera, ha de cubrirse con capital. Expresada como porcentaje de la exposición, <span class="math inline">\(\text{PD} \cdot \text{LGD}\)</span>, la pérdida esperada es el coste del riesgo que el diferencial del préstamo debe cubrir antes de remunerar el capital.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la descomposición en <span class="math inline">\(\text{PD}\)</span>, <span class="math inline">\(\text{LGD}\)</span> y <span class="math inline">\(\text{EAD}\)</span> separa la pérdida que se provisiona de la que exige capital y permite fijar requerimientos sensibles al riesgo de cada exposición.</p></li>
+<li><p><em>Limitaciones</em>: la aparente objetividad de los parámetros oculta una elevada discrecionalidad, dado que las estimaciones dependen de ventanas históricas que rara vez cubren un ciclo completo. De ahí la variabilidad injustificada de las ponderaciones entre entidades comparables que motivó el <em>output floor</em> de 2017, y de ahí también el carácter procíclico de estas medidas, pues las <span class="math inline">\(\text{PD}\)</span> estimadas caen en las expansiones y aumentan con fuerza en las recesiones.</p></li>
+</ul>
+</section>
+<section id="medición-de-otros-riesgos" class="level4">
+<h4 class="anchored" data-anchor-id="medición-de-otros-riesgos">3.2.5. Medición de otros riesgos</h4>
+<p><strong>Liquidez</strong>: el <em>Liquidity Adjusted Value-at-Risk</em> (LVaR) incorpora el riesgo de liquidez a los modelos VaR tradicionales. Considera así la posibilidad de que las perturbaciones se traduzcan no solo en pérdidas, sino también en un deterioro de las condiciones de liquidez (horquillas de precios más amplias, costes de deshacer posiciones en mercados tensionados). En el plano regulatorio, el riesgo de liquidez de financiación (distinto del de liquidez de mercado que recoge el LVaR) se mide mediante la ratio de cobertura de liquidez (LCR) y la ratio de financiación estable neta (NSFR) de Basilea III.</p>
+<p><strong>Resultados y rentabilidad</strong>: son relevantes los indicadores <em>Earnings at Risk</em> (EaR) y <em>Cash Flow at Risk</em> (CFaR), que miden el impacto del riesgo de mercado sobre la cuenta de pérdidas y ganancias y sobre el estado de flujos de efectivo, respectivamente. Es decir, miden el riesgo sobre la rentabilidad económica (ROA) y financiera (ROE) más que sobre el valor de mercado de la cartera.</p>
+<p><strong>Ciberseguridad</strong>: los <em>Cyber Resilience Stress Tests</em> (CRST), ejercicio realizado por el BCE en 2024, evalúan cómo responden y se recuperan los bancos frente a un ciberataque que produce una disrupción en sus operaciones normales. El ejercicio es una prueba de respuesta y recuperación, y no una estimación de pérdidas.</p>
+<p><strong>Riesgo climático</strong>: el BCE llevó a cabo en 2022 su primera prueba de estrés climática supervisora con la participación de las entidades (tras un ejercicio agregado para el conjunto de la economía en 2021). La prueba evalúa la exposición de las entidades a los riesgos físicos (materialización de fenómenos extremos) y de transición (reconversión hacia una economía descarbonizada). Su horizonte, de décadas, y la escasez de series históricas obligan a apoyarse en escenarios prospectivos antes que en datos observados.</p>
+</section>
+</section>
+<section id="gestión-y-mitigación-microeconómica-de-riesgos" class="level3">
+<h3 class="anchored" data-anchor-id="gestión-y-mitigación-microeconómica-de-riesgos">3.3. Gestión y mitigación microeconómica de riesgos</h3>
+<p><strong>Diversificación</strong>: la combinación de activos imperfectamente correlacionados reduce el riesgo específico de la cartera sin exigir, a cambio, una menor rentabilidad esperada (Markowitz). Su límite, sin embargo, es el riesgo sistemático, que no puede diversificarse, y su eficacia disminuye precisamente en las crisis, cuando las correlaciones tienden a uno.</p>
+<p><strong>Cobertura</strong>: consiste en tomar posiciones en derivados cuyo valor se mueva en sentido contrario al de la posición que se desea proteger.</p>
+<ul>
+<li><p><em>Vía futuros y forwards</em>: fijan hoy el precio de una operación futura y eliminan la incertidumbre en ambas direcciones, pues se renuncia también al beneficio potencial. Estos contratos son el instrumento habitual de cobertura del riesgo de tipo de cambio de exportadores e importadores y del riesgo de precio de las materias primas.</p></li>
+<li><p><em>Vía opciones</em>: proporcionan una cobertura asimétrica, que protege frente a movimientos adversos preservando el potencial favorable, a cambio del pago de una prima (p.&nbsp;ej. una <em>put</em> protectora sobre una cartera de acciones).</p></li>
+<li><p><em>Vía swaps</em>: permiten transformar la naturaleza de los flujos (de tipo fijo a variable y viceversa, o de una divisa a otra), y son el instrumento central de la gestión del riesgo de tipo de interés de los balances bancarios.</p></li>
+</ul>
+<p>La cobertura no elimina el riesgo, sino que lo transforma, ya que convierte el riesgo de mercado en riesgo de liquidez o de contrapartida, según el instrumento empleado.</p>
+<p><strong>Gestión de balance</strong> (<em>asset and liability management</em>): se sitúa a caballo entre la planificación estratégica y la gestión del riesgo financiero, y busca cerrar tres brechas entre activos y pasivos. La de liquidez se cierra asegurando fuentes de financiación estables, la de tipos de interés, protegiendo el diferencial o margen de intermediación, y la de vencimientos, casando duraciones y recurriendo a derivados. La quiebra del SVB ilustra el coste de una gestión de balance deficiente frente al riesgo de tipo de interés.</p>
+<p><strong><em>Covenants</em></strong>: acuerdos o cláusulas entre prestamista y prestatario que establecen obligaciones financieras específicas para proteger al prestamista y garantizar el repago de la deuda.</p>
+<ul>
+<li><p><em>Elementos de un covenant</em>: es habitual que establezcan ratios financieras a mantener (p.&nbsp;ej. apalancamiento, cobertura de intereses, servicio de la deuda, ratio de liquidez) y umbrales cuya vulneración activa consecuencias contractuales (<em>covenant trigger</em>), desde la renegociación hasta el vencimiento anticipado.</p></li>
+<li><p><em>Tipos de covenant</em>: negativos (prohíben ciertas actividades, como repartir dividendos o endeudarse adicionalmente por encima de un límite) y positivos (exigen determinados requerimientos, como suministrar información financiera auditada o mantener asegurados los activos).</p></li>
+</ul>
+<p><strong>Transferencia y retención</strong>: cuando el riesgo no puede diversificarse ni cubrirse, cabe transferirlo a terceros mediante seguros, derivados de crédito (CDS) o titulización. También cabe retenerlo de forma consciente, con provisiones para la pérdida esperada y capital para la inesperada, conforme a la descomposición ya expuesta. No obstante, la crisis de las <em>subprime</em> (2007-2009) mostró los límites de la primera vía, ya que la titulización desplazó el riesgo de crédito sin hacerlo desaparecer del sistema. De hecho, el riesgo volvió a los balances bancarios por vías no previstas, ya fuese por las líneas de liquidez comprometidas con los vehículos o por razones reputacionales.</p>
+</section>
+<section id="gestión-y-mitigación-macroeconómica-de-riesgos" class="level3">
+<h3 class="anchored" data-anchor-id="gestión-y-mitigación-macroeconómica-de-riesgos">3.4. Gestión y mitigación macroeconómica de riesgos</h3>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>El marco institucional, los Acuerdos de Basilea y la resolución bancaria se desarrollan en el tema <a href="../chapters/b27-regulacion-financiera.html">B27</a>, apartados 2, 3.1 y 3.2. Aquí se resume lo que necesita la gestión macroeconómica del riesgo.</p>
+</div>
+</div>
+</div>
+<p><strong>Marco institucional</strong>: los estándares internacionales carecen de fuerza jurídica vinculante (<em>soft law</em>) y solo adquieren eficacia cuando cada jurisdicción los incorpora a su ordenamiento, como hace la UE con el Reglamento de requisitos de capital (CRR) y la Directiva de requisitos de capital (CRD). Los fijan comités sectoriales (en banca, el Comité de Supervisión Bancaria de Basilea, BCBS, con secretaría en el Banco de Pagos Internacionales), con el impulso político del G20 y la coordinación del FSB, y el FMI evalúa su aplicación país por país con el Programa de Evaluación del Sector Financiero (FSAP). En la UE, el marco institucional se apoya en el Sistema Europeo de Supervisión Financiera (SESF, 2011), la Unión Bancaria (2012) y la Unión de Ahorros e Inversiones (UAI, 2025).</p>
+<p><strong>Acuerdos de Basilea</strong>: Basilea I (1988) fijó un capital mínimo del 8&nbsp;% de los activos ponderados por riesgo de crédito, y la enmienda de 1996 añadió el riesgo de mercado. Basilea II (2004) ordenó la regulación en tres pilares (capital mínimo con modelos internos, revisión supervisora y disciplina de mercado), y la crisis financiera global reveló carencias como el capital escaso y de baja calidad, la confianza excesiva en los modelos y en las calificaciones, la prociclicidad y la falta de normas de liquidez y apalancamiento. Basilea III (2010) eleva el mínimo de capital ordinario CET1 del 2&nbsp;% al 4,5&nbsp;%, sin cambiar el 8&nbsp;% total, y añade colchones de capital, una ratio de apalancamiento y dos ratios de liquidez (LCR y NSFR). Su finalización (2017) limita el ahorro de capital de los modelos internos con un suelo del 72,5&nbsp;% del método estándar<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>.</p>
+<p><strong>Resolución y absorción de pérdidas</strong>: la reforma poscrisis sustituye el rescate (<em>bail-out</em>) por la imputación de las pérdidas a accionistas y acreedores (<em>bail-in</em>), en regímenes de resolución distintos del concurso, conforme a los <em>Key Attributes</em> del FSB (2011) y, en la UE, a la Directiva de reestructuración y resolución bancaria (BRRD) y al Mecanismo Único de Resolución<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>. La capacidad total de absorción de pérdidas (TLAC) del FSB (2015) y el MREL de la UE exigen pasivos suficientes a los que imputar las pérdidas, como los CoCos y la deuda senior no preferente (apartado 1.1). El episodio de Credit Suisse (2023) ilustra las tensiones que aún suscita su aplicación.</p>
+</section>
+</section>
+<section id="conclusiones-2" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones-2">Conclusiones</h2>
+<p>La inestabilidad forma parte de la propia naturaleza del sistema financiero. Cuatro marcos teóricos identifican las fuentes de esa inestabilidad. Minsky la atribuye a la acumulación endógena de fragilidad durante las expansiones, y Obstfeld, a los equilibrios múltiples, entre los que las expectativas determinan cuál se alcanza. Por su parte, Stiglitz y Weiss explican el racionamiento del crédito por la información asimétrica, y Diamond y Dybvig muestran que el descalce de vencimientos hace posible el pánico bancario. Los episodios históricos, desde la crisis de la deuda latinoamericana hasta la quiebra del SVB, reproducen esas fuentes bajo formas nuevas, a menudo nacidas del arbitraje regulatorio. El riesgo de cada entidad se mide con pruebas de estrés, VaR, CVaR y pérdida esperada, pero el riesgo del sistema depende de las relaciones entre entidades y no equivale a la suma de los riesgos individuales. Por ello, la gestión del riesgo de cada entidad debe completarse con un marco macroprudencial que atienda al riesgo sistémico, a la prociclicidad y a la interconexión.</p>
+<p>Las teorías de la inestabilidad comparten mecanismos con otros temas. Los equilibrios múltiples de Obstfeld proceden de las crisis cambiarias (tema <a href="../chapters/b17-crisis-bp.html">B17</a>) y se aplican a la deuda soberana de una unión monetaria incompleta (tema <a href="../chapters/b16-integracion-monetaria.html">B16</a>), y el racionamiento del crédito es también un mecanismo de amplificación del ciclo (tema <a href="../chapters/a42-ciclos.html">A42</a>). Por su parte, los derivados permiten cubrir los riesgos que miden las entidades, aunque también los concentran (tema <a href="../chapters/b25-derivados.html">B25</a>). Por último, como el riesgo sistémico no es la suma de los riesgos individuales, la estabilidad financiera es un bien público que exige un diseño institucional propio (tema <a href="../chapters/b27-regulacion-financiera.html">B27</a>), con una articulación específica en la Unión Europea (tema <a href="../chapters/b44-politica-financiera-ue.html">B44</a>).</p>
+<p>Gorton y Metrick (2012) interpretan la crisis de 2007-2008 como un pánico en el mercado de <em>repo</em>, en el que la subida de los recortes de valoración equivalió a una retirada de depósitos. Krishnamurthy, Nagel y Orlov (2014) muestran, en cambio, que ese <em>repo</em> pesaba poco en la financiación de la banca en la sombra y se contrajo mucho menos que el papel comercial respaldado por activos. Sobre la posibilidad de anticipar las crisis, Schularick y Taylor (2012) muestran, con datos de catorce países desde 1870, que el crecimiento del crédito es el mejor predictor de las crisis financieras, lo que respalda la tesis de Minsky y los colchones anticíclicos. Queda abierto, sin embargo, si basta la política macroprudencial para contener esos auges o debe acompañarla la política monetaria.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Claessens y Kose, <em>Financial Crises: Explanations, Types, and Implications</em>, IMF Working Paper (2013).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>La innovación de producto (futuros, opciones, <em>swaps</em>, titulizaciones) responde a la mayor volatilidad cambiaria y a la mayor libertad de circulación de capitales. La innovación de proceso (telecomunicaciones, informática) reduce los costes de transacción y aumenta la velocidad.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Emitir un título es crearlo y ponerlo en circulación, de modo que el emisor capta fondos. Colocarlo es hacerlo llegar a los inversores, directamente o a través de entidades colocadoras (tema <a href="../chapters/b24-renta-fija.html">B24</a>, apartado 1.1.1).<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>El desarrollo del mercado del eurodólar fue posible por la actitud tolerante de las autoridades americanas (principio de territorialidad). En contraste, Alemania y Suiza fueron hostiles al desarrollo de mercados en euromarcos y eurofrancos suizos con base en Londres.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>En las titulizaciones con SPV (<em>Special Purpose Vehicle</em>), el riesgo crediticio se “aparca” fuera del perímetro del originador (<em>bankruptcy remoteness</em>). Intervienen además la sociedad gestora, los garantes financieros, los proveedores de liquidez y las agencias de calificación.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>El €STR se publica desde el 2 de octubre de 2019. Desde entonces, el índice medio del tipo de interés del euro a un día (EONIA) se calculó como €STR más 8,5 puntos básicos, hasta su desaparición el 3 de enero de 2022.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Otras modalidades de bonos Brady, como los bonos C brasileños, no estaban colateralizadas. México (2003) y Brasil (2005-2006) ya retiraron sus bonos Brady.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>A diferencia de los neokeynesianos, que explican las fluctuaciones por perturbaciones exógenas propagadas por las rigideces nominales de precios y salarios, para Minsky la excesiva volatilidad del precio de los activos explica los ciclos financieros.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>El original multiplica la utilidad del paciente por un factor <span class="math inline">\(\rho\)</span>, con <span class="math inline">\(1/R &lt; \rho \leq 1\)</span>, de modo que la CPO sería <span class="math inline">\(du/dc_1|_{c_1^*} = \rho R\,du/dc_2|_{c_2^*}\)</span>. Aquí se normaliza a <span class="math inline">\(\rho = 1\)</span>, sin alterar los resultados cualitativos.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>La decisión de no rescatar Lehman Brothers sigue siendo objeto de debate. Quienes la defienden invocan el riesgo moral acumulado tras los rescates previos, mientras que quienes la critican señalan que el coste sistémico de la quiebra superó con creces el de cualquier rescate.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>La amortización de los AT1 de Credit Suisse antes que las acciones, que invertía la prelación habitual, provocó una crisis de confianza en el mercado de CoCos. La crisis obligó al BCE, la EBA y la Junta Única de Resolución a aclarar públicamente que en la UE se respetaría el orden ordinario de prelación.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>En la UE, Basilea III se implementa a través del paquete CRR/CRD. La finalización del marco se recoge en el CRR III, aplicable con carácter general desde el 1 de enero de 2025 (la FRTB se ha aplazado al 1 de enero de 2027), y en la CRD VI, aplicable desde enero de 2026.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>En la Unión Bancaria, las autoridades nacionales de resolución ejercen sus funciones en coordinación con la Junta Única de Resolución, competente para las entidades significativas.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script>
+// Gráficos del libro (iframes .graph-frame).
+// 1) Escala única: los grosores, los discontinuos y el tamaño de los puntos de cada figura están fijados para verla a 680 px
+//    de ancho. Los marcos anchos (figuras de varios paneles) se estiran hasta la columna y las pantallas estrechas las encogen; aquí se
+//    compensa para que en pantalla las curvas midan siempre lo mismo (2,2 px las económicas, 1,4 las auxiliares, 1,2 ejes y flechas,
+//    0,8 las guías) y los puntos tengan el mismo tamaño en todas las figuras, sea cual sea el ancho al que se muestren.
+// 2) Ajusta la altura de cada iframe al elemento dibujado más bajo (curvas, ejes, etiquetas KaTeX).
+(function () {
+  var REF = 680;
+  function norm(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var s = d.querySelector("svg"); if (!s) return;
+      var w = s.getBoundingClientRect().width; if (!(w > 0)) return;
+      var r = REF / w;
+      var els = s.querySelectorAll("path, line, polyline, polygon, rect, circle, ellipse");
+      els.forEach(function (el) {
+        var cs = d.defaultView.getComputedStyle(el);
+        if (el.dataset.sw0 === undefined) {
+          el.dataset.sw0 = parseFloat(cs.strokeWidth) || 0;
+          el.dataset.da0 = (cs.strokeDasharray && cs.strokeDasharray !== "none") ? cs.strokeDasharray : "";
+          if (el.tagName.toLowerCase() === "circle" && el.r && el.r.baseVal.value > 0 && el.r.baseVal.value <= 9) {
+            el.dataset.r0 = el.r.baseVal.value;
+          }
+        }
+        var sw0 = +el.dataset.sw0;
+        if (sw0 > 0) el.style.strokeWidth = (sw0 * r).toFixed(3) + "px";
+        if (el.dataset.da0) {
+          el.style.strokeDasharray = el.dataset.da0.split(/[ ,]+/).map(function (v) {
+            return (parseFloat(v) * r).toFixed(3) + "px";
+          }).join(" ");
+        }
+        if (el.dataset.r0) el.setAttribute("r", (+el.dataset.r0 * r).toFixed(3));
+      });
+    } catch (e) {}
+  }
+  function fit(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var sy = d.defaultView.scrollY || 0, bottom = 0;
+      var els = d.querySelectorAll("svg path, svg line, svg circle, svg polyline, svg polygon, svg rect, svg text, svg ellipse, .katex-label");
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width > 0 || r.height > 0) bottom = Math.max(bottom, r.bottom + sy);
+      });
+      if (!(bottom > 20)) {
+        var svg = d.querySelector("svg"); var vb = svg && svg.getAttribute("viewBox");
+        if (vb) { var p = vb.split(/\s+/); bottom = f.clientWidth * (+p[3]) / (+p[2]); }
+      }
+      if (bottom > 20) f.style.height = Math.ceil(bottom + 10) + "px";
+    } catch (e) {}
+  }
+  // 3) Un gráfico de varios paneles no se amplía por encima del 110 % de su ancho de dibujo (viewBox). Los dibujados a
+  //    680 px quedan en 748 px como máximo, con rótulos de tamaño normal; los de 900 o 960 px, en el tope de 900 px del CSS.
+  function cap(f) {
+    try {
+      if (!f.parentElement || !f.parentElement.classList.contains("wide")) return;
+      var s = f.contentDocument && f.contentDocument.querySelector("svg"); if (!s) return;
+      var vb = s.viewBox && s.viewBox.baseVal; if (!vb || !(vb.width > 0)) return;
+      var m = Math.min(900, Math.round(vb.width * 1.1)) + "px";
+      if (f.style.maxWidth !== m) f.style.maxWidth = m;
+    } catch (e) {}
+  }
+  function both(f) { cap(f); norm(f); fit(f); }
+  function all() { document.querySelectorAll(".graph-frame iframe").forEach(both); }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".graph-frame iframe").forEach(function (f) {
+      f.addEventListener("load", function () { both(f); setTimeout(function () { both(f); }, 700); });
+    });
+  });
+  window.addEventListener("load", function () { setTimeout(all, 1200); });
+  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(all, 150); });
+})();
+</script>
+<style>
+.graph-frame { margin: 1.25rem 0 0.25rem; }
+.quarto-figure .graph-frame + * { margin-top: 0; }
+</style>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/librovol1\.arturolorenzo\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/b25-derivados.html" class="pagination-link" aria-label="B25. Instrumentos derivados">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">B25. Instrumentos derivados</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/b27-regulacion-financiera.html" class="pagination-link" aria-label="B27. Regulación bancaria y financiera">
+        <span class="nav-page-text"><span class="chapter-title">B27. Regulación bancaria y financiera</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

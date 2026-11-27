@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 540">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="100" y1="460" x2="580" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="100" y1="460" x2="100" y2="30"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <rect x="100" y="60" width="400" height="400" fill="none" stroke="black" stroke-width="0.8" stroke-dasharray="6 4" opacity="0.3"/>
+
+
+    <line x1="100" y1="460" x2="500" y2="60" stroke="#888" stroke-width="1" opacity="0.5"/>
+
+
+    <path id="fx-curve" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <circle id="pt-fix" r="5" fill="#000"/>
+
+
+    <line id="dash-v" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line id="dash-h" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+
+    <line x1="500" y1="460" x2="500" y2="464" stroke="black" stroke-width="1"/>
+    <line x1="96" y1="60" x2="100" y2="60" stroke="black" stroke-width="1"/>
+
+
+    <path d="M140,460 A40,40 0 0,0 128.3,431.7" fill="none" stroke="#888" stroke-width="0.8"/>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-x"></div>
+  <div class="katex-label" id="lbl-fx"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-1x"></div>
+  <div class="katex-label" id="lbl-1y"></div>
+  <div class="katex-label" id="lbl-xstar"></div>
+  <div class="katex-label" id="lbl-fxstar"></div>
+  <div class="katex-label" id="lbl-flabel"></div>
+  <div class="katex-label" id="lbl-45"></div>
+  <div class="katex-label" id="lbl-fixpt"></div>
+
+</div>
+
+<script>
+
+function toSvgX(x) { return 100 + x * 400; }
+function toSvgY(y) { return 460 - y * 400; }
+
+
+
+function f(x) {
+  return Math.min(1, Math.max(0, 0.15 + 0.25 * Math.sin(3 * Math.PI * x) + 0.45 * Math.pow(x, 0.6) - 0.08 * x));
+}
+
+
+const pts = [];
+const steps = 200;
+for (let i = 0; i <= steps; i++) {
+  const x = i / steps;
+  const y = f(x);
+  pts.push(toSvgX(x).toFixed(1) + ',' + toSvgY(y).toFixed(1));
+}
+document.getElementById('fx-curve').setAttribute('d', 'M' + pts.join(' L'));
+
+
+let xFix = 0.5;
+for (let iter = 0; iter < 100; iter++) {
+  const diff = f(xFix) - xFix;
+  if (Math.abs(diff) < 0.0001) break;
+
+  let lo = 0, hi = 1;
+  for (let j = 0; j < 60; j++) {
+    const mid = (lo + hi) / 2;
+    if (f(mid) - mid > 0) lo = mid;
+    else hi = mid;
+  }
+  xFix = (lo + hi) / 2;
+  break;
+}
+
+const sxF = toSvgX(xFix);
+const syF = toSvgY(xFix);
+
+document.getElementById('pt-fix').setAttribute('cx', sxF);
+document.getElementById('pt-fix').setAttribute('cy', syF);
+
+
+const dashV = document.getElementById('dash-v');
+dashV.setAttribute('x1', sxF); dashV.setAttribute('y1', syF);
+dashV.setAttribute('x2', sxF); dashV.setAttribute('y2', toSvgY(0));
+
+const dashH = document.getElementById('dash-h');
+dashH.setAttribute('x1', toSvgX(0)); dashH.setAttribute('y1', syF);
+dashH.setAttribute('x2', sxF);        dashH.setAttribute('y2', syF);
+
+
+const svg = document.querySelector('svg');
+function addTick(x1,y1,x2,y2) {
+  const t = document.createElementNS('http://www.w3.org/2000/svg','line');
+  t.setAttribute('x1',x1); t.setAttribute('y1',y1);
+  t.setAttribute('x2',x2); t.setAttribute('y2',y2);
+  t.setAttribute('stroke','black'); t.setAttribute('stroke-width','1');
+  svg.appendChild(t);
+}
+addTick(sxF, 460, sxF, 464);
+addTick(96, syF, 100, syF);
+
+
+const W=680,H=540, P=(x,y)=>[(x/W*100).toFixed(2)+'%',(y/H*100).toFixed(2)+'%'];
+const fEnd=[toSvgX(1), toSvgY(f(1))];
+const labels = [
+  {id:'lbl-x',      tex:'x',            at:P(588,460), a:'0,-50%', color:'black'},
+  {id:'lbl-fx',     tex:'f(x)',         at:P(92,26),   a:'-100%,-50%', color:'black'},
+  {id:'lbl-o',      tex:'0',            at:P(94,468),  a:'-100%,0', color:'black'},
+  {id:'lbl-1x',     tex:'1',            at:P(500,468), a:'-50%,0', color:'black'},
+  {id:'lbl-1y',     tex:'1',            at:P(90,60),   a:'-100%,-50%', color:'black'},
+  {id:'lbl-xstar',  tex:'x^*',          at:P(sxF,468), a:'-50%,0', color:'black'},
+  {id:'lbl-fxstar', tex:'x^*',          at:P(90,syF),  a:'-100%,-50%', color:'black'},
+  {id:'lbl-flabel', tex:'f(x)',         at:P(fEnd[0]+8,fEnd[1]), a:'0,-50%', color:'#0F6E56'},
+  {id:'lbl-45',     tex:'45^\\circ',    at:P(146,440), a:'0,-50%', color:'#888', s:15},
+  {id:'lbl-fixpt',  tex:'x^* = f(x^*)', at:P(sxF+15,syF-13), a:'0,0', color:'#000', s:15, bg:true}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError:false});
+  el.style.left = l.at[0]; el.style.top = l.at[1];
+  el.style.transform = 'translate(' + l.a + ')';
+  if (l.s) el.style.fontSize = l.s + 'px';
+  if (l.color) el.style.color = l.color;
+  if (l.bg) { el.style.background = '#fff'; el.style.padding = '0 2px'; }
+});
+</script>
+</body>
+</html>

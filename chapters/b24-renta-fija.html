@@ -1,0 +1,2117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Arturo Lorenzo">
+<meta name="description" content="Tema B24 de Técnicos Comerciales y Economistas del Estado. Precio y rentabilidad de bonos, ETTI, duración de Macaulay, convexidad e inmunización.">
+
+<title>B24. Instrumentos de renta fija – Lecciones de economía general e internacional</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/b25-derivados.html" rel="next">
+<link href="../chapters/b23-renta-variable.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-af206048d982c71265205c3505cca787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bec3fe2b0881f05566c9dedb60685f6d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="B24. Instrumentos de renta fija – Lecciones de economía general e internacional">
+<meta property="og:description" content="Tema B24 de Técnicos Comerciales y Economistas del Estado. Precio y rentabilidad de bonos, ETTI, duración de Macaulay, convexidad e inmunización.">
+<meta property="og:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta property="og:site_name" content="Lecciones de economía general e internacional">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:title" content="B24. Instrumentos de renta fija – Lecciones de economía general e internacional">
+<meta name="twitter:description" content="Tema B24 de Técnicos Comerciales y Economistas del Estado. Precio y rentabilidad de bonos, ETTI, duración de Macaulay, convexidad e inmunización.">
+<meta name="twitter:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="B24. Instrumentos de renta fija">
+<meta name="citation_author" content="Arturo Lorenzo">
+<meta name="citation_publication_date" content="2026-11-28">
+<meta name="citation_cover_date" content="2026-11-28">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-11-28">
+<meta name="citation_fulltext_html_url" content="https://librovol1.arturolorenzo.com/chapters/b24-renta-fija.html">
+<meta name="citation_language" content="es">
+<meta name="citation_book_title" content="Lecciones de economía general e internacional">
+<link rel="canonical" href="https://librovol1.arturolorenzo.com/chapters/b24-renta-fija.html">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/b01-estados-ratios.html">Empresa y Finanzas</a></li><li class="breadcrumb-item"><a href="../chapters/b24-renta-fija.html"><span class="chapter-title">B24. Instrumentos de renta fija</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Lecciones de economía general e internacional</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/arturo-lorenzo/lecciones-economia" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../creditos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Edición y licencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte A: Economía General</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pensamiento Económico</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a01-objeto-metodo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A1. Objeto y método de la ciencia económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a02-clasicos-marx.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A2. Los economistas clásicos y Marx</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a03-neoclasicos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A3. Los economistas neoclásicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a04-keynes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A4. Keynes: análisis comparado</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a05-monetaristas-snc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A5. La síntesis neoclásica y el monetarismo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a06-nmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A6. La nueva macroeconomía clásica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a07-nek.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A7. La nueva economía keynesiana</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Microeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a08-consumidor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A8. Teoría de la demanda del consumidor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a09-dualidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A9. Dualidad y aplicaciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a10-riesgo-incertidumbre.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A10. Elección en riesgo e incertidumbre</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a11-produccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A11. Teoría de la producción</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a12-costes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A12. Teoría de costes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a13-informacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A13. Economía de la información</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a14-juegos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A14. Teoría de juegos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a15-toi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A15. Teoría de la organización industrial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a16-competencia-perfecta.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A16. Competencia perfecta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a17-monopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A17. Monopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a18-competencia-monopolistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A18. Competencia monopolística</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a19-oligopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A19. Oligopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a20-regulacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A20. Regulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a21-equilibrio-general.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A21. Equilibrio general</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a22-eb-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A22. Economía del bienestar (I)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a23-eb-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A23. Economía del bienestar (II)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a24-eb-iii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A24. Economía del bienestar (III)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Economía Laboral</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a25-oferta-trabajo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A25. Mercado de trabajo y capital humano</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a26-desempleo-friccional.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A26. Desempleo friccional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a27-salarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A27. Determinación de salarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a28-tnp-nairu.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A28. TNP, NAIRU y persistencia</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Macroeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a29-mhi-mgs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A29. Modelos de horizonte infinito y generaciones solapadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a30-magnitudes-cn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A30. Magnitudes macroeconómicas y contabilidad nacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a32-precios-output.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A32. Precios y output en economía abierta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a33-demanda-consumo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A33. Teorías de demanda de consumo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a34-demanda-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A34. Teorías de demanda de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a35-demanda-dinero.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A35. Teorías de la demanda de dinero</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a36-politica-monetaria-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A36. Política monetaria I: diseño e instrumentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a37-politica-monetaria-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A37. Política monetaria II: transmisión y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a38-politica-fiscal.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A38. Política fiscal, crecimiento y ahorro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a39-deficit.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A39. Déficit público, su financiación y sostenibilidad</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a40-interrelacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A40. Interrelación de políticas macroeconómicas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a41-inflacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A41. Inflación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a42-ciclos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A42. Ciclos económicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a43-crecimiento-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A43. Crecimiento económico exógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a44-crecimiento-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A44. Crecimiento económico endógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a45-crecimiento-empirica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A45. Evidencia empírica sobre el crecimiento</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte B: Economía Internacional</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Empresa y Finanzas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b01-estados-ratios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B1. Estados financieros y ratios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b02-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B2. Decisiones de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b03-financiacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B3. Decisiones de financiación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b04-crecimiento-ma.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B4. Crecimiento empresarial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b23-renta-variable.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B23. Instrumentos de renta variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b24-renta-fija.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">B24. Instrumentos de renta fija</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b25-derivados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B25. Instrumentos derivados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b26-crisis-financieras.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B26. Crisis financieras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b27-regulacion-financiera.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B27. Regulación bancaria y financiera</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Comercio Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b05-tnc-comercio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B5. Teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b06-nueva-teoria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B6. Nueva teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b07-politica-comercial-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B7. Política comercial I: instrumentos y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b08-politica-comercial-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B8. Política comercial II: política estratégica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b09-comercio-crecimiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B9. Comercio internacional y crecimiento</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b10-integracion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B10. Teoría de la integración económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b11-balanza-pagos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B11. Balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b12-ajuste-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B12. Ajuste de la balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b13-mercado-divisas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B13. Mercado de divisas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b14-tipo-cambio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B14. Determinación del tipo de cambio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b15-regimenes-cambiarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B15. Regímenes cambiarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b16-integracion-monetaria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B16. Integración monetaria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b17-crisis-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B17. Crisis de balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b18-globalizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B18. Globalización</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b19-coordinacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B19. Coordinación de políticas económicas internacionales</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Sistema Económico Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b20-sei-hasta-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B20. El sistema económico internacional hasta el colapso de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b21-sei-despues-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B21. El sistema económico internacional después de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b22-fmi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B22. El Fondo Monetario Internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b28-desarrollo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B28. Desarrollo económico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b29-fod-aod.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B29. Financiación oficial del desarrollo y AOD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b30-gbm-brsd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B30. Grupo Banco Mundial y bancos regionales de desarrollo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b31-ma-bpg.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B31. El cambio climático y su impacto en la economía</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b32-perspectivas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B32. Perspectivas de la economía internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b33-omc-gatt.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B33. La OMC y el GATT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b34-gats-trips.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B34. GATS, TRIPS y acuerdos plurilaterales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b35-no-comunitarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B35. Acuerdos comerciales no comunitarios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unión Europea</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b36-tratados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B36. Los tratados de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b37-finanzas-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B37. Las finanzas de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b38-pac-ppc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B38. Política Agrícola Común y Política Pesquera Común</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b39-miue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B39. Mercado interior de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b41-comercial-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B41. Política comercial de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b42-cooperacion-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B42. Política de cooperación de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b43-politica-monetaria-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B43. Política macroeconómica I: el euro y la política monetaria única</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b44-politica-financiera-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B44. Política macroeconómica II: la Unión Bancaria y la Unión de los Mercados de Capitales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b45-politica-fiscal-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B45. Política macroeconómica III: la gobernanza económica de la UE y de la zona euro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Descargas</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Primer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/ejercicios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios prácticos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/flashcards-conceptos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de conceptos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/guia-dictamen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guía para el dictamen</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Segundo Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/segundo-ejercicio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de inglés</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Tercer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/libro-bloques.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">El libro en PDF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del tercer ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Cuarto Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del cuarto ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Más allá del libro</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/otras-publicaciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Otras publicaciones y trabajos del autor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/enlaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Enlaces de interés</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Bibliografía</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manuales y obras de referencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia-articulos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Obras citadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../fuentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fuentes normativas y documentales</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#fundamentos-del-análisis-de-renta-fija" id="toc-fundamentos-del-análisis-de-renta-fija" class="nav-link" data-scroll-target="#fundamentos-del-análisis-de-renta-fija">1. Fundamentos del análisis de renta fija</a>
+  <ul class="collapse">
+  <li><a href="#conceptos-básicos" id="toc-conceptos-básicos" class="nav-link" data-scroll-target="#conceptos-básicos">1.1. Conceptos básicos</a></li>
+  <li><a href="#determinación-del-precio-teórico-o-valor-intrínseco-de-un-bono" id="toc-determinación-del-precio-teórico-o-valor-intrínseco-de-un-bono" class="nav-link" data-scroll-target="#determinación-del-precio-teórico-o-valor-intrínseco-de-un-bono">1.2. Determinación del precio teórico o valor intrínseco de un bono</a></li>
+  <li><a href="#determinación-de-la-rentabilidad-de-un-bono" id="toc-determinación-de-la-rentabilidad-de-un-bono" class="nav-link" data-scroll-target="#determinación-de-la-rentabilidad-de-un-bono">1.3. Determinación de la rentabilidad de un bono</a></li>
+  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link" data-scroll-target="#conclusiones">1.4. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#estructura-temporal-de-los-tipos-de-interés" id="toc-estructura-temporal-de-los-tipos-de-interés" class="nav-link" data-scroll-target="#estructura-temporal-de-los-tipos-de-interés">2. Estructura temporal de los tipos de interés</a>
+  <ul class="collapse">
+  <li><a href="#concepto" id="toc-concepto" class="nav-link" data-scroll-target="#concepto">2.1. Concepto</a></li>
+  <li><a href="#posibles-formas-y-movimientos-de-la-etti" id="toc-posibles-formas-y-movimientos-de-la-etti" class="nav-link" data-scroll-target="#posibles-formas-y-movimientos-de-la-etti">2.2. Posibles formas y movimientos de la ETTI</a></li>
+  <li><a href="#teorías-explicativas-de-la-estructura-temporal-de-los-tipos" id="toc-teorías-explicativas-de-la-estructura-temporal-de-los-tipos" class="nav-link" data-scroll-target="#teorías-explicativas-de-la-estructura-temporal-de-los-tipos">2.3. Teorías explicativas de la estructura temporal de los tipos</a></li>
+  <li><a href="#conclusiones-1" id="toc-conclusiones-1" class="nav-link" data-scroll-target="#conclusiones-1">2.4. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#riesgos-duración-y-convexidad" id="toc-riesgos-duración-y-convexidad" class="nav-link" data-scroll-target="#riesgos-duración-y-convexidad">3. Riesgos, duración y convexidad</a>
+  <ul class="collapse">
+  <li><a href="#riesgos-asociados-a-los-activos-financieros" id="toc-riesgos-asociados-a-los-activos-financieros" class="nav-link" data-scroll-target="#riesgos-asociados-a-los-activos-financieros">3.1. Riesgos asociados a los activos financieros</a></li>
+  <li><a href="#duración-de-macaulay-1938" id="toc-duración-de-macaulay-1938" class="nav-link" data-scroll-target="#duración-de-macaulay-1938">3.2. Duración de Macaulay (1938)</a></li>
+  <li><a href="#duración-modificada" id="toc-duración-modificada" class="nav-link" data-scroll-target="#duración-modificada">3.3. Duración modificada</a></li>
+  <li><a href="#convexidad" id="toc-convexidad" class="nav-link" data-scroll-target="#convexidad">3.4. Convexidad</a></li>
+  <li><a href="#inmunización-redington-1952-fisher-y-weil-1971" id="toc-inmunización-redington-1952-fisher-y-weil-1971" class="nav-link" data-scroll-target="#inmunización-redington-1952-fisher-y-weil-1971">3.5. Inmunización (Redington, 1952; Fisher y Weil, 1971)</a></li>
+  </ul></li>
+  <li><a href="#conclusiones-2" id="toc-conclusiones-2" class="nav-link" data-scroll-target="#conclusiones-2">Conclusiones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/b01-estados-ratios.html">Empresa y Finanzas</a></li><li class="breadcrumb-item"><a href="../chapters/b24-renta-fija.html"><span class="chapter-title">B24. Instrumentos de renta fija</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">B24. Instrumentos de renta fija</span></h1>
+<p class="subtitle lead">Análisis de los instrumentos de renta fija. Determinación del precio y rendimiento de los bonos. La estructura temporal de los tipos de interés. Valoración del riesgo y del rendimiento de los bonos: duración y convexidad.</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Arturo Lorenzo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">noviembre de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Introducción común.</strong> Los temas B23, B24, B25 y B27 comparten una introducción, que se desarrolla al comienzo del tema <a href="../chapters/b23-renta-variable.html"><strong>B23</strong></a>. Presenta el sistema financiero y sus instrumentos (la renta variable, la renta fija y los <strong>derivados</strong>, cuyo valor depende del de otro activo, el subyacente, y que permiten cubrir o asumir riesgos con una inversión inicial reducida) y explica por qué la regulación y la supervisión financieras son su complemento indispensable.</p>
+</div>
+</div>
+</div>
+<p>Los instrumentos de <strong>renta fija</strong> constituyen la inmensa mayoría de las emisiones en los mercados financieros internacionales. Se negocian principalmente en dos mercados, el monetario, donde destaca la emisión de pagarés de empresa (títulos a corto plazo), y el de capitales, en concreto el de deuda pública y privada. La deuda pública es, además, la referencia de todo el sistema financiero, porque su rentabilidad se toma como tipo libre de riesgo y en ella intervienen los bancos centrales con sus compras de activos.</p>
+<p>Un <strong>bono</strong> promete al inversor una corriente de pagos fijada de antemano, los <strong>cupones</strong> y la devolución del principal, y su precio es el valor actual de esos pagos, de modo que sube cuando bajan los tipos de interés y baja cuando suben. La <strong>rentabilidad al vencimiento</strong> resume en una sola tasa lo que rinde el bono si se mantiene hasta el final, y la <strong>estructura temporal de los tipos de interés</strong> (ETTI) relaciona esa rentabilidad con el plazo. Su forma recoge lo que el mercado espera de los tipos futuros, y su inversión, con tipos largos inferiores a los cortos, ha anticipado varias recesiones. Su explicación ha enfrentado a la teoría de las expectativas de Fisher (1896) con las de la prima de liquidez (Hicks, 1939b), la segmentación de mercados (Culbertson, 1957) y el hábitat preferido (Modigliani y Sutch, 1966).</p>
+<p>Aunque la renta sea fija, el inversor soporta un <strong>riesgo de crédito</strong>, el de impago del emisor, que las agencias de calificación resumen en sus notas y el mercado en el diferencial frente a la deuda sin riesgo, y un <strong>riesgo de tipo de interés</strong>, porque una subida de los tipos reduce el precio de los bonos en cartera. La <strong>duración</strong> (Macaulay, 1938) mide esa sensibilidad, y la <strong>convexidad</strong> la corrige ante variaciones grandes. La quiebra del Silicon Valley Bank en marzo de 2023, cuya cartera de bonos a largo plazo acumuló cuantiosas pérdidas latentes con las subidas de tipos de la Reserva Federal, mostró hasta qué punto ese riesgo puede ser decisivo (tema <a href="../chapters/b26-crisis-financieras.html">B26</a>, apartado 2.3.3).</p>
+<p>El tema se organiza en tres partes:</p>
+<ul>
+<li><p><em>Fundamentos</em>: se estudia cómo se determinan el precio y el rendimiento de un bono.</p></li>
+<li><p><em>Estructura temporal de los tipos de interés</em>: el tema analiza cómo se configura y qué teorías la explican.</p></li>
+<li><p><em>Riesgos, duración y convexidad</em>: la última parte estudia los riesgos de la renta fija y las medidas de sensibilidad de su precio.</p></li>
+</ul>
+</section>
+<section id="fundamentos-del-análisis-de-renta-fija" class="level2">
+<h2 class="anchored" data-anchor-id="fundamentos-del-análisis-de-renta-fija">1. Fundamentos del análisis de renta fija</h2>
+<p>El análisis de renta fija empieza por el bono considerado individualmente. Primero se presentan los conceptos básicos del instrumento y de su mercado, la hipótesis de eficiencia y la elección entre gestión activa y pasiva. Después se exponen los métodos que permiten determinar el precio teórico del bono y su rentabilidad.</p>
+<section id="conceptos-básicos" class="level3">
+<h3 class="anchored" data-anchor-id="conceptos-básicos">1.1. Conceptos básicos</h3>
+<p>Los conceptos básicos van del instrumento, el bono, al mercado en que se emite y se negocia, y de ahí a la hipótesis de los mercados eficientes y a la elección entre gestión activa y pasiva. Siguen el mismo orden que en el tema <a href="../chapters/b23-renta-variable.html">B23</a>, apartado 1.1.</p>
+<section id="instrumentos-de-renta-fija-los-bonos" class="level4">
+<h4 class="anchored" data-anchor-id="instrumentos-de-renta-fija-los-bonos">1.1.1. Instrumentos de renta fija: los bonos</h4>
+<p><strong>Definición</strong>: el <em>bono</em>, máximo exponente de los instrumentos de renta fija, es un activo financiero por el que su emisor contrae una deuda frente al tenedor, que adquiere un derecho de crédito sobre el nominal y los intereses. Frente a la acción (tema <a href="../chapters/b23-renta-variable.html">B23</a>, apartado 1.1.1), su retribución está pactada de antemano y el tenedor cobra antes que el accionista. El bono se compone de tres elementos esenciales:</p>
+<ol type="1">
+<li><p><em>Valor facial, nominal o principal</em> (<span class="math inline">\(F_T\)</span>): importe que el tenedor cobra al vencimiento, cuando el emisor ha de reembolsarlo.</p></li>
+<li><p><em>Vencimiento</em> (<span class="math inline">\(T\)</span>): fecha en la cual el bono “madura”, es decir, el momento en el cual se paga el principal.</p></li>
+<li><p><em>Precio del bono</em> (<span class="math inline">\(p_t^m\)</span>): cuantía que paga el tenedor por adquirir un bono en el mercado en el momento <span class="math inline">\(t\)</span> de la compra.</p></li>
+</ol>
+<p>La mayoría de los bonos ofrecen, además, un <em>cupón</em> (<span class="math inline">\(C_t\)</span>), pago periódico del interés que el emisor abona al tenedor. El cupón refleja la rentabilidad que obtiene el tenedor por prestar sus fondos al emisor y el coste financiero en el que incurre el emisor por obtener dicha financiación.</p>
+<p><strong>Tipos</strong>: según el cupón, se distinguen cinco tipos de bonos:</p>
+<ol type="1">
+<li><p><em>Bonos cupón cero</em>: solo pagan el nominal, al vencimiento.</p></li>
+<li><p><em>Bonos con cupón fijo</em> (o <em>plain vanilla</em>): abonan un cupón periódico de cuantía constante y devuelven el principal al vencimiento.</p></li>
+<li><p><em>Bonos con cupón variable</em>: el cupón suele estar referenciado a un tipo de interés de mercado más un diferencial (p.&nbsp;ej. euríbor + 0,5&nbsp;%), aunque también puede crecer según un calendario preestablecido (bonos <em>step-up</em>).</p></li>
+<li><p><em>Bonos devengables</em>: no pagan cupones periódicamente, sino que los cupones se devengan, se acumulan y se pagan al vencimiento.</p></li>
+<li><p><em>Bonos con cupones diferidos</em>: empiezan a devengar cupones periódicos a partir de una fecha fijada y hasta entonces no pagan ninguno.</p></li>
+</ol>
+<p>Según sus cláusulas o el destino de los fondos, destacan otros tres:</p>
+<ol type="1">
+<li><p><em>Bonos con opción</em>: el contrato faculta al emisor, o bien al inversor, para amortizar el bono anticipadamente.</p></li>
+<li><p><em>Bonos convertibles contingentes</em> (o CoCos): híbridos deuda-capital que se convierten automáticamente en acciones (o cuyo nominal se reduce) si se activa un disparador contractual, p.&nbsp;ej. si la ratio de capital del emisor cae por debajo de un umbral preestablecido. Estos bonos son, por tanto, un mecanismo de absorción de pérdidas (<em>bail-in</em> contractual)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p></li>
+<li><p><em>Bonos verdes</em>: cualquier tipo de bono cuyos fondos se destinan exclusivamente a financiar o refinanciar, en parte o en su totalidad, proyectos verdes elegibles, ya sean nuevos o existentes, y que, además, están alineados con los <em>Green Bond Principles</em> (GBP) de la International Capital Market Association.</p></li>
+</ol>
+<p><strong>Funcionamiento</strong>: los bonos se emiten en el mercado primario, y puede emitirlos cualquier agente económico, siempre que encuentre algún acreedor, tenga un programa de emisión y cumpla todos los requisitos legales. Los emisores pueden ser instituciones financieras, sociedades no financieras, entidades del sector público y organizaciones internacionales, que se describen en el tema <a href="../chapters/b26-crisis-financieras.html">B26</a>, apartado 1.1. La emisión se realiza, generalmente, de tres formas:</p>
+<ol type="1">
+<li><p><em>Subasta</em>: procedimiento de venta donde los interesados compiten entre sí para adjudicarse el título emitido. Existen tres formas básicas:</p>
+<ul>
+<li><p><em>Inglesa</em> (o ascendente): los compradores van ofreciendo sumas de dinero crecientes hasta que el mejor postor se adjudica el título, y los participantes van observando las pujas de los demás y deciden si aumentan o no su oferta;</p></li>
+<li><p><em>Holandesa</em> (o descendente): se parte de un valor que se va reduciendo progresivamente, y los participantes no observan las ofertas de los demás y deben decidir si detener o no la subasta teniendo en cuenta el riesgo de que otro comprador lo haga antes<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>;</p></li>
+<li><p><em>Española</em> (u holandesa modificada): combina subasta de precio único y de precios múltiples.</p></li>
+</ul></li>
+<li><p><em>Sindicación</em>: proceso de estructuración de las operaciones en el mercado primario de capital mediante un sindicato bancario, es decir, un conjunto de entidades bancarias que se unen para realizar operaciones que, por su dimensión y riesgo, no pueden acometer en solitario. Generalmente, existe una entidad directora (<em>lead manager</em>) que coordina la actuación de un conjunto más amplio de entidades bancarias (codirectores). La sindicación se utiliza especialmente para eurobonos, bonos corporativos, deuda soberana de países emergentes y préstamos sindicados en divisas.</p></li>
+<li><p><em>Colocaciones privadas</em>: emisiones <em>ad hoc</em> con características particulares.</p></li>
+</ol>
+<p>Tras la emisión, el bono se negocia en el mercado secundario hasta su vencimiento, cuando el emisor reembolsa el nominal, o hasta su amortización anticipada, si el contrato la prevé.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: el emisor obtiene financiación a plazo sin ceder derechos políticos, y el tenedor recibe unos flujos fijados por contrato, con prelación sobre el accionista en caso de liquidación.</p></li>
+<li><p><em>Limitaciones</em>: los flujos pactados son nominales y su cobro depende de la solvencia del emisor, por lo que el tenedor soporta los riesgos de tipo de interés, de inflación y de crédito (apartado 3.1). El emisor, por su parte, asume una carga financiera que no varía con sus resultados.</p></li>
+</ul>
+</section>
+<section id="mercado-de-renta-fija" class="level4">
+<h4 class="anchored" data-anchor-id="mercado-de-renta-fija">1.1.2. Mercado de renta fija</h4>
+<p><strong>Definición</strong>: el <em>mercado de renta fija</em> es el conjunto de mercados en que se emiten y se negocian los valores de deuda. La mayoría de los mercados de bonos están dirigidos por precios (<em>quote-driven</em>), y en ellos los creadores de mercado cotizan precios de compra y de venta y dan contrapartida a sus clientes (CGFS, 2016). En la bolsa, en cambio, predominan las órdenes que se casan automáticamente (tema <a href="../chapters/b23-renta-variable.html">B23</a>, apartado 1.1.2).</p>
+<p><strong>Tipos</strong>: se distinguen según tres criterios:</p>
+<ul>
+<li><p><em>Plazo</em>: el <em>mercado monetario</em> negocia activos a corto plazo, como las letras del Tesoro y los pagarés de empresa, y el <em>mercado de capitales</em>, bonos y obligaciones a más de un año.</p></li>
+<li><p><em>Emisor</em>: el mercado de deuda pública, cuyos valores sirven de referencia sin riesgo para el resto (apartado 2.1), y el de deuda privada, que incluye los bonos de las empresas, de las entidades financieras y de las titulizaciones.</p></li>
+<li><p><em>Fase</em>: el <em>mercado primario</em>, en el que el emisor coloca los valores nuevos, y el <em>secundario</em>, en el que los inversores negocian los ya emitidos.</p></li>
+</ul>
+<p><strong>Funcionamiento</strong>: en el mercado secundario, la negociación es sobre todo bilateral, por teléfono o en plataformas electrónicas en las que el cliente pide cotización a varios intermediarios. Los bonos corporativos, numerosos, con poco volumen por emisión y cláusulas propias, dependen más de esa intermediación que los soberanos, y la liquidez se concentra en las emisiones de referencia de deuda pública (CGFS, 2016).</p>
+<p>Para sostener esa liquidez, los Tesoros designan <em>creadores de mercado</em>. En España, estos creadores se comprometen a pujar en las subastas por al menos el 3&nbsp;% del importe que adjudica el Tesoro y a cotizar precios en el mercado secundario. Estas obligaciones las fija la Resolución de 21 de julio de 2017 de la Secretaría General del Tesoro y Política Financiera (hoy, del Tesoro y Financiación Internacional).</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: el mercado de deuda pública proporciona los tipos sin riesgo de cada plazo con los que se construye la ETTI, y los creadores de mercado aseguran contrapartida en las emisiones de referencia.</p></li>
+<li><p><em>Limitaciones</em>: la negociación bilateral es menos transparente que la de la bolsa y, fuera de las emisiones de referencia, la liquidez es escasa, sobre todo en los bonos corporativos y de titulización (apartado 3.1.1).</p></li>
+</ul>
+</section>
+<section id="hipótesis-de-los-mercados-eficientes" class="level4">
+<h4 class="anchored" data-anchor-id="hipótesis-de-los-mercados-eficientes">1.1.3. Hipótesis de los mercados eficientes</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La hipótesis de los mercados eficientes (Fama, 1970) y sus tres formas se desarrollan en el tema <a href="../chapters/b23-renta-variable.html">B23</a>, apartado 1.1.3. Aquí se recogen sus implicaciones para la renta fija.</p>
+</div>
+</div>
+</div>
+<p>En un mercado de bonos eficiente, el precio de cada bono incorpora toda la información disponible sobre los tipos de interés futuros y sobre la solvencia del emisor. La hipótesis de las expectativas puras (apartado 2.3.1) añade la neutralidad ante el riesgo, y con ella el tipo a plazo implícito es un predictor insesgado del tipo al contado futuro.</p>
+<p>La regla de compra y venta del apartado 1.2.1 supone, en cambio, que el mercado es, a lo sumo, débilmente eficiente. Si fuera eficiente en sentido semifuerte, el precio ya reflejaría toda la información pública y el análisis fundamental no permitiría obtener rentabilidades extraordinarias. La gestión activa busca esas desviaciones entre el precio de mercado y el valor teórico.</p>
+</section>
+<section id="gestión-activa-y-gestión-pasiva-de-carteras" class="level4">
+<h4 class="anchored" data-anchor-id="gestión-activa-y-gestión-pasiva-de-carteras">1.1.4. Gestión activa y gestión pasiva de carteras</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La disyuntiva entre gestión activa y pasiva, su coste y la paradoja de la eficiencia (Grossman y Stiglitz, 1980) se desarrollan en el tema <a href="../chapters/b23-renta-variable.html">B23</a>, apartado 1.1.4. Aquí se describen las estrategias propias de la renta fija.</p>
+</div>
+</div>
+</div>
+<p><strong>Gestión activa</strong>: parte de que el mercado no es plenamente eficiente y busca superar al índice de referencia anticipando los movimientos de la curva de tipos (apartado 2.2.2) o eligiendo los bonos mal valorados. Emplea cuatro técnicas principales:</p>
+<ul>
+<li><p><em>Anticipación de tipos</em>: alarga la duración (apartado 3.2) si se esperan bajadas de los tipos y la acorta en caso contrario.</p></li>
+<li><p><em>Deslizamiento por la curva</em> (<em>riding the yield curve</em>): compra bonos más largos que el horizonte para venderlos con la plusvalía que da el paso del tiempo si la curva es creciente y estable.</p></li>
+<li><p><em>Cartera en mancuerna</em> (<em>barbell</em>): repartida entre los extremos de la curva, es más convexa (apartado 3.4) que una concentrada en un plazo intermedio (<em>bullet</em>) de igual duración y la supera si la curva se aplana.</p></li>
+<li><p><em>Selección de emisores</em>: compra los bonos cuyo diferencial de crédito (apartado 3.1.3) supera al que justifica la solvencia del emisor, a la espera de que se estreche.</p></li>
+</ul>
+<p><strong>Gestión pasiva</strong>: renuncia a anticipar los tipos, porque parte de que el mercado incorpora ya la información disponible. Comprende tres estrategias:</p>
+<ul>
+<li><p><em>Indexación</em>: replica un índice de renta fija. Como los índices incluyen muchas emisiones, a menudo poco líquidas, la réplica suele hacerse por muestreo, con una parte de las emisiones que reproduce el plazo medio, la calidad crediticia y los demás factores de riesgo del índice.</p></li>
+<li><p><em>Inmunización</em>: iguala la duración de la cartera al horizonte de un compromiso de pago (apartado 3.5).</p></li>
+<li><p><em>Casamiento de flujos</em> (<em>cash-flow matching</em>): iguala los flujos de la cartera a los pagos comprometidos sin necesidad de reajustes, aunque es más caro que la inmunización.</p></li>
+</ul>
+</section>
+</section>
+<section id="determinación-del-precio-teórico-o-valor-intrínseco-de-un-bono" class="level3">
+<h3 class="anchored" data-anchor-id="determinación-del-precio-teórico-o-valor-intrínseco-de-un-bono">1.2. Determinación del precio teórico o valor intrínseco de un bono</h3>
+<p>La valoración del bono sigue el esquema que el tema <a href="../chapters/b25-derivados.html">B25</a>, apartado 1.2, aplica a los derivados, con unas consideraciones generales y el cálculo de su valor en la emisión, a lo largo de su vida y al vencimiento.</p>
+<section id="consideraciones-generales" class="level4">
+<h4 class="anchored" data-anchor-id="consideraciones-generales">1.2.1. Consideraciones generales</h4>
+<p><strong>Términos del contrato</strong> (<span class="math inline">\(c\)</span>, <span class="math inline">\(F_T\)</span>, <span class="math inline">\(T\)</span>, <span class="math inline">\(n\)</span>): la tasa del cupón, el nominal, el vencimiento y la frecuencia de pago se fijan en la emisión y determinan los flujos que recibirá el tenedor. Como el tipo fijo de un <em>swap</em>, no son desembolsos, sino cláusulas del contrato.</p>
+<p><strong>Valor teórico</strong> (<span class="math inline">\(p_t\)</span>): es el valor actual en <span class="math inline">\(t\)</span> de los flujos pendientes, que en un bono con cupón fijo es</p>
+<p><span class="math display">\[p_t = \sum_{s=1}^{n(T-t)} \frac{C}{(1+k/n)^{s}} + \frac{F_T}{(1+k/n)^{n(T-t)}}\]</span></p>
+<p>donde <span class="math inline">\(C = c\,F_T/n\)</span> es el cupón de cada periodo (se paga <span class="math inline">\(n\)</span> veces al año), <span class="math inline">\(F_T\)</span> el valor nominal pagadero en <span class="math inline">\(T\)</span>, <span class="math inline">\(s = 1, \ldots, n(T-t)\)</span> numera los periodos de cupón que restan desde <span class="math inline">\(t\)</span> y <span class="math inline">\(k\)</span> la tasa de descuento anual. Se supone que <span class="math inline">\(t\)</span> es una fecha de pago de cupón. La tasa de descuento es el coste de oportunidad de las partes y se compone de un tipo de interés libre de riesgo, <span class="math inline">\(r_f\)</span><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, y una prima de riesgo, <span class="math inline">\(\rho\)</span>, que recoge ciertos riesgos (p.&nbsp;ej. el de impago o el de inflación).</p>
+<p><strong>Precio de mercado</strong> (<span class="math inline">\(p_t^m\)</span>): es la cotización observada. El arbitraje la ancla a los precios de otros bonos del mismo emisor, porque un bono con cupón es una cartera de bonos cupón cero (apartado 2.1), pero no fija el nivel de los tipos ni la prima de riesgo. Por eso el precio de mercado puede separarse del valor teórico que calcula cada inversor, cuya prima <span class="math inline">\(\rho\)</span> depende de su propia valoración del riesgo. Comprar tiene un valor actual neto de <span class="math inline">\(p_t - p_t^m\)</span>, y de su signo se sigue la posición del inversor:</p>
+<ul>
+<li><p><em>Compra</em>: si <span class="math inline">\(p_t &gt; p_t^m\)</span>, el bono está infravalorado y conviene abrir una posición larga (comprarlo con la esperanza de que suba).</p></li>
+<li><p><em>Venta</em>: si <span class="math inline">\(p_t &lt; p_t^m\)</span>, el bono está sobrevalorado y el inversor puede no comprarlo o abrir una posición corta (venderlo de prestado y recomprarlo cuando baje).</p></li>
+</ul>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo: precio teórico de un bono con cupón fijo">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo: precio teórico de un bono con cupón fijo
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Un bono de nominal 100 y vencimiento a tres años paga un cupón anual del 6&nbsp;% (<span class="math inline">\(C = 6\)</span>, <span class="math inline">\(n = 1\)</span>). El inversor le exige una rentabilidad del 5&nbsp;% (<span class="math inline">\(k = 0{,}05\)</span>), la TIR de los bonos de igual plazo y riesgo. Su valor teórico es <span class="math inline">\(p_t = 6/1{,}05 + 6/1{,}05^2 + 106/1{,}05^3 \approx 5{,}71 + 5{,}44 + 91{,}57 = 102{,}72\)</span>, por encima del nominal porque el cupón supera a la rentabilidad exigida (Teorema II de la valoración de los bonos). Si cotiza a 101,50, comprarlo tiene un valor actual neto de <span class="math inline">\(102{,}72 - 101{,}50 = 1{,}22 &gt; 0\)</span>, así que el bono está infravalorado y conviene abrir una posición larga. A ese precio, su TIR es del 5,44&nbsp;%, mayor que la exigida.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="valoración-del-bono" class="level4">
+<h4 class="anchored" data-anchor-id="valoración-del-bono">1.2.2. Valoración del bono</h4>
+<p><strong>Valor del bono en la emisión (<span class="math inline">\(t=0\)</span>)</strong>: con <span class="math inline">\(nT\)</span> periodos pendientes, <span class="math inline">\(p_0\)</span> es el precio teórico de la emisión. A diferencia de un derivado simétrico, cuyo precio se pacta para que su valor inicial sea nulo, el bono tiene valor positivo desde el origen y el comprador lo paga, como la prima de una opción. El emisor suele fijar el cupón próximo a la rentabilidad exigida, de modo que el bono se coloca cerca de la par (Teorema II). Bajo los supuestos de la rentabilidad al vencimiento, este precio da al tenedor una rentabilidad y al emisor un coste de capital iguales a <span class="math inline">\(k\)</span>. Con cupón anual (<span class="math inline">\(n = 1\)</span>), el precio es una anualidad más el valor actual del nominal, <span class="math inline">\(p_0 = C \cdot \frac{1 - (1+k)^{-T}}{k} + \frac{F_T}{(1+k)^T}\)</span><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+<p><strong>Valor del bono a lo largo de su vida (<span class="math inline">\(0 &lt; t &lt; T\)</span>)</strong>: una vez emitido, el valor teórico varía en sentido inverso a la rentabilidad exigida (Teorema I) y se desplaza hacia el nominal con el paso del tiempo (Teorema III). La regla de compra y venta se aplica en cada momento.</p>
+<p><strong>Valor del bono al vencimiento (<span class="math inline">\(t=T\)</span>)</strong>: no quedan periodos pendientes. El bono paga el último cupón y el nominal, y su valor ex cupón es <span class="math inline">\(p_T = F_T\)</span>, sea cual sea la rentabilidad exigida (efecto convergencia, Teorema III).</p>
+</section>
+</section>
+<section id="determinación-de-la-rentabilidad-de-un-bono" class="level3">
+<h3 class="anchored" data-anchor-id="determinación-de-la-rentabilidad-de-un-bono">1.3. Determinación de la rentabilidad de un bono</h3>
+<p>Para tomar sus decisiones de inversión, los agentes económicos no solo tienen en cuenta el precio teórico, sino también su <strong>rendimiento o rentabilidad</strong>, que es una medida del valor potencial relativo del bono. Esta rentabilidad se obtiene de tres fuentes:</p>
+<ul>
+<li><p><em>Intereses</em>: los cupones que el tenedor cobra periódicamente.</p></li>
+<li><p><em>Enajenación</em>: las ganancias o pérdidas de capital al deshacerse del bono, ya sea por su venta en el mercado secundario, por su amortización por el emisor o por el cobro del principal al vencimiento.</p></li>
+<li><p><em>Reinversión de flujos</em>: los rendimientos de reinvertir los flujos de caja que se obtienen del bono.</p></li>
+</ul>
+<p>Según las características del bono o el modo de medir la rentabilidad, se obtienen distintos indicadores. Los más habituales son la rentabilidad corriente (<em>current yield</em>) y la rentabilidad al vencimiento (<em>yield to maturity</em>).</p>
+<section id="rentabilidad-corriente-current-yield" class="level4">
+<h4 class="anchored" data-anchor-id="rentabilidad-corriente-current-yield">1.3.1. Rentabilidad corriente (<em>current yield</em>)</h4>
+<p><strong>Definición</strong>: la <em>rentabilidad corriente</em> (<em>current yield</em>, CY) relaciona el cupón anual que paga el bono con el precio que se paga hoy por él en el mercado, y mide, por tanto, el rendimiento por intereses de cada unidad monetaria invertida.</p>
+<p><strong>Cálculo</strong>: se divide el cupón anual entre el precio de mercado del bono:</p>
+<p><span class="math display">\[\text{CY} = \frac{n\,C}{p_t^m}\]</span></p>
+<p>donde <span class="math inline">\(n\)</span> es el número de cupones al año, <span class="math inline">\(C\)</span> el cupón de cada periodo y <span class="math inline">\(p_t^m\)</span> el precio de mercado en <span class="math inline">\(t\)</span>.</p>
+<p><strong>Interpretación</strong>: la rentabilidad corriente supera a la tasa del cupón si el bono cotiza al descuento (<span class="math inline">\(p_t^m &lt; F_T\)</span>) y queda por debajo si cotiza a premio (<span class="math inline">\(p_t^m &gt; F_T\)</span>). El motivo es que el mismo cupón se divide entre un precio menor o mayor que el nominal (Teorema II).</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: su cálculo es muy sencillo.</p></li>
+<li><p><em>Limitaciones</em>: ignora dos de las tres fuentes de rentabilidad, la plusvalía que se obtendría al revender el título en el mercado secundario y lo que rinde la reinversión de los cupones, y se queda únicamente con el cupón.</p></li>
+</ul>
+</section>
+<section id="rentabilidad-al-vencimiento-yield-to-maturity" class="level4">
+<h4 class="anchored" data-anchor-id="rentabilidad-al-vencimiento-yield-to-maturity">1.3.2. Rentabilidad al vencimiento (<em>yield to maturity</em>)</h4>
+<p><strong>Definición</strong>: la <em>rentabilidad al vencimiento</em> o <em>yield to maturity</em> (YTM) es la tasa interna de rentabilidad (TIR) del bono y ofrece una medida más precisa y más habitual que la corriente.</p>
+<p><strong>Cálculo</strong>: en la práctica, los inversores determinan los flujos de caja prometidos (contractuales) del bono. Después, por prueba y error, hallan la TIR que iguala el valor actual de esos flujos al precio de mercado más el cupón corrido (el interés devengado desde el último pago):</p>
+<p><span class="math display">\[p_t^m = \sum_{s=1}^{n(T-t)} \frac{C}{(1+r_B/n)^{s}} + \frac{F_T}{(1+r_B/n)^{n(T-t)}}\]</span></p>
+<p>donde <span class="math inline">\(r_B\)</span> es la rentabilidad al vencimiento, con el resto de la notación ya definida. Se supone que la compra se produce en una fecha de pago de cupón, de modo que el cupón corrido es nulo. Si se produce, en cambio, entre dos fechas de cupón, <span class="math inline">\(p_t^m\)</span> debe entenderse como precio completo (precio ex cupón más cupón corrido) y los plazos se cuentan en fracciones de periodo.</p>
+<p><strong>Interpretación</strong>: <span class="math inline">\(r_B\)</span> es la tasa única que, aplicada a todos los plazos, iguala el valor actual de los flujos prometidos al precio, y resume así en una sola tasa la rentabilidad de todo el bono. La TIR es una especie de media de los tipos al contado de cada plazo (apartado 2.1) y coincide con la rentabilidad exigida, <span class="math inline">\(k\)</span>, cuando esta se infiere del precio (Teorema II).</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: frente a la rentabilidad corriente, tiene en cuenta el valor facial, el vencimiento y el fraccionamiento de los pagos, <span class="math inline">\(n\)</span>, además del precio y el cupón, <span class="math inline">\(r_B = f(C^{+}, F_T^{+}, p_t^{m\,-}, T^{\pm})\)</span>.</p></li>
+<li><p><em>Limitaciones</em>: solo refleja con exactitud lo que rinde un bono bajo tres supuestos:</p>
+<ul>
+<li><p><em>Mantenimiento hasta el vencimiento</em>: el bono carece de opciones de amortización anticipada, tanto de compra a favor del emisor (<em>callable bonds</em>) como de venta a favor del inversor (<em>putable bonds</em>), y el inversor no lo vende antes de su amortización final.</p></li>
+<li><p><em>Pago íntegro de los cupones</em>: el emisor atiende cada cupón por su importe y en su fecha, según lo pactado. Se descarta así todo riesgo de crédito, ya sea el de impago o insolvencia o, en los bonos soberanos, el riesgo soberano.</p></li>
+<li><p><em>Reinversión a la TIR</em>: el tipo al que se colocan los cupones cobrados es la propia TIR del bono, supuesto del que se siguen dos consecuencias:</p>
+<ul>
+<li><p><em>Comparación entre bonos</em>: la tasa de rentabilidad no sirve para comparar dos bonos. Como la rentabilidad depende también del plazo, dos bonos similares con vencimientos a dos y a cinco años descuentan sus pagos a tasas diferentes. Un mismo pago en una misma fecha recibe así un descuento distinto según el vencimiento del bono que lo genera, algo que carece de justificación.</p></li>
+<li><p><em>Curva de rentabilidades plana</em>: la rentabilidad no varía con el plazo, y la curva de rentabilidades sería, por tanto, horizontal en el plano vencimientos-rentabilidad exigida. Nada garantiza, sin embargo, que sea así, porque la curva de tipos puede adoptar perfiles muy diversos (apartado 2).</p></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="teoremas-de-la-valoración-de-los-bonos" class="level4">
+<h4 class="anchored" data-anchor-id="teoremas-de-la-valoración-de-los-bonos">1.3.3. Teoremas de la valoración de los bonos</h4>
+<p>Del concepto de rentabilidad al vencimiento se derivan cuatro teoremas sobre la valoración de los bonos. El primero y el cuarto se refieren a la sensibilidad del precio ante la rentabilidad; el segundo, a la relación entre la cotización y el cupón, y el tercero, a la evolución del precio con el paso del tiempo. Los teoremas I y IV recogen la relación inversa, la asimetría de la respuesta del precio (la convexidad) y el efecto cupón, tres de los cinco resultados que demostró Malkiel (1962). Los otros dos, sobre el vencimiento, reaparecen en la duración (apartado 3.2).</p>
+<p><strong>Teorema I (relación entre el precio de mercado y la rentabilidad)</strong>: existe una relación inversa y convexa entre el precio de mercado de un bono sin opción y su rentabilidad al vencimiento, siempre y cuando el valor nominal, el cupón y el vencimiento no cambien. Se refiere, por tanto, a bonos ya emitidos.</p>
+<p>Esta relación es el origen del riesgo de tipo de interés (apartado 3.1.1). Junto con el riesgo de impago, el de tipo de interés es el más relevante del mercado de bonos, especialmente en los bonos soberanos.</p>
+<ul>
+<li><p><em>Relación inversa</em>: se debe a que en el denominador aparece la tasa de rentabilidad. Cuando los bonos nuevos ofrecen una rentabilidad exigida menor, los ya emitidos con el cupón anterior, más alto, ganan atractivo y su demanda crece. Al descontar sus flujos a la nueva tasa, su precio de mercado sube.</p></li>
+<li><p><em>Convexidad positiva</em>: se debe a que cada flujo se descuenta con el factor <span class="math inline">\((1+k/n)^{-s}\)</span>, que es una función convexa de la rentabilidad para cualquier plazo <span class="math inline">\(s \geq 1\)</span>, y la suma de funciones convexas es convexa. Por ello, el precio sube más ante una caída de la rentabilidad de lo que baja ante una subida de igual cuantía. Ante aumentos de la rentabilidad el precio caerá cada vez menos y ante caídas de la rentabilidad el precio subirá cada vez más, asimetría tanto más apreciable cuanto mayores sean estas variaciones.</p></li>
+<li><p><em>Bonos amortizables anticipadamente</em>: en los <em>callable bonds</em>, la convexidad pasa a ser negativa cuando la rentabilidad exigida es reducida. Esto se debe a que aumenta el valor de la opción de amortización, que es la diferencia entre el precio del bono sin opción y el del bono con opción. Intuitivamente, una caída del tipo de interés de los bonos nuevos invita al emisor del bono antiguo a amortizar anticipadamente la deuda viva para refinanciarla a menor coste<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. De ahí surge el riesgo de llamada o <em>call risk</em> (apartado 3.1.2).</p></li>
+</ul>
+<p>Gráficamente, en el plano rentabilidad exigida-precio de mercado (figura <a href="#fig-b244-precio-rentabilidad" class="quarto-xref"><span>B24.1</span></a>), la curva del bono sin opción representa el precio que corresponde a cada rentabilidad exigida, con el nominal, el cupón y el vencimiento dados. Tiene pendiente negativa por la relación inversa y es convexa, así que una caída de la rentabilidad, <span class="math inline">\(\Delta k\)</span>, eleva el precio (<span class="math inline">\(\Delta p^{+}\)</span>) más de lo que lo reduce una subida de igual cuantía (<span class="math inline">\(\Delta p^{-}\)</span>). La curva del bono amortizable coincide casi con la anterior a rentabilidades altas. A rentabilidades bajas, en cambio, se aplana por debajo del precio de amortización, al que el emisor rescataría el bono, y se vuelve cóncava (convexidad negativa).</p>
+<div id="fig-b244-precio-rentabilidad" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b244-precio-rentabilidad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b244_Precio_rentabilidad.html" style="height:560px" loading="lazy" title="fig-b244-precio-rentabilidad"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b244-precio-rentabilidad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B24.1: Relación entre el precio de mercado y la rentabilidad (Teorema I). El precio de un bono sin opción es una función decreciente y convexa de la rentabilidad exigida, y el de un bono amortizable se aplana bajo el precio de amortización.
+</figcaption>
+</figure>
+</div>
+<p><strong>Teorema II (relación entre la cotización, la rentabilidad exigida y la tasa del cupón)</strong>: de la relación inversa entre rentabilidad y precio de los bonos se desprende una correspondencia biunívoca entre dos comparaciones. Una es la del precio de mercado con el valor facial, y la otra, la de la rentabilidad exigida con la tasa del cupón:</p>
+<ul>
+<li><p><em>Cotización a la par</em>: el precio de mercado coincide con el valor facial si y solo si la rentabilidad exigida coincide con la tasa del cupón, <span class="math inline">\(p_t^m = F_T \;\leftrightarrow\; c = k\)</span>. En esta expresión, <span class="math inline">\(c\)</span> es la tasa del cupón y <span class="math inline">\(k\)</span> la rentabilidad exigida por el mercado, es decir, la rentabilidad al vencimiento implícita en <span class="math inline">\(p_t^m\)</span> (<span class="math inline">\(k = r_B\)</span>).</p></li>
+<li><p><em>Cotización a premio</em>: el precio de mercado supera al valor facial si y solo si la rentabilidad exigida es menor que la tasa del cupón, <span class="math inline">\(p_t^m &gt; F_T \;\leftrightarrow\; c &gt; k\)</span>.</p></li>
+<li><p><em>Cotización al descuento</em>: el precio de mercado es inferior al valor facial si y solo si la rentabilidad exigida es mayor que la tasa del cupón, <span class="math inline">\(p_t^m &lt; F_T \;\leftrightarrow\; c &lt; k\)</span>.</p></li>
+</ul>
+<p><strong>Teorema III (relación entre la prima y el tiempo: efecto convergencia)</strong>: se llama prima de un bono a lo que su cotización excede del valor nominal. Con una rentabilidad exigida constante durante toda la vida del bono, la prima tiende a cero a medida que se aproxima el vencimiento, y lo hace cada vez más deprisa, relación que a veces se conoce como <em>efecto convergencia</em><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. Formalmente, el teorema establece que <span class="math inline">\(\lim_{t \rightarrow T} p_t^m = F_T\)</span>, es decir, <span class="math inline">\(\lim_{t \rightarrow T} \theta_t = 0\)</span>, donde <span class="math inline">\(\theta_t = p_t^m - F_T\)</span> es la prima del bono.</p>
+<p>Todo esto implica que el valor de los bonos sigue una senda diferente en función de la relación entre el precio de mercado y su valor facial. Gráficamente, en el plano tiempo-precio de mercado (figura <a href="#fig-b241-pull-to-par" class="quarto-xref"><span>B24.2</span></a>), cada curva representa la senda del precio de un bono desde su emisión hasta el vencimiento, con la misma rentabilidad exigida, <span class="math inline">\(k\)</span>, y distinto cupón. Las tres sendas convergen al valor nominal, <span class="math inline">\(F_T\)</span>, en el vencimiento, <span class="math inline">\(T\)</span>:</p>
+<ol type="1">
+<li><p><em>Senda descendente</em> (<span class="math inline">\(c &gt; k\)</span>): si el bono cotiza a premio, su precio de mercado disminuirá conforme se acerca al vencimiento.</p></li>
+<li><p><em>Senda ascendente</em> (<span class="math inline">\(c &lt; k\)</span>): si el bono cotiza al descuento, su precio de mercado aumentará conforme se acerca al vencimiento.</p></li>
+<li><p><em>Senda estable</em> (<span class="math inline">\(c = k\)</span>): si el bono cotiza a la par, su precio permanece en el valor nominal durante toda su vida, porque el cupón remunera exactamente la rentabilidad exigida.</p></li>
+</ol>
+<div id="fig-b241-pull-to-par" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b241-pull-to-par-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b241_Pull_to_par.html" style="height:480px" loading="lazy" title="fig-b241-pull-to-par"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b241-pull-to-par-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B24.2: Convergencia al valor nominal (<em>pull to par</em>). El precio de un bono con prima o con descuento converge a la par a medida que se acerca el vencimiento.
+</figcaption>
+</figure>
+</div>
+<p><strong>Teorema IV (efecto cupón)</strong>: a igualdad de vencimiento y de rentabilidad, un cupón más alto reduce la variación porcentual del precio del bono ante un cambio de su rendimiento, resultado conocido como <em>efecto cupón</em>. El cupón protege así al tenedor frente a los cambios de precios, al ofrecer una rentabilidad estable.</p>
+<p>La razón es que unos cupones más altos restan peso relativo a la devolución del principal dentro de la rentabilidad total del bono, y con ello se atenúa el efecto directo de los cambios en la tasa de rentabilidad sobre el precio a través de la actualización del valor nominal<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. El caso límite lo constituye el bono cupón cero, cuyo precio es, a igualdad de vencimiento, el que más varía, en términos porcentuales, cuando se mueven los tipos de interés.</p>
+</section>
+</section>
+<section id="conclusiones" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones">1.4. Conclusiones</h3>
+<p>El análisis del bono individual descansa en el descuento de flujos. Su precio teórico es el valor actual de los cupones y del nominal a la rentabilidad exigida, suma de un tipo libre de riesgo y una prima de riesgo, y su comparación con el precio de mercado decide la compra o la venta. El bono se coloca cerca de la par en la emisión, su valor varía después en sentido inverso a la rentabilidad exigida y converge al nominal en el vencimiento.</p>
+<p>La rentabilidad corriente solo recoge el cupón, mientras que la rentabilidad al vencimiento resume en una sola tasa todo el bono, aunque bajo tres supuestos restrictivos. Los cuatro teoremas de la valoración ordenan las relaciones entre el precio, la rentabilidad, el cupón y el tiempo. El supuesto de reinversión a la TIR implica, además, una curva de rentabilidades plana, y la relación entre rentabilidad y plazo es el objeto de la sección 2.</p>
+</section>
+</section>
+<section id="estructura-temporal-de-los-tipos-de-interés" class="level2">
+<h2 class="anchored" data-anchor-id="estructura-temporal-de-los-tipos-de-interés">2. Estructura temporal de los tipos de interés</h2>
+<p>La relación entre rentabilidad y plazo, que el supuesto de una curva plana ignora, es la estructura temporal de los tipos de interés. Se define primero, se describen después sus formas y movimientos y se exponen, por último, las teorías que la explican.</p>
+<section id="concepto" class="level3">
+<h3 class="anchored" data-anchor-id="concepto">2.1. Concepto</h3>
+<p><strong>Definición</strong>: la <em>estructura temporal de los tipos de interés</em> (ETTI), curva de rentabilidad (<em>yield curve</em>), curva de tipos de interés o curva cupón cero es una relación funcional entre la rentabilidad de los préstamos sin riesgo de la economía y el tiempo hasta su vencimiento.</p>
+<p><strong>Importancia</strong>: la curva de tipos de interés ocupa un lugar central en el trabajo de economistas y analistas, que la leen como un resumen de lo que el mercado espera sobre la inflación y el crecimiento, sobre los tipos oficiales o sobre las políticas económicas.</p>
+<p><strong>Tipos al contado y a plazo</strong>: el <em>tipo al contado</em> (<em>spot</em>) es la rentabilidad de un préstamo cupón cero que empieza hoy, y el <em>tipo a plazo implícito</em> (<em>forward</em>), la de un préstamo entre dos fechas futuras que se puede fijar hoy. Por ausencia de arbitraje:</p>
+<p><span class="math display">\[[1+i_s(0,t)]^t = [1+i_s(0,t-1)]^{t-1} \cdot [1+i_f(0,t-1,t)]\]</span></p>
+<p>donde <span class="math inline">\(i_s(0,t)\)</span> es el tipo al contado anual a <span class="math inline">\(t\)</span> años vigente hoy e <span class="math inline">\(i_f(0,t-1,t)\)</span> el tipo a plazo implícito para el año <span class="math inline">\(t\)</span>. Es decir, invertir <span class="math inline">\(t\)</span> años al contado rinde lo mismo que invertir <span class="math inline">\(t-1\)</span> años y fijar hoy el tipo del último. En sentido estricto, la ETTI es la curva de los tipos al contado.</p>
+<p><strong>Precio sin arbitraje</strong>: un bono con cupón es una cartera de bonos cupón cero, de modo que cada flujo se descuenta al tipo al contado de su plazo:</p>
+<p><span class="math display">\[p_0 = \sum_{t=1}^{T} \frac{C_t}{[1+i_s(0,t)]^t} + \frac{F_T}{[1+i_s(0,T)]^T}\]</span></p>
+<p>donde <span class="math inline">\(p_0\)</span> es el precio teórico con cupones anuales <span class="math inline">\(C_t\)</span>, nominal <span class="math inline">\(F_T\)</span> y vencimiento <span class="math inline">\(T\)</span>. Cualquier otro precio permitiría arbitrar segregando el bono en <em>strips</em> o reconstituyéndolo. La TIR, <span class="math inline">\(r_B\)</span>, es una especie de media de los tipos al contado. Por eso, si la curva no es plana (apartado 1.3.2), dos bonos del mismo vencimiento y distinto cupón tienen distinta TIR, porque reparten de forma distinta sus pagos entre los plazos. La <em>curva a la par</em> da el cupón con el que un bono de cada plazo cotizaría a la par.</p>
+<p><strong>Construcción</strong>: la ETTI canónica se elabora con bonos soberanos de máxima calidad crediticia, cuyas tasas de rentabilidad exigida sirven de referencia al resto de los tipos de interés de la economía, pues estos se construyen a partir de ellas.</p>
+<p>Lo ideal sería disponer de deuda soberana cupón cero para todos los plazos posibles, puesto que los bonos sin cupón no plantean problemas de comparación y, conservados hasta su amortización, rinden exactamente el tipo <em>spot</em> de su plazo, una rentabilidad “verdadera”. Sin embargo, en la práctica solo los productos monetarios a corto plazo (p.&nbsp;ej. las T-<em>bills</em> de EE. UU. y las letras del Tesoro de la zona del euro) se emiten sin cupón, mientras que los de más largo plazo pagan un cupón regular.</p>
+<p>La excepción son los <em>strips</em>, bonos cupón cero que se obtienen segregando los cupones y el principal de bonos a largo plazo, aunque su liquidez es menor. Por ello, la elaboración de la curva exige “construir” el tipo de interés para cada uno de los plazos, lo cual se hace tomando las rentabilidades y “limpiando” los cupones de los bonos a través de diferentes técnicas como el <em>bootstrapping</em>.</p>
+<p>El <em>bootstrapping</em> invierte la fórmula del precio sin arbitraje. Parte del tipo al contado más corto, observable en el mercado monetario, y despeja <span class="math inline">\(i_s(0,2)\)</span> del precio de un bono a dos años, cuyo primer cupón ya puede descontarse, después <span class="math inline">\(i_s(0,3)\)</span> del de un bono a tres años, y así sucesivamente. Por último, los plazos sin bono de referencia se interpolan.</p>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo: tipo al contado y tipo a plazo a dos años">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo: tipo al contado y tipo a plazo a dos años
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>El tipo al contado a un año es el 3&nbsp;% y un bono a dos años con cupón anual de 5 y nominal 100 cotiza a 102. El primer cupón vale <span class="math inline">\(5/1{,}03 \approx 4{,}85\)</span>, luego <span class="math inline">\(105/[1+i_s(0,2)]^2 = 102 - 4{,}85 = 97{,}15\)</span> e <span class="math inline">\(i_s(0,2) \approx 3{,}96\)</span>&nbsp;%. El tipo a plazo del segundo año es <span class="math inline">\(1{,}03964^2/1{,}03 - 1 \approx 4{,}94\)</span>&nbsp;%, y la TIR del bono, 3,94&nbsp;%, queda entre los dos tipos al contado.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="posibles-formas-y-movimientos-de-la-etti" class="level3">
+<h3 class="anchored" data-anchor-id="posibles-formas-y-movimientos-de-la-etti">2.2. Posibles formas y movimientos de la ETTI</h3>
+<p>Una vez construida, la ETTI puede adoptar diferentes formas según la relación entre los tipos a corto y a largo plazo y desplazarse o cambiar de pendiente y de curvatura cuando cambian las condiciones del mercado.</p>
+<section id="posibles-formas" class="level4">
+<h4 class="anchored" data-anchor-id="posibles-formas">2.2.1. Posibles formas</h4>
+<p>Gráficamente, en el plano vencimientos-rentabilidad exigida (figura <a href="#fig-b243-etti" class="quarto-xref"><span>B24.3</span></a>), cada curva representa la rentabilidad que el mercado exige en un momento dado a los bonos sin riesgo de cada vencimiento. Según su pendiente, la ETTI puede tener distintas formas:</p>
+<ol type="1">
+<li><p><em>Normal</em>: la curva de rendimiento es creciente, por la prima de liquidez que exigen los acreedores a más plazo.</p></li>
+<li><p><em>Jorobada</em>: la rentabilidad crece en los plazos cortos y medios y decrece en los largos, caso bastante especial que puede darse en un contexto de desaceleración.</p></li>
+<li><p><em>Plana</em>: apenas hay diferencia entre la rentabilidad a corto y a largo plazo. Se suele dar en un contexto de desaceleración y transición hacia una curva invertida, y la cartera en mancuerna aprovecha ese aplanamiento (apartado 1.1.4).</p></li>
+<li><p><em>Invertida</em>: la rentabilidad decrece con el plazo, caso anómalo más raro, considerado un predictor de recesión.</p></li>
+</ol>
+<div id="fig-b243-etti" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b243-etti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b243_ETTI.html" style="height:520px" loading="lazy" title="fig-b243-etti"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b243-etti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B24.3: Posibles formas de la estructura temporal de los tipos de interés (normal, plana, jorobada e invertida).
+</figcaption>
+</figure>
+</div>
+<p>La curva de la deuda pública estadounidense se ha invertido en varios episodios recientes:</p>
+<ul>
+<li><p><em>Crisis de deuda rusa</em> (1998): tras el impago ruso y en plena turbulencia financiera, el diferencial entre los tipos a diez años y a tres meses se invirtió durante unos días y la Reserva Federal bajó los tipos de interés. Sin embargo, en esta ocasión no hubo recesión.</p></li>
+<li><p><em>Crisis financiera global</em> (inversión de 2006-2007): la curva se invirtió durante la mayor parte de 2006 y a comienzos de 2007, anticipando la recesión estadounidense de 2007-2009. Tras el estallido de la crisis <em>subprime</em> en 2007, la caída de los tipos a largo plazo hizo subir el precio de los bonos soberanos, cuyo desempeño superó con creces al del mercado bursátil, sumido en una fuerte caída de precios.</p></li>
+<li><p><em>Crisis de la COVID-19</em> (2020): tras las subidas de tipos de interés de la Reserva Federal entre 2015 y 2018, el diferencial entre los tipos a diez años y a tres meses ya se había invertido en 2019. Volvió a invertirse brevemente a finales de enero de 2020, con la preocupación creciente por el coronavirus, y de nuevo en febrero, poco antes de la recesión de 2020.</p></li>
+<li><p><em>Endurecimiento monetario de 2022-2023</em>: el diferencial entre los tipos a diez y a dos años se mantuvo invertido desde julio de 2022 hasta principios de septiembre de 2024, la inversión más larga registrada. Aun así, no se produjo una recesión, lo que ha matizado su valor como predictor.</p></li>
+</ul>
+</section>
+<section id="desplazamientos-de-la-etti" class="level4">
+<h4 class="anchored" data-anchor-id="desplazamientos-de-la-etti">2.2.2. Desplazamientos de la ETTI</h4>
+<p>La dinámica de la transición de una forma a otra se clasifica, en el mismo plano vencimientos-rentabilidad exigida (figura <a href="#fig-b249-movimientos-etti" class="quarto-xref"><span>B24.4</span></a>), en tres movimientos:</p>
+<ol type="1">
+<li><p><em>Movimientos en paralelo</em>: desplazamientos que suponen una traslación, es decir, un desplazamiento uniforme de toda la curva<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>. Son alcistas o <em>bull</em> (suben los precios de los bonos porque caen los tipos de interés) y bajistas o <em>bear</em> (bajan los precios porque suben los tipos de interés).</p></li>
+<li><p><em>Movimientos</em> twist: suponen un cambio de pendiente. Pueden ser enderezadores o <em>steepening</em> (la curva se empina, aumento del diferencial o <em>spread</em>) o aplanadores o <em>flattening</em> (la curva se aplana, reducción del diferencial). La Operation Twist de la Reserva Federal (2011-2012), por ejemplo, buscó un aplanamiento. Al sustituir valores a corto plazo por valores a largo plazo, la Reserva Federal aplicó una política monetaria expansiva sin ampliar su balance, para abaratar los tipos a largo y reactivar la inversión y el consumo financiado con crédito.</p></li>
+<li><p><em>Movimientos</em> butterfly: suponen un cambio de la curvatura. Pueden ser positivos (aumento de la convexidad de la curva, en el que los tipos a corto y a largo suben respecto a los de plazo medio) o negativos (disminución de la convexidad).</p></li>
+</ol>
+<div id="fig-b249-movimientos-etti" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b249-movimientos-etti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame wide">
+<iframe src="../graphs/b249_Movimientos_ETTI.html" style="--r:2.824" loading="lazy" title="fig-b249-movimientos-etti"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b249-movimientos-etti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B24.4: Movimientos de la ETTI. Respecto a la curva inicial, 0, el movimiento en paralelo la traslada entera (hacia abajo si es <em>bull</em> y hacia arriba si es <em>bear</em>). El <em>twist</em> cambia la pendiente de la curva (<em>steepening</em> o <em>flattening</em>) y el <em>butterfly</em> su curvatura (en el positivo, los tipos a corto y a largo suben respecto a los de plazo medio).
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="teorías-explicativas-de-la-estructura-temporal-de-los-tipos" class="level3">
+<h3 class="anchored" data-anchor-id="teorías-explicativas-de-la-estructura-temporal-de-los-tipos">2.3. Teorías explicativas de la estructura temporal de los tipos</h3>
+<p>Cuatro teorías tratan de explicar la forma de la ETTI. Difieren en el papel que dan a las expectativas sobre los tipos a corto, a la aversión al riesgo y a las restricciones que impiden a los inversores cambiar de plazo.</p>
+<section id="expectativas-puras-fisher-1896" class="level4">
+<h4 class="anchored" data-anchor-id="expectativas-puras-fisher-1896">2.3.1. Expectativas puras (Fisher, 1896)</h4>
+<p><strong>Origen</strong>: la hipótesis de las expectativas puras o insesgadas se debe a los trabajos de Irving Fisher (1896).</p>
+<p><strong>Idea</strong>: la pendiente (o <em>spread</em>) de la ETTI es atribuible a las expectativas de cambio en los tipos de interés a corto plazo.</p>
+<p><strong>Razonamiento</strong>: al ser neutrales al riesgo, los inversores solo atienden a la rentabilidad esperada para decidir entre inversiones. Con base en la condición de indiferencia entre invertir a largo plazo o encadenar inversiones a corto (el tipo a largo es la media de los tipos a corto esperados), la forma de la curva depende de las expectativas de los agentes:</p>
+<ul>
+<li><p><em>Expectativas alcistas</em>: si la curva tiene pendiente positiva en el plano vencimientos-rentabilidad exigida, se espera que suban los tipos de interés a corto plazo. Con esa expectativa, los inversores se resisten a comprometer hoy sus fondos en bonos a largo plazo. La escasa demanda de estos bonos rebaja su precio y eleva su rentabilidad, y por eso la curva tiene pendiente positiva;</p></li>
+<li><p><em>Expectativas estables</em>: si es plana, se espera que los tipos a corto plazo actuales se mantengan en el futuro;</p></li>
+<li><p><em>Expectativas bajistas</em>: si es decreciente, se espera que los tipos de interés caigan.</p></li>
+</ul>
+<p>Los tipos <em>forward</em> son predictores insesgados de los futuros tipos <em>spot</em>, <span class="math inline">\(\mathbb{E}_t[i_s(T, T+1)] = i_f(t, T, T+1)\)</span> con <span class="math inline">\(T &gt; t\)</span>. Todos los bonos de diferentes vencimientos son sustitutivos perfectos. Por tanto, los rendimientos de los bonos hasta vencimiento coinciden con los rendimientos esperados de una estrategia de reinversiones sucesivas.</p>
+<p>Gráficamente, en el plano vencimientos-rentabilidad exigida (figura <a href="#fig-b245-expectativas" class="quarto-xref"><span>B24.5</span></a>), las curvas discontinuas representan los tipos a plazo implícitos de cada año, que coinciden con los tipos a corto esperados, y las continuas, la ETTI que resulta de promediarlos. Si se esperan subidas, la ETTI crece, aunque menos que los tipos esperados, y si se esperan bajadas, decrece. Con expectativas estables, ambas curvas coinciden en una recta horizontal.</p>
+<div id="fig-b245-expectativas" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b245-expectativas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b245_Expectativas_puras.html" style="height:520px" loading="lazy" title="fig-b245-expectativas"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b245-expectativas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B24.5: Hipótesis de las expectativas puras. Los tipos a plazo coinciden con los tipos a corto esperados, y la ETTI, que es su media, crece si se esperan subidas y decrece si se esperan bajadas.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: ofrece un marco analítico claro basado en expectativas.</p></li>
+<li><p><em>Limitaciones</em>: si se cumpliese y se esperasen bajadas de los tipos a corto con la misma frecuencia que subidas, la ETTI debería presentar una pendiente negativa con una frecuencia similar a la pendiente positiva, lo cual no casa con la evidencia empírica. Además, la teoría solo considera agentes neutrales al riesgo y no tiene en cuenta el riesgo de subidas de tipo de interés.</p></li>
+</ul>
+</section>
+<section id="prima-de-liquidez-hicks-1939b" class="level4">
+<h4 class="anchored" data-anchor-id="prima-de-liquidez-hicks-1939b">2.3.2. Prima de liquidez (Hicks, 1939b)</h4>
+<p><strong>Origen</strong>: la hipótesis de cómo la preferencia por la liquidez afecta a la ETTI fue introducida por John Hicks (1939b).</p>
+<p><strong>Idea</strong>: cambios en la pendiente se deben a cambios en las expectativas en cuanto al tipo de interés <em>spot</em>, pero existe preferencia por la liquidez.</p>
+<p><strong>Razonamiento</strong>: los agentes, aversos al riesgo, tienen preferencia por la liquidez. Pueden demandar dinero por motivo precaución debido a la incertidumbre y, por la misma razón, prefieren prestar a corto plazo antes que a largo. Para que se verifique la hipótesis de las expectativas en un sentido general, es necesaria la neutralidad ante el riesgo. Como los inversores no son neutrales, el mercado deberá ofrecer una prima de liquidez por prestar dinero a largo plazo, tanto mayor cuanto más alejado esté el vencimiento. Así, aunque se espere que los tipos a corto plazo se mantengan constantes, la ETTI será una función creciente del tiempo hasta el vencimiento.</p>
+<p>A diferencia del caso anterior, los tipos <em>forward</em> son predictores sesgados (al alza) de los futuros tipos <em>spot</em>, <span class="math inline">\(i_f(t, T, T+1) = \mathbb{E}_t[i_s(T, T+1)] + \rho_L(t, T, T+1)\)</span>, con <span class="math inline">\(\rho_L(t, T, T+1) &gt; 0\)</span> y creciente con el plazo. Ello implica que los bonos a corto y largo plazo son sustitutivos imperfectos y que esta imperfección se recoge en la prima.</p>
+<p>Gráficamente, en el plano vencimientos-rentabilidad exigida (figura <a href="#fig-b246-prima-liquidez" class="quarto-xref"><span>B24.6</span></a>), la recta discontinua representa la ETTI de las expectativas puras cuando se espera que los tipos a corto no varíen, y la curva continua, la ETTI con prima de liquidez. La distancia vertical entre ambas recoge la prima, que aumenta con el plazo, por lo que la curva es creciente aunque las expectativas sean estables.</p>
+<div id="fig-b246-prima-liquidez" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b246-prima-liquidez-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b246_Prima_liquidez.html" style="height:550px" loading="lazy" title="fig-b246-prima-liquidez"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b246-prima-liquidez-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B24.6: Hipótesis de la prima de liquidez. Aunque se espere que los tipos a corto no varíen, la prima, creciente con el plazo, hace que la ETTI sea creciente.
+</figcaption>
+</figure>
+</div>
+<p><strong>Extensiones</strong> (Kessel, 1965): la hipótesis de la sustitución del dinero de Reuben Kessel atribuye la preferencia de los inversores por los bonos a corto plazo a que se aproximan mucho al dinero. Completa la aportación de Hicks en cuanto a la naturaleza de la demanda de liquidez.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: es una formulación menos radical de la hipótesis de expectativas puras, ya que no requiere la neutralidad ante el riesgo de los agentes, y explica el predominio de las formas crecientes de la ETTI.</p></li>
+<li><p><em>Limitaciones</em>: una curva invertida exige que se esperen bajadas de los tipos a corto lo bastante intensas para compensar la prima, cuya cuantía en cada plazo la teoría no determina.</p></li>
+</ul>
+</section>
+<section id="segmentación-del-mercado-culbertson-1957" class="level4">
+<h4 class="anchored" data-anchor-id="segmentación-del-mercado-culbertson-1957">2.3.3. Segmentación del mercado (Culbertson, 1957)</h4>
+<p><strong>Origen</strong>: la hipótesis de la segmentación del mercado se debe a John Culbertson (1957).</p>
+<p><strong>Idea</strong>: existen mercados separados para cada vencimiento específico de la curva de tipos, y el tipo de cada plazo depende solo de la oferta y la demanda de bonos de ese plazo.</p>
+<p><strong>Razonamiento</strong>: las preferencias de los agentes por un plazo son heterogéneas y marcadas, y estos no tienen incentivos a cambiarlas. Separan los segmentos ciertas restricciones, generalmente institucionales, legales o sectoriales, que atan a cada inversor a determinados vencimientos. Como la oferta y la demanda están segmentadas, los precios de los bonos y los tipos de interés de cada segmento se comportan de forma relativamente independiente. La curva de rentabilidad adopta, por eso, el perfil que dicte el equilibrio entre oferta y demanda de cada tramo de vencimientos, dentro del mercado segmentado<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>.</p>
+<p>La curva invertida que registró EE. UU. en 2006-2007, en la antesala de la crisis financiera global, ilustra el mecanismo. Los bancos liquidaron sus bonos a corto para atender la fuerte demanda de crédito de la fase expansiva, lo que, junto con las subidas del tipo oficial de la Reserva Federal entre 2004 y 2006, elevó la rentabilidad a corto. Al mismo tiempo, las elevadas compras de bonos a largo de los inversores extranjeros y de los fondos de inversión y de pensiones subían su precio y reducían su rentabilidad, y la conjunción de ambos efectos invirtió la curva.</p>
+<p>Gráficamente, en el plano vencimientos-rentabilidad exigida (figura <a href="#fig-b247-segmentacion" class="quarto-xref"><span>B24.7</span></a>), cada tramo de la curva representa el tipo que equilibra la oferta y la demanda de bonos de ese plazo, por lo que los tramos se dibujan por separado. En el episodio de 2006-2007, las ventas de bonos a corto elevaron el tipo del tramo corto, las compras de bonos a largo redujeron el del tramo largo y la curva pasó de normal a invertida.</p>
+<div id="fig-b247-segmentacion" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b247-segmentacion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b247_Segmentacion.html" style="height:520px" loading="lazy" title="fig-b247-segmentacion"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b247-segmentacion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B24.7: Hipótesis de la segmentación del mercado. Cada tramo de vencimientos se equilibra por separado, y las ventas de bonos a corto y las compras de bonos a largo invierten la curva, como en EE. UU. en 2006-2007.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: puede explicar cualquier forma de la curva de rentabilidad, incluida la invertida.</p></li>
+<li><p><em>Limitaciones</em>: al tratar cada tramo como independiente, no explica que los tipos de los distintos plazos tiendan a moverse juntos, como muestra la evidencia.</p></li>
+</ul>
+</section>
+<section id="hábitat-preferido-modigliani-y-sutch-1966" class="level4">
+<h4 class="anchored" data-anchor-id="hábitat-preferido-modigliani-y-sutch-1966">2.3.4. Hábitat preferido (Modigliani y Sutch, 1966)</h4>
+<p><strong>Origen</strong>: la teoría del hábitat preferido se debe a las aportaciones de Franco Modigliani y Richard Sutch (1966) y constituye una variante de la hipótesis de la prima de liquidez y de la hipótesis de la segmentación del mercado.</p>
+<p><strong>Idea</strong>: la teoría se asemeja a la hipótesis de segmentación del mercado, si bien considera la posibilidad de invertir en diferentes segmentos, porque cada inversor tiene un plazo preferido, pero lo abandona si otro plazo le ofrece una prima suficiente.</p>
+<p><strong>Razonamiento</strong>: los participantes del mercado pueden tener preferencia por zonas específicas de la curva, aunque pueden animarse a comprar bonos de otras partes del espectro si tienen suficientes incentivos. Si un tramo presenta exceso de oferta o de demanda, inversores de otros tramos pueden trasladarse a él siempre que una prima de riesgo les compense la aversión a salir de su hábitat. La curva tendrá entonces pendiente positiva en el plano vencimientos-rentabilidad exigida cuando predomine la preferencia por los plazos muy cortos, y estará invertida cuando predomine la de los muy largos.</p>
+<p>Gráficamente, en el plano vencimientos-rentabilidad exigida (figura <a href="#fig-b248-habitat" class="quarto-xref"><span>B24.8</span></a>), la recta discontinua representa la ETTI con expectativas estables y sin primas. La curva creciente refleja un mercado en el que predomina el hábitat de los plazos cortos, cuyos inversores exigen una prima para comprar bonos largos. La decreciente refleja uno en el que predomina el de los plazos largos, con la prima en los bonos cortos.</p>
+<div id="fig-b248-habitat" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b248-habitat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b248_Habitat_preferido.html" style="height:540px" loading="lazy" title="fig-b248-habitat"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b248-habitat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B24.8: Hipótesis del hábitat preferido. La prima que exigen los inversores para salir de su hábitat inclina la ETTI al alza si predominan los de plazos cortos y a la baja si predominan los de plazos largos.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la teoría del hábitat preferido engloba como casos particulares la de preferencia por la liquidez y la de segmentación. La de liquidez se aplica cuando los agentes prefieren el corto plazo, y la de segmentación, cuando su preferencia por un hábitat es tan fuerte que no salen de él.</p></li>
+<li><p><em>Limitaciones</em>: la prima que exige cada inversor para salir de su hábitat no es observable, de modo que la teoría admite casi cualquier forma de la curva y resulta difícil de contrastar.</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusiones-1" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-1">2.4. Conclusiones</h3>
+<p>La ETTI descompone por plazos la rentabilidad que la TIR resume en una sola tasa. Como un bono con cupón equivale a una cartera de bonos cupón cero, cada flujo se descuenta al tipo al contado de su plazo. La forma habitual de la ETTI es creciente, aunque puede aplanarse, jorobarse o invertirse, y se desplaza en paralelo o cambia de pendiente o de curvatura.</p>
+<p>Las teorías se distinguen por la sustituibilidad que atribuyen a los bonos de distintos plazos. Para las expectativas puras son sustitutivos perfectos, y para la prima de liquidez, imperfectos, con una prima que aumenta con el plazo y explica el predominio de las curvas crecientes. La segmentación separa el mercado de cada plazo, pero no explica el movimiento conjunto de los tipos, y el hábitat preferido permite salir del propio tramo a cambio de una prima. Las cuatro teorías son complementarias, de modo que la hipótesis de expectativas, combinada con la preferencia por la liquidez y con cierta demanda de bonos largos por su convexidad, puede explicar bien el comportamiento de la ETTI. La sección 3 añade el riesgo, con el diferencial de crédito, la duración y la convexidad.</p>
+</section>
+</section>
+<section id="riesgos-duración-y-convexidad" class="level2">
+<h2 class="anchored" data-anchor-id="riesgos-duración-y-convexidad">3. Riesgos, duración y convexidad</h2>
+<p>Hasta aquí se han tratado el precio, la rentabilidad y el vencimiento de los bonos, pero falta el riesgo, un elemento fundamental para cualquier inversor en estos productos.</p>
+<section id="riesgos-asociados-a-los-activos-financieros" class="level3">
+<h3 class="anchored" data-anchor-id="riesgos-asociados-a-los-activos-financieros">3.1. Riesgos asociados a los activos financieros</h3>
+<p>Como cualquier otro activo, los bonos están expuestos a dos grandes categorías de riesgo:</p>
+<ul>
+<li><p><em>Riesgo sistemático</em>: no puede eliminarse mediante la diversificación, está vinculado a la evolución de la economía y afecta a todos los activos, aunque en distinto grado;</p></li>
+<li><p><em>Riesgo específico</em>: también conocido como <em>riesgo propio</em> o <em>idiosincrático</em>, es aquel que depende de las características concretas del activo y sí puede reducirse mediante la diversificación.</p></li>
+</ul>
+<p>Dentro de cada categoría, algunos tipos tienen especial relevancia en los bonos, como el riesgo de tipo de interés entre los sistemáticos y el de crédito entre los específicos.</p>
+<section id="riesgo-sistemático" class="level4">
+<h4 class="anchored" data-anchor-id="riesgo-sistemático">3.1.1. Riesgo sistemático</h4>
+<p><strong>Riesgo de tipo de interés o de mercado</strong>: solo afecta a quien vende el bono antes de su vencimiento, no a quien lo conserva hasta el final. Aparece cuando los tipos de interés suben, pues el precio del bono cae y su venta arroja una pérdida de capital.</p>
+<p><strong>Riesgo de reinversión</strong>: surge cuando los tipos de interés bajan, lo que reduce los rendimientos que se obtienen al reinvertir los cupones.</p>
+<p>Los dos riesgos operan, por tanto, en sentido opuesto. Así, si los tipos de interés suben, el tenedor reinvierte los flujos en mejores condiciones, si bien el precio del bono cae y su venta antes del vencimiento arroja una pérdida. En un horizonte igual a la duración ambos riesgos se compensan, base de la inmunización.</p>
+<p><strong>Riesgo de suceso</strong> (<em>event risk</em>): acontecimientos nuevos de alcance general capaces de alterar el valor de los bonos (p.&nbsp;ej. catástrofes naturales o cambios regulatorios).</p>
+<p><strong>Riesgo de tipo de cambio</strong>: afecta al tenedor de bonos denominados en otra divisa. El valor de esos bonos en moneda nacional disminuye si esa divisa se deprecia.</p>
+<p><strong>Riesgo de inflación</strong>: la subida de los precios erosiona el valor real de los cupones y del nominal, y para evitarlo existen los bonos indizados a la inflación.</p>
+<p><strong>Riesgo de liquidez y profundidad del mercado</strong>: es la posibilidad de no encontrar contrapartida en el mercado secundario. Los bonos soberanos son más líquidos al tener un emisor de referencia con un programa estable y voluminoso de emisiones, mientras que los de titulización y los corporativos son menos líquidos por su falta de estandarización.</p>
+</section>
+<section id="riesgo-no-sistemático-o-específico" class="level4">
+<h4 class="anchored" data-anchor-id="riesgo-no-sistemático-o-específico">3.1.2. Riesgo no sistemático o específico</h4>
+<p><strong>Riesgo país</strong>: incluye tres componentes:</p>
+<ul>
+<li><p><em>Riesgo de crédito soberano</em> (<em>sovereign risk</em>): probabilidad de insolvencia de un Estado soberano.</p></li>
+<li><p><em>Riesgo administrativo</em>: limitaciones temporales o permanentes a la actividad económica, mediante restricciones a la libertad de mercado y a la movilidad de los factores.</p></li>
+<li><p><em>Riesgo político</em>: inseguridad jurídica asociada a un país, p.&nbsp;ej. probabilidad de expropiación de las inversiones privadas.</p></li>
+</ul>
+<p><strong>Riesgo de crédito o de impago</strong> (<em>default risk</em>): posibilidad de que el emisor incumpla sus pagos. En sentido amplio, incluye también el riesgo de rebaja de la calificación y de ampliación del diferencial (<em>spread</em>). El riesgo de crédito se analiza en el apartado 3.1.3.</p>
+<p><strong>Riesgo de llamada</strong> (<em>call risk</em>): afecta a los bonos con opción de amortización anticipada a favor del emisor, y consiste en que una bajada de los tipos de interés le lleve a ejercerla.</p>
+<p>La mayoría de estos riesgos se traducen, en definitiva, en una subida de la rentabilidad exigida. Los de reinversión y de llamada, en cambio, se materializan cuando esta cae.</p>
+</section>
+<section id="riesgo-de-crédito-diferencial-y-modelo-de-merton-1974" class="level4">
+<h4 class="anchored" data-anchor-id="riesgo-de-crédito-diferencial-y-modelo-de-merton-1974">3.1.3. Riesgo de crédito: diferencial y modelo de Merton (1974)</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>El modelo de Black-Scholes-Merton se desarrolla en el tema <a href="../chapters/b25-derivados.html">B25</a>, apartado 2.2.3. Aquí se aplica a la deuda de una empresa.</p>
+</div>
+</div>
+</div>
+<p><strong>Origen</strong>: Robert Merton (1974) aplicó a la deuda de las empresas la valoración de opciones de Black y Scholes (1973) y fundó los modelos estructurales del riesgo de crédito.</p>
+<p><strong>Idea</strong>: con responsabilidad limitada, el capital es una opción de compra sobre el activo con precio de ejercicio igual a la deuda, y el riesgo de crédito, una opción de venta que los acreedores venden a los accionistas.</p>
+<p><strong>Supuestos</strong>:</p>
+<ul>
+<li><p><em>Calificación</em>: las agencias resumen la solvencia del emisor en una escala que va de AAA a D (impago). Desde BBB- (Baa3 en la escala de Moody’s) hacia arriba, los bonos son de <em>grado de inversión</em>, y por debajo, de <em>alto rendimiento</em> o especulativos (<em>high yield</em>). Las agencias y su regulación se tratan en el tema <a href="../chapters/b27-regulacion-financiera.html">B27</a>, apartado 3.4.</p></li>
+<li><p><em>Diferencial de crédito</em>: es la prima <span class="math inline">\(\rho\)</span> del apartado 1.2.1 en un bono con riesgo de impago, <span class="math inline">\(\rho = r_B - r_f\)</span>, donde <span class="math inline">\(r_B\)</span> es su TIR y <span class="math inline">\(r_f\)</span> la de un bono sin riesgo del mismo plazo. Compensa tres conceptos:</p>
+<ul>
+<li><p><em>Pérdida esperada</em>: aproximadamente, la probabilidad anual de impago (PD) por la pérdida en caso de impago (LGD), que se desarrollan en el tema <a href="../chapters/b26-crisis-financieras.html">B26</a>, apartado 3.2.4.</p></li>
+<li><p><em>Prima por riesgo</em>: los impagos se concentran en las recesiones, cuando más se valora cada unidad monetaria, de modo que esa parte del riesgo de crédito es sistemática y no se elimina diversificando.</p></li>
+<li><p><em>Liquidez y fiscalidad</em>: los bonos corporativos son menos líquidos y, en EE. UU., sus intereses pagan impuestos estatales de los que está exenta la deuda federal.</p></li>
+</ul></li>
+<li><p><em>Entorno</em>: el valor del activo de la empresa, <span class="math inline">\(A_t\)</span>, sigue un proceso log-normal con volatilidad constante, <span class="math inline">\(\sigma_A\)</span>. La empresa, con responsabilidad limitada, se financia con un bono cupón cero de nominal <span class="math inline">\(F_T\)</span> y vencimiento <span class="math inline">\(T\)</span>.</p></li>
+<li><p><em>Mercados</em>: no hay fricciones y el tipo sin riesgo, <span class="math inline">\(r_f\)</span>, es constante, en capitalización continua.</p></li>
+</ul>
+<p><strong>Planteamiento</strong>: en <span class="math inline">\(T\)</span>, los acreedores cobran <span class="math inline">\(F_T\)</span> si <span class="math inline">\(A_T \geq F_T\)</span> y se quedan con la empresa si no, mientras que los accionistas reciben el resto (figura <a href="#fig-b2410-merton-pagos" class="quarto-xref"><span>B24.9</span></a>). El capital es, por tanto, una <em>call</em> europea:</p>
+<p><span class="math display">\[E_0 = A_0 \cdot N(d_1) - F_T e^{-r_f T} \cdot N(d_2)\]</span></p>
+<p>donde <span class="math inline">\(E_0\)</span> es el valor del capital, <span class="math inline">\(A_0\)</span> el del activo, <span class="math inline">\(r_f\)</span> el tipo sin riesgo en capitalización continua, <span class="math inline">\(N(\cdot)\)</span> la función de distribución normal estándar, <span class="math inline">\(d_1 = [\ln(A_0/F_T) + (r_f + \sigma_A^2/2)T]/(\sigma_A\sqrt{T})\)</span> y <span class="math inline">\(d_2 = d_1 - \sigma_A\sqrt{T}\)</span>. La deuda vale <span class="math inline">\(p_0 = A_0 - E_0\)</span>, es decir, un bono sin riesgo menos una <em>put</em> sobre el activo (paridad <em>put-call</em>).</p>
+<div id="fig-b2410-merton-pagos" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b2410-merton-pagos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b2410_Merton_pagos.html" style="height:560px" loading="lazy" title="fig-b2410-merton-pagos"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b2410-merton-pagos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B24.9: Pagos en <span class="math inline">\(T\)</span> en el modelo de Merton (1974). El capital, <span class="math inline">\(E_T = \max(A_T - F_T,\, 0)\)</span>, es una <em>call</em> sobre el activo con precio de ejercicio <span class="math inline">\(F_T\)</span>, y la deuda, <span class="math inline">\(p_T = \min(A_T,\, F_T)\)</span>, un bono sin riesgo de nominal <span class="math inline">\(F_T\)</span> menos una <em>put</em>, <span class="math inline">\(\max(F_T - A_T,\, 0)\)</span>, que es la pérdida del acreedor si hay impago (área sombreada). Entre ambos se reparten el activo, como en <span class="math inline">\(A_T^1\)</span>, donde los acreedores cobran <span class="math inline">\(F_T\)</span> y los accionistas el resto, <span class="math inline">\(E_T\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>De ahí se siguen tres resultados:</p>
+<ul>
+<li><p><em>Probabilidad de impago</em>: la neutral al riesgo es <span class="math inline">\(N(-d_2)\)</span>.</p></li>
+<li><p><em>Diferencial</em>: <span class="math inline">\(\rho = -\ln(p_0/F_T)/T - r_f\)</span> crece con el apalancamiento y con la volatilidad del activo, las dos únicas variables de las que depende para cada plazo.</p></li>
+<li><p><em>Distancia al impago</em>: con el rendimiento esperado del activo en lugar de <span class="math inline">\(r_f\)</span>, <span class="math inline">\(d_2\)</span> es la <em>distancia al impago</em>, el número de desviaciones típicas que separan el activo del umbral de impago.</p></li>
+</ul>
+<p><strong>Extensiones</strong>: los modelos de <em>forma reducida</em> (Jarrow y Turnbull, 1995) tratan el impago como un suceso aleatorio, con una intensidad calibrada con los precios de los bonos y de los <em>credit default swaps</em> (CDS, tema <a href="../chapters/b25-derivados.html">B25</a>, apartado 3.1).</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: estima la probabilidad de impago de una empresa cotizada a partir de su capitalización y su volatilidad. Además, sobre él se construyen el modelo de KMV (de Moody’s desde 2002) y, en su versión de cartera (Vasicek, 2002), la fórmula del método basado en calificaciones internas (IRB) de Basilea II.</p></li>
+<li><p><em>Limitaciones</em>:</p>
+<ul>
+<li><p><em>Impago solo al vencimiento</em>: Black y Cox (1976) lo adelantan al momento en que el activo cruza un umbral.</p></li>
+<li><p><em>Diferenciales a corto plazo casi nulos</em>: sin saltos en el activo, una empresa solvente no quiebra de inmediato.</p></li>
+<li><p><em>Variables no observables</em>: el valor del activo y su volatilidad deben inferirse de la cotización.</p></li>
+<li><p><em>Diferenciales demasiado bajos</em>: calibrado con datos históricos, subestima los de grado de inversión, brecha conocida como <em>enigma del diferencial de crédito</em> (<em>credit spread puzzle</em>). La pérdida esperada explica una fracción sorprendentemente pequeña del diferencial y, aun sumándole su prima por riesgo, el impago explica poco en el grado de inversión, menos a plazos cortos, y mucho más en el alto rendimiento (Huang y Huang, 2012).</p></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="duración-de-macaulay-1938" class="level3">
+<h3 class="anchored" data-anchor-id="duración-de-macaulay-1938">3.2. Duración de Macaulay (1938)</h3>
+<p>Sea cual sea su origen, toda variación de la rentabilidad exigida se traslada al precio del bono, y la duración mide en qué cuantía.</p>
+<p><strong>Definición</strong>: la <em>duración o duración de Macaulay</em> es el plazo medio ponderado de los flujos de caja del bono, con pesos iguales al valor actual de cada flujo sobre el precio. Es también el horizonte en el que, si los cupones se reinvierten al tipo del bono, el riesgo de precio y el de reinversión se compensan en primera aproximación ante un único desplazamiento paralelo e inmediato de una curva de rentabilidad plana. Así, ofrece una medida del riesgo del bono en años.</p>
+<p>La duración no debe confundirse con el vencimiento, que mide el plazo del último pago, el del principal. De hecho, la duración se concibió para corregir un defecto del vencimiento como medida, su indiferencia ante los pagos que el bono efectúa antes de vencer<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>. Por eso es siempre menor que el vencimiento en un bono con cupón y coincide con él en uno cupón cero.</p>
+<p><strong>Cálculo</strong>: se multiplica el vencimiento de cada pago por su peso, dado por su valor actualizado en el momento inicial, <span class="math inline">\(w_t = Q_t/(1+k)^t\)</span><a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>. La suma resultante se divide después entre el peso total de los pagos, que es el valor actualizado de todo el bono, es decir, su precio teórico:</p>
+<p><span class="math display">\[D = \frac{\sum_{t=1}^{T} t \cdot \frac{Q_t}{(1+k)^t}}{p_0} \;\rightarrow\; D = \frac{1}{p_0} \cdot \sum_{t=1}^{T} t \cdot w_t\]</span></p>
+<p><strong>Interpretación</strong>: la duración equivale al centro de gravedad de una balanza en la que cada flujo de caja pesa tanto como su valor actualizado y se sitúa a una distancia igual a su vencimiento. <em>Ceteris paribus</em>, la duración es tanto mayor:</p>
+<ul>
+<li><p><em>Vencimiento</em> (<span class="math inline">\(T\)</span>): cuanto mayor sea (<span class="math inline">\(\uparrow T \;\rightarrow\; \uparrow D\)</span>), salvo en bonos con fuerte descuento (<span class="math inline">\(c &lt; k\)</span>) y vencimientos muy largos, cuya duración puede alcanzar un máximo y descender después hacia la de la perpetuidad, <span class="math inline">\((1+k)/k\)</span>. En el caso de un bono cupón cero, la duración de Macaulay coincide exactamente con el vencimiento, <span class="math inline">\(D = T\)</span>;</p></li>
+<li><p><em>Cupón</em> (<span class="math inline">\(C_t\)</span>): cuanto menor sea, porque el pago final, que incluye el principal, gana importancia relativa (<span class="math inline">\(\downarrow C_t \;\rightarrow\; \uparrow D\)</span>);</p></li>
+<li><p><em>Rentabilidad</em> (<span class="math inline">\(k\)</span>): cuanto menor sea, puesto que se descontará menos el flujo de caja al vencimiento y tendrá más peso en términos relativos (<span class="math inline">\(\downarrow k \;\rightarrow\; \uparrow D\)</span>);</p></li>
+<li><p><em>Frecuencia</em> (<span class="math inline">\(n\)</span>): cuanto menor sea, ya que el flujo final pesa relativamente más.</p></li>
+</ul>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: frente al vencimiento, indica con mayor exactitud el plazo medio que necesita el inversor para recobrar lo invertido.</p></li>
+<li><p><em>Limitaciones</em>: puede resultar tediosa de calcular y, además, está expresada en años, por lo que no da directamente la variación del precio. Como medida de riesgo, solo vale ante desplazamientos paralelos de una curva plana, el supuesto de su definición.</p></li>
+</ul>
+</section>
+<section id="duración-modificada" class="level3">
+<h3 class="anchored" data-anchor-id="duración-modificada">3.3. Duración modificada</h3>
+<p>Para evaluar el riesgo de un bono hace falta saber cuánto varía su precio, en porcentaje y en unidades monetarias, cuando cambia la rentabilidad. La duración de Macaulay, medida en años, no da esa respuesta, y de ahí surge el concepto de duración modificada.</p>
+<p><strong>Definición</strong>: la <em>duración modificada</em> es la semielasticidad del precio respecto a la rentabilidad, cambiada de signo. Mide, en primera aproximación, la variación porcentual del precio por cada punto porcentual (100 puntos básicos) que varía la rentabilidad exigida.</p>
+<p><strong>Cálculo</strong>: por definición,</p>
+<p><span class="math display">\[D_{\text{mod}} = -\frac{1}{p_t} \cdot \frac{\partial p_t}{\partial k}\]</span></p>
+<p>donde <span class="math inline">\(p_t\)</span> es el precio teórico del bono y <span class="math inline">\(k\)</span> la rentabilidad exigida. Su cálculo depende de que el bono incorpore o no una opción de amortización:</p>
+<ul>
+<li><p><em>Bonos sin opción</em>: se obtiene de la duración de Macaulay, <span class="math inline">\(D_{\text{mod}} = D/(1+k/n)\)</span>, donde <span class="math inline">\(n\)</span> es el número de cupones al año.</p></li>
+<li><p><em>Bonos con opción</em>: se usa la <em>duración efectiva</em>, que revalora el bono, opción incluida, con los tipos desplazados <span class="math inline">\(\Delta k\)</span> a la baja y al alza, <span class="math inline">\(D_{\text{ef}} = [p_t(k-\Delta k) - p_t(k+\Delta k)]/[2 \cdot p_t(k) \cdot \Delta k]\)</span>, donde <span class="math inline">\(p_t(\cdot)\)</span> es el precio según un modelo que valora la opción. Con esos precios se calcula también la convexidad efectiva, negativa en los bonos amortizables anticipadamente con tipos bajos (apartado 1.3.3).</p></li>
+</ul>
+<p><strong>Interpretación</strong>: el precio cae en torno a un <span class="math inline">\(D_{\text{mod}}\)</span>&nbsp;% por cada 100 puntos básicos que sube la rentabilidad. Multiplicada por el precio, la duración se expresa en unidades monetarias, <span class="math inline">\(D_{\text{mod}}^{\text{um}} = D_{\text{mod}} \cdot p_t \cdot \Delta k\)</span>, con <span class="math inline">\(\Delta k = 0{,}01\)</span>, e indica cuánto varía el precio en primera aproximación (riesgo del precio). Dividiendo entre 100 la duración en unidades monetarias se obtiene el <em>valor del punto básico</em> (<em>basis point value</em>), con el que se igualan riesgos en las coberturas.</p>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo: duración modificada de un bono cupón cero">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo: duración modificada de un bono cupón cero
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Un bono cupón cero a diez años, de nominal 100 y rentabilidad del 4&nbsp;%, cuesta <span class="math inline">\(100/1{,}04^{10} \approx 67{,}56\)</span>, con <span class="math inline">\(D_{\text{mod}} = 10/1{,}04 \approx 9{,}62\)</span>. Si la rentabilidad sube 100 puntos básicos, la duración anticipa una caída del precio del 9,62&nbsp;%, y la exacta, hasta <span class="math inline">\(100/1{,}05^{10} \approx 61{,}39\)</span>, es del 9,13&nbsp;%. La diferencia se debe a la convexidad.</p>
+</div>
+</div>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: permite traducir el riesgo de tipo de interés a términos porcentuales o monetarios.</p></li>
+<li><p><em>Limitaciones</em>: con desplazamientos de la rentabilidad superiores a unos 50 puntos básicos, la aproximación por duración modificada pierde fiabilidad, porque sustituye una relación convexa por una recta, y la convexidad corrige el error de esa aproximación.</p></li>
+</ul>
+</section>
+<section id="convexidad" class="level3">
+<h3 class="anchored" data-anchor-id="convexidad">3.4. Convexidad</h3>
+<p><strong>Definición</strong>: la <em>convexidad</em> de un bono es una medida de la relación no lineal entre los precios del bono y los tipos de interés. La duración, tanto la modificada como la expresada en unidades monetarias, solo recoge la pendiente de la curva precio-rentabilidad (primer orden). La convexidad añade el término de segundo orden y cuantifica así cuánto se curva esa relación respecto a una recta, de modo que puede leerse como una medida del error en que incurre quien estima el riesgo solo con la duración.</p>
+<p><strong>Cálculo</strong>: la convexidad es <span class="math inline">\(\text{CV} = \frac{1}{p_t} \cdot \frac{\partial^2 p_t}{\partial k^2}\)</span>, y con ella la aproximación del cambio en el precio mejora a</p>
+<p><span class="math display">\[\frac{\Delta p_t}{p_t} \approx -D_{\text{mod}} \cdot \Delta k + \frac{1}{2} \cdot \text{CV} \cdot (\Delta k)^2\]</span></p>
+<p><strong>Interpretación</strong>: en los bonos sin opción la convexidad es positiva en todos los casos, por lo que la aproximación lineal queda siempre por debajo del precio efectivo y hay que corregirla al alza.</p>
+<p>Gráficamente, en el plano rentabilidad exigida-precio (figura <a href="#fig-b242-convexidad" class="quarto-xref"><span>B24.10</span></a>), la curva <span class="math inline">\(p_t(k)\)</span> representa el precio de un bono sin opción para cada rentabilidad exigida y es convexa (Teorema I del apartado 1.3.3). La recta, la aproximación por duración, es su tangente en el punto en que el bono cotiza a la par (<span class="math inline">\(k = c\)</span>, <span class="math inline">\(p_t = F_T\)</span>), con pendiente <span class="math inline">\(-D_{\text{mod}} \cdot p_t\)</span>. La distancia vertical entre ambas, tanto a la izquierda (prima, <span class="math inline">\(k &lt; c\)</span>) como a la derecha (descuento, <span class="math inline">\(k &gt; c\)</span>) del punto de tangencia, es el error que corrige la convexidad.</p>
+<div id="fig-b242-convexidad" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-b242-convexidad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/b242_Convexidad.html" style="height:540px" loading="lazy" title="fig-b242-convexidad"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-b242-convexidad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;B24.10: Convexidad. La relación precio-rendimiento es convexa, por lo que la duración sobreestima las caídas y subestima las subidas de precio.
+</figcaption>
+</figure>
+</div>
+<p>El valor que el inversor atribuye a la convexidad crece con la volatilidad del mercado, que hace más probables los saltos bruscos de la rentabilidad. En esas condiciones conviene, por tanto, un bono muy convexo<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>. Frente a otro bono de igual duración modificada pero menos convexo, el precio del bono muy convexo cae menos cuando la rentabilidad sube y gana más cuando baja.</p>
+<p><em>Ceteris paribus</em>, un bono es más convexo cuanto:</p>
+<ul>
+<li><p><em>Menor sea la rentabilidad</em>: por la asimetría de la curva precio-rentabilidad, el efecto de la convexidad se aprovecha más a rentabilidades bajas.</p></li>
+<li><p><em>Menor sea el cupón, a vencimiento constante</em>: la duración es mayor y, con ella, la sensibilidad del precio.</p></li>
+<li><p><em>Mayor sea el cupón, a duración modificada constante</em>: porque los flujos están más dispersos en torno a la duración.</p></li>
+</ul>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: corrige el error de la aproximación por duración ante variaciones grandes de la rentabilidad y permite comparar bonos de igual duración modificada por la asimetría de su precio.</p></li>
+<li><p><em>Limitaciones</em>: como la duración, supone un desplazamiento paralelo de una curva plana y sigue siendo una aproximación, ahora de segundo orden. En los bonos con opción exige, además, calcular la convexidad efectiva con un modelo que valore la opción.</p></li>
+</ul>
+</section>
+<section id="inmunización-redington-1952-fisher-y-weil-1971" class="level3">
+<h3 class="anchored" data-anchor-id="inmunización-redington-1952-fisher-y-weil-1971">3.5. Inmunización (Redington, 1952; Fisher y Weil, 1971)</h3>
+<p>La duración y la convexidad sirven también para gestionar el riesgo de tipo de interés de una cartera o de un balance. La inmunización, la estrategia pasiva del apartado 1.1.4 que se apoya en ambas, protege un compromiso de pago futuro frente a las variaciones de los tipos.</p>
+<p><strong>Origen</strong>: el actuario Frank Redington (1952) llamó <em>inmunización</em> a invertir el activo de una aseguradora de vida de modo que su negocio quedase inmune a un cambio general del tipo de interés.</p>
+<p><strong>Idea</strong>: si activo y pasivo reaccionan igual ante un cambio pequeño de los tipos, el excedente no varía, y si el activo es más convexo, el excedente solo puede aumentar.</p>
+<p><strong>Razonamiento</strong>: con la aproximación anterior, un desplazamiento <span class="math inline">\(\Delta k\)</span> de una curva plana altera el excedente, <span class="math inline">\(S = V_a - V_p\)</span>, en:</p>
+<p><span class="math display">\[\Delta S \approx -(D_{\text{mod}}^{a} V_a - D_{\text{mod}}^{p} V_p) \cdot \Delta k + \frac{1}{2} \cdot (\text{CV}^{a} V_a - \text{CV}^{p} V_p) \cdot (\Delta k)^2\]</span></p>
+<p>donde <span class="math inline">\(V_a\)</span> y <span class="math inline">\(V_p\)</span> son los valores actuales del activo y del pasivo, cuyas duraciones modificadas y convexidades llevan los superíndices <span class="math inline">\(a\)</span> y <span class="math inline">\(p\)</span>. Las <em>condiciones de Redington</em> (valores actuales iguales, duraciones iguales y mayor convexidad del activo) anulan el primer término y hacen positivo el segundo.</p>
+<p><strong>Extensiones</strong>:</p>
+<ul>
+<li><p><em>Horizonte de inversión</em> (Fisher y Weil, 1971): con un único pago comprometido, basta que la duración de la cartera iguale el horizonte de inversión, aunque la curva no sea plana, si los flujos se descuentan a sus tipos al contado y la curva se desplaza en paralelo.</p></li>
+<li><p><em>Bancos y aseguradoras</em>: aplican la inmunización y el casamiento de flujos en su gestión de balance (tema <a href="../chapters/b26-crisis-financieras.html">B26</a>, apartado 3.3). La prueba supervisora de valores atípicos, que concretó la Autoridad Bancaria Europea (EBA, 2022), señala a los bancos cuyo valor económico del capital caería más de un 15&nbsp;% de su capital de nivel 1 ante perturbaciones estándar de los tipos. Por su parte, la Directiva Solvencia II deja descontar a un tipo más alto los compromisos de vida cubiertos con bonos que replican sus flujos (ajuste por casamiento, art. 77 ter).</p></li>
+</ul>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: protege un compromiso de pago futuro, o el excedente de una aseguradora o de un fondo de pensiones, con bonos convencionales y un cálculo sencillo.</p></li>
+<li><p><em>Limitaciones</em>: la inmunización exige reajustes periódicos, porque la duración varía con los tipos y disminuye más despacio que el plazo restante. Además, la inmunización solo protege frente a desplazamientos paralelos y pequeños. Por ello, ante cambios de pendiente o de curvatura (apartado 2.2.2) se usan duraciones parciales por plazos (<em>key rate durations</em>) o el casamiento de flujos.</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusiones-2" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones-2">Conclusiones</h2>
+<p>La rentabilidad al vencimiento resume el rendimiento de un bono solo si el inversor lo mantiene hasta el final, el emisor no incurre en impago y los cupones se reinvierten a esa misma tasa. Además, la rentabilidad varía con el plazo, y la estructura temporal de los tipos de interés recoge esa relación. La teoría de las expectativas puras de Fisher la explica por los tipos futuros esperados, pero no casa con el predominio de las curvas crecientes. Por ello, Hicks añade una prima de liquidez, Culbertson trata cada plazo como un mercado segmentado, y Modigliani y Sutch, con el hábitat preferido, engloban ambas. En cuanto a los riesgos, el de crédito se mide con el diferencial y con el modelo de Merton, que trata el capital como una opción de compra sobre el activo. Por su parte, el riesgo de tipo de interés se mide con la duración modificada, que aproxima la variación porcentual del precio, y con la convexidad, que corrige esa aproximación ante variaciones grandes y sustenta la inmunización.</p>
+<p>La valoración de bonos aplica el mismo descuento de flujos que la de acciones, aunque con flujos conocidos y riesgo de impago (tema <a href="../chapters/b23-renta-variable.html">B23</a>). El modelo de Merton une el riesgo de crédito con la teoría de opciones, porque los accionistas tienen una opción de compra sobre los activos de la empresa (tema <a href="../chapters/b25-derivados.html">B25</a>). Asimismo, la pérdida esperada y las calificaciones son la base de la gestión del riesgo bancario (tema <a href="../chapters/b26-crisis-financieras.html">B26</a>) y de su regulación (tema <a href="../chapters/b27-regulacion-financiera.html">B27</a>). Por último, la estructura temporal es el canal por el que el tipo oficial a corto plazo llega a los tipos a largo plazo que determinan la inversión y el consumo (tema <a href="../chapters/a37-politica-monetaria-ii.html">A37</a>).</p>
+<p>Las compras de bonos de los bancos centrales han servido para contrastar las teorías de la estructura temporal. En contra de lo que predicen las expectativas puras, Gagnon, Raskin, Remache y Sack (2011) estiman que las compras de la Reserva Federal redujeron sobre todo la prima por plazo, y no los tipos cortos esperados (tema <a href="../chapters/a37-politica-monetaria-ii.html">A37</a>, apartado 3.5.3). Vayanos y Vila (2021) formalizan esa vía con un modelo de hábitat preferido en el que arbitrajistas aversos al riesgo enlazan los segmentos, de modo que la oferta de deuda de cada plazo afecta a su rentabilidad. En cambio, sigue abierto el enigma del diferencial de crédito (apartado 3.1.3), es decir, qué parte del diferencial que los modelos estructurales no explican se debe al riesgo de recesión y qué parte a la liquidez y a la fiscalidad.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Se generalizaron tras la crisis financiera global, y Basilea III los admite como capital adicional de nivel 1 (AT1) o de nivel 2 según sus características.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>En la emisión de deuda pública, el término “subasta holandesa” suele designar la subasta de precio único en sobre cerrado, en la que todos los adjudicatarios pagan el mismo precio, el marginal. El Tesoro de EE.&nbsp;UU. la emplea para letras, notas y bonos. El Tesoro Público utiliza la subasta española u holandesa modificada para letras, bonos y obligaciones del Estado. En ella, las pujas competitivas con precio igual o superior al precio medio ponderado pagan ese precio medio, y las situadas entre el precio mínimo aceptado y el medio pagan el precio ofrecido.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Suele aproximarse por la rentabilidad de la deuda pública de referencia de cada moneda, como la de EE.&nbsp;UU. o la de Alemania, aunque EE.&nbsp;UU. perdió en mayo de 2025 la última de sus calificaciones máximas, la de Moody’s.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>En un bono a perpetuidad, el precio teórico es <span class="math inline">\(p_0 = C/k\)</span>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><em>Ejemplo</em>: una empresa emitió un bono amortizable anticipadamente con un nominal de 100&nbsp;€, un cupón del 10&nbsp;% y un precio de amortización anticipada (<em>call</em>) de 102&nbsp;€ (el nominal más una prima de 2&nbsp;€). Al bono le queda un año hasta el vencimiento. Si la rentabilidad exigida por el mercado baja al 5&nbsp;%, un bono equivalente sin opción valdría <span class="math inline">\(110/1{,}05 \approx 104{,}76\)</span>&nbsp;€, por encima del precio de amortización. Al emisor le conviene entonces amortizar pagando 102&nbsp;€ (más el cupón corrido, si lo hubiera) y refinanciarse al 5&nbsp;%. Dentro de un año devolverá <span class="math inline">\(102 \cdot 1{,}05 = 107{,}10\)</span>&nbsp;€ en lugar de los 110&nbsp;€ del bono antiguo.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>El efecto convergencia se debe a la reducción progresiva de los flujos pendientes, pues, conforme se acerca el vencimiento, quedan menos cupones y el peso del principal (pagado a la par) domina, atrayendo el precio hacia <span class="math inline">\(F_T\)</span>. No debe confundirse con una caída de la tasa de descuento.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><em>Ejemplo</em>: bono sin opción y cupón constante a tres años: <span class="math inline">\(p_0 = C(1+k)^{-1} + C(1+k)^{-2} + (C + F_T)(1+k)^{-3}\)</span>. Derivando: <span class="math inline">\(\partial p_0 / \partial k = -C(1+k)^{-2} - 2C(1+k)^{-3} - 3(C + F_T)(1+k)^{-4}\)</span>. El último término recoge el principal y, aunque su denominador es mayor, su numerador, <span class="math inline">\(3(C + F_T)\)</span>, es mucho más grande cuando el cupón es pequeño en relación con el nominal, por lo que suele dominar la derivada.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Formalmente, supondría sumar una constante. Si se multiplicase, la curva se dilataría y el cambio ya no sería paralelo.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Esto implica que los tipos de interés <em>forward</em> tienen poco contenido informativo, ya que el tipo de cada tramo refleja la oferta y la demanda de su segmento, y no las expectativas sobre los tipos futuros.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Si se compran dos bonos con el mismo vencimiento, uno cupón cero y otro con cupón, y ambos emisores quiebran el último día, el inversor no recibirá nada del bono cupón cero, pero sí habrá recibido los cupones intermedios del otro. Aunque ambos tienen el mismo vencimiento, no tienen el mismo riesgo. En general, esto es una consecuencia del efecto cupón.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Los flujos de caja del bono: <span class="math inline">\(Q_t = C_t, \; \forall t &lt; T; \; Q_T = C_T + F_T\)</span>.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>La lógica es similar a la de las opciones, <em>put</em> o <em>call</em>, cuyo valor crece con la volatilidad del subyacente. En un bono, conviene que la asimetría ante variaciones de la rentabilidad favorezca al tenedor, lo que se consigue con una mayor convexidad.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script>
+// Gráficos del libro (iframes .graph-frame).
+// 1) Escala única: los grosores, los discontinuos y el tamaño de los puntos de cada figura están fijados para verla a 680 px
+//    de ancho. Los marcos anchos (figuras de varios paneles) se estiran hasta la columna y las pantallas estrechas las encogen; aquí se
+//    compensa para que en pantalla las curvas midan siempre lo mismo (2,2 px las económicas, 1,4 las auxiliares, 1,2 ejes y flechas,
+//    0,8 las guías) y los puntos tengan el mismo tamaño en todas las figuras, sea cual sea el ancho al que se muestren.
+// 2) Ajusta la altura de cada iframe al elemento dibujado más bajo (curvas, ejes, etiquetas KaTeX).
+(function () {
+  var REF = 680;
+  function norm(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var s = d.querySelector("svg"); if (!s) return;
+      var w = s.getBoundingClientRect().width; if (!(w > 0)) return;
+      var r = REF / w;
+      var els = s.querySelectorAll("path, line, polyline, polygon, rect, circle, ellipse");
+      els.forEach(function (el) {
+        var cs = d.defaultView.getComputedStyle(el);
+        if (el.dataset.sw0 === undefined) {
+          el.dataset.sw0 = parseFloat(cs.strokeWidth) || 0;
+          el.dataset.da0 = (cs.strokeDasharray && cs.strokeDasharray !== "none") ? cs.strokeDasharray : "";
+          if (el.tagName.toLowerCase() === "circle" && el.r && el.r.baseVal.value > 0 && el.r.baseVal.value <= 9) {
+            el.dataset.r0 = el.r.baseVal.value;
+          }
+        }
+        var sw0 = +el.dataset.sw0;
+        if (sw0 > 0) el.style.strokeWidth = (sw0 * r).toFixed(3) + "px";
+        if (el.dataset.da0) {
+          el.style.strokeDasharray = el.dataset.da0.split(/[ ,]+/).map(function (v) {
+            return (parseFloat(v) * r).toFixed(3) + "px";
+          }).join(" ");
+        }
+        if (el.dataset.r0) el.setAttribute("r", (+el.dataset.r0 * r).toFixed(3));
+      });
+    } catch (e) {}
+  }
+  function fit(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var sy = d.defaultView.scrollY || 0, bottom = 0;
+      var els = d.querySelectorAll("svg path, svg line, svg circle, svg polyline, svg polygon, svg rect, svg text, svg ellipse, .katex-label");
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width > 0 || r.height > 0) bottom = Math.max(bottom, r.bottom + sy);
+      });
+      if (!(bottom > 20)) {
+        var svg = d.querySelector("svg"); var vb = svg && svg.getAttribute("viewBox");
+        if (vb) { var p = vb.split(/\s+/); bottom = f.clientWidth * (+p[3]) / (+p[2]); }
+      }
+      if (bottom > 20) f.style.height = Math.ceil(bottom + 10) + "px";
+    } catch (e) {}
+  }
+  // 3) Un gráfico de varios paneles no se amplía por encima del 110 % de su ancho de dibujo (viewBox). Los dibujados a
+  //    680 px quedan en 748 px como máximo, con rótulos de tamaño normal; los de 900 o 960 px, en el tope de 900 px del CSS.
+  function cap(f) {
+    try {
+      if (!f.parentElement || !f.parentElement.classList.contains("wide")) return;
+      var s = f.contentDocument && f.contentDocument.querySelector("svg"); if (!s) return;
+      var vb = s.viewBox && s.viewBox.baseVal; if (!vb || !(vb.width > 0)) return;
+      var m = Math.min(900, Math.round(vb.width * 1.1)) + "px";
+      if (f.style.maxWidth !== m) f.style.maxWidth = m;
+    } catch (e) {}
+  }
+  function both(f) { cap(f); norm(f); fit(f); }
+  function all() { document.querySelectorAll(".graph-frame iframe").forEach(both); }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".graph-frame iframe").forEach(function (f) {
+      f.addEventListener("load", function () { both(f); setTimeout(function () { both(f); }, 700); });
+    });
+  });
+  window.addEventListener("load", function () { setTimeout(all, 1200); });
+  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(all, 150); });
+})();
+</script>
+<style>
+.graph-frame { margin: 1.25rem 0 0.25rem; }
+.quarto-figure .graph-frame + * { margin-top: 0; }
+</style>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/librovol1\.arturolorenzo\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/b23-renta-variable.html" class="pagination-link" aria-label="B23. Instrumentos de renta variable">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">B23. Instrumentos de renta variable</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/b25-derivados.html" class="pagination-link" aria-label="B25. Instrumentos derivados">
+        <span class="nav-page-text"><span class="chapter-title">B25. Instrumentos derivados</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

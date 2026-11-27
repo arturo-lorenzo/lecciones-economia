@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 500">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+    <line x1="120" y1="460" x2="560" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="120" y1="460" x2="120" y2="60"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <path id="iso0" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="iso1" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="313" y1="389" x2="361" y2="326" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  </svg>
+  <div class="katex-label" id="lbl-l"></div>
+  <div class="katex-label" id="lbl-k"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-x0"></div>
+  <div class="katex-label" id="lbl-x1"></div>
+  <div class="katex-label" id="lbl-more"></div>
+</div>
+<script>
+function toSvgX(l) { return 120 + l * 54.5; }
+function toSvgY(k) { return 460 - k * 56; }
+function genIso(level, id) {
+  const k2 = level * level;
+  const pts = [];
+  for (let i = 0; i <= 200; i++) {
+    const l = 0.4 + (i / 200) * 7.5;
+    const k = k2 / l;
+    const sx = toSvgX(l); const sy = toSvgY(k);
+    if (sx >= 125 && sx <= 555 && sy >= 65 && sy <= 458) pts.push(sx.toFixed(1)+','+sy.toFixed(1));
+  }
+  if (pts.length > 2) document.getElementById(id).setAttribute('d', 'M'+pts.join(' L'));
+}
+genIso(2.2, 'iso0');
+genIso(3.2, 'iso1');
+const labels = [
+  {id:'lbl-l',   tex:'L',                        left:'83.2%', top:'91%', color:'black'},
+  {id:'lbl-k',   tex:'K',                        left:'13%', top:'7%',  color:'black'},
+  {id:'lbl-o',   tex:'O',                        left:'15%', top:'92%', color:'black'},
+  {id:'lbl-x0',  tex:'x_0',                      left:'74.5%', top:'86%', color:'#0F6E56'},
+  {id:'lbl-x1',  tex:'x_1',                      left:'80.3%', top:'78%', color:'#534AB7'},
+  {id:'lbl-more', tex:'\\text{Mayor producción}', left:'55%', top:'59%', color:'#888'}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError:false});
+  el.style.left = l.left; el.style.top = l.top;
+  if (l.color) el.style.color = l.color;
+});
+</script>
+</body>
+</html>

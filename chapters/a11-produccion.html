@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Arturo Lorenzo">
+<meta name="description" content="Tema A11 de las oposiciones TCEE. Teoría de la producción, isocuantas, proporciones variables, rendimientos a escala, progreso técnico y caja de Edgeworth.">
+
+<title>A11. Teoría de la producción – Lecciones de economía general e internacional</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/a12-costes.html" rel="next">
+<link href="../chapters/a10-riesgo-incertidumbre.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-af206048d982c71265205c3505cca787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bec3fe2b0881f05566c9dedb60685f6d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="A11. Teoría de la producción – Lecciones de economía general e internacional">
+<meta property="og:description" content="Tema A11 de las oposiciones TCEE. Teoría de la producción, isocuantas, proporciones variables, rendimientos a escala, progreso técnico y caja de Edgeworth.">
+<meta property="og:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta property="og:site_name" content="Lecciones de economía general e internacional">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:title" content="A11. Teoría de la producción – Lecciones de economía general e internacional">
+<meta name="twitter:description" content="Tema A11 de las oposiciones TCEE. Teoría de la producción, isocuantas, proporciones variables, rendimientos a escala, progreso técnico y caja de Edgeworth.">
+<meta name="twitter:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="A11. Teoría de la producción">
+<meta name="citation_author" content="Arturo Lorenzo">
+<meta name="citation_publication_date" content="2026-11-28">
+<meta name="citation_cover_date" content="2026-11-28">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-11-28">
+<meta name="citation_fulltext_html_url" content="https://librovol1.arturolorenzo.com/chapters/a11-produccion.html">
+<meta name="citation_language" content="es">
+<meta name="citation_book_title" content="Lecciones de economía general e internacional">
+<link rel="canonical" href="https://librovol1.arturolorenzo.com/chapters/a11-produccion.html">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/a08-consumidor.html">Microeconomía</a></li><li class="breadcrumb-item"><a href="../chapters/a11-produccion.html"><span class="chapter-title">A11. Teoría de la producción</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Lecciones de economía general e internacional</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/arturo-lorenzo/lecciones-economia" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../creditos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Edición y licencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte A: Economía General</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pensamiento Económico</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a01-objeto-metodo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A1. Objeto y método de la ciencia económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a02-clasicos-marx.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A2. Los economistas clásicos y Marx</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a03-neoclasicos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A3. Los economistas neoclásicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a04-keynes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A4. Keynes: análisis comparado</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a05-monetaristas-snc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A5. La síntesis neoclásica y el monetarismo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a06-nmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A6. La nueva macroeconomía clásica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a07-nek.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A7. La nueva economía keynesiana</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Microeconomía</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a08-consumidor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A8. Teoría de la demanda del consumidor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a09-dualidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A9. Dualidad y aplicaciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a10-riesgo-incertidumbre.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A10. Elección en riesgo e incertidumbre</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a11-produccion.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">A11. Teoría de la producción</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a12-costes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A12. Teoría de costes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a13-informacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A13. Economía de la información</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a14-juegos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A14. Teoría de juegos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a15-toi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A15. Teoría de la organización industrial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a16-competencia-perfecta.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A16. Competencia perfecta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a17-monopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A17. Monopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a18-competencia-monopolistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A18. Competencia monopolística</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a19-oligopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A19. Oligopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a20-regulacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A20. Regulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a21-equilibrio-general.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A21. Equilibrio general</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a22-eb-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A22. Economía del bienestar (I)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a23-eb-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A23. Economía del bienestar (II)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a24-eb-iii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A24. Economía del bienestar (III)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Economía Laboral</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a25-oferta-trabajo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A25. Mercado de trabajo y capital humano</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a26-desempleo-friccional.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A26. Desempleo friccional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a27-salarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A27. Determinación de salarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a28-tnp-nairu.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A28. TNP, NAIRU y persistencia</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Macroeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a29-mhi-mgs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A29. Modelos de horizonte infinito y generaciones solapadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a30-magnitudes-cn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A30. Magnitudes macroeconómicas y contabilidad nacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a32-precios-output.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A32. Precios y output en economía abierta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a33-demanda-consumo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A33. Teorías de demanda de consumo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a34-demanda-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A34. Teorías de demanda de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a35-demanda-dinero.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A35. Teorías de la demanda de dinero</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a36-politica-monetaria-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A36. Política monetaria I: diseño e instrumentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a37-politica-monetaria-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A37. Política monetaria II: transmisión y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a38-politica-fiscal.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A38. Política fiscal, crecimiento y ahorro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a39-deficit.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A39. Déficit público, su financiación y sostenibilidad</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a40-interrelacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A40. Interrelación de políticas macroeconómicas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a41-inflacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A41. Inflación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a42-ciclos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A42. Ciclos económicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a43-crecimiento-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A43. Crecimiento económico exógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a44-crecimiento-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A44. Crecimiento económico endógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a45-crecimiento-empirica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A45. Evidencia empírica sobre el crecimiento</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte B: Economía Internacional</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Empresa y Finanzas</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b01-estados-ratios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B1. Estados financieros y ratios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b02-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B2. Decisiones de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b03-financiacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B3. Decisiones de financiación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b04-crecimiento-ma.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B4. Crecimiento empresarial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b23-renta-variable.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B23. Instrumentos de renta variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b24-renta-fija.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B24. Instrumentos de renta fija</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b25-derivados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B25. Instrumentos derivados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b26-crisis-financieras.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B26. Crisis financieras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b27-regulacion-financiera.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B27. Regulación bancaria y financiera</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Comercio Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b05-tnc-comercio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B5. Teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b06-nueva-teoria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B6. Nueva teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b07-politica-comercial-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B7. Política comercial I: instrumentos y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b08-politica-comercial-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B8. Política comercial II: política estratégica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b09-comercio-crecimiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B9. Comercio internacional y crecimiento</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b10-integracion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B10. Teoría de la integración económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b11-balanza-pagos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B11. Balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b12-ajuste-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B12. Ajuste de la balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b13-mercado-divisas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B13. Mercado de divisas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b14-tipo-cambio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B14. Determinación del tipo de cambio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b15-regimenes-cambiarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B15. Regímenes cambiarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b16-integracion-monetaria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B16. Integración monetaria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b17-crisis-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B17. Crisis de balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b18-globalizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B18. Globalización</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b19-coordinacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B19. Coordinación de políticas económicas internacionales</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Sistema Económico Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b20-sei-hasta-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B20. El sistema económico internacional hasta el colapso de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b21-sei-despues-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B21. El sistema económico internacional después de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b22-fmi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B22. El Fondo Monetario Internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b28-desarrollo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B28. Desarrollo económico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b29-fod-aod.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B29. Financiación oficial del desarrollo y AOD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b30-gbm-brsd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B30. Grupo Banco Mundial y bancos regionales de desarrollo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b31-ma-bpg.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B31. El cambio climático y su impacto en la economía</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b32-perspectivas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B32. Perspectivas de la economía internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b33-omc-gatt.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B33. La OMC y el GATT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b34-gats-trips.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B34. GATS, TRIPS y acuerdos plurilaterales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b35-no-comunitarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B35. Acuerdos comerciales no comunitarios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unión Europea</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b36-tratados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B36. Los tratados de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b37-finanzas-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B37. Las finanzas de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b38-pac-ppc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B38. Política Agrícola Común y Política Pesquera Común</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b39-miue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B39. Mercado interior de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b41-comercial-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B41. Política comercial de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b42-cooperacion-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B42. Política de cooperación de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b43-politica-monetaria-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B43. Política macroeconómica I: el euro y la política monetaria única</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b44-politica-financiera-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B44. Política macroeconómica II: la Unión Bancaria y la Unión de los Mercados de Capitales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b45-politica-fiscal-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B45. Política macroeconómica III: la gobernanza económica de la UE y de la zona euro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Descargas</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Primer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/ejercicios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios prácticos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/flashcards-conceptos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de conceptos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/guia-dictamen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guía para el dictamen</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Segundo Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/segundo-ejercicio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de inglés</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Tercer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/libro-bloques.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">El libro en PDF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del tercer ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Cuarto Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del cuarto ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Más allá del libro</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/otras-publicaciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Otras publicaciones y trabajos del autor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/enlaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Enlaces de interés</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Bibliografía</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manuales y obras de referencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia-articulos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Obras citadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../fuentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fuentes normativas y documentales</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#fundamentos-de-la-teoría-de-la-producción" id="toc-fundamentos-de-la-teoría-de-la-producción" class="nav-link" data-scroll-target="#fundamentos-de-la-teoría-de-la-producción">1. Fundamentos de la teoría de la producción</a>
+  <ul class="collapse">
+  <li><a href="#el-conjunto-de-elección-planes-de-producción-y-tecnología" id="toc-el-conjunto-de-elección-planes-de-producción-y-tecnología" class="nav-link" data-scroll-target="#el-conjunto-de-elección-planes-de-producción-y-tecnología">1.1. El conjunto de elección: planes de producción y tecnología</a></li>
+  <li><a href="#la-función-de-producción" id="toc-la-función-de-producción" class="nav-link" data-scroll-target="#la-función-de-producción">1.2. La función de producción</a></li>
+  <li><a href="#las-curvas-isocuantas" id="toc-las-curvas-isocuantas" class="nav-link" data-scroll-target="#las-curvas-isocuantas">1.3. Las curvas isocuantas</a></li>
+  <li><a href="#de-la-tecnología-a-la-decisión" id="toc-de-la-tecnología-a-la-decisión" class="nav-link" data-scroll-target="#de-la-tecnología-a-la-decisión">1.4. De la tecnología a la decisión</a></li>
+  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link" data-scroll-target="#conclusiones">1.5. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#leyes-de-producción" id="toc-leyes-de-producción" class="nav-link" data-scroll-target="#leyes-de-producción">2. Leyes de producción</a>
+  <ul class="collapse">
+  <li><a href="#corto-plazo-ley-de-proporciones-variables" id="toc-corto-plazo-ley-de-proporciones-variables" class="nav-link" data-scroll-target="#corto-plazo-ley-de-proporciones-variables">2.1. Corto plazo: ley de proporciones variables</a></li>
+  <li><a href="#largo-plazo-leyes-de-rendimientos-a-escala" id="toc-largo-plazo-leyes-de-rendimientos-a-escala" class="nav-link" data-scroll-target="#largo-plazo-leyes-de-rendimientos-a-escala">2.2. Largo plazo: leyes de rendimientos a escala</a></li>
+  <li><a href="#muy-largo-plazo-progreso-tecnológico" id="toc-muy-largo-plazo-progreso-tecnológico" class="nav-link" data-scroll-target="#muy-largo-plazo-progreso-tecnológico">2.3. Muy largo plazo: progreso tecnológico</a></li>
+  <li><a href="#conclusiones-2" id="toc-conclusiones-2" class="nav-link" data-scroll-target="#conclusiones-2">2.4. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#extensiones" id="toc-extensiones" class="nav-link" data-scroll-target="#extensiones">3. Extensiones</a>
+  <ul class="collapse">
+  <li><a href="#producción-conjunta-el-caso-multiproducto" id="toc-producción-conjunta-el-caso-multiproducto" class="nav-link" data-scroll-target="#producción-conjunta-el-caso-multiproducto">3.1. Producción conjunta: el caso multiproducto</a></li>
+  <li><a href="#análisis-empírico-fronteras-de-eficiencia" id="toc-análisis-empírico-fronteras-de-eficiencia" class="nav-link" data-scroll-target="#análisis-empírico-fronteras-de-eficiencia">3.2. Análisis empírico: fronteras de eficiencia</a></li>
+  </ul></li>
+  <li><a href="#conclusiones-3" id="toc-conclusiones-3" class="nav-link" data-scroll-target="#conclusiones-3">Conclusiones</a></li>
+  <li><a href="#anexo.-función-de-producción-neoclásica-de-buen-comportamiento" id="toc-anexo.-función-de-producción-neoclásica-de-buen-comportamiento" class="nav-link" data-scroll-target="#anexo.-función-de-producción-neoclásica-de-buen-comportamiento">Anexo. Función de producción neoclásica de buen comportamiento</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/a08-consumidor.html">Microeconomía</a></li><li class="breadcrumb-item"><a href="../chapters/a11-produccion.html"><span class="chapter-title">A11. Teoría de la producción</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">A11. Teoría de la producción</span></h1>
+<p class="subtitle lead">Teoría de la producción. Caracterización de la tecnología de la empresa a corto y largo plazo. El conjunto de posibilidades de producción. La función de producción. Rendimientos locales y globales a escala. Elasticidad de sustitución. Producción conjunta.</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Arturo Lorenzo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">noviembre de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<p>Para analizar la determinación de precios y cantidades en una economía podría bastar una teoría del consumidor aplicada a una economía de intercambio puro<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, en la que los agentes poseen dotaciones iniciales de bienes y las intercambian para alcanzar sus patrones de consumo preferidos. Sin embargo, ese enfoque ignora la capacidad de la <em>empresa</em>, entendida como unidad institucional<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, para transformar esas dotaciones en bienes más elaborados.</p>
+<p>La <strong>teoría de la empresa</strong> contempla a esta como el agente que, con la tecnología a su alcance, convierte factores productivos en bienes. Esa tarea está sometida a límites de distinta naturaleza, y por eso la literatura económica analiza la empresa desde varios ángulos que se complementan:</p>
+<ol type="1">
+<li><p><em>Teoría de la producción</em>: atiende a lo que la técnica permite. Concibe la empresa como una “caja negra” donde entran factores y sale producto, y su criterio es la eficiencia técnica.</p></li>
+<li><p><em>Teoría de costes</em>: exige además producir al menor coste, para lo que valora los factores por su coste económico, es decir, por su coste de oportunidad.</p></li>
+<li><p><em>Teoría de mercados</em>: estudia cómo hace máximo su beneficio la empresa según la estructura del mercado en que opera.</p></li>
+<li><p><em>Teoría de la organización industrial</em>: adopta un enfoque transversal que abre la “caja negra” y atiende a la propiedad, la dirección y la organización interna de la empresa.</p></li>
+</ol>
+<p>Históricamente, las leyes de la producción tienen su origen en la <strong>ley de rendimientos decrecientes de la tierra</strong> de Turgot y de los economistas clásicos, que la teoría neoclásica generalizó a todos los factores a partir de la productividad marginal (Wicksteed, Clark). La función de producción de Cobb y Douglas (1928) permitió contrastar empíricamente esa generalización, y Solow (1957) convirtió esa función en la herramienta con la que se mide la contribución del progreso técnico al crecimiento. Estos instrumentos son hoy especialmente relevantes, porque la digitalización, la robotización, la automatización, la inteligencia artificial y la transición hacia una economía descarbonizada están transformando los procesos productivos y alteran tanto la función de producción como la estructura de costes de las empresas.</p>
+<p>La <strong>función de producción</strong> es también la pieza con la que la macroeconomía explica el crecimiento y mide la contribución del progreso técnico (temas <a href="../chapters/a43-crecimiento-i.html">A43</a> y <a href="../chapters/a44-crecimiento-ii.html">A44</a>). Su estudio precede al de los costes (tema <a href="../chapters/a12-costes.html">A12</a>), porque la tecnología determina el coste mínimo de cada nivel de producción.</p>
+<p>El tema desarrolla la teoría de la producción en los bloques siguientes:</p>
+<ul>
+<li><p><em>Fundamentos</em>: conjunto de posibilidades de producción, función de producción, curvas isocuantas, relación marginal de sustitución técnica (RMST) y elasticidad de sustitución técnica (EST).</p></li>
+<li><p><em>Leyes de producción</em>: corto plazo (ley de proporciones variables), largo plazo (rendimientos a escala) y muy largo plazo (progreso técnico).</p></li>
+<li><p><em>Extensiones</em>: producción conjunta o multiproducto, paso previo al equilibrio general, y fronteras de eficiencia (medición empírica de la eficiencia productiva).</p></li>
+</ul>
+</section>
+<section id="fundamentos-de-la-teoría-de-la-producción" class="level2">
+<h2 class="anchored" data-anchor-id="fundamentos-de-la-teoría-de-la-producción">1. Fundamentos de la teoría de la producción</h2>
+<p>La teoría de la producción concibe la empresa como un agente racional que procura obtener, con una tecnología dada, el mayor <em>output</em> posible de los <em>inputs</em> que emplea. Por ello, la teoría excluye los precios y costes del análisis y se centra en las restricciones técnicas que condicionan físicamente la producción.</p>
+<section id="el-conjunto-de-elección-planes-de-producción-y-tecnología" class="level3">
+<h3 class="anchored" data-anchor-id="el-conjunto-de-elección-planes-de-producción-y-tecnología">1.1. El conjunto de elección: planes de producción y tecnología</h3>
+<p>El conjunto de elección de la empresa se delimita en tres pasos, que van del espacio de todos los planes de producción al subconjunto de los técnicamente posibles y, dentro de este, a su frontera, formada por los técnicamente eficientes.</p>
+<section id="el-espacio-de-planes-de-producción" class="level4">
+<h4 class="anchored" data-anchor-id="el-espacio-de-planes-de-producción">1.1.1. El espacio de planes de producción</h4>
+<p><strong>Definición</strong>: un <em>plan de producción</em> recoge las combinaciones de <em>output</em> e <em>inputs</em> a las que da lugar un proyecto de producción. En su actividad, la empresa crea productos (<em>outputs</em>) y utiliza insumos (<em>inputs</em>).</p>
+<p>El conjunto de todos los planes se conoce como <em>espacio de planes de producción</em> (EPP)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>:</p>
+<p><span class="math display">\[\text{EPP} = \left\{ \mathbf{y} = (y_1, y_2, \ldots, y_n) \in \mathbb{R}^n \right\}, \qquad \begin{cases} y_i &gt; 0: \; x_i \text{ (output)} \\ y_i &lt; 0: \; z_i \text{ (input)} \end{cases}\]</span></p>
+<p>Sin embargo, cualquier economía tiene recursos limitados y, por lo tanto, existen límites a lo que cada empresa puede producir. Así, si se quiere producir un bien, se deberá renunciar a la producción de otro bien. Estos límites a la actividad empresarial se determinan por la tecnología y la dotación de recursos de la que dispone la empresa.</p>
+<p>Por eso, de todos los planes concebibles, la empresa solo tiene a su alcance los que permite el conocimiento técnico disponible y, de entre ellos, los que su dotación de recursos le permite ejecutar.</p>
+</section>
+<section id="el-conjunto-de-posibilidades-de-producción-axiomas-de-delimitación" class="level4">
+<h4 class="anchored" data-anchor-id="el-conjunto-de-posibilidades-de-producción-axiomas-de-delimitación">1.1.2. El conjunto de posibilidades de producción: axiomas de delimitación</h4>
+<p><strong>Definición</strong>: el <em>conjunto de posibilidades de producción</em> (CPP) agrupa todos los planes físicamente posibles:</p>
+<p><span class="math display">\[\text{CPP} \subseteq \text{EPP}\]</span></p>
+<p><strong>Propiedades</strong>: el CPP se delimita dentro del EPP a partir de una serie de axiomas:</p>
+<ul>
+<li><p><em>No vacío</em>: existe como mínimo un plan de producción a disposición de la empresa. Gráficamente, en el plano <em>input-output</em>, hay algún punto que pertenece al CPP.</p></li>
+<li><p><em>Cerrado</em>: el límite de una secuencia de planes técnicamente posibles es también técnicamente posible. Gráficamente, el CPP incluye su propia frontera, y por eso los planes eficientes son técnicamente posibles.</p></li>
+<li><p><em>Libre disposición</em>: dado un plan técnicamente posible <span class="math inline">\(\mathbf{y}_0\)</span>, pertenece también al CPP cualquier otro que emplee los mismos <em>inputs</em> o más y obtenga el mismo <em>output</em> o menos, es decir, <span class="math inline">\(\forall \, \mathbf{y}_0 \in \text{CPP}; \; \mathbf{y}_1 \leq \mathbf{y}_0 \Rightarrow \mathbf{y}_1 \in \text{CPP}\)</span>.</p></li>
+</ul>
+<p>La libre disposición supone que la capacidad productiva puede derrocharse sin coste. Gráficamente, en el plano <span class="math inline">\((y_1, y_2)\)</span>, el axioma da a la frontera una pendiente no positiva (añadir <em>input</em> no reduce el <em>output</em>) y, unido a la inacción, deja dentro del CPP el ortante negativo (planes que gastan <em>inputs</em> sin producir nada).</p>
+<ul>
+<li><p><em>Imposibilidad de producción gratuita</em> (<em>no free lunch</em>): no puede obtenerse una cantidad positiva de <em>output</em> si no se emplea algún <em>input</em> (<span class="math inline">\(\text{CPP} \cap \mathbb{R}^n_+ \subseteq \{\mathbf{0}\}\)</span>). Gráficamente, el CPP no tiene ningún punto en el ortante positivo salvo, a lo sumo, el origen.</p></li>
+<li><p><em>Posibilidad de inacción</em>: el plan nulo es posible, <span class="math inline">\(\mathbf{0} \in \text{CPP}\)</span>, es decir, la empresa puede no producir. El axioma puede, sin embargo, incumplirse a corto plazo, cuando existen factores fijos o costes irrecuperables que la empresa soporta aunque no produzca. Gráficamente, el plan nulo es un punto del CPP y, con el axioma anterior, el origen queda sobre la frontera.</p></li>
+<li><p><em>Irreversibilidad</em>: si un plan es técnicamente posible, el plan inverso no lo es. Formalmente, <span class="math inline">\(\mathbf{y} \in \text{CPP}, \; \mathbf{y} \neq \mathbf{0} \Rightarrow -\mathbf{y} \notin \text{CPP}\)</span>.</p></li>
+</ul>
+<p>La irreversibilidad implica que no es posible deshacer la producción y recuperar los <em>inputs</em> a partir del <em>output</em>. Gráficamente, en el caso de un <em>input</em> y un <em>output</em>, el axioma descarta el cuadrante en el que el <em>output</em> aparecería como <em>input</em> y el <em>input</em> como <em>output</em>.</p>
+<p>Gráficamente, la tecnología se representa en el plano <em>input-output</em>, <span class="math inline">\((y_1, y_2)\)</span> (figura <a href="#fig-a111-cpp-fpp" class="quarto-xref"><span>A11.1</span></a>), con el <em>input</em> en negativo:</p>
+<ol type="1">
+<li><p><em>Conjunto de posibilidades de producción</em> (CPP): la región sombreada, que reúne los planes con las propiedades anteriores.</p></li>
+<li><p><em>Frontera de posibilidades de producción</em> (FPP): el límite superior del conjunto, una curva que pasa por el origen.</p></li>
+<li><p><em>Plan eficiente</em>: un punto de la frontera, como el 0, que emplea <span class="math inline">\(y_1^0\)</span> unidades de <em>input</em> para obtener <span class="math inline">\(y_2^0\)</span> de <em>output</em>.</p></li>
+</ol>
+<div id="fig-a111-cpp-fpp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a111-cpp-fpp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a111_CPP_FPP.html" style="height:580px" loading="lazy" title="fig-a111-cpp-fpp"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a111-cpp-fpp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A11.1: Conjunto y frontera de posibilidades de producción. El conjunto reúne los planes de producción técnicamente factibles y la frontera, los eficientes.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="la-frontera-de-posibilidades-de-producción-eficiencia-técnica-axiomas-de-regularidad-y-rendimientos-de-escala" class="level4">
+<h4 class="anchored" data-anchor-id="la-frontera-de-posibilidades-de-producción-eficiencia-técnica-axiomas-de-regularidad-y-rendimientos-de-escala">1.1.3. La frontera de posibilidades de producción: eficiencia técnica, axiomas de regularidad y rendimientos de escala</h4>
+<p><strong>Definición</strong>: los puntos de la frontera cumplen la <em>eficiencia técnica</em>, es decir, no es posible obtener más <em>output</em> con los mismos <em>inputs</em> o el mismo <em>output</em> con menos <em>inputs</em>. Por eso, la FPP representa la restricción tecnológica efectiva de la empresa.</p>
+<p><strong>Propiedades</strong>: la forma de la FPP depende de axiomas sobre la escala de la tecnología, que, en tecnologías de producción simple, se trasladan directamente a la función de producción:</p>
+<ul>
+<li><em>Aditividad</em> (libre entrada): sumar dos planes técnicamente posibles da otro plan posible (<span class="math inline">\(\forall \, \mathbf{y}_0, \mathbf{y}_1 \in \text{CPP}, \; \mathbf{y}_0 + \mathbf{y}_1 \in \text{CPP}\)</span>), lo que equivale a suponer que dos planes posibles cualesquiera pueden ejecutarse a la vez en unidades de producción independientes (en particular, cualquier plan puede replicarse).</li>
+</ul>
+<p>La aditividad implica rendimientos no decrecientes (constantes o crecientes, por ejemplo por indivisibilidades), porque garantiza que duplicar un plan es posible, pero nada impide que existan planes más productivos que esa duplicación.</p>
+<ul>
+<li><em>Proporcionalidad</em> (divisibilidad): todo plan posible puede reducirse a escala, en cualquier proporción, sin dejar de ser posible (<span class="math inline">\(\forall \, \mathbf{y}_0 \in \text{CPP}, \; \lambda \mathbf{y}_0 \in \text{CPP}, \; \lambda \in [0, 1]\)</span>).</li>
+</ul>
+<p>La proporcionalidad implica rendimientos no crecientes a escala (constantes o decrecientes).</p>
+<ul>
+<li><em>Convexidad</em>: cualquier combinación de dos planes posibles es también posible, es decir, <span class="math inline">\(\forall \, \mathbf{y}_0, \mathbf{y}_1 \in \text{CPP}; \; \mathbf{y}_2 = \alpha \mathbf{y}_0 + (1 - \alpha) \mathbf{y}_1 \in \text{CPP}; \; \forall \, \alpha \in [0, 1]\)</span>.</li>
+</ul>
+<p>Económicamente, la convexidad supone que las combinaciones equilibradas de factores son al menos tan productivas como las extremas, lo que recoge la sustituibilidad decreciente entre factores. Si la convexidad es estricta, las combinaciones intermedias son estrictamente más productivas y los rendimientos a escala son decrecientes. Para tecnologías de producción simple, la convexidad del CPP equivale a la concavidad de la función de producción (y, por tanto, implica su cuasiconcavidad). La convexidad estricta lleva a funciones estrictamente cóncavas, que excluyen los rendimientos crecientes y, por tanto, los mixtos.</p>
+<p>Solo con rendimientos constantes pueden cumplirse los tres axiomas a la vez, y la combinación que se cumple en cada caso decide qué rendimientos hay:</p>
+<ol type="1">
+<li><p><em>Rendimientos constantes a escala</em>: si se dan a la vez proporcionalidad y aditividad, el CPP es un cono convexo, aunque no estrictamente convexo. Todo plan admite cualquier cambio de escala, los rendimientos son constantes y la frontera es una recta que sale del origen.</p></li>
+<li><p><em>Rendimientos decrecientes a escala</em>: un CPP estrictamente convexo admite reducciones proporcionales (dada la inacción), pero no la suma de planes. Con el doble de <em>inputs</em> se obtiene menos del doble de <em>output</em>, los rendimientos son decrecientes y la frontera es estrictamente cóncava.</p></li>
+<li><p><em>Rendimientos crecientes a escala</em>: con aditividad y sin proporcionalidad hacia abajo, el CPP deja de ser convexo. Un plan grande rinde más que varios pequeños combinados, los rendimientos son crecientes y la frontera es convexa. La teoría neoclásica excluye este caso, que la teoría de la organización industrial recupera (tema <a href="../chapters/a15-toi.html">A15</a>).</p></li>
+</ol>
+</section>
+</section>
+<section id="la-función-de-producción" class="level3">
+<h3 class="anchored" data-anchor-id="la-función-de-producción">1.2. La función de producción</h3>
+<p>La función de producción resume la tecnología descrita por el conjunto de posibilidades de producción como relación cardinal entre los factores y el <em>output</em> máximo, y sus derivadas definen las productividades marginal y media.</p>
+<section id="la-función-de-producción-y-sus-propiedades" class="level4">
+<h4 class="anchored" data-anchor-id="la-función-de-producción-y-sus-propiedades">1.2.1. La función de producción y sus propiedades</h4>
+<p><strong>Definición</strong>: la <em>función de producción</em> es una relación exclusivamente técnica que indica, para cada vector de <em>inputs</em> <span class="math inline">\(\mathbf{z} = (z_1, \ldots, z_m) \in \mathbb{R}^m_+\)</span>, el <em>output</em> máximo que permite la tecnología dada:</p>
+<p><span class="math display">\[x = f(\mathbf{z}), \qquad f: \mathbb{R}^m_+ \rightarrow \mathbb{R}_+\]</span></p>
+<p>La función describe la frontera del conjunto de posibilidades de producción. Para cada <span class="math inline">\(\mathbf{z}\)</span>, <span class="math inline">\(f(\mathbf{z})\)</span> es el <em>output</em> del único plan técnicamente eficiente que emplea esos <em>inputs</em>.</p>
+<p>Desde el punto de vista dual, la tecnología puede describirse también mediante el <em>conjunto de requerimientos de inputs</em>, <span class="math inline">\(V(x) = \{\mathbf{z} \in \mathbb{R}^m_+ : f(\mathbf{z}) \geq x\}\)</span>, el conjunto de combinaciones de <em>inputs</em> con las que puede obtenerse al menos el <em>output</em> <span class="math inline">\(x\)</span>. La frontera de ese conjunto es la isocuanta.</p>
+<p>La función es <em>monoproducto</em> cuando existe un único <em>output</em>, <span class="math inline">\(x = f(\mathbf{z})\)</span>, y <em>conjunta</em> o <em>multiproducto</em> cuando hay varios, en cuyo caso la tecnología se describe mediante una función de transformación implícita, <span class="math inline">\(F(\mathbf{x}, \mathbf{z}) = 0\)</span>. La producción multiproducto se estudia en el apartado 3.1, y en lo que sigue el análisis se centra en la función monoproducto.</p>
+<p><strong>Propiedades</strong>:</p>
+<ol type="1">
+<li><p><em>Continuidad y diferenciabilidad</em>: es continua en las cantidades de factores (perfecta divisibilidad de factores y producto) y dos veces diferenciable, lo que permite definir productividades marginales y relaciones de sustitución.</p></li>
+<li><p><em>Transformaciones</em>: es una función cardinal, pues sus variables son observables y medibles. Por ello, a diferencia de la utilidad, no admite transformaciones que alteren sus valores.</p></li>
+</ol>
+<p>La comparación de <span class="math inline">\(f(\lambda \mathbf{z})\)</span> con <span class="math inline">\(\lambda f(\mathbf{z})\)</span> ante un cambio equiproporcional de todos los factores define los <em>rendimientos a escala</em>: crecientes, constantes o decrecientes (si es homogénea de grado <span class="math inline">\(h\)</span>, según <span class="math inline">\(h &gt; 1\)</span>, <span class="math inline">\(h = 1\)</span> o <span class="math inline">\(h &lt; 1\)</span>), que se estudian en el apartado 2.2.</p>
+<ol start="3" type="1">
+<li><p><em>Inclinación</em>: al recoger solo planes técnicamente eficientes, es no decreciente en la cantidad de cada factor (libre disposición), y las productividades marginales son positivas en la región económica.</p></li>
+<li><p><em>Forma</em>: su curvatura depende de la tecnología. La cuasiconcavidad (isocuantas convexas) recoge la sustituibilidad decreciente entre factores, y los rendimientos de cada factor (apartado 2.1) recogen cómo varía el <em>output</em> al aumentar uno de ellos manteniendo fijos los demás.</p></li>
+<li><p><em>Otras propiedades</em>:</p>
+<ul>
+<li><p><em>Agotamiento del producto</em>: si es homogénea de grado <span class="math inline">\(h\)</span>, por el teorema de Euler, <span class="math inline">\(\sum_i z_i \, \partial f / \partial z_i = h \cdot f(\mathbf{z})\)</span>. Con rendimientos constantes (<span class="math inline">\(h = 1\)</span>), remunerar cada factor según su productividad marginal agota exactamente el producto, mientras que con rendimientos crecientes los pagos lo superan y con decrecientes no lo agotan (tema <a href="../chapters/a03-neoclasicos.html">A03</a>, apartado 2.5.1).</p></li>
+<li><p><em>Observabilidad</em>: no es directamente observable, porque las empresas no siempre producen sobre la frontera, pero puede estimarse con datos de cantidades de factores y de producto separando la tecnología de la ineficiencia de cada empresa (apartado 3.2).</p></li>
+</ul></li>
+</ol>
+<p>En lo que sigue, por simplicidad, se considera un único <em>output</em> <span class="math inline">\(x\)</span>, dos factores (trabajo, <span class="math inline">\(L\)</span>, y capital, <span class="math inline">\(K\)</span>) y una función estrictamente cuasicóncava con rendimientos de los factores primero crecientes y luego decrecientes (rendimientos mixtos).</p>
+<p>Gráficamente, en <span class="math inline">\(\mathbb{R}^3\)</span>, la función de producción es una superficie en forma de colina. Si se fija uno de los factores (p.&nbsp;ej. <span class="math inline">\(\bar{K}\)</span>) y se varía el otro (<span class="math inline">\(L\)</span>), se obtiene un corte de la superficie, la función de producción a corto plazo, que muestra la relación entre el factor variable y el <em>output</em>. Si en cambio se fija el nivel de <em>output</em>, el corte horizontal es la isocuanta.</p>
+<p>Estos dos cortes permiten introducir los conceptos esenciales de la teoría de la producción, las productividades media y marginal a partir del primero y la relación marginal de sustitución técnica y la elasticidad de sustitución a partir del segundo.</p>
+<p>En el plano <span class="math inline">\((L, x)\)</span> (figura <a href="#fig-a112-funcion-produccion-r2" class="quarto-xref"><span>A11.2</span></a>), el primer corte se representa con tres elementos:</p>
+<ol type="1">
+<li><p><em>Función de producción a corto plazo</em>, <span class="math inline">\(x = f(\bar{K}, L)\)</span>: con rendimientos mixtos, es primero convexa y luego cóncava.</p></li>
+<li><p><em>Radio-vector</em>: une el origen con un punto de la curva, y su pendiente, <span class="math inline">\(\tan \beta\)</span>, es la productividad media.</p></li>
+<li><p><em>Óptimo técnico</em>: en el punto en que el radio-vector es tangente a la curva, con <span class="math inline">\(L_{\text{OT}}\)</span> unidades de trabajo, la productividad media es máxima.</p></li>
+</ol>
+<div id="fig-a112-funcion-produccion-r2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a112-funcion-produccion-r2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a112_Funcion_produccion_R2.html" style="height:560px" loading="lazy" title="fig-a112-funcion-produccion-r2"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a112-funcion-produccion-r2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A11.2: Función de producción a corto plazo (<span class="math inline">\(\bar{K}\)</span> fijo) con rendimientos mixtos. En el óptimo técnico el radio-vector es tangente a la curva y la productividad media es máxima.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="derivadas-el-concepto-de-productividad" class="level4">
+<h4 class="anchored" data-anchor-id="derivadas-el-concepto-de-productividad">1.2.2. Derivadas: el concepto de productividad</h4>
+<p>La <strong>productividad</strong> mide la contribución de los factores al proceso productivo. Se distingue entre productividad marginal y media, conceptos básicos de las leyes de producción a corto plazo.</p>
+<p><strong>Productividad marginal</strong>: el incremento en el producto total ante un incremento infinitesimal de un factor variable, <em>ceteris paribus</em>, si el factor es perfectamente divisible (si no lo es, <span class="math inline">\(\text{Pmg}_L = \Delta x / \Delta L\)</span>):</p>
+<p><span class="math display">\[\text{Pmg}_L \equiv f_L' = \frac{\partial f(K, L)}{\partial L}\]</span></p>
+<p>Gráficamente, en el plano <span class="math inline">\((L, x)\)</span> (figura <a href="#fig-a112-funcion-produccion-r2" class="quarto-xref"><span>A11.2</span></a>), es la pendiente de la función de producción en cada punto, creciente en su tramo convexo (rendimientos marginales crecientes), decreciente en el cóncavo y nula en el máximo técnico (apartado 2.1.2).</p>
+<p><strong>Productividad media</strong>: el producto total obtenido por unidad de factor variable aplicado:</p>
+<p><span class="math display">\[\text{Pme}_L \equiv \frac{f(K, L)}{L} = \frac{x}{L}\]</span></p>
+<p>Gráficamente, es la pendiente del radio-vector trazado desde el origen (<span class="math inline">\(\tan \beta\)</span>). La productividad media, <span class="math inline">\(\tan \beta\)</span>, crece al aumentar <span class="math inline">\(L\)</span> hasta que el radio-vector es tangente a la función de producción (figura <a href="#fig-a112-funcion-produccion-r2" class="quarto-xref"><span>A11.2</span></a>).</p>
+<p>La relación entre productividad marginal y media tiene una lógica económica directa:</p>
+<ul>
+<li><p>Cuando la <span class="math inline">\(\text{Pmg}_L\)</span> es superior a la <span class="math inline">\(\text{Pme}_L\)</span>, cada trabajador adicional produce más que la media, por lo que la media sube.</p></li>
+<li><p>Cuando la <span class="math inline">\(\text{Pmg}_L\)</span> es inferior a la <span class="math inline">\(\text{Pme}_L\)</span>, cada trabajador adicional produce menos que la media, por lo que la media cae.</p></li>
+</ul>
+<p>Por ello, ambas productividades coinciden necesariamente cuando la productividad media alcanza su máximo en lo que se denomina <em>óptimo técnico</em>, donde el radio-vector es tangente a la función de producción (figura <a href="#fig-a112-funcion-produccion-r2" class="quarto-xref"><span>A11.2</span></a>).</p>
+</section>
+</section>
+<section id="las-curvas-isocuantas" class="level3">
+<h3 class="anchored" data-anchor-id="las-curvas-isocuantas">1.3. Las curvas isocuantas</h3>
+<p>Las curvas de nivel de la superficie de la función de producción, trasladadas al plano de los factores productivos, componen el mapa de las que en economía se llaman <strong>curvas isocuantas</strong>.</p>
+<p><strong>Definición</strong>: una isocuanta recoge los distintos modos de combinar los factores que dan un mismo volumen de producto<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+<p><strong>Propiedades</strong>:</p>
+<ul>
+<li><p><em>Ordenación</em>: no se cortan, y las más alejadas del origen reflejan mayor nivel de producto.</p></li>
+<li><p><em>Pendiente</em>: negativa en el plano <span class="math inline">\((L, K)\)</span> (si se cumple la eficiencia técnica).</p></li>
+<li><p><em>Forma</em>: lineales (sustituibilidad perfecta), angulares/Leontief (complementariedad perfecta), quebradas (sustituibilidad limitada, programación lineal) y continuas y convexas (sustituibilidad continua e imperfecta).</p></li>
+</ul>
+<section id="pendiente-de-la-isocuanta-la-relación-marginal-de-sustitución-técnica" class="level4">
+<h4 class="anchored" data-anchor-id="pendiente-de-la-isocuanta-la-relación-marginal-de-sustitución-técnica">1.3.1. Pendiente de la isocuanta: la relación marginal de sustitución técnica</h4>
+<p>Analíticamente, para dos factores cualesquiera, <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>, con los demás constantes, la pendiente de la isocuanta es:</p>
+<p><span class="math display">\[dx = \frac{\partial f}{\partial z_i} dz_i + \frac{\partial f}{\partial z_j} dz_j = 0 \;\Rightarrow\; \text{RMST}_{ji} = -\frac{dz_j}{dz_i}\bigg|_{x_0} = \frac{\partial f/\partial z_i}{\partial f/\partial z_j}\]</span></p>
+<p>Con los dos factores de este tema, trabajo y capital, es <span class="math inline">\(\text{RMST}_{KL} = -dK/dL\,|_{x_0} = (\partial f/\partial L)/(\partial f/\partial K)\)</span>. La RMST muestra la tasa a la que se puede sustituir un factor por otro manteniendo la producción constante. Económicamente, mide cuántas unidades de capital puede liberar la empresa al contratar una unidad adicional de trabajo, sin que cambie su nivel de <em>output</em>, y es una medida de la sustituibilidad en términos de contribución marginal relativa.</p>
+<p>Si la <span class="math inline">\(\text{Pmg}_L\)</span> es elevada en relación con la <span class="math inline">\(\text{Pmg}_K\)</span>, una unidad de trabajo sustituye muchas unidades de capital, y la RMST es alta. A medida que se sustituye capital por trabajo, la <span class="math inline">\(\text{Pmg}_L\)</span> tiende a caer y la <span class="math inline">\(\text{Pmg}_K\)</span> a subir, y la cuasiconcavidad garantiza que su cociente, la RMST, sea decreciente.</p>
+<p>La RMST equivale, en la producción, a la relación marginal de sustitución (RMS) del consumidor, pero, como la función de producción es cardinal, la magnitud de las contribuciones marginales sí tiene significado. La limitación de la RMST, con todo, es que depende de las unidades en que se mida cada factor, que pueden ser distintas.</p>
+<p>Gráficamente, en el plano <span class="math inline">\((L, K)\)</span> (figura <a href="#fig-a113-isocuanta" class="quarto-xref"><span>A11.3</span></a>), cada isocuanta, <span class="math inline">\(x_0\)</span> o <span class="math inline">\(x_1\)</span>, reúne las combinaciones de trabajo y capital que dan ese nivel de producción. Tiene pendiente negativa porque, con productividades marginales positivas, emplear más trabajo permite producir lo mismo con menos capital, y es convexa respecto al origen porque la RMST es decreciente. Su pendiente en cada punto, cambiada de signo, es la RMST, y las más alejadas del origen recogen una producción mayor (<span class="math inline">\(x_1 &gt; x_0\)</span>).</p>
+<div id="fig-a113-isocuanta" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a113-isocuanta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a113_Isocuanta.html" style="height:560px" loading="lazy" title="fig-a113-isocuanta"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a113-isocuanta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A11.3: Isocuanta. La curva reúne las combinaciones de factores que generan el mismo nivel de producción. Su pendiente, cambiada de signo, es la relación marginal de sustitución técnica.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="forma-de-la-isocuanta-la-elasticidad-de-sustitución-técnica-hicks-1932" class="level4">
+<h4 class="anchored" data-anchor-id="forma-de-la-isocuanta-la-elasticidad-de-sustitución-técnica-hicks-1932">1.3.2. Forma de la isocuanta: la elasticidad de sustitución técnica (Hicks, 1932)</h4>
+<p>Medir la sustituibilidad con la RMST choca con el problema de las unidades. La EST lo evita porque relaciona dos variaciones porcentuales, la de la mezcla factorial y la de la RMST, cuyo cociente no depende de las unidades. Para dos factores cualesquiera, <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>, y, en particular, para el capital y el trabajo:</p>
+<p><span class="math display">\[\begin{aligned} \sigma_{ji} &amp;= \frac{\partial \ln(z_j/z_i)}{\partial \ln \text{RMST}_{ji}}\bigg|_{x_0} \geq 0 \\ \sigma_{KL} &amp;= \frac{\Delta\%(K/L)}{\Delta\%(\text{RMST}_{KL})}\bigg|_{x_0} = \frac{d(K/L)}{d\,\text{RMST}_{KL}} \cdot \frac{\text{RMST}_{KL}}{K/L} = \frac{\partial \ln(K/L)}{\partial \ln \text{RMST}_{KL}} \end{aligned}\]</span></p>
+<p>Cuando la EST es alta, los factores se sustituyen con facilidad, y la RMST (el cociente de productividades marginales) apenas se mueve aunque cambie la mezcla factorial. Con dos factores y minimización de costes (<span class="math inline">\(\text{RMST} = w/r\)</span>), la EST coincide con la respuesta de la mezcla factorial al precio relativo de los factores. Con más de dos factores, se generaliza mediante la elasticidad parcial de Allen (1938), que se estudia en el tema <a href="../chapters/a12-costes.html">A12</a>.</p>
+<p>Son casos especiales la función lineal (<span class="math inline">\(\sigma = \infty\)</span>, sustituibilidad perfecta), la Leontief (<span class="math inline">\(\sigma = 0\)</span>, complementariedad perfecta) y la Cobb-Douglas (<span class="math inline">\(\sigma = 1\)</span>, sustituibilidad proporcional). En esta última, la ratio <span class="math inline">\(K/L\)</span> varía en la misma proporción que la RMST, de modo que, con minimización de costes, las participaciones relativas de los factores en el coste se mantienen constantes. Para funciones de elasticidad de sustitución constante (CES), <span class="math inline">\(x = (\alpha K^\rho + \beta L^\rho)^{1/\rho}\)</span> con <span class="math inline">\(\alpha, \beta &gt; 0\)</span>, la EST es constante e igual a <span class="math inline">\(\sigma = \frac{1}{1 - \rho}\)</span>.</p>
+<p>Gráficamente, en el plano <span class="math inline">\((L, K)\)</span> (figura <a href="#fig-a114-es" class="quarto-xref"><span>A11.4</span></a>), una EST alta corresponde a una isocuanta poco curvada, en la que un mismo cambio en la proporción de factores apenas altera la RMST y la sustitución resulta sencilla. Se ilustra con tres elementos:</p>
+<ol type="1">
+<li><p><em>Radio-vectores</em> <span class="math inline">\((K/L)_1\)</span>, <span class="math inline">\((K/L)_2\)</span> y <span class="math inline">\((K/L)_3\)</span>: representan tres procesos productivos independientes y mutuamente excluyentes, con diferentes proporciones relativas de factores. Los movimientos sobre un radio-vector son cambios en la escala de producción, y el paso de uno a otro, <span class="math inline">\(\Delta(K/L)\)</span>, un cambio en las proporciones relativas de factores.</p></li>
+<li><p><em>Isocuantas de dos empresas</em>, <span class="math inline">\(x_0^A\)</span> y <span class="math inline">\(x_0^B\)</span>: para un mismo nivel de producción, sus puntos de corte con los radio-vectores reflejan las combinaciones factoriales que cada empresa requiere para alcanzar ese nivel.</p></li>
+<li><p><em>Pendientes en los puntos de corte</em>: reflejan la RMST de cada empresa, de <span class="math inline">\(\text{RMST}_1^A\)</span> a <span class="math inline">\(\text{RMST}_3^A\)</span> y de <span class="math inline">\(\text{RMST}_1^B\)</span> a <span class="math inline">\(\text{RMST}_3^B\)</span>. Cuanto más convexa la isocuanta respecto al origen, menor es la EST, ya que el cambio en la pendiente de la isocuanta (la RMST) es grande en comparación con el cambio en la pendiente de los radio-vectores (la proporción <span class="math inline">\(K/L\)</span>). Por eso, para el mismo <span class="math inline">\(\Delta(K/L)\)</span>, la RMST varía más a lo largo de <span class="math inline">\(x_0^A\)</span> que de <span class="math inline">\(x_0^B\)</span>.</p></li>
+</ol>
+<div id="fig-a114-es" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a114-es-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a114_ES.html" style="height:580px" loading="lazy" title="fig-a114-es"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a114-es-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A11.4: Elasticidad de sustitución técnica. Para el mismo cambio en la proporción de factores, del radio-vector <span class="math inline">\((K/L)_1\)</span> al <span class="math inline">\((K/L)_3\)</span>, la RMST varía más a lo largo de la isocuanta más convexa, <span class="math inline">\(x_0^A\)</span> (<span class="math inline">\(\sigma^A\)</span> baja), que a lo largo de la más recta, <span class="math inline">\(x_0^B\)</span> (<span class="math inline">\(\sigma^B\)</span> alta).
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="eficiencia-técnica-y-región-económica" class="level4">
+<h4 class="anchored" data-anchor-id="eficiencia-técnica-y-región-económica">1.3.3. Eficiencia técnica y región económica</h4>
+<p>Las herramientas anteriores permiten delimitar la parte del mapa de isocuantas que interesa al productor. Una empresa racional nunca emplea un factor en una cantidad tal que su productividad marginal sea negativa, porque reduciendo ese factor obtendría más <em>output</em> con menos <em>input</em> (el plan sería técnicamente ineficiente). Por eso solo es relevante el tramo de las isocuantas con pendiente negativa (<span class="math inline">\(\text{RMST} \geq 0\)</span>), que forma la <em>región económica</em>, la zona del mapa de isocuantas en la que tiene sentido producir.</p>
+<p>Dentro de la <strong>región económica</strong> (figura <a href="#fig-a119-region-economica" class="quarto-xref"><span>A11.5</span></a>), ambos factores tienen <span class="math inline">\(\text{Pmg}\)</span> positiva, las isocuantas son decrecientes y hay eficiencia técnica. Fuera de ella, uno de los factores tiene <span class="math inline">\(\text{Pmg}\)</span> negativa y las isocuantas son crecientes, pero esa zona solo existe si se prescinde del axioma de libre disposición, porque este excluye cualquier productividad marginal negativa. Separan las dos zonas las líneas de contorno (<em>ridge lines</em>), sobre las que la <span class="math inline">\(\text{Pmg}\)</span> de uno de los dos factores vale cero. Las líneas de contorno son isoclinas rectas si la función es homotética e irregulares en otro caso.</p>
+<p>Esta delimitación enlaza con las leyes de producción. En particular, con rendimientos constantes a escala, la región económica se corresponde con la etapa II del corto plazo, la región exterior superior (exceso de capital) con la etapa I y la región exterior inferior (exceso de trabajo) con la etapa III (apartado 2.1.2). Sin embargo, en general solo es exacta la correspondencia entre la región exterior inferior (<span class="math inline">\(\text{Pmg}_L &lt; 0\)</span>) y la etapa III.</p>
+<div id="fig-a119-region-economica" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a119-region-economica-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a119_Region_economica.html" style="height:560px" loading="lazy" title="fig-a119-region-economica"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a119-region-economica-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A11.5: Región económica. Las líneas de contorno, rectas desde el origen porque la función es homotética, pasan por los puntos en que las isocuantas <span class="math inline">\(x_0 &lt; x_1 &lt; x_2\)</span> son verticales (<span class="math inline">\(\text{Pmg}_K = 0\)</span>) u horizontales (<span class="math inline">\(\text{Pmg}_L = 0\)</span>). Entre ellas queda la región económica (sombreada), con isocuantas decrecientes, y fuera, las zonas de exceso de capital y de exceso de trabajo, con isocuantas crecientes.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="de-la-tecnología-a-la-decisión" class="level3">
+<h3 class="anchored" data-anchor-id="de-la-tecnología-a-la-decisión">1.4. De la tecnología a la decisión</h3>
+<p>En este tema la empresa se estudia solo como unidad técnica, y los apartados anteriores describen los elementos de su problema: el conjunto de elección (los planes técnicamente posibles) y su ordenación (la función de producción y sus isocuantas). Sin embargo, para llegar a una decisión el análisis debe incorporar después dos tipos de consideraciones.</p>
+<p>Por un lado, las consideraciones económicas se introducen con el coste de los factores (tema <a href="../chapters/a12-costes.html">A12</a>, apartado 1.4). Los precios de los factores y el presupuesto de la empresa definen entonces su restricción, que es la recta isocoste. Al combinar esa restricción con la tecnología se obtiene el equilibrio de la empresa, ya sea minimizando el coste de un nivel de producción dado, ya sea maximizando el <em>output</em> para un coste dado.</p>
+<p>Por otro lado, las consideraciones de mercado se introducen con el precio del producto (tema <a href="../chapters/a16-competencia-perfecta.html">A16</a>, apartado 1.3). En este caso, decidir cuánto producir y a qué precio exige conocer, además, el mercado en el que la empresa vende su producto.</p>
+</section>
+<section id="conclusiones" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones">1.5. Conclusiones</h3>
+<p>Al prescindir de precios y costes, la teoría caracteriza la empresa por sus restricciones técnicas. Los axiomas del conjunto de posibilidades de producción delimitan los planes técnicamente posibles, cuya frontera reúne los eficientes. Los axiomas de escala determinan los rendimientos, constantes con aditividad y proporcionalidad, decrecientes si el conjunto es estrictamente convexo y crecientes con aditividad sin proporcionalidad, un caso que la teoría neoclásica excluye. La función de producción describe esa frontera como una relación cardinal y, a factor fijo, sus productividades marginal y media coinciden en el óptimo técnico. Sobre la isocuanta, la RMST mide la sustitución en el margen, y la elasticidad de sustitución, su facilidad sin depender de las unidades. La región económica descarta, por último, las combinaciones con alguna productividad marginal negativa.</p>
+<p>Este instrumental no basta para decidir cuánto producir, porque faltan los precios de los factores y del producto. Permite, en cambio, ordenar la respuesta del <em>output</em> cuando varían un factor, todos o la tecnología, objeto de las leyes de producción de la sección 2.</p>
+</section>
+</section>
+<section id="leyes-de-producción" class="level2">
+<h2 class="anchored" data-anchor-id="leyes-de-producción">2. Leyes de producción</h2>
+<p>La empresa puede aumentar su producción alterando la combinación factorial. Sin embargo, si dispone de poco tiempo o existen costes de ajuste, puede ser difícil modificar la mezcla. Por ello se distinguen cuatro marcos temporales:</p>
+<ol type="1">
+<li><p><em>Muy corto plazo</em>: la producción ya está realizada y la cantidad ofrecida es fija (el periodo de mercado de la teoría de mercados, tema <a href="../chapters/a16-competencia-perfecta.html">A16</a>).</p></li>
+<li><p><em>Corto plazo</em>: al menos un factor es fijo y solo puede variarse el otro, lo que da lugar a la ley de las proporciones variables.</p></li>
+<li><p><em>Largo plazo</em>: todos los factores son variables y la cuestión relevante son los rendimientos a escala.</p></li>
+<li><p><em>Muy largo plazo</em>: también la tecnología cambia, y el análisis pasa a ser el del progreso técnico.</p></li>
+</ol>
+<section id="corto-plazo-ley-de-proporciones-variables" class="level3">
+<h3 class="anchored" data-anchor-id="corto-plazo-ley-de-proporciones-variables">2.1. Corto plazo: ley de proporciones variables</h3>
+<p>En el corto plazo, solo un factor es variable y la tecnología es fija. De ahí que la única forma de aumentar la producción sea aplicar más factor variable. Dado que la proporción entre factores varía, la ley de proporciones variables establece que, llegado cierto punto, la contribución marginal al <em>output</em> del factor variable será decreciente y, llevada al extremo, negativa.</p>
+<section id="elasticidad-producto" class="level4">
+<h4 class="anchored" data-anchor-id="elasticidad-producto">2.1.1. Elasticidad-producto</h4>
+<p>A corto plazo, con al menos un factor fijo, la respuesta del <em>output</em> solo puede medirse respecto al factor variable. La <strong>elasticidad-producto</strong> es esa medida y desempeña en el corto plazo el papel que la elasticidad de escala desempeña en el largo. Su valor indica en qué etapa de la producción se encuentra la empresa y, con el precio del factor dado, determina la forma de las curvas de costes a corto plazo (tema <a href="../chapters/a12-costes.html">A12</a>, apartado 2.1).</p>
+<p>La relación entre productividad marginal y media se expresa mediante la elasticidad-producto:</p>
+<p><span class="math display">\[\varepsilon_{xL} = \frac{\Delta\% x}{\Delta\% L}\bigg|_{\bar{K}} = \frac{\partial x / x}{\partial L / L} = \frac{\partial x}{\partial L} \cdot \frac{L}{x} = \frac{\text{Pmg}_L}{\text{Pme}_L}\]</span></p>
+<p>En la función Cobb-Douglas, la elasticidad-producto de cada factor es constante e igual a su exponente. Por la relación entre cualquier magnitud marginal y su media (apartado 1.2.2), la elasticidad-producto es mayor que uno mientras la productividad media crece, menor que uno cuando decrece e igual a uno en el óptimo técnico.</p>
+</section>
+<section id="etapas-de-la-producción" class="level4">
+<h4 class="anchored" data-anchor-id="etapas-de-la-producción">2.1.2. Etapas de la producción</h4>
+<p><strong>Etapa I</strong>: llega hasta el margen extensivo (<span class="math inline">\(\varepsilon_{xL} &gt; 1\)</span>, <span class="math inline">\(\forall \, L \in (0, L_{\text{OT}})\)</span>, donde <span class="math inline">\(L_{\text{OT}}\)</span> es el óptimo técnico, máximo del producto medio). En ella sobra factor fijo respecto al variable, así que el capital no se aprovecha bien y, con rendimientos constantes a escala, su productividad marginal resulta incluso negativa en toda la etapa (<span class="math inline">\(\text{Pmg}_K &lt; 0\)</span>, fuera de la región económica). Por eso a la empresa le conviene seguir incorporando trabajadores. A lo largo de la etapa, la función de producción es primero creciente y convexa (<span class="math inline">\(f_L' &gt; 0\)</span>, <span class="math inline">\(f_{LL}'' &gt; 0\)</span>), con rendimientos marginales crecientes que, como los rendimientos crecientes a escala, pueden deberse a indivisibilidades, y después creciente y cóncava (<span class="math inline">\(f_L' &gt; 0\)</span>, <span class="math inline">\(f_{LL}'' &lt; 0\)</span>), con rendimientos marginales decrecientes a partir del punto de inflexión.</p>
+<p>Ese paso a rendimientos marginales decrecientes es el objeto de la <em>ley de rendimientos marginales decrecientes</em> (ley de Turgot, 1767). Según la ley, si se aumenta la utilización de un factor variable manteniendo el resto constante, a partir de cierto punto el producto total crece (<span class="math inline">\(f' &gt; 0\)</span>) cada vez menos (<span class="math inline">\(f'' &lt; 0\)</span>). Este principio es esencial porque, observado en múltiples industrias, explica la forma de las curvas de costes (<span class="math inline">\(\text{Cmg} = w/\text{Pmg}_L\)</span>, con <span class="math inline">\(w\)</span> el salario), las curvas de demanda de factores y las curvas de oferta a corto plazo.</p>
+<p><strong>Etapa II</strong>: va del margen extensivo al margen intensivo, situado en el máximo técnico (<span class="math inline">\(\varepsilon_{xL} \in [0, 1]\)</span>, <span class="math inline">\(\forall \, L \in [L_{\text{OT}}, L_{\text{MT}}]\)</span>), y en ella se altera la intensidad de uso. Con rendimientos constantes a escala coincide con la región económica, de modo que ambas productividades marginales son positivas. La empresa debería producir en esta etapa, aunque el punto exacto dentro de ella depende de la estructura de costes. Como la teoría de la producción no puede determinarlo por sí sola, se hace necesario el estudio de la teoría de costes.</p>
+<p><strong>Etapa III</strong>: es la de sobreexplotación (<span class="math inline">\(\varepsilon_{xL} &lt; 0\)</span> para todo <span class="math inline">\(L &gt; L_{\text{MT}}\)</span>, donde <span class="math inline">\(L_{\text{MT}}\)</span> es el máximo técnico, con <span class="math inline">\(\text{Pmg}_L = 0\)</span>). El factor variable es ya tan abundante frente al fijo que su productividad marginal pasa a ser negativa. Cada trabajador adicional reduce el producto total, así que ninguna empresa racional produce en esta etapa. La evidencia sobre las jornadas laborales ilustra la aproximación al máximo técnico. El producto crece en proporción a las horas hasta unas 49 horas semanales, a ritmo decreciente a partir de ahí y, por encima de unas 55 horas, prácticamente deja de aumentar (Pencavel, 2014).</p>
+<p>A corto plazo, por tanto, la elasticidad-producto depende de la fase de aplicación del factor variable, cuya contribución marginal acaba siendo decreciente y, llevada al extremo, negativa. Este fenómeno parece independiente del tipo de rendimientos a escala. Sin embargo, si la función es homogénea de grado <span class="math inline">\(h \leq 1\)</span> y cuasicóncava, es cóncava y la productividad marginal es no creciente, mientras que con rendimientos crecientes puede ser creciente en algún tramo.</p>
+<p>Gráficamente, con <span class="math inline">\(\bar{K}\)</span> fijo (figura <a href="#fig-a1110-etapas-produccion" class="quarto-xref"><span>A11.6</span></a>), la función de producción a corto plazo, <span class="math inline">\(x = f(\bar{K}, L)\)</span> (panel superior), y las productividades media y marginal del trabajo (panel inferior) delimitan las tres etapas. La <span class="math inline">\(\text{Pmg}_L\)</span> alcanza su máximo en el punto de inflexión y corta a la <span class="math inline">\(\text{Pme}_L\)</span> en el máximo de esta, en <span class="math inline">\(L_{\text{OT}}\)</span>, donde el radio-vector es tangente a la función de producción. La <span class="math inline">\(\text{Pmg}_L\)</span> se anula en <span class="math inline">\(L_{\text{MT}}\)</span>, donde el producto total es máximo.</p>
+<div id="fig-a1110-etapas-produccion" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a1110-etapas-produccion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a1110_Etapas_produccion.html" style="height:920px" loading="lazy" title="fig-a1110-etapas-produccion"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a1110-etapas-produccion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A11.6: Etapas de la producción a corto plazo (<span class="math inline">\(\bar{K}\)</span> fijo). El óptimo técnico, <span class="math inline">\(L_{\text{OT}}\)</span>, donde el radio-vector es tangente a <span class="math inline">\(x = f(\bar{K}, L)\)</span> y la <span class="math inline">\(\text{Pmg}_L\)</span> corta a la <span class="math inline">\(\text{Pme}_L\)</span> en su máximo, y el máximo técnico, <span class="math inline">\(L_{\text{MT}}\)</span>, donde la <span class="math inline">\(\text{Pmg}_L\)</span> se anula, separan las etapas I, II y III.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="largo-plazo-leyes-de-rendimientos-a-escala" class="level3">
+<h3 class="anchored" data-anchor-id="largo-plazo-leyes-de-rendimientos-a-escala">2.2. Largo plazo: leyes de rendimientos a escala</h3>
+<p>En el largo plazo, todos los factores son variables. Los rendimientos a escala describen la variación en el <em>output</em> cuando la escala de producción varía.</p>
+<section id="elasticidad-de-escala" class="level4">
+<h4 class="anchored" data-anchor-id="elasticidad-de-escala">2.2.1. Elasticidad de escala</h4>
+<p>La elasticidad de escala mide la respuesta del <em>output</em> a un cambio de escala, con la proporción entre factores constante, y es la contrapartida a largo plazo de la elasticidad-producto.</p>
+<p><strong>Definición</strong>: variación porcentual en el <em>output</em> ante una variación porcentual de todos los factores:</p>
+<p><span class="math display">\[\varepsilon_{x\lambda} = \frac{\Delta\% x}{\Delta\% \lambda} = \sum_{i=1}^{m} \varepsilon_{xz_i} \quad \xrightarrow{i = K, L} \quad \varepsilon_{x\lambda} = \varepsilon_{xK} + \varepsilon_{xL}\]</span></p>
+<p>La elasticidad de escala es la suma de las elasticidades-producto de los factores. Los rendimientos se clasifican en:</p>
+<ol type="1">
+<li><p><em>Rendimientos crecientes</em> (<span class="math inline">\(\varepsilon_{x\lambda} &gt; 1\)</span>): pueden deberse a las indivisibilidades en el proceso productivo (Wicksell, Edgeworth, Kaldor) y a la especialización y división del trabajo (Smith, 1776). Con la especialización, cada factor se dedica a una etapa concreta del proceso productivo, lo que aumenta la eficiencia global. Asimismo, cuestiones físicas pueden generar rendimientos crecientes. Así, duplicar el diámetro de un oleoducto cuadruplica el volumen, mientras que el material necesario solo se duplica.</p></li>
+<li><p><em>Rendimientos constantes</em> (<span class="math inline">\(\varepsilon_{x\lambda} = 1\)</span>): se explican por la posibilidad de replicar los procesos productivos y de reducirlos a escala (aditividad y proporcionalidad, apartado 1.1.3).</p></li>
+<li><p><em>Rendimientos decrecientes</em> (<span class="math inline">\(\varepsilon_{x\lambda} &lt; 1\)</span>): se deben a restricciones de capacidad rígida y a problemas internos de organización (burocracia, fallos de coordinación, costes de transacción). Williamson (1967), por ejemplo, explica el límite al tamaño de la empresa por la pérdida de control que sufren la información y las órdenes al pasar por cada nivel de la jerarquía (tema <a href="../chapters/a15-toi.html">A15</a>, apartado 1.2.3).</p></li>
+</ol>
+<p><strong>Caso de funciones homogéneas</strong>: una función es homogénea de grado <span class="math inline">\(h\)</span> si:</p>
+<p><span class="math display">\[f(\lambda K, \lambda L) = \lambda^h f(K, L), \quad \lambda \geq 0\]</span></p>
+<p>En una función homogénea de grado <span class="math inline">\(h\)</span> la elasticidad de escala es constante e igual al grado, <span class="math inline">\(\varepsilon_{x\lambda} = h\)</span>. En el caso Cobb-Douglas, el grado es la suma de los exponentes, <span class="math inline">\(h = \alpha + \beta\)</span>. La homogeneidad implica además la homoteticidad, es decir, que la RMST depende solo de las proporciones en que se combinan los factores y no de la escala. Las isocuantas son, por tanto, expansiones radiales unas de otras y la senda de expansión es una recta por el origen.</p>
+<p>Según el valor del grado, la función presenta rendimientos constantes si <span class="math inline">\(h = 1\)</span> (función linealmente homogénea), crecientes si <span class="math inline">\(h &gt; 1\)</span> y decrecientes si <span class="math inline">\(h &lt; 1\)</span>. Los rendimientos constantes (globales) equivalen a homogeneidad de grado uno, y con ellos las productividades marginales y medias dependen solo de la proporción entre factores y no de la escala. Con rendimientos crecientes o decrecientes, en cambio, la función no tiene por qué ser homogénea, pues la elasticidad de escala puede variar con el nivel de producción.</p>
+</section>
+<section id="rendimientos-locales-y-globales" class="level4">
+<h4 class="anchored" data-anchor-id="rendimientos-locales-y-globales">2.2.2. Rendimientos locales y globales</h4>
+<p><strong>Rendimientos locales</strong>: son los que presenta la tecnología <em>en un rango restringido de producción</em>, el entorno de una combinación concreta de factores, <span class="math inline">\(\mathbf{z}\)</span>. Se miden con la elasticidad de escala, que se calcula en ese punto y solo informa de lo que ocurre cuando, a partir de él, todos los factores aumentan en la misma proporción en una cuantía infinitesimal:</p>
+<p><span class="math display">\[\varepsilon_{x\lambda}(\mathbf{z}) = \frac{d f(\lambda \mathbf{z})}{d \lambda} \cdot \frac{\lambda}{f(\lambda \mathbf{z})}\bigg|_{\lambda = 1}\]</span></p>
+<p>donde <span class="math inline">\(\lambda\)</span> es el factor de escala. Los rendimientos son localmente crecientes, constantes o decrecientes en <span class="math inline">\(\mathbf{z}\)</span> según <span class="math inline">\(\varepsilon_{x\lambda}(\mathbf{z})\)</span> sea mayor, igual o menor que uno. Intuitivamente, indican si, con el tamaño actual de la empresa, un aumento del 1&nbsp;% de todos los factores eleva el <em>output</em>, aproximadamente, en más, en igual o en menos del 1&nbsp;%.</p>
+<p>Además, los rendimientos locales tienen una implicación directa en términos de eficiencia económica. Si la empresa, además de producir sobre la frontera, elige la combinación de factores que minimiza el coste de cada nivel de producción, la elasticidad-producto del coste en esa combinación es la inversa de la elasticidad de escala, <span class="math inline">\(\varepsilon_{Cx} = 1/\varepsilon_{x\lambda}\)</span>. Con precios de los factores dados, los rendimientos localmente crecientes equivalen, por tanto, a economías de escala (<span class="math inline">\(\varepsilon_{Cx} &lt; 1\)</span>), los constantes a su ausencia (<span class="math inline">\(\varepsilon_{Cx} = 1\)</span>) y los decrecientes a deseconomías de escala (<span class="math inline">\(\varepsilon_{Cx} &gt; 1\)</span>). La relación y sus consecuencias para la forma de las curvas de coste a largo plazo se desarrollan en el tema <a href="../chapters/a12-costes.html">A12</a>, apartados 1.4.4 y 2.4.</p>
+<p><strong>Rendimientos globales</strong>: son los que presenta la tecnología <em>en todo el rango de producción</em>, es decir, para cualquier combinación de factores y cualquier cambio de escala. Son, por tanto, una propiedad de toda la tecnología, como los axiomas, y se comprueban comparando la producción de cualquier plan ampliado, <span class="math inline">\(f(\lambda \mathbf{z})\)</span>, con la del plan inicial multiplicada por la escala, <span class="math inline">\(\lambda f(\mathbf{z})\)</span>. Son crecientes si <span class="math inline">\(f(\lambda \mathbf{z}) &gt; \lambda f(\mathbf{z})\)</span> para todo <span class="math inline">\(\mathbf{z}\)</span> con <span class="math inline">\(f(\mathbf{z}) &gt; 0\)</span> y todo <span class="math inline">\(\lambda &gt; 1\)</span>, y constantes o decrecientes si se cumple la igualdad o la desigualdad contraria. Intuitivamente, multiplicar todos los factores por cualquier <span class="math inline">\(\lambda &gt; 1\)</span> multiplica siempre el <em>output</em> por más de <span class="math inline">\(\lambda\)</span>, por <span class="math inline">\(\lambda\)</span> o por menos de <span class="math inline">\(\lambda\)</span>.</p>
+<p>Las dos nociones se enlazan a lo largo de cada radio-vector, donde la elasticidad de escala es la tasa a la que crece el logaritmo del <em>output</em> con el de la escala, <span class="math inline">\(d \ln f(\lambda \mathbf{z}) / d \ln \lambda = \varepsilon_{x\lambda}(\lambda \mathbf{z})\)</span>. Los rendimientos globales resultan, por tanto, de acumular los locales. Si la elasticidad de escala es mayor que uno en todos los puntos, al integrar se obtiene <span class="math inline">\(f(\lambda \mathbf{z}) &gt; \lambda f(\mathbf{z})\)</span> para todo <span class="math inline">\(\lambda &gt; 1\)</span>, y lo mismo ocurre en los otros dos casos. En particular, en una función homogénea de grado <span class="math inline">\(h\)</span> la elasticidad vale <span class="math inline">\(h\)</span> en todos los puntos, de modo que los rendimientos locales y los globales coinciden.</p>
+<p>En general, sin embargo, la elasticidad de escala cambia con el nivel de producción y la función puede no tener rendimientos globales de ningún tipo, como ocurre con los rendimientos mixtos. A lo largo de un radio-vector, en el plano <span class="math inline">\((\lambda, x)\)</span>, la producción tiene forma de S, con rendimientos localmente crecientes a pequeña escala y decrecientes a gran escala. Esa tecnología subyace a la curva de coste medio a largo plazo en forma de U en el plano <span class="math inline">\((x, C)\)</span> (tema <a href="../chapters/a12-costes.html">A12</a>, apartado 2.2).</p>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Ejemplo: rendimientos que cambian a lo largo de un radio-vector">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejemplo: rendimientos que cambian a lo largo de un radio-vector
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(x = f(K, L) = KL/(1 + KL)\)</span>. Las elasticidades-producto de los factores son <span class="math inline">\(\varepsilon_{xK} = f_K' \cdot K/x = 1/(1 + KL)\)</span> y, por simetría, <span class="math inline">\(\varepsilon_{xL} = 1/(1 + KL)\)</span>, de modo que la elasticidad de escala es</p>
+<p><span class="math display">\[\varepsilon_{x\lambda} = \varepsilon_{xK} + \varepsilon_{xL} = \frac{2}{1 + KL} = 2(1 - x)\]</span></p>
+<p>ya que <span class="math inline">\(1 + KL = 1/(1 - x)\)</span>. Los rendimientos son localmente crecientes mientras <span class="math inline">\(x &lt; 1/2\)</span>, constantes sobre la isocuanta <span class="math inline">\(x = 1/2\)</span> y decrecientes para <span class="math inline">\(x &gt; 1/2\)</span>. A lo largo del radio-vector que pasa por <span class="math inline">\((K_0, L_0)\)</span>, la producción <span class="math inline">\(x(\lambda) = \lambda^2 K_0 L_0 / (1 + \lambda^2 K_0 L_0)\)</span> es, en el plano <span class="math inline">\((\lambda, x)\)</span>, convexa a pequeña escala y cóncava a gran escala, con una asíntota en <span class="math inline">\(x = 1\)</span>.</p>
+<p>La inflexión está en <span class="math inline">\(x = 1/4\)</span> (<span class="math inline">\(\lambda^2 K_0 L_0 = 1/3\)</span>), pero los rendimientos cambian en <span class="math inline">\(x = 1/2\)</span> (<span class="math inline">\(\lambda^2 K_0 L_0 = 1\)</span>), donde el radio-vector desde el origen es tangente a la curva y <span class="math inline">\(x/\lambda\)</span> es máxima, como en el óptimo técnico del apartado 1.2.2. Entre ambos puntos la curva ya es cóncava, pero los rendimientos siguen siendo crecientes. La función no presenta rendimientos globales de ningún tipo, ya que duplicar los factores más que duplica el <em>output</em> cerca del origen y no llega a duplicarlo lejos de él.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="análisis-gráfico-de-los-rendimientos-a-escala" class="level4">
+<h4 class="anchored" data-anchor-id="análisis-gráfico-de-los-rendimientos-a-escala">2.2.3. Análisis gráfico de los rendimientos a escala</h4>
+<p>Gráficamente, en el plano <span class="math inline">\((L, K)\)</span> (figura <a href="#fig-a115-rendimientos-escala" class="quarto-xref"><span>A11.7</span></a>), con una función homogénea (isoclinas rectas), los rendimientos a escala se leen en la separación, medida a lo largo de una isoclina, entre las isocuantas de un nivel de producción de referencia y de sus múltiplos (<span class="math inline">\(x_0\)</span>, <span class="math inline">\(2x_0\)</span>, <span class="math inline">\(3x_0\)</span>…). Dependen así de dónde se sitúan las isocuantas, mientras que su forma la decide la elasticidad de sustitución entre factores. La figura representa los tres casos con una función homogénea de grado <span class="math inline">\(h\)</span>, cuyas isocuantas <span class="math inline">\(x_0\)</span>, <span class="math inline">\(2x_0\)</span> y <span class="math inline">\(3x_0\)</span> cortan el radio-vector en los puntos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span>:</p>
+<ul>
+<li><p><em>Rendimientos crecientes</em> (<span class="math inline">\(h &gt; 1\)</span>, panel a): si se duplican los factores se obtiene más del doble del nivel de producción, de modo que la isocuanta <span class="math inline">\(2x_0\)</span> se alcanza antes de duplicar la distancia al origen. La distancia entre isocuantas sucesivas es cada vez menor (<span class="math inline">\(\overline{OA} &gt; \overline{AB} &gt; \overline{BC}\)</span>).</p></li>
+<li><p><em>Rendimientos constantes</em> (<span class="math inline">\(h = 1\)</span>, panel b): si se duplican los factores se obtiene el doble del nivel de producción, y las isocuantas están igualmente espaciadas a lo largo del radio-vector (<span class="math inline">\(\overline{OA} = \overline{AB} = \overline{BC}\)</span>).</p></li>
+<li><p><em>Rendimientos decrecientes</em> (<span class="math inline">\(h &lt; 1\)</span>, panel c): si se duplican los factores se obtiene menos del doble, de modo que para alcanzar la isocuanta <span class="math inline">\(2x_0\)</span> hace falta más del doble de la distancia al origen. La distancia entre isocuantas sucesivas es cada vez mayor (<span class="math inline">\(\overline{OA} &lt; \overline{AB} &lt; \overline{BC}\)</span>).</p></li>
+</ul>
+<div id="fig-a115-rendimientos-escala" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a115-rendimientos-escala-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame wide">
+<iframe src="../graphs/a115_Rendimientos_escala.html" style="--r:1.943" loading="lazy" title="fig-a115-rendimientos-escala"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a115-rendimientos-escala-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A11.7: Rendimientos a escala con una función homogénea de grado <span class="math inline">\(h\)</span>. Sobre el radio-vector, la distancia entre las isocuantas <span class="math inline">\(x_0\)</span>, <span class="math inline">\(2x_0\)</span> y <span class="math inline">\(3x_0\)</span> se reduce con rendimientos crecientes (<span class="math inline">\(h = 1{,}5\)</span>, panel a), se mantiene con rendimientos constantes (<span class="math inline">\(h = 1\)</span>, panel b) y aumenta con rendimientos decrecientes (<span class="math inline">\(h = 0{,}6\)</span>, panel c).
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="muy-largo-plazo-progreso-tecnológico" class="level3">
+<h3 class="anchored" data-anchor-id="muy-largo-plazo-progreso-tecnológico">2.3. Muy largo plazo: progreso tecnológico</h3>
+<p>Cuando el horizonte es muy largo, la tecnología puede cambiar. La función de producción admite entonces un factor que refleja la mejora de los métodos productivos y desplaza la función con el tiempo.</p>
+<section id="definición-y-efectos" class="level4">
+<h4 class="anchored" data-anchor-id="definición-y-efectos">2.3.1. Definición y efectos</h4>
+<p>La idea de que la tecnología se mueve en el tiempo da lugar al concepto de <strong>progreso técnico</strong> o progreso tecnológico, que ha sido un objeto de estudio importante en la literatura moderna y ha tenido amplias aplicaciones en la macroeconomía. El progreso técnico se manifiesta de varias formas. La innovación de producto crea variedades de bienes ya conocidos o bienes que antes no existían, la innovación de proceso permite producir más con los mismos <em>inputs</em>, o lo mismo con menos, y los productos existentes pueden ganar calidad.</p>
+<p>Gráficamente, el progreso técnico se puede estudiar en tres planos (figura <a href="#fig-a116-progreso-tecnico" class="quarto-xref"><span>A11.8</span></a>). En la figura, el progreso adopta la forma <span class="math inline">\(x = A \cdot f(K, L)\)</span>, con un parámetro de eficiencia <span class="math inline">\(A\)</span> que pasa de <span class="math inline">\(A_0\)</span> a <span class="math inline">\(A_1 &gt; A_0\)</span> (progreso neutral en el sentido de Hicks), y las curvas finales son las discontinuas:</p>
+<ol type="1">
+<li><p><em>Productividad marginal</em> (panel a), en el plano <span class="math inline">\((L, \text{Pmg}_L)\)</span>: la curva se desplaza hacia afuera, de <span class="math inline">\(\text{Pmg}_L(L; A_0)\)</span> a <span class="math inline">\(\text{Pmg}_L(L; A_1)\)</span>.</p></li>
+<li><p><em>Función de producción</em> (panel b), en el plano <span class="math inline">\((L, x)\)</span>: pivota hacia arriba, de <span class="math inline">\(A_0 f(\bar{K}, L)\)</span> a <span class="math inline">\(A_1 f(\bar{K}, L)\)</span>.</p></li>
+<li><p><em>Isocuanta</em> (panel c), en el plano <span class="math inline">\((L, K)\)</span>: la isocuanta <span class="math inline">\(x_0\)</span> se desplaza hacia el origen, de <span class="math inline">\(x_0\,(A_0)\)</span> a <span class="math inline">\(x_0\,(A_1)\)</span>.</p></li>
+</ol>
+<p>Los tres paneles expresan la misma idea. Gracias al progreso técnico, un volumen de producto dado puede obtenerse con menos cantidad de factor y, si la cantidad de factor se mantiene, la producción que se obtiene con ella es mayor. El progreso técnico es <em>neutral</em> o <em>sesgado</em> según el criterio con el que se mida su efecto sobre los factores.</p>
+<div id="fig-a116-progreso-tecnico" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a116-progreso-tecnico-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame wide">
+<iframe src="../graphs/a116_Progreso_tecnico.html" style="--r:2.125" loading="lazy" title="fig-a116-progreso-tecnico"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a116-progreso-tecnico-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A11.8: Progreso técnico en <span class="math inline">\(x = A \cdot f(K, L)\)</span>, de <span class="math inline">\(A_0\)</span> a <span class="math inline">\(A_1 &gt; A_0\)</span> (curvas finales discontinuas). La curva de productividad marginal del trabajo se desplaza hacia afuera (panel a), la función de producción a corto plazo pivota hacia arriba (panel b) y la isocuanta <span class="math inline">\(x_0\)</span> se desplaza hacia el origen (panel c).
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="clasificación-del-progreso-tecnológico" class="level4">
+<h4 class="anchored" data-anchor-id="clasificación-del-progreso-tecnológico">2.3.2. Clasificación del progreso tecnológico</h4>
+<p>La historia del pensamiento económico ha prestado mucha atención a la clasificación del progreso técnico, porque sus efectos no se quedan en la producción y alcanzan al reparto de la renta. Cuando el progreso técnico eleva la productividad marginal de un factor más que la del otro, con una ratio capital-trabajo dada ese factor gana remuneración relativa y peso en la renta. John Hicks (1932) y Roy Harrod (1937; 1948) propusieron los dos criterios que más se usan.</p>
+<p><strong>Hicks</strong> (1932): se apoya en la RMST (<span class="math inline">\(= (\partial f/\partial L)/(\partial f/\partial K)\)</span>). En el plano <span class="math inline">\((L, K)\)</span> (figura <a href="#fig-a117-progreso-hicks" class="quarto-xref"><span>A11.9</span></a>), la RMST es la pendiente de la isocuanta <span class="math inline">\(x_0\)</span> sobre el radio-vector <span class="math inline">\((K/L)_0\)</span>, antes (<span class="math inline">\(\text{RMST}_0\)</span>, en <span class="math inline">\(t_0\)</span>) y después (<span class="math inline">\(\text{RMST}_1\)</span>, en <span class="math inline">\(t_1\)</span>) del progreso técnico:</p>
+<ol type="1">
+<li><p><em>Neutral</em>: una innovación tecnológica es neutral respecto de ambos factores, capital y trabajo, cuando, dada una ratio capital-trabajo, el cociente entre sus productividades marginales no varía. La <span class="math inline">\(\text{Pmg}\)</span> de ambos factores aumenta, así, en la misma proporción, la RMST sobre el radio-vector permanece constante (panel a) y la isocuanta se desplaza hacia el origen de forma radial, conservando su pendiente sobre cada radio-vector. La función es <span class="math inline">\(x_t = A(t) \cdot f(K_t, L_t)\)</span>, donde <span class="math inline">\(A(t)\)</span> refleja todos aquellos factores que influyen en la determinación de <span class="math inline">\(x\)</span> pero que no son ni <span class="math inline">\(K\)</span> ni <span class="math inline">\(L\)</span> (p.&nbsp;ej. saber empresarial, cualificación).</p></li>
+<li><p><em>Sesgado</em>: en el caso de que la productividad marginal de uno de los factores aumente en mayor proporción que la del otro, la RMST a lo largo del radio-vector cambia y la isocuanta se desplaza hacia el origen de forma sesgada:</p>
+<ul>
+<li><p><em>Intensificador del capital</em> (o ahorrador de trabajo): el progreso técnico eleva la productividad marginal del capital más que la del trabajo. Por ello, para una misma proporción de factores, la RMST disminuye (la isocuanta se hace más plana sobre el radio-vector, panel b), y la empresa sustituye trabajo por capital.</p></li>
+<li><p><em>Intensificador del trabajo</em> (o ahorrador de capital): el progreso eleva más la productividad marginal del trabajo, la RMST aumenta (la isocuanta se hace más inclinada sobre el radio-vector, panel c), y la empresa sustituye capital por trabajo.</p></li>
+</ul></li>
+</ol>
+<div id="fig-a117-progreso-hicks" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a117-progreso-hicks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame wide">
+<iframe src="../graphs/a117_Progreso_Hicks.html" style="--r:1.943" loading="lazy" title="fig-a117-progreso-hicks"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a117-progreso-hicks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A11.9: Clasificación de Hicks. Entre <span class="math inline">\(t_0\)</span> y <span class="math inline">\(t_1\)</span> la isocuanta <span class="math inline">\(x_0\)</span> se desplaza hacia el origen. Sobre el radio-vector <span class="math inline">\((K/L)_0\)</span>, la pendiente de la isocuanta (la RMST) se mantiene con progreso neutral (panel a), disminuye con progreso intensificador del capital o ahorrador de trabajo (panel b) y aumenta con progreso intensificador del trabajo o ahorrador de capital (panel c).
+</figcaption>
+</figure>
+</div>
+<p><strong>Harrod</strong> (1937; 1948): se basa en la participación relativa de los factores en la renta. Una innovación tecnológica es neutral si las participaciones relativas del capital y del trabajo en la renta nacional permanecen inalteradas para una determinada ratio capital-producto.</p>
+<p>Según demostraron Robinson (1938) y Uzawa (1961), esta condición exige que el progreso técnico adopte la forma de un aumento de la productividad del trabajo, <span class="math inline">\(x_t = f(K_t, A(t) \cdot L_t)\)</span>. En consecuencia, el progreso tecnológico hará que, conforme pasa el tiempo, con una misma cantidad de capital se precise una cantidad de trabajo cada vez menor para obtener la misma producción. Uzawa (1961) demostró, además, que la condición necesaria y suficiente para la existencia de un estado estacionario es que el progreso sea Harrod-neutral. Por esta razón, la neutralidad en el sentido de Harrod es la hipótesis estándar en los modelos de crecimiento de tipo Solow, ya que es la única forma de progreso técnico compatible con una senda de crecimiento equilibrado.</p>
+<p><strong>Solow</strong> (1960): una innovación es neutral si las participaciones relativas de los factores productivos en la renta nacional permanecen inalteradas para una ratio trabajo-producto. Implica que <span class="math inline">\(x_t = f(A(t) \cdot K_t, L_t)\)</span>. Para funciones Cobb-Douglas, los tres tipos de progreso neutro son equivalentes.</p>
+</section>
+<section id="conclusiones-1" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones-1">2.3.3. Conclusiones</h4>
+<p><strong>Aspectos positivos</strong>: el progreso técnico es uno de los determinantes fundamentales del crecimiento económico a largo plazo. Además, la clasificación de Hicks, Harrod y Solow permite distinguir los efectos distributivos del cambio tecnológico, con implicaciones relevantes de política económica. Por ejemplo, un progreso técnico ahorrador de trabajo puede generar desempleo tecnológico y exigir políticas de reconversión, mientras que un progreso neutral en el sentido de Harrod favorece un crecimiento equilibrado.</p>
+<p><strong>Limitaciones</strong>: para funciones de tipo Cobb-Douglas, los tres tipos de neutralidad son equivalentes, lo que simplifica el análisis pero limita la capacidad del modelo para capturar los efectos asimétricos del progreso técnico observados en la práctica.</p>
+</section>
+</section>
+<section id="conclusiones-2" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-2">2.4. Conclusiones</h3>
+<p>Cada horizonte tiene su medida de la respuesta del <em>output</em>. A corto plazo, la elasticidad-producto del factor variable sitúa a la empresa en una de las tres etapas. Solo la etapa II, entre el óptimo y el máximo técnicos, es compatible con una conducta racional, aunque el punto exacto dentro de ella dependa de los costes. A largo plazo, la elasticidad de escala, suma de las elasticidades-producto, clasifica los rendimientos. Los rendimientos globales resultan de acumular esa elasticidad, que es local, a lo largo de cada radio-vector y coinciden con los locales en las funciones homogéneas. A muy largo plazo, el progreso técnico desplaza la propia función, y su sesgo, según los criterios de Hicks, Harrod o Solow, altera el reparto de la renta entre los factores.</p>
+<p>Las tres leyes suponen un único <em>output</em> y una empresa que produce sobre la frontera. La sección 3 relaja ambos supuestos con la producción de varios bienes y con la medición de la distancia de las empresas reales a la frontera.</p>
+</section>
+</section>
+<section id="extensiones" class="level2">
+<h2 class="anchored" data-anchor-id="extensiones">3. Extensiones</h2>
+<p>El análisis anterior se extiende en dos direcciones. La primera considera la producción conjunta, la obtención de varios productos con unos recursos dados, paso previo al equilibrio general. La segunda contrasta la teoría con los datos y mide la distancia de las empresas reales a la frontera de producción.</p>
+<section id="producción-conjunta-el-caso-multiproducto" class="level3">
+<h3 class="anchored" data-anchor-id="producción-conjunta-el-caso-multiproducto">3.1. Producción conjunta: el caso multiproducto</h3>
+<p>Hasta aquí se ha supuesto que la empresa obtiene un único producto. Con esa hipótesis, era técnicamente eficiente siempre que operase sobre el tramo decreciente de sus isocuantas, el que delimita la región económica de la producción. En cambio, si la empresa obtiene varios <em>outputs</em>, situarse en el tramo decreciente de una isocuanta deja de ser condición suficiente para la eficiencia técnica.</p>
+<section id="planteamiento" class="level4">
+<h4 class="anchored" data-anchor-id="planteamiento">3.1.1. Planteamiento</h4>
+<p>Se producen dos bienes, <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>, con dos factores, <span class="math inline">\(K\)</span> y <span class="math inline">\(L\)</span>, mediante funciones de producción <span class="math inline">\(f_x\)</span> y <span class="math inline">\(f_y\)</span>. Equivale a situarse en una economía en la que existen dos productores, cada uno de los cuales produce un bien, aunque también podría interpretarse como un único productor que produce dos bienes. La producción conjunta está sujeta a una restricción de recursos, <span class="math inline">\(L_0 = L_x + L_y\)</span> y <span class="math inline">\(K_0 = K_x + K_y\)</span>. Es decir, la cantidad de factor aplicado en la producción de cada bien está limitada por la dotación de factores productivos de los que dispone la economía.</p>
+<p>Dados los supuestos, la empresa no solo tendrá que producir de forma técnicamente eficiente cada uno de los bienes, sino que deberá producir teniendo en cuenta la cantidad producida del otro bien y las dotaciones de los demás factores productivos. La eficiencia técnica exige que la RMST sea idéntica en ambas producciones:</p>
+<p><span class="math display">\[\text{RMST}_{KL}^x = \text{RMST}_{KL}^y \rightarrow \frac{\text{Pmg}_L^x}{\text{Pmg}_K^x} = \frac{\text{Pmg}_L^y}{\text{Pmg}_K^y}\]</span></p>
+<p>Con dos bienes, una asignación de factores es técnicamente eficiente cuando ningún cambio en el reparto de los factores permite producir más de uno de los bienes sin producir menos del otro, condición que define la curva de contratos. Nótese que esta es la misma condición de eficiencia en la producción que se estudia en la teoría del equilibrio general, la igualación de las RMST entre sectores productivos sin necesidad de precios. La diferencia es que, en equilibrio general, un vector de precios de factores común (<span class="math inline">\(w/r\)</span>) actúa como mecanismo de coordinación que garantiza esta igualación de forma descentralizada.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>El estudio de la eficiencia en la producción en un contexto de equilibrio general se desarrolla en el tema <a href="../chapters/a21-equilibrio-general.html">A21</a>, donde la condición <span class="math inline">\(\text{RMST}^x = \text{RMST}^y\)</span> aparece como componente de la eficiencia de Pareto y se conecta con los teoremas fundamentales del bienestar.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="caja-de-edgeworth-bowley-y-curva-de-contratos" class="level4">
+<h4 class="anchored" data-anchor-id="caja-de-edgeworth-bowley-y-curva-de-contratos">3.1.2. Caja de Edgeworth-Bowley y curva de contratos</h4>
+<p>En el diagrama de Edgeworth, las dimensiones de la caja son las dotaciones factoriales. Por eso, cualquier punto interior es una asignación de pleno empleo, aunque no se cumpla la eficiencia productiva. Las isocuantas de cada empresa muestran las combinaciones de factores para cada nivel de producción. Tienen mayor nivel cuanto más alejadas del origen, pendiente negativa en el plano <span class="math inline">\((L, K)\)</span> y son convexas si hay sustituibilidad imperfecta.</p>
+<p><strong>Superioridad de Pareto</strong>: si se parte de un punto como <span class="math inline">\(Z\)</span> (figura <a href="#fig-a118-edgeworth-fpp" class="quarto-xref"><span>A11.10</span></a>, panel a), los puntos en el interior de la lente definida por las isocuantas que pasan por dicho punto contendrán asignaciones superiores en el sentido de Pareto. Las asignaciones de la frontera de la lente, salvo sus dos vértices (<span class="math inline">\(Z\)</span> y el otro corte de ambas isocuantas), también son superiores en el sentido de Pareto a la asignación inicial. Maurice Allais denominó esta área encerrada “área del excedente distribuible” (1943).</p>
+<p><strong>Eficiencia de Pareto</strong>: si, además, estas asignaciones son tales que ninguna empresa puede aumentar su producción sin que la otra la disminuya, serán eficientes en el sentido de Pareto. El lugar geométrico de estas asignaciones nace de la tangencia de las isocuantas y se conoce como <em>curva de contratos</em>.</p>
+<p>La curva de contratos no es necesariamente una isoclina. En todos los puntos se cumple la condición de tangencia entre las isocuantas de cada empresa, si bien no necesariamente todos tienen la misma pendiente. Asimismo, las asignaciones sobre la curva de contratos no son comparables entre sí en el sentido de Pareto, ya que pasar de una a otra aumenta la producción de un bien a costa de la del otro.</p>
+<p>La curva de contratos incluye los vértices de la caja (en los que una empresa usa todos los factores y la otra nada). Su forma depende de la intensidad factorial. Así, es curvada por encima de la diagonal si <span class="math inline">\(x\)</span> es más capital-intensiva, por debajo si es menos, y recta si la intensidad es idéntica<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p>
+</section>
+<section id="curva-de-posibilidades-de-producción-o-curva-de-transformación" class="level4">
+<h4 class="anchored" data-anchor-id="curva-de-posibilidades-de-producción-o-curva-de-transformación">3.1.3. Curva de posibilidades de producción o curva de transformación</h4>
+<p>Proyectando los puntos de la curva de contratos en el plano de bienes (figura <a href="#fig-a118-edgeworth-fpp" class="quarto-xref"><span>A11.10</span></a>, panel b) se obtiene la <strong>curva de transformación</strong> (análoga a la FPP monoproducto). La curva de transformación refleja la máxima cantidad de <span class="math inline">\(x\)</span> producible para una determinada cantidad de <span class="math inline">\(y\)</span>, dada la tecnología y la dotación factorial. Recoge, por ello, las nociones de optimalidad paretiana y coste de oportunidad en la producción. Intuitivamente, expresa el hecho económico básico de que no hay suficientes recursos disponibles (tecnológicos y dotacionales) para producir todo lo que se desea de cada bien. La plena divisibilidad de los bienes considerados garantiza que la curva de transformación es continua.</p>
+<p>Cada punto de la curva es la imagen, en el plano de bienes, de una asignación situada sobre la curva de contratos, así que todos son óptimos de Pareto, y hay infinitos que no pueden ordenarse entre sí. Los puntos exteriores a la curva no pueden producirse con los recursos y la tecnología actuales, aunque el progreso tecnológico podría ponerlos a su alcance. Los interiores sí pueden producirse, pero son ineficientes, bien porque quedan recursos sin emplear, bien porque se reparten mal entre las dos producciones. Desde ellos cabría mantener el <em>output</em> de un bien y aumentar el del otro.</p>
+<div id="fig-a118-edgeworth-fpp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a118-edgeworth-fpp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a118_Edgeworth_FPP.html" style="height:1110px" loading="lazy" title="fig-a118-edgeworth-fpp"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a118-edgeworth-fpp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A11.10: Caja de Edgeworth-Bowley de la producción y curva de transformación. En la caja de dimensiones <span class="math inline">\(L_0 \times K_0\)</span> (a), las isocuantas <span class="math inline">\(x(Z)\)</span> e <span class="math inline">\(y(Z)\)</span> que pasan por la asignación ineficiente <span class="math inline">\(Z\)</span> encierran la lente de asignaciones Pareto-superiores. La curva de contratos (CC), por encima de la diagonal porque <span class="math inline">\(x\)</span> es más capital-intensiva, une las tangencias entre isocuantas, como <span class="math inline">\(M\)</span> y <span class="math inline">\(N\)</span>. Proyectada en el plano de bienes (b), la curva de contratos da la curva de transformación (FPP), con <span class="math inline">\(Z\)</span> en su interior y la lente proyectada en la región sombreada.
+</figcaption>
+</figure>
+</div>
+<p><strong>Pendiente</strong>: su valor absoluto, con productividades marginales positivas de ambos factores en las dos producciones, es la relación marginal de transformación (RMT). Para dos bienes cualesquiera, <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>, <span class="math inline">\(\text{RMT}_{ji} = -dx_j/dx_i\)</span> (con las dotaciones de factores dadas) mide cuántas unidades de <span class="math inline">\(j\)</span> hay que dejar de producir para obtener una más de <span class="math inline">\(i\)</span>. Con los dos bienes del modelo, <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>:</p>
+<p><span class="math display">\[\text{RMT}_{yx} = -\frac{dy}{dx}\bigg|_{K_0, L_0} = \frac{\text{Pmg}_L^y}{\text{Pmg}_L^x} = \frac{\text{Pmg}_K^y}{\text{Pmg}_K^x}\]</span></p>
+<p>Siempre que no existan externalidades y las productividades marginales de los factores sean positivas, existe una disyuntiva (<em>trade-off</em>) en la producción. Al aumentar la cantidad producida de un bien necesariamente ha de disminuir la cantidad producida de otro bien, lo que refleja la existencia de un coste de oportunidad a la hora de producir cualquiera de los dos bienes.</p>
+<p><strong>Interpretación desde la teoría de costes</strong>: la RMT se puede expresar como el cociente de costes marginales, <span class="math inline">\(\text{RMT}_{yx} = \text{Cmg}_x / \text{Cmg}_y\)</span>. Cabe esperar, por tanto, que la RMT aumente con movimientos en el sentido de las agujas del reloj a lo largo de la curva de transformación. Al producir más de <span class="math inline">\(x\)</span> y menos de <span class="math inline">\(y\)</span>, el <span class="math inline">\(\text{Cmg}_x\)</span> sube (rendimientos decrecientes) y el <span class="math inline">\(\text{Cmg}_y\)</span> baja, de modo que la ratio aumenta.</p>
+<p><strong>Forma</strong> (cóncava respecto al origen). La concavidad puede deberse a:</p>
+<ul>
+<li><p><em>Rendimientos decrecientes a escala</em>.</p></li>
+<li><p><em>Especialización de factores</em>: sustituibilidad imperfecta, pues algún factor es más adecuado para la producción de un bien que para la de otro.</p></li>
+<li><p><em>Distinta intensidad factorial con rendimientos constantes</em>: aunque los factores productivos sean homogéneos y las funciones de producción tengan rendimientos constantes a escala, la curva es cóncava si la fabricación de cada bien requiere distintas proporciones de factores.</p></li>
+</ul>
+<p>Como la curva de transformación y las curvas de indiferencia se representan en el mismo espacio de bienes, pueden superponerse. Si la tecnología es convexa (curva de transformación cóncava) y las preferencias son estrictamente convexas (curvas de indiferencia convexas), existe un único punto de tangencia entre la curva de transformación y la curva de indiferencia más alta alcanzable, en el que <span class="math inline">\(\text{RMT}_{yx} = \text{RMS}_{yx}\)</span>. Ese punto constituye el equilibrio general de producción y consumo de una economía con un solo agente (tipo Robinson Crusoe) o representada por una curva de indiferencia social.</p>
+</section>
+<section id="producción-conjunta-en-sentido-técnico-la-empresa-multiproducto" class="level4">
+<h4 class="anchored" data-anchor-id="producción-conjunta-en-sentido-técnico-la-empresa-multiproducto">3.1.4. Producción conjunta en sentido técnico: la empresa multiproducto</h4>
+<p><strong>Idea</strong>: el análisis anterior trata los dos bienes como producciones separadas que solo compiten por los factores (tecnologías <em>separables</em>). En cambio, hay producción conjunta en sentido estricto cuando un mismo proceso da varios productos a la vez, como la lana y la carne del ganado ovino o la gasolina y el gasóleo de una refinería. La tecnología se describe entonces con la función de transformación del apartado 1.2.1, <span class="math inline">\(F(x, y, \mathbf{z}) = 0\)</span>, que no puede separarse en una función de producción por bien.</p>
+<p><strong>Planteamiento</strong>: con unos factores dados, <span class="math inline">\(\bar{\mathbf{z}}\)</span>, la empresa precio-aceptante elige la combinación de productos que maximiza sus ingresos sobre su curva de transformación:</p>
+<p><span class="math display">\[\max_{x, y} \; p_x x + p_y y \qquad \text{s.a.:} \; F(x, y, \bar{\mathbf{z}}) = 0\]</span></p>
+<p><strong>CPO</strong>: con solución interior y la restricción agotada, eliminando el multiplicador entre las dos condiciones resulta</p>
+<p><span class="math display">\[\text{RMT}_{yx} = \frac{\partial F/\partial x}{\partial F/\partial y} = \frac{p_x}{p_y}\]</span></p>
+<p>La empresa se desplaza a lo largo de su curva de transformación hasta que el número de unidades de <span class="math inline">\(y\)</span> a las que renuncia por una más de <span class="math inline">\(x\)</span> iguala el precio relativo.</p>
+<p><strong>CSO</strong>: si la curva de transformación es cóncava (conjunto de producción convexo), la condición es suficiente, porque el objetivo es lineal.</p>
+<p><strong>Extensiones</strong>: dos casos completan el análisis.</p>
+<ul>
+<li><p><em>Proporciones fijas</em>: si los productos salen en una proporción técnica fija, <span class="math inline">\(y = \kappa x\)</span>, la empresa no elige la mezcla, sino solo la escala. Los dos productos tienen un coste conjunto que no puede repartirse entre ellos (oferta conjunta de Marshall, 1890), y la empresa produce hasta que el ingreso marginal del proceso, <span class="math inline">\(p_x + \kappa\, p_y\)</span>, iguala su coste marginal.</p></li>
+<li><p><em>Economías de alcance</em>: si producir los dos bienes en una sola empresa cuesta menos que hacerlo en dos, la producción conjunta tiene además una ventaja de costes (tema <a href="../chapters/a12-costes.html">A12</a>, apartado 3.2.3).</p></li>
+</ul>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la empresa multiproducto elige la mezcla de productos con la misma lógica marginal con la que la monoproducto elige la de factores, con la RMT frente al precio relativo de los productos en el papel de la RMST frente al de los factores.</p></li>
+<li><p><em>Limitaciones</em>: con proporciones fijas, el coste conjunto impide atribuir un coste propio a cada producto, de modo que el precio de cada uno lo fija su demanda, dada la escala del proceso.</p></li>
+</ul>
+</section>
+</section>
+<section id="análisis-empírico-fronteras-de-eficiencia" class="level3">
+<h3 class="anchored" data-anchor-id="análisis-empírico-fronteras-de-eficiencia">3.2. Análisis empírico: fronteras de eficiencia</h3>
+<p>La teoría supone que la empresa produce sobre la frontera (apartado 1.1.3), pero en la práctica empresas con acceso a la misma tecnología obtienen <em>outputs</em> distintos con los mismos <em>inputs</em>. De ahí que una de las principales líneas del análisis empírico de la producción sea la medición de la <strong>eficiencia productiva</strong>, que cuantifica la distancia de cada empresa a una frontera no observable, estimada a partir de la mejor práctica observada. Esa medición parte de la descomposición de Farrell (1957), y la frontera se estima después con el análisis envolvente de datos o con el análisis de fronteras estocásticas.</p>
+<p>Los dos métodos de estimación se aplican a la evaluación de hospitales, centros educativos y bancos, y a la competencia por comparación (tema <a href="../chapters/a20-regulacion.html">A20</a>, apartado 2.3.2). Además, con datos de panel, el índice de productividad de Malmquist descompone la variación de la productividad en cambio de eficiencia (acercamiento a la frontera) y cambio técnico (desplazamiento de la frontera). Por su parte, la ineficiencia-X (tema <a href="../chapters/a12-costes.html">A12</a>, apartado 3.1.2) ofrece una explicación de la distancia a la frontera.</p>
+<section id="medición-de-la-eficiencia-farrell-1957" class="level4">
+<h4 class="anchored" data-anchor-id="medición-de-la-eficiencia-farrell-1957">3.2.1. Medición de la eficiencia (Farrell, 1957)</h4>
+<p><strong>Idea</strong>: Farrell (1957) mide la eficiencia de una empresa por su distancia a la frontera y distingue en ella dos componentes:</p>
+<ul>
+<li><p><em>Eficiencia técnica</em> (ET): mide la máxima reducción radial de los <em>inputs</em> compatible con el <em>output</em> observado. Si la empresa produce <span class="math inline">\(x\)</span> con <span class="math inline">\(\mathbf{z}\)</span>, la ET es el menor <span class="math inline">\(\theta \in (0, 1]\)</span> tal que <span class="math inline">\(\theta \mathbf{z} \in V(x)\)</span>, el conjunto de requerimientos de <em>inputs</em> del apartado 1.2.1. Vale uno sobre la isocuanta y no depende de las unidades de medida.</p></li>
+<li><p><em>Eficiencia asignativa</em> (EA): mide si la mezcla de factores minimiza el coste a los precios vigentes y vale uno cuando la empresa emplea la proporción de factores del punto de tangencia entre la isocuanta y la recta isocoste (tema <a href="../chapters/a12-costes.html">A12</a>).</p></li>
+</ul>
+<p>El producto de ambas es la <em>eficiencia económica</em> o en costes, cociente entre el coste mínimo y el coste observado, <span class="math inline">\(\text{EE} = \text{ET} \cdot \text{EA}\)</span>. La medida de la eficiencia técnica puede orientarse también al <em>output</em> (máxima expansión radial del <em>output</em> con los <em>inputs</em> dados), y ambas orientaciones coinciden con rendimientos constantes a escala.</p>
+<p><strong>Desarrollo gráfico</strong>: con rendimientos constantes a escala la tecnología se resume en la isocuanta unitaria <span class="math inline">\(SS'\)</span> del plano de factores por unidad de producto, <span class="math inline">\((z_1/x, z_2/x)\)</span> (figura <a href="#fig-a1111-farrell" class="quarto-xref"><span>A11.11</span></a>). La empresa observada, <span class="math inline">\(P\)</span>, queda por encima de ella, y el radio-vector <span class="math inline">\(OP\)</span> corta la isocuanta en <span class="math inline">\(Q\)</span> y la recta isocoste <span class="math inline">\(AA'\)</span>, tangente a la isocuanta en <span class="math inline">\(Q'\)</span>, en <span class="math inline">\(R\)</span>. Así, <span class="math inline">\(\text{ET} = OQ/OP\)</span>, <span class="math inline">\(\text{EA} = OR/OQ\)</span> y <span class="math inline">\(\text{EE} = OR/OP\)</span>.</p>
+<div id="fig-a1111-farrell" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a1111-farrell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a1111_Farrell.html" style="height:580px" loading="lazy" title="fig-a1111-farrell"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a1111-farrell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A11.11: Medición de la eficiencia (Farrell, 1957). La empresa <span class="math inline">\(P\)</span> produce por encima de la isocuanta unitaria <span class="math inline">\(SS'\)</span>, y el radio-vector <span class="math inline">\(OP\)</span> corta la isocuanta en <span class="math inline">\(Q\)</span> y en <span class="math inline">\(R\)</span> la isocoste <span class="math inline">\(AA'\)</span>, tangente en <span class="math inline">\(Q'\)</span>, de modo que <span class="math inline">\(\text{ET} = OQ/OP\)</span>, <span class="math inline">\(\text{EA} = OR/OQ\)</span> y <span class="math inline">\(\text{EE} = OR/OP\)</span>.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: resume la eficiencia de cada empresa en un índice entre cero y uno, que no depende de las unidades de medida, y separa la ineficiencia técnica de la asignativa.</p></li>
+<li><p><em>Limitaciones</em>: mide la eficiencia respecto a la mejor práctica observada y no respecto a la frontera verdadera, que no es observable, de modo que el resultado depende de la muestra y del método con el que se estime la frontera.</p></li>
+</ul>
+</section>
+<section id="análisis-envolvente-de-datos-charnes-cooper-y-rhodes-1978" class="level4">
+<h4 class="anchored" data-anchor-id="análisis-envolvente-de-datos-charnes-cooper-y-rhodes-1978">3.2.2. Análisis envolvente de datos (Charnes, Cooper y Rhodes, 1978)</h4>
+<p><strong>Origen</strong>: Charnes, Cooper y Rhodes (1978) propusieron el análisis envolvente de datos (DEA, <em>data envelopment analysis</em>) para calcular la medida de Farrell con programación lineal, sin especificar una función de producción.</p>
+<p><strong>Idea</strong>: es un método no paramétrico que toma como frontera la menor tecnología que contiene todas las observaciones y cumple libre disposición, convexidad y rendimientos constantes (apartados 1.1.2 y 1.1.3).</p>
+<p><strong>Razonamiento</strong>: la ET de cada empresa resulta de un programa lineal que busca la combinación de empresas observadas que obtiene al menos su <em>output</em> con la menor fracción <span class="math inline">\(\theta\)</span> de sus <em>inputs</em>.</p>
+<p><strong>Extensiones</strong>: si se exige además que los pesos de la combinación sumen uno, se admiten rendimientos variables (Banker, Charnes y Cooper, 1984), y el cociente entre ambas medidas aísla la eficiencia de escala.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: no exige forma funcional y admite varios <em>outputs</em>.</p></li>
+<li><p><em>Limitaciones</em>: es determinista, de modo que atribuye a ineficiencia cualquier desviación, incluidos el error de medida y los <em>shocks</em> aleatorios, y es sensible a los valores atípicos.</p></li>
+</ul>
+</section>
+<section id="análisis-de-fronteras-estocásticas-aigner-lovell-y-schmidt-1977" class="level4">
+<h4 class="anchored" data-anchor-id="análisis-de-fronteras-estocásticas-aigner-lovell-y-schmidt-1977">3.2.3. Análisis de fronteras estocásticas (Aigner, Lovell y Schmidt, 1977)</h4>
+<p><strong>Origen</strong>: Aigner, Lovell y Schmidt (1977) y Meeusen y van den Broeck (1977) propusieron de forma independiente el análisis de fronteras estocásticas (SFA, <em>stochastic frontier analysis</em>).</p>
+<p><strong>Idea</strong>: es un método paramétrico que especifica una función de producción (Cobb-Douglas o translog) con un error compuesto:</p>
+<p><span class="math display">\[\ln x_i = \ln f(\mathbf{z}_i; \boldsymbol{\beta}) + v_i - u_i\]</span></p>
+<p>donde <span class="math inline">\(v_i\)</span> es un ruido simétrico y <span class="math inline">\(u_i \geq 0\)</span> la ineficiencia técnica, con distribución asimétrica (seminormal o exponencial).</p>
+<p><strong>Razonamiento</strong>: el modelo se estima por máxima verosimilitud, y la eficiencia técnica de cada empresa, <span class="math inline">\(\exp(-u_i)\)</span>, se infiere de la distribución de <span class="math inline">\(u_i\)</span> condicionada al residuo compuesto.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: a diferencia del DEA, separa ruido e ineficiencia y permite la inferencia estadística.</p></li>
+<li><p><em>Limitaciones</em>: impone una forma funcional y una distribución a la ineficiencia.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="conclusiones-3" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones-3">Conclusiones</h2>
+<p>La teoría de la producción estudia la empresa como unidad técnica, sujeta solo a la restricción tecnológica. La tecnología se resume en el conjunto de posibilidades de producción y en la función de producción que describe su frontera, de las que se derivan las productividades, la RMST y la elasticidad de sustitución. A partir de ellas, las leyes de producción ordenan la respuesta del <em>output</em> según el horizonte temporal. Así, a corto plazo rigen los rendimientos marginales decrecientes; a largo plazo, los rendimientos a escala, y a muy largo plazo, el progreso técnico, neutral o sesgado. Por su parte, la producción multiproducto traslada la eficiencia técnica a la asignación de factores entre bienes, y las fronteras de eficiencia miden la distancia de cada empresa a la mejor práctica. Sin embargo, al prescindir de precios, costes y organización interna, la teoría no basta para determinar cuánto produce la empresa, y sus resultados dependen de la forma funcional.</p>
+<p>Los conceptos de la producción sostienen buena parte del libro. En primer lugar, los rendimientos a escala determinan la forma de las curvas de coste, de las que parte la oferta competitiva (temas <a href="../chapters/a12-costes.html">A12</a> y <a href="../chapters/a16-competencia-perfecta.html">A16</a>), y, cuando son crecientes, dan lugar al monopolio natural y a la necesidad de regularlo (tema <a href="../chapters/a20-regulacion.html">A20</a>). En segundo lugar, en la teoría neoclásica, la productividad marginal fija la remuneración de los factores (tema <a href="../chapters/a03-neoclasicos.html">A03</a>), y producir sobre la curva de transformación es una de las condiciones de la eficiencia de Pareto en el equilibrio general (tema <a href="../chapters/a21-equilibrio-general.html">A21</a>). Por último, la función agregada con progreso técnico es el núcleo del modelo de Solow-Swan (tema <a href="../chapters/a43-crecimiento-i.html">A43</a>) y de la contabilidad del crecimiento, que separa la contribución de los factores de la de la tecnología (tema <a href="../chapters/a45-crecimiento-empirica.html">A45</a>).</p>
+<p>La productividad es muy heterogénea entre empresas, incluso dentro de industrias definidas de forma estrecha, donde las empresas con los mismos <em>inputs</em> medidos obtienen <em>outputs</em> muy distintos de forma persistente (Syverson, 2011). En la misma línea, Hsieh y Klenow (2009) mostraron que la dispersión entre plantas de las productividades marginales en valor, mayor en China y la India que en Estados Unidos, refleja una mala asignación de recursos que reduce la productividad agregada. Por otro lado, la automatización se estudia con modelos basados en tareas (Acemoglu y Restrepo, 2018), que describen la producción como un conjunto de tareas que pueden realizar el capital o el trabajo. En ellos, la automatización desplaza al trabajo y reduce su participación en la renta, mientras que la creación de nuevas tareas la restituye.</p>
+</section>
+<section id="anexo.-función-de-producción-neoclásica-de-buen-comportamiento" class="level2">
+<h2 class="anchored" data-anchor-id="anexo.-función-de-producción-neoclásica-de-buen-comportamiento">Anexo. Función de producción neoclásica de buen comportamiento</h2>
+<p>La función de producción se puede representar a través de muchas especificaciones, si bien en cualquier caso refleja la eficiencia de la tecnología, los rendimientos a escala, la intensidad factorial y la sustituibilidad de los factores. Se denomina función neoclásica de buen comportamiento a la que cumple una serie de criterios neoclásicos:</p>
+<ol type="1">
+<li><p><em>Eficiencia técnica</em>: cumple con los axiomas del productor racional. Destaca el axioma de <em>no free lunch</em>, según el cual no se puede producir sin utilizar <em>inputs</em>, aunque se admite la inacción. Formalmente, <span class="math inline">\(f(0, 0) = 0\)</span> y <span class="math inline">\(f(K, L) &gt; 0\)</span> para <span class="math inline">\(K, L &gt; 0\)</span>.</p></li>
+<li><p><em>Homogénea de grado uno</em>: presenta rendimientos constantes a escala, <span class="math inline">\(f(\lambda K, \lambda L) = \lambda f(K, L)\)</span>. Esta propiedad es condición necesaria y suficiente para que, con cualquier combinación de factores, remunerar cada factor según su productividad marginal agote la producción (teorema de Euler y su recíproco) y para expresar la función de producción en forma intensiva<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p></li>
+<li><p><em>Productividades marginales positivas</em>: <span class="math inline">\(f_K' &gt; 0\)</span>, <span class="math inline">\(f_L' &gt; 0\)</span>. Incrementos en la cantidad aplicada de factores productivos, manteniendo la cantidad aplicada del otro factor constante, tienen un efecto positivo sobre el <em>output</em>, dado que se cumple el criterio de eficiencia técnica. Es condición suficiente para que las isocuantas tengan pendiente negativa en el plano <span class="math inline">\((L, K)\)</span> (existe cierto grado de sustituibilidad o coste de oportunidad entre los factores).</p></li>
+<li><p><em>Productividades marginales decrecientes</em>: <span class="math inline">\(f_{KK}'' &lt; 0\)</span>, <span class="math inline">\(f_{LL}'' &lt; 0\)</span>. Es condición necesaria (pero no suficiente) para que la función sea estrictamente cóncava, propiedad útil en los programas de maximización del beneficio. La concavidad estricta exige además que <span class="math inline">\(f_{KK}'' f_{LL}'' - (f_{KL}'')^2 &gt; 0\)</span>, es decir, que la derivada cruzada segunda no sea demasiado grande, y solo es compatible con rendimientos decrecientes a escala. La función homogénea de grado uno de la propiedad 2 no la cumple, porque en ella esa expresión es nula (es cóncava, pero no estrictamente). En cambio, las productividades marginales decrecientes no son necesarias para la estricta cuasiconcavidad (RMST decreciente en <span class="math inline">\(L\)</span> a lo largo de cada isocuanta), que depende del signo de <span class="math inline">\(2 f_K' f_L' f_{KL}'' - (f_K')^2 f_{LL}'' - (f_L')^2 f_{KK}''\)</span>. Sí lo son para que exista un equilibrio en la contratación de factores productivos y, en un contexto dinámico, para que exista un estado estacionario. La conjunción de las propiedades 3 y 4 implica que a corto plazo existen rendimientos marginales decrecientes para cualquier nivel de producción (ley de Turgot).</p></li>
+<li><p><em>Derivadas cruzadas positivas</em>: <span class="math inline">\(f_{KL}'' &gt; 0\)</span>. La productividad marginal de cada factor aumenta con la cantidad empleada del otro, de modo que se prefieren combinaciones equilibradas de factores. Junto con las propiedades 3 y 4, garantiza que la RMST es decreciente, es decir, que la función de producción es estrictamente cuasicóncava (lo cual es compatible con cualquier tipo de rendimientos)<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>.</p></li>
+<li><p><em>Condiciones de Inada</em>: en productividad marginal, <span class="math inline">\(\lim_{K \rightarrow 0} f_K' = \infty\)</span> (cuando la cantidad de factor productivo es baja, su productividad marginal es muy elevada, lo que, junto con la condición siguiente, garantiza la existencia de un estado estacionario con capital positivo). En el otro extremo, <span class="math inline">\(\lim_{K \rightarrow \infty} f_K' = 0\)</span> (cuando la cantidad de factor productivo es alta, su productividad marginal es muy reducida, lo que elimina la posibilidad de crecimiento endógeno). En la función, <span class="math inline">\(\lim_{K \rightarrow 0} f(K, L) = 0\)</span> (cuando la cantidad de factor productivo tiende a cero, la producción se anula, es decir, el factor es esencial) y <span class="math inline">\(\lim_{K \rightarrow \infty} f(K, L) = \infty\)</span> (cuando la cantidad de factor productivo crece sin límite, también lo hace la producción). Análogamente para <span class="math inline">\(L\)</span>.</p></li>
+</ol>
+<p><strong>Ejemplo: la función Cobb-Douglas de rendimientos constantes</strong></p>
+<p>La participación de los capitalistas y de los trabajadores en la renta nacional permanecía más o menos constante, hecho observado por Paul Douglas cuando todavía era profesor de economía, antes de ser senador de Illinois (1949-1967). Le preguntó a su colega Charles Cobb si había una función de producción que cumpliese esta propiedad, y Cobb demostró que esta función existía y tomaba la forma <span class="math inline">\(x = K^\alpha L^\beta\)</span> con <span class="math inline">\(\alpha, \beta &gt; 0\)</span> y <span class="math inline">\(\alpha + \beta = 1\)</span>. Se puede verificar que cumple con todas las propiedades: eficiencia técnica (<span class="math inline">\(f(0,0) = 0\)</span>), rendimientos constantes (<span class="math inline">\(f(\lambda K, \lambda L) = \lambda^{\alpha+\beta} f(K,L) = \lambda f(K,L)\)</span>), productividades marginales positivas (<span class="math inline">\(f_K' = \alpha K^{\alpha-1} L^\beta &gt; 0\)</span>) y decrecientes (<span class="math inline">\(f_{KK}'' = \alpha(\alpha-1)K^{\alpha-2}L^\beta &lt; 0\)</span>), derivada cruzada positiva (<span class="math inline">\(f_{KL}'' = \alpha\beta K^{\alpha-1}L^{\beta-1} &gt; 0\)</span>) y, con ello, estricta cuasiconcavidad (preferencia por mezclas factoriales equilibradas), y condiciones de Inada (<span class="math inline">\(\lim_{K \rightarrow 0} f_K' = \infty\)</span>, <span class="math inline">\(\lim_{K \rightarrow \infty} f_K' = 0\)</span>).</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Cuando la economía es de intercambio puro, cualquier consumidor puede, intercambiando, convertir su dotación inicial en cualquier otra cesta del mismo valor a los precios vigentes. Sin embargo, el grupo en su conjunto no dispone de esa posibilidad, porque, para cada bien, el consumo total no puede exceder la dotación inicial total.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>La empresa no es solo un grupo de productores que cooperan para aprovechar la especialización, sino que tiene una estructura organizativa y un conjunto de derechos de propiedad determinados.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><em>Ejemplo</em>: <span class="math inline">\(\mathbf{y} = (-5, 2, -6, 3, 0)\)</span> significa que se producen 2 y 3 unidades de los bienes 2 y 4, se usan 5 y 6 unidades de los bienes 1 y 3, y del bien 5 no se produce nada.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Koutsoyiannis las restringe a combinaciones técnicamente eficientes (sin tramos de pendiente positiva), mientras que aquí se sigue la definición más general de Nicholson.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Siempre que <span class="math inline">\(L\)</span> esté en abscisas y <span class="math inline">\(K\)</span> en ordenadas. Si no, el razonamiento se invierte.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Función de producción intensiva: <span class="math inline">\(f(\lambda K, \lambda AL) = \lambda f(K, AL) \rightarrow f(K/AL, 1) = f(k) \rightarrow y = f(k)\)</span>. El producto por unidad de trabajo efectivo solo depende del capital por unidad de trabajo efectivo.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Que <span class="math inline">\(f_{KL}'' &gt; 0\)</span> no implica complementariedad en sentido estricto, porque, con producción dada, un cambio de precios relativos altera la mezcla factorial (sustitución), aunque al variar la escala ambos factores pueden moverse en el mismo sentido.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script>
+// Gráficos del libro (iframes .graph-frame).
+// 1) Escala única: los grosores, los discontinuos y el tamaño de los puntos de cada figura están fijados para verla a 680 px
+//    de ancho. Los marcos anchos (figuras de varios paneles) se estiran hasta la columna y las pantallas estrechas las encogen; aquí se
+//    compensa para que en pantalla las curvas midan siempre lo mismo (2,2 px las económicas, 1,4 las auxiliares, 1,2 ejes y flechas,
+//    0,8 las guías) y los puntos tengan el mismo tamaño en todas las figuras, sea cual sea el ancho al que se muestren.
+// 2) Ajusta la altura de cada iframe al elemento dibujado más bajo (curvas, ejes, etiquetas KaTeX).
+(function () {
+  var REF = 680;
+  function norm(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var s = d.querySelector("svg"); if (!s) return;
+      var w = s.getBoundingClientRect().width; if (!(w > 0)) return;
+      var r = REF / w;
+      var els = s.querySelectorAll("path, line, polyline, polygon, rect, circle, ellipse");
+      els.forEach(function (el) {
+        var cs = d.defaultView.getComputedStyle(el);
+        if (el.dataset.sw0 === undefined) {
+          el.dataset.sw0 = parseFloat(cs.strokeWidth) || 0;
+          el.dataset.da0 = (cs.strokeDasharray && cs.strokeDasharray !== "none") ? cs.strokeDasharray : "";
+          if (el.tagName.toLowerCase() === "circle" && el.r && el.r.baseVal.value > 0 && el.r.baseVal.value <= 9) {
+            el.dataset.r0 = el.r.baseVal.value;
+          }
+        }
+        var sw0 = +el.dataset.sw0;
+        if (sw0 > 0) el.style.strokeWidth = (sw0 * r).toFixed(3) + "px";
+        if (el.dataset.da0) {
+          el.style.strokeDasharray = el.dataset.da0.split(/[ ,]+/).map(function (v) {
+            return (parseFloat(v) * r).toFixed(3) + "px";
+          }).join(" ");
+        }
+        if (el.dataset.r0) el.setAttribute("r", (+el.dataset.r0 * r).toFixed(3));
+      });
+    } catch (e) {}
+  }
+  function fit(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var sy = d.defaultView.scrollY || 0, bottom = 0;
+      var els = d.querySelectorAll("svg path, svg line, svg circle, svg polyline, svg polygon, svg rect, svg text, svg ellipse, .katex-label");
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width > 0 || r.height > 0) bottom = Math.max(bottom, r.bottom + sy);
+      });
+      if (!(bottom > 20)) {
+        var svg = d.querySelector("svg"); var vb = svg && svg.getAttribute("viewBox");
+        if (vb) { var p = vb.split(/\s+/); bottom = f.clientWidth * (+p[3]) / (+p[2]); }
+      }
+      if (bottom > 20) f.style.height = Math.ceil(bottom + 10) + "px";
+    } catch (e) {}
+  }
+  // 3) Un gráfico de varios paneles no se amplía por encima del 110 % de su ancho de dibujo (viewBox). Los dibujados a
+  //    680 px quedan en 748 px como máximo, con rótulos de tamaño normal; los de 900 o 960 px, en el tope de 900 px del CSS.
+  function cap(f) {
+    try {
+      if (!f.parentElement || !f.parentElement.classList.contains("wide")) return;
+      var s = f.contentDocument && f.contentDocument.querySelector("svg"); if (!s) return;
+      var vb = s.viewBox && s.viewBox.baseVal; if (!vb || !(vb.width > 0)) return;
+      var m = Math.min(900, Math.round(vb.width * 1.1)) + "px";
+      if (f.style.maxWidth !== m) f.style.maxWidth = m;
+    } catch (e) {}
+  }
+  function both(f) { cap(f); norm(f); fit(f); }
+  function all() { document.querySelectorAll(".graph-frame iframe").forEach(both); }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".graph-frame iframe").forEach(function (f) {
+      f.addEventListener("load", function () { both(f); setTimeout(function () { both(f); }, 700); });
+    });
+  });
+  window.addEventListener("load", function () { setTimeout(all, 1200); });
+  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(all, 150); });
+})();
+</script>
+<style>
+.graph-frame { margin: 1.25rem 0 0.25rem; }
+.quarto-figure .graph-frame + * { margin-top: 0; }
+</style>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/librovol1\.arturolorenzo\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/a10-riesgo-incertidumbre.html" class="pagination-link" aria-label="A10. Elección en riesgo e incertidumbre">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">A10. Elección en riesgo e incertidumbre</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/a12-costes.html" class="pagination-link" aria-label="A12. Teoría de costes">
+        <span class="nav-page-text"><span class="chapter-title">A12. Teoría de costes</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

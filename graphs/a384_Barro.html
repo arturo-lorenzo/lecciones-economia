@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <line x1="105" y1="300" x2="575" y2="300" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="105" y1="480" x2="105" y2="40" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="delta-line" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-peak-h" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-peak" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+    <path id="barro-curve" fill="none" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+    <circle id="pt-peak" r="5" fill="black"/>
+    <circle id="pt-start" r="4" fill="black"/>
+    <circle id="pt-end" r="4" fill="black"/>
+  </svg>
+</div>
+<script>
+const W=680,H=520,OX=105,ZY=300;
+const alpha=0.55;
+const b=(1-alpha)/alpha;
+const tauStar=1-alpha;
+const ND=130;
+const PEAKY=110;
+function h(t){return (1-t)*Math.pow(t,b);}
+const K=(ZY+ND-PEAKY)/h(tauStar);
+function sx(t){return OX+t*380;}
+function sy(t){return ZY+ND-K*h(t);}
+const NS='http://www.w3.org/2000/svg';
+const el=id=>document.getElementById(id);
+function setL(id,x1,y1,x2,y2){const e=el(id);e.setAttribute('x1',x1);e.setAttribute('y1',y1);e.setAttribute('x2',x2);e.setAttribute('y2',y2);}
+function mk(tag,a){const e=document.createElementNS(NS,tag);for(const k in a)e.setAttribute(k,a[k]);document.querySelector('svg').appendChild(e);return e;}
+const pts=[];for(let i=0;i<=400;i++){const t=i/400;pts.push(sx(t).toFixed(1)+','+sy(t).toFixed(1));}
+el('barro-curve').setAttribute('d','M'+pts.join(' L'));
+const NY=ZY+ND, PX=sx(tauStar), PY=sy(tauStar), X1=sx(1);
+setL('delta-line',OX,NY,X1,NY);
+setL('dash-peak-h',OX,PY,PX,PY);
+setL('dash-peak',PX,PY,PX,ZY);
+setL('dash-1',X1,NY,X1,ZY);
+el('pt-peak').setAttribute('cx',PX);el('pt-peak').setAttribute('cy',PY);
+el('pt-start').setAttribute('cx',OX);el('pt-start').setAttribute('cy',NY);
+el('pt-end').setAttribute('cx',X1);el('pt-end').setAttribute('cy',NY);
+[[PX,ZY-3,PX,ZY+3],[X1,ZY-3,X1,ZY+3],[OX-4,PY,OX,PY],[OX-4,NY,OX,NY]].forEach(([x1,y1,x2,y2])=>mk('line',{x1,y1,x2,y2,stroke:'black','stroke-width':1}));
+
+const pct=(v,t)=>(v/t*100).toFixed(2)+'%';
+
+const LBL=[
+  ['lbl-g','g_k',OX-8,46,'black',18,'r',false],
+  ['lbl-tau','\\tau',583,302,'black',18,'l',false],
+  ['lbl-0','0',OX-8,ZY-12,'black',16,'r',false],
+  ['lbl-nd','-(n+\\delta)',OX-8,NY,'black',16,'r',false],
+  ['lbl-gstar','g_k^*',OX-8,PY,'black',16,'r',false],
+  ['lbl-taustar','\\tau^* = 1-\\alpha',PX,ZY+20,'black',16,'c',false],
+  ['lbl-one','1',X1+8,ZY-18,'black',16,'l',false],
+  ['lbl-curve','g_k(\\tau)',X1+12,NY-4,'#378ADD',16,'l',false]
+];
+const c=document.querySelector('.graph-container');
+LBL.forEach(([id,tex,x,y,color,size,anc,bg])=>{
+  const e=document.createElement('div');e.className='katex-label';e.id=id;c.appendChild(e);
+  katex.render(tex,e,{throwOnError:false});
+  e.style.left=pct(x,W);e.style.top=pct(y,H);e.style.color=color;e.style.fontSize=size+'px';
+  e.style.transform=(anc==='r'?'translate(-100%,-50%)':anc==='c'?'translate(-50%,-50%)':'translate(0,-50%)');
+  if(bg){e.style.background='#fff';const k=e.querySelector('.katex');if(k)k.style.padding='0 2px';}
+});
+</script>
+</body>
+</html>

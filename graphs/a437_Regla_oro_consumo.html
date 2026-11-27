@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+  .katex-label .katex { font-size: 1em; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 820" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <line x1="155" y1="375" x2="523" y2="375" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="155" y1="375" x2="155" y2="40" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="dash-v" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="tick-koro" stroke="black" stroke-width="1"/>
+    <line id="tang" stroke="#D85A30" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <path id="fk" fill="none" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="sfk" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <line id="dep" stroke="#D85A30" stroke-width="2.2" stroke-linecap="round"/>
+    <line id="arr-c" stroke="black" stroke-width="1.2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <circle id="pt-f" r="4" fill="#378ADD"/>
+    <circle id="pt-ss" r="5" fill="#000000"/>
+
+    <line x1="155" y1="770" x2="523" y2="770" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="155" y1="770" x2="155" y2="435" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="dash-v2" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-h2" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="tick-koro2" stroke="black" stroke-width="1"/>
+    <line id="tick-coro2" stroke="black" stroke-width="1"/>
+    <path id="ck" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+    <circle id="pt-max" r="5" fill="#000000"/>
+  </svg>
+</div>
+<script>
+
+
+
+
+
+const A = 3, alpha = 0.5, dn = 0.6, soro = alpha;
+const f = k => A*Math.pow(k, alpha);
+const c = k => f(k) - dn*k;
+const koro = Math.pow(alpha*A/dn, 1/(1 - alpha)), coro = c(koro);
+const VBW = 680, VBH = 820;
+
+const OX = 155, OY = 375, SX = (480/13)*(368/520), SY = (360/11)*(335/380);
+const X = k => OX + k*SX;
+const Y = v => OY - v*SY;
+const OY2 = 770;
+const Y2 = v => OY2 - v*(190/3.75)*(335/290);
+const $ = id => document.getElementById(id);
+function setL(id, x1, y1, x2, y2) { const e = $(id); e.setAttribute('x1', x1); e.setAttribute('y1', y1); e.setAttribute('x2', x2); e.setAttribute('y2', y2); }
+function curve(id, fn, Yf, k0, k1) { const p = []; for (let i = 0; i <= 300; i++) { const k = k0 + (i/300)*(k1 - k0); p.push(X(k).toFixed(1) + ',' + Yf(fn(k)).toFixed(1)); } $(id).setAttribute('d', 'M' + p.join(' L')); }
+const kEnd = 12.2;
+
+curve('fk', f, Y, 0, kEnd);
+curve('sfk', k => soro*f(k), Y, 0, kEnd);
+setL('dep', X(0), Y(0), X(kEnd), Y(dn*kEnd));
+setL('tang', X(koro - 3.2), Y(f(koro) - dn*3.2), X(koro + 3.2), Y(f(koro) + dn*3.2));
+setL('dash-v', X(koro), Y(f(koro)), X(koro), Y(0));
+setL('tick-koro', X(koro), Y(0), X(koro), Y(0) + 4);
+const ax = X(koro) + 16;
+setL('arr-c', ax, Y(f(koro)) + 6 + 0.6*16*SY/SX, ax, Y(dn*koro) - 6 - 0.6*16*SY/SX);
+$('pt-f').setAttribute('cx', X(koro)); $('pt-f').setAttribute('cy', Y(f(koro)));
+$('pt-ss').setAttribute('cx', X(koro)); $('pt-ss').setAttribute('cy', Y(dn*koro));
+
+curve('ck', c, Y2, 0, kEnd);
+setL('dash-v2', X(koro), Y2(coro), X(koro), OY2);
+setL('dash-h2', OX, Y2(coro), X(koro), Y2(coro));
+setL('tick-koro2', X(koro), OY2, X(koro), OY2 + 4);
+setL('tick-coro2', OX - 4, Y2(coro), OX, Y2(coro));
+$('pt-max').setAttribute('cx', X(koro)); $('pt-max').setAttribute('cy', Y2(coro));
+
+function put(id, tex, x, y, o = {}) {
+  const cont = document.querySelector('.graph-container');
+  const e = document.createElement('div');
+  e.className = 'katex-label'; e.id = id;
+  katex.render(tex, e, {throwOnError: false});
+  e.style.left = (x/VBW*100).toFixed(2) + '%';
+  e.style.top = (y/VBH*100).toFixed(2) + '%';
+  e.style.color = o.c || 'black';
+  if (o.s) e.style.fontSize = o.s + 'px';
+  const tx = {l: '0', c: '-50%', r: '-100%'}[o.ha || 'l'], ty = {t: '0', m: '-50%', b: '-100%'}[o.va || 't'];
+  e.style.transform = `translate(${tx},${ty})`;
+  if (o.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  cont.appendChild(e);
+}
+put('lbl-y', 'y', OX - 8, 44, {ha: 'r', s: 18});
+put('lbl-k', 'k', OX + 376, OY, {va: 'm', s: 18});
+put('lbl-fk', 'f(k)', X(kEnd) + 6, Y(f(kEnd)), {va: 'm', c: '#378ADD'});
+put('lbl-dep', '(n + \\delta)k', X(kEnd) + 6, Y(dn*kEnd), {va: 'm', c: '#D85A30'});
+put('lbl-sfk', 's_{\\text{oro}}\\,f(k)', X(kEnd) + 6, Y(soro*f(kEnd)), {va: 'm', c: '#1D9E75'});
+put('lbl-koro', 'k_{\\text{oro}}', X(koro), OY + 8, {ha: 'c', s: 15});
+put('lbl-coro', 'c_{\\text{oro}}', ax + 8, (Y(f(koro)) + Y(dn*koro))/2, {va: 'm', s: 15});
+put('lbl-c2', 'c', OX - 8, 439, {ha: 'r', s: 18});
+put('lbl-k2', 'k', OX + 376, OY2, {va: 'm', s: 18});
+put('lbl-ck', 'c^*(k)', X(kEnd) + 6, Y2(c(kEnd)), {va: 'm', c: '#534AB7'});
+put('lbl-koro2', 'k_{\\text{oro}}', X(koro), OY2 + 8, {ha: 'c', s: 15});
+put('lbl-coro2', 'c_{\\text{oro}}', OX - 8, Y2(coro), {ha: 'r', va: 'm', s: 15});
+put('lbl-ef', '\\text{eficiencia dinámica}', (X(0.6) + X(koro))/2, OY2 - 26, {ha: 'c', va: 'b', c: '#5a5a5a', s: 14});
+put('lbl-inef', '\\text{ineficiencia dinámica}', (X(koro) + X(kEnd))/2, OY2 - 26, {ha: 'c', va: 'b', c: '#5a5a5a', s: 14});
+</script>
+</body>
+</html>

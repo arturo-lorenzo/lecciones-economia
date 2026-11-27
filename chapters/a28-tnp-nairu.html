@@ -1,0 +1,1986 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Arturo Lorenzo">
+<meta name="description" content="Tema A28, oposiciones TCEE. Tasa natural de paro y NAIRU, curva de Phillips, Malinvaud, modelo de Layard y Nickell e histéresis de Blanchard y Summers.">
+
+<title>A28. TNP, NAIRU y persistencia – Lecciones de economía general e internacional</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/a29-mhi-mgs.html" rel="next">
+<link href="../chapters/a27-salarios.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-af206048d982c71265205c3505cca787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bec3fe2b0881f05566c9dedb60685f6d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="A28. TNP, NAIRU y persistencia – Lecciones de economía general e internacional">
+<meta property="og:description" content="Tema A28, oposiciones TCEE. Tasa natural de paro y NAIRU, curva de Phillips, Malinvaud, modelo de Layard y Nickell e histéresis de Blanchard y Summers.">
+<meta property="og:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta property="og:site_name" content="Lecciones de economía general e internacional">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:title" content="A28. TNP, NAIRU y persistencia – Lecciones de economía general e internacional">
+<meta name="twitter:description" content="Tema A28, oposiciones TCEE. Tasa natural de paro y NAIRU, curva de Phillips, Malinvaud, modelo de Layard y Nickell e histéresis de Blanchard y Summers.">
+<meta name="twitter:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="A28. TNP, NAIRU y persistencia">
+<meta name="citation_author" content="Arturo Lorenzo">
+<meta name="citation_publication_date" content="2026-11-28">
+<meta name="citation_cover_date" content="2026-11-28">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-11-28">
+<meta name="citation_fulltext_html_url" content="https://librovol1.arturolorenzo.com/chapters/a28-tnp-nairu.html">
+<meta name="citation_language" content="es">
+<meta name="citation_book_title" content="Lecciones de economía general e internacional">
+<link rel="canonical" href="https://librovol1.arturolorenzo.com/chapters/a28-tnp-nairu.html">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/a25-oferta-trabajo.html">Economía Laboral</a></li><li class="breadcrumb-item"><a href="../chapters/a28-tnp-nairu.html"><span class="chapter-title">A28. TNP, NAIRU y persistencia</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Lecciones de economía general e internacional</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/arturo-lorenzo/lecciones-economia" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../creditos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Edición y licencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte A: Economía General</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pensamiento Económico</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a01-objeto-metodo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A1. Objeto y método de la ciencia económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a02-clasicos-marx.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A2. Los economistas clásicos y Marx</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a03-neoclasicos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A3. Los economistas neoclásicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a04-keynes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A4. Keynes: análisis comparado</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a05-monetaristas-snc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A5. La síntesis neoclásica y el monetarismo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a06-nmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A6. La nueva macroeconomía clásica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a07-nek.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A7. La nueva economía keynesiana</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Microeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a08-consumidor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A8. Teoría de la demanda del consumidor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a09-dualidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A9. Dualidad y aplicaciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a10-riesgo-incertidumbre.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A10. Elección en riesgo e incertidumbre</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a11-produccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A11. Teoría de la producción</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a12-costes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A12. Teoría de costes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a13-informacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A13. Economía de la información</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a14-juegos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A14. Teoría de juegos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a15-toi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A15. Teoría de la organización industrial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a16-competencia-perfecta.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A16. Competencia perfecta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a17-monopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A17. Monopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a18-competencia-monopolistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A18. Competencia monopolística</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a19-oligopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A19. Oligopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a20-regulacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A20. Regulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a21-equilibrio-general.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A21. Equilibrio general</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a22-eb-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A22. Economía del bienestar (I)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a23-eb-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A23. Economía del bienestar (II)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a24-eb-iii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A24. Economía del bienestar (III)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Economía Laboral</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a25-oferta-trabajo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A25. Mercado de trabajo y capital humano</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a26-desempleo-friccional.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A26. Desempleo friccional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a27-salarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A27. Determinación de salarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a28-tnp-nairu.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">A28. TNP, NAIRU y persistencia</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Macroeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a29-mhi-mgs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A29. Modelos de horizonte infinito y generaciones solapadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a30-magnitudes-cn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A30. Magnitudes macroeconómicas y contabilidad nacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a32-precios-output.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A32. Precios y output en economía abierta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a33-demanda-consumo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A33. Teorías de demanda de consumo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a34-demanda-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A34. Teorías de demanda de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a35-demanda-dinero.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A35. Teorías de la demanda de dinero</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a36-politica-monetaria-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A36. Política monetaria I: diseño e instrumentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a37-politica-monetaria-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A37. Política monetaria II: transmisión y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a38-politica-fiscal.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A38. Política fiscal, crecimiento y ahorro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a39-deficit.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A39. Déficit público, su financiación y sostenibilidad</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a40-interrelacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A40. Interrelación de políticas macroeconómicas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a41-inflacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A41. Inflación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a42-ciclos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A42. Ciclos económicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a43-crecimiento-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A43. Crecimiento económico exógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a44-crecimiento-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A44. Crecimiento económico endógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a45-crecimiento-empirica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A45. Evidencia empírica sobre el crecimiento</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte B: Economía Internacional</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Empresa y Finanzas</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b01-estados-ratios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B1. Estados financieros y ratios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b02-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B2. Decisiones de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b03-financiacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B3. Decisiones de financiación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b04-crecimiento-ma.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B4. Crecimiento empresarial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b23-renta-variable.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B23. Instrumentos de renta variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b24-renta-fija.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B24. Instrumentos de renta fija</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b25-derivados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B25. Instrumentos derivados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b26-crisis-financieras.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B26. Crisis financieras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b27-regulacion-financiera.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B27. Regulación bancaria y financiera</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Comercio Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b05-tnc-comercio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B5. Teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b06-nueva-teoria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B6. Nueva teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b07-politica-comercial-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B7. Política comercial I: instrumentos y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b08-politica-comercial-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B8. Política comercial II: política estratégica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b09-comercio-crecimiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B9. Comercio internacional y crecimiento</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b10-integracion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B10. Teoría de la integración económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b11-balanza-pagos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B11. Balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b12-ajuste-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B12. Ajuste de la balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b13-mercado-divisas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B13. Mercado de divisas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b14-tipo-cambio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B14. Determinación del tipo de cambio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b15-regimenes-cambiarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B15. Regímenes cambiarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b16-integracion-monetaria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B16. Integración monetaria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b17-crisis-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B17. Crisis de balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b18-globalizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B18. Globalización</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b19-coordinacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B19. Coordinación de políticas económicas internacionales</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Sistema Económico Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b20-sei-hasta-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B20. El sistema económico internacional hasta el colapso de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b21-sei-despues-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B21. El sistema económico internacional después de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b22-fmi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B22. El Fondo Monetario Internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b28-desarrollo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B28. Desarrollo económico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b29-fod-aod.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B29. Financiación oficial del desarrollo y AOD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b30-gbm-brsd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B30. Grupo Banco Mundial y bancos regionales de desarrollo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b31-ma-bpg.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B31. El cambio climático y su impacto en la economía</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b32-perspectivas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B32. Perspectivas de la economía internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b33-omc-gatt.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B33. La OMC y el GATT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b34-gats-trips.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B34. GATS, TRIPS y acuerdos plurilaterales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b35-no-comunitarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B35. Acuerdos comerciales no comunitarios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unión Europea</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b36-tratados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B36. Los tratados de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b37-finanzas-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B37. Las finanzas de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b38-pac-ppc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B38. Política Agrícola Común y Política Pesquera Común</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b39-miue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B39. Mercado interior de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b41-comercial-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B41. Política comercial de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b42-cooperacion-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B42. Política de cooperación de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b43-politica-monetaria-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B43. Política macroeconómica I: el euro y la política monetaria única</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b44-politica-financiera-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B44. Política macroeconómica II: la Unión Bancaria y la Unión de los Mercados de Capitales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b45-politica-fiscal-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B45. Política macroeconómica III: la gobernanza económica de la UE y de la zona euro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Descargas</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Primer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/ejercicios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios prácticos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/flashcards-conceptos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de conceptos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/guia-dictamen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guía para el dictamen</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Segundo Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/segundo-ejercicio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de inglés</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Tercer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/libro-bloques.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">El libro en PDF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del tercer ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Cuarto Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del cuarto ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Más allá del libro</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/otras-publicaciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Otras publicaciones y trabajos del autor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/enlaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Enlaces de interés</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Bibliografía</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manuales y obras de referencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia-articulos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Obras citadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../fuentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fuentes normativas y documentales</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#fundamentos-del-análisis-de-la-tasa-natural-de-paro-tnp-la-nairu-y-la-persistencia-del-desempleo" id="toc-fundamentos-del-análisis-de-la-tasa-natural-de-paro-tnp-la-nairu-y-la-persistencia-del-desempleo" class="nav-link" data-scroll-target="#fundamentos-del-análisis-de-la-tasa-natural-de-paro-tnp-la-nairu-y-la-persistencia-del-desempleo">1. Fundamentos del análisis de la tasa natural de paro (TNP), la NAIRU y la persistencia del desempleo</a>
+  <ul class="collapse">
+  <li><a href="#debate-entre-la-visión-neoclásica-y-la-keynesiana" id="toc-debate-entre-la-visión-neoclásica-y-la-keynesiana" class="nav-link" data-scroll-target="#debate-entre-la-visión-neoclásica-y-la-keynesiana">1.1. Debate entre la visión neoclásica y la keynesiana</a></li>
+  <li><a href="#síntesis-neoclásica" id="toc-síntesis-neoclásica" class="nav-link" data-scroll-target="#síntesis-neoclásica">1.2. Síntesis neoclásica</a></li>
+  <li><a href="#monetarismo" id="toc-monetarismo" class="nav-link" data-scroll-target="#monetarismo">1.3. Monetarismo</a></li>
+  <li><a href="#neokeynesianos-del-desequilibrio-la-tipología-de-malinvaud-1977" id="toc-neokeynesianos-del-desequilibrio-la-tipología-de-malinvaud-1977" class="nav-link" data-scroll-target="#neokeynesianos-del-desequilibrio-la-tipología-de-malinvaud-1977">1.4. Neokeynesianos del desequilibrio: la tipología de Malinvaud (1977)</a></li>
+  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link" data-scroll-target="#conclusiones">1.5. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#modelos-de-la-tasa-de-desempleo-de-equilibrio-expectativas-racionales-nairu-e-histéresis" id="toc-modelos-de-la-tasa-de-desempleo-de-equilibrio-expectativas-racionales-nairu-e-histéresis" class="nav-link" data-scroll-target="#modelos-de-la-tasa-de-desempleo-de-equilibrio-expectativas-racionales-nairu-e-histéresis">2. Modelos de la tasa de desempleo de equilibrio: expectativas racionales, NAIRU e histéresis</a>
+  <ul class="collapse">
+  <li><a href="#nueva-macroeconomía-clásica" id="toc-nueva-macroeconomía-clásica" class="nav-link" data-scroll-target="#nueva-macroeconomía-clásica">2.1. Nueva macroeconomía clásica</a></li>
+  <li><a href="#nueva-economía-keynesiana-de-primera-generación-el-modelo-de-la-nairu-layard-y-nickell-1985-carlin-y-soskice-1990" id="toc-nueva-economía-keynesiana-de-primera-generación-el-modelo-de-la-nairu-layard-y-nickell-1985-carlin-y-soskice-1990" class="nav-link" data-scroll-target="#nueva-economía-keynesiana-de-primera-generación-el-modelo-de-la-nairu-layard-y-nickell-1985-carlin-y-soskice-1990">2.2. Nueva economía keynesiana de primera generación: el modelo de la NAIRU (Layard y Nickell, 1985; Carlin y Soskice, 1990)</a></li>
+  <li><a href="#histéresis-la-persistencia-del-desempleo-blanchard-y-summers-1986" id="toc-histéresis-la-persistencia-del-desempleo-blanchard-y-summers-1986" class="nav-link" data-scroll-target="#histéresis-la-persistencia-del-desempleo-blanchard-y-summers-1986">2.3. Histéresis: la persistencia del desempleo (Blanchard y Summers, 1986)</a></li>
+  <li><a href="#conclusiones-3" id="toc-conclusiones-3" class="nav-link" data-scroll-target="#conclusiones-3">2.4. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#desarrollos-actuales-y-convergencia-del-pensamiento-económico" id="toc-desarrollos-actuales-y-convergencia-del-pensamiento-económico" class="nav-link" data-scroll-target="#desarrollos-actuales-y-convergencia-del-pensamiento-económico">3. Desarrollos actuales y convergencia del pensamiento económico</a>
+  <ul class="collapse">
+  <li><a href="#el-modelo-de-búsqueda-y-emparejamiento" id="toc-el-modelo-de-búsqueda-y-emparejamiento" class="nav-link" data-scroll-target="#el-modelo-de-búsqueda-y-emparejamiento">3.1. El modelo de búsqueda y emparejamiento</a></li>
+  <li><a href="#la-curva-de-phillips-de-la-nueva-economía-keynesiana-de-segunda-generación-nek2g" id="toc-la-curva-de-phillips-de-la-nueva-economía-keynesiana-de-segunda-generación-nek2g" class="nav-link" data-scroll-target="#la-curva-de-phillips-de-la-nueva-economía-keynesiana-de-segunda-generación-nek2g">3.2. La curva de Phillips de la nueva economía keynesiana de segunda generación (NEK2G)</a></li>
+  <li><a href="#la-estimación-de-la-nairu-y-sus-límites" id="toc-la-estimación-de-la-nairu-y-sus-límites" class="nav-link" data-scroll-target="#la-estimación-de-la-nairu-y-sus-límites">3.3. La estimación de la NAIRU y sus límites</a></li>
+  <li><a href="#la-convergencia-del-pensamiento-económico" id="toc-la-convergencia-del-pensamiento-económico" class="nav-link" data-scroll-target="#la-convergencia-del-pensamiento-económico">3.4. La convergencia del pensamiento económico</a></li>
+  </ul></li>
+  <li><a href="#conclusiones-5" id="toc-conclusiones-5" class="nav-link" data-scroll-target="#conclusiones-5">Conclusiones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/a25-oferta-trabajo.html">Economía Laboral</a></li><li class="breadcrumb-item"><a href="../chapters/a28-tnp-nairu.html"><span class="chapter-title">A28. TNP, NAIRU y persistencia</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">A28. TNP, NAIRU y persistencia</span></h1>
+<p class="subtitle lead">La tasa natural de paro y la NAIRU. La persistencia del desempleo.</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Arturo Lorenzo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">noviembre de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Introducción común.</strong> Los temas A25 a A28 comparten una introducción, que se desarrolla al comienzo del tema <a href="../chapters/a25-oferta-trabajo.html"><strong>A25</strong></a>. Presenta la teoría económica del mercado de trabajo, que estudia el empleo y los salarios de equilibrio y los factores institucionales que los moldean, y la explicación teórica de cada tipo de desempleo.</p>
+</div>
+</div>
+</div>
+<p>La tasa de desempleo de equilibrio es la referencia con la que se juzgan las políticas macroeconómicas. Friedman (1968) y Phelps (1967) la definieron como la tasa a la que tiende la economía cuando las expectativas se cumplen, la <strong>tasa natural de paro</strong>, y mostraron que la política monetaria solo puede rebajar el desempleo por debajo de ella a costa de una inflación creciente. La versión neokeynesiana, la <strong>NAIRU</strong>, la deriva, en cambio, de la negociación de salarios y la fijación de precios en mercados imperfectos (Layard y Nickell, 1985) y la hace depender de instituciones como las prestaciones o la negociación colectiva.</p>
+<p>La <strong>histéresis</strong> (Blanchard y Summers, 1986) añade que el desempleo de equilibrio depende de la historia, porque los parados de larga duración pierden capital humano y vínculos con el mercado de trabajo, y una recesión puede elevar el paro estructural. En la zona del euro y en España, las estimaciones muestran una NAIRU que sube tras cada recesión y baja lentamente después, lo que hace de su medición, siempre imprecisa, una cuestión central para la política económica. De hecho, las estimaciones, con filtros estadísticos o con modelos estructurales, cambian mucho al llegar datos nuevos y obligan a usarlas con cautela al decidir la política monetaria.</p>
+<p>La distinción entre el desempleo de equilibrio y el cíclico ordena también las políticas. Las de oferta, que actúan sobre las instituciones del mercado de trabajo, son las únicas que pueden rebajar la tasa de equilibrio de forma duradera, mientras que las de demanda solo mueven el desempleo en torno a ella, salvo que haya histéresis. La nueva síntesis integra hoy la búsqueda y el emparejamiento en la curva de Phillips neokeynesiana, y con ello la tasa natural deja de ser una constante y pasa a depender de las perturbaciones y de las políticas.</p>
+<p>El desempleo de equilibrio reúne dos explicaciones del paro que se estudian por separado, las fricciones de búsqueda que originan el desempleo friccional (tema <a href="../chapters/a26-desempleo-friccional.html">A26</a>) y las rigideces que mantienen el salario por encima del de vaciado (tema <a href="../chapters/a27-salarios.html">A27</a>). Combinadas, determinan una sola tasa de equilibrio, y es la distancia a esa tasa la que enlaza el mercado de trabajo con la inflación (tema <a href="../chapters/a41-inflacion.html">A41</a>).</p>
+<p>Este tema analiza el desempleo de equilibrio y su persistencia:</p>
+<ul>
+<li><p><em>Fundamentos</em>: las aportaciones previas a la crítica de Lucas.</p></li>
+<li><p><em>Desempleo de equilibrio</em>: sus modelos, de las expectativas racionales a la histéresis.</p></li>
+<li><p><em>Desarrollos actuales</em>: la teoría vigente y la convergencia del pensamiento económico.</p></li>
+</ul>
+</section>
+<section id="fundamentos-del-análisis-de-la-tasa-natural-de-paro-tnp-la-nairu-y-la-persistencia-del-desempleo" class="level2">
+<h2 class="anchored" data-anchor-id="fundamentos-del-análisis-de-la-tasa-natural-de-paro-tnp-la-nairu-y-la-persistencia-del-desempleo">1. Fundamentos del análisis de la tasa natural de paro (TNP), la NAIRU y la persistencia del desempleo</h2>
+<p>El análisis de la TNP, la NAIRU y la persistencia del desempleo se apoya en unos fundamentos que arrancan del debate fundacional entre la visión neoclásica y la keynesiana y continúan con la síntesis neoclásica, el monetarismo y los neokeynesianos del desequilibrio.</p>
+<section id="debate-entre-la-visión-neoclásica-y-la-keynesiana" class="level3">
+<h3 class="anchored" data-anchor-id="debate-entre-la-visión-neoclásica-y-la-keynesiana">1.1. Debate entre la visión neoclásica y la keynesiana</h3>
+<p>El punto de partida del análisis del desempleo es la contraposición entre dos visiones del mercado de trabajo, que difieren en el grado de ajuste del salario ante perturbaciones y, a partir de ahí, en si consideran posible el desempleo involuntario. El debate fija los dos polos entre los que se moverá toda la teoría posterior, es decir, el desempleo como fenómeno de oferta, corregible con flexibilidad, o como fenómeno de demanda, corregible con estabilización.</p>
+<section id="la-visión-neoclásica" class="level4">
+<h4 class="anchored" data-anchor-id="la-visión-neoclásica">1.1.1. La visión neoclásica</h4>
+<p><strong>Origen</strong>: la visión neoclásica del mercado de trabajo procede de Marshall y de Pigou (1933), que la construyen sobre la teoría de la oferta y la demanda de trabajo (tema <a href="../chapters/a25-oferta-trabajo.html">A25</a>).</p>
+<p><strong>Idea</strong>: el trabajo se compra y se vende igual que cualquier bien. Su precio, el salario real, refleja sin error la escasez relativa de trabajo. Como se ajusta libremente, el mercado se vacía al instante y en equilibrio hay pleno empleo.</p>
+<p><strong>Razonamiento</strong>: si los agentes optimizan, el equilibrio que resulta es único, estable y eficiente. Para que haya desempleo involuntario algo tiene que impedir que el salario se ajuste (es el <em>desempleo clásico</em> de Malinvaud). Por eso la receta son políticas de oferta que supriman esas rigideces, ya que las de demanda no logran mover las variables reales. En suma, sin rigideces el desempleo solo puede ser voluntario o friccional.</p>
+<p><strong>Desarrollo gráfico</strong>: el mercado de trabajo neoclásico se representa en el plano empleo-salario real (figura <a href="#fig-a281-trabajo-neoclasico" class="quarto-xref"><span>A28.1</span></a>):</p>
+<ol type="1">
+<li><p><em>Demanda de trabajo</em> <span class="math inline">\(L^d(w/P)\)</span>: es decreciente en el salario real, porque las empresas contratan hasta igualarlo con la productividad marginal del trabajo, que es decreciente.</p></li>
+<li><p><em>Oferta de trabajo</em> <span class="math inline">\(L^s(w/P)\)</span>: es creciente en el salario real, porque predomina el efecto sustitución entre ocio y consumo.</p></li>
+<li><p><em>Equilibrio</em>: en el punto 0 se vacía el mercado, con el salario real <span class="math inline">\((w/P)^{*}\)</span> y el empleo de pleno empleo <span class="math inline">\(L^{*}\)</span>.</p>
+<p>Con un salario real rígido por encima del de equilibrio, <span class="math inline">\((w/P)_1\)</span>, la oferta <span class="math inline">\(L_1^s\)</span> supera a la demanda <span class="math inline">\(L_1^d\)</span> y la diferencia es desempleo clásico.</p></li>
+</ol>
+<div id="fig-a281-trabajo-neoclasico" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a281-trabajo-neoclasico-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a281_Trabajo_neoclasico.html" style="height:580px" loading="lazy" title="fig-a281-trabajo-neoclasico"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a281-trabajo-neoclasico-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A28.1: Mercado de trabajo neoclásico. Con salario real flexible hay pleno empleo y el desempleo solo puede ser voluntario o friccional.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: ofrece un marco coherente, en el que el salario real y el empleo resultan de las decisiones optimizadoras de empresas y trabajadores, y que sigue siendo la referencia de largo plazo de la teoría posterior. Destaca, además, el papel de las rigideces institucionales en el desempleo y el de las políticas de oferta para reducirlo.</p></li>
+<li><p><em>Limitaciones</em>: el paradigma no puede explicar el paro masivo y persistente, como puso de manifiesto la Gran Depresión.</p></li>
+</ul>
+</section>
+<section id="la-visión-keynesiana" class="level4">
+<h4 class="anchored" data-anchor-id="la-visión-keynesiana">1.1.2. La visión keynesiana</h4>
+<p><strong>Origen</strong>: el paradigma neoclásico entra en crisis con la Gran Depresión (1929-1933), cuando la tasa de paro en EE.&nbsp;UU. alcanzó el 24,9&nbsp;% en 1933 (Lebergott, 1964), una magnitud difícilmente atribuible a decisiones voluntarias de ocio. Por esta razón, John Maynard Keynes (1936) rompe con la idea de que el desempleo es exclusivamente voluntario.</p>
+<p><strong>Idea</strong>: el desempleo involuntario es posible aunque los salarios sean flexibles, porque el nivel de empleo lo determina la demanda efectiva en el mercado de bienes y no el salario en el mercado de trabajo.</p>
+<p><strong>Razonamiento</strong>: la teoría keynesiana se ha asociado a menudo con la <em>ilusión monetaria</em>, a la que Irving Fisher (1928) dedicó <em>The Money Illusion</em>, según la cual los trabajadores confunden salario nominal y salario real. Para Keynes, sin embargo, a los trabajadores les importa cuánto cobran respecto a los demás. Por eso se oponen a que les bajen el salario nominal (rigidez nominal a la baja), ya que esa bajada les haría perder terreno frente a otros grupos. En cambio, aceptan el menor salario real que deja una subida de precios, porque esta afecta a todos por igual y no cambia la posición de nadie.</p>
+<p>Como el empleo lo determina la demanda efectiva, y no el salario, una bajada salarial no eleva por sí sola el empleo si no aumenta la demanda agregada. Por tanto, unos precios y salarios flexibles ni bastan para garantizar el pleno empleo ni son imprescindibles para alcanzarlo. Las políticas de demanda, al dar estabilidad a la demanda agregada, se la dan también al mercado de trabajo.</p>
+<p><strong>Desarrollo gráfico</strong>: el mercado de trabajo keynesiano se representa en el plano empleo-salario real (figura <a href="#fig-a282-trabajo-keynesiano" class="quarto-xref"><span>A28.2</span></a>):</p>
+<ol type="1">
+<li><p><em>Demanda de trabajo</em> <span class="math inline">\(L^d(w/P)\)</span>: recoge el empleo que las empresas desean para cada salario real. Es decreciente, como en el modelo neoclásico, porque contratan hasta igualar el salario real con la productividad marginal del trabajo, que es decreciente.</p></li>
+<li><p><em>Oferta de trabajo</em> <span class="math inline">\(L^s(w/P)\)</span>: recoge el empleo que los trabajadores desean para cada salario real. Es creciente, porque predomina el efecto sustitución, y cortaría a la demanda en el empleo walrasiano <span class="math inline">\(L_C\)</span>, con el salario real <span class="math inline">\((w/P)_C\)</span>.</p></li>
+<li><p><em>Demanda efectiva</em>: es una recta vertical en el empleo <span class="math inline">\(\bar{L}\)</span>, el que requiere la producción que las empresas pueden vender en el mercado de bienes.</p></li>
+<li><p><em>Equilibrio</em>: en el punto 0 las empresas están sobre su curva de demanda de trabajo, con el empleo <span class="math inline">\(\bar{L}\)</span> y el salario real <span class="math inline">\((w/P)_0\)</span>.</p>
+<p>A ese salario real los trabajadores querrían ofrecer <span class="math inline">\(L_0^s\)</span>, y la diferencia con <span class="math inline">\(\bar{L}\)</span> es desempleo involuntario.</p></li>
+</ol>
+<div id="fig-a282-trabajo-keynesiano" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a282-trabajo-keynesiano-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a282_Trabajo_keynesiano.html" style="height:580px" loading="lazy" title="fig-a282-trabajo-keynesiano"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a282-trabajo-keynesiano-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A28.2: Mercado de trabajo keynesiano. El empleo lo fija la demanda efectiva (<span class="math inline">\(\bar{L}\)</span>) y, al salario real resultante, aparece desempleo involuntario.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: introduce el desempleo involuntario como resultado de una insuficiencia de demanda efectiva y no de las decisiones de los trabajadores. Con ello da cuenta del paro masivo que la visión neoclásica no podía explicar y fundamenta las políticas de demanda contra el desempleo.</p></li>
+<li><p><em>Limitaciones</em>: la resistencia de los salarios nominales a la baja se justifica de manera informal, sin una microfundamentación sólida, que la teoría posterior tuvo que aportar. Además, la visión keynesiana centra el análisis en la demanda y deja en segundo plano los factores de oferta y la inflación, que la síntesis neoclásica y el monetarismo incorporan después.</p></li>
+</ul>
+</section>
+</section>
+<section id="síntesis-neoclásica" class="level3">
+<h3 class="anchored" data-anchor-id="síntesis-neoclásica">1.2. Síntesis neoclásica</h3>
+<p>La síntesis neoclásica busca un terreno común entre ambas visiones. Acepta el equilibrio neoclásico para el largo plazo y trata el desempleo keynesiano como un problema transitorio que las políticas de demanda pueden corregir. En el ámbito de estudio del desempleo, la síntesis neoclásica se apoya en la curva de Phillips y en la ley de Okun.</p>
+<section id="la-curva-de-phillips-phillips-1958-lipsey-1960" class="level4">
+<h4 class="anchored" data-anchor-id="la-curva-de-phillips-phillips-1958-lipsey-1960">1.2.1. La curva de Phillips (Phillips, 1958; Lipsey, 1960)</h4>
+<p><strong>Origen</strong>: Alban Phillips (1958) comprobó, con casi un siglo de datos del Reino Unido (1861-1957), que la inflación salarial tendía a ser mayor cuanto menor era la tasa de desempleo. La relación empírica no era lineal, y Richard Lipsey (1960) la dotó después de fundamento teórico.</p>
+<p><strong>Idea</strong>: existe una relación estable e inversa entre inflación y desempleo, que la política económica puede explotar.</p>
+<p><strong>Razonamiento</strong>: sobre esta observación empírica, Lipsey deriva una relación teórica con base en tres supuestos:</p>
+<ul>
+<li><p><em>Relación demanda de trabajo-inflación salarial</em>: la inflación salarial crece con el exceso de demanda de trabajo (<span class="math inline">\(\dot{w}/w = \gamma Z_L\)</span>).</p></li>
+<li><p><em>Relación demanda de trabajo-tasa de desempleo</em>: el exceso de demanda decrece con la tasa de desempleo, de forma no lineal (lo que explica la curvatura). La relación linealizada se escribe <span class="math inline">\(Z_L = \nu(u - \bar{u})\)</span>, con <span class="math inline">\(\nu &lt; 0\)</span> y <span class="math inline">\(\bar{u}\)</span> la tasa de desempleo (friccional) a la que el exceso de demanda se anula.</p></li>
+<li><p><em>Productividad constante</em>: como la productividad marginal no varía en el tiempo, la inflación salarial se traslada a la inflación de precios (<span class="math inline">\(\dot{w}/w = \pi\)</span>).</p></li>
+</ul>
+<p>Combinando los tres supuestos se obtiene la conocida <em>curva de Phillips</em> o curva de Phillips sin expectativas:</p>
+<p><span class="math display">\[\pi_t = -\kappa_u (u_t - \bar{u}), \qquad \kappa_u = -\gamma\nu &gt; 0\]</span></p>
+<p>Como Lipsey obtenía primero curvas por industria y después las agregaba, la inflación depende no solo del nivel del desempleo, sino también de su distribución entre industrias.</p>
+<p>La curva establece así una disyuntiva (<em>trade-off</em>) estable entre inflación y desempleo, y la ley de Okun la traslada del plano desempleo-inflación al plano producción-inflación. Samuelson y Solow (1960) vieron en la curva un <em>menú de política económica</em> (véase la figura del tema <a href="../chapters/a41-inflacion.html">A41</a>, apartado 2.2.1). Eligiendo un punto de ella se podía hacer un “ajuste fino” del mercado laboral, es decir, comprar un paro bajo al precio de una inflación persistente.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la curva ofreció la primera relación cuantificable entre los objetivos de inflación y de empleo y fue el instrumento central de la política económica de los años sesenta.</p></li>
+<li><p><em>Limitaciones</em>: a partir de 1970 se produce el fenómeno de la <em>estanflación</em> (elevados desempleo e inflación simultáneos), de especial intensidad en Europa, y la curva de Phillips deja de ser estable empíricamente. Entre las causas señaladas por la literatura figuran los <em>shocks</em> del petróleo (1973-1974 y 1979), la caída de la productividad total de los factores, la concentración del poder sindical (especialmente en Europa) y la inestabilidad monetaria posterior a la quiebra de Bretton Woods.</p>
+<p>En el plano teórico, además, a la curva le faltaba microfundamentación. La curva solo podía mantenerse en cualquier horizonte si los trabajadores no tenían en cuenta la inflación esperada y sufrían una ilusión monetaria permanente, porque tenían expectativas estáticas, es decir, esperaban que el nivel de precios no cambiara, <span class="math inline">\(\pi_t^e = 0\)</span>.</p></li>
+</ul>
+</section>
+<section id="la-ley-de-okun-1962" class="level4">
+<h4 class="anchored" data-anchor-id="la-ley-de-okun-1962">1.2.2. La ley de Okun (1962)</h4>
+<p><strong>Origen</strong>: Arthur Okun (1962) estableció la regularidad empírica que conecta el desempleo con la producción y que permite traducir uno en otra.</p>
+<p><strong>Idea</strong>: la desviación de la tasa de desempleo respecto a su nivel de equilibrio es proporcional a la brecha entre la producción efectiva y la potencial, <span class="math inline">\(y_t - \bar{y}_t = -\phi\,(u_t - \bar{u})\)</span>, donde <span class="math inline">\(\phi\)</span> es el coeficiente de Okun.</p>
+<p><strong>Razonamiento</strong>: en su estimación original, el coeficiente valía en torno a tres, de modo que cada punto de desempleo por encima del natural costaba unos tres puntos de producción. El coeficiente es mayor que la participación del trabajo en la producción porque el ajuste del empleo se acompaña de cambios en las horas, en la participación y en la productividad (atesoramiento de trabajo).</p>
+<p>En la versión dinámica de la ley, la variación del desempleo depende de la diferencia entre el crecimiento efectivo y el potencial, <span class="math inline">\(\Delta u_t = -\tfrac{1}{\phi}\,(g_{Y,t} - \bar{g}_Y)\)</span>, y por eso el desempleo solo cae si la economía crece por encima de su potencial.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la ley sigue siendo el puente entre la tasa natural y la brecha de producción (<em>output gap</em>) que usa la política de estabilización (tema <a href="../chapters/a42-ciclos.html">A42</a>).</p></li>
+<li><p><em>Limitaciones</em>: es una regularidad empírica sin fundamento teórico propio, y su coeficiente difiere mucho entre países por las características de cada mercado de trabajo. Dentro de la mayoría de los países, sin embargo, la relación ha resultado estable<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, también durante la Gran Recesión (Ball, Leigh y Loungani, 2017). En España el coeficiente es bajo, porque el desempleo responde con mucha intensidad a la producción, lo que refleja la sensibilidad del empleo al ciclo.</p></li>
+</ul>
+</section>
+</section>
+<section id="monetarismo" class="level3">
+<h3 class="anchored" data-anchor-id="monetarismo">1.3. Monetarismo</h3>
+<p>El monetarismo acepta el marco de la síntesis, pero niega su resultado central, la disyuntiva (<em>trade-off</em>) estable, al introducir las expectativas en la curva de Phillips. De ahí nacen sus dos conceptos fundamentales, la tasa natural de paro y la teoría aceleracionista de la inflación.</p>
+<section id="la-curva-de-phillips-ampliada-por-las-expectativas-y-la-tasa-natural-friedman-1968-phelps-1967" class="level4">
+<h4 class="anchored" data-anchor-id="la-curva-de-phillips-ampliada-por-las-expectativas-y-la-tasa-natural-friedman-1968-phelps-1967">1.3.1. La curva de Phillips ampliada por las expectativas y la tasa natural (Friedman, 1968; Phelps, 1967)</h4>
+<p><strong>Origen</strong>: Milton Friedman (<em>The Role of Monetary Policy</em>, 1968) y Edmund Phelps (1967) formularon de forma independiente la crítica a la curva de Phillips y el concepto de tasa natural.</p>
+<p><strong>Idea</strong>: no existe una disyuntiva permanente entre inflación y desempleo, porque los agentes incorporan sus expectativas de inflación a la negociación salarial. Por tanto, a largo plazo el desempleo vuelve a su <em>tasa natural</em>, determinada por factores reales, cualquiera que sea la inflación.</p>
+<p><strong>Razonamiento</strong>: Friedman parte de que a los agentes les importa el poder adquisitivo de su salario, por lo que negocian teniendo en cuenta los precios que esperan. Para modelizar esas expectativas elige la <em>hipótesis de las expectativas adaptativas</em> (HEA), según la cual los agentes corrigen su expectativa anterior en una fracción del error cometido, de modo que solo usan la información contenida en la inflación pasada:</p>
+<p><span class="math display">\[\pi_{t+1}^e = \pi_t^e + \lambda(\pi_t - \pi_t^e), \qquad \lambda \in (0, 1]\]</span></p>
+<p>donde <span class="math inline">\(\pi_{t+1}^e\)</span> es la inflación esperada para el periodo siguiente, <span class="math inline">\(\pi_t\)</span> la inflación observada en el periodo actual y <span class="math inline">\(\lambda\)</span> la velocidad de aprendizaje.</p>
+<p>Resolviendo recursivamente, <span class="math inline">\(\pi_{t+1}^e = \lambda \sum_{j=0}^{\infty} (1-\lambda)^j \pi_{t-j}\)</span>, es decir, la inflación esperada es una media ponderada de la inflación pasada con pesos geométricamente decrecientes, de modo que, si la inflación sube de forma sostenida, el agente la subestima sistemáticamente. La HEA solo coincide con las expectativas racionales (apartado 2.1.3) en casos particulares. Muth (1960) mostró, por ejemplo, que es óptima cuando la variable es la suma de un paseo aleatorio y un ruido transitorio, con un <span class="math inline">\(\lambda\)</span> que depende de la varianza relativa de ambos componentes.</p>
+<p>Con base en esta idea, los autores monetaristas construyen la <em>curva de Phillips ampliada por las expectativas</em>. Como los trabajadores negocian el salario nominal a partir de la inflación que esperan, la inflación efectiva es la esperada más el efecto de la presión del mercado de trabajo,</p>
+<p><span class="math display">\[\pi_t = \pi_t^e - \kappa_u(u_t - \bar{u}), \qquad \kappa_u &gt; 0\]</span></p>
+<p>donde <span class="math inline">\(\bar{u}\)</span> es la tasa natural de paro, cuya análoga en el modelo del apartado 2.2, la NAIRU, se escribe <span class="math inline">\(\bar{u} = \alpha/\kappa_u\)</span>. La curva de Phillips original es el caso particular <span class="math inline">\(\pi_t^e = 0\)</span>.</p>
+<p>De la expresión se siguen dos situaciones, según que las expectativas se cumplan o no:</p>
+<ul>
+<li><p><span class="math inline">\(\pi_t \neq \pi_t^e\)</span>: la inflación observada difiere de la esperada. Si supera a la esperada, los trabajadores han negociado salarios nominales que resultan demasiado bajos en términos reales, las empresas contratan más y el desempleo se sitúa por debajo de la tasa natural, <span class="math inline">\(u_t &lt; \bar{u}\)</span>. Si es inferior, ocurre lo contrario. El <em>trade-off</em> entre inflación y desempleo existe, pero solo mientras dura el error, por lo que es un fenómeno de corto plazo. Además, cada revisión de las expectativas desplaza la curva, de modo que existen tantas curvas de Phillips de corto plazo como niveles de inflación esperada.</p></li>
+<li><p><span class="math inline">\(\pi_t = \pi_t^e\)</span>: la inflación observada y la esperada coinciden. Los salarios reales negociados son los deseados, no hay error que corregir y el desempleo se sitúa en su tasa natural, <span class="math inline">\(u_t = \bar{u}\)</span>, cualquiera que sea el nivel de la inflación. La HEA conduce a esta situación de largo plazo conforme los agentes aprenden, y en ella la curva de Phillips es vertical sobre <span class="math inline">\(\bar{u}\)</span> en el plano <span class="math inline">\((u, \pi)\)</span>. De ahí que no exista <em>trade-off</em> que la política pueda explotar de forma permanente.</p></li>
+</ul>
+<p>La tasa natural de paro corresponde, por tanto, al desempleo que hay en el equilibrio de largo plazo, cuando nadie se equivoca en sus previsiones. Abarca el paro friccional y el estructural y depende solo de factores reales e institucionales, entre ellos la eficiencia del emparejamiento, las instituciones laborales y lo competitivos que sean los mercados de bienes.</p>
+<p><strong>Desarrollo gráfico</strong>: la curva de Phillips ampliada por las expectativas se representa en el plano desempleo-inflación (figura <a href="#fig-a283-curva-phillips-ampliada" class="quarto-xref"><span>A28.3</span></a>):</p>
+<ol type="1">
+<li><p><em>Curvas de Phillips de corto plazo</em> <span class="math inline">\(\text{CP}_{\text{CP},0}\)</span>, <span class="math inline">\(\text{CP}_{\text{CP},1}\)</span> y <span class="math inline">\(\text{CP}_{\text{CP},2}\)</span>: cada una recoge las combinaciones de desempleo e inflación posibles con una inflación esperada dada (0&nbsp;%, 5&nbsp;% y 10&nbsp;%). Son decrecientes, porque con las expectativas fijas un desempleo menor eleva los salarios nominales y los precios, y cada revisión al alza de las expectativas desplaza la curva hacia arriba.</p></li>
+<li><p><em>Curva de Phillips de largo plazo</em> <span class="math inline">\(\text{CP}_{\text{LP}}\)</span>: es vertical sobre la tasa natural <span class="math inline">\(\bar{u}\)</span>, porque recoge las situaciones en que las expectativas se cumplen.</p></li>
+<li><p><em>Equilibrio</em>: en el punto 0, sobre <span class="math inline">\(\text{CP}_{\text{LP}}\)</span>, la inflación observada coincide con la esperada (0&nbsp;%) y el desempleo está en su tasa natural.</p></li>
+</ol>
+<div id="fig-a283-curva-phillips-ampliada" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a283-curva-phillips-ampliada-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a283_Curva_Phillips_ampliada.html" style="height:580px" loading="lazy" title="fig-a283-curva-phillips-ampliada"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a283-curva-phillips-ampliada-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A28.3: Curva de Phillips ampliada por las expectativas. La curva a corto plazo se desplaza y a largo plazo es vertical en la tasa natural.
+</figcaption>
+</figure>
+</div>
+<p><strong>Dinámica</strong>: una expansión que reduce el desempleo a <span class="math inline">\(u_1\)</span> lleva la economía del punto 0 al 0′ a lo largo de <span class="math inline">\(\text{CP}_{\text{CP},0}\)</span>, con una inflación del 5&nbsp;%. Al revisarse las expectativas (<span class="math inline">\(\Delta \pi^e &gt; 0\)</span>), la curva se desplaza a <span class="math inline">\(\text{CP}_{\text{CP},1}\)</span> y el desempleo vuelve a <span class="math inline">\(\bar{u}\)</span> en el punto 1, con una inflación del 5&nbsp;% que ya es la esperada. Si la autoridad insiste en mantener <span class="math inline">\(u_1\)</span>, el proceso se repite (de 1 a 1′ y a 2) con una inflación cada vez mayor.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: el concepto de tasa natural permanece hasta hoy como guía para la medición del paro cíclico, y la insistencia en las expectativas y los retardos de la política monetaria transformó la disciplina. Además, la teoría anticipó la ruptura de la curva de Phillips antes de que la estanflación de los años setenta la hiciera evidente.</p></li>
+<li><p><em>Limitaciones</em>: la HEA emplea únicamente información pasada, por lo que los agentes cometen errores sistemáticos y predecibles, algo difícil de conciliar con la racionalidad.</p></li>
+</ul>
+</section>
+<section id="la-teoría-aceleracionista-de-la-inflación-friedman-1968-phelps-1967" class="level4">
+<h4 class="anchored" data-anchor-id="la-teoría-aceleracionista-de-la-inflación-friedman-1968-phelps-1967">1.3.2. La teoría aceleracionista de la inflación (Friedman, 1968; Phelps, 1967)</h4>
+<p><strong>Origen</strong>: Friedman (1968) y Phelps (1967) extraen esta teoría como corolario de la curva de Phillips ampliada por las expectativas.</p>
+<p><strong>Idea</strong>: el Gobierno solo puede mantener el desempleo por debajo de la tasa natural acelerando la inflación, es decir, explotando permanentemente los errores de predicción de los agentes, lo que exige aumentar continuamente la tasa de crecimiento de la oferta monetaria.</p>
+<p><strong>Razonamiento</strong>: si la autoridad monetaria fija un objetivo de desempleo inferior a la tasa natural, ha de generar cada periodo una inflación superior a la esperada. Sin embargo, con expectativas adaptativas, la inflación esperada se ajusta a la pasada, de modo que sostener la sorpresa exige una inflación creciente (véase la figura del tema <a href="../chapters/a41-inflacion.html">A41</a>, apartado 2.2.2). Si la autoridad deja de acelerar la inflación, la economía regresa a <span class="math inline">\(\bar{u}\)</span> con una inflación más alta. En cambio, si la autoridad persiste, el intento de sostener el empleo por encima de su nivel de equilibrio degenera en una espiral inflacionista.</p>
+<p>El corolario de política económica es que solo las políticas de oferta pueden reducir la tasa natural de forma duradera, y que la política monetaria debe renunciar a explotar la curva de Phillips.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: explica por qué los intentos de mantener el desempleo por debajo de su tasa natural desembocaron en la inflación creciente de los años setenta, y fundamenta la renuncia de la política monetaria a explotar la curva de Phillips.</p></li>
+<li><p><em>Limitaciones</em>: el resultado descansa en las expectativas adaptativas. Con expectativas racionales, en cambio, una política sistemática ni siquiera tiene efectos transitorios. Cuando las expectativas están ancladas, como en EE.&nbsp;UU. desde mediados de los años noventa, la curva vuelve a ligar el nivel de la inflación, y no su variación, con el desempleo (Blanchard, 2017, cap. 8).</p></li>
+</ul>
+</section>
+</section>
+<section id="neokeynesianos-del-desequilibrio-la-tipología-de-malinvaud-1977" class="level3">
+<h3 class="anchored" data-anchor-id="neokeynesianos-del-desequilibrio-la-tipología-de-malinvaud-1977">1.4. Neokeynesianos del desequilibrio: la tipología de Malinvaud (1977)</h3>
+<p>Finalmente, la escuela del desequilibrio (Clower, 1965; Leijonhufvud, 1968; Barro y Grossman, 1971) reinterpreta a Keynes como una teoría de los fallos de coordinación con precios rígidos y racionamiento.</p>
+<p><strong>Origen</strong>: Edmond Malinvaud (1977) condensa las aportaciones de Clower y Leijonhufvud sobre los fallos de coordinación y el ajuste dinámico. Bajo la <em>hipótesis de decisión dual</em> (los agentes deciden sujetos a las cantidades que efectivamente pueden transar en los demás mercados), con rigideces de precios y racionamiento, identifica tres regímenes de desequilibrio según la situación conjunta de los mercados de trabajo y de bienes. A ellos añade un cuarto caso límite, el subconsumo.</p>
+<p><strong>Idea</strong>: el desempleo no es un fenómeno único, sino que, según la combinación de excesos de oferta o de demanda en los mercados de trabajo y de bienes, un mismo nivel de desempleo puede tener causas distintas y exigir remedios distintos, incluso opuestos.</p>
+<p><strong>Razonamiento</strong>: los cuatro regímenes son:</p>
+<ol type="1">
+<li><p><em>Desempleo clásico</em>: exceso de oferta de trabajo y exceso de demanda de bienes. El salario real es superior al de vaciado (p.&nbsp;ej. por la acción sindical).</p>
+<ul>
+<li><em>Política adecuada</em>: bajada del salario real, que eleva la oferta de bienes y la demanda de trabajo. Un estímulo de demanda, en cambio, es aquí ineficaz, porque la producción está limitada por la oferta, y solo se precisa si la bajada salarial lleva la economía al régimen de desempleo keynesiano.</li>
+</ul></li>
+<li><p><em>Desempleo keynesiano</em>: exceso de oferta de trabajo y exceso de oferta de bienes. El salario real puede ser inferior, igual o superior al de vaciado, porque el problema no está en el precio del trabajo, sino en la demanda efectiva.</p>
+<ul>
+<li><em>Política adecuada</em>: una subida limitada del salario real o, sobre todo, la eliminación de la restricción de demanda mediante el impulso fiscal.</li>
+</ul></li>
+<li><p><em>Inflación reprimida</em>: los controles administrativos impiden que precios y salarios suban hasta su nivel de equilibrio, así que tanto en bienes como en trabajo hay exceso de demanda. El desequilibrio aflora entonces como escasez y racionamiento, no como inflación. La inflación reprimida es el diagnóstico clásico de las economías planificadas y de las economías de guerra con controles.</p>
+<ul>
+<li><em>Política adecuada</em>: liberalizar precios y salarios para que absorban el exceso de demanda, acompañada de una contracción de la demanda agregada (fiscal o monetaria) que evite que la liberalización se traduzca en una inflación abierta.</li>
+</ul></li>
+<li><p><em>Subconsumo</em>: exceso de demanda de trabajo y exceso de oferta de bienes, un caso lógicamente posible pero infrecuente en la práctica. Por eso, su interés es sobre todo teórico, como el régimen que completa la tipología.</p>
+<ul>
+<li><em>Política adecuada</em>: elevar el salario real, que estimula el consumo (y absorbe así el exceso de oferta de bienes) y modera la demanda de trabajo de las empresas (y reduce así su exceso).</li>
+</ul></li>
+</ol>
+<p>Gráficamente, con la oferta monetaria y el gasto público dados, los regímenes se reparten el plano salario nominal-nivel de precios, <span class="math inline">\((w, P)\)</span>, en torno al equilibrio walrasiano, W (figura <a href="#fig-a287-malinvaud-regimenes" class="quarto-xref"><span>A28.4</span></a>). Un nivel de precios alto reduce los saldos reales y la demanda de bienes (desempleo keynesiano), un salario alto respecto a los precios contrae la oferta de las empresas (desempleo clásico), y salarios y precios bajos generan exceso de demanda en ambos mercados (inflación reprimida). En cambio, el subconsumo solo aparece sobre la frontera entre el desempleo keynesiano y la inflación reprimida, de ahí que sea un caso límite.</p>
+<div id="fig-a287-malinvaud-regimenes" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a287-malinvaud-regimenes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a287_Malinvaud_regimenes.html" style="height:580px" loading="lazy" title="fig-a287-malinvaud-regimenes"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a287-malinvaud-regimenes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A28.4: Regímenes de desequilibrio de Malinvaud (1977). Con la oferta monetaria dada, las fronteras que parten del equilibrio walrasiano, W, separan el desempleo keynesiano (K, precios altos), el desempleo clásico (C, salario real superior al de vaciado) y la inflación reprimida (I, salarios y precios bajos). El subconsumo es el caso límite de la frontera entre K e I.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la caracterización de los regímenes permite discriminar la política óptima según el tipo de desequilibrio, frente a las recetas universales.</p></li>
+<li><p><em>Limitaciones</em>: son metodológicas, pues las rigideces de precios se postulan sin microfundamentar y la identificación empírica del régimen vigente resulta difícil, lo que explica el declive del enfoque tras la revolución de las expectativas racionales.</p></li>
+</ul>
+</section>
+<section id="conclusiones" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones">1.5. Conclusiones</h3>
+<p>Los fundamentos parten de dos diagnósticos opuestos. Para la visión neoclásica, el desempleo involuntario exige una rigidez que impida el ajuste del salario real, y se corrige con políticas de oferta. Para Keynes, el empleo lo fija la demanda efectiva, y el desempleo se corrige estabilizándola. La síntesis neoclásica concilia ambas posturas con la curva de Phillips, un menú estable de inflación y desempleo que la ley de Okun traslada a la producción.</p>
+<p>El monetarismo niega ese menú al introducir las expectativas. Cuando los agentes corrigen sus errores, el desempleo vuelve a la tasa natural, y mantenerlo por debajo exige acelerar la inflación. Malinvaud muestra, por último, que un mismo desempleo puede responder a regímenes distintos y exigir remedios opuestos. Quedan abiertos dos problemas, los errores sistemáticos que implican las expectativas adaptativas y las rigideces de precios que el enfoque del desequilibrio postula sin microfundamentar. La sección 2 los aborda con las expectativas racionales y con el modelo de la NAIRU, que deriva el desempleo de equilibrio de la negociación salarial y de la fijación de precios.</p>
+</section>
+</section>
+<section id="modelos-de-la-tasa-de-desempleo-de-equilibrio-expectativas-racionales-nairu-e-histéresis" class="level2">
+<h2 class="anchored" data-anchor-id="modelos-de-la-tasa-de-desempleo-de-equilibrio-expectativas-racionales-nairu-e-histéresis">2. Modelos de la tasa de desempleo de equilibrio: expectativas racionales, NAIRU e histéresis</h2>
+<p>La sección anterior deja establecido que existe una tasa de desempleo de equilibrio hacia la que la economía vuelve cuando las expectativas se cumplen, pero la tasa natural de Friedman es un concepto más que un modelo. Es decir, no dice cómo se forman las expectativas cuando los agentes no se limitan a mirar el pasado, de qué depende esa tasa, ni por qué el desempleo europeo no volvió a su nivel anterior tras cada recesión.</p>
+<p>Los tres modelos de esta sección responden a esas tres preguntas:</p>
+<ul>
+<li><p><em>Nueva macroeconomía clásica</em>: sustituye las expectativas adaptativas por las racionales y lleva la lógica de Friedman a su límite, de modo que, sin errores sistemáticos, la curva de Phillips es vertical también a corto plazo.</p></li>
+<li><p><em>Modelo de la NAIRU</em>: de la primera generación neokeynesiana, abandona el mercado walrasiano y deriva la tasa de equilibrio de la negociación salarial y de la fijación de precios en mercados imperfectos, con lo que la hace depender de instituciones observables.</p></li>
+<li><p><em>Histéresis</em>: muestra que esa tasa puede no ser un ancla sino una variable que sigue al propio desempleo, lo que devuelve a la política de demanda un papel a largo plazo que los dos modelos anteriores le niegan.</p></li>
+</ul>
+<section id="nueva-macroeconomía-clásica" class="level3">
+<h3 class="anchored" data-anchor-id="nueva-macroeconomía-clásica">2.1. Nueva macroeconomía clásica</h3>
+<p>La nueva macroeconomía clásica (NMC) aborda el desempleo de equilibrio con tres aportaciones: la crítica de Lucas, la sustitución intertemporal en la oferta de trabajo y la curva de Phillips con expectativas racionales.</p>
+<section id="crítica-de-lucas-1976" class="level4">
+<h4 class="anchored" data-anchor-id="crítica-de-lucas-1976">2.1.1. Crítica de Lucas (1976)</h4>
+<p><strong>Origen</strong>: Robert Lucas (<em>Econometric Policy Evaluation: A Critique</em>, 1976) cuestionó el uso de los modelos de la síntesis para evaluar políticas.</p>
+<p><strong>Idea</strong>: Lucas sostiene que los modelos econométricos de la síntesis no pueden usarse para evaluar políticas alternativas, porque sus parámetros estimados dependen del régimen de política vigente. Al cambiar el régimen, cambian las reglas de decisión de los agentes y, con ellas, los parámetros estimados.</p>
+<p><strong>Razonamiento</strong>: la crítica exige microfundamentar los modelos y modelizar explícitamente las expectativas, que es el programa de la nueva macroeconomía clásica y, después, de la nueva economía keynesiana. Aplicada al mercado de trabajo, implica que la curva de Phillips estimada bajo un régimen no sirve para predecir bajo otro.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: explica por qué la curva de Phillips estimada en los años sesenta dejó de funcionar cuando la política trató de explotarla, y su exigencia de modelos con parámetros estructurales, invariantes a la política, es hoy un estándar de la macroeconomía aplicada.</p></li>
+<li><p><em>Limitaciones</em>: su relevancia empírica es discutida, porque los contrastes encuentran pocos casos en que los parámetros de los modelos econométricos tradicionales cambien de forma significativa con la política (Ericsson e Irons, 1995). Además, la invariancia de los parámetros de preferencias y tecnología es un supuesto difícil de contrastar.</p></li>
+</ul>
+</section>
+<section id="oferta-de-trabajo-y-sustitución-intertemporal-lucas-y-rapping-1969" class="level4">
+<h4 class="anchored" data-anchor-id="oferta-de-trabajo-y-sustitución-intertemporal-lucas-y-rapping-1969">2.1.2. Oferta de trabajo y sustitución intertemporal (Lucas y Rapping, 1969)</h4>
+<p><strong>Origen</strong>: Robert Lucas y Leonard Rapping (1969) fueron los primeros en explicar las fluctuaciones del empleo dentro de un mercado de trabajo que se vacía continuamente.</p>
+<p><strong>Idea</strong>: los trabajadores eligen cuánto trabajar comparando el salario real actual con el esperado en el futuro, de modo que las fluctuaciones del empleo son respuestas voluntarias de sustitución intertemporal del ocio ante salarios percibidos como transitoriamente altos o bajos (tema <a href="../chapters/a25-oferta-trabajo.html">A25</a>, apartado 2.2).</p>
+<p><strong>Razonamiento</strong>: combinada con la información imperfecta sobre los precios agregados, la sustitución intertemporal permite a la NMC generar fluctuaciones del empleo sin abandonar el vaciado continuo de los mercados. Por ello, el desempleo cíclico es ocio elegido, y solo la tasa natural es desempleo en sentido propio.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: ofrece la primera explicación de las fluctuaciones del empleo con agentes optimizadores y mercados que se vacían, y su mecanismo de sustitución intertemporal pasa a los modelos del ciclo real (tema <a href="../chapters/a42-ciclos.html">A42</a>, apartado 2.2).</p></li>
+<li><p><em>Limitaciones</em>: el mecanismo exige una elasticidad intertemporal de la oferta de trabajo elevada, que la evidencia microeconométrica no respalda (Altonji, 1986). Además, resulta difícil interpretar el aumento del desempleo en las recesiones como ocio elegido.</p></li>
+</ul>
+</section>
+<section id="curva-de-phillips-con-expectativas-racionales-lucas-1972-sargent-y-wallace-1975" class="level4">
+<h4 class="anchored" data-anchor-id="curva-de-phillips-con-expectativas-racionales-lucas-1972-sargent-y-wallace-1975">2.1.3. Curva de Phillips con expectativas racionales (Lucas, 1972; Sargent y Wallace, 1975)</h4>
+<p><strong>Origen</strong>: Robert Lucas (1972) derivó la curva de Phillips de un modelo con expectativas racionales e información imperfecta, y Thomas Sargent y Neil Wallace (1975) extrajeron su implicación para la política económica.</p>
+<p><strong>Idea</strong>: la NMC deja atrás las expectativas adaptativas y supone que son racionales (<em>hipótesis de las expectativas racionales</em>, HER). Al prever, los agentes aprovechan con eficiencia toda la información a su alcance, incluido cómo funciona la economía y qué política se ha anunciado, y por eso solo se equivocan al azar y sin sesgo. Desaparece así lo que en Friedman daba lugar al <em>trade-off</em> de corto plazo, unos agentes que erraban siempre en la misma dirección.</p>
+<p><strong>Razonamiento</strong>: en la parábola de las islas, un productor ve subir el precio de lo que vende sin conocer el nivel general de precios. Producir más solo le interesa si la subida es de precio relativo, no si todos los precios han subido, y ha de averiguar qué caso se da. Si atribuye parte de la subida a un cambio relativo, aumenta la producción y el empleo. Al agregar y aplicar la ley de Okun, el desempleo se desvía de su tasa natural solo en la medida en que el nivel de precios (en logaritmos, <span class="math inline">\(p_t\)</span>) difiera del esperado (<span class="math inline">\(p_t^e\)</span>):</p>
+<p><span class="math display">\[u_t = \bar{u} - \frac{\zeta}{\phi}(p_t - p_t^e) + \varepsilon_t, \qquad \zeta, \phi &gt; 0\]</span></p>
+<p>donde <span class="math inline">\(\zeta\)</span> mide la respuesta de la producción a la sorpresa de precios, <span class="math inline">\(\phi\)</span> es el coeficiente de Okun y <span class="math inline">\(\varepsilon_t\)</span> una perturbación aleatoria.</p>
+<p>Con expectativas racionales, <span class="math inline">\(p_t - p_t^e\)</span> es un error impredecible con la información disponible. Por eso, el desempleo baja de su tasa natural únicamente cuando hay sorpresas inflacionarias, y vuelve a ella en cuanto se disipan.</p>
+<p>Así, una política monetaria sistemática es anticipada e incorporada en <span class="math inline">\(p_t^e\)</span>, y no tiene efecto real ni siquiera a corto plazo. Por tanto, la curva es vertical también a corto plazo, salvo por las sorpresas.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la HER obliga a modelizar explícitamente las expectativas y a microfundamentar los modelos, y su implicación de política, que la estabilización sistemática es inútil, fijó los términos del debate posterior.</p></li>
+<li><p><em>Limitaciones</em>: para que el modelo genere fluctuaciones observables, los agentes han de confundir cambios de precios relativos con cambios generales durante periodos largos, lo que es poco creíble cuando el nivel de precios se publica mensualmente. Por su parte, el mecanismo de sustitución intertemporal en que se apoya exige una elasticidad de la oferta de trabajo poco realista. Por todo lo anterior, la propia NMC evolucionó hacia los modelos del ciclo real (tema <a href="../chapters/a42-ciclos.html">A42</a>), y la nueva economía keynesiana conservó la HER pero abandonó el vaciado continuo.</p></li>
+</ul>
+</section>
+</section>
+<section id="nueva-economía-keynesiana-de-primera-generación-el-modelo-de-la-nairu-layard-y-nickell-1985-carlin-y-soskice-1990" class="level3">
+<h3 class="anchored" data-anchor-id="nueva-economía-keynesiana-de-primera-generación-el-modelo-de-la-nairu-layard-y-nickell-1985-carlin-y-soskice-1990">2.2. Nueva economía keynesiana de primera generación: el modelo de la NAIRU (Layard y Nickell, 1985; Carlin y Soskice, 1990)</h3>
+<p><strong>Origen</strong>: Richard Layard y Stephen Nickell (1985) y, en su versión de manual, Wendy Carlin y David Soskice (1990) formularon el modelo de salarios y precios del que resulta la NAIRU. Layard, Nickell y Jackman (1991) lo sistematizan y lo contrastan con datos de la OCDE.</p>
+<p><strong>Idea</strong>: la nueva economía keynesiana acepta de la NMC las expectativas racionales y la exigencia de microfundamentos, pero rechaza su punto de partida, porque el mercado de trabajo no es walrasiano. Los salarios se negocian y los precios los fijan empresas con poder de mercado, de modo que el desempleo de equilibrio no es el que vacía el mercado sino el que hace compatibles las aspiraciones de trabajadores y empresas sobre el reparto de la renta.</p>
+<section id="supuestos" class="level4">
+<h4 class="anchored" data-anchor-id="supuestos">2.2.1. Supuestos</h4>
+<p><strong>Entorno</strong>: la economía es cerrada y los mercados de trabajo y de bienes son imperfectos.</p>
+<p><strong>Agentes</strong>: sindicatos y empresas, ambos con poder de mercado y sin ilusión monetaria, de modo que negocian en términos reales esperados y lo relevante es el salario real y el margen real, no sus valores nominales.</p>
+<ul>
+<li><p><em>Sindicatos</em>: en el mercado de trabajo, un sindicato (o los trabajadores en negociación colectiva) fija el salario real que aspira a obtener, y esa aspiración crece con la presión del mercado, es decir, decrece con el desempleo.</p></li>
+<li><p><em>Empresas</em>: en el mercado de bienes, las empresas fijan el precio como un margen sobre el coste marginal, y ese margen determina el salario real que están dispuestas a pagar.</p></li>
+</ul>
+<p><strong>Tecnología</strong>: el trabajo es el único factor variable y opera con rendimientos constantes, <span class="math inline">\(Y = A_L \cdot L\)</span>, de modo que la productividad marginal coincide con la media y es constante. El coste marginal es, por tanto, el salario dividido por la productividad.</p>
+</section>
+<section id="modelo" class="level4">
+<h4 class="anchored" data-anchor-id="modelo">2.2.2. Modelo</h4>
+<p><strong>Planteamiento</strong>: el equilibrio resulta de dos relaciones, la que fija el salario real que los trabajadores pretenden y la que fija el que las empresas conceden. El desempleo es la variable que reconcilia ambas pretensiones. Si el salario real al que aspiran los trabajadores supera al que las empresas pagan, la diferencia se traduce en una inflación superior a la esperada.</p>
+<p><strong>Salario real negociado (SRN)</strong>: al inicio de cada periodo, los trabajadores negocian un salario real esperado, <span class="math inline">\(w/P^e\)</span>, que depende negativamente del desempleo (a mayor desempleo, menor poder negociador) y positivamente de un conjunto de factores institucionales <span class="math inline">\(z\)</span> (prestaciones por desempleo, salario mínimo, cotizaciones):</p>
+<p><span class="math display">\[\frac{w}{P^e} = f(u^-, z^+) \tag{1}\]</span></p>
+<p><strong>Salario real pagado (SRP)</strong>: las empresas fijan un margen constante <span class="math inline">\(\mu = 1/(\sigma - 1) &gt; 0\)</span> sobre el coste marginal, que por los rendimientos constantes coincide con el coste laboral unitario:</p>
+<p><span class="math display">\[P = (1 + \mu)\,\frac{w}{A_L} \tag{2}\]</span></p>
+<p><span class="math display">\[\frac{w}{P} = \frac{A_L}{1 + \mu} = (1-I_L)\,A_L\]</span></p>
+<p>donde <span class="math inline">\(\sigma\)</span> es la elasticidad de sustitución entre variedades (la elasticidad-precio de la demanda de cada empresa) e <span class="math inline">\(I_L = 1/\sigma\)</span> el índice de Lerner. El SRP es horizontal en el plano empleo-salario real, pues no depende del nivel de empleo, sino solo de la productividad y del grado de competencia<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. El margen puede ser, no obstante, anticíclico, porque la colusión es más difícil de sostener en los auges (Rotemberg y Saloner, 1986) o porque la elasticidad-precio de la demanda es procíclica. En ese caso, el SRP tendría pendiente positiva.</p>
+<p><strong>Equilibrio (la NAIRU)</strong>: exige que las aspiraciones recogidas en (1) y (2) sean compatibles, <span class="math inline">\(\text{SRN} = \text{SRP}\)</span>, lo que implica el cumplimiento de las expectativas (<span class="math inline">\(P^e = P\)</span>):</p>
+<p><span class="math display">\[f(\bar{u}, z) = \frac{A_L}{1 + \mu}\]</span></p>
+<p>La tasa de desempleo que resuelve esta ecuación es la <em>NAIRU</em> (<em>Non-Accelerating Inflation Rate of Unemployment</em>), es decir, la tasa a la que las aspiraciones de trabajadores y empresas sobre el reparto de la renta resultan mutuamente compatibles. Por eso, a esa tasa la inflación no se acelera. La NAIRU es única y estable en ausencia de histéresis, y es también compatible con desempleo involuntario, pues el salario negociado se sitúa por encima del de vaciado. Además, la NAIRU engloba el desempleo estructural y el friccional.</p>
+<p>Conviene distinguirla de la tasa natural de Friedman. Ambas son tasas de equilibrio a largo plazo determinadas por factores reales, pero la tasa natural es un concepto de vaciado del mercado, es decir, el nivel que generaría el equilibrio general walrasiano. Friedman, no obstante, incorporaba ya en ese equilibrio las imperfecciones del mercado y los costes de información y movilidad. La NAIRU, en cambio, es un concepto de compatibilidad entre las aspiraciones de agentes con poder de mercado. Por ello, la NAIRU hace depender explícitamente el desempleo de equilibrio de instituciones (sindicatos, prestaciones, margen empresarial) que en el modelo competitivo no existen. En la práctica, los dos términos se usan como sinónimos para designar la tasa a la que la inflación es estable.</p>
+<p><strong>Desarrollo gráfico</strong>: la determinación de la NAIRU se representa en el plano empleo-salario real (figura <a href="#fig-a284-nairu" class="quarto-xref"><span>A28.5</span></a>):</p>
+<ol type="1">
+<li><p><em>Salario real negociado</em> (SRN): es creciente en el empleo, porque un menor desempleo refuerza el poder negociador de los trabajadores, y se hace muy inclinado al acercarse a la población activa.</p></li>
+<li><p><em>Salario real pagado</em> (SRP): es horizontal en <span class="math inline">\(A_L/(1+\mu)\)</span>, porque con rendimientos constantes el salario real que conceden las empresas no depende del empleo.</p></li>
+<li><p><em>Población activa</em> (PA): marca el empleo máximo y es una vertical, porque no depende del salario real. La distancia horizontal entre el empleo y esta recta mide el desempleo.</p></li>
+<li><p><em>Equilibrio</em>: en el punto 0 se cortan el SRN y el SRP, con el empleo <span class="math inline">\(L^{*}\)</span>. La distancia entre <span class="math inline">\(L^{*}\)</span> y la población activa es el desempleo de la NAIRU, <span class="math inline">\(\bar{u}\)</span>.</p></li>
+</ol>
+<div id="fig-a284-nairu" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a284-nairu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a284_NAIRU.html" style="height:620px" loading="lazy" title="fig-a284-nairu"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a284-nairu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A28.5: Determinación de la NAIRU. El salario real negociado (SRN) se iguala al salario real pagado (SRP) en el empleo <span class="math inline">\(L^*\)</span>. La distancia hasta la población activa (PA) es el desempleo correspondiente a la NAIRU, <span class="math inline">\(\bar{u}\)</span>.
+</figcaption>
+</figure>
+</div>
+<p><strong>Estática comparativa</strong>: se distinguen las políticas de demanda y las de oferta:</p>
+<ul>
+<li><p><em>Políticas de demanda</em>: una expansión de demanda reduce transitoriamente el desempleo por debajo de la NAIRU. El menor desempleo refuerza el poder negociador de los trabajadores y eleva el salario negociado por encima del pagado (<span class="math inline">\(\text{SRN} &gt; \text{SRP}\)</span>). Las empresas trasladan entonces los mayores salarios a los precios y se desata una espiral salarios-precios que devuelve la economía a la NAIRU con una inflación superior. Las políticas de demanda solo tienen, pues, efectos transitorios, y a costa de inflación.</p></li>
+<li><p><em>Políticas de oferta</em>: son las únicas que alteran la NAIRU, porque desplazan una de las dos curvas, y las óptimas son las que eliminan las rigideces de ambos mercados. Sus efectos son los siguientes:</p>
+<ul>
+<li><p><em>Factores institucionales</em>: un aumento de <span class="math inline">\(z\)</span> (prestaciones, salario mínimo) desplaza el SRN hacia arriba y eleva la NAIRU.</p></li>
+<li><p><em>Competencia</em>: un aumento de <span class="math inline">\(\mu\)</span> (menor competencia en el mercado de bienes) reduce el SRP y eleva la NAIRU.</p></li>
+<li><p><em>Productividad</em>: un aumento de <span class="math inline">\(A_L\)</span> (formación) desplaza el SRP hacia arriba y reduce la NAIRU. Sin embargo, si las aspiraciones salariales acaban indexándose a la productividad, el efecto es solo transitorio.</p></li>
+<li><p><em>Fiscalidad</em>: las rebajas de impuestos y cotizaciones reconcilian las aspiraciones de ambas partes a un menor nivel de desempleo.</p></li>
+</ul></li>
+</ul>
+<p><strong>Extensiones</strong>:</p>
+<ul>
+<li><p><em>Curva de Phillips de la primera generación neokeynesiana</em>: sin imponer el cumplimiento de las expectativas, y suponiendo por concreción <span class="math inline">\(f(u, z) = z\,e^{-\kappa_u u}\)</span>, la combinación de (1) y (2) da una curva de Phillips con fundamento en la puja distributiva entre sindicatos y empresas:</p>
+<p><span class="math display">\[\begin{aligned} \pi_t &amp;= \pi_t^e + \alpha - \kappa_u u_t = \pi_t^e - \kappa_u(u_t - \bar{u}), \qquad \kappa_u &gt; 0 \\ \bar{u} &amp;= \frac{\alpha}{\kappa_u}, \qquad \alpha = \ln(1+\mu) + \ln z - \ln A_L \end{aligned}\]</span> Se trata de la curva ampliada por las expectativas del apartado 1.3.1, con la diferencia de que la NAIRU ya no es un dato sino una función de los parámetros estructurales. Así, la NAIRU crece con el margen <span class="math inline">\(\mu\)</span> y con los factores institucionales <span class="math inline">\(z\)</span>, y decrece con la productividad <span class="math inline">\(A_L\)</span>.</p></li>
+<li><p><em>Evidencia sobre los determinantes</em>: los estudios de panel para la OCDE que siguen este enfoque (Nickell, 1997) asocian una NAIRU más alta a las prestaciones generosas de duración indefinida sin exigencia de búsqueda activa. También la asocian a la sindicación elevada sin coordinación de la negociación y a una cuña fiscal elevada sobre el trabajo. La protección del empleo, en cambio, reduce a la vez las entradas y las salidas del desempleo y afecta más a su duración que a su nivel.</p>
+<p>Blanchard y Wolfers (2000) muestran que ni las perturbaciones ni las instituciones explican por sí solas la subida del paro europeo, pues muchas instituciones ya existían cuando el paro era bajo. Lo explica su interacción, ya que unas mismas perturbaciones adversas (desaceleración de la productividad, tipos de interés reales altos) elevaron más y de forma más duradera el desempleo en los países con instituciones más rígidas.</p></li>
+</ul>
+</section>
+<section id="conclusiones-1" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones-1">2.2.3. Conclusiones</h4>
+<p><strong>Aspectos positivos</strong>: el modelo fundamenta el desempleo de equilibrio en la estructura del mercado de trabajo y del de bienes (poder de negociación, márgenes, generosidad de las prestaciones), lo que lo hace más rico que la tasa natural friedmaniana y permite analizar las políticas estructurales. Además, da a la curva de Phillips ampliada un fundamento alternativo al de la NMC, basado en la puja distributiva en mercados imperfectos y no en la información imperfecta sobre los precios.</p>
+<p><strong>Limitaciones</strong>: la NAIRU no es observable y sus estimaciones son inestables (apartado 3.3). A ello se suma que el modelo es estático y no explica por qué el desempleo europeo se mantuvo alto tras las perturbaciones de los años setenta, lo que motiva la hipótesis de histéresis.</p>
+</section>
+</section>
+<section id="histéresis-la-persistencia-del-desempleo-blanchard-y-summers-1986" class="level3">
+<h3 class="anchored" data-anchor-id="histéresis-la-persistencia-del-desempleo-blanchard-y-summers-1986">2.3. Histéresis: la persistencia del desempleo (Blanchard y Summers, 1986)</h3>
+<p><strong>Origen</strong>: Olivier Blanchard y Lawrence Summers (<em>Hysteresis and the European Unemployment Problem</em>, 1986) tomaron de la física el término histéresis para describir la persistencia del desempleo europeo.</p>
+<p><strong>Idea</strong>: la subida del desempleo europeo en los años setenta y ochenta reveló que la NAIRU estimada parecía evolucionar a la par que el desempleo observado, en lugar de actuar como atractor estable. La <em>histéresis</em> designa precisamente esa dependencia, pues considera que la tasa de desempleo de equilibrio depende de la evolución pasada del desempleo efectivo. Se trata, por tanto, de un fenómeno de medio plazo. Según el desempleo vuelva muy despacio a su nivel de partida o no vuelva, la histéresis es parcial (persistencia) o pura.</p>
+<section id="razonamiento-los-mecanismos" class="level4">
+<h4 class="anchored" data-anchor-id="razonamiento-los-mecanismos">2.3.1. Razonamiento: los mecanismos</h4>
+<p>Blanchard y Summers identifican tres mecanismos por los que el desempleo pasado eleva el desempleo de equilibrio:</p>
+<ol type="1">
+<li><p><em>Reducciones en la acumulación de capital</em>: las perturbaciones negativas reducen el empleo y la inversión, y la caída del <em>stock</em> de capital provoca disminuciones adicionales de la demanda de trabajo.</p></li>
+<li><p><em>Pérdida de capital humano</em>: el desempleo prolongado deprecia las cualificaciones y genera desgaste psicológico (efecto desánimo), lo que dificulta la reinserción (Phelps, 1972). Esta pérdida es uno de los mecanismos con mayor respaldo empírico, aunque Blanchard y Summers (1986) consideraron más prometedor el de <em>insiders-outsiders</em>.</p></li>
+<li><p><em>Dinámica</em> insiders-outsiders: los <em>insiders</em>, que concentran el poder negociador, fijan el salario atendiendo solo a su propio empleo, de modo que en las recesiones no se ajusta a la baja lo suficiente para reabsorber a los despedidos<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p></li>
+</ol>
+</section>
+<section id="desarrollo-en-el-modelo-de-la-nairu" class="level4">
+<h4 class="anchored" data-anchor-id="desarrollo-en-el-modelo-de-la-nairu">2.3.2. Desarrollo en el modelo de la NAIRU</h4>
+<p>Analíticamente, la histéresis consiste en hacer depender la NAIRU del desempleo pasado. La forma más simple es una media ponderada de la NAIRU estructural y del desempleo del periodo anterior:</p>
+<p><span class="math display">\[\bar{u}_t = (1 - h)\,\bar{u}^* + h\,u_{t-1}, \qquad h \in [0, 1]\]</span></p>
+<p>donde <span class="math inline">\(\bar{u}^*\)</span> es la NAIRU estructural de largo plazo y <span class="math inline">\(h\)</span> el grado de histéresis. Se dan así tres casos:</p>
+<ul>
+<li><p><em>Sin histéresis</em>: con <span class="math inline">\(h = 0\)</span> la NAIRU es constante, como en el modelo de Layard y Nickell.</p></li>
+<li><p><em>Histéresis parcial</em>: con <span class="math inline">\(0 &lt; h &lt; 1\)</span> hay persistencia, pues tras una perturbación la NAIRU se desplaza y vuelve solo gradualmente a <span class="math inline">\(\bar{u}^*\)</span>. La NAIRU de largo plazo es única, aunque a corto o medio plazo puede haber varias.</p></li>
+<li><p><em>Histéresis pura</em> (formulación original de Blanchard y Summers): con <span class="math inline">\(h = 1\)</span>, la NAIRU es simplemente el desempleo del periodo anterior y el desempleo sigue un paseo aleatorio, sin nivel de largo plazo al que volver. En esta forma extrema de persistencia deja de existir una NAIRU única, y las políticas de demanda vuelven a tener efectos a largo plazo.</p></li>
+</ul>
+<p>Sustituyendo en la curva de Phillips, <span class="math inline">\(\pi_t = \pi_t^e - \kappa_u(u_t - \bar{u}_t)\)</span>, la inflación deja de depender de la distancia a una tasa fija y pasa a depender, en el caso puro, de la variación del desempleo, <span class="math inline">\(\pi_t = \pi_t^e - \kappa_u\,\Delta u_t\)</span>.</p>
+<p>Gráficamente, en el plano empleo-salario real del modelo de Layard y Nickell (figura <a href="#fig-a285-histeresis" class="quarto-xref"><span>A28.6</span></a>), el SRN recoge el salario real que negocian los trabajadores para cada nivel de empleo y es creciente, porque un menor desempleo refuerza su poder negociador. El SRP, horizontal, es el que pagan las empresas con su margen.</p>
+<p>La histéresis se representa mediante un desplazamiento de la curva SRN. Tras una contracción de demanda, el desempleo aumenta (<span class="math inline">\(\Delta u_{t-1} &gt; 0\)</span>) y parte de los desempleados deja de presionar sobre la negociación. Los <em>insiders</em> restantes, con mayor poder negociador efectivo, sostienen sus salarios. La curva se desplaza hacia la izquierda, de <span class="math inline">\(\text{SRN}_0\)</span> a <span class="math inline">\(\text{SRN}_1\)</span>, y, con el SRP sin cambios, el equilibrio pasa del punto 0 al 1, con menor empleo (<span class="math inline">\(L_1^{*} &lt; L_0^{*}\)</span>) y una NAIRU superior (<span class="math inline">\(\bar{u}_1 &gt; \bar{u}_0\)</span>). Por tanto, cuando la coyuntura mejora, el desempleo ya no retorna a su nivel inicial.</p>
+<div id="fig-a285-histeresis" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a285-histeresis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a285_Histeresis.html" style="height:650px" loading="lazy" title="fig-a285-histeresis"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a285-histeresis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A28.6: Histéresis. Un <em>shock</em> transitorio desplaza de forma permanente la curva SRN y eleva la NAIRU.
+</figcaption>
+</figure>
+</div>
+<p>El corolario de política es que las políticas activas de empleo (formación, intermediación, recualificación de parados de larga duración) pueden favorecer el retorno del desempleo a su nivel inicial, porque frenan la pérdida de capital humano (segundo de los mecanismos anteriores), que el apartado 3.1 reinterpreta como una caída de la eficiencia del emparejamiento. La dinámica <em>insiders-outsiders</em> se desarrolla en el tema <a href="../chapters/a27-salarios.html">A27</a>, apartado 2.4.</p>
+</section>
+<section id="conclusiones-2" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones-2">2.3.3. Conclusiones</h4>
+<p><strong>Aspectos positivos</strong>: la histéresis explica lo que la NAIRU estática no podía, la persistencia del desempleo europeo tras las perturbaciones de los años setenta y ochenta, y devuelve a la política de demanda un papel a largo plazo. Además, sus tres mecanismos han recibido apoyo empírico, y el caso español es una de sus ilustraciones más citadas.</p>
+<p><strong>Limitaciones</strong>: la literatura posterior considera que la histéresis pura es una hipótesis demasiado extrema, por tres razones:</p>
+<ul>
+<li><p><em>Outsiders</em>: los desempleados sí pueden afectar, siquiera parcialmente, al resultado de la negociación.</p></li>
+<li><p><em>Insiders</em>: afrontan a su vez una probabilidad positiva de caer en el desempleo, lo que modera sus demandas.</p></li>
+<li><p><em>Empresas</em>: pueden recurrir a la amenaza creíble de despido y sustitución.</p></li>
+</ul>
+<p>En consecuencia, la dinámica <em>insiders-outsiders</em> genera una persistencia elevada (<span class="math inline">\(0 &lt; h &lt; 1\)</span>), pero no histéresis pura, y el desempleo acaba volviendo a una NAIRU de largo plazo, aunque lentamente.</p>
+</section>
+</section>
+<section id="conclusiones-3" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-3">2.4. Conclusiones</h3>
+<p>Los tres modelos convierten la tasa natural en una teoría del desempleo de equilibrio. En primer lugar, la nueva macroeconomía clásica la combina con expectativas racionales, de modo que solo las sorpresas apartan el desempleo de esa tasa y una política sistemática carece de efectos reales incluso a corto plazo. En segundo lugar, el modelo de la NAIRU sitúa el equilibrio donde el salario real que negocian los trabajadores coincide con el que pagan las empresas. La tasa depende entonces de instituciones (prestaciones, sindicatos, margen empresarial), y solo las políticas de oferta la alteran. Finalmente, la histéresis suma a esos determinantes el desempleo pasado y devuelve a la política de demanda efectos duraderos, aunque la literatura considera más plausible una persistencia elevada que la histéresis pura.</p>
+<p>Quedan por precisar los determinantes que resume el vector <span class="math inline">\(z\)</span> y la forma de medir la tasa. La sección 3 lo hace con el modelo de búsqueda y emparejamiento, que da contenido a esos factores, y con los métodos de estimación de la NAIRU y sus límites.</p>
+</section>
+</section>
+<section id="desarrollos-actuales-y-convergencia-del-pensamiento-económico" class="level2">
+<h2 class="anchored" data-anchor-id="desarrollos-actuales-y-convergencia-del-pensamiento-económico">3. Desarrollos actuales y convergencia del pensamiento económico</h2>
+<p>La teoría actual del desempleo de equilibrio incorpora las fricciones de búsqueda y la curva de Phillips neokeynesiana y afronta el problema práctico de estimar la NAIRU. La sección termina con la convergencia del pensamiento económico.</p>
+<section id="el-modelo-de-búsqueda-y-emparejamiento" class="level3">
+<h3 class="anchored" data-anchor-id="el-modelo-de-búsqueda-y-emparejamiento">3.1. El modelo de búsqueda y emparejamiento</h3>
+<p>Los desarrollos actuales parten del modelo de búsqueda y emparejamiento, que microfundamenta el desempleo de equilibrio como resultado de un proceso costoso de encuentro entre trabajadores y vacantes. Su aportación a este tema es triple.</p>
+<ul>
+<li><p><em>Nuevos parámetros</em>: en primer lugar, ofrece una teoría de la tasa de desempleo de equilibrio en la que esta depende de la eficiencia del emparejamiento, de la tasa de destrucción de empleo, del poder negociador de los trabajadores y del coste de mantener una vacante. Ello da contenido a los factores <span class="math inline">\(z\)</span> del modelo de la NAIRU.</p></li>
+<li><p><em>Naturaleza de las perturbaciones</em>: en segundo lugar, distingue con precisión las perturbaciones coyunturales, que mueven el equilibrio sobre la curva de Beveridge, de las estructurales, que la desplazan y alteran la tasa de equilibrio. Dota así de un instrumento empírico a la distinción entre paro cíclico y estructural.</p></li>
+<li><p><em>Persistencia y eficiencia</em>: en tercer lugar, explica la persistencia como pérdida de eficiencia del emparejamiento tras las recesiones (pérdida de capital humano, desajuste). Ello convierte a la histéresis en un fenómeno del proceso de búsqueda y no solo de la negociación salarial. El modelo ha permitido también integrar las fricciones de búsqueda en los modelos del ciclo<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. Asimismo, hace de las políticas activas de empleo el instrumento para desplazar la curva de Beveridge hacia el origen.</p></li>
+</ul>
+<p>Gráficamente, en el plano desempleo-vacantes (figura <a href="#fig-a286-beveridge" class="quarto-xref"><span>A28.7</span></a>), el equilibrio resulta de dos curvas:</p>
+<ol type="1">
+<li><p><em>Curva de Beveridge</em> (<span class="math inline">\(\text{CB}_0\)</span>): recoge las combinaciones de desempleo y vacantes en que las entradas en el desempleo y las salidas se compensan. Es decreciente, porque con más vacantes los desempleados encuentran trabajo antes, y convexa respecto al origen, porque cada reducción adicional del desempleo exige un aumento cada vez mayor de las vacantes.</p></li>
+<li><p><em>Recta de creación de empleo</em> (<span class="math inline">\(v = \theta_0^* u\)</span>): recoge las combinaciones de desempleo y vacantes con la estrechez de equilibrio. Parte del origen con pendiente igual a la estrechez del mercado <span class="math inline">\(\theta_0^*\)</span>, determinada por la condición de creación de empleo de las empresas.</p></li>
+<li><p><em>Equilibrio</em>: en el punto 0 se cortan ambas, con la tasa de desempleo de equilibrio <span class="math inline">\(\bar{u}_0\)</span> y las vacantes <span class="math inline">\(v_0\)</span>.</p></li>
+</ol>
+<p>Una caída de la eficiencia del emparejamiento (<span class="math inline">\(\Delta A &lt; 0\)</span>), una perturbación estructural, desplaza la curva hacia fuera, de <span class="math inline">\(\text{CB}_0\)</span> a <span class="math inline">\(\text{CB}_1\)</span>, y reduce la estrechez, de modo que la recta gira a <span class="math inline">\(v = \theta_1^* u\)</span>, menos inclinada. El equilibrio pasa del punto 0 al 1, con una tasa de desempleo de equilibrio mayor (<span class="math inline">\(\bar{u}_1 &gt; \bar{u}_0\)</span>).</p>
+<div id="fig-a286-beveridge" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a286-beveridge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a286_Beveridge.html" style="height:580px" loading="lazy" title="fig-a286-beveridge"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a286-beveridge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A28.7: Curva de Beveridge (CB) en el modelo de búsqueda y emparejamiento. Una caída de la eficiencia del emparejamiento (<span class="math inline">\(\Delta A &lt; 0\)</span>) desplaza la curva hacia fuera y hace menos inclinada la recta de creación de empleo (<span class="math inline">\(v = \theta^* u\)</span>), y el equilibrio pasa de 0 a 1, con una tasa de desempleo de equilibrio mayor (<span class="math inline">\(\bar{u}_1 &gt; \bar{u}_0\)</span>).
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>El modelo de Diamond, Mortensen y Pissarides se desarrolla en el tema <a href="../chapters/a26-desempleo-friccional.html">A26</a>, apartado 2. Aquí se recoge su aportación a la teoría de la tasa de desempleo de equilibrio.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="la-curva-de-phillips-de-la-nueva-economía-keynesiana-de-segunda-generación-nek2g" class="level3">
+<h3 class="anchored" data-anchor-id="la-curva-de-phillips-de-la-nueva-economía-keynesiana-de-segunda-generación-nek2g">3.2. La curva de Phillips de la nueva economía keynesiana de segunda generación (NEK2G)</h3>
+<p><strong>Origen</strong>: la nueva síntesis neoclásica (tema <a href="../chapters/a07-nek.html">A07</a>) deriva la curva de Phillips de la fijación escalonada de precios a la Calvo (1983) con expectativas racionales. La versión híbrida se debe a Galí y Gertler (1999) y la salarial, a Erceg, Henderson y Levin (2000), que Galí (2011) reformula en términos de desempleo.</p>
+<p><strong>Idea</strong>: los modelos de la NEK2G, o de la nueva síntesis neoclásica (NSNC), derivan una curva de Phillips plenamente microfundamentada y prospectiva. En ella, la inflación de hoy depende de la inflación esperada y de la brecha de producción o, de forma equivalente, del desempleo.</p>
+<section id="supuestos-1" class="level4">
+<h4 class="anchored" data-anchor-id="supuestos-1">3.2.1. Supuestos</h4>
+<p><strong>Entorno</strong>: las empresas deciden bajo incertidumbre en un modelo dinámico, en tiempo discreto y con horizonte infinito (<span class="math inline">\(T \rightarrow \infty\)</span>), lo que, junto con la rigidez de precios a la Calvo, hace que las decisiones de precios de hoy dependan de la inflación esperada en el futuro. Los precios se fijan a la Calvo, de manera que cada periodo solo una fracción <span class="math inline">\(1-\xi\)</span> de las empresas, seleccionada aleatoriamente, puede reajustar su precio. El nivel agregado de precios evoluciona entonces como una media ponderada del precio pasado y del precio óptimo de reajuste, <span class="math inline">\(P_t = \left[\xi P_{t-1}^{1-\sigma} + (1-\xi)(P^*_t)^{1-\sigma}\right]^{1/(1-\sigma)}\)</span>, lo que introduce la rigidez nominal agregada.</p>
+<p><strong>Agentes</strong>: hogares idénticos con vida infinita, que eligen consumo, trabajo y tenencia de bonos, y un continuo de empresas, cada una productora de una variedad, que fijan su precio. Todos forman sus expectativas según la HER.</p>
+<p><strong>Mercado de bienes</strong>: hay competencia monopolística en el mercado de bienes, con un continuo de variedades.</p>
+</section>
+<section id="modelo-1" class="level4">
+<h4 class="anchored" data-anchor-id="modelo-1">3.2.2. Modelo</h4>
+<p><strong>Planteamiento</strong>: el modelo parte de dos programas de optimización intertemporal, el de los hogares y el de las empresas:</p>
+<ul>
+<li><p><em>Hogares</em>: maximizan la utilidad esperada intertemporal sujeta a su restricción presupuestaria:</p>
+<p><span class="math display">\[\begin{aligned} &amp;\max_{c,\ell,b} \; U^e = \mathbb{E}_0\left[\sum_{t=0}^{\infty} \beta^t\, u(c_t, 1-\ell_t)\right], \qquad \beta \in (0, 1) \\ &amp;\text{s.a.:} \begin{cases} c_t + (b_t - b_{t-1}) \leq w_t \ell_t + r_t b_{t-1} \\ b_{-1} \text{ dado} \\ \lim_{T \to \infty} \mathbb{E}_0\left[b_T / R_T\right] \geq 0 \end{cases} \end{aligned}\]</span></p>
+<p>donde <span class="math inline">\(c_t\)</span> es un índice de consumo que agrega todas las variedades, <span class="math inline">\(\ell_t\)</span> el trabajo, <span class="math inline">\(b_t\)</span> la tenencia de bonos, <span class="math inline">\(w_t\)</span> el salario real, <span class="math inline">\(r_t\)</span> el tipo de interés real de los bonos, <span class="math inline">\(u(\cdot)\)</span> la utilidad instantánea y <span class="math inline">\(\beta \in (0, 1)\)</span> el factor de descuento. Los bonos iniciales, <span class="math inline">\(b_{-1}\)</span>, están dados, y la condición de no-Ponzi, con <span class="math inline">\(R_T \equiv \prod_{s=1}^{T}(1+r_s)\)</span>, impide endeudarse indefinidamente.</p></li>
+<li><p><em>Empresas</em>: cada productor de variedad maximiza el valor esperado descontado de sus beneficios:</p>
+<p><span class="math display">\[\max_{P_{i,t}} \; V^e = \mathbb{E}_0\left[\sum_{t=0}^{\infty} \beta^t\, \Pi(P_{i,t}, Y_{i,t}, C_t)\right], \qquad \beta \in (0, 1)\]</span></p>
+<p><span class="math display">\[\text{s.a.:} \begin{cases} Y_{i,t} = f(\ell_{i,t}) &amp; \text{(tecnología)} \\[4pt] Y_{i,t} = \left(\dfrac{P_{i,t}}{P_t}\right)^{-\sigma} C_t &amp; \text{(demanda de la variedad)} \\[4pt] P_{i,t} = P_{i,t-1} \text{ con probabilidad } \xi, \qquad \xi \in [0, 1) &amp; \text{(restricción de Calvo)} \end{cases}\]</span></p>
+<p>donde <span class="math inline">\(P_{i,t}\)</span> es el precio de la variedad <span class="math inline">\(i\)</span> (la variable de decisión), <span class="math inline">\(P_t\)</span> el nivel general de precios, <span class="math inline">\(Y_{i,t}\)</span> la producción de la variedad, <span class="math inline">\(C_t\)</span> el consumo agregado, <span class="math inline">\(\Pi(\cdot)\)</span> el beneficio del periodo, <span class="math inline">\(f(\ell_{i,t})\)</span> la tecnología, <span class="math inline">\(\sigma\)</span> la elasticidad de la demanda de la variedad, <span class="math inline">\(\xi\)</span> la probabilidad de no poder reajustar el precio y <span class="math inline">\(\beta\)</span> el factor de descuento.</p></li>
+</ul>
+<p><strong>CPO</strong>:</p>
+<ul>
+<li><p><em>Hogares</em>: derivando su lagrangiano respecto a <span class="math inline">\(c_t\)</span>, <span class="math inline">\(\ell_t\)</span> y <span class="math inline">\(b_t\)</span>, se obtienen dos relaciones:</p>
+<ul>
+<li><p><em>Ecuación de Euler del consumo</em>: <span class="math inline">\(\partial u/\partial c_t = \beta \mathbb{E}_t[(\partial u/\partial c_{t+1})(1+r_{t+1})]\)</span>, que iguala la utilidad marginal del consumo presente con la utilidad marginal esperada del consumo futuro, descontada y capitalizada, y que loglinealizada da lugar a la <em>IS dinámica</em>.</p></li>
+<li><p><em>Condición intratemporal de oferta de trabajo</em>: <span class="math inline">\(\text{RMS}_{c\,(1-\ell)} = (\partial u/\partial (1-\ell_t))/(\partial u/\partial c_t) = w_t\)</span>, que iguala la relación marginal de sustitución consumo-ocio al salario real.</p></li>
+</ul></li>
+<li><p><em>Empresas</em>: de la condición de primer orden se obtiene el precio óptimo de reajuste, <span class="math inline">\(P^*_t = P^*_t(\sigma, \text{Cmg}, \text{Cmg}^e)\)</span>, que depende de tres elementos:</p>
+<ul>
+<li><p><em>Elasticidad de la demanda</em>: <span class="math inline">\(\sigma\)</span> determina el margen deseado sobre el coste marginal, <span class="math inline">\(1+\mu = \sigma/(\sigma-1)\)</span>.</p></li>
+<li><p><em>Coste marginal corriente</em>: <span class="math inline">\(\text{Cmg}\)</span> es el coste marginal nominal de hoy, sobre el que la empresa aplicaría el margen si pudiera ajustar el precio cada periodo.</p></li>
+<li><p><em>Costes marginales esperados</em>: <span class="math inline">\(\text{Cmg}^e\)</span> recoge la senda esperada de los costes marginales futuros, <span class="math inline">\(\mathbb{E}_t[\text{Cmg}_{t+k}]\)</span> para <span class="math inline">\(k = 1, 2, \ldots\)</span>, ponderados por <span class="math inline">\((\beta\xi)^k\)</span>, es decir, descontados y multiplicados por la probabilidad <span class="math inline">\(\xi^k\)</span> de que el precio fijado hoy siga vigente en <span class="math inline">\(t+k\)</span>.</p></li>
+</ul>
+<p>En resumen, la empresa sabe que no podrá modificar el precio durante un tiempo, así que no aplica su margen solo al coste actual sino a una media ponderada del actual y de los que prevé. De ahí que la inflación dependa de las expectativas.</p></li>
+</ul>
+<p><strong>CSO</strong>: las condiciones de primer orden de ambos programas caracterizan un máximo, porque la utilidad del hogar es estrictamente cóncava en consumo y ocio y el valor esperado de la empresa es estrictamente cuasicóncavo en su precio<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p>
+<p><strong>Equilibrio (curva de Phillips neokeynesiana)</strong>: agregando los precios óptimos con la estructura de Calvo y loglinealizando en torno al estado estacionario, se obtiene la curva de Phillips de la NEK2G, que generalmente adopta dos formas equivalentes:</p>
+<ol type="1">
+<li><p><em>Inflación como función del coste marginal</em>: <span class="math inline">\(\pi_t = \beta \mathbb{E}_t[\pi_{t+1}] + \kappa_{\text{cm}}\, \widehat{\text{cmg}}_t\)</span>, donde <span class="math inline">\(\widehat{\text{cmg}}_t\)</span> es la desviación del coste marginal real respecto de su nivel de equilibrio.</p></li>
+<li><p><em>Inflación como función de la brecha de producción</em>: dado que el coste marginal se mueve con ella, la forma habitual es:</p>
+<p><span class="math display">\[\pi_t = \beta \mathbb{E}_t[\pi_{t+1}] + \kappa\, \tilde{y}_t + \varepsilon_t^\pi, \qquad \kappa &gt; 0,\; \beta \in (0, 1)\]</span></p>
+<p>donde <span class="math inline">\(\tilde{y}_t\)</span> es la brecha de producción y <span class="math inline">\(\varepsilon_t^\pi\)</span> un <em>shock</em> de oferta (de costes). Aplicando la ley de Okun (<span class="math inline">\(\tilde{y}_t \approx -\phi(u_t - \bar{u}_t)\)</span>), se obtiene la versión en términos de desempleo:</p>
+<p><span class="math display">\[\pi_t = \beta \mathbb{E}_t[\pi_{t+1}] - \kappa_u\,(u_t - \bar{u}_t) + \varepsilon_t^\pi, \qquad \kappa_u &gt; 0,\; \beta \in (0, 1)\]</span></p></li>
+</ol>
+<p>La curva se diferencia de las curvas de Phillips anteriores en dos aspectos:</p>
+<ul>
+<li><p><em>Forward-looking</em>: la curva es prospectiva, porque la inflación de hoy depende de la inflación esperada mañana, no de la pasada.</p></li>
+<li><p><em>Microfundamentación</em>: los parámetros de la curva son funciones de los parámetros profundos (p.&nbsp;ej. <span class="math inline">\(\kappa\)</span> depende de la frecuencia de ajuste de precios). Por eso la curva es robusta a la crítica de Lucas, siempre que esa frecuencia no varíe con el régimen de política.</p></li>
+</ul>
+<p><strong>Estática comparativa</strong>: se distinguen los desplazamientos sobre la curva (variaciones de la brecha de producción o del desempleo cíclico) de los desplazamientos de la curva (cambios en la inflación esperada y <em>shocks</em> de oferta <span class="math inline">\(\varepsilon_t^\pi\)</span>).</p>
+<p><strong>Extensiones</strong>: Galí (2011) revitaliza la curva de Phillips salarial original de Phillips, pero microfundamentada y con expectativas:</p>
+<p><span class="math display">\[\pi_t^w = \beta\, \mathbb{E}_t[\pi_{t+1}^{w}] + \kappa_w\,(\bar{u}_t - u_t)\]</span></p>
+<p>donde <span class="math inline">\(\pi_t^w\)</span> es la inflación salarial y <span class="math inline">\(\kappa_w &gt; 0\)</span> su sensibilidad a la brecha de desempleo. La importancia de esta aportación es doble:</p>
+<ul>
+<li><p><em>Teórica</em>: muestra que el modelo de la NEK2G con fijación escalonada de salarios a la Calvo implica una curva de Phillips salarial en términos de desempleo, y cierra así el círculo iniciado por Phillips (1958).</p></li>
+<li><p><em>Empírica</em>: la ecuación se ajusta razonablemente bien al comovimiento de la inflación salarial y el desempleo en EE.&nbsp;UU. durante las últimas décadas, incluso con una tasa natural constante.</p></li>
+</ul>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La curva de Phillips neokeynesiana se desarrolla en el tema <a href="../chapters/a07-nek.html">A07</a>, apartados 1.4.1 y 2.2.3 (versión salarial), y su papel en la teoría de la inflación, en el tema <a href="../chapters/a41-inflacion.html">A41</a>, apartado 2.4.2.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusiones-4" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones-4">3.2.3. Conclusiones</h4>
+<p><strong>Aspectos positivos</strong>: la curva de Phillips neokeynesiana deriva la relación inflación-actividad de la fijación escalonada de precios con expectativas racionales, lo que le da microfundamentos y la hace prospectiva. La inflación depende así de la brecha de producción actual y de las esperadas en el futuro. En ausencia de <em>shocks</em> de costes (<span class="math inline">\(\varepsilon_t^\pi = 0\)</span>), el modelo básico presenta también la “divina coincidencia” (Blanchard y Galí, 2007), por la que estabilizar la inflación equivale a estabilizar la brecha de producción, de modo que no existe conflicto entre ambos objetivos.</p>
+<p><strong>Limitaciones</strong>: en su versión pura, la curva no genera la persistencia de la inflación observada en los datos, lo que obliga a versiones híbridas con un componente retrospectivo (Galí y Gertler, 1999). Además, su estimación empírica es sensible a la medida de la brecha y de los costes marginales.</p>
+</section>
+</section>
+<section id="la-estimación-de-la-nairu-y-sus-límites" class="level3">
+<h3 class="anchored" data-anchor-id="la-estimación-de-la-nairu-y-sus-límites">3.3. La estimación de la NAIRU y sus límites</h3>
+<p>Para la política monetaria, la NAIRU es la referencia que separa el paro cíclico, que la demanda puede reducir, del estructural, que no. Por ello, los bancos centrales y los organismos internacionales la estiman de forma sistemática. Los métodos son tres:</p>
+<ul>
+<li><p><em>Estructurales</em>: la derivan de un modelo de determinación de salarios y precios con las instituciones como variables explicativas.</p></li>
+<li><p><em>Estadísticos</em>: la extraen como componente tendencial del desempleo observado mediante filtros.</p></li>
+<li><p><em>Semiestructurales</em>: estiman una curva de Phillips con NAIRU variable en el tiempo (Gordon, 1997; Staiger, Stock y Watson, 1997).</p></li>
+</ul>
+<p>La lección de esa literatura es la incertidumbre. De hecho, los intervalos de confianza de la NAIRU estimada abarcan varios puntos porcentuales, sus revisiones son grandes y sus estimaciones en tiempo real difieren mucho de las posteriores. Ello limita su uso como guía de la política monetaria y explica que los bancos centrales la traten como una referencia entre otras y no como un objetivo. En la zona del euro y en España, además, las estimaciones muestran una NAIRU que sube tras cada recesión y baja lentamente después, lo que es coherente con la histéresis. Con todo, ese patrón refleja en parte que los métodos estadísticos y semiestructurales tienden, por construcción, a seguir al desempleo observado.</p>
+</section>
+<section id="la-convergencia-del-pensamiento-económico" class="level3">
+<h3 class="anchored" data-anchor-id="la-convergencia-del-pensamiento-económico">3.4. La convergencia del pensamiento económico</h3>
+<p>El recorrido del tema muestra una convergencia. De la nueva macroeconomía clásica la teoría actual conserva las expectativas racionales, la microfundamentación y la idea de que la tasa de desempleo de equilibrio la determinan factores reales. De la nueva economía keynesiana conserva las rigideces nominales y reales que hacen que la demanda agregada afecte al empleo a corto plazo y que el desempleo de equilibrio sea el resultado de mercados imperfectos y no de un mercado walrasiano. El modelo de la NAIRU y la curva de Phillips neokeynesiana son el punto de encuentro, pues combinan una tasa de equilibrio con microfundamentos y una relación inflación-desempleo de corto plazo. La política monetaria no puede explotar esa relación de forma sistemática, pero encuentra en ella margen para estabilizar.</p>
+</section>
+</section>
+<section id="conclusiones-5" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones-5">Conclusiones</h2>
+<p>El análisis del desempleo de equilibrio ha evolucionado desde la dicotomía neoclásico-keynesiana hasta una amplia convergencia. La curva de Phillips, inestable en su formulación original, se reformula al incorporar las expectativas, adaptativas (Friedman y Phelps) o racionales (Lucas), y de ahí nace la tasa natural de paro. El modelo de Layard y Nickell la reinterpreta como NAIRU, la tasa que hace compatibles las aspiraciones de sindicatos y empresas, y la hace depender de instituciones observables. La histéresis completa el cuadro, porque la pérdida de capital humano, la menor acumulación de capital y la dinámica <em>insiders-outsiders</em> hacen que esa tasa siga en parte al desempleo observado. En consecuencia, las políticas de oferta reducen esa tasa de forma duradera, pero las de demanda recuperan efectos duraderos cuando hay histéresis, y permanentes solo si esta es pura.</p>
+<p>El desempleo de equilibrio reúne los hilos del bloque de economía laboral. La oferta y la demanda de trabajo fijan la referencia sin fricciones (tema <a href="../chapters/a25-oferta-trabajo.html">A25</a>), las fricciones de búsqueda y emparejamiento dan contenido a los determinantes de la tasa natural (tema <a href="../chapters/a26-desempleo-friccional.html">A26</a>) y las teorías de la rigidez salarial explican la curva de salarios del modelo de la NAIRU (tema <a href="../chapters/a27-salarios.html">A27</a>). A su vez, la curva de Phillips enlaza el mercado de trabajo con la teoría de la inflación (tema <a href="../chapters/a41-inflacion.html">A41</a>) y con la política monetaria del modelo de tres ecuaciones (tema <a href="../chapters/a07-nek.html">A07</a>). Los desarrollos recientes (Blanchard y Galí, 2010; Galí, 2011) integran las fricciones de búsqueda en el modelo neokeynesiano y recuperan la curva de Phillips salarial, de modo que el desempleo vuelve a ser una variable del modelo y no un residuo.</p>
+<p>La Gran Recesión ha reabierto el debate sobre la histéresis. Yagan (2019) muestra que las áreas de EE.&nbsp;UU. más expuestas a la crisis de 2007-2009 tenían todavía en 2015 tasas de empleo menores, y Blanchard, Cerutti y Summers (2015) documentan que muchas recesiones van seguidas de una producción duraderamente inferior a la tendencia previa. También sigue abierta la discusión sobre la pendiente de la curva de Phillips. Hazell, Herreño, Nakamura y Steinsson (2022) estiman una curva muy plana y atribuyen la estabilidad de la inflación al anclaje de las expectativas. En cambio, a raíz de la inflación pospandemia, Benigno y Eggertsson (2023) defienden una curva no lineal, más inclinada cuando el cociente entre vacantes y desempleo es elevado.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>En EE. UU., por ejemplo, no se rechaza la estabilidad del coeficiente en torno a 1973, pese a los choques de oferta de los setenta (Weber, 1995).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>En un marco de competencia imperfecta existe consenso en que los precios no responden mucho ante cambios en la demanda (Carlin y Soskice, 2006, p.&nbsp;140).<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>En su interpretación menos extrema (Romer, 2012, cap. 10), la dinámica <em>insiders-outsiders</em> solo mitiga la sensibilidad cíclica de los costes marginales del trabajo.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Merz (1995) y Andolfatto (1996) fueron los primeros en integrar fricciones de búsqueda en modelos del ciclo real.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>En el programa del hogar, la restricción es lineal y se exige además la condición de transversalidad sobre los bonos. En el de la empresa, la cuasiconcavidad (y la concavidad en un entorno del óptimo) se debe a que la demanda de la variedad es isoelástica con <span class="math inline">\(\sigma &gt; 1\)</span> y el coste marginal es no decreciente.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script>
+// Gráficos del libro (iframes .graph-frame).
+// 1) Escala única: los grosores, los discontinuos y el tamaño de los puntos de cada figura están fijados para verla a 680 px
+//    de ancho. Los marcos anchos (figuras de varios paneles) se estiran hasta la columna y las pantallas estrechas las encogen; aquí se
+//    compensa para que en pantalla las curvas midan siempre lo mismo (2,2 px las económicas, 1,4 las auxiliares, 1,2 ejes y flechas,
+//    0,8 las guías) y los puntos tengan el mismo tamaño en todas las figuras, sea cual sea el ancho al que se muestren.
+// 2) Ajusta la altura de cada iframe al elemento dibujado más bajo (curvas, ejes, etiquetas KaTeX).
+(function () {
+  var REF = 680;
+  function norm(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var s = d.querySelector("svg"); if (!s) return;
+      var w = s.getBoundingClientRect().width; if (!(w > 0)) return;
+      var r = REF / w;
+      var els = s.querySelectorAll("path, line, polyline, polygon, rect, circle, ellipse");
+      els.forEach(function (el) {
+        var cs = d.defaultView.getComputedStyle(el);
+        if (el.dataset.sw0 === undefined) {
+          el.dataset.sw0 = parseFloat(cs.strokeWidth) || 0;
+          el.dataset.da0 = (cs.strokeDasharray && cs.strokeDasharray !== "none") ? cs.strokeDasharray : "";
+          if (el.tagName.toLowerCase() === "circle" && el.r && el.r.baseVal.value > 0 && el.r.baseVal.value <= 9) {
+            el.dataset.r0 = el.r.baseVal.value;
+          }
+        }
+        var sw0 = +el.dataset.sw0;
+        if (sw0 > 0) el.style.strokeWidth = (sw0 * r).toFixed(3) + "px";
+        if (el.dataset.da0) {
+          el.style.strokeDasharray = el.dataset.da0.split(/[ ,]+/).map(function (v) {
+            return (parseFloat(v) * r).toFixed(3) + "px";
+          }).join(" ");
+        }
+        if (el.dataset.r0) el.setAttribute("r", (+el.dataset.r0 * r).toFixed(3));
+      });
+    } catch (e) {}
+  }
+  function fit(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var sy = d.defaultView.scrollY || 0, bottom = 0;
+      var els = d.querySelectorAll("svg path, svg line, svg circle, svg polyline, svg polygon, svg rect, svg text, svg ellipse, .katex-label");
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width > 0 || r.height > 0) bottom = Math.max(bottom, r.bottom + sy);
+      });
+      if (!(bottom > 20)) {
+        var svg = d.querySelector("svg"); var vb = svg && svg.getAttribute("viewBox");
+        if (vb) { var p = vb.split(/\s+/); bottom = f.clientWidth * (+p[3]) / (+p[2]); }
+      }
+      if (bottom > 20) f.style.height = Math.ceil(bottom + 10) + "px";
+    } catch (e) {}
+  }
+  // 3) Un gráfico de varios paneles no se amplía por encima del 110 % de su ancho de dibujo (viewBox). Los dibujados a
+  //    680 px quedan en 748 px como máximo, con rótulos de tamaño normal; los de 900 o 960 px, en el tope de 900 px del CSS.
+  function cap(f) {
+    try {
+      if (!f.parentElement || !f.parentElement.classList.contains("wide")) return;
+      var s = f.contentDocument && f.contentDocument.querySelector("svg"); if (!s) return;
+      var vb = s.viewBox && s.viewBox.baseVal; if (!vb || !(vb.width > 0)) return;
+      var m = Math.min(900, Math.round(vb.width * 1.1)) + "px";
+      if (f.style.maxWidth !== m) f.style.maxWidth = m;
+    } catch (e) {}
+  }
+  function both(f) { cap(f); norm(f); fit(f); }
+  function all() { document.querySelectorAll(".graph-frame iframe").forEach(both); }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".graph-frame iframe").forEach(function (f) {
+      f.addEventListener("load", function () { both(f); setTimeout(function () { both(f); }, 700); });
+    });
+  });
+  window.addEventListener("load", function () { setTimeout(all, 1200); });
+  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(all, 150); });
+})();
+</script>
+<style>
+.graph-frame { margin: 1.25rem 0 0.25rem; }
+.quarto-figure .graph-frame + * { margin-top: 0; }
+</style>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/librovol1\.arturolorenzo\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/a27-salarios.html" class="pagination-link" aria-label="A27. Determinación de salarios">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">A27. Determinación de salarios</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/a29-mhi-mgs.html" class="pagination-link" aria-label="A29. Modelos de horizonte infinito y generaciones solapadas">
+        <span class="nav-page-text"><span class="chapter-title">A29. Modelos de horizonte infinito y generaciones solapadas</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

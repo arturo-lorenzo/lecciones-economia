@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: none; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+  .katex-label .katex { font-size: 1em; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+    <g id="g"></g>
+  </svg>
+</div>
+<script>
+const VBW = 680, VBH = 420, NS = 'http://www.w3.org/2000/svg';
+function mk(tag, at) { const e = document.createElementNS(NS, tag); for (const q in at) e.setAttribute(q, at[q]); document.getElementById('g').appendChild(e); return e; }
+const cont = document.querySelector('.graph-container');
+function put(tex, x, y, o = {}) {
+  const e = document.createElement('div'); e.className = 'katex-label';
+  katex.render(tex, e, {throwOnError: false});
+  e.style.left = (x / VBW * 100).toFixed(2) + '%'; e.style.top = (y / VBH * 100).toFixed(2) + '%';
+  e.style.color = o.c || 'black'; if (o.s) e.style.fontSize = o.s + 'px';
+  const tx = {l: '0', c: '-50%', r: '-100%'}[o.ha || 'l'], ty = {t: '0', m: '-50%', b: '-100%'}[o.va || 't'];
+  e.style.transform = `translate(${tx},${ty})`;
+  cont.appendChild(e);
+}
+
+const OY = 200, W = 250, YT = OY - 150, YB = OY + 112;
+function panel(ox, sign, col, lab, desc) {
+  mk('line', {x1: ox, y1: YB, x2: ox, y2: YT, stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+  mk('line', {x1: ox, y1: OY, x2: ox + W + 20, y2: OY, stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+  const xr0 = ox + W / 2;
+  mk('line', {x1: xr0, y1: OY, x2: xr0, y2: OY + 4, stroke: 'black', 'stroke-width': 1});
+
+  const xa = ox + 25, xb = ox + W - 25, ya = OY - sign * (xa - xr0), yb = OY - sign * (xb - xr0);
+  mk('line', {x1: xa, y1: ya, x2: xb, y2: yb, stroke: col, 'stroke-width': 2.2});
+
+  [[ox + 12, xr0 - 6], [xr0 + 6, ox + W - 6]].forEach(([a, b]) => {
+    mk('line', {x1: a, y1: YB + 12, x2: b, y2: YB + 12, stroke: '#185FA5', 'stroke-width': 0.8});
+    [a, b].forEach(x => mk('line', {x1: x, y1: YB + 8, x2: x, y2: YB + 16, stroke: '#185FA5', 'stroke-width': 0.8}));
+  });
+  put('\\text{Beneficio},\\ \\pi', ox + 8, YT, {va: 't', s: 16});
+  put('r', ox + W + 28, OY, {va: 'm', s: 18});
+  put('r_0', sign > 0 ? xr0 + 6 : xr0 - 6, OY + 8, {ha: sign > 0 ? 'l' : 'r', va: 't'});
+  put('r < r_0', (ox + 12 + xr0 - 6) / 2, YB + 20, {ha: 'c', va: 't', c: '#185FA5', s: 14});
+  put('r > r_0', (xr0 + 6 + ox + W - 6) / 2, YB + 20, {ha: 'c', va: 't', c: '#185FA5', s: 14});
+  if (sign > 0) put(lab, xb - 4, yb - 6, {ha: 'r', va: 'b', c: col});
+  else put(lab, xa + 12, ya - 6, {va: 'b', c: col});
+  put(desc, ox + W / 2, YB + 48, {ha: 'c', va: 't', s: 14, c: '#444'});
+}
+panel(29, +1, '#D85A30', '\\pi_L^{\\text{swap}}(r)', '\\text{paga fijo } r_0\\text{, recibe variable } r');
+panel(364, -1, '#1D9E75', '\\pi_C^{\\text{swap}}(r)', '\\text{paga variable } r\\text{, recibe fijo } r_0');
+</script>
+</body>
+</html>

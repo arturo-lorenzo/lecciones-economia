@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  body { margin: 0; background: #fff; }
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg id="g" viewBox="0 0 680 470" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+</svg>
+</div>
+<script>
+const W = 680, H = 470;
+const svg = document.getElementById('g'), NS = 'http://www.w3.org/2000/svg';
+const box = document.querySelector('.graph-container');
+function el(tag, attrs) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+const f1 = v => v.toFixed(1);
+const labels = [];
+const lab = (tex, x, y, color, ax, ay, size, bg) => labels.push({tex, x, y, color, ax, ay, size, bg});
+const line = (x1, y1, x2, y2, at) => el('line', Object.assign({x1: f1(x1), y1: f1(y1), x2: f1(x2), y2: f1(y2)}, at));
+const AXIS = {stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'};
+const GUIDE = {stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'};
+const TICK = {stroke: '#000', 'stroke-width': 1};
+const DEM = '#534AB7', RED = '#D85A30';
+
+
+const aA = 12, bA = 1.2, aB = 6.5, bB = 0.5, c = 2;
+const pA = x => aA - bA * x, pB = x => aB - bB * x;
+const mA = x => aA - 2 * bA * x, mB = x => aB - 2 * bB * x;
+const xA = (aA - c) / (2 * bA), xB = (aB - c) / (2 * bB);
+const pAs = pA(xA), pBs = pB(xB);
+if (Math.abs(mA(xA) - c) > 1e-9 || Math.abs(mB(xB) - c) > 1e-9) console.error('Img no corta a Cmg en x*');
+if (!(pAs > pBs)) console.error('p_A* debe superar a p_B*');
+
+
+const OX = 340, OY = 368, KX = 27.9, KP = 23.8;
+const gx = (x, side) => OX + side * KX * x;
+const gy = p => OY - KP * p;
+
+
+line(OX, OY, OX, gy(12.6), AXIS);
+line(OX, OY, gx(10.9, -1), OY, AXIS);
+line(OX, OY, gx(10.9, 1), OY, AXIS);
+lab('p', OX, gy(12.6) - 6, '#000', 0.5, 1, '17px');
+lab('x_A', gx(10.9, -1) - 6, OY, '#000', 1, 0.5, '17px');
+lab('x_B', gx(10.9, 1) + 6, OY, '#000', 0, 0.5, '17px');
+lab('O', OX, OY + 8, '#000', 0.5, 0, '15px');
+
+
+line(gx(xA, -1), gy(pAs), OX, gy(pAs), GUIDE);
+line(gx(xA, -1), gy(pAs), gx(xA, -1), OY, GUIDE);
+line(gx(xB, 1), gy(pBs), OX, gy(pBs), GUIDE);
+line(gx(xB, 1), gy(pBs), gx(xB, 1), OY, GUIDE);
+line(OX - 4, gy(pAs), OX + 4, gy(pAs), TICK);
+line(OX - 4, gy(pBs), OX + 4, gy(pBs), TICK);
+line(gx(xA, -1), OY, gx(xA, -1), OY + 4, TICK);
+line(gx(xB, 1), OY, gx(xB, 1), OY + 4, TICK);
+
+
+const cL = 10.4, cR = 10.2;
+line(gx(cL, -1), gy(c), gx(cR, 1), gy(c), {stroke: RED, 'stroke-width': 2.2});
+
+
+const dAEnd = 7.5, dBEnd = 7.2;
+const mAEnd = 4.8, mBEnd = 6.0;
+line(OX, gy(pA(0)), gx(dAEnd, -1), gy(pA(dAEnd)), {stroke: DEM, 'stroke-width': 2.2});
+line(OX, gy(pB(0)), gx(dBEnd, 1), gy(pB(dBEnd)), {stroke: DEM, 'stroke-width': 2.2});
+line(OX, gy(mA(0)), gx(mAEnd, -1), gy(mA(mAEnd)), {stroke: DEM, 'stroke-width': 2.2, 'stroke-dasharray': '7 4'});
+line(OX, gy(mB(0)), gx(mBEnd, 1), gy(mB(mBEnd)), {stroke: DEM, 'stroke-width': 2.2, 'stroke-dasharray': '7 4'});
+
+
+el('circle', {cx: f1(gx(xA, -1)), cy: f1(gy(pAs)), r: 5, fill: '#000'});
+el('circle', {cx: f1(gx(xB, 1)), cy: f1(gy(pBs)), r: 5, fill: '#000'});
+el('circle', {cx: f1(gx(xA, -1)), cy: f1(gy(c)), r: 3.5, fill: RED});
+el('circle', {cx: f1(gx(xB, 1)), cy: f1(gy(c)), r: 3.5, fill: RED});
+
+
+lab('D_A(x_A)', gx(dAEnd, -1) - 6, gy(pA(dAEnd)) + 2, DEM, 1, 0.5);
+lab('D_B(x_B)', gx(dBEnd, 1) + 6, gy(pB(dBEnd)) - 2, DEM, 0, 0.5);
+lab('\\text{Img}_A', gx(mAEnd, -1) - 6, gy(mA(mAEnd)), DEM, 1, 0.5);
+lab('\\text{Img}_B', gx(mBEnd, 1) + 6, gy(mB(mBEnd)), DEM, 0, 0.5);
+lab('\\text{Cmg}', gx(cR, 1) + 6, gy(c), RED, 0, 0.5);
+
+
+lab('p_A^*', OX + 8, gy(pAs) - 3, '#000', 0, 0.5);
+lab('p_B^*', OX - 8, gy(pBs), '#000', 1, 0.5);
+lab('x_A^*', gx(xA, -1), OY + 8, '#000', 0.5, 0);
+lab('x_B^*', gx(xB, 1), OY + 8, '#000', 0.5, 0);
+
+
+lab('0_A', gx(xA, -1) - 10, gy(pAs) - 4, '#000', 1, 0.5, '16px');
+lab('0_B', gx(xB, 1) + 8, gy(pBs) - 10, '#000', 0, 1, '16px');
+
+
+lab('\\text{Mercado } A', gx(5.4, -1), OY + 40, '#444', 0.5, 0, '15px');
+lab('\\text{Mercado } B', gx(5.4, 1), OY + 40, '#444', 0.5, 0, '15px');
+
+labels.forEach((l, i) => {
+  const d = document.createElement('div');
+  d.className = 'katex-label'; d.id = 'lbl-' + i;
+  katex.render(l.tex, d, {throwOnError: false});
+  d.style.left = (l.x / W * 100).toFixed(3) + '%';
+  d.style.top = (l.y / H * 100).toFixed(3) + '%';
+  d.style.transform = `translate(${-(l.ax || 0) * 100}%, ${-(l.ay || 0) * 100}%)`;
+  d.style.color = l.color || '#000';
+  if (l.size) d.style.fontSize = l.size;
+  if (l.bg) { d.style.background = '#fff'; const k = d.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  box.appendChild(d);
+});
+</script>
+</body>
+</html>

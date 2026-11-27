@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+    <line id="ax-x" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="ax-y" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="g0v" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="g0h" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="g1v" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="g1h" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+    <path id="cle0" fill="none" stroke="#1D9E75" stroke-width="2.2"/>
+    <path id="cle1" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-dasharray="8 4"/>
+    <path id="cmb"  fill="none" stroke="#534AB7" stroke-width="2.2"/>
+    <line id="shift" stroke="#1D9E75" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <circle id="pt0" r="5" fill="#000"/>
+    <circle id="pt1" r="5" fill="#000"/>
+    <g id="ticks" stroke="black" stroke-width="1"></g>
+  </svg>
+  <div id="labels"></div>
+</div>
+<script>
+const VBW = 680, VBH = 500;
+
+
+
+
+const X = a => 128 + a * 47.5, Y = b => 460 - b * 105;
+const cmb = c => 1 + 0.12 * Math.pow(c, 1.5);
+const cle = k => c => 1 + k / c;
+function cross(k) { let lo = 0.5, hi = 9; for (let i = 0; i < 60; i++) { const m = (lo + hi) / 2; (cmb(m) - cle(k)(m) < 0) ? lo = m : hi = m; } return [lo, cmb(lo)]; }
+function main() {
+  set('ax-x', {x1: X(0), y1: Y(0), x2: 583, y2: Y(0)});
+  set('ax-y', {x1: X(0), y1: Y(0), x2: X(0), y2: 40});
+  const q0 = cross(8), q1 = cross(4);
+  path('cmb', c => [c, cmb(c)], 0.15, 8.15);
+  path('cle0', c => [c, cle(8)(c)], 2.8, 9.0);
+  path('cle1', c => [c, cle(4)(c)], 1.4, 9.0);
+
+  const ar = curveArrow('shift', cle(8), cle(4), 3.6, 5);
+  guides('g0', q0); guides('g1', q1);
+  pt('pt0', q0); pt('pt1', q1);
+  tick(X(0) - 4, Y(1), X(0), Y(1));
+  render([
+    {tex:'x_i', left: 587, top: Y(0) - 14, size:17},
+    {tex:'p/w', left: X(0) - 8, top: 30, size:17, align:'right'},
+    {tex:'\\text{CMB}', left: X(8.15) + 6, top: Y(cmb(8.15)) - 12, size:16, color:'#534AB7'},
+    {tex:'\\text{CLE}_0', left: X(2.8) + 8, top: Y(cle(8)(2.8)) - 14, size:16, color:'#0F6E56'},
+    {tex:'\\text{CLE}_1', left: X(1.4) + 8, top: Y(cle(4)(1.4)) - 14, size:16, color:'#0F6E56'},
+    {tex:'L \\to L + L^*', left: ar.x2 - 12, top: ar.y2 - 10, align:'right', size:14, color:'#1D9E75'},
+    {tex:'0', left: X(q0[0]), top: Y(q0[1]) - 34, center:true, size:16, color:'#000'},
+    {tex:'1', left: X(q1[0]), top: Y(q1[1]) - 34, center:true, size:16, color:'#000'},
+    {tex:'x_i^1', left: X(q1[0]), top: Y(0) + 6, size:15, center:true},
+    {tex:'x_i^0', left: X(q0[0]), top: Y(0) + 6, size:15, center:true},
+    {tex:'(p/w)_0', left: X(0) - 7, top: Y(q0[1]) - 12, size:15, align:'right'},
+    {tex:'(p/w)_1', left: X(0) - 7, top: Y(q1[1]) - 12, size:15, align:'right'},
+    {tex:'l', left: X(0) - 7, top: Y(1) - 12, size:15, align:'right'}
+  ]);
+}
+
+
+function curveArrow(id, f0, f1, c, gap) {
+  const h = 1e-3, x0 = X(c), y0 = Y(f0(c));
+  const tx = X(c + h) - x0, ty = Y(f0(c + h)) - y0, n = Math.hypot(tx, ty);
+  let nx = -ty / n, ny = tx / n;
+  const g = s => {
+    const px = x0 + s * nx, py = y0 + s * ny; const cc = (px - 128) / 47.5; return py - Y(f1(cc)); };
+  if (Math.sign(g(1)) === Math.sign(g(0.001)) && Math.abs(g(1)) > Math.abs(g(0.001))) { nx = -nx; ny = -ny; }
+  let lo = 0.001, hi = 200; for (let i = 0; i < 60; i++) { const m = (lo + hi) / 2; (Math.sign(g(m)) === Math.sign(g(lo))) ? lo = m : hi = m; }
+  const x1 = x0 + gap * nx, y1 = y0 + gap * ny, x2 = x0 + (lo - gap) * nx, y2 = y0 + (lo - gap) * ny;
+  set(id, {x1, y1, x2, y2});
+  return {x1, y1, x2, y2};
+}
+
+function set(id, a) { const e = document.getElementById(id); for (const k in a) e.setAttribute(k, a[k]); }
+function seg(id, a, b) { set(id, {x1: X(a[0]), y1: Y(a[1]), x2: X(b[0]), y2: Y(b[1])}); }
+function path(id, f, lo, hi) { const pts = []; for (let i = 0; i <= 240; i++) { const t = lo + (i / 240) * (hi - lo); const [u, v] = f(t); pts.push(X(u).toFixed(1) + ',' + Y(v).toFixed(1)); } set(id, {d: 'M' + pts.join(' L')}); }
+function pt(id, a) { set(id, {cx: X(a[0]), cy: Y(a[1])}); }
+
+function perpArrow(id, L0a, L0b, q, L1a, L1b, gap) {
+  const dx = X(L0b[0]) - X(L0a[0]), dy = Y(L0b[1]) - Y(L0a[1]); const n = Math.hypot(dx, dy);
+  let nx = -dy / n, ny = dx / n;
+  const qx = X(q[0]), qy = Y(q[1]);
+  const ax = X(L1a[0]), ay = Y(L1a[1]), bx = X(L1b[0]), by = Y(L1b[1]);
+
+  const ex = bx - ax, ey = by - ay;
+  const det = nx * (-ey) - ny * (-ex);
+  let lam = ((ax - qx) * (-ey) - (ay - qy) * (-ex)) / det;
+  if (lam < 0) { nx = -nx; ny = -ny; lam = -lam; }
+  const x1 = qx + gap * nx, y1 = qy + gap * ny, x2 = qx + (lam - gap) * nx, y2 = qy + (lam - gap) * ny;
+  set(id, {x1, y1, x2, y2});
+  return {x1, y1, x2, y2};
+}
+const tk = document.getElementById('ticks');
+function tick(x1, y1, x2, y2) { const l = document.createElementNS('http://www.w3.org/2000/svg', 'line'); l.setAttribute('x1', x1); l.setAttribute('y1', y1); l.setAttribute('x2', x2); l.setAttribute('y2', y2); tk.appendChild(l); }
+function guides(id, a) {
+  set(id + 'v', {x1: X(a[0]), y1: Y(a[1]), x2: X(a[0]), y2: Y(0)});
+  set(id + 'h', {x1: X(0), y1: Y(a[1]), x2: X(a[0]), y2: Y(a[1])});
+  tick(X(a[0]), Y(0), X(a[0]), Y(0) + 4); tick(X(0) - 4, Y(a[1]), X(0), Y(a[1]));
+}
+const pw = v => (v / VBW * 100).toFixed(1) + '%', ph = v => (v / VBH * 100).toFixed(1) + '%';
+function render(labels) {
+  const box = document.getElementById('labels');
+  labels.forEach((l, i) => {
+    const el = document.createElement('div');
+    el.className = 'katex-label'; el.id = l.id || ('lbl-' + i);
+    box.appendChild(el);
+    katex.render(l.tex, el, {throwOnError: false});
+    el.style.left = pw(l.left); el.style.top = ph(l.top);
+    el.style.fontSize = (l.size || 16) + 'px';
+    el.style.color = l.color || 'black';
+    if (l.center) el.style.transform = 'translateX(-50%)';
+    if (l.align === 'right') el.classList.add('right-of-axis');
+    if (l.bg) { el.style.background = '#fff'; const k = el.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  });
+}
+
+main();
+</script>
+</body>
+</html>

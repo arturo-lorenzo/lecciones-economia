@@ -1,0 +1,438 @@
+/* Additional styles for the Economics book */
+
+/* =============================================
+   JUSTIFIED TEXT — GLOBAL, every page
+   ============================================= */
+p,
+li,
+dd,
+.content p,
+.body-content p,
+.body-content li,
+main p,
+main li,
+#quarto-content p,
+#quarto-content li,
+.quarto-body-content p,
+.quarto-body-content li,
+article p,
+article li,
+.callout-body p,
+.callout-body li,
+blockquote p {
+  text-align: justify !important;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+/* =============================================
+   REMOVE ALL UNDERLINES from sidebar & TOC
+   Nuclear approach: kill underlines on every
+   link inside any sidebar or nav container
+   ============================================= */
+#quarto-sidebar a,
+#quarto-sidebar a *,
+.sidebar a,
+.sidebar a *,
+nav a,
+nav a *,
+#TOC a,
+#TOC a *,
+#quarto-margin-sidebar a,
+#quarto-margin-sidebar a *,
+.quarto-secondary-nav a,
+.quarto-secondary-nav a * {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  text-underline-offset: unset !important;
+  text-decoration-line: none !important;
+}
+
+/* Smooth transitions */
+a {
+  transition: color 0.2s ease;
+}
+
+/* Numbered list styling in content */
+.body-content ol,
+#quarto-content ol {
+  padding-left: 1.5rem;
+}
+
+.body-content ol > li,
+#quarto-content ol > li {
+  margin-bottom: 0.8rem;
+  padding-left: 0.3rem;
+}
+
+/* Espacio entre los ítems de las listas de nivel 1 y 2 del texto,
+   también en las listas sin línea en blanco entre ítems; el nivel 3, compacto */
+#quarto-document-content ul > li {
+  margin-bottom: 0.5rem;
+}
+#quarto-document-content li li li,
+.body-content li li li,
+#quarto-content li li li {
+  margin-bottom: 0;
+}
+
+/* Bold terms - key economic concepts */
+strong {
+  color: #1a3a5c;
+}
+
+/* Italic emphasis */
+em {
+  color: #333;
+}
+
+/* TOC on the right margin */
+.toc-actions {
+  font-size: 0.85rem;
+}
+
+/* Section number styling */
+.header-section-number {
+  color: #4a6fa5;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+/* Breadcrumb-like part headers in sidebar */
+.sidebar-item-section .sidebar-item-text {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: #1a3a5c;
+}
+
+/* Custom callout: Definición */
+.callout-definicion {
+  border-left: 4px solid #1a3a5c;
+  background-color: #f0f4f8;
+}
+
+/* Custom callout: Proceso */
+.callout-proceso {
+  border-left: 4px solid #457b9d;
+  background-color: #f0f7fb;
+}
+
+/* Custom callout: Valoración */
+.callout-valoracion {
+  border-left: 4px solid #e9c46a;
+  background-color: #fdf8ef;
+}
+
+/* Custom callout: Ejemplo */
+.callout-ejemplo {
+  border-left: 4px solid #2d6a4f;
+  background-color: #f0f8f4;
+}
+
+/* Responsive images */
+.quarto-figure img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Equation numbering */
+.math.display .MathJax {
+  font-size: 1.05em;
+}
+
+/* Una ecuación más ancha que la columna se desplaza en horizontal,
+   sobre todo en el móvil, en vez de quedar cortada. Las que caben no cambian. */
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* =============================================
+   RESPONSIVE LAYOUT
+   Fluid grid that works on all screen sizes.
+   Quarto's grid values are treated as proportions;
+   these overrides ensure the content fills the
+   viewport instead of capping at a fixed max-width.
+   ============================================= */
+
+/* Remove the hard max-width cap on the overall page */
+.page-columns,
+.page-rows-contents,
+#quarto-content,
+.quarto-container {
+  max-width: 100% !important;
+}
+
+/* Let the content columns stretch */
+.column-body,
+.column-page,
+.column-screen {
+  max-width: 100% !important;
+}
+
+/* On wide screens, give the body column room to breathe */
+@media (min-width: 1200px) {
+  .page-columns > .content {
+    max-width: none !important;
+  }
+}
+
+/* Ensure the right margin TOC doesn't get squashed on medium screens */
+@media (max-width: 1100px) {
+  #quarto-margin-sidebar {
+    display: none;
+  }
+}
+
+/* =============================================
+   SIDEBAR DIVIDER PARTS (Parte A, Parte B, Descargas)
+   These are parts with no chapters — they act as
+   visual separators in the sidebar navigation.
+   ============================================= */
+
+/* All part headers get base styling */
+.sidebar-item-section .sidebar-item-text {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: #1a3a5c;
+}
+
+/* Divider parts: centered, black, with border */
+.sidebar-item-section:not(:has(ul)) .sidebar-item-text {
+  color: #000000 !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+  display: block !important;
+  border-bottom: 2px solid #000000;
+  padding-bottom: 0.4em;
+  margin-top: 1.2em;
+  margin-bottom: 0.3em;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.06em !important;
+}
+
+/* Las cabeceras desplegables (Pensamiento Económico, Microeconomía… y los
+   ejercicios de Descargas) van en negrita, sin versalitas, con mayúscula inicial en cada palabra; los divisores (Parte A, Descargas…)
+   conservan las mayúsculas. */
+#quarto-sidebar li.sidebar-item-section:has(ul) > .sidebar-item-container .sidebar-item-text {
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  font-weight: 700 !important;
+  font-size: 0.88rem !important;
+}
+/* =============================================
+   ECONOMICS GRAPHS — iframe containers
+   All graphs are standalone HTML files (SVG + KaTeX)
+   embedded via iframe. Use class="graph-frame" on
+   the wrapper div in .qmd files.
+ 
+   Embed syntax in .qmd:
+   ```{=html}
+   <div class="graph-frame">
+   <iframe src="../graphs/FILENAME.html" loading="lazy"></iframe>
+   </div>
+   ```
+ 
+   GRAPH PRODUCTION CONVENTIONS:
+   — Format: standalone HTML with SVG + KaTeX (CDN)
+   — Font: Computer Modern via KaTeX for all labels
+   — Colors: Teal #1D9E75 (primary curve)
+              Purple #534AB7 (secondary curve)
+              Coral #D85A30 (tertiary / points)
+              Blue #378ADD (budget lines / constraints)
+   — ViewBox: 680 x [height], where height = lowest element + 40px
+   — Labels: KaTeX-rendered <div>s with position:absolute
+   — Y-axis labels: right-aligned against axis (transform: translateX(-100%))
+   — X-axis labels: centered below tick mark
+   — Equilibrium labels: use NUMBERS, never letters
+       0  = initial or given equilibrium
+       1  = final equilibrium (after comparative statics)
+       0' = transition equilibrium (e.g. compensated bundle)
+   — Curves: generate mathematically where possible (Cobb-Douglas, etc.)
+   — Convexity: always strongly convex for ICs, never flat/linear segments
+   — Tangency: IC must touch budget line at exactly one point, no crossing
+   ============================================= */
+ 
+.graph-frame {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+ 
+.graph-frame iframe {
+  border: none;
+  max-width: 680px;
+  width: 100%;
+  height: 520px;
+}
+ 
+/* Taller graphs (e.g. Slutsky with effect arrows below axis) */
+.graph-frame.tall iframe {
+  height: 620px;
+}
+ 
+/* Shorter graphs (simple two-curve diagrams) */
+.graph-frame.short iframe {
+  height: 440px;
+}
+
+/* Gráficos de varios paneles lado a lado: ocupan el ancho de la columna hasta 900 px
+   (con 900 px cada panel se ve como el de un gráfico de un panel, de 680 px; antes llegaban a 1.250 px en pantallas grandes).
+   Cada iframe declara su proporción en style="--r:<ancho/alto>"; el alto sigue
+   al ancho (aspect-ratio) hasta que graph-autosize.html lo ajusta al contenido. */
+.graph-frame.wide iframe {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  aspect-ratio: var(--r, 1.4);
+}
+
+/* Móvil: los dobles no bajan de 680 px (su ancho de diseño: rótulos legibles y sin
+   cortes); el marco se desplaza en horizontal dentro de la figura. */
+@media (max-width: 640px) {
+  .graph-frame.wide {
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .graph-frame.wide iframe {
+    min-width: 680px;
+  }
+}
+/* Nivel 5: etiquetas de plantilla (Supuestos, Modelo, Conclusiones) claramente subordinadas al nivel 4.
+   Ningún título por debajo del tamaño del texto (1rem); el nivel 5 queda entre el texto y el nivel 4. */
+h5 {
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Balances en T: regla bajo el encabezado y sobre la fila de totales */
+.balance thead th { border-bottom: 2px solid var(--bs-body-color, #212529); }
+.balance tbody tr:last-child td {
+  border-top: 2px solid var(--bs-body-color, #212529);
+  font-weight: 600;
+}
+/* Cuentas de mayor en T (anexo de B01): raya vertical entre el debe y el haber */
+.cuenta-t th:first-child, .cuenta-t td:first-child { border-right: 2px solid var(--bs-body-color, #212529); }
+
+/* ---- Bibliografía: espacio entre entradas y sangría francesa ---- */
+div.csl-bib-body div.csl-entry {
+  margin-bottom: 0.65em;
+  line-height: 1.45;
+}
+
+div.csl-bib-body.hanging-indent {
+  margin-left: 0;            /* Pandoc pone 1,5em al contenedor */
+}
+
+div.csl-bib-body.hanging-indent div.csl-entry {
+  margin-left: 0.875em;      /* margen izquierdo: un cuarto del anterior (3,5em) */
+  padding-left: 2em;
+  text-indent: -2em;
+}
+
+div.csl-bib-body .csl-entry a {
+  white-space: nowrap;       /* el enlace no se parte: si no cabe, pasa entero al renglón siguiente */
+}
+
+div.csl-bib-body div.csl-entry > p {
+  margin: 0;
+}
+
+/* Referencias en bandera (no justificadas) y sin guionado, como pide APA */
+div.csl-bib-body div.csl-entry,
+div.csl-bib-body div.csl-entry > p {
+  text-align: left !important;
+  -webkit-hyphens: none;
+  hyphens: none;
+  overflow-wrap: anywhere;   /* long URLs wrap instead of overflowing on mobile */
+}
+/* Referencias en «Otras publicaciones»: en bandera y sin guionado, como en la bibliografía (APA). */
+#quarto-content .refs-lista li {
+  text-align: left !important;
+  -webkit-hyphens: none;
+  hyphens: none;
+}
+/* Enlace completo de una referencia en su propio renglón («Otras publicaciones»): entero en pantalla
+   ancha; en el móvil, si no cabe, se parte para no salirse de la columna. */
+.url-entera { white-space: nowrap; font-size: 0.85em; }
+@media (max-width: 1199px) {
+  .url-entera { white-space: normal; overflow-wrap: anywhere; }
+}
+/* La fecha bajo el título de cada página empieza con mayúscula («Noviembre de 2026»);
+   el mes va en minúscula dentro de una línea (portada, pies de los PDF y de los guiones). */
+.quarto-title-meta-contents p.date::first-letter { text-transform: uppercase; }
+
+/* Divisor «Presentación» sobre Prefacio, Notación y Edición y licencia.
+   Se genera con CSS (no como «part» en _quarto.yml) para que el PDF
+   no inserte una página de parte vacía después del prefacio. */
+#quarto-sidebar .sidebar-menu-container > ul > li.sidebar-item:first-child::before {
+  content: "Presentación";
+  display: block;
+  color: #000000;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  border-bottom: 2px solid #000000;
+  padding-bottom: 0.4em;
+  margin-top: 1.2em;
+  margin-bottom: 0.3em;
+}
+
+/* Entradas de página en el índice lateral (capítulos, Prefacio, Notación,
+   Edición y licencia, páginas de bibliografía y descargas): un único estilo, en la
+   misma letra que el texto, sin mayúsculas forzadas ni justificación.
+   Las cabeceras de bloque (Pensamiento Económico…) y los divisores
+   (Parte A…) conservan su estilo propio. */
+#quarto-sidebar li.sidebar-item:not(.sidebar-item-section) .sidebar-item-text,
+#quarto-sidebar li.sidebar-item:not(.sidebar-item-section) .chapter-title {
+  font-family: "Source Serif Pro", Georgia, serif !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  font-size: 0.85rem !important;
+  line-height: 1.35;
+  text-align: left !important;
+  color: #2e3d4f !important;
+}
+#quarto-sidebar li.sidebar-item:not(.sidebar-item-section) .sidebar-link.active .sidebar-item-text,
+#quarto-sidebar li.sidebar-item:not(.sidebar-item-section) .sidebar-link.active.sidebar-item-text,
+#quarto-sidebar li.sidebar-item:not(.sidebar-item-section) .sidebar-link.active .chapter-title {
+  color: #1a3a5c !important;
+  font-weight: 600 !important;
+}
+
+/* Los títulos nunca más pequeños que el texto (nivel 6 y títulos de los recuadros) */
+h6 {
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 600;
+}
+.callout .callout-title-container {
+  font-size: 1rem;
+}
+
+/* Tablas. Las columnas cortas (marcadas por _proyecto/tablas-ancho.lua) no se parten en pantallas anchas */
+@media (min-width: 768px) {
+  td.nowrap,
+  th.nowrap {
+    white-space: nowrap;
+  }
+}

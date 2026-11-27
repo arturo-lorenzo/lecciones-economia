@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<style>
+  body { margin: 0; }
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg viewBox="0 0 680 580" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#888" stroke-width="0.8"/></pattern>
+</defs>
+<line x1="100.0" y1="500.0" x2="590.0" y2="500.0" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+<line x1="100.0" y1="500.0" x2="100.0" y2="45.0" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+<path d="M273.5,336.6 L325.5,312.4 L273.5,254.1 Z" fill="url(#hatch)" stroke="none"/>
+<path d="M129.5,93.0 L453.9,456.0 L571.9,500.0" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M123.6,168.9 L343.3,414.8 L571.9,500.0" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="100.0" y1="417.5" x2="512.9" y2="225.0" stroke="#D85A30" stroke-width="2.2"/>
+<line x1="100.0" y1="336.6" x2="273.5" y2="336.6" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+<line x1="96.0" y1="336.6" x2="100.0" y2="336.6" stroke="#000" stroke-width="1"/>
+<line x1="100.0" y1="312.4" x2="325.5" y2="312.4" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+<line x1="96.0" y1="312.4" x2="100.0" y2="312.4" stroke="#000" stroke-width="1"/>
+<line x1="100.0" y1="254.1" x2="273.5" y2="254.1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+<line x1="96.0" y1="254.1" x2="100.0" y2="254.1" stroke="#000" stroke-width="1"/>
+<line x1="273.5" y1="254.1" x2="273.5" y2="500.0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+<line x1="325.5" y1="312.4" x2="325.5" y2="500.0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+<line x1="273.5" y1="500.0" x2="273.5" y2="504.0" stroke="#000" stroke-width="1"/>
+<line x1="325.5" y1="500.0" x2="325.5" y2="504.0" stroke="#000" stroke-width="1"/>
+<circle cx="273.5" cy="336.6" r="5" fill="#000"/>
+<circle cx="325.5" cy="312.4" r="5" fill="#000"/>
+<circle cx="273.5" cy="254.1" r="5" fill="#000"/>
+</svg>
+</div>
+<script>
+const LABELS = [{"t": "p_g", "x": 13.529, "y": 8.621, "a": "-100%,-50%", "c": "#000", "s": 17, "bg": false}, {"t": "g", "x": 87.832, "y": 86.207, "a": "0,-50%", "c": "#000", "s": 17, "bg": false}, {"t": "g_R", "x": 40.217, "y": 87.586, "a": "-50%,0", "c": "#000", "s": null, "bg": false}, {"t": "g^*", "x": 47.87, "y": 87.586, "a": "-50%,0", "c": "#000", "s": null, "bg": false}, {"t": "D(g)", "x": 19.577, "y": 15.0, "a": "-50%,-100%", "c": "#0F6E56", "s": null, "bg": false}, {"t": "D_R(g)", "x": 19.51, "y": 28.086, "a": "-50%,-100%", "c": "#0F6E56", "s": null, "bg": false}, {"t": "\\text{Cmg}(g)", "x": 76.49, "y": 38.793, "a": "0,-50%", "c": "#D85A30", "s": null, "bg": false}, {"t": "0", "x": 43.954, "y": 59.589, "a": "-50%,-50%", "c": "#000", "s": null, "bg": false}, {"t": "1", "x": 51.873, "y": 55.061, "a": "-50%,-50%", "c": "#000", "s": null, "bg": false}, {"t": "0'", "x": 41.128, "y": 43.103, "a": "0,-100%", "c": "#000", "s": null, "bg": false}, {"t": "p_0", "x": 13.529, "y": 58.034, "a": "-100%,-50%", "c": "#000", "s": null, "bg": false}, {"t": "p_1", "x": 13.529, "y": 53.862, "a": "-100%,-50%", "c": "#000", "s": null, "bg": false}, {"t": "p_{0'}", "x": 13.529, "y": 43.81, "a": "-100%,-50%", "c": "#000", "s": null, "bg": false}];
+const box = document.querySelector('.graph-container');
+LABELS.forEach((L, i) => {
+  const e = document.createElement('div');
+  e.className = 'katex-label'; e.id = 'lbl-' + i;
+  katex.render(L.t, e, {throwOnError: false});
+  e.style.left = L.x + '%'; e.style.top = L.y + '%';
+  e.style.transform = 'translate(' + L.a + ')';
+  e.style.color = L.c;
+  if (L.s) e.style.fontSize = L.s + 'px';
+  if (L.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  box.appendChild(e);
+});
+</script>
+</body>
+</html>

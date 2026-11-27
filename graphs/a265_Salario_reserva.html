@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<style>
+  body { margin: 0; }
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 15px; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect x="138.0" y="40.0" width="206.4" height="410.0" fill="#C62828" fill-opacity="0.06"/>
+<rect x="344.4" y="40.0" width="206.4" height="410.0" fill="#1D9E75" fill-opacity="0.08"/>
+<line x1="138.0" y1="450.0" x2="592.0" y2="450.0" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+<line x1="138.0" y1="450.0" x2="138.0" y2="30.0" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+<line x1="344.4" y1="250.0" x2="344.4" y2="450.0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+<line x1="344.4" y1="450.0" x2="344.4" y2="454.0" stroke="#000" stroke-width="1"/>
+<line x1="138.0" y1="250.0" x2="550.7" y2="250.0" stroke="#378ADD" stroke-width="2.2"/>
+
+<line x1="138.0" y1="360.0" x2="241.2" y2="360.0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+<path d="M188.0,360.0 A50,50 0 0,0 182.1,336.5" fill="none" stroke="#888" stroke-width="0.9"/>
+<line x1="138.0" y1="360.0" x2="550.7" y2="140.0" stroke="#1D9E75" stroke-width="2.2"/>
+<circle cx="344.4" cy="250.0" r="5" fill="#000"/>
+</svg>
+</div>
+<script>
+const LABELS = [{"t": "0", "x": 50.642, "y": 46.154, "a": "-50%,-100%", "c": "#000", "s": null, "bg": false}, {"t": "\\text{valor}", "x": 18.824, "y": 7.308, "a": "-100%,-50%", "c": "#000", "s": 17, "bg": false}, {"t": "w", "x": 86.816, "y": 88.269, "a": "-50%,0", "c": "#000", "s": 17, "bg": false}, {"t": "\\underline{w}", "x": 50.642, "y": 88.077, "a": "-50%,0", "c": "#000", "s": null, "bg": false}, {"t": "U_T^e(w)", "x": 81.96, "y": 26.923, "a": "0,-50%", "c": "#0F6E56", "s": 16, "bg": false}, {"t": "U_B^e", "x": 81.96, "y": 48.077, "a": "0,-50%", "c": "#185FA5", "s": 16, "bg": false}, {"t": "1/(r+\\lambda)", "x": 28.6, "y": 66.923, "a": "0,-50%", "c": "#0F6E56", "s": 14, "bg": false}, {"t": "\\text{rechaza}", "x": 35.468, "y": 11.923, "a": "-50%,0", "c": "#C62828", "s": 15, "bg": false}, {"t": "\\text{acepta}", "x": 65.815, "y": 11.923, "a": "-50%,0", "c": "#0F6E56", "s": 15, "bg": false}];
+const box = document.querySelector('.graph-container');
+LABELS.forEach((L, i) => {
+  const e = document.createElement('div');
+  e.className = 'katex-label'; e.id = 'lbl-' + i;
+  katex.render(L.t, e, {throwOnError: false});
+  e.style.left = L.x + '%'; e.style.top = L.y + '%';
+  e.style.transform = 'translate(' + L.a + ')';
+  e.style.color = L.c;
+  if (L.s) e.style.fontSize = L.s + 'px';
+  if (L.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  box.appendChild(e);
+});
+</script>
+</body>
+</html>

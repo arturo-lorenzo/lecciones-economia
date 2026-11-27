@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 500">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="110" y1="460" x2="550" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="110" y1="460" x2="110" y2="60"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="vu-line" stroke="#888" stroke-width="2.2" stroke-dasharray="8 5"/>
+
+
+    <line id="mm-line" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <path id="v-curve" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line id="gap-arrow" stroke="#888" stroke-width="1"
+          marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+
+    <line id="d-dash" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+
+    <line id="d-tick" stroke="black" stroke-width="1"/>
+
+
+    <circle id="pt-max" r="5" fill="#D85A30"/>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-d"></div>
+  <div class="katex-label" id="lbl-v"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-vu"></div>
+  <div class="katex-label" id="lbl-mm"></div>
+  <div class="katex-label" id="lbl-vl"></div>
+  <div class="katex-label" id="lbl-gap"></div>
+  <div class="katex-label" id="lbl-dstar"></div>
+
+</div>
+
+<script>
+
+
+
+
+
+
+
+
+
+
+const VU = 100, tIS = 0.25;
+const kappa = tIS / (4 * Math.pow(110, 3));
+const ins = D => kappa * Math.pow(D, 4);
+const val = D => VU + tIS * D - ins(D);
+const Dstar = Math.pow(tIS / (4 * kappa), 1 / 3);
+
+const DMAX = 185, GAPD = 150;
+function toSvgX(D) { return 110 + D * 380 / 185; }
+function toSvgY(V) { return 460 - (V - 60) * 4; }
+
+
+const vu = document.getElementById('vu-line');
+vu.setAttribute('x1', toSvgX(0));   vu.setAttribute('y1', toSvgY(VU));
+vu.setAttribute('x2', toSvgX(DMAX)); vu.setAttribute('y2', toSvgY(VU));
+
+
+const mm = document.getElementById('mm-line');
+mm.setAttribute('x1', toSvgX(0));   mm.setAttribute('y1', toSvgY(VU));
+mm.setAttribute('x2', toSvgX(DMAX)); mm.setAttribute('y2', toSvgY(VU + tIS * DMAX));
+
+
+const pts = [];
+for (let i = 0; i <= 300; i++) {
+  const D = (i / 300) * DMAX;
+  const sx = toSvgX(D);
+  const sy = toSvgY(val(D));
+  pts.push(sx.toFixed(1) + ',' + sy.toFixed(1));
+}
+document.getElementById('v-curve').setAttribute('d', 'M' + pts.join(' L'));
+
+
+const sm = [toSvgX(Dstar), toSvgY(val(Dstar))];
+document.getElementById('pt-max').setAttribute('cx', sm[0]);
+document.getElementById('pt-max').setAttribute('cy', sm[1]);
+const dd = document.getElementById('d-dash');
+dd.setAttribute('x1', sm[0]); dd.setAttribute('y1', sm[1]);
+dd.setAttribute('x2', sm[0]); dd.setAttribute('y2', 460);
+const dt = document.getElementById('d-tick');
+dt.setAttribute('x1', sm[0]); dt.setAttribute('y1', 460);
+dt.setAttribute('x2', sm[0]); dt.setAttribute('y2', 464);
+
+
+const ga = document.getElementById('gap-arrow');
+const gx = toSvgX(GAPD);
+ga.setAttribute('x1', gx); ga.setAttribute('y1', toSvgY(VU + tIS * GAPD) + 8);
+ga.setAttribute('x2', gx); ga.setAttribute('y2', toSvgY(val(GAPD)) - 8);
+
+
+const pct = (v, t) => (v / t * 100).toFixed(2) + '%';
+
+const xe = toSvgX(DMAX) + 6;
+const labels = [
+  {id: 'lbl-d',     tex: 'D_f', x: 558, y: 460, ax: 0, ay: 0.5, color: 'black', size: 17},
+  {id: 'lbl-v',     tex: '\\text{EV}', x: 110, y: 48, ax: 0.5, ay: 1, color: 'black', size: 17},
+  {id: 'lbl-o',     tex: 'O', x: 104, y: 466, ax: 1, ay: 0, color: 'black'},
+  {id: 'lbl-vu',    tex: '\\text{EV}_U', x: xe, y: toSvgY(VU), ax: 0, ay: 0.5, color: '#888'},
+  {id: 'lbl-mm',    tex: '\\text{EV}_U + t_{\\text{IS}}\\, D_f', x: xe, y: toSvgY(VU + tIS * DMAX), ax: 0, ay: 0.5, color: '#185FA5'},
+  {id: 'lbl-vl',    tex: '\\text{EV}_A(D_f)', x: xe, y: toSvgY(val(DMAX)), ax: 0, ay: 0.5, color: '#0F6E56'},
+  {id: 'lbl-gap',   tex: '\\text{Costes de insolvencia}', x: gx + 8, y: (toSvgY(VU + tIS * GAPD) + toSvgY(val(GAPD))) / 2, ax: 0, ay: 0.5, color: '#888', size: 15},
+  {id: 'lbl-dstar', tex: 'D_f^*', x: sm[0], y: 468, ax: 0.5, ay: 0, color: 'black'}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = pct(l.x, 680);
+  el.style.top = pct(l.y, 500);
+  el.style.fontSize = (l.size || 16) + 'px';
+  el.style.whiteSpace = 'nowrap';
+  el.style.transform = `translate(${-100*l.ax}%, ${-100*l.ay}%)`;
+  if (l.color) el.style.color = l.color;
+});
+</script>
+</body>
+</html>

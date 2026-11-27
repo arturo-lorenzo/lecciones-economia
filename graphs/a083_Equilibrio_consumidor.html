@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 500">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="124" y1="460" x2="556" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="124" y1="460" x2="124" y2="60"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line x1="124" y1="120" x2="486.9" y2="460" stroke="#378ADD" stroke-width="2.2"/>
+
+
+    <path id="ic-curve" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <circle cx="305.4" cy="290" r="5" fill="#000"/>
+
+
+    <line x1="305.4" y1="290" x2="305.4" y2="460" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line x1="305.4" y1="290" x2="124" y2="290" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+
+    <line x1="120" y1="290" x2="124" y2="290" stroke="black" stroke-width="1"/>
+    <line x1="305.4" y1="460" x2="305.4" y2="464" stroke="black" stroke-width="1"/>
+
+
+    <line x1="120" y1="120" x2="124" y2="120" stroke="black" stroke-width="1"/>
+    <line x1="486.9" y1="460" x2="486.9" y2="464" stroke="black" stroke-width="1"/>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-x1"></div>
+  <div class="katex-label" id="lbl-x2"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-y-int"></div>
+  <div class="katex-label" id="lbl-x-int"></div>
+  <div class="katex-label" id="lbl-x1star"></div>
+  <div class="katex-label" id="lbl-x2star"></div>
+  <div class="katex-label" id="lbl-estar"></div>
+  <div class="katex-label" id="lbl-ustar"></div>
+
+</div>
+
+<script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const svgPath = document.getElementById('ic-curve');
+const pts = [];
+const steps = 100;
+
+
+function toEconX(svgX) { return (svgX - 124) / 60.48; }
+function toEconY(svgY) { return (460 - svgY) / 56.67; }
+function toSvgX(econX) { return 124 + econX * 60.48; }
+function toSvgY(econY) { return 460 - econY * 56.67; }
+
+
+
+
+const ex1 = 3;
+const ex2 = 3;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const k = ex1 * ex2;
+
+for (let i = 0; i <= steps; i++) {
+  const x1 = 1.32 + (i / steps) * 5.55;
+  const x2 = k / x1;
+  const sx = toSvgX(x1);
+  const sy = toSvgY(x2);
+  if (sx >= 105 && sx <= 560 && sy >= 50 && sy <= 458) {
+    pts.push([sx, sy]);
+  }
+}
+
+let d = 'M' + pts[0][0].toFixed(1) + ',' + pts[0][1].toFixed(1);
+for (let i = 1; i < pts.length; i++) {
+  d += ' L' + pts[i][0].toFixed(1) + ',' + pts[i][1].toFixed(1);
+}
+svgPath.setAttribute('d', d);
+
+
+const labels = [
+  {id: 'lbl-x1',      tex: 'x_1',                left: '82.4%',   top: '91%',  color: 'black'},
+  {id: 'lbl-x2',      tex: 'x_2',                left: '14.2%',   top: '7%',   color: 'black'},
+  {id: 'lbl-o',       tex: 'O',                   left: '15.9%',   top: '92%',  color: 'black'},
+  {id: 'lbl-y-int',   tex: '\\dfrac{M_0}{p_2}',    left: '16.9%', top: '20.0%',  color: 'black', align: 'right', size: '13px'},
+  {id: 'lbl-x-int',   tex: '\\dfrac{M_0}{p_1}',    left: '70%', top: '92.2%',  color: 'black', size: '13px'},
+  {id: 'lbl-x2star',  tex: 'x_2^*',              left: '16.9%', top: '55%',  color: 'black', align: 'right'},
+  {id: 'lbl-x1star',  tex: 'x_1^*',              left: '43.5%',   top: '93%',  color: 'black'},
+  {id: 'lbl-estar',   tex: '0',                  left: '46.1%',   top: '52%',  color: '#000'},
+  {id: 'lbl-ustar',   tex: 'u^*',                left: '79.8%',   top: '78.3%',  color: '#0F6E56'}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = l.left;
+  el.style.top = l.top;
+  if (l.color) el.style.color = l.color;
+  if (l.size) el.style.fontSize = l.size;
+  if (l.align === 'right') el.classList.add('right-of-axis');
+});
+</script>
+</body>
+</html>

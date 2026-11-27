@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="-24 0 704 520" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="108" y1="440" x2="548" y2="440" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="108" y1="440" x2="108" y2="40"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line x1="311.1" y1="55" x2="311.1" y2="430" stroke="#D85A30" stroke-width="2.28"/>
+
+
+    <path id="cph0" fill="none" stroke="#378ADD" stroke-width="2.28" stroke-linecap="round"/>
+    <path id="cph1" fill="none" stroke="#378ADD" stroke-width="2.28" stroke-linecap="round" stroke-dasharray="8 5"/>
+    <path id="cph2" fill="none" stroke="#378ADD" stroke-width="2.28" stroke-linecap="round" stroke-dasharray="3 4"/>
+
+
+    <circle id="eq0" r="5" fill="#000"/>
+    <circle id="eq1" r="5" fill="#000"/>
+    <circle id="eq2" r="5" fill="#000"/>
+    <circle id="eq0p" r="5" fill="#000"/>
+
+
+    <line id="dash-u0p" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="tick-u0p" stroke="black" stroke-width="1"/>
+
+
+    <line id="dash-pi0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-pi1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-pi2" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+
+    <line id="tick-pi0" stroke="black" stroke-width="1"/>
+    <line id="tick-pi1" stroke="black" stroke-width="1"/>
+    <line id="tick-pi2" stroke="black" stroke-width="1"/>
+
+
+    <line x1="311.1" y1="440" x2="311.1" y2="444" stroke="black" stroke-width="1"/>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-pi"></div>
+  <div class="katex-label" id="lbl-u"></div>
+  <div class="katex-label" id="lbl-LRPC"></div>
+  <div class="katex-label" id="lbl-ubar"></div>
+
+
+  <div class="katex-label" id="lbl-srpc0"></div>
+  <div class="katex-label" id="lbl-srpc1"></div>
+  <div class="katex-label" id="lbl-srpc2"></div>
+
+
+
+
+  <div class="katex-label" id="lbl-pi0"></div>
+  <div class="katex-label" id="lbl-pi1"></div>
+  <div class="katex-label" id="lbl-pi2"></div>
+
+
+  <div class="katex-label" id="lbl-E0"></div>
+  <div class="katex-label" id="lbl-E0p"></div>
+  <div class="katex-label" id="lbl-E1"></div>
+  <div class="katex-label" id="lbl-E2"></div>
+  <div class="katex-label" id="lbl-u0p"></div>
+
+</div>
+
+<script>
+
+const OX = 108, OY = 440, KX = 440 / 520;
+const X = x => OX + (x - 100) * KX;
+const u_bar_svg = X(340);
+
+
+function toSvgX(u) { return OX + u * 45 * KX; }
+function toSvgY(pi) { return OY - pi * 28; }
+
+const u_nat = 240 / 45;
+
+
+
+
+
+
+
+const k_ph = 4.5;
+const gamma_ph = 1.8;
+
+function philCurve(u, pi_e) {
+  return pi_e + k_ph * Math.pow(u_nat / u, gamma_ph) - k_ph;
+}
+
+
+const upperEndpoints = [];
+
+function genPhillips(pi_e, id, uMin, uMax) {
+  const pts = [];
+  let firstPt = null;
+  for (let i = 0; i <= 300; i++) {
+    const u = uMin + (i / 300) * (uMax - uMin);
+    const pi = philCurve(u, pi_e);
+    const sx = toSvgX(u), sy = toSvgY(pi);
+    if (sy >= 64 && sy <= OY - 5 && sx >= OX && sx <= X(610)) {
+      pts.push(sx.toFixed(1) + ',' + sy.toFixed(1));
+      if (!firstPt) firstPt = {x: sx, y: sy};
+    }
+  }
+  document.getElementById(id).setAttribute('d', 'M' + pts.join(' L'));
+  upperEndpoints.push(firstPt);
+  return toSvgY(pi_e);
+}
+
+
+const syPi0 = genPhillips(0, 'cph0', 1.8, 8.5);
+const syPi1 = genPhillips(5, 'cph1', 1.8, 10.0);
+const syPi2 = genPhillips(10, 'cph2', 1.8, 10.5);
+
+
+const $ = (id) => document.getElementById(id);
+function setL(id, x1, y1, x2, y2) {
+  const e = $(id); e.setAttribute('x1',x1); e.setAttribute('y1',y1); e.setAttribute('x2',x2); e.setAttribute('y2',y2);
+}
+
+$('eq0').setAttribute('cx', u_bar_svg); $('eq0').setAttribute('cy', syPi0);
+$('eq1').setAttribute('cx', u_bar_svg); $('eq1').setAttribute('cy', syPi1);
+$('eq2').setAttribute('cx', u_bar_svg); $('eq2').setAttribute('cy', syPi2);
+
+
+const u0p = u_nat / Math.pow((5 + k_ph) / k_ph, 1 / gamma_ph);
+const sx0p = toSvgX(u0p);
+$('eq0p').setAttribute('cx', sx0p); $('eq0p').setAttribute('cy', syPi1);
+setL('dash-u0p', sx0p, syPi1, sx0p, OY);
+setL('tick-u0p', sx0p, OY, sx0p, OY + 4);
+
+
+setL('dash-pi0', OX, syPi0, u_bar_svg, syPi0);
+setL('dash-pi1', OX, syPi1, u_bar_svg, syPi1);
+setL('dash-pi2', OX, syPi2, u_bar_svg, syPi2);
+
+
+setL('tick-pi0', OX - 4, syPi0, OX, syPi0);
+setL('tick-pi1', OX - 4, syPi1, OX, syPi1);
+setL('tick-pi2', OX - 4, syPi2, OX, syPi2);
+
+
+const W = 680, H = 520;
+
+function pct(v, t) { return (t === 1 ? v : (t === W ? (v + 24) / 704 * 100 : v / t * 100)).toFixed(1) + '%'; }
+
+const labels = [
+  {id:'lbl-pi',    tex:'\\pi',                  left: pct(OX-7,W),     top: pct(35,H),      color:'black', align:'right'},
+  {id:'lbl-u',     tex:'u',                      left: pct(OX+442,W),    top: pct(440,H),     color:'black'},
+  {id:'lbl-LRPC',  tex:'\\text{CP}_{\\text{LP}}',               left: pct(u_bar_svg+8,W),    top: pct(45,H),      color:'#D85A30', size:'14px'},
+  {id:'lbl-ubar',  tex:'\\bar{u}',              left: pct(u_bar_svg-10,W),    top: pct(450,H),     color:'black'},
+
+
+  {id:'lbl-srpc0', tex:'\\text{CP}_{\\text{CP},0}\\,(\\pi^e = 0\\%)',  left: pct(OX+10, W), top: pct(40, H), color:'#378ADD', size:'12px'},
+  {id:'lbl-srpc1', tex:'\\text{CP}_{\\text{CP},1}\\,(\\pi^e = 5\\%)',  left: pct(X(488), W), top: pct((toSvgY(philCurve(9.0, 5)) - 30) / H * 100, 1), color:'#378ADD', size:'12.5px'},
+  {id:'lbl-srpc2', tex:'\\text{CP}_{\\text{CP},2}\\,(\\pi^e = 10\\%)', left: pct(X(488), W), top: pct((toSvgY(philCurve(9.0, 10)) - 32) / H * 100, 1), color:'#378ADD', size:'12.5px'},
+
+
+  {id:'lbl-pi0',   tex:'\\pi_0 = 0\\%',            left: pct(OX-7,W),     top: pct((syPi0 - 15) / H * 100, 1),  color:'black', align:'right', size:'13px'},
+  {id:'lbl-pi1',   tex:'\\pi_{0\'} = \\pi_1 = 5\\%',         left: pct(OX-7,W),     top: pct((syPi1 - 15) / H * 100, 1),  color:'black', align:'right', size:'13px'},
+  {id:'lbl-pi2',   tex:'\\pi_2 = 10\\%',           left: pct(OX-7,W),     top: pct((syPi2 - 15) / H * 100, 1),  color:'black', align:'right', size:'13px'},
+
+
+  {id:'lbl-E0',  tex:'0',   left: pct(u_bar_svg+6,W), top: pct((OY - 30) / H * 100, 1), color:'black', size:'15px'},
+  {id:'lbl-E0p', tex:"0'",  left: pct(sx0p + 7, W), top: pct((syPi1 - 26) / H * 100, 1), color:'black', size:'15px'},
+  {id:'lbl-E1',  tex:'1',   left: pct(u_bar_svg+8,W), top: pct((syPi1 - 26) / H * 100, 1), color:'black', size:'15px'},
+  {id:'lbl-E2',  tex:'2',   left: pct(u_bar_svg+8,W), top: pct((syPi2 - 26) / H * 100, 1), color:'black', size:'15px'},
+  {id:'lbl-u0p', tex:"u_{0'}", left: pct(sx0p - 10, W), top: pct(450,H), color:'black'}
+];
+
+labels.forEach(l => {
+  const e = document.getElementById(l.id);
+  if (!e) return;
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = typeof l.left === 'string' && l.left.includes('%') ? l.left : l.left + '%';
+  e.style.top = typeof l.top === 'string' && l.top.includes('%') ? l.top : l.top + '%';
+  if (l.color) e.style.color = l.color;
+  if (l.align === 'right') e.classList.add('right-of-axis');
+  if (l.size) e.style.fontSize = l.size;
+});
+</script>
+</body>
+</html>

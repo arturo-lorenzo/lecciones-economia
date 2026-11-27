@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<style>
+  body{margin:0;display:flex;justify-content:center;background:#fff}
+  .graph-container{position:relative;width:100%;max-width:680px;margin:0 auto}
+  .graph-container svg{width:100%;height:auto;display:block}
+  .katex-label{position:absolute;pointer-events:none;white-space:nowrap;line-height:1;font-size:16px}
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<line x1="130.0" y1="440.0" x2="130.0" y2="30.0" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+<line x1="130.0" y1="440.0" x2="581.0" y2="440.0" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+<polyline fill="none" stroke="#D85A30" stroke-width="2.1" stroke-linejoin="round" points="130.0,420.0 210.7,234.0 291.3,48.0"/>
+<polyline fill="none" stroke="#D85A30" stroke-width="2.1" stroke-linejoin="round" points="130.0,420.0 291.3,234.0 452.6,48.0"/>
+<polyline fill="none" stroke="#D85A30" stroke-width="2.2" stroke-linejoin="round" points="130.0,420.0 348.6,252.0 567.1,84.0"/>
+<polyline fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linejoin="round" points="130.0,40.0 306.9,210.0 483.9,380.0"/>
+<polyline fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linejoin="round" points="130.0,40.0 228.9,230.0 327.7,420.0" stroke-dasharray="7,4"/>
+<line x1="130.0" y1="175.7" x2="271.3" y2="175.7" stroke="#000" stroke-width="0.9" stroke-dasharray="4,3"/>
+<line x1="130.0" y1="311.4" x2="271.3" y2="311.4" stroke="#000" stroke-width="0.9" stroke-dasharray="4,3"/>
+<line x1="177.1" y1="311.4" x2="177.1" y2="440.0" stroke="#000" stroke-width="0.9" stroke-dasharray="4,3"/>
+<line x1="174.1" y1="437.0" x2="180.1" y2="443.0" stroke="#000" stroke-width="1.1"/>
+<circle cx="177.1" cy="311.4" r="3.5" fill="#D85A30"/>
+<line x1="224.2" y1="311.4" x2="224.2" y2="440.0" stroke="#000" stroke-width="0.9" stroke-dasharray="4,3"/>
+<line x1="221.2" y1="437.0" x2="227.2" y2="443.0" stroke="#000" stroke-width="1.1"/>
+<circle cx="224.2" cy="311.4" r="3.5" fill="#D85A30"/>
+<line x1="271.3" y1="175.7" x2="271.3" y2="440.0" stroke="#000" stroke-width="0.9" stroke-dasharray="4,3"/>
+<line x1="268.3" y1="437.0" x2="274.3" y2="443.0" stroke="#000" stroke-width="1.1"/>
+<circle cx="271.3" cy="175.7" r="5" fill="#000"/>
+<circle cx="271.3" cy="311.4" r="4" fill="#D85A30"/>
+</svg>
+</div>
+<script>
+
+
+const W=680, H=480;
+const LABELS=[["p", 120.0, 32, "r", null, 17, false], ["X", 584.0, 440, "l", null, 17, false], ["p_M", 124.0, 175.7, "r", null, 16, false], ["\\text{Img}(X_M)", 124.0, 311.4, "r", null, 15, false], ["x_1", 177.1, 448, "t", null, 16, false], ["x_2", 224.2, 448, "t", null, 16, false], ["X_M", 271.3, 448, "t", null, 16, false], ["0", 278.3, 166, "l", "#000", 16, false], ["\\text{Cmg}_1(x_1)", 295.7, 48.0, "l", "#D85A30", 15, false], ["\\text{Cmg}_2(x_2)", 457.0, 48.0, "l", "#D85A30", 15, false], ["\\text{Cmg}(X)", 572.0, 84.0, "l", "#D85A30", 15, false], ["D(X)", 489.1, 392, "l", "#534AB7", 16, false], ["\\text{Img}(X)", 334.7, 414, "l", "#534AB7", 15, false]];
+const cont=document.querySelector('.graph-container');
+const T={l:'translate(0,-50%)',r:'translate(-100%,-50%)',t:'translate(-50%,0)',b:'translate(-50%,-100%)',c:'translate(-50%,-50%)'};
+LABELS.forEach(([tex,x,y,a,col,fs,bg])=>{
+  const d=document.createElement('div'); d.className='katex-label';
+  d.style.left=(100*x/W)+'%'; d.style.top=(100*y/H)+'%'; d.style.transform=T[a];
+  if(col) d.style.color=col; if(fs) d.style.fontSize=fs+'px';
+  katex.render(tex,d,{throwOnError:false,displayMode:false});
+  if(bg){d.style.background='#fff'; const k=d.querySelector('.katex'); if(k) k.style.padding='0 2px';}
+  cont.appendChild(d);
+});
+</script>
+</body>
+</html>

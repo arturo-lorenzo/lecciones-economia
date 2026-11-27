@@ -1,0 +1,2136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Arturo Lorenzo">
+<meta name="description" content="Tema A20, oposiciones TCEE. Regulación del poder de mercado, first y second best, modelo de Laffont y Tirole, mercados de varias caras y industrias de red.">
+
+<title>A20. Regulación – Lecciones de economía general e internacional</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/a21-equilibrio-general.html" rel="next">
+<link href="../chapters/a19-oligopolio.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-af206048d982c71265205c3505cca787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bec3fe2b0881f05566c9dedb60685f6d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="A20. Regulación – Lecciones de economía general e internacional">
+<meta property="og:description" content="Tema A20, oposiciones TCEE. Regulación del poder de mercado, first y second best, modelo de Laffont y Tirole, mercados de varias caras y industrias de red.">
+<meta property="og:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta property="og:site_name" content="Lecciones de economía general e internacional">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:title" content="A20. Regulación – Lecciones de economía general e internacional">
+<meta name="twitter:description" content="Tema A20, oposiciones TCEE. Regulación del poder de mercado, first y second best, modelo de Laffont y Tirole, mercados de varias caras y industrias de red.">
+<meta name="twitter:image" content="https://librovol1.arturolorenzo.com/tarjeta-redes.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="A20. Regulación">
+<meta name="citation_author" content="Arturo Lorenzo">
+<meta name="citation_publication_date" content="2026-11-28">
+<meta name="citation_cover_date" content="2026-11-28">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-11-28">
+<meta name="citation_fulltext_html_url" content="https://librovol1.arturolorenzo.com/chapters/a20-regulacion.html">
+<meta name="citation_language" content="es">
+<meta name="citation_book_title" content="Lecciones de economía general e internacional">
+<link rel="canonical" href="https://librovol1.arturolorenzo.com/chapters/a20-regulacion.html">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/a08-consumidor.html">Microeconomía</a></li><li class="breadcrumb-item"><a href="../chapters/a20-regulacion.html"><span class="chapter-title">A20. Regulación</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Lecciones de economía general e internacional</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/arturo-lorenzo/lecciones-economia" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../creditos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Edición y licencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte A: Economía General</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pensamiento Económico</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a01-objeto-metodo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A1. Objeto y método de la ciencia económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a02-clasicos-marx.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A2. Los economistas clásicos y Marx</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a03-neoclasicos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A3. Los economistas neoclásicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a04-keynes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A4. Keynes: análisis comparado</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a05-monetaristas-snc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A5. La síntesis neoclásica y el monetarismo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a06-nmc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A6. La nueva macroeconomía clásica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a07-nek.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A7. La nueva economía keynesiana</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Microeconomía</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a08-consumidor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A8. Teoría de la demanda del consumidor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a09-dualidad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A9. Dualidad y aplicaciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a10-riesgo-incertidumbre.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A10. Elección en riesgo e incertidumbre</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a11-produccion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A11. Teoría de la producción</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a12-costes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A12. Teoría de costes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a13-informacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A13. Economía de la información</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a14-juegos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A14. Teoría de juegos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a15-toi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A15. Teoría de la organización industrial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a16-competencia-perfecta.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A16. Competencia perfecta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a17-monopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A17. Monopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a18-competencia-monopolistica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A18. Competencia monopolística</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a19-oligopolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A19. Oligopolio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a20-regulacion.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">A20. Regulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a21-equilibrio-general.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A21. Equilibrio general</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a22-eb-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A22. Economía del bienestar (I)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a23-eb-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A23. Economía del bienestar (II)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a24-eb-iii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A24. Economía del bienestar (III)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Economía Laboral</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a25-oferta-trabajo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A25. Mercado de trabajo y capital humano</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a26-desempleo-friccional.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A26. Desempleo friccional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a27-salarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A27. Determinación de salarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a28-tnp-nairu.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A28. TNP, NAIRU y persistencia</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Macroeconomía</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a29-mhi-mgs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A29. Modelos de horizonte infinito y generaciones solapadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a30-magnitudes-cn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A30. Magnitudes macroeconómicas y contabilidad nacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a32-precios-output.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A32. Precios y output en economía abierta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a33-demanda-consumo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A33. Teorías de demanda de consumo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a34-demanda-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A34. Teorías de demanda de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a35-demanda-dinero.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A35. Teorías de la demanda de dinero</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a36-politica-monetaria-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A36. Política monetaria I: diseño e instrumentos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a37-politica-monetaria-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A37. Política monetaria II: transmisión y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a38-politica-fiscal.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A38. Política fiscal, crecimiento y ahorro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a39-deficit.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A39. Déficit público, su financiación y sostenibilidad</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a40-interrelacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A40. Interrelación de políticas macroeconómicas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a41-inflacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A41. Inflación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a42-ciclos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A42. Ciclos económicos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a43-crecimiento-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A43. Crecimiento económico exógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a44-crecimiento-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A44. Crecimiento económico endógeno</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/a45-crecimiento-empirica.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A45. Evidencia empírica sobre el crecimiento</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Parte B: Economía Internacional</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Empresa y Finanzas</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b01-estados-ratios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B1. Estados financieros y ratios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b02-inversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B2. Decisiones de inversión</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b03-financiacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B3. Decisiones de financiación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b04-crecimiento-ma.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B4. Crecimiento empresarial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b23-renta-variable.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B23. Instrumentos de renta variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b24-renta-fija.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B24. Instrumentos de renta fija</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b25-derivados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B25. Instrumentos derivados</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b26-crisis-financieras.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B26. Crisis financieras</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b27-regulacion-financiera.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B27. Regulación bancaria y financiera</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Comercio Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b05-tnc-comercio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B5. Teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b06-nueva-teoria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B6. Nueva teoría del comercio internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b07-politica-comercial-i.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B7. Política comercial I: instrumentos y efectos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b08-politica-comercial-ii.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B8. Política comercial II: política estratégica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b09-comercio-crecimiento.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B9. Comercio internacional y crecimiento</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b10-integracion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B10. Teoría de la integración económica</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b11-balanza-pagos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B11. Balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b12-ajuste-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B12. Ajuste de la balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b13-mercado-divisas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B13. Mercado de divisas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b14-tipo-cambio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B14. Determinación del tipo de cambio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b15-regimenes-cambiarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B15. Regímenes cambiarios</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b16-integracion-monetaria.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B16. Integración monetaria</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b17-crisis-bp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B17. Crisis de balanza de pagos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b18-globalizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B18. Globalización</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b19-coordinacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B19. Coordinación de políticas económicas internacionales</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Sistema Económico Internacional</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b20-sei-hasta-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B20. El sistema económico internacional hasta el colapso de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b21-sei-despues-bw.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B21. El sistema económico internacional después de Bretton Woods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b22-fmi.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B22. El Fondo Monetario Internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b28-desarrollo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B28. Desarrollo económico</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b29-fod-aod.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B29. Financiación oficial del desarrollo y AOD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b30-gbm-brsd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B30. Grupo Banco Mundial y bancos regionales de desarrollo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b31-ma-bpg.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B31. El cambio climático y su impacto en la economía</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b32-perspectivas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B32. Perspectivas de la economía internacional</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b33-omc-gatt.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B33. La OMC y el GATT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b34-gats-trips.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B34. GATS, TRIPS y acuerdos plurilaterales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b35-no-comunitarios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B35. Acuerdos comerciales no comunitarios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Unión Europea</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b36-tratados.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B36. Los tratados de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b37-finanzas-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B37. Las finanzas de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b38-pac-ppc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B38. Política Agrícola Común y Política Pesquera Común</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b39-miue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B39. Mercado interior de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b41-comercial-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B41. Política comercial de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b42-cooperacion-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B42. Política de cooperación de la Unión Europea</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b43-politica-monetaria-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B43. Política macroeconómica I: el euro y la política monetaria única</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b44-politica-financiera-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B44. Política macroeconómica II: la Unión Bancaria y la Unión de los Mercados de Capitales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/b45-politica-fiscal-ue.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B45. Política macroeconómica III: la gobernanza económica de la UE y de la zona euro</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Descargas</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Primer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/ejercicios.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Ejercicios prácticos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/flashcards-conceptos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de conceptos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/guia-dictamen.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guía para el dictamen</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Segundo Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/segundo-ejercicio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Flashcards de inglés</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Tercer Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/libro-bloques.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">El libro en PDF</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del tercer ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Cuarto Ejercicio</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/temas-cortos-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Guiones del cuarto ejercicio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Más allá del libro</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/otras-publicaciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Otras publicaciones y trabajos del autor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../descargas/enlaces.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Enlaces de interés</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Bibliografía</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manuales y obras de referencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bibliografia-articulos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Obras citadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../fuentes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fuentes normativas y documentales</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#poder-de-mercado" id="toc-poder-de-mercado" class="nav-link" data-scroll-target="#poder-de-mercado">1. Poder de mercado</a>
+  <ul class="collapse">
+  <li><a href="#concepto-y-estructuras-de-competencia-imperfecta" id="toc-concepto-y-estructuras-de-competencia-imperfecta" class="nav-link" data-scroll-target="#concepto-y-estructuras-de-competencia-imperfecta">1.1. Concepto y estructuras de competencia imperfecta</a></li>
+  <li><a href="#causas-del-poder-de-mercado" id="toc-causas-del-poder-de-mercado" class="nav-link" data-scroll-target="#causas-del-poder-de-mercado">1.2. Causas del poder de mercado</a></li>
+  <li><a href="#causas-de-la-regulación" id="toc-causas-de-la-regulación" class="nav-link" data-scroll-target="#causas-de-la-regulación">1.3. Causas de la regulación</a></li>
+  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link" data-scroll-target="#conclusiones">1.4. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#regulación-óptima" id="toc-regulación-óptima" class="nav-link" data-scroll-target="#regulación-óptima">2. Regulación óptima</a>
+  <ul class="collapse">
+  <li><a href="#regulación-con-información-perfecta" id="toc-regulación-con-información-perfecta" class="nav-link" data-scroll-target="#regulación-con-información-perfecta">2.1. Regulación con información perfecta</a></li>
+  <li><a href="#regulación-con-información-asimétrica" id="toc-regulación-con-información-asimétrica" class="nav-link" data-scroll-target="#regulación-con-información-asimétrica">2.2. Regulación con información asimétrica</a></li>
+  <li><a href="#regulación-con-varias-empresas" id="toc-regulación-con-varias-empresas" class="nav-link" data-scroll-target="#regulación-con-varias-empresas">2.3. Regulación con varias empresas</a></li>
+  <li><a href="#regulación-de-los-mercados-de-varias-caras-rochet-y-tirole-2003-armstrong-2006" id="toc-regulación-de-los-mercados-de-varias-caras-rochet-y-tirole-2003-armstrong-2006" class="nav-link" data-scroll-target="#regulación-de-los-mercados-de-varias-caras-rochet-y-tirole-2003-armstrong-2006">2.4. Regulación de los mercados de varias caras (Rochet y Tirole, 2003; Armstrong, 2006)</a></li>
+  <li><a href="#conclusiones-1" id="toc-conclusiones-1" class="nav-link" data-scroll-target="#conclusiones-1">2.5. Conclusiones</a></li>
+  </ul></li>
+  <li><a href="#mercado-relevante-y-aplicaciones-prácticas" id="toc-mercado-relevante-y-aplicaciones-prácticas" class="nav-link" data-scroll-target="#mercado-relevante-y-aplicaciones-prácticas">3. Mercado relevante y aplicaciones prácticas</a>
+  <ul class="collapse">
+  <li><a href="#definición-del-mercado-relevante" id="toc-definición-del-mercado-relevante" class="nav-link" data-scroll-target="#definición-del-mercado-relevante">3.1. Definición del mercado relevante</a></li>
+  <li><a href="#medición-empírica-del-poder-de-mercado" id="toc-medición-empírica-del-poder-de-mercado" class="nav-link" data-scroll-target="#medición-empírica-del-poder-de-mercado">3.2. Medición empírica del poder de mercado</a></li>
+  <li><a href="#la-liberalización-de-las-industrias-de-red" id="toc-la-liberalización-de-las-industrias-de-red" class="nav-link" data-scroll-target="#la-liberalización-de-las-industrias-de-red">3.3. La liberalización de las industrias de red</a></li>
+  <li><a href="#evaluación-y-límites-de-la-regulación" id="toc-evaluación-y-límites-de-la-regulación" class="nav-link" data-scroll-target="#evaluación-y-límites-de-la-regulación">3.4. Evaluación y límites de la regulación</a></li>
+  </ul></li>
+  <li><a href="#conclusiones-2" id="toc-conclusiones-2" class="nav-link" data-scroll-target="#conclusiones-2">Conclusiones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/a08-consumidor.html">Microeconomía</a></li><li class="breadcrumb-item"><a href="../chapters/a20-regulacion.html"><span class="chapter-title">A20. Regulación</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">A20. Regulación</span></h1>
+<p class="subtitle lead">Poder de mercado y regulación óptima. Definición del mercado relevante. Desarrollos en presencia de información asimétrica. Aplicaciones prácticas.</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Arturo Lorenzo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">noviembre de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Introducción común.</strong> Los temas A15 a A21 comparten una introducción, que se desarrolla al comienzo del tema <a href="../chapters/a15-toi.html"><strong>A15</strong></a>. Ordena los mercados en cuatro estructuras según el poder de mercado (competencia perfecta, competencia monopolística, oligopolio y monopolio) y resume la evolución de su análisis, de Cournot y Marshall a la nueva organización industrial y la teoría de la regulación.</p>
+</div>
+</div>
+</div>
+<p>La economía del bienestar estudia, con un criterio colectivo, qué asignaciones de recursos de un sistema económico son deseables y cuáles no. Atiende a dos preguntas, una positiva (¿cómo medir el bienestar social?) y otra normativa (¿cómo alcanzar el máximo bienestar social?).</p>
+<p>Históricamente, la respuesta a estas preguntas ha evolucionado desde el utilitarismo de Bentham (la máxima felicidad para el máximo número), pasando por los marginalistas, que consideraban medible la utilidad, y por la escuela de Cambridge, que admitía además comparaciones interpersonales de utilidad. Vilfredo Pareto (1906) concluyó, por último, que una asignación es óptima si ningún agente puede mejorar sin que otro empeore. El criterio de Pareto se ha convertido en el referente para valorar la eficiencia económica, al descansar sobre un número mínimo de juicios de valor.</p>
+<p>Sobre esta base se asientan los dos teoremas fundamentales de la economía del bienestar. Según el primero, el equilibrio de un mercado competitivo sin imperfecciones de ningún tipo asigna los recursos de forma eficiente en el sentido de Pareto. El segundo recorre el camino inverso y, con preferencias y tecnologías convexas, garantiza que todo óptimo de Pareto puede obtenerse como equilibrio competitivo si antes se redistribuyen adecuadamente las dotaciones iniciales.</p>
+<p>Los teoremas sirven, así, de defensa del libre mercado y, a la vez, justifican la intervención pública:</p>
+<ul>
+<li><p><em>Primer teorema</em>: justifica la intervención cuando las condiciones para la eficiencia no se verifican, es decir, cuando existen fallos de mercado, entendidos como situaciones en las que las decisiones descentralizadas no conducen a la eficiencia económica.</p></li>
+<li><p><em>Segundo teorema</em>: legitima la intervención <em>ex ante</em> sobre las dotaciones incluso cuando el mercado funciona perfectamente, si la asignación resultante se considera indeseable en términos de equidad.</p></li>
+</ul>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Sobre los teoremas fundamentales de la economía del bienestar, véase el tema <a href="../chapters/a22-eb-i.html">A22</a>.</p>
+</div>
+</div>
+</div>
+<p>La <strong>teoría de la regulación</strong> analiza los instrumentos con que el Estado interviene cuando la asignación de recursos descansa en el mercado. Regular ha de servir para completar el mercado y mejorar su funcionamiento, nunca para ocupar su lugar. En su seno conviven dos grandes visiones:</p>
+<ul>
+<li><p><em>Visión normativa</em> o del interés público: la regulación existe (o debe existir) para corregir los fallos de mercado y maximizar el bienestar social.</p></li>
+<li><p><em>Visión positiva</em> o teoría económica de la regulación, desarrollada por la escuela de Chicago: la regulación realmente observada responde, en buena medida, a los intereses de los grupos organizados que la demandan.</p></li>
+</ul>
+<p>El tema se divide en tres partes, dedicadas a examinar el poder de mercado y cuál es la manera óptima de regularlo:</p>
+<ul>
+<li><p><em>Poder de mercado</em>: su concepto y su medida, las estructuras en que aparece y sus causas, así como las de su regulación.</p></li>
+<li><p><em>Regulación óptima</em>: con información perfecta y con información asimétrica, con varias empresas y en los mercados de varias caras.</p></li>
+<li><p><em>Mercado relevante y aplicaciones prácticas</em>: la delimitación del mercado, la medición empírica del poder de mercado y la experiencia de la regulación.</p></li>
+</ul>
+</section>
+<section id="poder-de-mercado" class="level2">
+<h2 class="anchored" data-anchor-id="poder-de-mercado">1. Poder de mercado</h2>
+<p>El apartado define el poder de mercado y su medida directa, el índice de Lerner, repasa las estructuras en que aparece y estudia sus causas y las de su regulación.</p>
+<section id="concepto-y-estructuras-de-competencia-imperfecta" class="level3">
+<h3 class="anchored" data-anchor-id="concepto-y-estructuras-de-competencia-imperfecta">1.1. Concepto y estructuras de competencia imperfecta</h3>
+<p>El <strong>poder de mercado</strong> se da cuando una o varias empresas tienen capacidad para alterar el precio, lanzando al mercado cantidades inferiores a las competitivas a un precio superior. Se pierde así eficiencia paretiana, porque quedan sin producir unidades cuyo coste de fabricación es inferior a lo que los consumidores darían por ellas.</p>
+<p>La medida directa del poder de mercado es el <strong>índice de Lerner</strong>, el margen relativo del precio sobre el coste marginal:</p>
+<p><span class="math display">\[I_L = \frac{p - \text{Cmg}}{p}, \qquad I_L \in [0, 1]\]</span></p>
+<p>donde <span class="math inline">\(p\)</span> es el precio y <span class="math inline">\(\text{Cmg}\)</span> el coste marginal. El índice está acotado entre cero (competencia perfecta, <span class="math inline">\(p = \text{Cmg}\)</span>) y uno (coste marginal nulo) y aumenta con la capacidad de la empresa para fijar el precio por encima del coste marginal.</p>
+<p>En el monopolio simple, el índice iguala la inversa de la elasticidad de la demanda, y en el oligopolio de Cournot, el de cada empresa es proporcional a su cuota<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
+<p><span class="math display">\[I_L = \frac{1}{|\varepsilon_{Xp}|} \in [0, 1], \qquad I_{L,i} = \frac{s_i}{|\varepsilon_{Xp}|} \in [0, 1]\]</span></p>
+<p>donde <span class="math inline">\(|\varepsilon_{Xp}|\)</span> es el valor absoluto de la elasticidad-precio de la demanda de mercado y <span class="math inline">\(s_i = x_i/X\)</span> la cuota de la empresa <span class="math inline">\(i\)</span>. Sin embargo, la medición directa del poder de mercado exige conocer el coste marginal, generalmente inobservable, lo que motiva tanto los índices indirectos del apartado 3.2 como el enfoque estructural de la nueva organización industrial empírica (NEIO). En los mercados de varias caras, además, el margen de cada lado se mide frente al coste neto de la externalidad que genera (apartado 2.4).</p>
+<p>El poder de mercado aparece en tres estructuras de competencia imperfecta, que el índice de Lerner permite ordenar:</p>
+<ul>
+<li><p><em>Monopolio</em>: una sola empresa, cuyo margen iguala la inversa de la elasticidad de la demanda (tema <a href="../chapters/a17-monopolio.html">A17</a>).</p></li>
+<li><p><em>Oligopolio</em>: pocas empresas interdependientes, cuyo margen depende de la variable estratégica y, en Cournot, de la cuota (tema <a href="../chapters/a19-oligopolio.html">A19</a>).</p></li>
+<li><p><em>Competencia monopolística</em>: muchas empresas con producto diferenciado, con margen positivo pero beneficio nulo a largo plazo (tema <a href="../chapters/a18-competencia-monopolistica.html">A18</a>).</p></li>
+</ul>
+<p>Dentro del monopolio, el diseño de la regulación depende de su tipo. Con independencia de su origen, se distinguen cuatro situaciones:</p>
+<ul>
+<li><p><em>Monopolio discriminador</em>: el monopolista fija precios distintos a distintos consumidores o unidades (discriminación de primer, segundo y tercer grado). La discriminación puede aumentar la cantidad vendida y, con ella, la eficiencia, pero transfiere excedente del consumidor al productor. Por ello, la regulación suele centrarse en las discriminaciones que restringen la competencia (precios predatorios, descuentos de fidelidad).</p></li>
+<li><p><em>Monopolio natural</em>: el que resulta de la subaditividad de la función de costes, por lo que no cabe introducir competencia en el mercado sin pérdida de eficiencia productiva. Su tratamiento depende de que sea <em>sostenible</em>, es decir, de que pueda sobrevivir a la entrada sin protección. El sostenible es el objeto central de la regulación de precios (apartado 2.1). El no sostenible, en cambio, se subasta, pues se licita periódicamente el derecho exclusivo a explotarlo, y la competencia por el mercado sustituye a la competencia en el mercado (Demsetz, 1968; apartado 2.3.1).</p></li>
+<li><p><em>Monopolio de demanda (monopsonio)</em>: un único comprador frente a muchos vendedores (un gran distribuidor frente a los productores agrarios, un gran empleador en un mercado de trabajo local). La ineficiencia es simétrica a la del monopolio (compra menos y a menor precio) y la regulación toma la forma de precios mínimos, salarios mínimos o normas de contratación.</p></li>
+<li><p><em>Monopolio bilateral</em>: un único vendedor frente a un único comprador (un sindicato y una patronal, un fabricante y un distribuidor exclusivo). La teoría no determina el precio, que depende del poder de negociación, aunque con negociación eficiente sí determina la cantidad, la que maximiza el excedente conjunto. En consecuencia, la regulación se limita a fijar el marco de la negociación y a arbitrar.</p></li>
+</ul>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>El índice de Lerner del monopolio se desarrolla en el tema <a href="../chapters/a17-monopolio.html">A17</a>, apartado 1.3.1, y su medición empírica, en el tema <a href="../chapters/a15-toi.html">A15</a>, apartado 3.3.1. La discriminación de precios se estudia en el tema <a href="../chapters/a17-monopolio.html">A17</a>, apartado 2.1, el monopolio natural y una primera aproximación a su regulación, en los apartados 2.2 y 2.3, y el monopsonio y el monopolio bilateral, en el apartado 3.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="causas-del-poder-de-mercado" class="level3">
+<h3 class="anchored" data-anchor-id="causas-del-poder-de-mercado">1.2. Causas del poder de mercado</h3>
+<p>El origen del poder de mercado está en las <strong>barreras a la entrada</strong>, que impiden que los beneficios extraordinarios atraigan a nuevas empresas. Se distinguen las barreras <strong>naturales o estructurales</strong>, que derivan de la tecnología y la demanda del sector, y las <strong>artificiales</strong>, que crean las instaladas (estratégicas) o el Estado (legales):</p>
+<ul>
+<li><p><em>Naturales o estructurales</em>: la estrechez del mercado en relación con la escala mínima eficiente, que da lugar al monopolio natural. Esta ventaja, sin embargo, solo protege a la instalada si la entrada exige costes hundidos (Baumol y Willig, 1981).</p></li>
+<li><p><em>Estratégicas</em>: los comportamientos de las instaladas para disuadir la entrada o expulsar a los rivales (precio límite, inversión en capacidad, proliferación de marcas, predación, concentración empresarial<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>).</p></li>
+<li><p><em>Legales</em>: los privilegios que concede el Estado (patentes, licencias, concesiones, derechos exclusivos).</p></li>
+</ul>
+<p>La distinción entre barreras naturales y artificiales ordena las causas de la regulación. Las barreras son, además, el determinante central de la estructura de los mercados (apartado 3.2.2).</p>
+<p>La propia definición de barrera a la entrada ha sido objeto de debate. Bain (1956) las define por sus resultados, como las condiciones que permiten a las instaladas fijar precios supracompetitivos de forma persistente sin inducir la entrada. En cambio, Stigler (1968) las restringe a los costes que soporta el entrante y no soportaron las instaladas, y Baumol y Willig (1981) sitúan la barrera genuina en los costes hundidos, una idea que anticipa la teoría de los mercados impugnables (apartado 2.3.3).</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La definición y la taxonomía de las barreras a la entrada se desarrollan en el tema <a href="../chapters/a15-toi.html">A15</a>, apartado 2.2.1, y su papel en el monopolio, en el tema <a href="../chapters/a17-monopolio.html">A17</a>, apartado 1.1. El papel de los costes hundidos como mecanismo de compromiso y el juego de entrada se estudian en el tema <a href="../chapters/a14-juegos.html">A14</a>, apartado 2.3.1, y el precio límite y la disuasión de la entrada, en el tema <a href="../chapters/a19-oligopolio.html">A19</a>, apartado 3.2.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="causas-de-la-regulación" class="level3">
+<h3 class="anchored" data-anchor-id="causas-de-la-regulación">1.3. Causas de la regulación</h3>
+<p>La intervención sobre el poder de mercado se justifica por dos tipos de motivos:</p>
+<ol type="1">
+<li><p><em>Motivos de equidad</em>: la regulación persigue garantizar el acceso a determinados bienes y servicios (energía, agua, telecomunicaciones, transporte, servicios financieros básicos). El acceso ha de ser independiente de la <em>disparidad geográfica</em> (zonas rurales o insulares que un operador no regulado no serviría, o serviría a precios prohibitivos) y de la <em>disparidad de renta</em> (colectivos que quedarían excluidos por su capacidad de pago). A ese fin responden las obligaciones de servicio universal y las tarifas sociales, que se financian con subsidios cruzados o con cargo al presupuesto.</p></li>
+<li><p><em>Motivos de eficiencia</em>: la regulación persigue corregir la ineficiencia asignativa del poder de mercado. Cabe distinguir el <em>monopolio no natural</em>, sostenido por barreras artificiales, cuyo remedio es eliminarlas (liberalización, defensa de la competencia), y el <em>monopolio natural</em>, sostenido por la tecnología, que no conviene desmantelar sino regular.</p></li>
+</ol>
+<p>Existe monopolio natural cuando la función de costes presenta subaditividad estricta y, por tanto, ninguna combinación de empresas puede producir un vector de producción dado a menor coste que una sola empresa<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. La escala mínima eficiente es, en estos casos, grande en relación con la demanda<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+<p>Frente al monopolio natural, la actuación pública debe evitar dos extremos. Trocearlo sacrificaría su ventaja, la eficiencia productiva, pues una sola empresa produce con los menores costes posibles. Dejarlo libre, en cambio, permitiría al monopolista situar el precio muy por encima del coste marginal, con daño para la eficiencia asignativa.</p>
+<p>La regulación tampoco ha de llevar al extremo su exigencia de eficiencia asignativa, porque en el monopolio natural existe una disyuntiva entre esa eficiencia y la viabilidad financiera de la empresa. Puesto que el coste marginal suele quedar por debajo del medio en el tramo de demanda pertinente, el monopolista pierde más cuanto más se le obliga a acercar el precio a la referencia competitiva (<span class="math inline">\(p = \text{Cmg}\)</span>). Las modalidades de regulación se ordenan según esa disyuntiva y según la información de que disponga el regulador (apartado 2.1).</p>
+</section>
+<section id="conclusiones" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones">1.4. Conclusiones</h3>
+<p><strong>Aspectos positivos</strong>: el índice de Lerner ofrece una medida del poder de mercado comparable entre estructuras, y la distinción entre barreras naturales y artificiales indica el remedio, que es eliminar las artificiales y regular el monopolio natural.</p>
+<p><strong>Limitaciones</strong>: el índice exige conocer el coste marginal, que rara vez se observa, y la propia definición de barrera sigue en discusión. Por eso la medición práctica se apoya en el mercado relevante y en índices indirectos (apartado 3). Además, la regulación del monopolio natural afronta la disyuntiva entre eficiencia asignativa y viabilidad financiera (apartado 2).</p>
+</section>
+</section>
+<section id="regulación-óptima" class="level2">
+<h2 class="anchored" data-anchor-id="regulación-óptima">2. Regulación óptima</h2>
+<p>La regulación óptima se estudia primero con información perfecta, cuando el regulador conoce los costes y la demanda de la empresa. Después se relaja ese supuesto, con el mecanismo de Loeb y Magat y el modelo de Laffont y Tirole, y se estudian la regulación que se apoya en varias empresas y la de los mercados de varias caras.</p>
+<section id="regulación-con-información-perfecta" class="level3">
+<h3 class="anchored" data-anchor-id="regulación-con-información-perfecta">2.1. Regulación con información perfecta</h3>
+<p>Suponiendo que el regulador conoce las funciones de coste y de demanda del monopolista, la regulación óptima se ordena en tres niveles según la prioridad que se dé a la eficiencia asignativa frente a la viabilidad financiera de la empresa:</p>
+<ol type="1">
+<li><p><em>First best</em>: logra la eficiencia asignativa y financia las pérdidas con transferencias.</p></li>
+<li><p><em>Second best</em>: renuncia a las transferencias y busca el precio eficiente compatible con beneficio nulo.</p></li>
+<li><p><em>Third best</em>: se limita a acotar los beneficios extraordinarios, con un tope a la rentabilidad o a la senda de precios, sin fijar directamente el precio.</p></li>
+</ol>
+<section id="regulación-first-best-precio-igual-al-coste-marginal" class="level4">
+<h4 class="anchored" data-anchor-id="regulación-first-best-precio-igual-al-coste-marginal">2.1.1. Regulación <em>first best</em>: precio igual al coste marginal</h4>
+<p><strong>Planteamiento</strong>: el regulador maximiza el bienestar social, suma del excedente del consumidor y del beneficio de la empresa, sin restricción financiera:</p>
+<p><span class="math display">\[\max_{p} \; W = \int_{0}^{x(p)} p(q)\,dq - \text{CT}(x)\]</span></p>
+<p>donde <span class="math inline">\(p\)</span> es el precio regulado, <span class="math inline">\(x(p)\)</span> la función de demanda, <span class="math inline">\(p(\cdot)\)</span> la demanda inversa, <span class="math inline">\(q\)</span> la variable de integración (cada unidad entre <span class="math inline">\(0\)</span> y <span class="math inline">\(x(p)\)</span>), <span class="math inline">\(\text{CT}(x)\)</span> la función de costes del monopolista y <span class="math inline">\(W\)</span> el bienestar social. La integral es la disposición a pagar por las <span class="math inline">\(x(p)\)</span> unidades.</p>
+<p><strong>CPO</strong>: <span class="math inline">\(p = \text{Cmg}\)</span>, es decir, el precio regulado iguala la disposición marginal a pagar al coste marginal, que es la condición de eficiencia asignativa.</p>
+<p><strong>CSO</strong>: el bienestar es cóncavo si la demanda inversa decrece más deprisa que el coste marginal, <span class="math inline">\(p'(x) &lt; \text{Cmg}'(x)\)</span>, lo que se cumple también con el coste marginal decreciente habitual del monopolio natural si decrece más despacio que la demanda.</p>
+<p><strong>Solución</strong>: cuando, como es habitual en el monopolio natural, el coste marginal es inferior al medio en el rango relevante, la empresa incurre en una pérdida igual a <span class="math inline">\(x \cdot (\text{Cme} - \text{Cmg})\)</span>, que el presupuesto público cubre con una subvención de suma fija. En cambio, si el coste marginal supera al medio, un impuesto de suma fija retira el beneficio.</p>
+<p><strong>Desarrollo gráfico</strong>: la tarificación al coste marginal se representa en el plano cantidad-precio (figura <a href="#fig-a201-precio-medio" class="quarto-xref"><span>A20.1</span></a>):</p>
+<ol type="1">
+<li><p><em>Coste medio</em>, <span class="math inline">\(\text{Cme}(x)\)</span>: tiene forma de U, decreciente mientras el coste marginal queda por debajo de él y creciente cuando lo supera.</p></li>
+<li><p><em>Coste marginal</em>, <span class="math inline">\(\text{Cmg}(x)\)</span>: corta al coste medio en su mínimo y, para cada cantidad, marca el precio regulado.</p></li>
+<li><p><em>Equilibrio</em>: el precio regulado iguala al coste marginal, y el resultado de la empresa depende del tramo del coste medio:</p>
+<ul>
+<li><p><em>Tramo decreciente</em>: con <span class="math inline">\(p_1^R = \text{Cmg}(x_1) &lt; \text{Cme}(x_1)\)</span>, la pérdida es el área “pérdida”, <span class="math inline">\(x_1 \cdot [\text{Cme}(x_1) - p_1^R]\)</span>, que cubre la subvención.</p></li>
+<li><p><em>Tramo creciente</em>: si el coste marginal supera al medio, como en <span class="math inline">\(x_2\)</span>, la tarificación al coste marginal deja un beneficio, <span class="math inline">\(x_2 \cdot [p_2^R - \text{Cme}(x_2)]\)</span> (área “beneficio”), que se detrae con un impuesto de suma fija.</p></li>
+</ul></li>
+</ol>
+<div id="fig-a201-precio-medio" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a201-precio-medio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a201_Precio_medio.html" style="height:580px" loading="lazy" title="fig-a201-precio-medio"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a201-precio-medio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A20.1: Tarificación al coste marginal. Con <span class="math inline">\(p_1^R = \text{Cmg}(x_1) &lt; \text{Cme}(x_1)\)</span> la empresa incurre en una pérdida, que cubre una subvención, mientras que con <span class="math inline">\(p_2^R = \text{Cmg}(x_2) &gt; \text{Cme}(x_2)\)</span> obtiene un beneficio, que se detrae con un impuesto de suma fija.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: es la única solución plenamente eficiente.</p></li>
+<li><p><em>Limitaciones</em>: plantea tres problemas:</p>
+<ul>
+<li><p><em>Información</em>: requiere información perfecta sobre las funciones de coste y demanda.</p></li>
+<li><p><em>Financiación</em>: la subvención exige impuestos que generan sus propias distorsiones en otros mercados.</p></li>
+<li><p><em>Riesgo moral</em>: la empresa que sabe que sus pérdidas serán cubiertas carece de incentivos a reducir costes.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="regulación-second-best-beneficio-nulo" class="level4">
+<h4 class="anchored" data-anchor-id="regulación-second-best-beneficio-nulo">2.1.2. Regulación <em>second best</em>: beneficio nulo</h4>
+<p><strong>Planteamiento</strong>: los mecanismos difieren según el monopolio sea monoproducto o multiproducto. En el monopolio monoproducto, el programa añade la restricción de beneficio no negativo, que resulta saturada:</p>
+<p><span class="math display">\[\max_{p} \; W \quad \text{s.a.:} \quad p \cdot x(p) - \text{CT}(x) \geq 0\]</span></p>
+<p>donde <span class="math inline">\(W\)</span> es el bienestar social ya definido, <span class="math inline">\(p\)</span> el precio regulado, <span class="math inline">\(x(p)\)</span> la función de demanda y <span class="math inline">\(\text{CT}(x)\)</span> la función de costes, de modo que la restricción exige un beneficio no negativo.</p>
+<p><strong>CPO</strong>: <span class="math inline">\(p = \text{Cme}\)</span>, es decir, la restricción de beneficio no negativo se satura.</p>
+<p><strong>CSO</strong>: el bienestar decrece con el precio por encima del coste marginal, por lo que el máximo es el menor precio compatible con beneficio nulo.</p>
+<p><strong>Solución</strong>: en el plano cantidad-precio (figura <a href="#fig-a203-tarificacion-cme" class="quarto-xref"><span>A20.2</span></a>), el precio se fija donde la curva de demanda corta a la de coste medio, de modo que la cantidad es inferior a la eficiente y el precio superior al coste marginal. La pérdida de eficiencia asignativa resultante (el triángulo entre demanda y coste marginal) es el precio de la viabilidad financiera.</p>
+<div id="fig-a203-tarificacion-cme" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a203-tarificacion-cme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a203_Tarificacion_Cme.html" style="height:500px" loading="lazy" title="fig-a203-tarificacion-cme"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a203-tarificacion-cme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A20.2: Regulación <em>second best</em> con beneficio nulo. El precio regulado, <span class="math inline">\(p_2\)</span>, se fija donde la demanda, <span class="math inline">\(D(X)\)</span>, corta al coste medio, <span class="math inline">\(\text{Cme}(X)\)</span> (punto 2), con una cantidad, <span class="math inline">\(X_2\)</span>, inferior a la eficiente, <span class="math inline">\(X_1\)</span>, en la que la demanda corta al coste marginal (punto 1). El área sombreada entre la demanda y el coste marginal, de <span class="math inline">\(X_2\)</span> a <span class="math inline">\(X_1\)</span>, es la pérdida de eficiencia asignativa. El punto 0 es el monopolio sin regular.
+</figcaption>
+</figure>
+</div>
+<p><strong>Extensiones</strong>: dos mecanismos alcanzan la asignación del <em>first best</em>, en la que cada unidad marginal se paga a su coste marginal, por lo que pueden considerarse también soluciones de primer óptimo. Se estudian aquí porque responden al problema del <em>second best</em>, financiar la empresa sin las transferencias distorsionantes de la regulación <em>first best</em>, y lo resuelven sin transferencias públicas, bajo supuestos propios. Un tercero, el de Loeb y Magat (1979), alcanza esa asignación con ellas y aun con información asimétrica.</p>
+<ul>
+<li><p><em>Tarifa en dos partes</em> (Coase, 1946): con <span class="math inline">\(n\)</span> consumidores idénticos, el regulador elige una cuota fija, <span class="math inline">\(F\)</span>, y un precio por unidad, <span class="math inline">\(p\)</span>, de modo que cada consumidor <span class="math inline">\(h\)</span> paga <span class="math inline">\(T(x^h) = F + p \cdot x^h\)</span> por sus <span class="math inline">\(x^h\)</span> unidades. La cuota es una transferencia de los consumidores a la empresa que no altera el bienestar mientras nadie abandone el mercado, y el programa es:</p>
+<p><span class="math display">\[\max_{p, F} \; W = \int_{0}^{x(p)} p(q)\,dq - \text{CT}(x) \quad \text{s.a.:} \begin{cases} n F + p \cdot x(p) - \text{CT}(x) \geq 0 \\ F \leq \text{EC}(p)/n \end{cases}\]</span></p>
+<p>donde la primera restricción es la de beneficio no negativo y la segunda, la de participación, porque cada consumidor solo paga la cuota si la cuota no supera su excedente, <span class="math inline">\(\text{EC}(p)/n\)</span>. Como <span class="math inline">\(F\)</span> no entra en <span class="math inline">\(W\)</span>, el precio se elige como en el <em>first best</em> y la cuota cubre la pérdida:</p>
+<p><span class="math display">\[p = \text{Cmg}\]</span></p>
+<p><span class="math display">\[F = \frac{x \cdot (\text{Cme} - \text{Cmg})}{n}\]</span></p>
+<p>Con coste marginal constante, la cuota se reduce a los costes fijos repartidos, <span class="math inline">\(F = \text{CF}/n\)</span>. El consumo marginal se decide así eficientemente y la empresa cubre costes. Con consumidores heterogéneos, sin embargo, la cuota excluye a los de baja disposición a pagar, y el precio óptimo se sitúa entonces por encima del coste marginal.</p></li>
+<li><p><em>Tarifas pico-valle</em> (Boiteux, 1949; Steiner, 1957): cuando la demanda fluctúa en ciclos y el bien no es almacenable, el ciclo se divide en dos periodos de igual duración, valle y pico, con demandas independientes, <span class="math inline">\(x_{\text{valle}}(p_{\text{valle}})\)</span> y <span class="math inline">\(x_{\text{pico}}(p_{\text{pico}})\)</span>, un coste de operación por unidad, <span class="math inline">\(c\)</span>, y un coste de capacidad por unidad y ciclo, <span class="math inline">\(c_K\)</span>. El regulador elige los dos precios y la capacidad, <span class="math inline">\(K\)</span>, que comparten ambos periodos:</p>
+<p><span class="math display">\[\begin{aligned} \max_{p_{\text{valle}},\, p_{\text{pico}},\, K} \; &amp; W = \sum_{j \in \{\text{valle},\, \text{pico}\}} \int_{0}^{x_j(p_j)} p_j(q)\,dq - c \cdot (x_{\text{valle}} + x_{\text{pico}}) - c_K K \\ \text{s.a.:} \; &amp; \begin{cases} x_{\text{valle}}(p_{\text{valle}}) \leq K \\ x_{\text{pico}}(p_{\text{pico}}) \leq K \end{cases} \end{aligned}\]</span></p>
+<p>donde <span class="math inline">\(p_j(\cdot)\)</span> es la demanda inversa del periodo <span class="math inline">\(j\)</span>. Con <span class="math inline">\(\lambda\)</span> y <span class="math inline">\(\mu\)</span> como multiplicadores de las restricciones de capacidad del valle y del pico, las CPO respecto a los dos precios y a la capacidad son:</p>
+<p><span class="math display">\[p_{\text{valle}} = c + \lambda\]</span></p>
+<p><span class="math display">\[p_{\text{pico}} = c + \mu\]</span></p>
+<p><span class="math display">\[\lambda + \mu = c_K\]</span></p>
+<p>Con <em>pico firme</em>, la capacidad solo se satura en la punta (<span class="math inline">\(\lambda = 0\)</span>), de modo que <span class="math inline">\(p_{\text{valle}} = c\)</span> y <span class="math inline">\(p_{\text{pico}} = c + c_K\)</span>, y los consumidores de punta, que determinan la capacidad, soportan todo su coste. Cada periodo paga su coste marginal, de corto plazo en el valle y de largo plazo en la punta, y como <span class="math inline">\(x_{\text{pico}} = K\)</span>, los ingresos, <span class="math inline">\(c \cdot (x_{\text{valle}} + x_{\text{pico}}) + c_K K\)</span>, cubren exactamente los costes, sin transferencias. En cambio, si ese precio de punta hiciese caer la demanda del pico por debajo de la del valle (<em>pico desplazado</em>), las dos restricciones se saturan y ambos periodos se reparten el coste de capacidad.</p></li>
+</ul>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: es la solución básica y la más sencilla de aplicar.</p></li>
+<li><p><em>Limitaciones</em>: puede no existir (si la demanda no corta al coste medio), mantiene un precio superior al competitivo y, como el coste se cubre siempre, no incentiva su reducción (regulación <em>cost-plus</em>).</p></li>
+</ul>
+</section>
+<section id="regulación-second-best-del-monopolio-multiproducto-precios-de-ramsey-boiteux" class="level4">
+<h4 class="anchored" data-anchor-id="regulación-second-best-del-monopolio-multiproducto-precios-de-ramsey-boiteux">2.1.3. Regulación <em>second best</em> del monopolio multiproducto: precios de Ramsey-Boiteux</h4>
+<p><strong>Planteamiento</strong>: con varios productos de demandas independientes, el regulador maximiza la suma de excedentes sujeto a la cobertura de los costes comunes:</p>
+<p><span class="math display">\[\max_{p_1, \ldots, p_n} \; \sum_i \text{EC}_i(p_i) + \pi \quad \text{s.a.:} \quad \sum_i p_i x_i - \text{CT}(x_1, \ldots, x_n) \geq 0\]</span></p>
+<p>donde <span class="math inline">\(p_i\)</span> y <span class="math inline">\(x_i\)</span> son el precio y la cantidad del producto <span class="math inline">\(i\)</span>, <span class="math inline">\(\text{EC}_i(p_i)\)</span> el excedente del consumidor en ese mercado, <span class="math inline">\(\pi\)</span> el beneficio de la empresa y <span class="math inline">\(\text{CT}(x_1, \ldots, x_n)\)</span> la función de costes conjunta.</p>
+<p><strong>CPO</strong>: con solución interior y la restricción agotada, derivando el lagrangiano respecto a cada precio, el margen relativo de cada producto sobre su coste marginal varía en razón inversa de la elasticidad de su demanda (<em>regla de la elasticidad inversa</em>):</p>
+<p><span class="math display">\[\frac{p_i - \text{Cmg}_i}{p_i} = \frac{k}{|\varepsilon_i|}, \qquad i = 1, \ldots, n\]</span></p>
+<p>donde <span class="math inline">\(|\varepsilon_i|\)</span> es el valor absoluto de la elasticidad-precio de la demanda del producto <span class="math inline">\(i\)</span>, <span class="math inline">\(k = \lambda/(1+\lambda) \in (0, 1)\)</span> el <em>número de Ramsey</em> y <span class="math inline">\(\lambda\)</span> el multiplicador de la restricción financiera. Este último mide el coste en bienestar de exigir a la empresa una unidad monetaria más de beneficio o, lo que es lo mismo, la ganancia de bienestar de relajar esa restricción en una unidad<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p>
+<p><strong>CSO</strong>: con demandas independientes y costes marginales constantes, el excedente total de cada mercado es cóncavo en su precio y el beneficio es cuasicóncavo en el tramo relevante (p.&nbsp;ej. con demandas lineales), de modo que se cumplen las condiciones de suficiencia de Arrow-Enthoven.</p>
+<p><strong>Solución</strong>: los servicios de demanda más inelástica contribuyen en mayor medida a cubrir los costes fijos comunes, lo que minimiza la pérdida de eficiencia total. Este reparto eficiente de los costes comunes no supone subsidio cruzado mientras cada servicio cubra al menos su coste incremental (no basta con que su precio supere el coste marginal).</p>
+<p><strong>Extensiones</strong>: si el monopolio no es sostenible, es decir, si no puede sobrevivir a la entrada<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>, ninguna regla de precios lo sostiene por sí sola. Una solución es entonces organizar la competencia por el mercado en lugar de en el mercado, licitando el derecho a explotarlo (Demsetz, 1968).</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: ofrece un criterio de <em>second best</em> para cubrir los costes comunes cuando el precio igual al coste marginal genera pérdidas, al repartirlos según la elasticidad de cada demanda, y traslada a la tarificación la lógica de la imposición óptima. Este criterio es, por ello, la referencia teórica de las tarifas de las industrias de red multiproducto.</p></li>
+<li><p><em>Limitaciones</em>: la información que exige (costes y elasticidades de todos los productos) y su posible regresividad, pues los bienes inelásticos pesan más en las cestas de renta baja.</p></li>
+</ul>
+</section>
+<section id="regulación-third-best-beneficio-acotado" class="level4">
+<h4 class="anchored" data-anchor-id="regulación-third-best-beneficio-acotado">2.1.4. Regulación <em>third best</em>: beneficio acotado</h4>
+<p><strong>Planteamiento</strong>: en la <em>regulación de la tasa de beneficio</em> (<em>rate of return</em>), el regulador fija una tasa máxima de rentabilidad sobre el capital, <span class="math inline">\(s\)</span>, superior al coste del capital <span class="math inline">\(r\)</span>, y la empresa maximiza su beneficio sujeto a no superarla:</p>
+<p><span class="math display">\[\max_{L, K} \; p(x) \cdot x - wL - rK \quad \text{s.a.:} \quad \frac{p(x) \cdot x - wL}{K} \leq s\]</span></p>
+<p>donde <span class="math inline">\(L\)</span> y <span class="math inline">\(K\)</span> son las cantidades de trabajo y capital, <span class="math inline">\(x\)</span> la producción obtenida con ellas, <span class="math inline">\(p(x)\)</span> la demanda inversa, <span class="math inline">\(w\)</span> el salario, <span class="math inline">\(r\)</span> el coste del capital y <span class="math inline">\(s\)</span> la tasa máxima de rentabilidad sobre el capital fijada por el regulador.</p>
+<p><strong>CPO</strong>: con solución interior, la restricción se satura y, derivando el lagrangiano respecto a <span class="math inline">\(L\)</span> y <span class="math inline">\(K\)</span>, la empresa elige una combinación de factores en la que la relación marginal de sustitución técnica no iguala la relación de precios de los factores, <span class="math inline">\(w/r\)</span>, porque el coste efectivo del capital para la empresa es inferior a <span class="math inline">\(r\)</span>.</p>
+<p><strong>CSO</strong>: la restricción define un conjunto factible no convexo, por lo que la suficiencia de la CPO no está garantizada en general, y el análisis de Averch y Johnson supone que la solución con la restricción saturada es un máximo.</p>
+<p><strong>Solución</strong>: como cada unidad de capital adicional amplía el beneficio permitido (<span class="math inline">\(s - r &gt; 0\)</span>), la empresa se sobrecapitaliza (<em>efecto Averch-Johnson</em>, 1962), eligiendo una ratio capital-trabajo superior a la que minimiza los costes.</p>
+<p><strong>Desarrollo gráfico</strong>: el efecto Averch-Johnson se representa en el plano capital-beneficio (figura <a href="#fig-a202-averch-johnson" class="quarto-xref"><span>A20.3</span></a>):</p>
+<ol type="1">
+<li><p><em>Beneficio máximo para cada nivel de capital</em>, <span class="math inline">\(\pi(K)\)</span>: crece con el capital hasta su máximo y decrece a partir de él.</p></li>
+<li><p><em>Restricción de la tasa de rentabilidad</em>, <span class="math inline">\((s - r)\,K\)</span>: es el techo del beneficio, una semirrecta que parte del origen con pendiente <span class="math inline">\(s - r\)</span>, y el beneficio ha de quedar por debajo de ella, <span class="math inline">\(\pi \le (s - r)\,K\)</span>.</p></li>
+<li><p><em>Equilibrio</em>: sin regulación, la empresa iría al máximo de <span class="math inline">\(\pi(K)\)</span> (punto 0), con el capital <span class="math inline">\(K_0\)</span>. Regulada, en cambio, se queda con el beneficio más alto que la restricción tolera, en el corte de <span class="math inline">\(\pi(K)\)</span> con la recta (punto 1), lo que exige más capital, <span class="math inline">\(K_1\)</span>, y la distancia entre <span class="math inline">\(K_1\)</span> y <span class="math inline">\(K_0\)</span> mide la sobrecapitalización.</p></li>
+</ol>
+<div id="fig-a202-averch-johnson" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-a202-averch-johnson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="graph-frame">
+<iframe src="../graphs/a202_Averch_Johnson.html" style="height:620px" loading="lazy" title="fig-a202-averch-johnson"></iframe>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-a202-averch-johnson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;A20.3: Efecto Averch y Johnson (1962). La regulación de la tasa de retorno induce a la empresa a sobrecapitalizarse respecto a la combinación de factores de coste mínimo. La curva <span class="math inline">\(\pi(K)\)</span> es el beneficio máximo para cada nivel de capital.
+</figcaption>
+</figure>
+</div>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: exige poca información, pues el regulador no necesita conocer la demanda y le basta con fijar la tasa y comprobar el capital y los costes que declara la empresa.</p></li>
+<li><p><em>Limitaciones</em>: la principal es el efecto Averch-Johnson. Además, la tasa se elige sin un criterio objetivo, y la empresa no tiene estímulo para abaratar su producción, porque los costes se trasladan al consumidor.</p></li>
+</ul>
+</section>
+<section id="regulación-third-best-límites-de-precios-price-cap" class="level4">
+<h4 class="anchored" data-anchor-id="regulación-third-best-límites-de-precios-price-cap">2.1.5. Regulación <em>third best</em>: límites de precios (<em>price cap</em>)</h4>
+<p><strong>Origen</strong>: Stephen Littlechild (1983) propuso los límites de precios (<em>price cap</em>) en su informe para la privatización de British Telecom, como alternativa a la regulación de la tasa de beneficio.</p>
+<p><strong>Idea</strong>: el regulador fija una senda máxima de precios para el periodo regulatorio (habitualmente cinco años), desvinculada de los costes propios de la empresa, de modo que esta se apropia de los ahorros que consiga durante el periodo.</p>
+<p><strong>Razonamiento</strong>: la senda se indexa a la inflación y descuenta las ganancias de productividad esperadas:</p>
+<p><span class="math display">\[p_t \leq p_{t-1} \cdot (1 + \text{IPC} - \text{X})\]</span></p>
+<p>donde <span class="math inline">\(p_t\)</span> es el precio regulado (o el índice de precios de la cesta regulada) en el año <span class="math inline">\(t\)</span>, <span class="math inline">\(\text{IPC}\)</span> la tasa de inflación y <span class="math inline">\(\text{X}\)</span> el factor de productividad esperada de la industria. Como el precio no depende de los costes propios, cada ahorro de costes eleva el beneficio de la empresa hasta la siguiente revisión. La eficiencia productiva se convierte así en la principal vía para aumentar el beneficio.</p>
+<p><strong>Extensiones</strong>: la competencia por comparación (<em>yardstick competition</em>) de Shleifer (1985) retribuye a cada empresa según los costes de empresas comparables. Se desarrolla en el apartado 2.3.2, pues su lógica es ya la de la regulación con varias empresas.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: genera potentes incentivos a la eficiencia productiva y evita la sobrecapitalización que induce la regulación de la tasa de beneficio.</p></li>
+<li><p><em>Limitaciones</em>: es difícil acertar con <span class="math inline">\(\text{X}\)</span>, el estímulo a ahorrar se debilita conforme se aproxima la revisión y la empresa puede reducir costes empeorando la calidad.</p></li>
+</ul>
+</section>
+</section>
+<section id="regulación-con-información-asimétrica" class="level3">
+<h3 class="anchored" data-anchor-id="regulación-con-información-asimétrica">2.2. Regulación con información asimétrica</h3>
+<p>Cuando la empresa sabe más que el regulador sobre sus costes, la regulación ha de inducirla a revelarlos y a reducirlos. El apartado estudia un mecanismo que alcanza el <em>first best</em> con transferencias (Loeb y Magat, 1979), el menú de contratos de Laffont y Tirole (1986) y su límite dinámico, el efecto trinquete.</p>
+<section id="mecanismo-de-loeb-y-magat-1979" class="level4">
+<h4 class="anchored" data-anchor-id="mecanismo-de-loeb-y-magat-1979">2.2.1. Mecanismo de Loeb y Magat (1979)</h4>
+<p><strong>Idea</strong>: el regulador promete a la empresa una subvención igual al excedente del consumidor que genere, <span class="math inline">\(z = \text{EC}(p)\)</span>, y le deja elegir el precio.</p>
+<p><strong>Razonamiento</strong>: la empresa elige el precio que maximiza la suma de su beneficio y la subvención:</p>
+<p><span class="math display">\[p \cdot x(p) - \text{CT}(x) + \text{EC}(p)\]</span></p>
+<p>donde <span class="math inline">\(\text{EC}(p)\)</span> decrece con el precio a razón de la cantidad vendida, <span class="math inline">\(d\,\text{EC}/dp = -x(p)\)</span>. La CPO es:</p>
+<p><span class="math display">\[x(p) + \left[p - \text{Cmg}\right] \frac{dx}{dp} - x(p) = 0 \;\Rightarrow\; p = \text{Cmg}\]</span></p>
+<p>Al internalizar así el excedente total, la empresa elige por sí misma el precio del <em>first best</em>, sin que el regulador necesite conocer los costes<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: alcanza el <em>first best</em> aun con información asimétrica sobre costes, a costa de una subvención.</p></li>
+<li><p><em>Limitaciones</em>: a diferencia de la tarifa en dos partes y de las tarifas pico-valle, no respeta la renuncia a las transferencias. Además, su coste fiscal y la redistribución masiva a favor del monopolista lo hacen políticamente inviable.</p></li>
+</ul>
+</section>
+<section id="modelo-de-laffont-y-tirole-1986" class="level4">
+<h4 class="anchored" data-anchor-id="modelo-de-laffont-y-tirole-1986">2.2.2. Modelo de Laffont y Tirole (1986)</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>El modelo de Laffont y Tirole (1986), con sus supuestos, el programa del regulador, su CPO y su CSO, se desarrolla en el tema <a href="../chapters/a15-toi.html">A15</a>, apartado 2.3.3, como aplicación de la teoría de contratos. Aquí se resumen su solución y sus implicaciones para la política regulatoria.</p>
+</div>
+</div>
+</div>
+<p><strong>Origen</strong>: frente a la teoría tradicional, que supone que el regulador dispone de información perfecta, la nueva teoría de la regulación aborda el problema de la información asimétrica entre el regulador y la empresa regulada y aplica al diseño regulatorio la teoría de los incentivos. Su referencia central es el modelo de Jean-Jacques Laffont y Jean Tirole (1986)<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>.</p>
+<p><strong>Idea</strong>: el regulador se enfrenta a una disyuntiva fundamental entre <em>eficiencia</em> (incentivar el esfuerzo de reducción de costes) y <em>extracción de rentas</em> (minimizar las transferencias a la empresa), que resuelve ofreciendo un menú de contratos entre los que la empresa se autoselecciona.</p>
+<p><strong>Razonamiento</strong>: un monopolio natural conoce su eficiencia intrínseca, <span class="math inline">\(\varphi\)</span> (su “tipo”), y elige un esfuerzo de reducción de costes, <span class="math inline">\(e\)</span>, que le supone una desutilidad, <span class="math inline">\(\psi(e)\)</span>, mientras que el regulador solo observa el coste realizado, que, con la producción normalizada a una unidad, es <span class="math inline">\(C = \varphi - e\)</span>. El problema combina así selección adversa y riesgo moral. Una empresa eficiente puede hacerse pasar por ineficiente, imitando su coste con menos esfuerzo, y quedarse la diferencia, que constituye la <em>renta informacional</em>. Como cada euro transferido cuesta a la sociedad <span class="math inline">\(1 + \lambda\)</span>, donde <span class="math inline">\(\lambda &gt; 0\)</span> es el coste sombra de los fondos públicos, el regulador quiere incentivar el esfuerzo dejando la menor renta posible.</p>
+<p>El mecanismo óptimo es un menú de contratos lineales en el coste realizado, entre los que la empresa elige anunciando un tipo, <span class="math inline">\(\hat{\varphi}\)</span>. Además del reembolso del coste, recibe la transferencia neta</p>
+<p><span class="math display">\[t(\hat{\varphi}, C) = \underbrace{a(\hat{\varphi})}_{\text{pago fijo por la eficiencia revelada}} - \underbrace{b(\hat{\varphi}) \cdot \left[C - C^*(\hat{\varphi})\right]}_{\text{penalización por sobrecoste}}\]</span></p>
+<p>donde <span class="math inline">\(a(\hat{\varphi})\)</span> es el pago fijo del contrato elegido, <span class="math inline">\(C^*(\hat{\varphi})\)</span> su coste objetivo y <span class="math inline">\(b(\hat{\varphi}) \in [0, 1]\)</span> la fracción del sobrecoste que recae sobre la empresa, es decir, la potencia del contrato.</p>
+<p>Cada contrato funciona como un sistema de premios y penalizaciones en torno al coste objetivo. Cabe distinguir dos casos:</p>
+<ol type="1">
+<li><p><em>Cumplimiento del objetivo</em> (<span class="math inline">\(C = C^*\)</span>): la empresa cobra el pago fijo, que retribuye el esfuerzo previsto e incluye la renta informacional del tipo revelado.</p></li>
+<li><p><em>Desviación del objetivo</em> (<span class="math inline">\(C \neq C^*\)</span>): si el coste realizado supera el objetivo, la transferencia se reduce en la fracción <span class="math inline">\(b\)</span> del sobrecoste y, si queda por debajo, aumenta en la fracción <span class="math inline">\(b\)</span> del ahorro.</p></li>
+</ol>
+<p>Con <span class="math inline">\(b = 1\)</span> el contrato es de precio fijo, porque la empresa soporta todo el sobrecoste y retiene todo el ahorro, y con <span class="math inline">\(b = 0\)</span>, de coste más margen, porque la transferencia no depende del coste.</p>
+<p>Ante este menú, cada empresa decide qué contrato elige y cuánto se esfuerza. Dentro de un contrato, la empresa reduce costes hasta que la desutilidad marginal del esfuerzo iguala la potencia del contrato:</p>
+<p><span class="math display">\[\frac{d\psi}{de} = b(\hat{\varphi})\]</span></p>
+<p>El regulador fija, por tanto, el esfuerzo de cada tipo eligiendo la potencia de su contrato, que vale uno para el tipo más eficiente y decrece con <span class="math inline">\(\varphi\)</span>. La elección entre contratos separa así a los tipos:</p>
+<ol type="1">
+<li><p><em>Empresa eficiente</em> (<span class="math inline">\(\varphi\)</span> bajo): elige el contrato de precio fijo (<em>fixed-price</em>, <span class="math inline">\(b = 1\)</span>), asume todo el riesgo de costes y retiene todo el ahorro. Su esfuerzo es el del <em>first best</em> (no hay distorsión “en la cima”), pero, a cambio, la empresa eficiente obtiene la mayor renta informacional del menú.</p></li>
+<li><p><em>Empresa ineficiente</em> (<span class="math inline">\(\varphi\)</span> alto): elige el contrato de menor potencia, el más próximo al de coste más margen (<em>cost-plus</em>), en el que el regulador absorbe una parte de los sobrecostes mayor que en cualquier otro contrato. Su esfuerzo se distorsiona a la baja respecto del <em>first best</em>, aunque no se anula, y su renta informacional es nula. El contrato de coste más margen puro (<span class="math inline">\(b = 0\)</span>) es solo el caso límite, que se alcanzaría si la distorsión llevase el esfuerzo a cero.</p></li>
+<li><p><em>Tipos intermedios</em>: eligen contratos lineales situados entre los dos anteriores, con reparto parcial del riesgo, esfuerzo distorsionado a la baja y rentas informacionales decrecientes con <span class="math inline">\(\varphi\)</span>.</p></li>
+</ol>
+<p>La regulación por incentivos sustituye así el control de costes por la elección entre contratos, y el menú materializa la disyuntiva entre eficiencia y extracción de rentas, porque, para reducir la renta de los tipos eficientes, el regulador acepta menos esfuerzo de los ineficientes.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: el modelo muestra que la regulación óptima bajo información asimétrica adopta la forma de un menú de contratos que equilibra incentivos y rentas, y que la asimetría informativa genera necesariamente una pérdida de bienestar respecto del <em>first best</em>, porque las rentas informacionales son el precio de los incentivos. Asimismo, el modelo ha influido en el diseño regulatorio práctico (telecomunicaciones, energía, transporte), donde los esquemas reales (del <em>cost-plus</em> al <em>price cap</em>) pueden leerse como puntos del menú teórico.</p></li>
+<li><p><em>Limitaciones</em>: en entornos dinámicos aparece el <em>efecto trinquete</em>. El propio Tirole (premio Nobel en 2014, en buena parte por esta obra) insiste, además, en que no existen recetas universales, porque cada mercado exige un análisis específico y ninguno se regula por sí solo.</p></li>
+</ul>
+</section>
+<section id="efecto-trinquete" class="level4">
+<h4 class="anchored" data-anchor-id="efecto-trinquete">2.2.3. Efecto trinquete</h4>
+<p>El menú de contratos tiene un límite dinámico, que procede del propio modelo de Laffont-Tirole. Si la empresa anticipa que los ahorros de costes que consiga hoy serán confiscados en la próxima revisión regulatoria (el regulador aprende su tipo y le retira la renta), la empresa no tiene incentivos a reducir costes.</p>
+<p>Este límite se conoce como <strong>efecto trinquete</strong> (<em>ratchet effect</em>), y su remedio exige un compromiso creíble del regulador a no usar la información revelada, lo que en la práctica se instrumenta con periodos regulatorios largos y reglas de revisión fijadas de antemano (<em>price cap</em> plurianual).</p>
+</section>
+</section>
+<section id="regulación-con-varias-empresas" class="level3">
+<h3 class="anchored" data-anchor-id="regulación-con-varias-empresas">2.3. Regulación con varias empresas</h3>
+<p>Cuando existe más de una empresa, real o potencial, el regulador puede apoyarse en la competencia para obtener la información que le falta o para disciplinar al monopolista. Puede hacerlo mediante tres mecanismos.</p>
+<section id="competencia-por-el-mercado-demsetz-1968" class="level4">
+<h4 class="anchored" data-anchor-id="competencia-por-el-mercado-demsetz-1968">2.3.1. Competencia por el mercado (Demsetz, 1968)</h4>
+<p><strong>Origen</strong>: Harold Demsetz (1968) planteó que, cuando la subaditividad hace ineficiente la competencia en el mercado, la regulación tradicional puede sustituirse por la competencia por el mercado.</p>
+<p><strong>Idea</strong>: el derecho exclusivo a servir el mercado se subasta cada cierto tiempo (<em>franchise bidding</em>) y se adjudica al licitador que se comprometa a cobrar menos al consumidor. Si la licitación es competitiva, las ofertas convergen al precio igual al coste medio y se replica el resultado de una regulación de beneficio nulo sin necesidad de un regulador permanente.</p>
+<p><strong>Razonamiento</strong>: la competencia <em>ex ante</em> entre licitadores sustituye a la competencia <em>ex post</em> imposible, pues cada licitador sabe que cualquier oferta por encima del coste medio será batida por otro, de modo que las rentas del monopolio se disipan en la puja.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la competencia por el mercado convierte al regulador en organizador de subastas en lugar de fijador de precios, lo que ahorra información. Este mecanismo es el fundamento de las concesiones de servicios públicos.</p></li>
+<li><p><em>Limitaciones</em>: su eficacia depende de que las relicitaciones sean genuinamente competitivas, lo que rara vez ocurre con activos específicos y contratos largos. Williamson (1976) señaló los límites del razonamiento de Demsetz. En particular, los contratos de concesión son inevitablemente incompletos (exigen renegociación ante contingencias, en la que el adjudicatario tiene ventaja), los activos específicos generan problemas de reversión y valoración al final de la concesión, y el incumbente acumula ventajas informativas que erosionan la competencia en las relicitaciones.</p></li>
+</ul>
+</section>
+<section id="competencia-por-comparación-shleifer-1985" class="level4">
+<h4 class="anchored" data-anchor-id="competencia-por-comparación-shleifer-1985">2.3.2. Competencia por comparación (Shleifer, 1985)</h4>
+<p><strong>Origen</strong>: Andrei Shleifer (1985) propuso romper la dependencia informativa del regulador respecto de la empresa regulada usando como referencia a otras empresas.</p>
+<p><strong>Idea</strong>: en lugar de fijar el precio en función de los costes declarados por la propia empresa (lo que destruye los incentivos a reducirlos), el regulador lo fija en función de los costes de empresas comparables que operan en otros mercados (p.&nbsp;ej. distribuidoras regionales).</p>
+<p><strong>Razonamiento</strong>: como el precio regulado de cada empresa no depende de sus propios costes, cada una se beneficia íntegramente de sus reducciones de costes y el conjunto converge al comportamiento eficiente. La comparación reproduce así la disciplina de la competencia sin que las empresas compitan en el mismo mercado.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la competencia por comparación es hoy la técnica habitual en la regulación de las distribuidoras de electricidad, gas y agua, y una de las aplicaciones más directas de la teoría de la agencia con varios agentes (tema <a href="../chapters/a13-informacion.html">A13</a>).</p></li>
+<li><p><em>Limitaciones</em>: sus requisitos son la existencia de comparadores genuinamente similares (o la corrección econométrica de sus diferencias) y la ausencia de colusión entre las empresas comparadas, que podrían acordar inflar sus costes conjuntamente.</p></li>
+</ul>
+</section>
+<section id="mercados-impugnables-baumol-panzar-y-willig-1982" class="level4">
+<h4 class="anchored" data-anchor-id="mercados-impugnables-baumol-panzar-y-willig-1982">2.3.3. Mercados impugnables (Baumol, Panzar y Willig, 1982)</h4>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>La teoría de los mercados impugnables se desarrolla en el tema <a href="../chapters/a15-toi.html">A15</a>, apartado 2.2.2, y su implicación para el oligopolio, en el tema <a href="../chapters/a19-oligopolio.html">A19</a>, apartado 3.3.</p>
+</div>
+</div>
+</div>
+<p><strong>Origen</strong>: William Baumol, John Panzar y Robert Willig (<em>Contestable Markets and the Theory of Industry Structure</em>, 1982) formularon la teoría como generalización de la competencia perfecta a mercados con pocas empresas. Retomaron la idea de Demsetz (1968) de que la amenaza de competencia puede disciplinar a un monopolio, aunque aquí el mecanismo no es la licitación del derecho exclusivo, sino la competencia potencial de entrantes sin costes hundidos.</p>
+<p><strong>Idea</strong>: un mercado es <em>impugnable</em> si los entrantes potenciales pueden competir sin desventajas respecto de las empresas establecidas.</p>
+<p><strong>Supuestos</strong>: la impugnabilidad exige el cumplimiento de tres condiciones:</p>
+<ul>
+<li><p><em>Acceso a la tecnología</em>: es el mismo para entrantes e instaladas.</p></li>
+<li><p><em>Costes fijos</em>: pueden existir, siempre que no sean hundidos.</p></li>
+<li><p><em>Reacción</em>: un tiempo de entrada inferior al tiempo de reacción del incumbente.</p></li>
+</ul>
+<p><strong>Razonamiento</strong>: si se cumplen las condiciones, son posibles las estrategias de entrada y salida rápidas (<em>hit and run</em>), en las que un entrante puede aprovechar cualquier precio por encima del coste medio y retirarse sin pérdida antes de que el incumbente reaccione. La mera amenaza de entrada disciplina así el comportamiento del monopolista, que se ve forzado a fijar precios de beneficio nulo (<span class="math inline">\(p = \text{Cme}\)</span>) aunque el mercado esté ocupado por una sola empresa.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la implicación de política económica es central para la liberalización, porque lo relevante no es el número de empresas, sino las barreras a la entrada y a la salida, por lo que la política debe concentrarse en eliminarlas.</p></li>
+<li><p><em>Limitaciones</em>: la estrategia de <em>hit and run</em> puede no ser creíble, y los costes hundidos son frecuentes en la realidad y difíciles de medir.</p></li>
+</ul>
+</section>
+</section>
+<section id="regulación-de-los-mercados-de-varias-caras-rochet-y-tirole-2003-armstrong-2006" class="level3">
+<h3 class="anchored" data-anchor-id="regulación-de-los-mercados-de-varias-caras-rochet-y-tirole-2003-armstrong-2006">2.4. Regulación de los mercados de varias caras (Rochet y Tirole, 2003; Armstrong, 2006)</h3>
+<p><strong>Origen</strong>: Jean-Charles Rochet y Jean Tirole (2003) formalizaron los mercados de dos caras a partir del análisis de las tarjetas de pago, con precios por transacción. Mark Armstrong (2006) los modelizó, en cambio, con cuotas de participación, en el marco estilizado que se sigue aquí.</p>
+<p><strong>Idea</strong>: los <em>mercados de dos (o varias) caras</em> son aquellos en los que una plataforma pone en contacto a dos grupos de usuarios entre los que existen <em>externalidades cruzadas de red</em>. Por ello, el valor de la plataforma para un lado depende del número de participantes del otro (tarjetas de pago entre comercios y titulares, sistemas operativos entre desarrolladores y usuarios, mercados en línea o <em>marketplaces</em> entre vendedores y compradores). En estos mercados la estructura de precios no es neutral, porque no solo importa el nivel agregado de precios, sino su reparto entre los dos lados.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Los mercados de varias caras como determinante de la estructura de los mercados se estudian en el tema <a href="../chapters/a15-toi.html">A15</a>, apartado 2.2.3.</p>
+</div>
+</div>
+</div>
+<p><strong>Razonamiento</strong>: en el marco de Armstrong, una plataforma monopolista cobra a cada grupo <span class="math inline">\(i = 1, 2\)</span> una cuota de participación <span class="math inline">\(p_i\)</span> y soporta un coste <span class="math inline">\(f_i\)</span> por miembro, y cada miembro del grupo <span class="math inline">\(i\)</span> obtiene la utilidad neta <span class="math inline">\(u_i = \alpha_i n_j - p_i\)</span>, donde <span class="math inline">\(n_j\)</span> es el número de participantes del otro grupo y <span class="math inline">\(\alpha_i &gt; 0\)</span> la externalidad cruzada. La participación de cada grupo crece con su utilidad neta, <span class="math inline">\(n_i = N_i(u_i)\)</span>. Al rebajar el precio de un grupo, la plataforma atrae nuevos miembros que elevan lo que puede cobrar al otro lado, y por ello fija</p>
+<p><span class="math display">\[p_i = \underbrace{f_i - \alpha_j n_j}_{\text{coste neto de la externalidad}} + \frac{n_i}{dN_i/du_i}, \qquad i, j = 1, 2, \quad i \neq j\]</span></p>
+<p>donde el último término es el margen de monopolio, menor cuanto más responde la participación del grupo a su utilidad neta. Si <span class="math inline">\(\eta_i = p_i\,N_i'(u_i)/n_i\)</span> es la elasticidad de la participación del grupo <span class="math inline">\(i\)</span> respecto de su precio, la condición anterior, con <span class="math inline">\(p_i &gt; 0\)</span>, se escribe como un índice de Lerner:</p>
+<p><span class="math display">\[\frac{p_i - f_i}{p_i} = \frac{1}{\eta_i} - \underbrace{\frac{\alpha_j n_j}{p_i}}_{\text{término de dos caras}}\]</span></p>
+<p>Frente al monopolio de una sola cara, con <span class="math inline">\((p - \text{Cmg})/p = 1/|\varepsilon_{Xp}|\)</span> (tema <a href="../chapters/a17-monopolio.html">A17</a>, apartado 1.3.1), aparece un término nuevo, que resta del margen el beneficio externo que cada nuevo miembro del grupo <span class="math inline">\(i\)</span> genera en el otro lado, <span class="math inline">\(\alpha_j n_j\)</span>, en proporción al precio. La plataforma aplica así a cada lado la regla de la elasticidad inversa, pero frente al coste neto de esa externalidad, <span class="math inline">\(f_i - \alpha_j n_j\)</span>, y no frente a <span class="math inline">\(f_i\)</span>.</p>
+<p>Un grupo paga menos cuanto más elástica es su participación y cuanto más valora su presencia el otro grupo, y si <span class="math inline">\(\alpha_j n_j\)</span> supera el margen de monopolio su precio queda por debajo del coste, e incluso puede ser nulo o negativo si <span class="math inline">\(\alpha_j n_j\)</span> iguala o supera <span class="math inline">\(f_i\)</span> más ese margen (<em>subsidio cruzado</em>). De ahí que el índice de Lerner convencional, medido frente a <span class="math inline">\(f_i\)</span>, sea bajo o negativo en el lado subvencionado y elevado en el que paga. Ninguno de los dos índices convencionales mide por separado el poder de mercado de la plataforma, que se aprecia en el índice ajustado de cada lado, calculado frente al coste neto, y en la estructura de precios en su conjunto.</p>
+<p><strong>Extensiones</strong>:</p>
+<ul>
+<li><p><em>Política de competencia</em>: precios por debajo del coste en un lado de la plataforma no son, por sí mismos, evidencia de predación, y el análisis del mercado relevante y del poder de mercado debe considerar ambos lados conjuntamente (apartado 3.1). Ello obliga a redefinir el mercado relevante y las pruebas de abuso en las plataformas digitales, que es el terreno actual de la regulación de la competencia.</p></li>
+<li><p><em>Competencia entre plataformas</em>: cuando un grupo se afilia a una sola plataforma y el otro a varias (<em>multihoming</em>), cada plataforma controla el acceso a sus usuarios exclusivos. Por ello, compite intensamente por ellos y cobra precios altos al grupo que se afilia a varias (<em>cuellos de botella competitivos</em>, Armstrong, 2006).</p></li>
+</ul>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: el modelo explica con pocos supuestos por qué una plataforma fija precios nulos o inferiores al coste en un lado sin que ello revele predación, y ofrece el índice de Lerner ajustado con el que debe medirse el margen de cada lado.</p></li>
+<li><p><em>Limitaciones</em>: supone una plataforma monopolista con cuotas fijas de participación. Con varias plataformas o con tarifas por transacción, los resultados dependen de la intensidad de las externalidades y de que los usuarios operen en una o en varias plataformas. Por ello, la teoría ofrece pocas reglas generales y su aplicación exige un análisis caso por caso.</p></li>
+</ul>
+</section>
+<section id="conclusiones-1" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-1">2.5. Conclusiones</h3>
+<p>La regulación con información perfecta ofrece un criterio claro, la prioridad entre eficiencia asignativa y viabilidad financiera, para ordenar los instrumentos de regulación de precios, y las reglas que siguen aplicándose en las industrias de red (tarifas en dos partes, pico-valle, Ramsey-Boiteux, <em>price cap</em>). Pero supone que el regulador conoce los costes y la demanda de la empresa, cuando esta sabe más que él y tiene incentivos a no revelarlo.</p>
+<p>Por ello, la teoría moderna cambia la pregunta, que ya no es cuál es el precio óptimo dado el coste, sino qué mecanismo induce a la empresa a revelar su coste y a reducirlo. Su respuesta, el menú de contratos y el uso de la competencia (por el mercado o por comparación) como fuente de información, ha guiado la regulación de las industrias de red desde los años noventa. La competencia potencial añade la disciplina de la amenaza de entrada. Estos mecanismos exigen, no obstante, compromiso creíble del regulador (efecto trinquete), comparadores o licitadores genuinamente independientes (colusión) y ausencia de costes hundidos (impugnabilidad). Los mercados de varias caras plantean, además, un problema distinto, el reparto de los precios entre los lados de la plataforma, que obliga a redefinir el mercado relevante y las pruebas de abuso y que la teoría todavía no ha cerrado.</p>
+</section>
+</section>
+<section id="mercado-relevante-y-aplicaciones-prácticas" class="level2">
+<h2 class="anchored" data-anchor-id="mercado-relevante-y-aplicaciones-prácticas">3. Mercado relevante y aplicaciones prácticas</h2>
+<p>Los apartados anteriores explican por qué se regula y cuál es la regulación óptima. Este trata de su puesta en práctica, es decir, de cómo las autoridades de competencia y los reguladores sectoriales aplican esos principios. Su herramienta de partida es el <strong>mercado relevante</strong> (en los textos de la Unión, “mercado de referencia”), un concepto operativo del derecho de la competencia. La Comisión Europea lo emplea en el control de concentraciones y en los expedientes de acuerdos restrictivos y de abuso de posición dominante, con la metodología de su Comunicación de 1997, revisada en 2024. En las comunicaciones electrónicas, además, los reguladores nacionales, como la CNMC, analizan los mercados relevantes para identificar a los operadores con peso significativo en el mercado e imponerles obligaciones <em>ex ante</em> (Código Europeo de las Comunicaciones Electrónicas, Directiva (UE) 2018/1972). La aplicación sigue tres pasos, que ordenan este apartado:</p>
+<ol type="1">
+<li><p><em>Medir</em>: determinar si existe poder de mercado y con qué intensidad (delimitación del mercado relevante e índices).</p></li>
+<li><p><em>Intervenir</em>: en las industrias de red, se ha optado por la liberalización y la reestructuración.</p></li>
+<li><p><em>Evaluar</em>: valorar la intervención y reconocer sus límites, sobre todo los que nacen del propio regulador.</p></li>
+</ol>
+<section id="definición-del-mercado-relevante" class="level3">
+<h3 class="anchored" data-anchor-id="definición-del-mercado-relevante">3.1. Definición del mercado relevante</h3>
+<p>Antes de evaluar si existe poder de mercado es necesario delimitar el <strong>mercado relevante</strong>, es decir, el conjunto de productos y áreas geográficas que ejercen una presión competitiva efectiva sobre la empresa en cuestión. El mercado relevante es el punto de partida de todo expediente de competencia, y se determina en tres pasos.</p>
+<ol type="1">
+<li><p><em>Dimensión de producto</em>: se identifica el conjunto de bienes que los consumidores consideran sustitutivos razonables del producto examinado, aproximado en la práctica mediante las elasticidades cruzadas de la demanda.</p></li>
+<li><p><em>Dimensión geográfica</em>: se identifica el área en la que las condiciones de competencia son suficientemente homogéneas, es decir, aquella a cuyos proveedores acudirían los consumidores ante una subida del precio.</p></li>
+<li><p><em>Test del monopolista hipotético</em> (test SSNIP, <em>small but significant non-transitory increase in price</em>): se pregunta si un monopolista hipotético que controlase el conjunto candidato de productos y territorios podría imponer de forma rentable un incremento de precios pequeño pero significativo y no transitorio. El incremento de referencia es típicamente del 5-10&nbsp;%. Si los consumidores sustituirían el producto, o acudirían a otra zona, en medida suficiente para hacer la subida no rentable, el conjunto es demasiado estrecho, por lo que se añade el sustitutivo más próximo y se repite la pregunta. El mercado relevante es el conjunto más pequeño para el cual la subida sería rentable.</p></li>
+</ol>
+<p>El test debe aplicarse a los precios competitivos, no a los vigentes, cuando estos pueden ser ya supracompetitivos (típicamente, en los casos de abuso de posición dominante). Aplicado a los precios de un monopolista, sobrestima el mercado, porque a precios ya monopolísticos la demanda está en su tramo elástico y todo parece sustitutivo (<em>falacia del celofán</em>, caso DuPont, 1956).</p>
+<p>La Comunicación de la Comisión sobre la definición del mercado de referencia (1997, revisada en febrero de 2024) distingue tres fuentes de presión competitiva. La principal es la <em>sustituibilidad de la demanda</em>, la que mide el test. La <em>sustituibilidad de la oferta</em> se tiene en cuenta cuando otros productores pueden pasar a fabricar el producto a corto plazo y sin costes ni riesgos significativos, como ocurre con el papel de distintas calidades, que todos los fabricantes producen con las mismas máquinas. La <em>competencia potencial</em>, en cambio, no entra en la definición del mercado y se valora después, al analizar el poder de mercado.</p>
+<p>La revisión de 2024 mantiene el test SSNIP como herramienta útil pero no obligatoria y admite su variante de reducción de calidad (SSNDQ, <em>small but significant non-transitory decrease in quality</em>) cuando los productos tienen precio cero, como muchos servicios digitales. También precisa cómo delimitar los mercados de las plataformas de varias caras y de los ecosistemas digitales.</p>
+</section>
+<section id="medición-empírica-del-poder-de-mercado" class="level3">
+<h3 class="anchored" data-anchor-id="medición-empírica-del-poder-de-mercado">3.2. Medición empírica del poder de mercado</h3>
+<p>Delimitado el mercado, los indicadores van desde el más directo, el índice de Lerner (apartado 1.1), que mide la conducta pero exige conocer el coste marginal, hasta los más estructurales, como la cuota, que mide la posición de cada empresa, y los índices de concentración y de barreras, que miden la estructura del conjunto y su sostenibilidad.</p>
+<section id="índices-de-posición-y-de-concentración" class="level4">
+<h4 class="anchored" data-anchor-id="índices-de-posición-y-de-concentración">3.2.1. Índices de posición y de concentración</h4>
+<p>La <strong>cuota de mercado</strong> (<span class="math inline">\(s_i = x_i/X\)</span>) es el índice de posición básico. Aproxima el poder de mercado individual y es el umbral operativo habitual de las presunciones legales (posición de dominio). No obstante, su lectura exige cautela, pues una cuota alta puede reflejar eficiencia superior y no poder de mercado (la crítica de Chicago), y su valor informativo depende críticamente de la delimitación previa del mercado relevante.</p>
+<p>Los <strong>índices de concentración</strong> agregan la estructura del mercado y pueden formularse de dos formas:</p>
+<p><strong>Ratios de concentración</strong>: miden la cuota conjunta de las <span class="math inline">\(k\)</span> mayores empresas, <span class="math inline">\(\text{CR}_k = \sum_{i=1}^{k} s_i\)</span>. Este indicador es el más simple, pero ignora la distribución de cuotas tanto entre las <span class="math inline">\(k\)</span> mayores como entre las restantes.</p>
+<p><strong>Índice de Herfindahl-Hirschman</strong>: suma los cuadrados de las cuotas de todas las empresas, de modo que cada una queda ponderada por su propia cuota.</p>
+<p><span class="math display">\[\text{HHI} = \sum_{i=1}^{n} (100\, s_i)^2 \in \left[\frac{10\,000}{n},\ 10\,000\right], \qquad s_i \in [0, 1]\]</span></p>
+<p>Con las cuotas expresadas en porcentaje, el índice varía entre 0 (atomización) y 10.000 (monopolio). Orientativamente, las <em>Merger Guidelines</em> estadounidenses de 2010 distinguían tres tramos:</p>
+<ul>
+<li><p><em>Concentración baja</em>: <span class="math inline">\(\text{HHI} &lt; 1500\)</span>.</p></li>
+<li><p><em>Concentración moderada</em>: <span class="math inline">\(1500 \leq \text{HHI} \leq 2500\)</span>.</p></li>
+<li><p><em>Concentración alta</em>: <span class="math inline">\(\text{HHI} &gt; 2500\)</span>.</p></li>
+</ul>
+<p>Además, la variación del índice provocada por una fusión (<span class="math inline">\(\Delta \text{HHI}\)</span>) es, junto con el nivel, uno de los criterios principales de las autoridades de competencia para decidir si una operación de concentración requiere un examen en profundidad. Lo aplican la Comisión Europea y, en EE. UU., el Departamento de Justicia (DOJ) y la Comisión Federal de Comercio (FTC). Las <em>Merger Guidelines</em> de 2023, que sustituyeron a las de 2010 y que la FTC y el DOJ confirmaron en vigor en 2025, endurecen los umbrales. En particular, califican de muy concentrado todo mercado con <span class="math inline">\(\text{HHI} &gt; 1800\)</span> y presumen que reduce sustancialmente la competencia la fusión que crea o refuerza un mercado así con un <span class="math inline">\(\Delta \text{HHI} &gt; 100\)</span>.</p>
+</section>
+<section id="índices-de-barreras-a-la-entrada" class="level4">
+<h4 class="anchored" data-anchor-id="índices-de-barreras-a-la-entrada">3.2.2. Índices de barreras a la entrada</h4>
+<p>Los índices anteriores describen la estructura actual del mercado, pero no dicen si esa estructura es sostenible. Una concentración alta es preocupante si la entrada es difícil e irrelevante si es fácil. De ahí que la existencia y la altura de las barreras a la entrada puedan ayudar a completar el análisis anterior.</p>
+<p>Los índices de barreras a la entrada, que se utilizan junto con los índices de concentración para calificar un mercado como impugnable o no, se aproximan empíricamente con tres tipos de indicador:</p>
+<ul>
+<li><p><em>Escala mínima eficiente relativa</em>: la cuota de mercado que necesita un entrante para producir a coste medio mínimo, <span class="math inline">\(\text{EME}/X\)</span>. Cuanto mayor es, más difícil es entrar sin desplomar los precios, pues el entrante debe capturar una parte sustancial del mercado para ser viable. Esta cuota es la medida tradicional de Bain de las barreras tecnológicas.</p></li>
+<li><p><em>Intensidad de los costes hundidos</em>: el gasto en publicidad, I+D y capital específico como proporción de las ventas. Mide lo que un entrante perdería si fracasa y, por tanto, el riesgo que la entrada supone. Esta intensidad es el indicador que distingue, en la lógica de los mercados impugnables, las barreras que disuaden la entrada de las que no.</p></li>
+<li><p><em>Tasas de entrada y salida</em>: el número de empresas que entran y salen de la industria cada año en relación con las existentes. Estas tasas son la contrastación directa de si las barreras operan. Así, tasas altas indican un mercado impugnable aunque esté concentrado, mientras que tasas bajas y estables indican un mercado protegido o uno impugnable en el que basta la amenaza de entrada.</p></li>
+</ul>
+</section>
+</section>
+<section id="la-liberalización-de-las-industrias-de-red" class="level3">
+<h3 class="anchored" data-anchor-id="la-liberalización-de-las-industrias-de-red">3.3. La liberalización de las industrias de red</h3>
+<p>Diagnosticado el poder de mercado, la segunda pregunta es cómo intervenir. En las últimas décadas la respuesta ha sido, sobre todo, la reestructuración de las industrias de red, que consiste en introducir competencia donde es posible y concentrar la regulación donde no lo es.</p>
+<section id="industrias-de-red-y-cuestiones-transversales" class="level4">
+<h4 class="anchored" data-anchor-id="industrias-de-red-y-cuestiones-transversales">3.3.1. Industrias de red y cuestiones transversales</h4>
+<p>De la teoría expuesta se ha derivado una transformación, que no eliminación, de los modelos de regulación, particularmente intensa en las industrias de red. En ellas, una misma empresa integrada verticalmente reúne la red, que tiene rasgos de monopolio natural y constituye el componente no competitivo, y la prestación del servicio, una actividad potencialmente competitiva. Así ocurre en el ferrocarril, la electricidad, el gas, el agua o las telecomunicaciones. La dificultad está en que al dueño de la red le interesa frenar también la competencia en el servicio, p.&nbsp;ej. negando a sus rivales el acceso o encareciéndolo.</p>
+<p>La estrategia general, por tanto, pasa por regular el componente no competitivo, con el fin de conservar la eficiencia productiva del monopolio natural, y por asegurar la libertad de entrada y salida en el componente competitivo, con el fin de alcanzar la eficiencia asignativa. En la Unión Europea, esta estrategia se ha instrumentado mediante sucesivos paquetes de directivas de liberalización (ferroviarios, energéticos, de telecomunicaciones y postales). Estos paquetes imponen, sobre todo en energía y ferrocarril, la separación entre la gestión de la red y la prestación del servicio y garantizan el acceso de terceros a las redes en condiciones transparentes y no discriminatorias.</p>
+<p>Todo proceso de liberalización debe hacer frente a cuatro cuestiones transversales:</p>
+<ul>
+<li><p><em>Costes varados</em> (<em>stranded costs</em>) de las empresas establecidas: las inversiones específicas de largo periodo de amortización que eran rentables bajo la protección regulatoria pero dejan de serlo en competencia.</p></li>
+<li><p><em>Costes de transición a la competencia</em> (CTC): las compensaciones que el regulador reconoce al antiguo monopolista por esos costes varados, que es imprescindible vigilar para que no encubran ayudas públicas.</p></li>
+<li><p><em>Reequilibrio tarifario</em>: la eliminación de los subsidios cruzados entre actividades liberalizadas y no liberalizadas, que podrían financiar precios predatorios.</p></li>
+<li><p><em>Garantía del servicio universal</em>: la prestación de un conjunto mínimo de servicios a todos los usuarios a precio asequible, cuyo coste debe repartirse entre los operadores sin distorsionar la competencia.</p></li>
+</ul>
+</section>
+<section id="fórmulas-de-reestructuración" class="level4">
+<h4 class="anchored" data-anchor-id="fórmulas-de-reestructuración">3.3.2. Fórmulas de reestructuración</h4>
+<p>Las formas concretas de reestructuración se ordenan según el grado en que separan el componente no competitivo del competitivo y según quién controla el primero.</p>
+<p><strong>Licitación de la titularidad del componente no competitivo</strong>: el regulador organiza un proceso de licitación <em>ex ante</em> (concurso o subasta) por el derecho a explotar la red (Demsetz, 1968).</p>
+<ul>
+<li><p><em>Ámbito</em>: el monopolio natural no sostenible (apartado 1.1), cuando el servicio puede especificarse en un contrato de concesión.</p></li>
+<li><p><em>Ejemplos</em>: las concesiones de servicios públicos, como el abastecimiento de agua o las autopistas de peaje.</p></li>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la disipación de las rentas del monopolio en la puja, la selección de la empresa más eficiente y la garantía de objetividad del procedimiento. Las rentas van a los consumidores si se licita por el menor precio, o al sector público si se licita por el mayor canon.</p></li>
+<li><p><em>Limitaciones</em>: el riesgo de colusión entre los licitadores y los límites que Williamson (1976) señaló a la competencia por el mercado (apartado 2.3.1).</p></li>
+</ul></li>
+</ul>
+<p><strong>Regulación del acceso al componente no competitivo</strong>: aunque el monopolista conserve la red, quienes compiten con él en la prestación del servicio pueden utilizarla en las condiciones que fija el regulador, sobre todo en materia de precio.</p>
+<ul>
+<li><p><em>Ámbito</em>: el monopolio natural sostenible, cuando un operador integrado conserva la red y presta también el servicio.</p></li>
+<li><p><em>Ejemplo</em>: la telefonía fija en la UE, donde el operador histórico debe dar acceso a su bucle local a los operadores alternativos a cambio de un precio regulado (desagregación del bucle local)<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>.</p></li>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: mantiene la eficiencia productiva del segmento no competitivo y, si el precio de acceso remunera adecuadamente la red, no desanima la I+D de su dueño.</p></li>
+<li><p><em>Limitaciones</em>: la probabilidad de que el monopolista discrimine entre las empresas que utilizan su red, favoreciendo a su propia filial de servicios.</p></li>
+</ul></li>
+</ul>
+<p><strong>Separación de la propiedad (desintegración vertical)</strong>: por decisión del regulador, la red y el servicio pasan a manos de propietarios distintos.</p>
+<ul>
+<li><p><em>Ámbito</em>: el monopolio natural de la red con una actividad competitiva aguas abajo, cuando las economías de alcance entre ambas son pequeñas.</p></li>
+<li><p><em>Ejemplos</em>: en el ferrocarril, la separación entre el gestor de la infraestructura, propietario de las vías, y las empresas ferroviarias, que pagan un canon por su uso, impulsada por los paquetes ferroviarios de la UE. En la electricidad, la separación patrimonial (<em>ownership unbundling</em>) del gestor de la red de transporte respecto de la generación y la comercialización, una de las opciones que prevé el tercer paquete energético de la UE (2009).</p></li>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: elimina de raíz la discriminación en el acceso a la red.</p></li>
+<li><p><em>Limitaciones</em>: se pierden las economías de alcance que pudiera aportar la integración vertical. Además, la empresa de la red, ya independiente, puede querer volver a integrarse aguas abajo, con lo que el problema reaparecería.</p></li>
+</ul></li>
+</ul>
+<p><strong>Propiedad compartida del componente no competitivo</strong>: la red pertenece en común a las empresas que prestan el servicio, con el visto bueno del regulador.</p>
+<ul>
+<li><p><em>Ámbito</em>: redes que utilizan pocos operadores, capaces de gestionarlas en común.</p></li>
+<li><p><em>Ejemplos</em>: las redes de oleoductos y almacenamiento de hidrocarburos participadas por los propios operadores petroleros que las utilizan, y los sistemas informatizados de reservas participados por las propias aerolíneas (p.&nbsp;ej. Amadeus en su origen).</p></li>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: al ser todas las prestadoras dueñas de la red, deja de haber incentivo para discriminar entre ellas, y la cercanía entre red y servicio hace que la primera se adapte enseguida a lo que necesita el segundo.</p></li>
+<li><p><em>Limitaciones</em>: las copropietarias pueden pactar trabas para que no entren nuevas empresas en el servicio o coludir en precios, y si los socios son muchos la gestión de la red se complica.</p></li>
+</ul></li>
+</ul>
+<p><strong>Separación operativa</strong>: el regulador disocia propiedad y control del componente no competitivo. El monopolista inicial sigue siendo su dueño, pero la gestión pasa a una entidad independiente<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>.</p>
+<ul>
+<li><p><em>Ámbito</em>: casos en que se quiere neutralizar la gestión de la red sin expropiar la propiedad del incumbente.</p></li>
+<li><p><em>Ejemplo</em>: Openreach, en el Reino Unido. La red de acceso de British Telecom (BT) pasó a gestión funcionalmente separada en 2006 (y jurídicamente separada tras el acuerdo de 2017, efectivo en octubre de 2018), con la obligación de tratar a todos los operadores, incluida la propia BT, en igualdad de condiciones.</p></li>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: resuelve las conductas anticompetitivas y los subsidios cruzados sin expropiar la propiedad.</p></li>
+<li><p><em>Limitaciones</em>: la entidad independiente puede ser capturada, y quien no controla la red tiene poco interés en invertir en ella.</p></li>
+</ul></li>
+</ul>
+<p><strong>Separación en partes recíprocas</strong>: el regulador divide el componente no competitivo en fragmentos de menor tamaño con acceso recíproco entre ellos. Cada operadora tiene incentivos para abrir su red a los clientes de las demás, porque, de lo contrario, estas le negarían el acceso a las suyas.</p>
+<ul>
+<li><p><em>Ámbito</em>: esta separación encaja cuando el poder de mercado del componente procede de economías de red (cada consumidor gana utilidad cuantos más usuarios hay conectados), y no de economías de escala. En el monopolio natural clásico la subaditividad de costes aporta eficiencia productiva y desaconseja trocearlo. Con economías de red, en cambio, falta esa contrapartida, pues la única ineficiencia es la asignativa, y por eso conviene que la competencia llegue también al segmento “no competitivo”.</p></li>
+<li><p><em>Ejemplo</em>: la telefonía móvil, con interconexión obligatoria y recíproca entre operadoras.</p></li>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la interconexión preserva las externalidades de red para todos los consumidores mientras disuelve el poder de mercado, y facilita la competencia por comparación entre operadoras comparables.</p></li>
+<li><p><em>Limitaciones</em>: sirve únicamente donde el acceso funciona en los dos sentidos.</p></li>
+</ul></li>
+</ul>
+<p><strong>Separación en partes no recíprocas</strong>: el regulador trocea también el segmento no competitivo, aunque falte la reciprocidad que sostenía la fórmula anterior.</p>
+<ul>
+<li><p><em>Ámbito</em>: casos en que el consumidor final compra directamente al componente no competitivo, que ocupa en la cadena vertical una posición posterior a la del competitivo.</p></li>
+<li><p><em>Ejemplos</em>: la electricidad y el gas, cuyas distribuidoras (componente no competitivo) compraban la energía a los productores (componente competitivo) por cuenta de los consumidores.</p></li>
+<li><p><em>Conclusiones</em>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: las distribuidoras pierden poder de mercado, porque su actividad queda separada de la comercialización y el consumidor elige libremente a quién compra.</p></li>
+<li><p><em>Limitaciones</em>: exige que el consumidor elija comercializador, con los costes de información y de cambio que ello supone, y deja intacto el poder de mercado de la distribución sobre su propia actividad, que sigue requiriendo regulación de precios.</p></li>
+</ul></li>
+</ul>
+<p>La tabla <a href="#tbl-a20-reestructuracion" class="quarto-xref"><span>A20.1</span></a> resume las siete fórmulas según quién controla el componente no competitivo, el ámbito en que resultan apropiadas, un ejemplo y su riesgo principal.</p>
+<div id="tbl-a20-reestructuracion" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[18,20,22,20,20]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-a20-reestructuracion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;A20.1: Cuadro comparativo de las fórmulas de reestructuración de las industrias de red.
+</figcaption>
+<div aria-describedby="tbl-a20-reestructuracion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 20%">
+<col style="width: 22%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fórmula</th>
+<th>Control de la red</th>
+<th>Ámbito</th>
+<th>Ejemplo</th>
+<th>Riesgo principal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Licitación de la titularidad</td>
+<td>Adjudicatario, por concesión temporal</td>
+<td>Monopolio natural no sostenible</td>
+<td>Concesiones de servicios</td>
+<td>Colusión, contratos incompletos y ventaja del incumbente</td>
+</tr>
+<tr class="even">
+<td>Regulación del acceso</td>
+<td>Monopolista integrado, con acceso regulado</td>
+<td>Monopolio natural sostenible</td>
+<td>Bucle local de telefonía fija (UE)</td>
+<td>Discriminación a favor de la filial propia</td>
+</tr>
+<tr class="odd">
+<td>Separación de la propiedad</td>
+<td>Empresa independiente</td>
+<td>Monopolio natural con actividad competitiva aguas abajo</td>
+<td>Ferrocarril y transporte eléctrico (UE)</td>
+<td>Pérdida de economías de alcance y reintegración</td>
+</tr>
+<tr class="even">
+<td>Propiedad compartida</td>
+<td>Las prestadoras, conjuntamente</td>
+<td>Red usada por pocos operadores</td>
+<td>Redes logísticas de hidrocarburos y sistemas de reservas de las aerolíneas</td>
+<td>Cierre a entrantes, colusión y gobernanza</td>
+</tr>
+<tr class="odd">
+<td>Separación operativa</td>
+<td>Entidad independiente, con propiedad del incumbente</td>
+<td>Cuando no cabe expropiar la propiedad</td>
+<td>Openreach (BT)</td>
+<td>Captura de la entidad y subinversión</td>
+</tr>
+<tr class="even">
+<td>Separación en partes recíprocas</td>
+<td>Varias redes interconectadas</td>
+<td>Economías de red, acceso en dos direcciones</td>
+<td>Telefonía móvil</td>
+<td>Solo con acceso bidireccional</td>
+</tr>
+<tr class="odd">
+<td>Separación en partes no recíprocas</td>
+<td>Varias redes sin reciprocidad</td>
+<td>Componente no competitivo aguas abajo</td>
+<td>Distribución eléctrica y de gas</td>
+<td>Poder subsistente de la distribución y costes de cambio</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+</section>
+<section id="evaluación-y-límites-de-la-regulación" class="level3">
+<h3 class="anchored" data-anchor-id="evaluación-y-límites-de-la-regulación">3.4. Evaluación y límites de la regulación</h3>
+<p>La tercera pregunta es si la intervención merece la pena y qué puede fallar en ella. La primera parte se responde con una técnica, el análisis coste-beneficio, y la segunda, con la teoría de los límites de la regulación, aquí la captura del regulador. El límite que nace de los incentivos de la empresa regulada, el efecto trinquete, se estudia con el modelo de Laffont y Tirole (apartado 2.2.3).</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Los demás fallos del sector público (la maximización del presupuesto de Niskanen, el ciclo político de Nordhaus, la aversión al riesgo burocrática y la ilusión fiscal) y los mecanismos que los corrigen se desarrollan en el tema <a href="../chapters/a23-eb-ii.html">A23</a>, apartados 3.2 a 3.4.</p>
+</div>
+</div>
+</div>
+<section id="el-análisis-coste-beneficio" class="level4">
+<h4 class="anchored" data-anchor-id="el-análisis-coste-beneficio">3.4.1. El análisis coste-beneficio</h4>
+<p>El <strong>análisis coste-beneficio</strong> (ACB) es una técnica que asigna valores monetarios a las corrientes de costes y beneficios sociales de un proyecto de inversión, generalmente público, con tres finalidades:</p>
+<ul>
+<li><p><em>Deseabilidad social</em>: determinar si los beneficios sociales de un proyecto superan a sus costes.</p></li>
+<li><p><em>Criterio de elección</em>: elegir la mejor alternativa entre varias.</p></li>
+<li><p><em>Evaluación de actuaciones pasadas</em>: valorar <em>ex post</em> los proyectos ya ejecutados.</p></li>
+</ul>
+<p>Su germen conceptual se debe a Jules Dupuit (1844), que introdujo la noción de excedente del consumidor para valorar las obras públicas, y su primera adopción formal, al Cuerpo de Ingenieros del Ejército de los EE.&nbsp;UU. a raíz de la Flood Control Act (1936).</p>
+<p>Sus etapas son la definición de los objetivos, la identificación de las alternativas y la enumeración y cuantificación de las variables. La cuantificación plantea tres cuestiones técnicas centrales:</p>
+<ul>
+<li><p><em>Valoración social</em>: el uso de precios sombra para valorar costes y beneficios cuando los precios de mercado están distorsionados o no existen.</p></li>
+<li><p><em>Tasa social de descuento</em>: su elección, que determina el peso de las generaciones futuras, y la valoración del riesgo.</p></li>
+<li><p><em>Efectos redistributivos</em>: su análisis y la presentación de los resultados.</p></li>
+</ul>
+<p>A pesar de sus limitaciones (la dificultad de monetizar los intangibles, la sensibilidad de los resultados a la tasa de descuento, el riesgo de manipulación estratégica de las estimaciones…), el análisis coste-beneficio sigue siendo un instrumento poderoso. De hecho, fue de aplicación obligada en la evaluación de los grandes proyectos cofinanciados por los fondos estructurales hasta el periodo 2014-2020 y es todavía la referencia metodológica de la Comisión Europea y del Banco Europeo de Inversiones (BEI) para evaluar inversiones.</p>
+</section>
+<section id="la-captura-del-regulador-la-teoría-económica-de-la-regulación" class="level4">
+<h4 class="anchored" data-anchor-id="la-captura-del-regulador-la-teoría-económica-de-la-regulación">3.4.2. La captura del regulador: la teoría económica de la regulación</h4>
+<p><strong>Origen</strong>: las teorías sobre los grupos de presión plantean que los grupos organizados (la patronal, los sindicatos, las industrias reguladas) interfieren en las decisiones políticas en favor de sus intereses privados. Olson (1965) mostró, además, por qué los grupos pequeños y concentrados (los productores) se organizan más eficazmente que los grandes y difusos (los consumidores), porque los beneficios de la presión están concentrados y sus costes, dispersos<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>.</p>
+<p><strong>Idea</strong>: sobre esta base, George Stigler (<em>The Theory of Economic Regulation</em>, 1971) formuló la teoría económica o positiva de la regulación. Según esta teoría, la regulación no se explica por el interés público, sino que “es adquirida por la industria y diseñada y aplicada fundamentalmente en su beneficio”.</p>
+<p><strong>Razonamiento</strong>: las industrias demandan regulación (barreras a la entrada, fijación de precios, subvenciones) y los políticos la ofrecen a cambio de apoyo electoral y financiero. De esta literatura se derivan dos conceptos centrales. El primero es la búsqueda de rentas (<em>rent seeking</em>), es decir, la dedicación de recursos a la obtención de rentas mediante la explotación del entorno político, en lugar de a la creación de valor mediante la actividad productiva (<em>profit seeking</em>)<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>. La búsqueda de rentas genera una doble ineficiencia, la de los recursos consumidos en la propia actividad de presión (que son un despilfarro social, pues solo redistribuyen rentas) y la de las decisiones públicas favorables a intereses particulares que resultan de ella.</p>
+<p>El segundo concepto es la <em>captura del regulador</em> (Stigler, 1971), es decir, el proceso por el cual la agencia reguladora acaba sirviendo a los intereses de la industria que debía supervisar. Ello puede deberse a la presión directa, a la dependencia informativa respecto de las empresas reguladas, a las perspectivas de empleo futuro en el sector (las llamadas <em>puertas giratorias</em>) o a formas más sutiles de captura cultural. La captura cultural es el sesgo inconsciente derivado de la relación continuada entre regulador y regulado<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>. En la misma línea, el <em>triángulo de hierro</em> describe cómo las decisiones políticas quedan determinadas por la relación estable entre políticos, burócratas y grupos de interés.</p>
+<p><strong>Extensiones</strong>: Peltzman (1976) generalizó el modelo de Stigler mostrando que el regulador reparte las rentas entre los grupos para maximizar su apoyo político, sin entregarse por completo a ninguno. Becker (1983) añadió que la competencia entre grupos de presión limita las ineficiencias, porque las políticas más ineficientes generan más oposición, por lo que tienden a sobrevivir las transferencias menos distorsionantes.</p>
+<p><strong>Conclusiones</strong>:</p>
+<ul>
+<li><p><em>Aspectos positivos</em>: la teoría económica de la regulación desplaza el análisis del interés público al de los intereses organizados. La regulación se explica como un bien que se ofrece y se demanda, lo que fundamenta la desregulación y el diseño institucional (independencia, transparencia) para limitar la captura.</p></li>
+<li><p><em>Limitaciones</em>: puede explicar <em>a posteriori</em> casi cualquier regulación como fruto de la presión de algún grupo, lo que dificulta su contraste, y le cuesta explicar las desregulaciones que perjudicaron a industrias bien organizadas. Además, describe la captura como un intercambio sin modelizar la asimetría de información entre regulador y regulado, que es la base del enfoque de agencia del apartado 2.2.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="conclusiones-2" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones-2">Conclusiones</h2>
+<p>El poder de mercado nace de barreras a la entrada naturales, como la subaditividad de costes, o artificiales, estratégicas y legales, y su regulación se justifica por motivos de eficiencia y de equidad. La teoría tradicional ordena los instrumentos de regulación de precios según la prioridad entre eficiencia asignativa y viabilidad financiera, del <em>first best</em> con subvención a los límites de precios. La teoría moderna parte, en cambio, de que la empresa sabe más que el regulador. Por ello, el menú de contratos de Laffont y Tirole intercambia eficiencia por rentas informacionales. La competencia por el mercado, por comparación o potencial suple la información que falta y, en los mercados de varias caras, el margen de cada lado se mide frente al coste neto de la externalidad que genera. En la práctica, el poder se mide en el mercado relevante, la red se regula y el servicio se liberaliza, y el efecto trinquete y la captura del regulador limitan la intervención.</p>
+<p>La regulación se apoya en el análisis del monopolio (tema <a href="../chapters/a17-monopolio.html">A17</a>) y en la organización industrial, de la que toma el modelo de Laffont y Tirole y los mercados impugnables (tema <a href="../chapters/a15-toi.html">A15</a>). Su fundamento normativo son los teoremas del bienestar y la teoría del <em>second best</em>, que explican por qué el precio igual al coste marginal no siempre es viable (tema <a href="../chapters/a22-eb-i.html">A22</a>), y la asimetría de información entre regulador y empresa es un caso de la teoría de la agencia (tema <a href="../chapters/a13-informacion.html">A13</a>). Por último, la disuasión estratégica de la entrada procede de la teoría del oligopolio (tema <a href="../chapters/a19-oligopolio.html">A19</a>), y la medición del poder de mercado es también el punto de partida de la política de competencia de la Unión (tema <a href="../chapters/b39-miue.html">B39</a>).</p>
+<p>Los debates actuales se centran en las plataformas digitales. En su informe para la Comisión Europea, Crémer, de Montjoye y Schweitzer (2019) sostienen que los efectos de red y el control de los datos favorecen la concentración y piden adaptar la definición del mercado relevante y las pruebas de abuso. El Reglamento de Mercados Digitales (2022) respondió con obligaciones <em>ex ante</em> para los guardianes de acceso, más propias de la regulación sectorial que de la defensa de la competencia. En las industrias de red, la transición energética exige grandes inversiones en redes y reabre la tensión, no resuelta por la regulación por incentivos, entre la presión sobre los costes y la inversión y la calidad del servicio (Joskow, 2008).</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>En el equilibrio de Cournot, la condición de primer orden de cada empresa, <span class="math inline">\(p(1 - s_i/|\varepsilon_{Xp}|) = \text{Cmg}_i \geq 0\)</span>, exige <span class="math inline">\(s_i \leq |\varepsilon_{Xp}|\)</span>, de modo que cada empresa produce en el tramo elástico de su demanda residual, cuya elasticidad es <span class="math inline">\(|\varepsilon_{Xp}|/s_i\)</span>. Por eso <span class="math inline">\(I_{L,i} \leq 1\)</span>, como en el monopolio, que es el caso <span class="math inline">\(s_i = 1\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Conviene que el regulador no se precipite, pues conductas que parecen restringir la competencia pueden responder a razones de eficiencia, como las sinergias (economías de escala y de gama) o la necesidad de economizar en costes de transacción cuando no cabe redactar contratos completos.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>La definición se debe a Baumol (1977). Formalmente, la función de costes <span class="math inline">\(\text{CT}(\mathbf{x})\)</span> es estrictamente subaditiva en <span class="math inline">\(\mathbf{x}\)</span> si <span class="math inline">\(\text{CT}(\mathbf{x}) &lt; \sum_j \text{CT}(\mathbf{x}^j)\)</span> para toda descomposición <span class="math inline">\(\sum_j \mathbf{x}^j = \mathbf{x}\)</span> en al menos dos vectores no nulos.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Es decir, la empresa suele operar con costes medios decrecientes (<span class="math inline">\(\text{Cmg} &lt; \text{Cme}\)</span>) en el tramo relevante de la demanda, aunque la subaditividad puede mantenerse algo por encima de la escala mínima eficiente, que se alcanza donde <span class="math inline">\(\text{Cme} = \text{Cmg}\)</span>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Ramsey (1927) formuló la regla en el contexto de la imposición óptima y Boiteux (1956), en el de la tarificación de los monopolios públicos. Con demandas interdependientes, la regla se generaliza sustituyendo las elasticidades propias por superelasticidades que recogen los efectos cruzados.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Que el monopolio sea sostenible depende a la vez de factores tecnológicos y de demanda. La subaditividad lo justifica por la eficiencia productiva, pero no le asegura sobrevivir sin protección frente a los entrantes.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Para que no todo el excedente acabe en la empresa, Loeb y Magat proponen combinar el mecanismo con una subasta previa de la franquicia que devuelva al sector público, por adelantado, el valor de esas rentas.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>La referencia original es Laffont y Tirole (1986). La síntesis general es su tratado <em>A Theory of Incentives in Procurement and Regulation</em> (1993).<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>El regulador debe resolver aquí una disyuntiva delicada. Un canon alto actúa como barrera a la entrada y refuerza el poder de mercado del propietario de la red, mientras que un canon bajo genera una entrada excesiva e ineficiente y desincentiva la inversión en la red. La regla de referencia es la del componente eficiente (<em>efficient component pricing rule</em>, ECPR; Willig, 1979; Baumol, 1983), según la cual el precio de acceso, <span class="math inline">\(a\)</span>, iguala el coste directo de proporcionarlo, <span class="math inline">\(c_a\)</span>, más el coste de oportunidad del propietario de la red, es decir, el margen que deja de ganar por cada unidad que vende el entrante, de modo que <span class="math inline">\(a = c_a + (p - c)\)</span>, donde <span class="math inline">\(p\)</span> es el precio final y <span class="math inline">\(c\)</span> el coste marginal total del propietario. Con ella solo entran los competidores más eficientes que él en el servicio final, pero exige un producto homogéneo y un precio final ya regulado, pues en otro caso preserva el margen de monopolio. Por eso los reguladores europeos suelen fijar el acceso según los costes incrementales a largo plazo (LRIC, por <em>long-run incremental cost</em>).<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>La fórmula admite grados, según quién gobierne la entidad. Cuando manda el regulador, funciona casi como una regulación del acceso. Con representantes de las empresas en su gobierno, se parece a la propiedad compartida, y con plena independencia, a la separación de la propiedad.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Para Olson (1965), la presión (<em>lobby</em>) es un bien público para quienes comparten el interés defendido y, por tanto, incentiva el <em>free riding</em>, más fácil de contener en los grupos pequeños.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Tullock (1967) identificó los elementos del concepto, si bien el término lo acuñó Anne Krueger (1974) en <em>The Political Economy of the Rent-Seeking Society</em>.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>La captura se manifiesta, por ejemplo, en normas que debilitan los controles, procedimientos sancionadores deliberadamente complicados o cláusulas favorables en los contratos públicos.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script>
+// Gráficos del libro (iframes .graph-frame).
+// 1) Escala única: los grosores, los discontinuos y el tamaño de los puntos de cada figura están fijados para verla a 680 px
+//    de ancho. Los marcos anchos (figuras de varios paneles) se estiran hasta la columna y las pantallas estrechas las encogen; aquí se
+//    compensa para que en pantalla las curvas midan siempre lo mismo (2,2 px las económicas, 1,4 las auxiliares, 1,2 ejes y flechas,
+//    0,8 las guías) y los puntos tengan el mismo tamaño en todas las figuras, sea cual sea el ancho al que se muestren.
+// 2) Ajusta la altura de cada iframe al elemento dibujado más bajo (curvas, ejes, etiquetas KaTeX).
+(function () {
+  var REF = 680;
+  function norm(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var s = d.querySelector("svg"); if (!s) return;
+      var w = s.getBoundingClientRect().width; if (!(w > 0)) return;
+      var r = REF / w;
+      var els = s.querySelectorAll("path, line, polyline, polygon, rect, circle, ellipse");
+      els.forEach(function (el) {
+        var cs = d.defaultView.getComputedStyle(el);
+        if (el.dataset.sw0 === undefined) {
+          el.dataset.sw0 = parseFloat(cs.strokeWidth) || 0;
+          el.dataset.da0 = (cs.strokeDasharray && cs.strokeDasharray !== "none") ? cs.strokeDasharray : "";
+          if (el.tagName.toLowerCase() === "circle" && el.r && el.r.baseVal.value > 0 && el.r.baseVal.value <= 9) {
+            el.dataset.r0 = el.r.baseVal.value;
+          }
+        }
+        var sw0 = +el.dataset.sw0;
+        if (sw0 > 0) el.style.strokeWidth = (sw0 * r).toFixed(3) + "px";
+        if (el.dataset.da0) {
+          el.style.strokeDasharray = el.dataset.da0.split(/[ ,]+/).map(function (v) {
+            return (parseFloat(v) * r).toFixed(3) + "px";
+          }).join(" ");
+        }
+        if (el.dataset.r0) el.setAttribute("r", (+el.dataset.r0 * r).toFixed(3));
+      });
+    } catch (e) {}
+  }
+  function fit(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var sy = d.defaultView.scrollY || 0, bottom = 0;
+      var els = d.querySelectorAll("svg path, svg line, svg circle, svg polyline, svg polygon, svg rect, svg text, svg ellipse, .katex-label");
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width > 0 || r.height > 0) bottom = Math.max(bottom, r.bottom + sy);
+      });
+      if (!(bottom > 20)) {
+        var svg = d.querySelector("svg"); var vb = svg && svg.getAttribute("viewBox");
+        if (vb) { var p = vb.split(/\s+/); bottom = f.clientWidth * (+p[3]) / (+p[2]); }
+      }
+      if (bottom > 20) f.style.height = Math.ceil(bottom + 10) + "px";
+    } catch (e) {}
+  }
+  // 3) Un gráfico de varios paneles no se amplía por encima del 110 % de su ancho de dibujo (viewBox). Los dibujados a
+  //    680 px quedan en 748 px como máximo, con rótulos de tamaño normal; los de 900 o 960 px, en el tope de 900 px del CSS.
+  function cap(f) {
+    try {
+      if (!f.parentElement || !f.parentElement.classList.contains("wide")) return;
+      var s = f.contentDocument && f.contentDocument.querySelector("svg"); if (!s) return;
+      var vb = s.viewBox && s.viewBox.baseVal; if (!vb || !(vb.width > 0)) return;
+      var m = Math.min(900, Math.round(vb.width * 1.1)) + "px";
+      if (f.style.maxWidth !== m) f.style.maxWidth = m;
+    } catch (e) {}
+  }
+  function both(f) { cap(f); norm(f); fit(f); }
+  function all() { document.querySelectorAll(".graph-frame iframe").forEach(both); }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".graph-frame iframe").forEach(function (f) {
+      f.addEventListener("load", function () { both(f); setTimeout(function () { both(f); }, 700); });
+    });
+  });
+  window.addEventListener("load", function () { setTimeout(all, 1200); });
+  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(all, 150); });
+})();
+</script>
+<style>
+.graph-frame { margin: 1.25rem 0 0.25rem; }
+.quarto-figure .graph-frame + * { margin-top: 0; }
+</style>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/librovol1\.arturolorenzo\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/a19-oligopolio.html" class="pagination-link" aria-label="A19. Oligopolio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">A19. Oligopolio</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/a21-equilibrio-general.html" class="pagination-link" aria-label="A21. Equilibrio general">
+        <span class="nav-page-text"><span class="chapter-title">A21. Equilibrio general</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
