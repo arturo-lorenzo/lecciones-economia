@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+  .katex-label .katex { font-size: 1em; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <line x1="120" y1="460" x2="560" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="120" y1="460" x2="120" y2="50"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <g id="guides" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"></g>
+    <g id="ticks" stroke="black" stroke-width="1"></g>
+
+    <line id="segB" stroke="#D85A30" stroke-width="4" stroke-opacity="0.45" stroke-linecap="butt"/>
+    <line id="segA" stroke="#1D9E75" stroke-width="4" stroke-opacity="0.45" stroke-linecap="butt"/>
+
+    <line id="lp" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+
+    <line id="cp" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+    <g id="dots"></g>
+  </svg>
+</div>
+<script>
+
+
+
+
+const VBW = 680, VBH = 500, OX = 120, OY = 460;
+const kP = 0.8, s = 0.4, YP = 100;
+const X = y => OX + y * 2.55 * 440 / 500;
+const Yc = c => OY - c * 2.45;
+const LP = y => kP * y, CP = y => kP * YP + s * (y - YP);
+const YtB = 40, YBP = 70, YAP = 130, YtA = 160;
+const $ = id => document.getElementById(id);
+const NS = 'http://www.w3.org/2000/svg';
+function seg(id, x1, y1, x2, y2) { const e = $(id); e.setAttribute('x1', x1); e.setAttribute('y1', y1); e.setAttribute('x2', x2); e.setAttribute('y2', y2); }
+function add(g, x1, y1, x2, y2) { const e = document.createElementNS(NS, 'line'); e.setAttribute('x1', x1); e.setAttribute('y1', y1); e.setAttribute('x2', x2); e.setAttribute('y2', y2); $(g).appendChild(e); }
+function dot(x, y, r, c) { const e = document.createElementNS(NS, 'circle'); e.setAttribute('cx', x); e.setAttribute('cy', y); e.setAttribute('r', r); e.setAttribute('fill', c); $('dots').appendChild(e); }
+
+seg('lp', X(0), Yc(0), X(180), Yc(LP(180)));
+seg('cp', X(15), Yc(CP(15)), X(185), Yc(CP(185)));
+seg('segB', X(YtB), Yc(LP(YtB)), X(YtB), Yc(CP(YtB)));
+seg('segA', X(YtA), Yc(CP(YtA)), X(YtA), Yc(LP(YtA)));
+
+
+add('guides', X(YtB), OY, X(YtB), Yc(LP(YtB)));
+add('guides', X(YBP), OY, X(YBP), Yc(LP(YBP)));
+add('guides', X(YP),  OY, X(YP),  Yc(LP(YP)));
+add('guides', X(YAP), OY, X(YAP), Yc(LP(YAP)));
+add('guides', X(YtA), OY, X(YtA), Yc(CP(YtA)));
+
+add('guides', OX, Yc(LP(YBP)), X(YBP), Yc(LP(YBP)));
+add('guides', OX, Yc(LP(YAP)), X(YtA), Yc(LP(YAP)));
+[YtB, YBP, YP, YAP, YtA].forEach(y => add('ticks', X(y), OY, X(y), OY + 4));
+[LP(YBP), LP(YAP)].forEach(c => add('ticks', OX - 4, Yc(c), OX, Yc(c)));
+
+const O = '#D85A30';
+dot(X(YBP), Yc(LP(YBP)), 3, '#666'); dot(X(YAP), Yc(LP(YAP)), 3, '#666'); dot(X(YP), Yc(LP(YP)), 3.5, '#333');
+dot(X(YtB), Yc(CP(YtB)), 5, O); dot(X(YtB), Yc(LP(YtB)), 5, O);
+dot(X(YtA), Yc(CP(YtA)), 5, O); dot(X(YtA), Yc(LP(YtA)), 5, O);
+
+
+function put(id, tex, x, y, o = {}) {
+  const cont = document.querySelector('.graph-container');
+  const e = document.createElement('div');
+  e.className = 'katex-label'; e.id = id;
+  katex.render(tex, e, {throwOnError: false});
+  e.style.left = (x/VBW*100).toFixed(2) + '%';
+  e.style.top = (y/VBH*100).toFixed(2) + '%';
+  e.style.color = o.c || 'black';
+  if (o.s) e.style.fontSize = o.s + 'px';
+  const tx = {l: '0', c: '-50%', r: '-100%'}[o.ha || 'l'], ty = {t: '0', m: '-50%', b: '-100%'}[o.va || 't'];
+  e.style.transform = `translate(${tx},${ty})`;
+  cont.appendChild(e);
+}
+const Bl = '#378ADD', P = '#534AB7';
+put('lbl-Y', 'Y', OX + 448, 460, {va: 'm', s: 18});
+put('lbl-C', 'C', OX - 8, 58, {ha: 'r', s: 18});
+put('lbl-O', 'O', OX - 8, 466, {ha: 'r'});
+put('lbl-lp', 'C^{\\text{LP}} = k_P Y^P', X(180), Yc(LP(180)) - 8, {ha: 'c', va: 'b', c: Bl});
+put('lbl-cp', 'C^{\\text{CP}}', X(185) + 6, Yc(CP(185)), {va: 'm', c: P});
+put('lbl-YtB', 'Y_t^B', X(YtB), 468, {ha: 'c', s: 15});
+put('lbl-YBP', 'Y_B^P', X(YBP), 468, {ha: 'c', s: 15});
+put('lbl-YP',  'Y^P',   X(YP),  468, {ha: 'c', s: 15});
+put('lbl-YAP', 'Y_A^P', X(YAP), 468, {ha: 'c', s: 15});
+put('lbl-YtA', 'Y_t^A', X(YtA), 468, {ha: 'c', s: 15});
+put('lbl-cB', 'k_P Y_B^P', OX - 8, Yc(LP(YBP)), {ha: 'r', va: 'm', s: 15});
+put('lbl-cA', 'k_P Y_A^P', OX - 8, Yc(LP(YAP)), {ha: 'r', va: 'm', s: 15});
+put('lbl-B3', "B'''", X(YtB) - 6, Yc(CP(YtB)) - 6, {ha: 'r', va: 'b', c: O});
+put('lbl-B2', "B''", X(YtB) + 7, Yc(LP(YtB)) + 6, {va: 't', c: O});
+put('lbl-A3', "A'''", X(YtA) + 7, Yc(CP(YtA)) + 6, {va: 't', c: O});
+put('lbl-A2', "A''", X(YtA) - 7, Yc(LP(YtA)) - 6, {ha: 'r', va: 'b', c: O});
+put('lbl-desah', '\\text{desahorro}', X(YtB) - 8, (Yc(CP(YtB)) + Yc(LP(YtB))) / 2 + 14, {ha: 'r', va: 'm', c: O, s: 13});
+put('lbl-ahorro', '\\text{ahorro}', X(YtA) + 8, (Yc(CP(YtA)) + Yc(LP(YtA))) / 2 - 12, {va: 'm', c: '#0F6E56', s: 13});
+</script>
+</body>
+</html>

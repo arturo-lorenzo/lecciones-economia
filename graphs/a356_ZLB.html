@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: none; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 470" xmlns="http://www.w3.org/2000/svg">
+
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+    <path id="gap" fill="rgba(29,158,117,0.15)" stroke="none"/>
+
+    <line x1="70" y1="320" x2="325" y2="320" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="70" y1="410" x2="70" y2="50" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <path id="Lneg" fill="none" stroke="#888" stroke-width="2.2" stroke-dasharray="6 4" stroke-linecap="round"/>
+    <line id="sup0" stroke="#1D9E75" stroke-width="2.2"/>
+    <line id="sup1" stroke="#1D9E75" stroke-width="2.2" stroke-dasharray="7 4"/>
+    <path id="Lpos" fill="none" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+    <line id="Lflat" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+    <line id="dM" stroke="#0F6E56" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <line x1="395" y1="320" x2="645" y2="320" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="395" y1="410" x2="395" y2="50" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <path id="istarL" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="istarNeg" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="6 4"/>
+    <path id="istarR" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <line id="izlb" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+    <g id="points"></g>
+  </svg>
+</div>
+<script>
+const VBW = 680, VBH = 470, NS = 'http://www.w3.org/2000/svg', Y0 = 320;
+const $ = id => document.getElementById(id);
+function setL(id, x1, y1, x2, y2) { const e = $(id); e.setAttribute('x1', x1); e.setAttribute('y1', y1); e.setAttribute('x2', x2); e.setAttribute('y2', y2); }
+function mk(tag, at, par) { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); par.appendChild(e); return e; }
+const path = (f, a, b, n) => { const r = []; for (let k = 0; k <= n; k++) { const x = a + (b - a) * k / n; r.push(x.toFixed(1) + ',' + f(x).toFixed(1)); } return 'M' + r.join(' L'); };
+
+const Lraw = x => 260 * Math.exp(-(x - 80) / 45) - 40;
+const xZ = 80 + 45 * Math.log(260 / 40);
+const yL = x => Y0 - Lraw(x);
+$('Lpos').setAttribute('d', path(yL, 82, xZ, 150));
+setL('Lflat', xZ, Y0, 312, Y0);
+$('Lneg').setAttribute('d', path(yL, xZ, 300, 100));
+const xS0 = 196, xS1 = 282;
+setL('sup0', xS0, Y0, xS0, 78);
+setL('sup1', xS1, Y0, xS1, 78);
+setL('dM', xS0 + 6, 200, xS1 - 6, 200);
+
+const toX = t => 395 + t * 25, toY = i => Y0 - i * 38;
+const m = 4, wL = 2, wR = 3.5, depth = 2;
+const istar = t => depth * Math.pow((t - m) / (t < m ? wL : wR), 2) - depth;
+const t1 = m - wL, t2 = m + wR, tS = 0.3, tE = 9.4;
+function segT(a, b) { const r = []; for (let k = 0; k <= 200; k++) { const t = a + (b - a) * k / 200; r.push(toX(t).toFixed(1) + ',' + toY(istar(t)).toFixed(1)); } return r; }
+$('istarL').setAttribute('d', 'M' + segT(tS, t1).join(' L'));
+$('istarNeg').setAttribute('d', 'M' + segT(t1, t2).join(' L'));
+$('istarR').setAttribute('d', 'M' + segT(t2, tE).join(' L'));
+$('gap').setAttribute('d', 'M' + toX(t1).toFixed(1) + ',' + Y0 + ' L' + segT(t1, t2).join(' L') + ' L' + toX(t2).toFixed(1) + ',' + Y0 + ' Z');
+setL('izlb', toX(t1), Y0, toX(t2), Y0);
+const P = $('points');
+mk('circle', {cx: xS0, cy: Y0, r: 5, fill: '#000'}, P);
+mk('circle', {cx: xS1, cy: Y0, r: 5, fill: '#000'}, P);
+mk('circle', {cx: toX(t1), cy: Y0, r: 4.5, fill: '#D85A30'}, P);
+mk('circle', {cx: toX(t2), cy: Y0, r: 4.5, fill: '#D85A30'}, P);
+
+const labels = [
+ {tex: 'i', x: 62, y: 48, anchor: 'rt', color: 'black', size: 17},
+ {tex: '0', x: 62, y: Y0, anchor: 'rm', color: 'black', size: 16},
+ {tex: 'M/P', x: 325, y: Y0 + 8, anchor: 'ct', color: 'black', size: 17},
+ {tex: 'L(Y_0, i)', x: 92, y: yL(92) - 4, anchor: 'lb', color: '#378ADD', size: 16},
+ {tex: 'M_0^s/P', x: xS0, y: 72, anchor: 'cb', color: '#1D9E75', size: 16},
+ {tex: 'M_1^s/P', x: xS1 + 4, y: 72, anchor: 'cb', color: '#1D9E75', size: 16},
+ {tex: '\\Delta M^s > 0', x: (xS0 + xS1) / 2, y: 192, anchor: 'cb', color: '#0F6E56', size: 14},
+ {tex: '0', x: xS0 - 6, y: Y0 - 6, anchor: 'rb', color: '#000', size: 16},
+ {tex: '1', x: xS1 + 6, y: Y0 - 6, anchor: 'lb', color: '#000', size: 16},
+ {tex: '\\text{sin efectivo}', x: 300, y: yL(300) + 8, anchor: 'rt', color: '#5a5a5a', size: 13},
+ {tex: '\\text{(a)}', x: 197.5, y: 440, anchor: 'ct', color: '#444', size: 15},
+ {tex: 'i', x: 387, y: 48, anchor: 'rt', color: 'black', size: 17},
+ {tex: '0', x: 387, y: Y0, anchor: 'rm', color: 'black', size: 16},
+ {tex: 't', x: 645, y: Y0 + 8, anchor: 'ct', color: 'black', size: 17},
+ {tex: 'i^{T}(t)', x: toX(tE) + 2, y: toY(istar(tE)) - 6, anchor: 'cb', color: '#1D9E75', size: 16},
+ {tex: 'i=0\\ \\text{(ZLB)}', x: (toX(t1) + toX(t2)) / 2, y: Y0 - 8, anchor: 'cb', color: '#378ADD', size: 15},
+ {tex: '\\text{estímulo}', x: toX(4.5), y: Y0 + 9, anchor: 'ct', color: '#0F6E56', size: 13},
+ {tex: '\\text{no aplicado}', x: toX(4.5), y: Y0 + 26, anchor: 'ct', color: '#0F6E56', size: 13},
+ {tex: 't_1', x: toX(t1) - 6, y: Y0 + 8, anchor: 'rt', color: 'black', size: 15},
+ {tex: 't_2', x: toX(t2) + 6, y: Y0 + 8, anchor: 'lt', color: 'black', size: 15},
+ {tex: '\\text{(b)}', x: 520, y: 440, anchor: 'ct', color: '#444', size: 15}
+];
+const TX = {l: '0', c: '-50%', r: '-100%'}, TY = {t: '0', m: '-50%', b: '-100%'};
+const C = document.querySelector('.graph-container');
+labels.forEach(l => {
+  const el = document.createElement('div'); el.className = 'katex-label'; C.appendChild(el);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = (l.x / VBW * 100).toFixed(2) + '%';
+  el.style.top = (l.y / VBH * 100).toFixed(2) + '%';
+  el.style.color = l.color || 'black';
+  el.style.fontSize = (l.size || 16) + 'px';
+  const a = l.anchor || 'lt';
+  el.style.transform = 'translate(' + TX[a[0]] + ',' + TY[a[1]] + ')';
+});
+</script>
+</body>
+</html>

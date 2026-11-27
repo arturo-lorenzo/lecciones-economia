@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 500">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="100" y1="300" x2="620" y2="300" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="100" y1="440" x2="100" y2="60"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <path id="exp-path" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line x1="280" y1="300" x2="280" y2="150" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line x1="430" y1="300" x2="430" y2="150" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+
+
+    <line x1="184" y1="335" x2="276" y2="335" stroke="#888" stroke-width="1"
+          marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+    <line x1="184" y1="380" x2="426" y2="380" stroke="#888" stroke-width="1"
+          marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+
+    <line x1="180" y1="296" x2="180" y2="304" stroke="black" stroke-width="1"/>
+    <line x1="280" y1="296" x2="280" y2="304" stroke="black" stroke-width="1"/>
+    <line x1="430" y1="296" x2="430" y2="304" stroke="black" stroke-width="1"/>
+
+  </svg>
+
+  <div class="katex-label" id="lbl-t"></div>
+  <div class="katex-label" id="lbl-exp"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-t0"></div>
+  <div class="katex-label" id="lbl-t1"></div>
+  <div class="katex-label" id="lbl-t2"></div>
+  <div class="katex-label" id="lbl-dd"></div>
+  <div class="katex-label" id="lbl-di"></div>
+  <div class="katex-label" id="lbl-est"></div>
+  <div class="katex-label" id="lbl-imp"></div>
+
+</div>
+
+<script>
+
+
+
+
+
+
+
+
+
+const AXIS = 300, PLATEAU = 150, NEG = 380;
+const t1 = 280, tRise = 350, t2 = 430, tFall = 545, tEnd = 585;
+
+function ease(a, b, u) { return a + (b - a) * (1 - Math.cos(Math.PI * u)) / 2; }
+
+const pts = [];
+for (let x = 100; x <= tEnd; x += 2) {
+  let y;
+  if (x <= t1) y = AXIS;
+  else if (x <= tRise) y = ease(AXIS, PLATEAU, (x - t1) / (tRise - t1));
+  else if (x <= t2) y = PLATEAU;
+  else if (x <= tFall) y = ease(PLATEAU, NEG, (x - t2) / (tFall - t2));
+  else y = NEG;
+  pts.push(x.toFixed(1) + ',' + y.toFixed(1));
+}
+document.getElementById('exp-path').setAttribute('d', 'M' + pts.join(' L'));
+
+const W = 680, H = 500;
+function pct(v, t) { return (v / t * 100).toFixed(2) + '%'; }
+const labels = [
+  {id: 'lbl-t',   tex: 't',                               x: 624, y: 300, a: 'lm', s: '17px'},
+  {id: 'lbl-exp', tex: '\\text{BC}^A',                     x: 92,  y: 56,  a: 'rt', s: '17px'},
+  {id: 'lbl-o',   tex: 'O',                                x: 94,  y: 306, a: 'rt'},
+  {id: 'lbl-t0',  tex: 't_0',                              x: 180, y: 309, a: 'ct', s: '15px'},
+  {id: 'lbl-t1',  tex: 't_1',                              x: 280, y: 309, a: 'ct', s: '15px'},
+  {id: 'lbl-t2',  tex: 't_2',                              x: 430, y: 309, a: 'ct', s: '15px'},
+  {id: 'lbl-dd',  tex: '\\text{Desfase de demanda}',       x: 230, y: 342, a: 'ct', c: '#666', s: '15px'},
+  {id: 'lbl-di',  tex: '\\text{Desfase de imitación}',     x: 305, y: 387, a: 'ct', c: '#666', s: '15px'},
+  {id: 'lbl-est', tex: '\\text{Estandarización}',          x: 448, y: 140, a: 'lb', c: '#0F6E56', s: '15px'},
+  {id: 'lbl-imp', tex: '\\text{A importador}',             x: 565, y: 390, a: 'ct', c: '#0F6E56', s: '15px'}
+];
+const cont = document.querySelector('.graph-container');
+labels.forEach(l => {
+  let e = document.getElementById(l.id);
+  if (!e) { e = document.createElement('div'); e.className = 'katex-label'; e.id = l.id; cont.appendChild(e); }
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = pct(l.x, W); e.style.top = pct(l.y, H);
+  e.style.color = l.c || 'black'; e.style.fontSize = l.s || '16px';
+  const a = l.a || 'lt';
+  e.style.transform = `translate(${{l: 0, c: -50, r: -100}[a[0]]}%, ${{t: 0, m: -50, b: -100}[a[1]]}%)`;
+});
+</script>
+</body>
+</html>

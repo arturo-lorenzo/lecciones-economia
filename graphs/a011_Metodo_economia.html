@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  body { margin: 0; }
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg id="g" viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+</svg>
+</div>
+<script>
+const W = 680, H = 500;
+const svg = document.getElementById('g'), NS = 'http://www.w3.org/2000/svg';
+function el(tag, a) { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); svg.appendChild(e); return e; }
+const BLUE = '#378ADD', BLUE_D = '#185FA5', GREEN = '#1D9E75', GREEN_D = '#0F6E56', GRAY = '#5a5a5a';
+
+const BX = {
+  R: {c: [340, 62], w: 200, h: 46, col: BLUE},
+  M: {c: [150, 250], w: 190, h: 58, col: BLUE},
+  B: {c: [530, 250], w: 190, h: 46, col: GREEN},
+  S: {c: [340, 438], w: 200, h: 46, col: GREEN},
+};
+for (const k in BX) { const b = BX[k];
+  el('rect', {x: b.c[0] - b.w / 2, y: b.c[1] - b.h / 2, width: b.w, height: b.h, rx: 7, fill: b.col, 'fill-opacity': 0.10, stroke: b.col, 'stroke-width': 1.4}); }
+
+function edge(b, to) { const [cx, cy] = b.c, dx = to[0] - cx, dy = to[1] - cy;
+  const t = Math.min((b.w / 2 + 6) / Math.abs(dx || 1e-9), (b.h / 2 + 6) / Math.abs(dy || 1e-9)); return [cx + dx * t, cy + dy * t]; }
+function arrow(a, b, col, opts = {}) { const p = edge(BX[a], BX[b].c), q = edge(BX[b], BX[a].c);
+  return el('line', Object.assign({x1: p[0].toFixed(1), y1: p[1].toFixed(1), x2: q[0].toFixed(1), y2: q[1].toFixed(1), stroke: col, 'stroke-width': 1.6, 'marker-end': 'url(#arrow)'}, opts)); }
+arrow('R', 'M', GRAY);
+arrow('R', 'B', GRAY);
+arrow('M', 'S', GRAY);
+arrow('S', 'B', GRAY, {'marker-start': 'url(#arrow)'});
+
+(function () { const p = edge(BX.S, BX.M.c), q = edge(BX.M, BX.S.c), dx = q[0] - p[0], dy = q[1] - p[1], n = Math.hypot(dx, dy);
+  const ox = -dy / n * 26, oy = dx / n * 26;
+  el('line', {x1: (p[0] + ox).toFixed(1), y1: (p[1] + oy).toFixed(1), x2: (q[0] + ox).toFixed(1), y2: (q[1] + oy).toFixed(1), stroke: '#888', 'stroke-width': 1.2, 'stroke-dasharray': '6 4', 'marker-end': 'url(#arrow)'}); })();
+
+
+const L = (t, x, y, a, c, s) => ({t, x: 100 * x / W, y: 100 * y / H, a, c, s});
+const LABELS = [
+  L('\\text{Realidad económica}', 340, 62, '-50%,-50%', BLUE_D, 16),
+  L('\\text{Hipótesis, teorías}', 150, 241, '-50%,-50%', BLUE_D, 16),
+  L('\\text{y modelos}', 150, 262, '-50%,-50%', BLUE_D, 16),
+  L('\\text{Base empírica}', 530, 250, '-50%,-50%', GREEN_D, 16),
+  L('\\text{Resultados}', 340, 438, '-50%,-50%', GREEN_D, 16),
+
+  L('\\textbf{Abstracción}', 222, 106, '-100%,-50%', '#000', 15),
+  L('\\text{individualismo}', 222, 126, '-100%,-50%', GRAY, 13),
+  L('\\text{metodológico,}', 222, 143, '-100%,-50%', GRAY, 13),
+  L('\\text{microfundamentación}', 222, 160, '-100%,-50%', GRAY, 13),
+
+  L('\\textbf{Medición}', 458, 106, '0,-50%', '#000', 15),
+  L('\\text{estadística,}', 458, 126, '0,-50%', GRAY, 13),
+  L('\\text{muestreo de datos,}', 458, 143, '0,-50%', GRAY, 13),
+  L('\\text{grandes datos (\\textit{big data})}', 458, 160, '0,-50%', GRAY, 13),
+
+  L('\\textbf{Aplicación y predicción}', 222, 330, '-100%,-50%', '#000', 15),
+  L('\\text{series temporales (VAR),}', 222, 350, '-100%,-50%', GRAY, 13),
+  L('\\text{regresión (MCO),}', 222, 367, '-100%,-50%', GRAY, 13),
+  L('\\text{aprendizaje automático,}', 222, 384, '-100%,-50%', GRAY, 13),
+  L('\\text{inferencia bayesiana,}', 222, 401, '-100%,-50%', GRAY, 13),
+  L('\\text{simulación (Montecarlo)}', 222, 418, '-100%,-50%', GRAY, 13),
+
+  L('\\textbf{Contrastación}', 458, 346, '0,-50%', '#000', 15),
+  L('\\text{econometría}', 458, 366, '0,-50%', GRAY, 13),
+
+  L('\\text{si la contrastación falla,}', 340, 238, '-50%,-50%', '#888', 13),
+  L('\\text{se revisan las hipótesis}', 340, 256, '-50%,-50%', '#888', 13),
+];
+const box = document.querySelector('.graph-container');
+LABELS.forEach((Lb, i) => {
+  const e = document.createElement('div');
+  e.className = 'katex-label'; e.id = 'lbl-' + i;
+  katex.render(Lb.t, e, {throwOnError: false});
+  e.style.left = Lb.x + '%'; e.style.top = Lb.y + '%';
+  e.style.transform = 'translate(' + Lb.a + ')';
+  e.style.color = Lb.c;
+  if (Lb.s) e.style.fontSize = Lb.s + 'px';
+  box.appendChild(e);
+});
+</script>
+</body>
+</html>

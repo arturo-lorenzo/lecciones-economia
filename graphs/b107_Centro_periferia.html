@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+
+    <rect id="band" fill="rgba(136,136,136,0.10)" stroke="none"/>
+
+    <line id="gS" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="gB" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="g1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="gh1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="ax-x" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="ax-y" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <line id="symS" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <line id="symU" stroke="#1D9E75" stroke-width="2.2" stroke-dasharray="8 5"/>
+
+    <line id="agg1" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+    <line id="agg0" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+
+    <path id="brU" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-dasharray="8 5"/>
+    <path id="brD" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-dasharray="8 5"/>
+
+    <line id="legS" stroke="black" stroke-width="2.2" stroke-linecap="round"/>
+    <line id="legU" stroke="black" stroke-width="2.2" stroke-dasharray="8 5"/>
+    <g id="ticks" stroke="black" stroke-width="1"></g>
+  </svg>
+  <div id="labels"></div>
+</div>
+<script>
+const VBW = 680, VBH = 500;
+
+
+const OX = 112, OY = 450;
+const X = p => OX + 390 * p, Y = l => OY - 310 * l;
+
+const PS = 0.38, PB = 0.64;
+
+
+const U = [1.0, 0.9982, 0.9929, 0.984, 0.9716, 0.9558, 0.9365, 0.9138, 0.8878, 0.8585, 0.826, 0.7904, 0.7518, 0.7102,
+           0.6657, 0.6184, 0.5683, 0.5155, 0.4601, 0.4021, 0.3415, 0.2783, 0.2127, 0.1444, 0.0735, 0.0];
+
+function main() {
+  set('band', {x: X(PS), y: 80, width: X(PB) - X(PS), height: OY - 80});
+  set('ax-x', {x1: OX, y1: OY, x2: OX + 418, y2: OY});
+  set('ax-y', {x1: OX, y1: OY, x2: OX, y2: OY - 380});
+  set('gS', {x1: X(PS), y1: OY, x2: X(PS), y2: 80});
+  set('gB', {x1: X(PB), y1: OY, x2: X(PB), y2: 80});
+  set('g1', {x1: X(1), y1: OY, x2: X(1), y2: Y(1)});
+  set('gh1', {x1: OX, y1: Y(1), x2: X(PS), y2: Y(1)});
+  seg('symS', [0, 0.5], [PB, 0.5]);
+  seg('symU', [PB, 0.5], [1, 0.5]);
+  seg('agg1', [PS, 1], [1, 1]);
+  seg('agg0', [PS, 0], [1, 0]);
+  const up = U.map((u, i) => [PS + u * (PB - PS), 0.5 + i * 0.02]);
+  pathPts('brU', up);
+  pathPts('brD', up.map(([p, l]) => [p, 1 - l]));
+
+  set('legS', {x1: 520, y1: 196, x2: 552, y2: 196});
+  set('legU', {x1: 520, y1: 224, x2: 552, y2: 224});
+  tick(X(PS), OY, X(PS), OY + 4); tick(X(PB), OY, X(PB), OY + 4); tick(X(1), OY, X(1), OY + 4);
+  tick(OX - 4, Y(0.5), OX, Y(0.5)); tick(OX - 4, Y(1), OX, Y(1));
+  const tB = '\\begin{matrix}\\text{%1}\\\\[-2pt]\\text{%2}\\end{matrix}';
+  render([
+    {tex: '\\varphi', left: OX + 424, top: OY - 10, size: 17},
+    {tex: '\\lambda', left: OX - 8, top: OY - 386, size: 17, align: 'right'},
+    {tex: 'O', left: OX - 8, top: OY + 6, size: 16, align: 'right'},
+    {tex: '\\varphi_S', left: X(PS), top: OY + 8, size: 16, center: true},
+    {tex: '\\varphi_B', left: X(PB), top: OY + 8, size: 16, center: true},
+    {tex: '1', left: X(1), top: OY + 8, size: 16, center: true},
+    {tex: '\\tfrac{1}{2}', left: OX - 8, top: Y(0.5) - 13, size: 16, align: 'right'},
+    {tex: '1', left: OX - 8, top: Y(1) - 9, size: 16, align: 'right'},
+    {tex: tB.replace('%1', 'Simetría').replace('%2', 'estable'), left: (X(0) + X(PS)) / 2, top: 92, size: 14, center: true, color: '#555'},
+    {tex: tB.replace('%1', 'Equilibrios').replace('%2', 'múltiples'), left: (X(PS) + X(PB)) / 2, top: 92, size: 14, center: true, color: '#555'},
+    {tex: tB.replace('%1', 'Simetría').replace('%2', 'inestable'), left: (X(PB) + X(1)) / 2, top: 92, size: 14, center: true, color: '#555'},
+    {tex: '\\text{estable}', left: 560, top: 189, size: 14},
+    {tex: '\\text{inestable}', left: 560, top: 217, size: 14}
+  ]);
+}
+
+function set(id, a) { const e = document.getElementById(id); for (const k in a) e.setAttribute(k, a[k]); }
+function seg(id, a, b) { set(id, {x1: X(a[0]), y1: Y(a[1]), x2: X(b[0]), y2: Y(b[1])}); }
+function pathPts(id, pts) { set(id, {d: 'M' + pts.map(([p, l]) => X(p).toFixed(1) + ',' + Y(l).toFixed(1)).join(' L')}); }
+const tk = document.getElementById('ticks');
+function tick(x1, y1, x2, y2) { const l = document.createElementNS('http://www.w3.org/2000/svg', 'line'); l.setAttribute('x1', x1); l.setAttribute('y1', y1); l.setAttribute('x2', x2); l.setAttribute('y2', y2); tk.appendChild(l); }
+const pw = v => (v / VBW * 100).toFixed(1) + '%', ph = v => (v / VBH * 100).toFixed(1) + '%';
+function render(labels) {
+  const box = document.getElementById('labels');
+  labels.forEach((l, i) => {
+    const el = document.createElement('div');
+    el.className = 'katex-label'; el.id = l.id || ('lbl-' + i);
+    box.appendChild(el);
+    katex.render(l.tex, el, {throwOnError: false});
+    el.style.left = pw(l.left); el.style.top = ph(l.top);
+    el.style.fontSize = (l.size || 16) + 'px';
+    el.style.color = l.color || 'black';
+    if (l.center) el.style.transform = 'translateX(-50%)';
+    if (l.align === 'right') el.style.transform = 'translateX(-100%)';
+    if (l.bg) { el.style.background = '#fff'; const k = el.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  });
+}
+
+main();
+</script>
+</body>
+</html>

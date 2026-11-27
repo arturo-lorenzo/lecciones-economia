@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  body { margin: 0; }
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg id="g" viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+</svg>
+</div>
+<script>
+const W = 680, H = 480;
+const X0 = 120, Y0 = 430, SX = 37.3, SY = 36;
+const px = a1 => X0 + SX * a1, py = a2 => Y0 - SY * a2;
+const svg = document.getElementById('g'), NS = 'http://www.w3.org/2000/svg';
+function el(tag, attrs) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+const f1 = v => v.toFixed(1);
+
+
+const A = [2, 8], B = [6, 6], C = [9, 2];
+
+const acAtB = A[1] + (C[1] - A[1]) * (B[0] - A[0]) / (C[0] - A[0]);
+if (!(B[1] > acAtB)) console.error('frontera no cóncava');
+
+
+const G = 5;
+const sAB = (B[1] - A[1]) / (B[0] - A[0]);
+
+const T1 = (A[1] - sAB * A[0] - G) / (-2 * sAB);
+const T = [T1, A[1] + sAB * (T1 - A[0])];
+const u0 = T[0] * (T[1] - G);
+if (!(T[0] > A[0] && T[0] < B[0])) console.error('tangencia fuera del tramo');
+const ic = a1 => G + u0 / a1;
+
+for (let a = 0.5; a <= 11; a += 0.01) {
+  let fr = a <= A[0] ? null : a <= B[0] ? A[1] + sAB * (a - A[0]) : a <= C[0] ? B[1] + (C[1] - B[1]) * (a - B[0]) / (C[0] - B[0]) : null;
+  if (fr !== null && Math.abs(a - T[0]) > 0.02 && ic(a) <= fr) console.error('la indiferencia corta la frontera en', a);
+}
+
+
+el('polygon', {points: [[0,0], A, B, C].map(p => f1(px(p[0])) + ',' + f1(py(p[1]))).join(' '), fill: '#378ADD', 'fill-opacity': 0.08, stroke: 'none'});
+
+
+el('line', {x1: X0, y1: Y0, x2: X0 + 449, y2: Y0, stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+el('line', {x1: X0, y1: Y0, x2: X0, y2: 22, stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+
+
+const rays = [[A, 1.30], [B, 1.62], [C, 1.24]];
+const rayEnds = rays.map(([P, k]) => [P[0] * k, P[1] * k]);
+rayEnds.forEach(E => el('line', {x1: X0, y1: Y0, x2: f1(px(E[0])), y2: f1(py(E[1])), stroke: '#5a5a5a', 'stroke-width': 1.4}));
+
+
+el('line', {x1: f1(px(T[0])), y1: f1(py(T[1])), x2: f1(px(T[0])), y2: Y0, stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '6 4'});
+el('line', {x1: f1(px(T[0])), y1: f1(py(T[1])), x2: X0, y2: f1(py(T[1])), stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '6 4'});
+el('line', {x1: f1(px(T[0])), y1: Y0, x2: f1(px(T[0])), y2: Y0 + 4, stroke: 'black', 'stroke-width': 1});
+el('line', {x1: X0 - 4, y1: f1(py(T[1])), x2: X0, y2: f1(py(T[1])), stroke: 'black', 'stroke-width': 1});
+
+
+el('polyline', {points: [A, B, C].map(p => f1(px(p[0])) + ',' + f1(py(p[1]))).join(' '), fill: 'none', stroke: '#378ADD', 'stroke-width': 2.2, 'stroke-linejoin': 'round'});
+
+
+const a2max = 11.2, a1min = u0 / (a2max - G), a1max = 11.4;
+let d = '';
+for (let i = 0; i <= 200; i++) { const a = a1min + (a1max - a1min) * i / 200; d += (i ? ' L' : 'M') + f1(px(a)) + ',' + f1(py(ic(a))); }
+el('path', {d, fill: 'none', stroke: '#1D9E75', 'stroke-width': 2.2, 'stroke-linecap': 'round'});
+
+
+[A, B, C].forEach(P => el('circle', {cx: f1(px(P[0])), cy: f1(py(P[1])), r: 3.5, fill: '#378ADD'}));
+el('circle', {cx: f1(px(T[0])), cy: f1(py(T[1])), r: 5, fill: '#000'});
+
+
+const L = (t, x, y, a, c, s, bg) => ({t, x: 100 * x / W, y: 100 * y / H, a, c, s, bg});
+const LABELS = [
+  L('a_2', X0 - 8, 26, '-100%,-50%', '#000', 17),
+  L('a_1', X0 + 455, Y0, '0,-50%', '#000', 17),
+  L('O', X0 - 6, Y0 + 6, '-100%,0', '#000'),
+  L('x_1', px(rayEnds[0][0]) + 6, py(rayEnds[0][1]), '0,-50%', '#5a5a5a'),
+  L('x_2', px(rayEnds[1][0]) + 6, py(rayEnds[1][1]), '0,-50%', '#5a5a5a'),
+  L('x_3', px(rayEnds[2][0]) + 6, py(rayEnds[2][1]), '0,-50%', '#5a5a5a'),
+  L('A', px(A[0]) - 9, py(A[1]), '-100%,-50%', '#378ADD'),
+  L('B', px(B[0]) + 2, py(B[1]) + 12, '-50%,0', '#378ADD'),
+  L('C', px(C[0]) + 8, py(C[1]) - 6, '0,-100%', '#378ADD'),
+  L('0', px(T[0]) + 6, py(T[1]) - 10, '0,-100%', '#000'),
+  L('u_0', px(a1max) + 6, py(ic(a1max)), '0,-50%', '#0F6E56'),
+  L('a_1^*', px(T[0]), Y0 + 8, '-50%,0', '#000'),
+  L('a_2^*', X0 - 8, py(T[1]), '-100%,-50%', '#000'),
+];
+const box = document.querySelector('.graph-container');
+LABELS.forEach((Lb, i) => {
+  const e = document.createElement('div');
+  e.className = 'katex-label'; e.id = 'lbl-' + i;
+  katex.render(Lb.t, e, {throwOnError: false});
+  e.style.left = Lb.x + '%'; e.style.top = Lb.y + '%';
+  e.style.transform = 'translate(' + Lb.a + ')';
+  e.style.color = Lb.c;
+  if (Lb.s) e.style.fontSize = Lb.s + 'px';
+  if (Lb.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  box.appendChild(e);
+});
+</script>
+</body>
+</html>

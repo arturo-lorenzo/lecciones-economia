@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+    <line id="ax-x" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="ax-y" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="g0v" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="g0h" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="g1v" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="g1h" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+    <line id="phi1"  stroke="#1D9E75" stroke-width="2.2"/>
+    <line id="phi2"  stroke="#534AB7" stroke-width="2.2"/>
+    <line id="phi2t" stroke="#534AB7" stroke-width="2.2" stroke-dasharray="8 4"/>
+    <line id="shift" stroke="#534AB7" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <circle id="pt0" r="5" fill="#000"/>
+    <circle id="pt1" r="5" fill="#000"/>
+    <g id="ticks" stroke="black" stroke-width="1"></g>
+  </svg>
+  <div id="labels"></div>
+</div>
+<script>
+const VBW = 680, VBH = 500;
+
+
+
+
+
+const X = a => 122 + a * 35, Y = b => 460 - b * 31;
+function main() {
+  set('ax-x', {x1: X(0), y1: Y(0), x2: 577, y2: Y(0)});
+  set('ax-y', {x1: X(0), y1: Y(0), x2: X(0), y2: 40});
+  seg('phi1', [0, 12], [6, 0]);
+  seg('phi2', [0, 6], [12, 0]);
+  seg('phi2t', [0, 4], [8, 0]);
+  const q1 = [16 / 3, 4 / 3];
+  const ar = perpArrow('shift', [0, 6], [12, 0], [7.6, 2.2], [0, 4], [8, 0], 5);
+  guides('g0', [4, 4]); guides('g1', q1);
+  pt('pt0', [4, 4]); pt('pt1', q1);
+  tick(X(6), Y(0), X(6), Y(0) + 4); tick(X(12), Y(0), X(12), Y(0) + 4);
+  tick(X(0) - 4, Y(6), X(0), Y(6)); tick(X(0) - 4, Y(12), X(0), Y(12));
+  render([
+    {tex:'x_{11}', left: 581, top: Y(0) - 14, size:17},
+    {tex:'x_{21}', left: X(0) - 8, top: 34, size:17, align:'right'},
+    {tex:'\\varphi_1(x_{21})', left: X(0) + 12, top: Y(12) - 12, size:16, color:'#0F6E56'},
+    {tex:'\\varphi_2(x_{11})', left: X(0) + 10, top: Y(6) - 28, size:16, color:'#534AB7'},
+    {tex:"\\varphi_2'(x_{11})", left: X(0) + 8, top: Y(4) - 30, size:16, color:'#534AB7'},
+    {tex:'\\tau > 1', left: (ar.x1 + ar.x2) / 2 + 10, top: (ar.y1 + ar.y2) / 2 - 8, size:14, color:'#534AB7'},
+    {tex:'0', left: X(4) + 8, top: Y(4) - 26, size:16, color:'#000'},
+    {tex:'1', left: X(q1[0]) + 8, top: Y(q1[1]) - 26, size:16, color:'#000'},
+    {tex:'x_{11}^0', left: X(4), top: Y(0) + 6, size:15, center:true},
+    {tex:'x_{11}^1', left: X(q1[0]) - 3, top: Y(0) + 6, size:15, center:true},
+    {tex:'\\tfrac{a-c}{2b}', left: X(6) + 5, top: Y(0) + 6, size:15, center:true},
+    {tex:'\\tfrac{a-c}{b}', left: X(12), top: Y(0) + 6, size:15, center:true},
+    {tex:'x_{21}^0', left: X(0) - 7, top: Y(4) - 12, size:15, align:'right'},
+    {tex:'x_{21}^1', left: X(0) - 7, top: Y(q1[1]) - 12, size:15, align:'right'},
+    {tex:'\\tfrac{a-c}{2b}', left: X(0) - 7, top: Y(6) - 16, size:15, align:'right'},
+    {tex:'\\tfrac{a-c}{b}', left: X(0) - 7, top: Y(12) - 16, size:15, align:'right'}
+  ]);
+}
+
+function set(id, a) { const e = document.getElementById(id); for (const k in a) e.setAttribute(k, a[k]); }
+function seg(id, a, b) { set(id, {x1: X(a[0]), y1: Y(a[1]), x2: X(b[0]), y2: Y(b[1])}); }
+function path(id, f, lo, hi) { const pts = []; for (let i = 0; i <= 240; i++) { const t = lo + (i / 240) * (hi - lo); const [u, v] = f(t); pts.push(X(u).toFixed(1) + ',' + Y(v).toFixed(1)); } set(id, {d: 'M' + pts.join(' L')}); }
+function pt(id, a) { set(id, {cx: X(a[0]), cy: Y(a[1])}); }
+
+function perpArrow(id, L0a, L0b, q, L1a, L1b, gap) {
+  const dx = X(L0b[0]) - X(L0a[0]), dy = Y(L0b[1]) - Y(L0a[1]); const n = Math.hypot(dx, dy);
+  let nx = -dy / n, ny = dx / n;
+  const qx = X(q[0]), qy = Y(q[1]);
+  const ax = X(L1a[0]), ay = Y(L1a[1]), bx = X(L1b[0]), by = Y(L1b[1]);
+
+  const ex = bx - ax, ey = by - ay;
+  const det = nx * (-ey) - ny * (-ex);
+  let lam = ((ax - qx) * (-ey) - (ay - qy) * (-ex)) / det;
+  if (lam < 0) { nx = -nx; ny = -ny; lam = -lam; }
+  const x1 = qx + gap * nx, y1 = qy + gap * ny, x2 = qx + (lam - gap) * nx, y2 = qy + (lam - gap) * ny;
+  set(id, {x1, y1, x2, y2});
+  return {x1, y1, x2, y2};
+}
+const tk = document.getElementById('ticks');
+function tick(x1, y1, x2, y2) { const l = document.createElementNS('http://www.w3.org/2000/svg', 'line'); l.setAttribute('x1', x1); l.setAttribute('y1', y1); l.setAttribute('x2', x2); l.setAttribute('y2', y2); tk.appendChild(l); }
+function guides(id, a) {
+  set(id + 'v', {x1: X(a[0]), y1: Y(a[1]), x2: X(a[0]), y2: Y(0)});
+  set(id + 'h', {x1: X(0), y1: Y(a[1]), x2: X(a[0]), y2: Y(a[1])});
+  tick(X(a[0]), Y(0), X(a[0]), Y(0) + 4); tick(X(0) - 4, Y(a[1]), X(0), Y(a[1]));
+}
+const pw = v => (v / VBW * 100).toFixed(1) + '%', ph = v => (v / VBH * 100).toFixed(1) + '%';
+function render(labels) {
+  const box = document.getElementById('labels');
+  labels.forEach((l, i) => {
+    const el = document.createElement('div');
+    el.className = 'katex-label'; el.id = l.id || ('lbl-' + i);
+    box.appendChild(el);
+    katex.render(l.tex, el, {throwOnError: false});
+    el.style.left = pw(l.left); el.style.top = ph(l.top);
+    el.style.fontSize = (l.size || 16) + 'px';
+    el.style.color = l.color || 'black';
+    if (l.center) el.style.transform = 'translateX(-50%)';
+    if (l.align === 'right') el.classList.add('right-of-axis');
+    if (l.bg) { el.style.background = '#fff'; const k = el.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  });
+}
+
+main();
+</script>
+</body>
+</html>

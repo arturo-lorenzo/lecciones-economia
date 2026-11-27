@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; font-size: 13.5px; white-space: nowrap; line-height: 1; }
+  .katex-label.al-right { transform: translateX(-100%); }
+  .katex-label.al-center { transform: translateX(-50%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+
+    <line x1="340" y1="352" x2="658" y2="352" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="340" y1="352" x2="22"  y2="352" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <line x1="340" y1="352" x2="340" y2="55"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="340" y1="352" x2="340" y2="649" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <path id="guide-star" fill="none" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+    <line id="guide-w" stroke="#888" stroke-width="0.8" stroke-dasharray="3 3"/>
+
+
+    <path id="rho-curve" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+
+    <path id="ds-curve" fill="none" stroke="#D85A30" stroke-width="2.2" stroke-linecap="round"/>
+
+    <path id="conv-line" fill="none" stroke="#5F5E5A" stroke-width="1.4" stroke-linecap="round"/>
+
+    <path id="ld-curve" fill="none" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="ls-curve" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line id="z-arrow" stroke="black" stroke-width="1.2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+
+    <circle id="pt-peak" r="3.2" fill="#534AB7"/>
+    <circle id="pt-ds" r="3.2" fill="#D85A30"/>
+    <circle id="pt-conv" r="3.2" fill="#5F5E5A"/>
+    <circle id="pt-ls" r="3.2" fill="#1D9E75"/>
+    <circle id="pt-ld" r="3.2" fill="#378ADD"/>
+    <circle id="pt-w" r="3.2" fill="black"/>
+  </svg>
+</div>
+
+<script>
+const OX = 340, OY = 352, S = 1.043;
+
+const xI = i => OX + i * 28 * S;
+const yR = r => OY - r * 78 * S;
+const xD = d => OX - d * 44 * S;
+const yL = l => OY + l * 27 * S;
+
+
+const e_rho = 1.8, f_rho = 0.22;
+const iStar = 1 / f_rho;
+const Rho = i => e_rho * i * Math.exp(-f_rho * i);
+
+const kD = 1.9444;
+const Ds = r => kD * r;
+
+const chi = 0.8;
+
+const Ls = i => chi * Ds(Rho(i));
+
+const Ld = i => 11.424 - 1.397 * i + 0.0542 * i * i;
+
+const $ = id => document.getElementById(id);
+function path(fn, a, b, X, Y, n = 300) {
+  const p = [];
+  for (let k = 0; k <= n; k++) { const t = a + (k / n) * (b - a); p.push(X(t).toFixed(1) + ',' + Y(fn(t)).toFixed(1)); }
+  return 'M' + p.join(' L');
+}
+$('rho-curve').setAttribute('d', path(Rho, 0, 9.5, xI, yR));
+const rMax = 3.2;
+$('ds-curve').setAttribute('d', 'M' + OX + ',' + OY + ' L' + xD(Ds(rMax)).toFixed(1) + ',' + yR(rMax).toFixed(1));
+const dMax = Ds(rMax);
+$('conv-line').setAttribute('d', 'M' + OX + ',' + OY + ' L' + xD(dMax).toFixed(1) + ',' + yL(chi * dMax).toFixed(1));
+$('ls-curve').setAttribute('d', path(Ls, 0, 9.5, xI, yL));
+$('ld-curve').setAttribute('d', path(Ld, 1.1, 9.5, xI, yL));
+
+
+const rS = Rho(iStar), dS = Ds(rS), lS = chi * dS, ldS = Ld(iStar);
+const P1 = [xI(iStar), yR(rS)], P2 = [xD(dS), yR(rS)], P3 = [xD(dS), yL(lS)], P4 = [xI(iStar), yL(lS)];
+$('guide-star').setAttribute('d', `M${P1[0]},${OY} L${P1[0]},${P1[1]} L${P2[0]},${P2[1]} L${P3[0]},${P3[1]} L${P4[0]},${P4[1]} L${P4[0]},${OY}`);
+[['pt-peak', P1], ['pt-ds', P2], ['pt-conv', P3], ['pt-ls', P4], ['pt-ld', [xI(iStar), yL(ldS)]]]
+  .forEach(([id, p]) => { $(id).setAttribute('cx', p[0]); $(id).setAttribute('cy', p[1]); });
+
+$('z-arrow').setAttribute('x1', P4[0]); $('z-arrow').setAttribute('y1', yL(lS) + 6);
+$('z-arrow').setAttribute('x2', P4[0]); $('z-arrow').setAttribute('y2', yL(ldS) - 6);
+
+
+let iW = iStar;
+for (let i = iStar; i < 10; i += 0.001) { if (Ld(i) - Ls(i) <= 0) { iW = i; break; } }
+const g = $('guide-w'); g.setAttribute('x1', xI(iW)); g.setAttribute('y1', OY); g.setAttribute('x2', xI(iW)); g.setAttribute('y2', yL(Ld(iW)));
+$('pt-w').setAttribute('cx', xI(iW)); $('pt-w').setAttribute('cy', yL(Ld(iW)));
+
+
+const W = 680, H = 680, C = document.querySelector('.graph-container');
+const labels = [
+
+  {tex:'\\bar{R}^e', x:332.7, y:52.7, al:'right'},
+  {tex:'i', x:658.1, y:358.3},
+  {tex:'D', x:21.9, y:324.9},
+  {tex:'L', x:332.7, y:630.5, al:'right'},
+
+  {tex:'\\text{I}', x:645.6, y:71.4, col:'#666', al:'center'},
+  {tex:'\\text{II}', x:36.5, y:71.4, col:'#666', al:'center'},
+  {tex:'\\text{III}', x:36.5, y:626.3, col:'#666', al:'center'},
+  {tex:'\\text{IV}', x:645.6, y:626.3, col:'#666', al:'center'},
+
+  {tex:'\\bar{R}^e(i)', x:xI(9.5)+6, y:yR(Rho(9.5))-24, col:'#534AB7'},
+  {tex:'D^s(\\bar{R}^e)', x:xD(dMax)+12, y:yR(rMax)-22, col:'#D85A30'},
+  {tex:'L = \\chi D', x:xD(dMax)-4, y:yL(chi*dMax)+8, col:'#5F5E5A'},
+  {tex:'L^d(i)', x:xI(9.5)+2, y:yL(Ld(9.5))-26, col:'#378ADD'},
+  {tex:'L^s(i)', x:xI(9.5)+2, y:yL(Ls(9.5))+8, col:'#1D9E75'},
+
+  {tex:'i^*', x:P1[0]-6, y:OY+6, al:'right'},
+  {tex:'i^W', x:xI(iW)+5, y:OY+6},
+  {tex:'\\bar{R}^e(i^*)', x:OX+6, y:P1[1]-24},
+  {tex:'L^s(i^*)', x:OX-6, y:P4[1]-24, al:'right'},
+  {tex:'Z', x:P4[0]-8, y:(yL(lS)+yL(ldS))/2-9, al:'right'}
+];
+labels.forEach((l, k) => {
+  const e = document.createElement('div'); e.className = 'katex-label'; e.id = 'lbl-' + k;
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = (l.x / W * 100).toFixed(2) + '%'; e.style.top = (l.y / H * 100).toFixed(2) + '%';
+  e.style.color = l.col || 'black';
+  if (l.al) e.classList.add('al-' + l.al);
+  C.appendChild(e);
+});
+</script>
+</body>
+</html>

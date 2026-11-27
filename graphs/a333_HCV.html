@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 480">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+  </svg>
+</div>
+
+<script>
+
+const NS = 'http://www.w3.org/2000/svg';
+const svg = document.querySelector('.graph-container svg');
+const cont = document.querySelector('.graph-container');
+const VBW = 680, VBH = +svg.getAttribute('viewBox').split(' ')[3];
+const pctX = x => (x / VBW * 100).toFixed(2) + '%';
+const pctY = y => (y / VBH * 100).toFixed(2) + '%';
+function el(tag, attrs, parent) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  (parent || svg).appendChild(e); return e;
+}
+function line(id, x1, y1, x2, y2, stroke, w, extra) {
+  return el('line', Object.assign({id, x1, y1, x2, y2, stroke, 'stroke-width': w}, extra || {}));
+}
+function guide(id, x1, y1, x2, y2) { return line(id, x1, y1, x2, y2, '#888', 0.8, {'stroke-dasharray': '6 4'}); }
+function path(id, pts, stroke, w, extra) {
+  const d = 'M' + pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' L');
+  return el('path', Object.assign({id, d, fill: 'none', stroke, 'stroke-width': w, 'stroke-linecap': 'round'}, extra || {}));
+}
+function dot(id, x, y, fill, r) { return el('circle', {id, cx: x, cy: y, r: r || 5, fill}); }
+function tickX(x) { line('', x, OY, x, OY + 4, 'black', 1); }
+function tickY(y) { line('', OX - 4, y, OX, y, 'black', 1); }
+function label(id, tex, x, y, color, size, opt) {
+  opt = opt || {};
+  const d = document.createElement('div');
+  d.className = 'katex-label'; d.id = id; cont.appendChild(d);
+  katex.render(tex, d, {throwOnError: false});
+  d.style.left = pctX(x); d.style.top = pctY(y);
+  d.style.color = color || 'black'; d.style.fontSize = (size || 16) + 'px';
+  d.style.whiteSpace = 'nowrap';
+  if (opt.right) d.classList.add('right-of-axis');
+  if (opt.center) d.style.transform = 'translateX(-50%)';
+  if (opt.bg) { d.style.background = '#fff'; const k = d.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  return d;
+}
+function axes() {
+  line('axis-x', OX, OY, XEND, OY, 'black', 1.2, {'marker-end': 'url(#arrow)'});
+  line('axis-y', OX, OY, OX, YEND, 'black', 1.2, {'marker-end': 'url(#arrow)'});
+}
+
+
+
+
+
+
+const OX = 80, OY = 420, XEND = 640, YEND = 30;
+const XT = 600, XJ = 500, H = 310, off = 0.04;
+const yInc = x => x > XJ ? 0 : H * Math.sin(Math.PI * (off + (1 - off) * (x - OX) / (XJ - OX)));
+const c0 = 135.4, g = 60 / (XT - OX);
+const cCon = x => c0 + g * (x - OX);
+const Y = x => OY - yInc(x), C = x => OY - cCon(x);
+
+function root(a, b) { for (let i = 0; i < 60; i++) { const m = (a + b) / 2; ((yInc(a) - cCon(a)) * (yInc(m) - cCon(m)) <= 0) ? b = m : a = m; } return (a + b) / 2; }
+const X1 = root(OX, 250), X2 = root(300, XJ);
+axes();
+
+
+function area(id, xa, xb, fill) {
+  const up = [], dn = [];
+  for (let x = xa; x <= xb + 1e-9; x += (xb - xa) / 120) { up.push([x, Math.min(Y(x), C(x))]); dn.push([x, Math.max(Y(x), C(x))]); }
+  const pts = up.concat(dn.reverse());
+  el('path', {id, d: 'M' + pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' L') + 'Z', fill, stroke: 'none'});
+}
+area('area-A', OX, X1, 'rgba(216,90,48,0.15)');
+area('area-B', X1, X2, 'rgba(29,158,117,0.15)');
+area('area-C', X2, XT, 'rgba(216,90,48,0.15)');
+
+guide('g-1', X1, C(X1), X1, OY);
+guide('g-2', X2, C(X2), X2, OY);
+guide('g-T', XT, C(XT), XT, OY);
+tickX(XJ); tickX(XT);
+
+const ypts = []; for (let x = OX; x <= XJ; x += 1) ypts.push([x, Y(x)]);
+path('renta', ypts, '#1D9E75', 2.2);
+line('consumo', OX, C(OX), XT, C(XT), '#378ADD', 2.2);
+
+
+label('l-ax-y', 'c,\\ y', OX - 8, YEND - 8, 'black', 17, {right: true});
+label('l-ax-t', 't', XEND + 4, OY - 12, 'black', 17);
+label('l-O', 'O', OX - 20, OY + 4, 'black', 17);
+label('l-T', 'T', XT - 6, OY + 6, 'black', 16);
+label('l-J', '\\text{jubilación}', XJ, OY + 6, 'black', 15, {center: true});
+label('l-y', 'y(t)', 330, Y(290) - 32, '#1D9E75', 16);
+label('l-c', 'c(t)', XT + 6, C(XT) - 14, '#378ADD', 16);
+label('l-A', '\\text{A}', OX + 5, C(OX) + 22, '#D85A30', 16);
+label('l-B', '\\text{B}', 300, (Y(300) + C(300)) / 2 - 12, '#0F6E56', 16, {center: true});
+label('l-C', '\\text{C}', 545, (C(545) + OY) / 2 - 12, '#D85A30', 16, {center: true});
+
+</script>
+</body>
+</html>

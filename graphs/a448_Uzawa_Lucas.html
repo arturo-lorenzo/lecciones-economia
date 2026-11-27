@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+  .katex-label .katex { font-size: 1em; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <line x1="125" y1="420" x2="543" y2="420" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="125" y1="420" x2="125" y2="40" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <g id="guides"></g>
+    <g id="curves"></g>
+    <g id="arrows"></g>
+    <g id="points"></g>
+  </svg>
+</div>
+<script>
+
+
+
+
+
+const al = 0.3, A = 1, u = 0.7, dl = 0.05, B = 0.12, rho = 0.03;
+const r = w => al*A*Math.pow(u/w, 1 - al) - dl;
+const wS = u/Math.pow(B/(al*A), 1/(1 - al));
+const VBW = 680, VBH = 480, OX = 125, OY = 420, WMAX = 8;
+const X = w => OX + w*(378/WMAX), Y = v => OY - v*1600;
+const NS = 'http://www.w3.org/2000/svg';
+function el(g, tag, att) { const e = document.createElementNS(NS, tag); for (const k in att) e.setAttribute(k, att[k]); document.getElementById(g).appendChild(e); return e; }
+function line(g, x1, y1, x2, y2, att) { return el(g, 'line', Object.assign({x1, y1, x2, y2}, att)); }
+const dash = {stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'}, tk = {stroke: 'black', 'stroke-width': 1};
+const cR = '#378ADD', cH = '#1D9E75', cRho = '#D85A30', cPt = '#D85A30';
+const L = []; function put(tex, x, y, o = {}) { L.push(Object.assign({tex, x, y}, o)); }
+
+
+line('guides', X(wS), Y(B - dl), X(wS), OY, dash); line('guides', X(wS), OY, X(wS), OY + 4, tk);
+
+
+line('curves', OX, Y(B - dl), X(WMAX), Y(B - dl), {stroke: cH, 'stroke-width': 2.2});
+line('curves', OX, Y(rho), X(WMAX), Y(rho), {stroke: cRho, 'stroke-width': 1.4, 'stroke-dasharray': '8 4'});
+const w0 = u/Math.pow((0.2 + dl)/(al*A), 1/(1 - al)), pts = [];
+for (let i = 0; i <= 200; i++) { const w = w0 + (WMAX - w0)*i/200; pts.push(X(w).toFixed(1) + ',' + Y(r(w)).toFixed(1)); }
+el('curves', 'path', {d: 'M' + pts.join(' L'), fill: 'none', stroke: cR, 'stroke-width': 2.2, 'stroke-linecap': 'round'});
+
+
+const xb = X(6.9);
+line('arrows', xb, Y(B - dl) + 3, xb, Y(rho) - 3, {stroke: 'black', 'stroke-width': 1.2, 'marker-start': 'url(#arrow)', 'marker-end': 'url(#arrow)'});
+put('\\theta g_Y^*', xb + 8, (Y(B - dl) + Y(rho))/2, {va: 'm'});
+
+
+function setDyn(xa, xb, y) {
+  const n = Math.max(2, Math.round(Math.abs(xb - xa)/45)), pts = [];
+  for (let i = 0; i <= n; i++) pts.push((xa + (xb - xa)*i/n).toFixed(1) + ',' + y);
+  el('arrows', 'polyline', {points: pts.join(' '), fill: 'none', stroke: '#5a5a5a', 'stroke-width': 1.2, 'stroke-dasharray': '5 4', 'marker-mid': 'url(#arrow)', 'marker-end': 'url(#arrow)'});
+}
+const ya = OY - 12;
+setDyn(X(wS) - 109, X(wS) - 14, ya);
+setDyn(X(wS) + 109, X(wS) + 14, ya);
+
+
+el('points', 'circle', {cx: X(wS), cy: Y(B - dl), r: 5, fill: '#000'});
+
+
+put('\\omega', OX + 424, OY, {va: 'm', s: 17});
+put('\\text{rendimientos}', OX + 8, 38, {va: 't', s: 15});
+put('r', X(w0) + 10, Y(r(w0)), {c: cR, va: 'm', s: 17});
+put('B - \\delta', X(WMAX) + 6, Y(B - dl), {c: cH, va: 'm'});
+put('\\rho', X(WMAX) + 6, Y(rho), {c: cRho, va: 'm'});
+put('\\omega^*', X(wS), OY + 8, {ha: 'c', s: 15});
+
+const cont = document.querySelector('.graph-container');
+L.forEach((l, i) => {
+  const e = document.createElement('div'); e.className = 'katex-label'; e.id = 'lbl-' + i;
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = (l.x/VBW*100).toFixed(2) + '%'; e.style.top = (l.y/VBH*100).toFixed(2) + '%';
+  e.style.color = l.c || 'black'; if (l.s) e.style.fontSize = l.s + 'px';
+  const tx = {l: '0', c: '-50%', r: '-100%'}[l.ha || 'l'], ty = {t: '0', m: '-50%', b: '-100%'}[l.va || 't'];
+  e.style.transform = `translate(${tx},${ty})`;
+  if (l.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  cont.appendChild(e);
+});
+</script>
+</body>
+</html>

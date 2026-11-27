@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+      <marker id="garrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="#1D9E75"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="135.0" y1="440.0" x2="555.0" y2="440.0" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="135.0" y1="440.0" x2="135.0" y2="50.0"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line x1="277.8" y1="70.0" x2="277.8" y2="430.0" stroke="#D85A30" stroke-width="2.2"/>
+
+
+    <line x1="387.0" y1="70.0" x2="387.0" y2="430.0" stroke="#D85A30" stroke-width="2.2" stroke-dasharray="8 4"/>
+
+
+    <line x1="160.2" y1="374.0" x2="429.0" y2="182.0" stroke="#1D9E75" stroke-width="2.2"/>
+
+
+
+    <line x1="252.6" y1="400.0" x2="513.0" y2="214.0" stroke="#1D9E75" stroke-width="2.2" stroke-dasharray="8 4"/>
+
+
+    <line x1="151.8" y1="185.0" x2="420.6" y2="409.0" stroke="#378ADD" stroke-width="2.2"/>
+
+
+    <line x1="227.4" y1="171.0" x2="513.0" y2="409.0" stroke="#378ADD" stroke-width="2.2" stroke-dasharray="8 4"/>
+
+
+    <line x1="284.5" y1="115.0" x2="378.6" y2="115.0" stroke="#D85A30" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <circle cx="277.8" cy="290.0" r="5" fill="#000"/>
+
+
+
+    <circle cx="387.0" cy="304.0" r="5" fill="#000"/>
+
+
+    <line x1="277.8" y1="290.0" x2="135.0" y2="290.0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+
+    <line x1="387.0" y1="304.0" x2="135.0" y2="304.0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+
+    <line x1="277.8" y1="440.0" x2="277.8" y2="444.0" stroke="black" stroke-width="1"/>
+    <line x1="387.0" y1="440.0" x2="387.0" y2="444.0" stroke="black" stroke-width="1"/>
+    <line x1="131.6" y1="290.0" x2="135.0" y2="290.0" stroke="black" stroke-width="1"/>
+    <line x1="131.6" y1="304.0" x2="135.0" y2="304.0" stroke="black" stroke-width="1"/>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-causa"></div>
+  <div class="katex-label" id="lbl-P"></div>
+  <div class="katex-label" id="lbl-Y"></div>
+  <div class="katex-label" id="lbl-OALP0"></div>
+  <div class="katex-label" id="lbl-OALP1"></div>
+  <div class="katex-label" id="lbl-OACP0"></div>
+  <div class="katex-label" id="lbl-OACP1"></div>
+  <div class="katex-label" id="lbl-DA0"></div>
+  <div class="katex-label" id="lbl-DA1"></div>
+  <div class="katex-label" id="lbl-E0"></div>
+  <div class="katex-label" id="lbl-E1"></div>
+  <div class="katex-label" id="lbl-P0"></div>
+  <div class="katex-label" id="lbl-P1"></div>
+  <div class="katex-label" id="lbl-Ybar0"></div>
+  <div class="katex-label" id="lbl-Ybar1"></div>
+
+</div>
+
+<script>
+const W = 680, H = 520;
+function pct(v, t) { return (v / t * 100).toFixed(1) + '%'; }
+
+const labels = [
+  {id:'lbl-P',      tex:'P',              left: pct(128.0,W),  top: pct(45.0,H),   color:'black', align:'right'},
+  {id:'lbl-Y',      tex:'Y',              left: pct(557.0,W),  top: pct(440.0,H),  color:'black'},
+  {id:'lbl-OALP0',  tex:'\\text{OA}_{\\text{LP},0}',      left: pct(226.0,W),  top: pct(55.0,H),   color:'#D85A30', size:'13px'},
+  {id:'lbl-OALP1',  tex:'\\text{OA}_{\\text{LP},1}',      left: pct(395.0,W),  top: pct(55.0,H),   color:'#D85A30', size:'13px'},
+  {id:'lbl-OACP0',  tex:'\\text{OA}_{\\text{CP},0}',      left: pct(437.0,W),  top: pct(165.0,H),  color:'#1D9E75', size:'13px'},
+  {id:'lbl-OACP1',  tex:'\\text{OA}_{\\text{CP},1}',      left: pct(521.0,W),  top: pct(198.0,H),  color:'#1D9E75', size:'13px'},
+  {id:'lbl-DA0',    tex:'\\text{DA}_0',           left: pct(428.6,W),  top: pct(395.0,H),  color:'#378ADD'},
+  {id:'lbl-DA1',    tex:'\\text{DA}_1',           left: pct(521.0,W),  top: pct(395.0,H),  color:'#378ADD'},
+  {id:'lbl-E0',     tex:'0',              left: pct(245.0,W),  top: pct(276.5,H),  color:'#000'},
+  {id:'lbl-E1',     tex:'1',              left: pct(395.0,W),  top: pct(288.0,H),  color:'#000'},
+  {id:'lbl-P0',     tex:'P_0',            left: pct(128.6,W),  top: pct(278.0,H),  color:'black', align:'right'},
+  {id:'lbl-P1',     tex:'P_1',            left: pct(128.6,W),  top: pct(292.0,H),  color:'black', align:'right'},
+  {id:'lbl-Ybar0',  tex:'\\bar{Y}_0',     left: pct(265.8,W),  top: pct(448.0,H),  color:'black'},
+  {id:'lbl-Ybar1',  tex:'\\bar{Y}_1',     left: pct(377.0,W),  top: pct(448.0,H),  color:'black'},
+  {id:'lbl-causa', tex:'\\Delta A > 0', left: pct(307.2,W), top: pct(90.0,H), color:'#D85A30', size:'13px'}
+];
+
+labels.forEach(l => {
+  const e = document.getElementById(l.id);
+  if (!e) return;
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = l.left;
+  e.style.top = l.top;
+  if (l.color) e.style.color = l.color;
+  if (l.align === 'right') e.classList.add('right-of-axis');
+  if (l.size) e.style.fontSize = l.size;
+});
+</script>
+<script>(function(){var N={"lbl-E1": [2.21, 0.59, 0], "lbl-P0": [-0.44, -1.76, 0], "lbl-E0": [0, 0, 1]};for(var id in N){var e=document.getElementById(id);if(!e)continue;e.style.marginLeft=N[id][0]+"%";e.style.marginTop=N[id][1]+"%";if(N[id][2]){var k=e.querySelector(".katex")||e;k.style.background="#fff";k.style.padding="0 2px";k.style.borderRadius="2px";}}})();</script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 590">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="130" y1="460" x2="570" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="130" y1="460" x2="130" y2="55"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="pa-line" stroke="black" stroke-width="1"/>
+
+
+    <path id="srn0" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="srn1" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-dasharray="8 4" stroke-linecap="round"/>
+
+
+    <line id="srp" stroke="#534AB7" stroke-width="2.2"/>
+
+
+    <line id="shift-arrow" stroke="#1D9E75" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="d-l0" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line id="d-l1" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+
+    <g id="u-arrows"></g>
+
+
+    <g id="ticks"></g>
+
+
+    <circle id="pt0" r="5" fill="#000"/>
+    <circle id="pt1" r="5" fill="#000"/>
+  </svg>
+
+
+  <div class="katex-label" id="lbl-w"></div>
+  <div class="katex-label" id="lbl-l"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-srp-y"></div>
+  <div class="katex-label" id="lbl-l1"></div>
+  <div class="katex-label" id="lbl-l0"></div>
+  <div class="katex-label" id="lbl-pa"></div>
+  <div class="katex-label" id="lbl-srn0"></div>
+  <div class="katex-label" id="lbl-srn1"></div>
+  <div class="katex-label" id="lbl-srp"></div>
+  <div class="katex-label" id="lbl-p0"></div>
+  <div class="katex-label" id="lbl-p1"></div>
+  <div class="katex-label" id="lbl-u0"></div>
+  <div class="katex-label" id="lbl-u1"></div>
+  <div class="katex-label" id="lbl-cause"></div>
+</div>
+
+<script>
+
+
+
+
+
+
+
+
+const PA = 10;
+const beta = 3, z = 5 * Math.exp(0.9);
+const dL = 1.5;
+const srn0 = L => z * Math.exp(-beta * (1 - L / PA));
+const srn1 = L => srn0(L + dL);
+const wSRP = 5;
+const L0 = 7;
+const L1 = L0 - dL;
+
+
+const Lmax = 12, wmax = 10, VBH = 590, VBW = 680;
+const sx = L => 130 + L * (427.06 / Lmax);
+const sy = w => 460 - w * (390 / wmax);
+const pctX = x => (x / VBW * 100).toFixed(1) + '%';
+const pctY = y => (y / VBH * 100).toFixed(1) + '%';
+
+function setLine(id, x1, y1, x2, y2) {
+  const el = document.getElementById(id);
+  el.setAttribute('x1', x1); el.setAttribute('y1', y1);
+  el.setAttribute('x2', x2); el.setAttribute('y2', y2);
+}
+function drawSRN(id, f, La, Lb) {
+  const pts = [];
+  const n = 200;
+  for (let i = 0; i <= n; i++) {
+    const L = La + (i/n)*(Lb - La);
+    const w = f(L);
+    if (w > 8.6) break;
+    pts.push(sx(L).toFixed(1) + ',' + sy(w).toFixed(1));
+  }
+  document.getElementById(id).setAttribute('d', 'M' + pts.join(' L'));
+}
+
+const Lend0 = PA * (1 + Math.log(8.6 / z) / beta);
+const Lend1 = Lend0 - dL;
+drawSRN('srn0', srn0, 1.2, 9.9);
+drawSRN('srn1', srn1, 0.6, 8.4);
+
+setLine('srp', sx(0), sy(wSRP), sx(11.2), sy(wSRP));
+setLine('pa-line', sx(PA), sy(0), sx(PA), sy(10.2));
+
+
+const Lp = 7.45;
+const px0 = sx(Lp), py0 = sy(srn0(Lp));
+const hh = 1e-4, tx = sx(Lp + hh) - px0, ty = sy(srn0(Lp + hh)) - py0;
+const tn = Math.hypot(tx, ty);
+let nx = ty / tn, ny = -tx / tn;
+if (nx > 0) { nx = -nx; ny = -ny; }
+
+let lo = 0, hi = 200;
+const gap = t => { const X = px0 + nx*t, Y = py0 + ny*t; const L = (X - 130) * Lmax / 427.06; return Y - sy(srn1(L)); };
+for (let k = 0; k < 60; k++) { const m = (lo + hi) / 2; (gap(m) > 0) === (gap(lo) > 0) ? lo = m : hi = m; }
+const tHit = (lo + hi) / 2;
+setLine('shift-arrow', px0 + nx*6, py0 + ny*6, px0 + nx*(tHit - 7), py0 + ny*(tHit - 7));
+const arrMidX = px0 + nx*tHit/2, arrMidY = py0 + ny*tHit/2;
+
+
+setLine('d-l0', sx(L0), sy(wSRP), sx(L0), sy(0));
+setLine('d-l1', sx(L1), sy(wSRP), sx(L1), sy(0));
+
+
+const uG = document.getElementById('u-arrows');
+function uArrow(La, Lb, yPix) {
+  const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  line.setAttribute('x1', sx(La) + 8); line.setAttribute('y1', yPix);
+  line.setAttribute('x2', sx(Lb) - 8); line.setAttribute('y2', yPix);
+  line.setAttribute('stroke', '#555'); line.setAttribute('stroke-width', '1.2');
+  line.setAttribute('marker-start', 'url(#arrow)');
+  line.setAttribute('marker-end', 'url(#arrow)');
+  uG.appendChild(line);
+}
+const uY0 = 502, uY1 = 528;
+uArrow(L0, PA, uY0);
+uArrow(L1, PA, uY1);
+
+
+const ticksG = document.getElementById('ticks');
+function addTick(x1, y1, x2, y2) {
+  const t = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  t.setAttribute('x1', x1); t.setAttribute('y1', y1);
+  t.setAttribute('x2', x2); t.setAttribute('y2', y2);
+  t.setAttribute('stroke', 'black'); t.setAttribute('stroke-width', '1');
+  ticksG.appendChild(t);
+}
+addTick(126, sy(wSRP), 130, sy(wSRP));
+addTick(sx(L1), 460, sx(L1), 464);
+addTick(sx(L0), 460, sx(L0), 464);
+addTick(sx(PA), 460, sx(PA), 464);
+
+
+document.getElementById('pt0').setAttribute('cx', sx(L0));
+document.getElementById('pt0').setAttribute('cy', sy(wSRP));
+document.getElementById('pt1').setAttribute('cx', sx(L1));
+document.getElementById('pt1').setAttribute('cy', sy(wSRP));
+
+
+const labels = [
+  {id: 'lbl-w', tex: 'w/P', left: pctX(122),  top: pctY(40),  color: 'black', align: 'right', size: '17px'},
+  {id: 'lbl-l', tex: 'L',   left: pctX(572), top: pctY(466), color: 'black', size: '17px'},
+  {id: 'lbl-o', tex: 'O',   left: pctX(110),  top: pctY(464), color: 'black', size: '17px'},
+
+  {id: 'lbl-srp-y', tex: '\\dfrac{A_L}{1+\\mu}', left: pctX(122), top: pctY(sy(wSRP) - 21), color: 'black', align: 'right', size: '15px'},
+
+  {id: 'lbl-l1', tex: 'L_1^{*}', left: pctX(sx(L1) - 11), top: pctY(468), color: 'black', size: '16px'},
+  {id: 'lbl-l0', tex: 'L_0^{*}', left: pctX(sx(L0) - 11), top: pctY(468), color: 'black', size: '16px'},
+  {id: 'lbl-pa', tex: '\\text{PA}',      left: pctX(sx(PA) - 12), top: pctY(468), color: 'black', size: '16px'},
+
+  {id: 'lbl-srn0', tex: '\\text{SRN}_0', left: pctX(sx(Lend0) - 26), top: pctY(sy(8.6) - 30), color: '#1D9E75', size: '16px'},
+  {id: 'lbl-srn1', tex: '\\text{SRN}_1', left: pctX(sx(Lend1) - 64), top: pctY(sy(8.6) - 30), color: '#1D9E75', size: '16px'},
+  {id: 'lbl-srp',  tex: '\\text{SRP}',   left: pctX(sx(11.2) + 6),  top: pctY(sy(wSRP) - 12),  color: '#534AB7', size: '16px'},
+
+  {id: 'lbl-p0', tex: '0', left: pctX(sx(L0) + 9),  top: pctY(sy(wSRP) + 4),  color: '#000', size: '16px'},
+  {id: 'lbl-p1', tex: '1', left: pctX(sx(L1) - 20), top: pctY(sy(wSRP) - 26), color: '#000', size: '16px'},
+
+  {id: 'lbl-cause', tex: '\\Delta u_{t-1} > 0', left: pctX(px0 + 6), top: pctY(py0 - 4), color: '#1D9E75', size: '14px'},
+
+  {id: 'lbl-u0', tex: '\\bar{u}_0', left: pctX(sx(L0) - 30), top: pctY(uY0 - 11), color: '#555', size: '16px'},
+  {id: 'lbl-u1', tex: '\\bar{u}_1', left: pctX(sx(L1) - 30), top: pctY(uY1 - 11), color: '#555', size: '16px'},
+];
+
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  if (!el) return;
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = l.left;
+  el.style.top = l.top;
+  el.style.fontSize = l.size || '16px';
+  if (l.color) el.style.color = l.color;
+  if (l.align === 'right') el.classList.add('right-of-axis');
+});
+</script>
+</body>
+</html>

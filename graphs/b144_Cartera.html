@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; line-height: 1; }
+</style>
+</head>
+<body>
+
+<div class="graph-container">
+  <svg viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+    <g id="g"></g>
+  </svg>
+<script>
+const VBW = 680, VBH = 500;
+const NS = 'http://www.w3.org/2000/svg', G = document.getElementById('g');
+function el(tag, at) { const e = document.createElementNS(NS, tag); for (const k in at) if (at[k] !== null && at[k] !== undefined) e.setAttribute(k, at[k]); G.appendChild(e); return e; }
+function ln(x1, y1, x2, y2, at) { return el('line', Object.assign({x1: (+x1).toFixed(1), y1: (+y1).toFixed(1), x2: (+x2).toFixed(1), y2: (+y2).toFixed(1)}, at)); }
+const AX = {stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'};
+const GUIDE = {stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'};
+const TICK = {stroke: 'black', 'stroke-width': 1};
+const labels = [];
+function L(id, tex, x, y, anchor, color, size, bg) { labels.push({id, tex, x, y, anchor, color, size, bg}); }
+const cD = '#1D9E75', cB = '#534AB7', cF = '#378ADD', cP = '#D85A30';
+
+
+const OX = 115, OY = 450, K = 443 / 550, X = x => OX + (x - 80) * K;
+ln(OX, OY, OX + 443, OY, AX); ln(OX, OY, OX, 40, AX);
+L('lE', 'E', OX - 8, 38, 'rt', 'black', 17);
+L('li', 'i', OX + 449, OY, 'lm', 'black', 17);
+L('lO', 'O', OX - 8, OY + 6, 'rt', 'black', 16);
+
+const P0 = [X(390), 300], P1 = [X(270), 200];
+
+const sD = 1.0 / K, sB = -2.6 / K, sF = -0.42 / K;
+const XD = X(285), XB = X(320), XF = X(490);
+
+function line(P, s, xa, xb, at) { const y = x => P[1] - s * (x - P[0]); ln(xa, y(xa), xb, y(xb), at); return {a: [xa, y(xa)], b: [xb, y(xb)], y}; }
+const SOL = w => ({'stroke-width': 2.2, 'stroke-linecap': 'round'});
+const DSH = {'stroke-width': 2.2, 'stroke-dasharray': '8 4', 'stroke-linecap': 'round'};
+
+const DD0 = line(P0, sD, X(245), X(560), Object.assign({stroke: cD}, SOL()));
+const BB0 = line(P0, sB, X(313), X(430), Object.assign({stroke: cB}, SOL()));
+const FF0 = line(P0, sF, X(150), X(600), Object.assign({stroke: cF}, SOL()));
+
+const DD1 = line(P1, sD, X(110), X(430), Object.assign({stroke: cD}, DSH));
+const BB1 = line(P1, sB, X(225), X(335), Object.assign({stroke: cB}, DSH));
+const FF1 = line(P1, sF, X(150), X(530), Object.assign({stroke: cF}, DSH));
+
+function perp(s, Pa, dir, len, off) {
+
+  let nx = s, ny = 1; const n = Math.hypot(nx, ny); nx /= n; ny /= n;
+  if (dir * nx < 0) { nx = -nx; ny = -ny; }
+  return [Pa[0] + nx * off, Pa[1] + ny * off, Pa[0] + nx * (off + len), Pa[1] + ny * (off + len)];
+}
+function dist(s, P, Q) { return Math.abs((Q[1] - P[1]) + s * (Q[0] - P[0])) / Math.hypot(1, s); }
+const dD = dist(sD, P0, P1), dB = dist(sB, P0, P1), dF = dist(sF, P0, P1);
+const AR = c => ({stroke: c, 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+
+{ const x = XD, A = [x, DD0.y(x)]; const [x1, y1, x2, y2] = perp(sD, A, -1, dD - 14, 7);
+  ln(x1, y1, x2, y2, AR(cD));
+  L('aD', '\\Delta M^s > 0', (x1 + x2) / 2 - 8, (y1 + y2) / 2 + 14, 'rm', cD, 14); }
+
+{ const x = XB, A = [x, BB0.y(x)]; const [x1, y1, x2, y2] = perp(sB, A, -1, dB - 14, 7);
+  ln(x1, y1, x2, y2, AR(cB));
+  L('aB', '\\Delta M^s > 0', (BB1.a[0] + BB0.a[0]) / 2, BB1.a[1] - 5, 'cb', cB, 14); }
+
+{ const x = XF, A = [x, FF0.y(x)]; const [x1, y1, x2, y2] = perp(sF, A, 1, dF - 14, 7);
+  ln(x1, y1, x2, y2, AR(cF));
+  L('aF', '\\Delta M^s > 0', Math.max(x1, x2) + 8, (y1 + y2) / 2, 'lm', cF, 14); }
+
+[P0, P1].forEach(P => { ln(OX, P[1], P[0], P[1], GUIDE); ln(P[0], P[1], P[0], OY, GUIDE);
+  ln(OX - 4, P[1], OX, P[1], TICK); ln(P[0], OY, P[0], OY + 4, TICK); });
+el('circle', {cx: P0[0], cy: P0[1], r: 5, fill: '#000'});
+el('circle', {cx: P1[0], cy: P1[1], r: 5, fill: '#000'});
+L('l0', '0', P0[0] + 2, P0[1] - 12, 'cb', '#000', 16);
+L('l1', '1', P1[0] + 2, P1[1] - 12, 'cb', '#000', 16);
+L('li0', 'i_0', P0[0], OY + 7, 'ct', 'black', 16);
+L('li1', 'i_1', P1[0], OY + 7, 'ct', 'black', 16);
+L('lE0', 'E_0', OX - 8, P0[1], 'rm', 'black', 16);
+L('lE1', 'E_1', OX - 8, P1[1], 'rm', 'black', 16);
+
+L('lDD0', '\\text{DD}_0', DD0.b[0] + 6, DD0.b[1], 'lm', cD, 16);
+L('lDD1', '\\text{DD}_1', DD1.b[0] + 6, DD1.b[1], 'lm', cD, 16);
+L('lBB0', '\\text{BB}_0', BB0.b[0] + 5, BB0.b[1] + 2, 'lt', cB, 16);
+L('lBB1', '\\text{BB}_1', BB1.b[0] + 5, BB1.b[1] + 2, 'lt', cB, 16);
+L('lFF0', '\\text{B}^*\\text{B}^*_0', FF0.b[0] + 6, FF0.b[1], 'lm', cF, 16);
+L('lFF1', '\\text{B}^*\\text{B}^*_1', FF1.a[0] + 2, FF1.a[1] - 8, 'lb', cF, 16);
+
+const TX = {l: '0', c: '-50%', r: '-100%'}, TY = {t: '0', m: '-50%', b: '-100%'};
+const CONT = document.querySelector('.graph-container');
+labels.forEach(l => {
+  const e = document.createElement('div'); e.className = 'katex-label'; e.id = l.id; CONT.appendChild(e);
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = (l.x / VBW * 100).toFixed(2) + '%';
+  e.style.top = (l.y / VBH * 100).toFixed(2) + '%';
+  e.style.color = l.color || 'black';
+  e.style.fontSize = (l.size || 16) + 'px';
+  const a = l.anchor || 'lt';
+  e.style.transform = 'translate(' + TX[a[0]] + ',' + TY[a[1]] + ')';
+  if (l.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+});
+</script>
+</div>
+</body>
+</html>

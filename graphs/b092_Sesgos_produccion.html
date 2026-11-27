@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+    <line id="ax-x" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="ax-y" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <line id="g0v" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="g0h" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="coneV" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="coneH" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="ray" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+    <path id="fpp0" fill="none" stroke="#1D9E75" stroke-width="2.2"/>
+    <path id="fpp1" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-dasharray="8 4"/>
+
+    <line id="rri" stroke="#378ADD" stroke-width="1.4"/>
+    <line id="shift" stroke="#1D9E75" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <circle id="zA" r="3" fill="#888"/>
+    <circle id="zN" r="3.5" fill="#888"/>
+    <circle id="zB" r="3" fill="#888"/>
+    <circle id="pt0" r="5" fill="#000"/>
+    <g id="ticks" stroke="black" stroke-width="1"></g>
+  </svg>
+  <div id="labels"></div>
+</div>
+<script>
+const VBW = 680, VBH = 500;
+
+
+
+
+
+
+const X0 = 105, SX = 44;
+const X = v => X0 + v * SX, Y = v => 460 - v * 43;
+function main() {
+  set('ax-x', {x1: X(0), y1: Y(0), x2: 567, y2: Y(0)});
+  set('ax-y', {x1: X(0), y1: Y(0), x2: X(0), y2: 40});
+  const e = (a, b) => (t => [a * Math.sin(t), b * Math.cos(t)]);
+  path('fpp0', e(8, 7), 0, Math.PI / 2);
+  path('fpp1', e(10, 8.75), 0, Math.PI / 2);
+  const P = [5.4, 5.17], N = [6.75, 6.4625];
+  const A = [5.4, 8.75 * Math.sqrt(1 - 0.2916)], B = [10 * Math.sqrt(1 - (5.17 / 8.75) ** 2), 5.17];
+  const rri = x => 5.17 - 0.8 * (x - 5.4);
+  seg('rri', [3.2, rri(3.2)], [8.4, rri(8.4)]);
+  seg('coneV', P, A); seg('coneH', P, B); seg('ray', [0, 0], N);
+  guides('g0', P);
+
+  const tA = 0.17, q = e(8, 7)(tA);
+  let nx = (2 * q[0] / 64) / SX, ny = -(2 * q[1] / 49) / 43; const nn = Math.hypot(nx, ny); nx /= nn; ny /= nn;
+  let lam = 0; for (; lam < 300; lam += 0.5) { const u = (X(q[0]) + lam * nx - X0) / SX, v = (460 - (Y(q[1]) + lam * ny)) / 43; if ((u / 10) ** 2 + (v / 8.75) ** 2 >= 1) break; }
+  const g = 6; const ar = {x1: X(q[0]) + g * nx, y1: Y(q[1]) + g * ny, x2: X(q[0]) + (lam - g) * nx, y2: Y(q[1]) + (lam - g) * ny};
+  set('shift', ar);
+  pt('zA', A); pt('zN', N); pt('zB', B); pt('pt0', P);
+
+  const outN = (x, y) => { let a = (2 * x / 100) / SX, b = -(2 * y / 76.5625) / 43; const m = Math.hypot(a, b); return [a / m, b / m]; };
+  const on1 = x => [x, 8.75 * Math.sqrt(1 - (x / 10) ** 2)];
+  const Z = (tex, x, d, extra) => { const p = on1(x); return zone(tex, p, outN(p[0], p[1]), d, extra); };
+  render([
+    {tex:'X', left: 571, top: Y(0) - 14, size:17},
+    {tex:'Y', left: X(0) - 8, top: 34, size:17, align:'right'},
+    {tex:'\\text{FPP}_0', left: X(8) - 8, top: Y(0.5) - 10, size:16, color:'#0F6E56', align:'right'},
+    {tex:'\\text{FPP}_1', left: X(9.83) + 8, top: Y(1.6) - 10, size:16, color:'#0F6E56'},
+    {tex:'\\text{RRI}', left: X(8.4) + 6, top: Y(rri(8.4)) - 6, size:16, color:'#185FA5'},
+    {tex:'\\text{crecimiento}', left: Math.max(ar.x1, ar.x2) + 8, top: (ar.y1 + ar.y2) / 2 - 10, size:14, color:'#1D9E75'},
+    {tex:'0', left: X(P[0]) + 5, top: Y(P[1]) - 38, size:16, color:'#000'},
+    {tex:'X_0', left: X(P[0]), top: Y(0) + 6, size:15, center:true},
+    {tex:'Y_0', left: X(0) - 7, top: Y(P[1]) - 12, size:15, align:'right'},
+    Z('\\text{Ultra-anti}', 2.7, 30),
+    Z('\\text{Anti}', 6.08, 22),
+    zone('N', N, outN(N[0], N[1]), 20, {color:'#555'}),
+    Z('\\text{Pro}', 7.45, 22),
+    Z('\\text{Ultra-pro}', 9.3, 44)
+  ]);
+}
+
+
+function zone(tex, q, n, d, extra) { return Object.assign({tex, left: X(q[0]) + n[0] * d, top: Y(q[1]) + n[1] * d - 10, size:15, color:'#666', center:true}, extra || {}); }
+
+function set(id, a) { const e = document.getElementById(id); for (const k in a) e.setAttribute(k, a[k]); }
+function seg(id, a, b) { set(id, {x1: X(a[0]), y1: Y(a[1]), x2: X(b[0]), y2: Y(b[1])}); }
+function path(id, f, lo, hi) { const pts = []; for (let i = 0; i <= 240; i++) { const t = lo + (i / 240) * (hi - lo); const [u, v] = f(t); pts.push(X(u).toFixed(1) + ',' + Y(v).toFixed(1)); } set(id, {d: 'M' + pts.join(' L')}); }
+function pt(id, a) { set(id, {cx: X(a[0]), cy: Y(a[1])}); }
+
+function perpArrow(id, L0a, L0b, q, L1a, L1b, gap) {
+  const dx = X(L0b[0]) - X(L0a[0]), dy = Y(L0b[1]) - Y(L0a[1]); const n = Math.hypot(dx, dy);
+  let nx = -dy / n, ny = dx / n;
+  const qx = X(q[0]), qy = Y(q[1]);
+  const ax = X(L1a[0]), ay = Y(L1a[1]), bx = X(L1b[0]), by = Y(L1b[1]);
+
+  const ex = bx - ax, ey = by - ay;
+  const det = nx * (-ey) - ny * (-ex);
+  let lam = ((ax - qx) * (-ey) - (ay - qy) * (-ex)) / det;
+  if (lam < 0) { nx = -nx; ny = -ny; lam = -lam; }
+  const x1 = qx + gap * nx, y1 = qy + gap * ny, x2 = qx + (lam - gap) * nx, y2 = qy + (lam - gap) * ny;
+  set(id, {x1, y1, x2, y2});
+  return {x1, y1, x2, y2};
+}
+const tk = document.getElementById('ticks');
+function tick(x1, y1, x2, y2) { const l = document.createElementNS('http://www.w3.org/2000/svg', 'line'); l.setAttribute('x1', x1); l.setAttribute('y1', y1); l.setAttribute('x2', x2); l.setAttribute('y2', y2); tk.appendChild(l); }
+function guides(id, a) {
+  set(id + 'v', {x1: X(a[0]), y1: Y(a[1]), x2: X(a[0]), y2: Y(0)});
+  set(id + 'h', {x1: X(0), y1: Y(a[1]), x2: X(a[0]), y2: Y(a[1])});
+  tick(X(a[0]), Y(0), X(a[0]), Y(0) + 4); tick(X(0) - 4, Y(a[1]), X(0), Y(a[1]));
+}
+const pw = v => (v / VBW * 100).toFixed(1) + '%', ph = v => (v / VBH * 100).toFixed(1) + '%';
+function render(labels) {
+  const box = document.getElementById('labels');
+  labels.forEach((l, i) => {
+    const el = document.createElement('div');
+    el.className = 'katex-label'; el.id = l.id || ('lbl-' + i);
+    box.appendChild(el);
+    katex.render(l.tex, el, {throwOnError: false});
+    el.style.left = pw(l.left); el.style.top = ph(l.top);
+    el.style.fontSize = (l.size || 16) + 'px';
+    el.style.color = l.color || 'black';
+    if (l.center) el.style.transform = 'translateX(-50%)';
+    if (l.align === 'right') el.classList.add('right-of-axis');
+    if (l.bg) { el.style.background = '#fff'; const k = el.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  });
+}
+
+main();
+</script>
+</body>
+</html>

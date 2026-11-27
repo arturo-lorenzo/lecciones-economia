@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 500">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="124" y1="460" x2="556" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="124" y1="460" x2="124" y2="60"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <g id="budget-lines"></g>
+    <g id="ic-curves"></g>
+
+
+    <path id="icc-path" fill="none" stroke="#D85A30" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <g id="eq-points"></g>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-x1"></div>
+  <div class="katex-label" id="lbl-x2"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-icc"></div>
+  <div class="katex-label" id="lbl-e1"></div>
+  <div class="katex-label" id="lbl-e2"></div>
+  <div class="katex-label" id="lbl-e3"></div>
+  <div class="katex-label" id="lbl-rp1"></div>
+  <div class="katex-label" id="lbl-rp2"></div>
+  <div class="katex-label" id="lbl-rp3"></div>
+
+</div>
+
+<script>
+
+
+
+
+
+const S = 62, K = 0.25;
+function toSvgX(x) { return 124 + x * S; }
+function toSvgY(y) { return 460 - y * S; }
+function crc(x1) { return x1 / (1 + K * x1); }
+const incomes = [2, 4, 6];
+const budgetG = document.getElementById('budget-lines');
+const icG = document.getElementById('ic-curves');
+const eqG = document.getElementById('eq-points');
+const NS = 'http://www.w3.org/2000/svg';
+const eqPts = [];
+function mk(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const a in attrs) e.setAttribute(a, attrs[a]); parent.appendChild(e); return e; }
+incomes.forEach(m => {
+  mk('line', {x1: toSvgX(0), y1: toSvgY(m), x2: toSvgX(m), y2: toSvgY(0), stroke: '#378ADD', 'stroke-width': 2.2}, budgetG);
+  let lo = 0, hi = m;
+  for (let n = 0; n < 60; n++) { const mid = (lo + hi) / 2; (mid + crc(mid) > m) ? hi = mid : lo = mid; }
+  const e1 = lo, e2 = crc(lo);
+  eqPts.push([e1, e2]);
+  const u = Math.log(e1) + Math.log(e2) + K * e1;
+  const pts = [];
+  for (let t = 0; t <= 400; t++) {
+    const x1 = 0.15 + t * 0.02;
+    const x2 = Math.exp(u - Math.log(x1) - K * x1);
+    const sx = toSvgX(x1), sy = toSvgY(x2);
+    if (sx <= 545 && sy >= 64 && sy <= 455) pts.push(sx.toFixed(1) + ',' + sy.toFixed(1));
+  }
+  mk('path', {d: 'M' + pts.join(' L'), fill: 'none', stroke: '#1D9E75', 'stroke-width': 2.2, 'stroke-linecap': 'round'}, icG);
+  mk('circle', {cx: toSvgX(e1), cy: toSvgY(e2), r: 5, fill: '#000'}, eqG);
+});
+const iccPts = [];
+for (let x1 = 0; x1 <= 6.6; x1 += 0.02) iccPts.push(toSvgX(x1).toFixed(1) + ',' + toSvgY(crc(x1)).toFixed(1));
+const icc = document.getElementById('icc-path');
+icc.setAttribute('d', 'M' + iccPts.join(' L'));
+icc.setAttribute('stroke-dasharray', '8 5');
+const iccEnd = [toSvgX(6.6), toSvgY(crc(6.6))];
+
+const W = 680, H = 500;
+const pc = (v, t) => (v / t * 100).toFixed(1) + '%';
+const labels = [
+  {id: 'lbl-x1',  tex: 'x_1',    left: '82.4%',   top: '91%',  color: 'black'},
+  {id: 'lbl-x2',  tex: 'x_2',    left: '14.2%',   top: '7%',   color: 'black'},
+  {id: 'lbl-o',   tex: 'O',      left: '15.9%',   top: '92%',  color: 'black'},
+  {id: 'lbl-icc', tex: '\\text{CRC}', left: pc(iccEnd[0] + 6, W), top: pc(iccEnd[1] - 12, H), color: '#D85A30'},
+  {id: 'lbl-e1',  tex: '0', left: pc(toSvgX(eqPts[0][0]) - 5, W), top: pc(toSvgY(eqPts[0][1]) + 7, H), color: '#000'},
+  {id: 'lbl-e2',  tex: '1', left: pc(toSvgX(eqPts[1][0]) - 5, W), top: pc(toSvgY(eqPts[1][1]) + 7, H), color: '#000'},
+  {id: 'lbl-e3',  tex: '2', left: pc(toSvgX(eqPts[2][0]) - 5, W), top: pc(toSvgY(eqPts[2][1]) + 7, H), color: '#000'},
+  {id: 'lbl-rp1', tex: '\\dfrac{M_0}{p_1}', left: pc(toSvgX(incomes[0]), W), top: '92.4%', color: 'black', center: true},
+  {id: 'lbl-rp2', tex: '\\dfrac{M_1}{p_1}', left: pc(toSvgX(incomes[1]), W), top: '92.4%', color: 'black', center: true},
+  {id: 'lbl-rp3', tex: '\\dfrac{M_2}{p_1}', left: pc(toSvgX(incomes[2]), W), top: '92.4%', color: 'black', center: true}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = l.left;
+  el.style.top = l.top;
+  if (l.color) el.style.color = l.color;
+  if (l.center) { el.style.transform = 'translateX(-50%)'; el.style.fontSize = '13px'; }
+  if (l.align === 'right') el.classList.add('right-of-axis');
+});
+</script>
+</body>
+</html>

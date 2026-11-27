@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 500">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <rect id="conflict-band" y="60" height="410" fill="#378ADD" opacity="0.07"/>
+
+
+    <line x1="158" y1="380" x2="618" y2="380" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="158" y1="475" x2="158" y2="50"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <path id="van-a" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="van-b" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line id="kf-dash" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+
+    <g id="ticks"></g>
+
+
+    <circle id="pt-tira" r="4" fill="#1D9E75"/>
+    <circle id="pt-tirb" r="4" fill="#534AB7"/>
+    <circle id="pt-f"    r="5" fill="#D85A30"/>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-k"></div>
+  <div class="katex-label" id="lbl-van"></div>
+  <div class="katex-label" id="lbl-a"></div>
+  <div class="katex-label" id="lbl-b"></div>
+  <div class="katex-label" id="lbl-van0a"></div>
+  <div class="katex-label" id="lbl-van0b"></div>
+  <div class="katex-label" id="lbl-tira"></div>
+  <div class="katex-label" id="lbl-tirb"></div>
+  <div class="katex-label" id="lbl-kf"></div>
+  <div class="katex-label" id="lbl-conf"></div>
+
+</div>
+
+<script>
+
+
+
+
+
+
+
+
+const flowsA = [-100, 25, 25, 25, 25, 25, 25, 25, 25];
+const flowsB = [-100, 80, 45, 15];
+
+function van(flows, k) {
+  let v = 0;
+  for (let t = 0; t < flows.length; t++) v += flows[t] / Math.pow(1 + k, t);
+  return v;
+}
+
+
+function bisect(f, lo, hi) {
+  for (let i = 0; i < 80; i++) {
+    const mid = (lo + hi) / 2;
+    if (f(lo) * f(mid) <= 0) hi = mid; else lo = mid;
+  }
+  return (lo + hi) / 2;
+}
+
+const tirA = bisect(k => van(flowsA, k), 0.01, 0.6);
+const tirB = bisect(k => van(flowsB, k), 0.01, 0.6);
+const kF   = bisect(k => van(flowsA, k) - van(flowsB, k), 0.001, tirA);
+const vanF = van(flowsA, kF);
+
+
+const X0 = 158, Y0 = 380, KMAX = 0.28;
+function toSvgX(k) { return X0 + k * 1320; }
+function toSvgY(v) { return Y0 - v * 2.8; }
+
+
+const band = document.getElementById('conflict-band');
+band.setAttribute('x', X0);
+band.setAttribute('width', (toSvgX(kF) - X0).toFixed(1));
+
+
+function genCurve(flows, id) {
+  const pts = [];
+  for (let i = 0; i <= 300; i++) {
+    const k = (i / 300) * KMAX;
+    const sx = toSvgX(k);
+    const sy = toSvgY(van(flows, k));
+    if (sy >= 55 && sy <= 470) pts.push(sx.toFixed(1) + ',' + sy.toFixed(1));
+  }
+  document.getElementById(id).setAttribute('d', 'M' + pts.join(' L'));
+}
+genCurve(flowsA, 'van-a');
+genCurve(flowsB, 'van-b');
+
+
+const sF  = [toSvgX(kF), toSvgY(vanF)];
+document.getElementById('pt-tira').setAttribute('cx', toSvgX(tirA));
+document.getElementById('pt-tira').setAttribute('cy', Y0);
+document.getElementById('pt-tirb').setAttribute('cx', toSvgX(tirB));
+document.getElementById('pt-tirb').setAttribute('cy', Y0);
+document.getElementById('pt-f').setAttribute('cx', sF[0]);
+document.getElementById('pt-f').setAttribute('cy', sF[1]);
+
+
+const kd = document.getElementById('kf-dash');
+kd.setAttribute('x1', sF[0]); kd.setAttribute('y1', sF[1]);
+kd.setAttribute('x2', sF[0]); kd.setAttribute('y2', Y0);
+
+
+const ticksG = document.getElementById('ticks');
+[van(flowsA, 0), van(flowsB, 0)].forEach(v => {
+  const t = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  t.setAttribute('x1', X0 - 4); t.setAttribute('x2', X0);
+  t.setAttribute('y1', toSvgY(v)); t.setAttribute('y2', toSvgY(v));
+  t.setAttribute('stroke', 'black'); t.setAttribute('stroke-width', '1');
+  ticksG.appendChild(t);
+});
+
+
+const VBW = 680, VBH = 500;
+const pct = (v, t) => (v / t * 100).toFixed(2) + '%';
+
+const eA = toSvgY(van(flowsA, KMAX)), eB = toSvgY(van(flowsB, KMAX));
+const labels = [
+  {id: 'lbl-k',     tex: 'k',  x: 624, y: Y0, ax: 0, ay: 0.5, color: 'black', size: 17},
+  {id: 'lbl-van',   tex: '\\text{VAN}', x: X0 - 8, y: 50, ax: 1, ay: 0.5, color: 'black', size: 17},
+  {id: 'lbl-a',     tex: '\\text{VAN}_A(k)', x: toSvgX(KMAX) + 6, y: eA, ax: 0, ay: 0.5, color: '#0F6E56'},
+  {id: 'lbl-b',     tex: '\\text{VAN}_B(k)', x: toSvgX(KMAX) + 6, y: eB + 20, ax: 0, ay: 0.5, color: '#534AB7'},
+  {id: 'lbl-van0a', tex: '\\textstyle\\sum Q_t^A - A_0^A', x: X0 - 8, y: toSvgY(van(flowsA, 0)), ax: 1, ay: 0.5, color: '#0F6E56'},
+  {id: 'lbl-van0b', tex: '\\textstyle\\sum Q_t^B - A_0^B', x: X0 - 8, y: toSvgY(van(flowsB, 0)), ax: 1, ay: 0.5, color: '#534AB7'},
+  {id: 'lbl-tira',  tex: '\\text{TIR}_A', x: toSvgX(tirA) - 4, y: Y0 + 6, ax: 0.5, ay: 0, color: '#0F6E56'},
+  {id: 'lbl-tirb',  tex: '\\text{TIR}_B', x: toSvgX(tirB) + 4, y: Y0 - 6, ax: 0, ay: 1, color: '#534AB7'},
+  {id: 'lbl-kf',    tex: 'k_F', x: sF[0] + 3, y: Y0 + 6, ax: 1, ay: 0, color: 'black'},
+  {id: 'lbl-conf',  tex: '\\text{conflicto VAN-TIR}', x: (X0 + toSvgX(kF)) / 2, y: 462, ax: 0.5, ay: 1, color: '#185FA5', size: 14}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = pct(l.x, VBW);
+  el.style.top = pct(l.y, VBH);
+  el.style.fontSize = (l.size || 16) + 'px';
+  el.style.whiteSpace = 'nowrap';
+  el.style.transform = `translate(${-100*l.ax}%, ${-100*l.ay}%)`;
+  if (l.color) el.style.color = l.color;
+});
+</script>
+</body>
+</html>

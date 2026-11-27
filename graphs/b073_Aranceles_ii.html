@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 75%; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 620" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+    <line id="ax-x" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="ax-y" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <polygon id="ar-A" fill="#1D9E75" fill-opacity="0.14"/>
+    <polygon id="ar-B" fill="#D85A30" fill-opacity="0.16"/>
+    <polygon id="ar-C" fill="#378ADD" fill-opacity="0.16"/>
+    <polygon id="ar-D" fill="#D85A30" fill-opacity="0.16"/>
+    <polygon id="ar-E" fill="#534AB7" fill-opacity="0.16"/>
+
+
+    <line id="pl-0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="pl-1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="pl-w1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+
+    <line id="dv-0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dv-0p" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dv-1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dv-1p" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+
+    <line id="supply" stroke="#D85A30" stroke-width="2.2"/>
+    <line id="demand" stroke="#378ADD" stroke-width="2.2"/>
+
+
+    <line id="m1" stroke="#185FA5" stroke-width="1.2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <line id="m0" stroke="#185FA5" stroke-width="1.2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+    <circle id="pt-0" r="5" fill="#000"/>
+    <circle id="pt-0p" r="5" fill="#000"/>
+    <circle id="pt-1" r="5" fill="#000"/>
+    <circle id="pt-1p" r="5" fill="#000"/>
+
+    <g id="ticks" stroke="black" stroke-width="1"></g>
+  </svg>
+  <div id="labels"></div>
+</div>
+
+<script>
+const LARGE = true;
+const ox = 130, oy = 500, kx = 44, ky = 44;
+function P(q, p) { return [ox + q * kx, oy - p * ky]; }
+function set(id, a) { const e = document.getElementById(id); for (const k in a) e.setAttribute(k, a[k]); }
+function poly(id, pts) { set(id, {points: pts.map(([q, p]) => P(q, p).map(v => v.toFixed(1)).join(',')).join(' ')}); }
+set('ax-x', {x1: ox, y1: oy, x2: 640, y2: oy});
+set('ax-y', {x1: ox, y1: oy, x2: ox, y2: 40});
+
+
+const as = 1.0, bs = 0.8, ad = 9.0, bd = 0.55;
+const sQ = p => (p - as) / bs, dQ = p => (ad - p) / bd;
+
+const p0 = 4.0, pw1 = 2.9, p1 = 5.4;
+const qs0 = sQ(p0), qd0 = dQ(p0), qs1 = sQ(p1), qd1 = dQ(p1);
+
+const qS = 9.4, qD = 10.6;
+set('supply', {x1: P(0, as)[0], y1: P(0, as)[1], x2: P(qS, as + bs * qS)[0], y2: P(qS, as + bs * qS)[1]});
+set('demand', {x1: P(0, ad)[0], y1: P(0, ad)[1], x2: P(qD, ad - bd * qD)[0], y2: P(qD, ad - bd * qD)[1]});
+
+poly('ar-A', [[0, p0], [qs0, p0], [qs1, p1], [0, p1]]);
+poly('ar-B', [[qs0, p0], [qs1, p0], [qs1, p1]]);
+poly('ar-C', [[qs1, p0], [qd1, p0], [qd1, p1], [qs1, p1]]);
+poly('ar-D', [[qd1, p0], [qd0, p0], [qd1, p1]]);
+if (LARGE) poly('ar-E', [[qs1, pw1], [qd1, pw1], [qd1, p0], [qs1, p0]]);
+
+function hl(id, p, q) { set(id, {x1: ox, y1: P(0, p)[1], x2: P(q, 0)[0], y2: P(0, p)[1]}); }
+function vl(id, q, p) { set(id, {x1: P(q, 0)[0], y1: oy, x2: P(q, 0)[0], y2: P(0, p)[1]}); }
+hl('pl-0', p0, qd0); hl('pl-1', p1, qd1);
+if (LARGE) hl('pl-w1', pw1, qd1);
+vl('dv-0', qs0, p0); vl('dv-0p', qd0, p0); vl('dv-1', qs1, p1); vl('dv-1p', qd1, p1);
+[['pt-0', qs0, p0], ['pt-0p', qd0, p0], ['pt-1', qs1, p1], ['pt-1p', qd1, p1]].forEach(([id, q, p]) => set(id, {cx: P(q, p)[0], cy: P(q, p)[1]}));
+
+
+const tk = document.getElementById('ticks');
+function tick(x1, y1, x2, y2) { const l = document.createElementNS('http://www.w3.org/2000/svg', 'line'); l.setAttribute('x1', x1); l.setAttribute('y1', y1); l.setAttribute('x2', x2); l.setAttribute('y2', y2); tk.appendChild(l); }
+[p0, p1].concat(LARGE ? [pw1] : []).forEach(p => tick(ox - 4, P(0, p)[1], ox, P(0, p)[1]));
+[qs0, qd0, qs1, qd1].forEach(q => tick(P(q, 0)[0], oy, P(q, 0)[0], oy + 4));
+
+
+const m1Y = oy - 16, m0Y = oy + 44;
+set('m1', {x1: P(qs1, 0)[0] + 2, y1: m1Y, x2: P(qd1, 0)[0] - 2, y2: m1Y});
+set('m0', {x1: P(qs0, 0)[0] + 2, y1: m0Y, x2: P(qd0, 0)[0] - 2, y2: m0Y});
+
+const VBW = 680, VBH = 620;
+const pw = v => (v / VBW * 100).toFixed(1) + '%', ph = v => (v / VBH * 100).toFixed(1) + '%';
+const X = q => P(q, 0)[0], Y = p => P(0, p)[1];
+const labels = [
+  {tex:'p', left: ox - 8, top: 36, size:17, align:'right'},
+  {tex:'y', left: 644, top: oy - 14, size:17},
+  {tex:'S(y)', left: X(qS) + 6, top: Y(as + bs * qS) - 14, size:16, color:'#D85A30'},
+  {tex:'D(y)', left: X(qD) + 6, top: Y(ad - bd * qD) - 6, size:16, color:'#378ADD'},
+  {tex:'p_0^*', left: ox - 7, top: Y(p0) - 12, size:15, align:'right'},
+  {tex: LARGE ? 'p_1 = (1+t)\\,p_1^*' : 'p_1 = (1+t)\\,p_0^*', left: ox - 7, top: Y(p1) - 12, size:15, align:'right'},
+  {tex:'0',  left: X(qs0) + 7,  top: Y(p0) + 3,  size:16, color:'#000'},
+  {tex:"0'", left: X(qd0) + 6,  top: Y(p0) - 26, size:16, color:'#000'},
+  {tex:'1',  left: X(qs1) - 17, top: Y(p1) - 26, size:16, color:'#000'},
+  {tex:"1'", left: X(qd1) + 6,  top: Y(p1) - 26, size:16, color:'#000'},
+  {tex:'A',  left: (X(0) + X(qs0) + X(qs1)) / 3 - 10, top: (Y(p0) + Y(p1)) / 2 - 10, size:16, center:true},
+  {tex:'B',  left: (X(qs0) + 2 * X(qs1)) / 3, top: (2 * Y(p0) + Y(p1)) / 3 - 11, size:16, center:true},
+  {tex:'C',  left: (X(qs1) + X(qd1)) / 2, top: (Y(p0) + Y(p1)) / 2 - 10, size:16, center:true},
+  {tex:'D',  left: (2 * X(qd1) + X(qd0)) / 3, top: (2 * Y(p0) + Y(p1)) / 3 - 11, size:16, center:true},
+  {tex:'y_0^s', left: X(qs0), top: oy + 6, size:15, center:true},
+  {tex:'y_1^s', left: X(qs1), top: oy + 6, size:15, center:true},
+  {tex:'y_1^d', left: X(qd1), top: oy + 6, size:15, center:true},
+  {tex:'y_0^d', left: X(qd0), top: oy + 6, size:15, center:true},
+  {tex:'M_1', left: (X(qs1) + X(qd1)) / 2, top: m1Y - 30, size:15, color:'#185FA5', center:true},
+  {tex:'M_0', left: (X(qs0) + X(qd0)) / 2, top: m0Y + 4, size:15, color:'#185FA5', center:true}
+];
+if (LARGE) labels.push(
+  {tex:'p_1^*', left: ox - 7, top: Y(pw1) - 12, size:15, align:'right'},
+  {tex:'E',  left: (X(qs1) + X(qd1)) / 2, top: (Y(p0) + Y(pw1)) / 2 - 10, size:16, center:true}
+);
+const box = document.getElementById('labels');
+labels.forEach((l, i) => {
+  const el = document.createElement('div');
+  el.className = 'katex-label'; el.id = 'lbl-' + i;
+  box.appendChild(el);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = pw(l.left); el.style.top = ph(l.top);
+  el.style.fontSize = (l.size || 16) + 'px';
+  el.style.color = l.color || 'black';
+  if (l.center) el.style.transform = 'translateX(-50%)';
+  if (l.align === 'right') el.classList.add('right-of-axis');
+});
+</script>
+</body>
+</html>

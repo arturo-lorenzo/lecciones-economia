@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 540">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+    <g id="g"></g>
+  </svg>
+
+</div>
+
+<script>
+
+
+
+const SVGNS = 'http://www.w3.org/2000/svg';
+const W = 680, H = 540;
+const g = document.getElementById('g');
+const container = document.querySelector('.graph-container');
+
+const XA = 3, XB = 7, C = 1, D = 36, XMAX = 9.4;
+const u = x => D * x - C * (Math.pow(x, 4) / 12 - (XA + XB) * Math.pow(x, 3) / 6 + XA * XB * x * x / 2);
+const OX = 135, OY = 420, SX = 39.5, UMAX = u(XMAX), SY = 350 / UMAX;
+const sx = x => OX + x * SX;
+const sy = v => OY - v * SY;
+
+function el(tag, attrs) {
+  const e = document.createElementNS(SVGNS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  g.appendChild(e);
+  return e;
+}
+function line(x1, y1, x2, y2, stroke, w, extra = {}) {
+  return el('line', Object.assign({x1, y1, x2, y2, stroke, 'stroke-width': w}, extra));
+}
+function lab(tex, x, y, color, ax = 0.5, ay = 0.5, size = null) {
+  const d = document.createElement('div');
+  d.className = 'katex-label';
+  katex.render(tex, d, {throwOnError: false});
+  d.style.left = (x / W * 100) + '%';
+  d.style.top = (y / H * 100) + '%';
+  d.style.transform = `translate(${-ax * 100}%, ${-ay * 100}%)`;
+  d.style.color = color;
+  if (size) d.style.fontSize = size;
+  container.appendChild(d);
+}
+
+
+line(OX, OY, 545, OY, 'black', 1.2, {'marker-end': 'url(#arrow)'});
+line(OX, OY, OX, 40, 'black', 1.2, {'marker-end': 'url(#arrow)'});
+
+
+const pts = [];
+for (let i = 0; i <= 300; i++) {
+  const x = (i / 300) * XMAX;
+  pts.push(sx(x).toFixed(1) + ',' + sy(u(x)).toFixed(1));
+}
+el('path', {d: 'M' + pts.join(' L'), fill: 'none', stroke: '#1D9E75', 'stroke-width': 2.2, 'stroke-linecap': 'round'});
+
+
+[XA, XB].forEach(x => {
+  line(sx(x), sy(u(x)), sx(x), OY, '#888', 0.8, {'stroke-dasharray': '6 4'});
+  line(sx(x), OY, sx(x), OY + 4, 'black', 1);
+  el('circle', {cx: sx(x), cy: sy(u(x)), r: 4.5, fill: '#D85A30'});
+});
+
+
+const by = OY + 50;
+[[0, XA], [XA, XB], [XB, XMAX]].forEach(([a, b]) => {
+  line(sx(a) + 3, by, sx(b) - 3, by, 'black', 1, {'marker-start': 'url(#arrow)', 'marker-end': 'url(#arrow)'});
+});
+
+
+lab('x', 547, OY + 4, 'black', 0, 0, '16px');
+lab('u(x)', OX, 34, 'black', 0.5, 1, '16px');
+lab('O', OX - 6, OY + 4, 'black', 1, 0, '16px');
+lab('u(x)', sx(XMAX) + 6, sy(u(XMAX)), '#0F6E56', 0, 0.5, '16px');
+lab('\\hat{x}_1', sx(XA), OY + 8, 'black', 0.5, 0, '14px');
+lab('\\hat{x}_2', sx(XB), OY + 8, 'black', 0.5, 0, '14px');
+const rl = (t, s) => `\\begin{gathered}\\text{${t}}\\\\ ${s}\\end{gathered}`;
+lab(rl('rentas bajas', "u''(x) < 0"),  (sx(0) + sx(XA)) / 2,  by + 8, 'black', 0.5, 0, '14px');
+lab(rl('rentas medias', "u''(x) > 0"), (sx(XA) + sx(XB)) / 2, by + 8, 'black', 0.5, 0, '14px');
+lab(rl('rentas altas', "u''(x) < 0"),  (sx(XB) + sx(XMAX)) / 2, by + 8, 'black', 0.5, 0, '14px');
+</script>
+</body>
+</html>

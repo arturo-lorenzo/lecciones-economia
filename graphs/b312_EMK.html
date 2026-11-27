@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+  .katex-label .katex { font-size: 1em; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+    <line x1="165" y1="400" x2="558" y2="400" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="165" y1="400" x2="165" y2="36" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="rline" stroke="#D85A30" stroke-width="2.2"/>
+    <path id="emk" fill="none" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+    <line id="dv" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="tx" stroke="black" stroke-width="1"/>
+    <line id="ty" stroke="black" stroke-width="1"/>
+    <circle id="pt" r="5" fill="#000"/>
+  </svg>
+</div>
+<script>
+const VBW = 680, VBH = 460;
+const OX = 165, XEND = 558;
+const X = i => OX + i * 45.7;
+const Y = e => 400 - e * 38;
+const EMK = i => 12 / Math.pow(i + 0.8, 0.7);
+const r0 = 4.47;
+const I0 = Math.pow(12 / r0, 1 / 0.7) - 0.8;
+const $ = id => document.getElementById(id);
+function setL(id, a, b, c, d) { const e = $(id); e.setAttribute('x1', a.toFixed(1)); e.setAttribute('y1', b.toFixed(1)); e.setAttribute('x2', c.toFixed(1)); e.setAttribute('y2', d.toFixed(1)); }
+{ const p = []; for (let k = 0; k <= 300; k++) { const i = 0.1 + 7.6 * k / 300; const y = Y(EMK(i)); if (y >= 44) p.push(X(i).toFixed(1) + ',' + y.toFixed(1)); } $('emk').setAttribute('d', 'M' + p.join(' L')); }
+setL('rline', OX, Y(r0), X(7.7), Y(r0));
+setL('dv', X(I0), Y(r0), X(I0), 400);
+setL('tx', X(I0), 400, X(I0), 404);
+setL('ty', OX - 4, Y(r0), OX, Y(r0));
+$('pt').setAttribute('cx', X(I0)); $('pt').setAttribute('cy', Y(r0));
+const cont = document.querySelector('.graph-container');
+function put(tex, x, y, o = {}) {
+  const e = document.createElement('div'); e.className = 'katex-label';
+  katex.render(tex, e, {throwOnError: false});
+  e.style.left = (x / VBW * 100).toFixed(2) + '%'; e.style.top = (y / VBH * 100).toFixed(2) + '%';
+  e.style.color = o.c || 'black'; if (o.s) e.style.fontSize = o.s + 'px';
+  const tx = {l: '0', c: '-50%', r: '-100%'}[o.ha || 'l'], ty = {t: '0', m: '-50%', b: '-100%'}[o.va || 't'];
+  e.style.transform = `translate(${tx},${ty})`;
+  cont.appendChild(e);
+}
+put('\\text{EMK},\\ r', OX - 10, 40, {ha: 'r', s: 18});
+put('I', XEND + 8, 400, {va: 'm', s: 18});
+put('\\text{EMK}(I)', X(7.7) + 6, Y(EMK(7.7)), {va: 'm', c: '#185FA5'});
+put('r', X(7.7) + 6, Y(r0), {va: 'm', c: '#D85A30'});
+put('r_0', OX - 10, Y(r0), {ha: 'r', va: 'm'});
+put('I(r_0)', X(I0), 410, {ha: 'c'});
+put('0', X(I0) + 8, Y(r0) - 6, {va: 'b', c: '#000'});
+put('\\text{EMK} > r', X(I0 * 0.45), Y(r0) - 12, {ha: 'c', va: 'b', s: 14, c: '#444'});
+put('\\text{EMK} < r', X(I0 + 2.4), Y(r0) + 14, {ha: 'c', va: 't', s: 14, c: '#444'});
+</script>
+</body>
+</html>

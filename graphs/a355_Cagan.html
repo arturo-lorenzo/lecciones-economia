@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: none; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 470" xmlns="http://www.w3.org/2000/svg">
+
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+    <g id="guides"></g>
+
+    <line x1="62" y1="329" x2="322" y2="329" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="62" y1="329" x2="62" y2="84" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <path id="demand" fill="none" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+
+    <line x1="388" y1="329" x2="648" y2="329" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="388" y1="329" x2="388" y2="84" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <path id="seig" fill="none" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+    <g id="points"></g>
+  </svg>
+</div>
+<script>
+const VBW = 680, VBH = 470, NS = 'http://www.w3.org/2000/svg';
+
+
+const OXa = 62, OYa = 329, UX = 209, UY = 70, PMAX = 3.2, XENDa = 322, YTOP = 84;
+const m = pe => Math.exp(-pe);
+const ax = pe => OXa + m(pe) * UX, ay = pe => OYa - pe * UY;
+
+const OXb = 388, OYb = 329, UXb = 54.1, K = 490, PIMAX = 4.5, XENDb = 648;
+const bx = p => OXb + p * UXb, by = p => OYb - K * p * Math.exp(-p);
+const pts = (f, g, a, b, n) => { const r = []; for (let k = 0; k <= n; k++) { const t = a + (b - a) * k / n; r.push(f(t).toFixed(1) + ',' + g(t).toFixed(1)); } return 'M' + r.join(' L'); };
+document.getElementById('demand').setAttribute('d', pts(ax, ay, 0, PMAX, 200));
+document.getElementById('seig').setAttribute('d', pts(bx, by, 0, PIMAX, 200));
+const G = document.getElementById('guides'), P = document.getElementById('points');
+function mk(tag, at, par) { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); par.appendChild(e); return e; }
+function guide(x1, y1, x2, y2) { mk('line', {x1, y1, x2, y2, stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'}, G); }
+function tick(x1, y1, x2, y2) { mk('line', {x1, y1, x2, y2, stroke: 'black', 'stroke-width': 1}, G); }
+const P0 = 0.5, P1 = 1.8, PU = 1;
+
+[P0, P1].forEach(p => { guide(OXa, ay(p), ax(p), ay(p)); guide(ax(p), ay(p), ax(p), OYa); tick(OXa - 4, ay(p), OXa, ay(p)); tick(ax(p), OYa, ax(p), OYa + 4); });
+guide(OXa, ay(PU), ax(PU), ay(PU)); tick(OXa - 4, ay(PU), OXa, ay(PU));
+tick(ax(0), OYa, ax(0), OYa + 4);
+
+guide(OXb, by(1), bx(1), by(1)); guide(bx(1), by(1), bx(1), OYb); tick(bx(1), OYb, bx(1), OYb + 4);
+
+mk('circle', {cx: ax(PU), cy: ay(PU), r: 3.5, fill: '#5a5a5a'}, P);
+mk('circle', {cx: ax(P0), cy: ay(P0), r: 5, fill: '#000'}, P);
+mk('circle', {cx: ax(P1), cy: ay(P1), r: 5, fill: '#000'}, P);
+mk('circle', {cx: bx(1), cy: by(1), r: 4.5, fill: '#D85A30'}, P);
+
+const labels = [
+ {tex: '\\pi^e', x: OXa - 8, y: YTOP - 2, anchor: 'rt', color: 'black', size: 17},
+ {tex: 'M^d/P', x: XENDa, y: OYa + 8, anchor: 'ct', color: 'black', size: 17},
+ {tex: '\\gamma', x: ax(0), y: OYa + 8, anchor: 'ct', color: 'black', size: 16},
+ {tex: '(M/P)_0', x: ax(P0), y: OYa + 8, anchor: 'ct', color: 'black', size: 15},
+ {tex: '(M/P)_1', x: ax(P1), y: OYa + 8, anchor: 'ct', color: 'black', size: 15},
+ {tex: '\\pi^e_0', x: OXa - 8, y: ay(P0), anchor: 'rm', color: 'black', size: 16},
+ {tex: '1/a', x: OXa - 8, y: ay(PU), anchor: 'rm', color: 'black', size: 16},
+ {tex: '\\pi^e_1', x: OXa - 8, y: ay(P1), anchor: 'rm', color: 'black', size: 16},
+ {tex: '0', x: ax(P0) + 7, y: ay(P0) - 6, anchor: 'lb', color: '#000', size: 16},
+ {tex: '1', x: ax(P1) + 7, y: ay(P1) - 6, anchor: 'lb', color: '#000', size: 16},
+ {tex: '|\\varepsilon| = 1', x: ax(PU) + 9, y: ay(PU) - 4, anchor: 'lb', color: '#5a5a5a', size: 14},
+ {tex: '|\\varepsilon| > 1', x: ax(2.6) + 18, y: ay(2.6), anchor: 'lm', color: '#5a5a5a', size: 14},
+ {tex: '|\\varepsilon| < 1', x: ax(0.3) + 14, y: ay(0.3) - 4, anchor: 'lb', color: '#5a5a5a', size: 14},
+ {tex: 'M^d/P = \\gamma e^{-a\\pi^e}', x: ax(PMAX) + 10, y: ay(PMAX) - 2, anchor: 'lm', color: '#378ADD', size: 16},
+ {tex: '\\text{(a)}', x: (OXa + XENDa) / 2, y: OYa + 40, anchor: 'ct', color: '#444', size: 15},
+ {tex: '\\text{señoraje}', x: OXb - 8, y: YTOP - 2, anchor: 'rt', color: 'black', size: 16},
+ {tex: '\\pi', x: XENDb, y: OYb + 8, anchor: 'ct', color: 'black', size: 17},
+ {tex: '1/a', x: bx(1), y: OYb + 8, anchor: 'ct', color: 'black', size: 16},
+ {tex: '\\pi\\gamma e^{-a\\pi}', x: bx(2.6) + 6, y: by(2.6) - 10, anchor: 'lb', color: '#378ADD', size: 16},
+ {tex: '\\text{(b)}', x: (OXb + XENDb) / 2, y: OYb + 40, anchor: 'ct', color: '#444', size: 15}
+];
+const TX = {l: '0', c: '-50%', r: '-100%'}, TY = {t: '0', m: '-50%', b: '-100%'};
+const C = document.querySelector('.graph-container');
+labels.forEach(l => {
+  const el = document.createElement('div'); el.className = 'katex-label'; C.appendChild(el);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = (l.x / VBW * 100).toFixed(2) + '%';
+  el.style.top = (l.y / VBH * 100).toFixed(2) + '%';
+  el.style.color = l.color || 'black';
+  el.style.fontSize = (l.size || 16) + 'px';
+  const a = l.anchor || 'lt';
+  el.style.transform = 'translate(' + TX[a[0]] + ',' + TY[a[1]] + ')';
+  if (l.bg) { el.style.background = '#fff'; }
+});
+</script>
+</body>
+</html>

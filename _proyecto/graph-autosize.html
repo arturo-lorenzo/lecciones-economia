@@ -1,0 +1,78 @@
+<script>
+// Gráficos del libro (iframes .graph-frame).
+// 1) Escala única: los grosores, los discontinuos y el tamaño de los puntos de cada figura están fijados para verla a 680 px
+//    de ancho. Los marcos anchos (figuras de varios paneles) se estiran hasta la columna y las pantallas estrechas las encogen; aquí se
+//    compensa para que en pantalla las curvas midan siempre lo mismo (2,2 px las económicas, 1,4 las auxiliares, 1,2 ejes y flechas,
+//    0,8 las guías) y los puntos tengan el mismo tamaño en todas las figuras, sea cual sea el ancho al que se muestren.
+// 2) Ajusta la altura de cada iframe al elemento dibujado más bajo (curvas, ejes, etiquetas KaTeX).
+(function () {
+  var REF = 680;
+  function norm(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var s = d.querySelector("svg"); if (!s) return;
+      var w = s.getBoundingClientRect().width; if (!(w > 0)) return;
+      var r = REF / w;
+      var els = s.querySelectorAll("path, line, polyline, polygon, rect, circle, ellipse");
+      els.forEach(function (el) {
+        var cs = d.defaultView.getComputedStyle(el);
+        if (el.dataset.sw0 === undefined) {
+          el.dataset.sw0 = parseFloat(cs.strokeWidth) || 0;
+          el.dataset.da0 = (cs.strokeDasharray && cs.strokeDasharray !== "none") ? cs.strokeDasharray : "";
+          if (el.tagName.toLowerCase() === "circle" && el.r && el.r.baseVal.value > 0 && el.r.baseVal.value <= 9) {
+            el.dataset.r0 = el.r.baseVal.value;
+          }
+        }
+        var sw0 = +el.dataset.sw0;
+        if (sw0 > 0) el.style.strokeWidth = (sw0 * r).toFixed(3) + "px";
+        if (el.dataset.da0) {
+          el.style.strokeDasharray = el.dataset.da0.split(/[ ,]+/).map(function (v) {
+            return (parseFloat(v) * r).toFixed(3) + "px";
+          }).join(" ");
+        }
+        if (el.dataset.r0) el.setAttribute("r", (+el.dataset.r0 * r).toFixed(3));
+      });
+    } catch (e) {}
+  }
+  function fit(f) {
+    try {
+      var d = f.contentDocument; if (!d) return;
+      var sy = d.defaultView.scrollY || 0, bottom = 0;
+      var els = d.querySelectorAll("svg path, svg line, svg circle, svg polyline, svg polygon, svg rect, svg text, svg ellipse, .katex-label");
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width > 0 || r.height > 0) bottom = Math.max(bottom, r.bottom + sy);
+      });
+      if (!(bottom > 20)) {
+        var svg = d.querySelector("svg"); var vb = svg && svg.getAttribute("viewBox");
+        if (vb) { var p = vb.split(/\s+/); bottom = f.clientWidth * (+p[3]) / (+p[2]); }
+      }
+      if (bottom > 20) f.style.height = Math.ceil(bottom + 10) + "px";
+    } catch (e) {}
+  }
+  // 3) Un gráfico de varios paneles no se amplía por encima del 110 % de su ancho de dibujo (viewBox). Los dibujados a
+  //    680 px quedan en 748 px como máximo, con rótulos de tamaño normal; los de 900 o 960 px, en el tope de 900 px del CSS.
+  function cap(f) {
+    try {
+      if (!f.parentElement || !f.parentElement.classList.contains("wide")) return;
+      var s = f.contentDocument && f.contentDocument.querySelector("svg"); if (!s) return;
+      var vb = s.viewBox && s.viewBox.baseVal; if (!vb || !(vb.width > 0)) return;
+      var m = Math.min(900, Math.round(vb.width * 1.1)) + "px";
+      if (f.style.maxWidth !== m) f.style.maxWidth = m;
+    } catch (e) {}
+  }
+  function both(f) { cap(f); norm(f); fit(f); }
+  function all() { document.querySelectorAll(".graph-frame iframe").forEach(both); }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".graph-frame iframe").forEach(function (f) {
+      f.addEventListener("load", function () { both(f); setTimeout(function () { both(f); }, 700); });
+    });
+  });
+  window.addEventListener("load", function () { setTimeout(all, 1200); });
+  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(all, 150); });
+})();
+</script>
+<style>
+.graph-frame { margin: 1.25rem 0 0.25rem; }
+.quarto-figure .graph-frame + * { margin-top: 0; }
+</style>

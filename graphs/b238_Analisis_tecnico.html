@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 630" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+    <g id="g"></g>
+  </svg>
+</div>
+<script>
+const VBW = 680, VBH = 630;
+const NS = 'http://www.w3.org/2000/svg', G = document.getElementById('g');
+function el(tag, at) { const e = document.createElementNS(NS, tag); for (const k in at) if (at[k] !== null && at[k] !== undefined) e.setAttribute(k, at[k]); G.appendChild(e); return e; }
+function ln(x1, y1, x2, y2, at) { return el('line', Object.assign({x1: (+x1).toFixed(1), y1: (+y1).toFixed(1), x2: (+x2).toFixed(1), y2: (+y2).toFixed(1)}, at)); }
+function path(pts, at) { return el('path', Object.assign({d: 'M' + pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' L'), fill: 'none'}, at)); }
+const AX = {stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'};
+const GUIDE = {stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'};
+const TICK = {stroke: 'black', 'stroke-width': 1};
+const labels = [];
+function L(id, tex, x, y, anchor, color, size, bg) { labels.push({id, tex, x, y, anchor, color, size, bg}); }
+
+
+
+const O = [103.95,103.26,101.47,101.38,102.16,102.76,101.07,97.37,96.65,97.14,97.61,95.51,92.55,90.18,91.15,91.96,94.32,94.95,94.56,96.26,98.73,99.02,97.73,96.63,95.11,95.59,94.25,92.36,90.3,91.16,93.71,94.16,95.89,96.46,98.04,99.94,98.92,96.59,96.21,94.23,96.15,96.6,96.94,97.69,97.21,98.84,99.3,99.93,102.64,104.83,105.6,107.3,109.37,109.78,107.49,104.24,102.78,104.23,104.47,105.27];
+const C = [102.91,101.6,101.5,102.64,102.6,101.6,97.89,97,97.55,97.8,96.05,93.15,90.6,91.63,92.13,94.89,94.5,94.42,96.69,99.03,99.2,97.89,97.08,94.69,95,94.29,92.38,90.8,91.63,93.9,94.44,95.5,96.87,98.61,99.4,98.89,97.01,96.15,94.8,96.11,96.02,96.5,97.45,97.5,99,99.7,99.6,102.6,104.49,105.8,107.64,108.99,109.2,107.07,103.87,102.4,103.94,104.8,105.25,107.6];
+const H = [104.96,104.19,101.83,103.58,103.68,103.55,101.59,98.06,97.87,98.01,98.68,96.3,93.22,92.67,92.72,95.87,95.44,95.34,97.11,99.49,100.05,99.74,98.16,97.2,95.43,96.61,94.76,92.97,92.36,94.91,95.02,96.53,97.52,99.29,100.05,100.16,99.52,96.95,96.41,97.03,96.5,97.22,98.31,98.39,99.49,100.37,100.05,103.51,104.79,106.5,108.06,109.44,110.26,110.44,108.2,105.12,104.96,105.4,106,108.25];
+const L_ = [102.06,101.38,100.77,100.78,101.95,101.1,97.13,96.34,96.39,96.06,95.14,92.08,89.95,89.74,90.92,91.06,93.88,94.11,93.98,95.24,97.79,97.46,96.74,93.67,94.29,93.46,92.1,89.95,89.48,90.57,93.45,93.11,95.12,95.54,97.77,97.92,96.75,95.18,94.19,93.73,95.33,95.47,96.49,97.18,96.54,98.43,99,99.58,102.39,104.45,105.11,106.83,108.32,106.61,103.22,100.3,102.27,104.01,104.05,105.05];
+const V = [0.88,1.28,0.92,0.95,0.75,0.96,1.01,1.03,0.86,1.03,0.75,0.9,1.7,0.97,0.77,0.76,0.92,0.88,1.07,1.04,1.3,1.11,1.14,1.23,0.96,0.93,1.29,1.5,1.15,1.1,0.77,1.21,1.24,1.1,1.3,1.2,0.83,1.04,1.03,1.21,1.19,1.2,1.07,1.24,1.13,1.13,1.4,2.9,2,1.6,0.81,1.21,1.06,1.1,1.09,0.8,1.02,0.75,1.19,1.16];
+const M10 = [104.73,104.27,103.76,103.5,103.27,102.94,102.19,101.46,100.88,100.31,99.62,98.78,97.69,96.59,95.54,94.87,94.53,94.27,94.19,94.31,94.62,95.1,95.74,96.05,96.34,96.28,96.07,95.7,95.2,94.69,94.21,93.97,93.95,94.34,94.78,95.24,95.71,96.24,96.56,96.78,96.94,97.04,97.1,96.98,96.94,97.03,97.28,97.93,98.9,99.87,101.03,102.28,103.45,104.41,104.9,105.17,105.6,105.82,105.9,106.08];
+const M30 = [103.81,103.73,103.65,103.58,103.6,103.58,103.43,103.24,103.1,102.98,102.76,102.51,102.09,101.74,101.39,101.12,100.8,100.42,100.15,99.91,99.66,99.38,99.07,98.71,98.38,98.03,97.59,97.15,96.75,96.43,96.15,95.95,95.79,95.66,95.55,95.46,95.43,95.41,95.31,95.26,95.26,95.37,95.6,95.79,96.02,96.18,96.35,96.62,96.88,97.11,97.39,97.76,98.17,98.58,98.87,99.14,99.53,100,100.45,100.91];
+const RSI = [44.13,39.15,38.79,45.01,44.84,40.65,29.6,27.66,30.68,32.08,27.86,22.57,19.13,24.16,26.53,38.13,37.24,37.05,45.59,52.73,53.22,49.08,46.66,40.36,41.46,39.63,35.18,31.98,35.33,43.47,45.24,48.64,52.71,57.37,59.31,57.47,51.22,48.61,44.74,48.99,48.71,50.31,53.43,53.57,58.34,60.39,59.93,67.73,71.5,73.78,76.6,78.45,78.73,68.93,57.39,52.99,56.72,58.7,59.73,64.71];
+const N = C.length, OX = 70, X0 = 80, DX = 8.6, XEND = 610;
+const X = s => X0 + (s - 1) * DX;
+const OY1 = 320, Yp = p => 315 - (p - 87) * 11.4;
+const OY2 = 430, Yv = v => OY2 - v * 24;
+const OY3 = 610, Yr = r => OY3 - r * 1.3;
+const RES = 100, SOP = 90, SA = 48;
+
+ln(OX, OY1, XEND, OY1, AX); ln(OX, OY1, OX, 28, AX);
+ln(OX, OY2, XEND, OY2, AX); ln(OX, OY2, OX, 342, AX);
+ln(OX, OY3, XEND, OY3, AX); ln(OX, OY3, OX, 452, AX);
+
+el('rect', {x: OX, y: Yr(100), width: X(N) + 6 - OX, height: Yr(70) - Yr(100), fill: '#888', 'fill-opacity': 0.12});
+el('rect', {x: OX, y: Yr(30), width: X(N) + 6 - OX, height: Yr(0) - Yr(30), fill: '#888', 'fill-opacity': 0.12});
+ln(OX, Yr(70), X(N) + 6, Yr(70), GUIDE); ln(OX, Yr(30), X(N) + 6, Yr(30), GUIDE);
+ln(OX - 4, Yr(70), OX, Yr(70), TICK); ln(OX - 4, Yr(30), OX, Yr(30), TICK); ln(OX - 4, Yr(100), OX, Yr(100), TICK);
+
+ln(X(11), Yp(SOP), X(N) + 6, Yp(SOP), {stroke: '#1D9E75', 'stroke-width': 1.4, 'stroke-dasharray': '7 4'});
+ln(X(14), Yp(RES), X(N) + 6, Yp(RES), {stroke: '#D85A30', 'stroke-width': 1.4, 'stroke-dasharray': '7 4'});
+
+for (let i = 0; i < N; i++) {
+  const x = X(i + 1), up = C[i] >= O[i];
+  ln(x, Yp(H[i]), x, Yp(L_[i]), {stroke: 'black', 'stroke-width': 1});
+  const y1 = Yp(Math.max(O[i], C[i])), y2 = Yp(Math.min(O[i], C[i]));
+  el('rect', {x: (x - 2.7).toFixed(1), y: y1.toFixed(1), width: 5.4, height: Math.max(y2 - y1, 1).toFixed(1),
+              fill: up ? '#fff' : 'black', stroke: 'black', 'stroke-width': 1});
+  el('rect', {x: (x - 2.7).toFixed(1), y: Yv(V[i]).toFixed(1), width: 5.4, height: (OY2 - Yv(V[i])).toFixed(1), fill: '#888'});
+}
+
+path(M10.map((m, i) => [X(i + 1), Yp(m)]), {stroke: '#378ADD', 'stroke-width': 2.2, 'stroke-linejoin': 'round'});
+path(M30.map((m, i) => [X(i + 1), Yp(m)]), {stroke: '#534AB7', 'stroke-width': 2.2, 'stroke-linejoin': 'round'});
+path(RSI.map((r, i) => [X(i + 1), Yr(r)]), {stroke: '#185FA5', 'stroke-width': 2.2, 'stroke-linejoin': 'round'});
+
+el('circle', {cx: X(SA), cy: Yp(C[SA - 1]), r: 5, fill: 'black'});
+L('lP', 'P', OX - 8, 26, 'rt', 'black', 17);
+L('lt1', 't', XEND + 6, OY1, 'lm', 'black', 17);
+L('lV', '\\text{Vol}', OX - 8, 340, 'rt', 'black', 16);
+L('lt2', 't', XEND + 6, OY2, 'lm', 'black', 17);
+L('lRSI', '\\text{RSI}', OX - 8, 448, 'rt', 'black', 16);
+L('lt3', 't', XEND + 6, OY3, 'lm', 'black', 17);
+L('l100', '100', OX - 7, Yr(100), 'rm', 'black', 14);
+L('l70', '70', OX - 7, Yr(70), 'rm', 'black', 14);
+L('l30', '30', OX - 7, Yr(30), 'rm', 'black', 14);
+L('lsc', '\\text{sobrecompra}', OX + 10, (Yr(100) + Yr(70)) / 2, 'lm', '#5a5a5a', 13);
+L('lsv', '\\text{sobreventa}', X(N) - 2, (Yr(30) + Yr(0)) / 2, 'rm', '#5a5a5a', 13);
+L('lR', 'R', X(14) - 6, Yp(RES), 'rm', '#D85A30', 16);
+L('lS', 'S', X(11) - 6, Yp(SOP), 'rm', '#1D9E75', 16);
+L('lM10', '\\text{MM}_{10}', X(N) + 9, Yp(M10[N - 1]), 'lm', '#378ADD', 15);
+L('lM30', '\\text{MM}_{30}', X(N) + 9, Yp(M30[N - 1]), 'lm', '#534AB7', 15);
+L('lA', 'A', X(SA) - 8, Yp(C[SA - 1]) - 8, 'rb', 'black', 16, 1);
+
+const TX = {l: '0', c: '-50%', r: '-100%'}, TY = {t: '0', m: '-50%', b: '-100%'};
+const CONT = document.querySelector('.graph-container');
+labels.forEach(l => {
+  const e = document.createElement('div'); e.className = 'katex-label'; e.id = l.id; CONT.appendChild(e);
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = (l.x / VBW * 100).toFixed(2) + '%';
+  e.style.top = (l.y / VBH * 100).toFixed(2) + '%';
+  e.style.color = l.color || 'black';
+  e.style.fontSize = (l.size || 16) + 'px';
+  const a = l.anchor || 'lt';
+  e.style.transform = 'translate(' + TX[a[0]] + ',' + TY[a[1]] + ')';
+  if (l.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+});
+</script>
+</body>
+</html>

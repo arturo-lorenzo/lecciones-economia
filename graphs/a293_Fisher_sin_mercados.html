@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 520">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+  </svg>
+</div>
+
+<script>
+
+const NS = 'http://www.w3.org/2000/svg';
+const svg = document.querySelector('.graph-container svg');
+const cont = document.querySelector('.graph-container');
+const VBW = 680, VBH = +svg.getAttribute('viewBox').split(' ')[3];
+const pctX = x => (x / VBW * 100).toFixed(2) + '%';
+const pctY = y => (y / VBH * 100).toFixed(2) + '%';
+function el(tag, attrs, parent) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  (parent || svg).appendChild(e); return e;
+}
+function line(id, x1, y1, x2, y2, stroke, w, extra) {
+  return el('line', Object.assign({id, x1, y1, x2, y2, stroke, 'stroke-width': w}, extra || {}));
+}
+function guide(id, x1, y1, x2, y2) { return line(id, x1, y1, x2, y2, '#888', 0.8, {'stroke-dasharray': '6 4'}); }
+function path(id, pts, stroke, w, extra) {
+  const d = 'M' + pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' L');
+  return el('path', Object.assign({id, d, fill: 'none', stroke, 'stroke-width': w, 'stroke-linecap': 'round'}, extra || {}));
+}
+function dot(id, x, y, fill, r) { return el('circle', {id, cx: x, cy: y, r: r || 5, fill}); }
+function tickX(x) { line('', x, OY, x, OY + 4, 'black', 1); }
+function tickY(y) { line('', OX - 4, y, OX, y, 'black', 1); }
+function label(id, tex, x, y, color, size, opt) {
+  opt = opt || {};
+  const d = document.createElement('div');
+  d.className = 'katex-label'; d.id = id; cont.appendChild(d);
+  katex.render(tex, d, {throwOnError: false});
+  d.style.left = pctX(x); d.style.top = pctY(y);
+  d.style.color = color || 'black'; d.style.fontSize = (size || 16) + 'px';
+  d.style.whiteSpace = 'nowrap';
+  if (opt.right) d.classList.add('right-of-axis');
+  if (opt.center) d.style.transform = 'translateX(-50%)';
+  if (opt.bg) { d.style.background = '#fff'; const k = d.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  return d;
+}
+function axes() {
+  line('axis-x', OX, OY, XEND, OY, 'black', 1.2, {'marker-end': 'url(#arrow)'});
+  line('axis-y', OX, OY, OX, YEND, 'black', 1.2, {'marker-end': 'url(#arrow)'});
+}
+
+
+
+
+
+const B = 2.0, g = 0.5, Y = 1.0, a = 0.7, r = 0.1, R = 1 + r;
+const fpp = c => B * Math.pow(Math.max(Y - c, 0), g);
+const U = (x, y) => Math.pow(x, a) * Math.pow(y, 1 - a);
+const ic = (u, x) => Math.pow(u / Math.pow(x, a), 1 / (1 - a));
+
+let lo = 0.01, hi = 0.99;
+for (let k = 0; k < 200; k++) { const m1 = lo + (hi - lo) * 0.382, m2 = lo + (hi - lo) * 0.618;
+  if (U(m1, fpp(m1)) < U(m2, fpp(m2))) lo = m1; else hi = m2; }
+const A0 = [(lo + hi) / 2, 0]; A0[1] = fpp(A0[0]);
+const uA = U(A0[0], A0[1]);
+
+const Pt = Y - Math.pow(R / (B * g), 1 / (g - 1)), P = [Pt, fpp(Pt)];
+const kR = R * (1 - a) / a;
+const opt = W => { const x = W / (1 + kR / R); return [x, kR * x]; };
+const W1 = P[0] + P[1] / R;
+const WA = A0[0] + A0[1] / R;
+const E1 = opt(W1), Ep = opt(WA);
+const u1 = U(E1[0], E1[1]), up = U(Ep[0], Ep[1]);
+
+const OX = 124, OY = 470, XEND = 586, YEND = 42;
+const SX = 417.6 / W1, SY = 400 / Math.max(R * W1, B);
+const sx = x => OX + x * SX, sy = y => OY - y * SY;
+function fppPts() { const p = []; for (let i = 0; i <= 400; i++) { const c = Y * i / 400; p.push([sx(c), sy(fpp(c))]); } return p; }
+function icPts(u, x0, x1, cap) { const p = []; for (let i = 0; i <= 400; i++) { const x = x0 + (x1 - x0) * i / 400; const y = ic(u, x); if (y <= cap && y >= 0) p.push([sx(x), sy(y)]); } return p; }
+
+axes();
+guide('g-0v', sx(A0[0]), sy(A0[1]), sx(A0[0]), OY);
+guide('g-0h', sx(A0[0]), sy(A0[1]), OX, sy(A0[1]));
+tickX(sx(A0[0])); tickY(sy(A0[1]));
+path('fpp', fppPts(), '#1D9E75', 2.2);
+const xE = 1.3;
+path('u0', icPts(uA, 0.1, xE, 1.75), '#534AB7', 2.2);
+dot('p0', sx(A0[0]), sy(A0[1]), '#000');
+
+label('l-cy', 'c_{t+1}', OX - 8, 34, 'black', 17, {right: true});
+label('l-cx', 'c_t', XEND + 2, OY - 2, 'black', 17);
+label('l-O', 'O', OX - 20, OY + 4, 'black', 17);
+label('l-x0', 'c_t^0', sx(A0[0]) - 9, OY + 6);
+label('l-y0', 'c_{t+1}^0', OX - 8, sy(A0[1]) - 12, 'black', 16, {right: true});
+label('l-fpp', '\\text{FPP}', sx(Y) + 8, OY - 30, '#1D9E75');
+label('l-u0', 'u_0', sx(xE) + 4, sy(ic(uA, xE)) - 12, '#534AB7');
+label('l-p0', '0', sx(A0[0]) + 8, sy(A0[1]) - 24, '#000');
+label('l-tg', '\\text{RMSI} = \\text{RMTI}', sx(A0[0]) + 22, sy(A0[1]) - 60, '#555', 15);
+
+</script>
+</body>
+</html>

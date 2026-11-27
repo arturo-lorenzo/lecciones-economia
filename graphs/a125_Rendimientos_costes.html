@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  body { margin: 0; }
+  .graph-container { position: relative; width: 100%; max-width: none; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg id="g" viewBox="0 0 900 350" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+</svg>
+</div>
+<script>
+const W = 900, H = 350, S = 900 / 680;
+const svg = document.getElementById('g'), NS = 'http://www.w3.org/2000/svg';
+const box = document.querySelector('.graph-container');
+function el(tag, attrs) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+const f1 = v => v.toFixed(1), f2 = v => v.toFixed(2);
+const labels = [];
+const lab = (tex, x, y, color, ax, ay, size) => labels.push({tex, x, y, color, ax, ay, size});
+const AXIS = {stroke: 'black', 'stroke-width': f2(1.2 * S), 'marker-end': 'url(#arrow)'};
+const GREEN = '#1D9E75', GREEN_D = '#0F6E56', PURPLE = '#534AB7';
+const OY = 290, AXX = 240, AXY = 225;
+const ORIG = [36, 333, 630];
+function panel(i, title, eps, curves) {
+  const OX = ORIG[i];
+  const X = u => OX + AXX * u, Y = v => OY - AXY * v;
+  el('line', Object.assign({x1: OX, y1: OY, x2: OX + AXX, y2: OY}, AXIS));
+  el('line', Object.assign({x1: OX, y1: OY, x2: OX, y2: OY - AXY}, AXIS));
+  lab('x', OX + AXX + 6, OY, '#000', 0, 0.5, '17px');
+  lab('C', OX - 7, OY - AXY, '#000', 1, 0.5, '17px');
+  lab('O', OX - 7, OY + 6, '#000', 1, 0, '16px');
+  lab(title, OX + AXX / 2 - 6, 8, '#444', 0.5, 0, '13px');
+  lab(eps, OX + AXX / 2, OY + 22, '#444', 0.5, 0, '16px');
+  curves.forEach(cv => {
+    const pts = [];
+    for (let k = 0; k <= 160; k++) { const u = cv.u0 + (cv.u1 - cv.u0) * k / 160; pts.push(f1(X(u)) + ',' + f1(Y(cv.f(u)))); }
+    el('path', {d: 'M' + pts.join(' L'), fill: 'none', stroke: cv.color, 'stroke-width': f2(2.2 * S), 'stroke-linecap': 'round'});
+    const ue = cv.u1, ve = cv.f(ue);
+    if (cv.above) lab(cv.tex, X(ue), Y(ve) - 8, cv.lc, 1, 1);
+    else lab(cv.tex, X(ue) + 6, Y(ve), cv.lc, 0, 0.5);
+  });
+}
+
+panel(0, '\\text{(a) Rendimientos constantes}', '\\varepsilon_{Cx} = 1', [
+  {f: u => 0.45, u0: 0, u1: 0.94, color: GREEN, lc: GREEN_D, tex: '\\text{Cmg}(x) = \\text{Cme}(x)', above: true}
+]);
+
+const hB = 0.6, A = 0.726, cmeB = u => A * u ** (1 / hB - 1), cmgB = u => cmeB(u) / hB;
+panel(1, '\\text{(b) Rendimientos decrecientes}', '\\varepsilon_{Cx} > 1', [
+  {f: cmgB, u0: 0, u1: 0.62, color: PURPLE, lc: PURPLE, tex: '\\text{Cmg}(x)'},
+  {f: cmeB, u0: 0, u1: 0.62, color: GREEN, lc: GREEN_D, tex: '\\text{Cme}(x)'}
+]);
+
+const hC = 1.5, B = 0.42, cmeC = u => B * u ** (1 / hC - 1), cmgC = u => cmeC(u) / hC;
+const uTop = (k) => (k / 0.92) ** 3;
+panel(2, '\\text{(c) Rendimientos crecientes}', '\\varepsilon_{Cx} < 1', [
+  {f: cmeC, u0: uTop(B), u1: 0.66, color: GREEN, lc: GREEN_D, tex: '\\text{Cme}(x)'},
+  {f: cmgC, u0: uTop(B / hC), u1: 0.66, color: PURPLE, lc: PURPLE, tex: '\\text{Cmg}(x)'}
+]);
+if (Math.abs(cmgB(0.5) / cmeB(0.5) - 1 / hB) > 1e-9 || Math.abs(cmgC(0.5) / cmeC(0.5) - 1 / hC) > 1e-9) console.error('Cmg/Cme debe ser 1/h');
+
+labels.forEach((l, i) => {
+  const d = document.createElement('div');
+  d.className = 'katex-label'; d.id = 'lbl-' + i;
+  katex.render(l.tex, d, {throwOnError: false});
+  d.style.left = (l.x / W * 100).toFixed(3) + '%';
+  d.style.top = (l.y / H * 100).toFixed(3) + '%';
+  d.style.transform = `translate(${-(l.ax || 0) * 100}%, ${-(l.ay || 0) * 100}%)`;
+  d.style.color = l.color || '#000';
+  if (l.size) d.style.fontSize = l.size;
+  box.appendChild(d);
+});
+</script>
+</body>
+</html>

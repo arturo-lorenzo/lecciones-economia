@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  body { margin: 0; background: #fff; }
+  .graph-container { position: relative; width: 100%; max-width: none; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg id="g" viewBox="0 0 680 450" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+</svg>
+</div>
+<script>
+const W = 680, H = 450;
+const svg = document.getElementById('g'), NS = 'http://www.w3.org/2000/svg';
+const box = document.querySelector('.graph-container');
+function el(tag, attrs) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+const f1 = v => v.toFixed(1);
+const labels = [];
+const lab = (tex, x, y, color, ax, ay, size, bg) => labels.push({tex, x, y, color, ax, ay, size, bg});
+const line = (x1, y1, x2, y2, at) => el('line', Object.assign({x1: f1(x1), y1: f1(y1), x2: f1(x2), y2: f1(y2)}, at));
+const path = (pts, at) => el('path', Object.assign({d: pts.map((q, i) => (i ? 'L' : 'M') + f1(q[0]) + ',' + f1(q[1])).join(' '), fill: 'none'}, at));
+const AXIS = {stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'};
+const GUIDE = {stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'};
+const TICK = {stroke: '#000', 'stroke-width': 1};
+const ARR = c => ({stroke: c, 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+const STAB = {stroke: '#5a5a5a', 'stroke-width': 1.2, 'stroke-dasharray': '5 3', 'marker-end': 'url(#arrow)'};
+const RED = '#D85A30', GREEN = '#1D9E75', GREEN_D = '#0F6E56', BLUE = '#378ADD', BLUE_D = '#185FA5', DEM = '#534AB7';
+const dot = (x, y) => el('circle', {cx: f1(x), cy: f1(y), r: 5, fill: '#000'});
+
+function shiftArrow(x0, y0, nx, ny, d, color, gap) { gap = gap || 6; line(x0 + nx * gap, y0 + ny * gap, x0 + nx * (d - gap), y0 + ny * (d - gap), ARR(color)); }
+
+
+const ws = (L, a) => a + 0.08 * L, wd = (L, a) => a - 0.1 * L;
+const eq = (as_, ad) => { const L = (ad - as_) / 0.18; return [L, ws(L, as_)]; };
+const OY = 323, KW = 230 / 12.4, KX = 240 / 104; const gy = w => OY - KW * w; const wTop = 12.4, LEnd = 104;
+function axes(O, xl) {
+  line(O, OY, O + KX * LEnd, OY, AXIS); line(O, OY, O, gy(wTop), AXIS);
+  lab('w', O, gy(wTop) - 6, '#000', 0.5, 1, '17px'); lab('L', O + KX * LEnd + 6, OY, '#000', 0, 0.5, '17px');
+}
+function guides(O, pts) {
+  pts.forEach(q => { const x = O + KX * q[0], y = gy(q[1]);
+    line(O, y, x, y, GUIDE); line(x, y, x, OY, GUIDE); line(O - 4, y, O, y, TICK); line(x, OY, x, OY + 4, TICK); });
+}
+
+function normal(m, sx, sy) { let nx = KW * m, ny = KX; const r = Math.hypot(nx, ny); nx /= r; ny /= r; if (nx * sx + ny * sy < 0) { nx = -nx; ny = -ny; } return [nx, ny]; }
+
+
+{
+  const O = 36, gx = L => O + KX * L; axes(O);
+  const as_ = 1, ad0 = 10, ad1 = 14;
+  const [L0, w0] = eq(as_, ad0), [L1, w1] = eq(as_, ad1);
+  guides(O, [[L0, w0], [L1, w1]]);
+  line(gx(0), gy(ws(0, as_)), gx(100), gy(ws(100, as_)), {stroke: BLUE, 'stroke-width': 2.2});
+  line(gx(4), gy(wd(4, ad0)), gx(88), gy(wd(88, ad0)), {stroke: GREEN, 'stroke-width': 2.2});
+  line(gx(22), gy(wd(22, ad1)), gx(100), gy(wd(100, ad1)), {stroke: GREEN, 'stroke-width': 2.2, 'stroke-dasharray': '8 5'});
+
+  const La = 8, [nx, ny] = normal(-0.1, 1, -1);
+  const d = (ad1 - ad0) * KW * ny;
+  shiftArrow(gx(La), gy(wd(La, ad0)), nx, ny, Math.abs((ad1 - ad0) * KW * KX / Math.hypot(KW * 0.1, KX)), GREEN_D);
+  lab('\\Delta p > 0', gx(42), gy(8.0), GREEN_D, 0.5, 0.5, '15px');
+  dot(gx(L0), gy(w0)); dot(gx(L1), gy(w1));
+  lab('0', gx(L0), gy(w0) - 10, '#000', 0.5, 1); lab('1', gx(L1), gy(w1) - 10, '#000', 0.5, 1);
+  lab('L^s(w)', gx(100) + 5, gy(ws(100, as_)), BLUE_D, 0, 0.5, '15px');
+  lab('L_0^d(w)', gx(88) + 5, gy(wd(88, ad0)), GREEN_D, 0, 0.5, '15px');
+  lab('L_1^d(w)', gx(100) + 5, gy(wd(100, ad1)), GREEN_D, 0, 0.5, '15px');
+  lab('w_0^*', O - 7, gy(w0), '#000', 1, 0.5); lab('w_1^*', O - 7, gy(w1), '#000', 1, 0.5);
+  lab('L_0^*', gx(L0), OY + 8, '#000', 0.5, 0); lab('L_1^*', gx(L1), OY + 8, '#000', 0.5, 0);
+  lab('\\text{(a) Aumento de la demanda}', gx(LEnd / 2), OY + 40, '#444', 0.5, 0, '15px');
+}
+
+{
+  const O = 372, gx = L => O + KX * L; axes(O);
+  const as0 = 1, as1 = 3.7, ad = 10;
+  const [L0, w0] = eq(as0, ad), [L1, w1] = eq(as1, ad);
+  guides(O, [[L0, w0], [L1, w1]]);
+  line(gx(4), gy(wd(4, ad)), gx(86), gy(wd(86, ad)), {stroke: GREEN, 'stroke-width': 2.2});
+  line(gx(0), gy(ws(0, as0)), gx(96), gy(ws(96, as0)), {stroke: BLUE, 'stroke-width': 2.2});
+  line(gx(0), gy(ws(0, as1)), gx(96), gy(ws(96, as1)), {stroke: BLUE, 'stroke-width': 2.2, 'stroke-dasharray': '8 5'});
+  const La = 74, [nx, ny] = normal(0.08, -1, -1);
+  shiftArrow(gx(La), gy(ws(La, as0)), nx, ny, Math.abs((as1 - as0) * KW * KX / Math.hypot(KW * 0.08, KX)), BLUE_D);
+  lab('\\Delta M_0 > 0', gx(La) + 8, gy(ws(La, as0)) + 6, BLUE_D, 0, 0, '15px');
+  dot(gx(L0), gy(w0)); dot(gx(L1), gy(w1));
+  lab('0', gx(L0), gy(w0) - 10, '#000', 0.5, 1); lab('1', gx(L1), gy(w1) - 10, '#000', 0.5, 1);
+  lab('L^d(w)', gx(86) + 5, gy(wd(86, ad)), GREEN_D, 0, 0.5, '15px');
+  lab('L_0^s(w)', gx(96) + 5, gy(ws(96, as0)), BLUE_D, 0, 0.5, '15px');
+  lab('L_1^s(w)', gx(96) + 5, gy(ws(96, as1)), BLUE_D, 0, 0.5, '15px');
+  lab('w_0^*', O - 7, gy(w0), '#000', 1, 0.5, null, true); lab('w_1^*', O - 7, gy(w1), '#000', 1, 0.5, null, true);
+  lab('L_0^*', gx(L0), OY + 8, '#000', 0.5, 0); lab('L_1^*', gx(L1), OY + 8, '#000', 0.5, 0);
+  lab('\\text{(b) Disminución de la oferta}', gx(LEnd / 2), OY + 40, '#444', 0.5, 0, '15px');
+}
+
+labels.forEach((l, i) => {
+  const d = document.createElement('div');
+  d.className = 'katex-label'; d.id = 'lbl-' + i;
+  katex.render(l.tex, d, {throwOnError: false});
+  d.style.left = (l.x / W * 100).toFixed(3) + '%';
+  d.style.top = (l.y / H * 100).toFixed(3) + '%';
+  d.style.transform = `translate(${-(l.ax || 0) * 100}%, ${-(l.ay || 0) * 100}%)`;
+  d.style.color = l.color || '#000';
+  if (l.size) d.style.fontSize = l.size;
+  if (l.bg) { d.style.background = '#fff'; const k = d.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  box.appendChild(d);
+});
+</script>
+</body>
+</html>

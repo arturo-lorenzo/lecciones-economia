@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 490">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+  </svg>
+</div>
+
+<script>
+
+const NS = 'http://www.w3.org/2000/svg';
+const svg = document.querySelector('.graph-container svg');
+const cont = document.querySelector('.graph-container');
+const VBW = 680, VBH = +svg.getAttribute('viewBox').split(' ')[3];
+const pctX = x => (x / VBW * 100).toFixed(2) + '%';
+const pctY = y => (y / VBH * 100).toFixed(2) + '%';
+function el(tag, attrs, parent) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  (parent || svg).appendChild(e); return e;
+}
+function line(id, x1, y1, x2, y2, stroke, w, extra) {
+  return el('line', Object.assign({id, x1, y1, x2, y2, stroke, 'stroke-width': w}, extra || {}));
+}
+function guide(id, x1, y1, x2, y2) { return line(id, x1, y1, x2, y2, '#888', 0.8, {'stroke-dasharray': '6 4'}); }
+function path(id, pts, stroke, w, extra) {
+  const d = 'M' + pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' L');
+  return el('path', Object.assign({id, d, fill: 'none', stroke, 'stroke-width': w, 'stroke-linecap': 'round'}, extra || {}));
+}
+function dot(id, x, y, fill, r) { return el('circle', {id, cx: x, cy: y, r: r || 5, fill}); }
+function tickX(x) { line('', x, OY, x, OY + 4, 'black', 1); }
+function tickY(y) { line('', OX - 4, y, OX, y, 'black', 1); }
+function label(id, tex, x, y, color, size, opt) {
+  opt = opt || {};
+  const d = document.createElement('div');
+  d.className = 'katex-label'; d.id = id; cont.appendChild(d);
+  katex.render(tex, d, {throwOnError: false});
+  d.style.left = pctX(x); d.style.top = pctY(y);
+  d.style.color = color || 'black'; d.style.fontSize = (size || 16) + 'px';
+  d.style.whiteSpace = 'nowrap';
+  if (opt.right) d.classList.add('right-of-axis');
+  if (opt.center) d.style.transform = 'translateX(-50%)';
+  if (opt.bg) { d.style.background = '#fff'; const k = d.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  return d;
+}
+function axes() {
+  line('axis-x', OX, OY, XEND, OY, 'black', 1.2, {'marker-end': 'url(#arrow)'});
+  line('axis-y', OX, OY, OX, YEND, 'black', 1.2, {'marker-end': 'url(#arrow)'});
+}
+
+
+
+
+const S = 1.25;
+const OX = 132, OY = 441, XEND = OX + S * 350, YEND = OY - S * 324;
+const x1 = OX + S * 150, x2 = OX + S * 225, xE = OX + S * 315, yLo = OY - S * 75, yHi = OY - S * 210;
+axes();
+
+const xD0 = OX + S * 25, xD1 = OX + S * 290;
+const D = x => OY - S * 290 + (x - xD0) * 0.84;
+const Cm = x => x <= x1 ? yLo : (x <= x2 ? yLo + (yHi - yLo) * (x - x1) / (x2 - x1) : yHi);
+let lo = x1, hi = x2; for (let i = 0; i < 60; i++) { const m = (lo + hi) / 2; (D(m) - Cm(m) < 0) ? lo = m : hi = m; }
+const x0 = (lo + hi) / 2, y0 = Cm(x0);
+guide('g-x1', x1, yLo, x1, OY); guide('g-x2', x2, yHi, x2, OY);
+guide('g-0v', x0, y0, x0, OY); guide('g-0h', x0, y0, OX, y0);
+tickX(x1); tickX(x2); tickX(x0); tickY(y0);
+path('cmg', [[OX, yLo], [x1, yLo], [x2, yHi], [xE, yHi]], '#378ADD', 2.2, {'stroke-linejoin': 'round'});
+line('demanda', xD0, D(xD0), xD1, D(xD1), '#1D9E75', 2.2);
+dot('p0', x0, y0, '#000');
+
+
+label('l-C', 'C', OX - 8, YEND - 8, 'black', 17, {right: true});
+label('l-I', 'I', XEND + 4, OY - 12, 'black', 17);
+label('l-O', 'O', OX - 20, OY + 4, 'black', 17);
+label('l-CI', 'C(I)', xE + 6, yHi - 11, '#378ADD', 16);
+label('l-DI', 'D(I)', xD1 + 4, D(xD1) - 4, '#1D9E75', 16);
+label('l-I0', 'I^*', x0 - 7, OY + 6, 'black', 16);
+label('l-C0', 'C^*', OX - 8, y0 - 11, 'black', 16, {right: true});
+label('l-p0', '0', x0 - 5, y0 - 30, '#000');
+label('l-s1', '\\text{autofinanciación}', (OX + x1) / 2, yLo + 10, '#378ADD', 15, {center: true});
+label('l-s2', '\\text{deuda}', x1 + 16, OY - S * 142, '#378ADD', 15, {right: true});
+label('l-s3', '\\text{acciones}', (x2 + xE) / 2 + 15, yHi - 30, '#378ADD', 15, {center: true});
+
+</script>
+</body>
+</html>

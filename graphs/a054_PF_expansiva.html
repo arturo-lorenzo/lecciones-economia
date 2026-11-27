@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+      <marker id="garrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="#1D9E75"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="130" y1="440" x2="550" y2="440" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="130" y1="440" x2="130" y2="50"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <g id="guides" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3" fill="none"></g>
+    <g id="ticks" stroke="black" stroke-width="1"></g>
+
+
+    <line id="is0" stroke="#378ADD" stroke-width="2.2"/>
+
+    <line id="is1" stroke="#378ADD" stroke-width="2.2" stroke-dasharray="8 4"/>
+
+    <line id="lm" stroke="#1D9E75" stroke-width="2.2"/>
+
+
+    <line id="shift" stroke="#1D9E75" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <line id="mult" stroke="#555" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="crowd" stroke="#555" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <circle id="p0" r="5" fill="#000"/>
+    <circle id="p0p" r="5" fill="#000"/>
+    <circle id="p1" r="5" fill="#000"/>
+  </svg>
+
+
+  <div class="katex-label" id="lbl-r"></div>
+  <div class="katex-label" id="lbl-Y"></div>
+  <div class="katex-label" id="lbl-IS0"></div>
+  <div class="katex-label" id="lbl-IS1"></div>
+  <div class="katex-label" id="lbl-LM"></div>
+  <div class="katex-label" id="lbl-E0"></div>
+  <div class="katex-label" id="lbl-E0p"></div>
+  <div class="katex-label" id="lbl-E1"></div>
+  <div class="katex-label" id="lbl-dG"></div>
+  <div class="katex-label" id="lbl-mult"></div>
+  <div class="katex-label" id="lbl-crowd"></div>
+  <div class="katex-label" id="lbl-r0"></div>
+  <div class="katex-label" id="lbl-r1"></div>
+  <div class="katex-label" id="lbl-Y0"></div>
+  <div class="katex-label" id="lbl-Y0p"></div>
+  <div class="katex-label" id="lbl-Y1"></div>
+
+</div>
+
+<script>
+const W = 680, H = 520, OX = 130, OY = 440;
+
+const KX = 420 / 500, X = x => OX + (x - 100) * KX;
+function pct(v, t) { return (v / t * 100).toFixed(1) + '%'; }
+const el = id => document.getElementById(id);
+function L(id, x1, y1, x2, y2) { const e = el(id); e.setAttribute('x1', x1); e.setAttribute('y1', y1); e.setAttribute('x2', x2); e.setAttribute('y2', y2); }
+const NS = 'http://www.w3.org/2000/svg';
+function add(g, x1, y1, x2, y2) { const e = document.createElementNS(NS, 'line'); e.setAttribute('x1', x1); e.setAttribute('y1', y1); e.setAttribute('x2', x2); e.setAttribute('y2', y2); el(g).appendChild(e); }
+
+
+const aLM = 0.30 * KX, cLM = X(270);
+const sIS = 0.30 / KX, bIS = 195, SH = 200 * KX, X0 = X(120);
+const xLM = y => cLM + aLM * (OY - y);
+const yIS = (x, sh) => bIS + sIS * (x - X0 - sh);
+function inter(sh) { const y = (bIS + sIS * (cLM + aLM * OY - X0 - sh)) / (1 + sIS * aLM); return [xLM(y), y]; }
+const [x0, y0] = inter(0), [x1, y1] = inter(SH), x0p = x0 + SH, y0p = y0;
+
+L('lm', xLM(415), 415, xLM(85), 85);
+L('is0', X(120), yIS(X(120), 0), X(470), yIS(X(470), 0));
+L('is1', X(150), yIS(X(150), SH), X(575), yIS(X(575), SH));
+
+
+const nx = sIS / Math.hypot(1, sIS), ny = -1 / Math.hypot(1, sIS);
+const gap = SH * Math.sin(Math.atan(sIS));
+const xa = X(135), ya = yIS(xa, 0);
+L('shift', xa + nx * 7, ya + ny * 7, xa + nx * (gap - 8), ya + ny * (gap - 8));
+
+
+L('mult', x0 + 8, y0, x0p - 9, y0p);
+
+const ux = (x1 - x0p), uy = (y1 - y0p), ul = Math.hypot(ux, uy);
+const ox = nx * 11, oy = ny * 11;
+L('crowd', x0p + ux / ul * 12 + ox, y0p + uy / ul * 12 + oy, x1 - ux / ul * 12 + ox, y1 - uy / ul * 12 + oy);
+
+[['p0', x0, y0], ['p0p', x0p, y0p], ['p1', x1, y1]].forEach(([id, x, y]) => { el(id).setAttribute('cx', x); el(id).setAttribute('cy', y); });
+
+
+add('guides', x0, y0, x0, OY); add('guides', x0, y0, OX, y0);
+add('guides', x0p, y0p, x0p, OY);
+add('guides', x1, y1, x1, OY); add('guides', x1, y1, OX, y1);
+[x0, x0p, x1].forEach(x => add('ticks', x, OY, x, OY + 4));
+[y0, y1].forEach(y => add('ticks', OX - 4, y, OX, y));
+
+const labels = [
+  {id:'lbl-r',   tex:'i',       x: OX - 7,  y: 45,  color:'black', align:'right'},
+  {id:'lbl-Y',   tex:'Y',       x: OX + 422, y: 440, color:'black'},
+  {id:'lbl-IS0', tex:'\\text{IS}_0', x: X(470) + 4, y: yIS(X(470), 0) - 8,  color:'#378ADD'},
+  {id:'lbl-IS1', tex:'\\text{IS}_1', x: X(575) + 4, y: yIS(X(575), SH) - 8, color:'#378ADD'},
+  {id:'lbl-LM',  tex:'\\text{LM}',   x: xLM(85) + 6, y: 70, color:'#1D9E75'},
+  {id:'lbl-E0',  tex:'0',       x: x0 - 17,  y: y0 - 32,  color:'#000'},
+  {id:'lbl-E0p', tex:"0'",      x: x0p + 7,  y: y0p - 24, color:'#000'},
+  {id:'lbl-E1',  tex:'1',       x: x1 - 13,  y: y1 - 32,  color:'#000'},
+  {id:'lbl-r0',  tex:'i_0',     x: OX - 7, y: y0 - 12, color:'black', align:'right'},
+  {id:'lbl-r1',  tex:'i_1',     x: OX - 7, y: y1 - 12, color:'black', align:'right'},
+  {id:'lbl-Y0',  tex:'Y_0',     x: x0 + 3,  y: 448, color:'black', align:'right'},
+  {id:'lbl-Y1',  tex:'Y_1',     x: x1 - 3,  y: 448, color:'black'},
+  {id:'lbl-Y0p', tex:"Y_{0'}",  x: x0p - 11, y: 448, color:'black'},
+  {id:'lbl-dG',  tex:'\\Delta G_0 > 0', x: xa + nx * gap - 2, y: yIS(xa + nx * gap, SH) - 34, color:'#1D9E75', size:'14px'},
+  {id:'lbl-mult',  tex:'\\text{multiplicador}', x: (x0 + x0p) / 2 + 10, y: y0 + 2, color:'#555', size:'13px', center:true},
+  {id:'lbl-crowd', tex:'\\text{expulsión}', x: (x0p + x1) / 2 + ox + 8, y: (y0p + y1) / 2 + oy - 31, color:'#555', size:'13px', center:true}
+];
+
+labels.forEach(l => {
+  const e = el(l.id);
+  if (!e) return;
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = pct(l.x, W);
+  e.style.top = pct(l.y, H);
+  if (l.color) e.style.color = l.color;
+  if (l.size) e.style.fontSize = l.size;
+  if (l.center) e.style.transform = 'translateX(-50%)';
+  if (l.align === 'right') e.classList.add('right-of-axis');
+});
+</script>
+</body>
+</html>

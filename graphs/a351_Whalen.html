@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 480">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+  </svg>
+</div>
+
+<script>
+
+const NS = 'http://www.w3.org/2000/svg';
+const svg = document.querySelector('.graph-container svg');
+const cont = document.querySelector('.graph-container');
+const VBW = 680, VBH = +svg.getAttribute('viewBox').split(' ')[3];
+const pctX = x => (x / VBW * 100).toFixed(2) + '%';
+const pctY = y => (y / VBH * 100).toFixed(2) + '%';
+function el(tag, attrs, parent) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  (parent || svg).appendChild(e); return e;
+}
+function line(id, x1, y1, x2, y2, stroke, w, extra) {
+  return el('line', Object.assign({id, x1, y1, x2, y2, stroke, 'stroke-width': w}, extra || {}));
+}
+function guide(id, x1, y1, x2, y2) { return line(id, x1, y1, x2, y2, '#888', 0.8, {'stroke-dasharray': '6 4'}); }
+function path(id, pts, stroke, w, extra) {
+  const d = 'M' + pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' L');
+  return el('path', Object.assign({id, d, fill: 'none', stroke, 'stroke-width': w, 'stroke-linecap': 'round'}, extra || {}));
+}
+function dot(id, x, y, fill, r) { return el('circle', {id, cx: x, cy: y, r: r || 5, fill}); }
+function tickX(x) { line('', x, OY, x, OY + 4, 'black', 1); }
+function tickY(y) { line('', OX - 4, y, OX, y, 'black', 1); }
+function label(id, tex, x, y, color, size, opt) {
+  opt = opt || {};
+  const d = document.createElement('div');
+  d.className = 'katex-label'; d.id = id; cont.appendChild(d);
+  katex.render(tex, d, {throwOnError: false});
+  d.style.left = pctX(x); d.style.top = pctY(y);
+  d.style.color = color || 'black'; d.style.fontSize = (size || 16) + 'px';
+  d.style.whiteSpace = 'nowrap';
+  if (opt.right) d.classList.add('right-of-axis');
+  if (opt.center) d.style.transform = 'translateX(-50%)';
+  if (opt.bg) { d.style.background = '#fff'; const k = d.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  return d;
+}
+function axes() {
+  line('axis-x', OX, OY, XEND, OY, 'black', 1.2, {'marker-end': 'url(#arrow)'});
+  line('axis-y', OX, OY, OX, YEND, 'black', 1.2, {'marker-end': 'url(#arrow)'});
+}
+
+
+
+
+
+const OX = 112, OY = 420, XEND = 522, YEND = 40;
+const sx = M => OX + M * 223.6, sy = v => OY - v * 120;
+const BMg = M => Math.pow(1 / M, 3);
+axes();
+const pts = []; for (let i = 0; i <= 300; i++) { const M = 0.693 + (1.75 - 0.693) * i / 300; pts.push([sx(M), sy(BMg(M))]); }
+guide('g-0v', sx(1), sy(1), sx(1), OY);
+tickX(sx(1)); tickY(sy(1));
+line('cmg', OX, sy(1), sx(1.75), sy(1), '#378ADD', 2.2);
+path('bmg', pts, '#1D9E75', 2.2);
+dot('p0', sx(1), sy(1), '#000');
+
+
+label('l-y', '\\text{Cmg},\\ \\text{Bmg}', OX + 10, YEND - 12, 'black', 17);
+label('l-x', 'M', XEND + 4, OY - 12, 'black', 17);
+label('l-O', 'O', OX - 20, OY + 4, 'black', 17);
+label('l-r', 'i', OX - 8, sy(1) - 12, 'black', 16, {right: true});
+label('l-Ms', 'M^*', sx(1) - 11, OY + 6, 'black', 16);
+label('l-cmg', '\\text{Cmg}(M) = i', sx(1.75) - 120, sy(1) - 30, '#378ADD', 16);
+label('l-bmg', '\\text{Bmg}(M) = \\dfrac{2b\\sigma^2}{M^3}', pts[0][0] + 12, pts[0][1] - 8, '#1D9E75', 16);
+label('l-p0', '0', sx(1) + 7, sy(1) - 27, '#000');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container > svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+
+
+  <svg viewBox="0 0 680 600" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <line x1="80" y1="520" x2="620" y2="520" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="80" y1="520" x2="80"  y2="40"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <path id="tri-a" fill="#378ADD" fill-opacity="0.12" stroke="none"/>
+    <path id="tri-b" fill="#1D9E75" fill-opacity="0.12" stroke="none"/>
+
+
+    <path id="ppf-a" fill="none" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="ppf-b" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <path id="ic-0" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="ic-1"  fill="none" stroke="#534AB7" stroke-width="2.2" stroke-dasharray="7 4" stroke-linecap="round"/>
+
+
+    <line id="pw" stroke="#D85A30" stroke-width="2.2"/>
+
+
+    <line id="dash-va" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-ha" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-vb" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-hb" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <g id="ticks"></g>
+
+
+    <circle id="pt-a0" r="5" fill="#000"/>
+    <circle id="pt-b0" r="5" fill="#000"/>
+    <circle id="pt-pa" r="5" fill="#000"/>
+    <circle id="pt-pb" r="5" fill="#000"/>
+    <circle id="pt-c"  r="5" fill="#000"/>
+  </svg>
+
+  <div class="katex-label" id="lbl-x"></div>
+  <div class="katex-label" id="lbl-y"></div>
+  <div class="katex-label" id="lbl-ppfa"></div>
+  <div class="katex-label" id="lbl-ppfb"></div>
+  <div class="katex-label" id="lbl-pw"></div>
+  <div class="katex-label" id="lbl-ic1"></div>
+  <div class="katex-label" id="lbl-ic0"></div>
+  <div class="katex-label" id="lbl-a0"></div>
+  <div class="katex-label" id="lbl-b0"></div>
+  <div class="katex-label" id="lbl-pa"></div>
+  <div class="katex-label" id="lbl-pb"></div>
+  <div class="katex-label" id="lbl-c"></div>
+  <div class="katex-label" id="lbl-xa"></div>
+  <div class="katex-label" id="lbl-ya"></div>
+  <div class="katex-label" id="lbl-xb"></div>
+  <div class="katex-label" id="lbl-yb"></div>
+</div>
+
+<script>
+const oxS = 80, oy = 520, pw = 520, ph = 460;
+const toSvg = (x, y) => [oxS + (x / 10) * pw, oy - (y / 10) * ph];
+const set = (id, attrs) => { const e = document.getElementById(id); for (const k in attrs) e.setAttribute(k, attrs[k]); };
+const W = 680, H = 600;
+
+
+
+
+const F = {
+  A: {Xa: 9.0, Ya: 4.5},
+  B: {Xa: 4.5, Ya: 9.0}
+};
+const fy = (c, x) => c.Ya * Math.sqrt(Math.max(0, 1 - (x / c.Xa) ** 2));
+const fs = (c, x) => -c.Ya * (x / (c.Xa * c.Xa)) / Math.sqrt(1 - (x / c.Xa) ** 2);
+const xFromSlope = (c, s) => Math.abs(s) * c.Xa * c.Xa / Math.sqrt(c.Ya * c.Ya + s * s * c.Xa * c.Xa);
+
+function curve(id, fx, fyy, n) {
+  const pts = [];
+  for (let i = 0; i <= n; i++) { const [sx, sy] = toSvg(fx(i / n), fyy(i / n)); pts.push(sx.toFixed(1) + ',' + sy.toFixed(1)); }
+  set(id, {d: 'M' + pts.join(' L')});
+}
+
+curve('ppf-a', t => F.A.Xa * Math.sin(t * Math.PI / 2), t => F.A.Ya * Math.cos(t * Math.PI / 2), 300);
+curve('ppf-b', t => F.B.Xa * Math.sin(t * Math.PI / 2), t => F.B.Ya * Math.cos(t * Math.PI / 2), 300);
+
+
+function bisect(f, lo, hi) { for (let i = 0; i < 100; i++) { const m = (lo + hi) / 2; if (f(lo) * f(m) <= 0) hi = m; else lo = m; } return (lo + hi) / 2; }
+function gap(s) {
+  const xA = xFromSlope(F.A, s), xB = xFromSlope(F.B, s);
+  return (fy(F.A, xA) - s * xA) - (fy(F.B, xB) - s * xB);
+}
+const sW = bisect(gap, -0.2, -5);
+const XA = xFromSlope(F.A, sW), YA = fy(F.A, XA);
+const XB = xFromSlope(F.B, sW), YB = fy(F.B, XB);
+const I = YA - sW * XA;
+
+
+const alpha = 0.5;
+const Xc = alpha * I / Math.abs(sW), Yc = (1 - alpha) * I;
+const U = (x, y) => Math.pow(x, alpha) * Math.pow(y, 1 - alpha);
+const icY = (u, x) => Math.pow(u / Math.pow(x, alpha), 1 / (1 - alpha));
+const u1 = U(Xc, Yc);
+
+
+function autarky(c) {
+  const x = bisect(x => alpha * fy(c, x) / ((1 - alpha) * x) - Math.abs(fs(c, x)), 0.05, c.Xa * 0.999);
+  return [x, fy(c, x)];
+}
+const [xA0, yA0] = autarky(F.A), [xB0, yB0] = autarky(F.B);
+const uA0 = U(xA0, yA0), uB0 = U(xB0, yB0);
+
+function icPath(id, u, x1, x2) {
+  curve(id, t => x1 + t * (x2 - x1), t => icY(u, x1 + t * (x2 - x1)), 200);
+}
+const X_IC_END = 9.3;
+const icStart = u => bisect(x => icY(u, x) - 9.6, 0.05, 9);
+icPath('ic-1',  u1,  icStart(u1),  X_IC_END);
+
+
+icPath('ic-0', uA0, icStart(uA0), X_IC_END);
+
+
+const L0 = [Math.max(0.6, (I - 9.6) / Math.abs(sW)), 0], L1 = [Math.min(8.9, I / Math.abs(sW)), 0];
+L0[1] = I + sW * L0[0]; L1[1] = I + sW * L1[0];
+const P0 = toSvg(...L0), P1 = toSvg(...L1);
+set('pw', {x1: P0[0], y1: P0[1], x2: P1[0], y2: P1[1]});
+
+
+const SA0 = toSvg(xA0, yA0), SB0 = toSvg(xB0, yB0), SPA = toSvg(XA, YA), SPB = toSvg(XB, YB), SC = toSvg(Xc, Yc);
+set('pt-a0', {cx: SA0[0], cy: SA0[1]}); set('pt-b0', {cx: SB0[0], cy: SB0[1]});
+set('pt-pa', {cx: SPA[0], cy: SPA[1]}); set('pt-pb', {cx: SPB[0], cy: SPB[1]});
+set('pt-c',  {cx: SC[0],  cy: SC[1]});
+
+
+const cA = toSvg(Xc, YA), cB = toSvg(XB, Yc);
+set('tri-a', {d: `M${SPA[0]},${SPA[1]} L${SC[0]},${SC[1]} L${cA[0]},${cA[1]} Z`});
+set('tri-b', {d: `M${SPB[0]},${SPB[1]} L${SC[0]},${SC[1]} L${cB[0]},${cB[1]} Z`});
+
+
+set('dash-va', {x1: SPA[0], y1: SPA[1], x2: SPA[0], y2: oy});
+set('dash-ha', {x1: oxS, y1: SPA[1], x2: SPA[0], y2: SPA[1]});
+set('dash-vb', {x1: SPB[0], y1: SPB[1], x2: SPB[0], y2: oy});
+set('dash-hb', {x1: oxS, y1: SPB[1], x2: SPB[0], y2: SPB[1]});
+const tg = document.getElementById('ticks');
+[[SPA[0], oy, SPA[0], oy + 4], [SPB[0], oy, SPB[0], oy + 4], [oxS - 4, SPA[1], oxS, SPA[1]], [oxS - 4, SPB[1], oxS, SPB[1]]].forEach(c => {
+  const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  l.setAttribute('x1', c[0]); l.setAttribute('y1', c[1]); l.setAttribute('x2', c[2]); l.setAttribute('y2', c[3]);
+  l.setAttribute('stroke', 'black'); l.setAttribute('stroke-width', '1'); tg.appendChild(l);
+});
+
+
+const pct = (v, T) => (v / T * 100).toFixed(2) + '%';
+const eIC1 = toSvg(X_IC_END, icY(u1, X_IC_END)), eIC0 = toSvg(X_IC_END, icY(uA0, X_IC_END));
+const labels = [
+  {id:'lbl-x',    tex:'X', x: 626, y: oy, ax: 0, ay: 0.5, color:'black', size: 17},
+  {id:'lbl-y',    tex:'Y', x: oxS, y: 34, ax: 0.5, ay: 1, color:'black', size: 17},
+  {id:'lbl-ppfa', tex:'\\text{FPP}^A', x: toSvg(F.A.Xa, 0)[0] + 8, y: oy - 22, ax: 0, ay: 0.5, color:'#185FA5'},
+  {id:'lbl-ppfb', tex:'\\text{FPP}^B', x: toSvg(F.B.Xa, 0)[0] + 8, y: oy - 22, ax: 0, ay: 0.5, color:'#0F6E56'},
+  {id:'lbl-pw',   tex:'\\text{RRI}^*', x: P1[0] + 6, y: P1[1], ax: 0, ay: 0.5, color:'#D85A30'},
+  {id:'lbl-ic1',  tex:'\\text{CIS}_1', x: eIC1[0] + 6, y: eIC1[1], ax: 0, ay: 0.5, color:'#534AB7'},
+  {id:'lbl-ic0',  tex:'\\text{CIS}_0', x: eIC0[0] + 6, y: eIC0[1], ax: 0, ay: 0.5, color:'#534AB7'},
+  {id:'lbl-a0',   tex:'0^A', x: SA0[0] - 6, y: SA0[1] + 6, ax: 1, ay: 0, color:'#000'},
+  {id:'lbl-b0',   tex:'0^B', x: SB0[0] - 6, y: SB0[1] + 6, ax: 1, ay: 0, color:'#000'},
+  {id:'lbl-pa',   tex:'P^A', x: SPA[0] - 6, y: SPA[1] + 6, ax: 1, ay: 0, color:'#000'},
+  {id:'lbl-pb',   tex:'P^B', x: SPB[0] - 6, y: SPB[1] + 6, ax: 1, ay: 0, color:'#000'},
+  {id:'lbl-c',    tex:'C', x: SC[0] + 6, y: SC[1] + 22, ax: 0, ay: 0, color:'#000'},
+  {id:'lbl-xa',   tex:'X^A', x: SPA[0], y: oy + 8, ax: 0.5, ay: 0, color:'black'},
+  {id:'lbl-ya',   tex:'Y^A', x: oxS - 8, y: SPA[1], ax: 1, ay: 0.5, color:'black'},
+  {id:'lbl-xb',   tex:'X^B', x: SPB[0], y: oy + 8, ax: 0.5, ay: 0, color:'black'},
+  {id:'lbl-yb',   tex:'Y^B', x: oxS - 8, y: SPB[1], ax: 1, ay: 0.5, color:'black'}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = pct(l.x, W); el.style.top = pct(l.y, H);
+  if (l.size) el.style.fontSize = l.size + 'px';
+  el.style.transform = `translate(${-100*l.ax}%, ${-100*l.ay}%)`;
+  el.style.color = l.color;
+});
+
+window.__hos = {sW, XA, YA, XB, YB, Xc, Yc, xA0, yA0, xB0, yB0, pA: Math.abs(fs(F.A, xA0)), pB: Math.abs(fs(F.B, xB0)), u1, uA0, uB0};
+</script>
+</body>
+</html>

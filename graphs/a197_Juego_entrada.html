@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  body { margin: 0; background: #fff; }
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 15px; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg id="g" viewBox="0 0 680 482" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+</svg>
+</div>
+<script>
+const W = 680, H = 482;
+const svg = document.getElementById('g'), NS = 'http://www.w3.org/2000/svg';
+const box = document.querySelector('.graph-container');
+function el(tag, attrs) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+const f1 = v => v.toFixed(1);
+const labels = [];
+const lab = (tex, x, y, color, ax, ay, size, bg) => labels.push({tex, x, y, color, ax, ay, size, bg});
+const RED = '#D85A30', GREY = '#9a9a9a';
+
+
+const tree = {p: 'I', kids: [
+  ['\\text{capacidad alta}', {p: 'E', kids: [
+    ['\\text{no entrar}', {pay: [8, 0]}],
+    ['\\text{entrar}', {p: 'I', kids: [
+      ['\\text{acomodar}', {pay: [2, 2]}],
+      ['\\text{luchar}', {pay: [3, -2]}]]}]]}],
+  ['\\text{capacidad baja}', {p: 'E', kids: [
+    ['\\text{no entrar}', {pay: [10, 0]}],
+    ['\\text{entrar}', {p: 'I', kids: [
+      ['\\text{acomodar}', {pay: [5, 3]}],
+      ['\\text{luchar}', {pay: [2, -2]}]]}]]}]]};
+
+
+function solve(nd) {
+  if (nd.pay) return nd.pay;
+  const who = nd.p === 'I' ? 0 : 1;
+  let best = -1, val = null;
+  nd.kids.forEach(([, ch], k) => { const v = solve(ch); if (val === null || v[who] > val[who]) { val = v; best = k; } });
+  nd.best = best; nd.val = val; return val;
+}
+solve(tree);
+
+const alta = tree.kids[0][1], baja = tree.kids[1][1];
+if (baja.kids[1][1].best !== 0) console.error('con capacidad baja la instalada debería acomodar');
+if (baja.best !== 1) console.error('con capacidad baja el entrante debería entrar');
+if (alta.kids[1][1].best !== 1) console.error('con capacidad alta la instalada debería luchar');
+if (alta.best !== 0) console.error('con capacidad alta el entrante no debería entrar');
+if (tree.best !== 0) console.error('la instalada debería elegir capacidad alta');
+
+
+
+const COLS = [62, 222, 382], XLEAF = 548, Y0 = 46, DY = 58, GAP = 34;
+let row = 0;
+function place(nd, depth, group) {
+  nd.x = nd.pay ? XLEAF : COLS[depth];
+  if (nd.pay) { nd.y = Y0 + DY * row + GAP * group; row++; return; }
+  nd.kids.forEach(([, ch], k) => place(ch, depth + 1, depth === 0 ? k : group));
+  nd.y = nd.kids.reduce((s, [, ch]) => s + ch.y, 0) / nd.kids.length;
+}
+place(tree, 0, 0);
+
+
+(function mark(nd) { if (nd.pay) { nd.onPath = true; return; } nd.onPath = true; mark(nd.kids[nd.best][1]); })(tree);
+
+
+const R = 15;
+function branch(nd, ch, optimal, onPath) {
+  const dx = ch.x - nd.x, dy = ch.y - nd.y, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L;
+  const x1 = nd.x + ux * R, y1 = nd.y + uy * R;
+  const x2 = ch.pay ? ch.x : ch.x - ux * R, y2 = ch.pay ? ch.y : ch.y - uy * R;
+  if (optimal) {
+    const col = onPath ? RED : '#000';
+    el('line', {x1: f1(x1), y1: f1(y1), x2: f1(x2), y2: f1(y2), stroke: col, 'stroke-width': 5.4});
+    el('line', {x1: f1(x1 - ux), y1: f1(y1 - uy), x2: f1(x2 + ux), y2: f1(y2 + uy), stroke: '#fff', 'stroke-width': 1.8});
+  } else {
+    el('line', {x1: f1(x1), y1: f1(y1), x2: f1(x2), y2: f1(y2), stroke: GREY, 'stroke-width': 1.4});
+  }
+}
+function drawBranches(nd) {
+  if (nd.pay) return;
+  nd.kids.forEach(([act, ch], k) => {
+    const optimal = k === nd.best, onPath = optimal && nd.onPath;
+    branch(nd, ch, optimal, onPath);
+
+    const t = ch.pay ? 0.62 : 0.5;
+    const mx = nd.x + (ch.x - nd.x) * t, my = nd.y + (ch.y - nd.y) * t;
+    const up = k === 0;
+    const col = onPath ? RED : optimal ? '#000' : '#666';
+    lab(act, mx - 2, my + (up ? -6 : 6), col, 1, up ? 1 : 0);
+    drawBranches(ch);
+  });
+}
+drawBranches(tree);
+
+
+function drawNodes(nd) {
+  if (nd.pay) {
+    el('circle', {cx: f1(nd.x), cy: f1(nd.y), r: 3.5, fill: nd.onPath ? RED : '#000'});
+    const pay = `(${nd.pay[0]},\\ ${nd.pay[1]})`;
+    lab(pay, nd.x + 12, nd.y, nd.onPath ? RED : '#000', 0, 0.5, '16px');
+    return;
+  }
+  el('circle', {cx: f1(nd.x), cy: f1(nd.y), r: R, fill: '#fff', stroke: nd.onPath ? RED : '#000', 'stroke-width': nd.onPath ? 2 : 1.4});
+  lab(nd.p, nd.x, nd.y, nd.onPath ? RED : '#000', 0.5, 0.5, '17px');
+  nd.kids.forEach(([, ch]) => drawNodes(ch));
+}
+drawNodes(tree);
+
+
+const leaves = [];
+(function collect(nd) { if (nd.pay) leaves.push(nd); else nd.kids.forEach(([, ch]) => collect(ch)); })(tree);
+lab('(\\pi_I,\\ \\pi_E)', XLEAF + 12, leaves[0].y - 30, '#444', 0, 0.5, '15px');
+const threat = baja.kids[1][1].kids[1][1];
+{ const ent = baja.kids[1][1], t = 0.62;
+  const mx = ent.x + (threat.x - ent.x) * t, my = ent.y + (threat.y - ent.y) * t;
+  lab('\\text{(amenaza no creíble)}', mx - 2, my + 25, '#666', 1, 0, '13px'); }
+
+
+const LY = H - 46, LX = 62;
+el('line', {x1: LX, y1: LY, x2: LX + 34, y2: LY, stroke: '#000', 'stroke-width': 5.4});
+el('line', {x1: LX - 1, y1: LY, x2: LX + 35, y2: LY, stroke: '#fff', 'stroke-width': 1.8});
+lab('\\text{elección óptima en cada nodo}', LX + 44, LY, '#000', 0, 0.5, '14px');
+const LY2 = LY + 26;
+el('line', {x1: LX, y1: LY2, x2: LX + 34, y2: LY2, stroke: RED, 'stroke-width': 5.4});
+el('line', {x1: LX - 1, y1: LY2, x2: LX + 35, y2: LY2, stroke: '#fff', 'stroke-width': 1.8});
+lab('\\text{senda del ENPS}', LX + 44, LY2, RED, 0, 0.5, '14px');
+
+labels.forEach((l, i) => {
+  const d = document.createElement('div');
+  d.className = 'katex-label'; d.id = 'lbl-' + i;
+  katex.render(l.tex, d, {throwOnError: false});
+  d.style.left = (l.x / W * 100).toFixed(3) + '%';
+  d.style.top = (l.y / H * 100).toFixed(3) + '%';
+  d.style.transform = `translate(${-(l.ax || 0) * 100}%, ${-(l.ay || 0) * 100}%)`;
+  d.style.color = l.color || '#000';
+  if (l.size) d.style.fontSize = l.size;
+  if (l.bg) { d.style.background = '#fff'; const k = d.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  box.appendChild(d);
+});
+</script>
+</body>
+</html>

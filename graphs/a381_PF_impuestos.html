@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <line x1="125" y1="440" x2="555" y2="440" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="125" y1="440" x2="125" y2="50" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <g id="guides"></g>
+    <g id="curves"></g>
+    <g id="arrows"></g>
+    <g id="points"></g>
+  </svg>
+</div>
+
+<script>
+
+const W=680, H=520, OX=100, OY=440;
+
+const KX=0.86, mx=x=>125+(x-100)*KX;
+const CFG={title:'\\text{Vía impuestos}', sh:65, up:0, isArrowY:350, isTag:'\\Delta G_0=\\Delta T_0>0', ptLab:[[-22,14],[4,-38]]};
+const isY=(x,sh)=>110+1.077*(x-140-sh);
+const lmY=(x,up)=>370-0.667*(x-140)-up;
+const inter=(sh,up)=>{const x=(370-up-110+1.077*(140+sh)+0.667*140)/(1.077+0.667);return [x,isY(x,sh)];};
+const NS='http://www.w3.org/2000/svg';
+function line(g,x1,y1,x2,y2,att,raw){const e=document.createElementNS(NS,'line');e.setAttribute('x1',raw?x1:mx(x1));e.setAttribute('y1',y1);e.setAttribute('x2',raw?x2:mx(x2));e.setAttribute('y2',y2);for(const k in att)e.setAttribute(k,att[k]);document.getElementById(g).appendChild(e);}
+function dot(x,y){const e=document.createElementNS(NS,'circle');e.setAttribute('cx',mx(x));e.setAttribute('cy',y);e.setAttribute('r',5);e.setAttribute('fill','#000');document.getElementById('points').appendChild(e);}
+const dash={stroke:'#888','stroke-width':0.8,'stroke-dasharray':'5 3'}, tk={stroke:'black','stroke-width':1};
+const ISs={stroke:'#378ADD'}, LMs={stroke:'#1D9E75'};
+function curve(kind,shift,final){const a=Object.assign({},kind==='IS'?ISs:LMs,{'stroke-width':2.2});if(final&&shift)a['stroke-dasharray']='8 4';
+  if(kind==='IS'){const x0=140+shift,x1=400+shift;line('curves',x0,isY(x0,shift),x1,isY(x1,shift),a);return [x1,isY(x1,shift)];}
+  const x0=140+(CFG.lmStart||0), x1=530-shift*2.5; line('curves',x0,lmY(x0,shift),x1,lmY(x1,shift),a); return [x1,lmY(x1,shift)];}
+const labels=[];
+
+const isEnd0=curve('IS',0,false), isEnd1=curve('IS',CFG.sh,true);
+labels.push({tex:'\\text{IS}_0',x:isEnd0[0]+5,y:isEnd0[1]-12,color:'#378ADD'},{tex:'\\text{IS}_1',x:isEnd1[0]+5,y:isEnd1[1]-12,color:'#378ADD'});
+if(CFG.up){const e0=curve('LM',0,false),e1=curve('LM',CFG.up,true);
+  labels.push({tex:'\\text{LM}_0',x:e0[0]+5,y:e0[1]-14,color:'#1D9E75'},{tex:'\\text{LM}_1',x:e1[0]+5,y:e1[1]-14,color:'#1D9E75'});}
+else{const e0=curve('LM',0,true);labels.push({tex:'\\text{LM}',x:e0[0]+5,y:e0[1]-14,color:'#1D9E75'});}
+
+const P0=inter(0,0), P1=inter(CFG.sh,CFG.up||0);
+const pts=[['0',P0],['1',P1]]; if(CFG.up) pts.splice(1,0,["0'",inter(CFG.sh,0)]);
+[P0,P1].forEach(p=>{line('guides',OX,p[1],p[0],p[1],dash);line('guides',p[0],p[1],p[0],OY,dash);line('guides',OX-4,p[1],OX,p[1],tk);line('guides',p[0],OY,p[0],OY+4,tk);});
+pts.forEach(([n,p])=>{dot(p[0],p[1]);});
+CFG.ptLab.forEach((o,i)=>{const p=pts[i][1];labels.push({tex:pts[i][0],x:p[0]+o[0],y:p[1]+o[1],color:'#000',bg:!!o[2]});});
+labels.push({tex:'i_0',x:OX-7,y:P0[1]-11,align:'right',size:'15px',color:'black'},{tex:'i_1',x:OX-7,y:P1[1]-11,align:'right',size:'15px',color:'black'},
+            {tex:'Y_0',x:P0[0]-10,y:OY+7,size:'15px',color:'black'},{tex:'Y_1',x:P1[0]-10,y:OY+7,size:'15px',color:'black'});
+
+(function(){const sI=1.077/KX,n=Math.hypot(1,sI),nx=sI/n,ny=-1/n,d=CFG.sh*KX*sI/n,yA=CFG.isArrowY,xA=mx(140+(yA-110)/1.077);
+  line('arrows',xA+nx*6,yA+ny*6,xA+nx*(d-7),yA+ny*(d-7),{stroke:'#378ADD','stroke-width':1.2,'marker-end':'url(#arrow)'},true);
+  const my=yA+ny*d/2; labels.push({tex:CFG.isTag,x:140+CFG.sh+(my+11-110)/1.077+8/KX,y:my-11,color:'#378ADD',size:'14px'});})();
+if(CFG.up){(function(){const n=Math.hypot(0.667,1),nx=-0.667/n,ny=-1/n,d=CFG.up/n,xA=CFG.lmArrowX,yA=lmY(xA,0);
+  line('arrows',xA+nx*6,yA+ny*6,xA+nx*(d-7),yA+ny*(d-7),{stroke:'#1D9E75','stroke-width':1.2,'marker-end':'url(#arrow)'});
+  const my=yA+ny*d/2; labels.push({tex:CFG.lmTag,x:140+(370-(my-11))/0.667+8,y:my-11,color:'#1D9E75',size:'14px',bg:true});})();}
+labels.push({tex:'i',x:93,y:36,align:'right',size:'17px',color:'black'},{tex:'Y',x:604,y:430,size:'17px',color:'black'},
+            {tex:CFG.title,x:340,y:6,size:'15px',color:'black',center:true,raw:true});
+const cont=document.querySelector('.graph-container');
+const pct=(v,t)=>(v/t*100).toFixed(2)+'%';
+labels.forEach((l,i)=>{const e=document.createElement('div');e.className='katex-label';e.id='lbl-'+i;cont.appendChild(e);
+  katex.render(l.tex,e,{throwOnError:false});e.style.left=pct(l.raw?l.x:mx(l.x),W);e.style.top=pct(l.y,H);e.style.color=l.color;e.style.fontSize=l.size||'16px';
+  if(l.align==='right')e.classList.add('right-of-axis');if(l.center)e.style.transform='translateX(-50%)';
+  if(l.bg){e.style.background='#fff';const q=e.querySelector('.katex');if(q)q.style.padding='0 2px';}});
+</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 500">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="105" y1="460" x2="567" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="105" y1="460" x2="105" y2="50"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <path id="fpp0" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="fpp1" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="8 5"/>
+
+
+    <line id="shift" stroke="#0F6E56" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="rri0" stroke="#378ADD" stroke-width="2.2"/>
+    <line id="rri1" stroke="#378ADD" stroke-width="2.2" stroke-dasharray="8 5"/>
+
+
+    <path id="ic0" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="ic1" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="8 5"/>
+
+
+    <circle id="q0" r="5" fill="#000"/>
+    <circle id="c0" r="5" fill="#000"/>
+    <circle id="q1" r="5" fill="#000"/>
+    <circle id="c1" r="5" fill="#000"/>
+  </svg>
+
+</div>
+
+<script>
+
+
+
+
+
+
+
+
+
+
+const W = 680, H = 500;
+function pct(v, t) { return (v / t * 100).toFixed(2) + '%'; }
+const theta = 0.2;
+const U = (X, Y) => Math.pow(X, theta) * Math.pow(Y, 1 - theta);
+function eq(a, b, p) {
+  const r = (b * b) / (a * a), Xc = p / r;
+  const Y = 1 / Math.sqrt((Xc * Xc) / (a * a) + 1 / (b * b)), X = Xc * Y, M = p * X + Y;
+  return {qx: X, qy: Y, cx: theta * M / p, cy: (1 - theta) * M};
+}
+const A0 = 7, B0 = 4.5, P0 = 1.15, A1 = 8.5, B1 = 4.6, P1 = 0.75;
+const E0 = eq(A0, B0, P0), E1 = eq(A1, B1, P1);
+const U0 = U(E0.cx, E0.cy), U1 = U(E1.cx, E1.cy);
+const sx = X => 105 + X * 44, sy = Y => 460 - Y * 48;
+
+function genFPP(a, b, id) {
+  const pts = [];
+  for (let i = 0; i <= 300; i++) {
+    const t = (i / 300) * Math.PI / 2;
+    pts.push(sx(a * Math.sin(t)).toFixed(1) + ',' + sy(b * Math.cos(t)).toFixed(1));
+  }
+  document.getElementById(id).setAttribute('d', 'M' + pts.join(' L'));
+}
+genFPP(A0, B0, 'fpp0'); genFPP(A1, B1, 'fpp1');
+
+const icY = (u, X) => Math.pow(u / Math.pow(X, theta), 1 / (1 - theta));
+function genIC(u, id, xMin, xMax) {
+  const pts = [];
+  for (let i = 0; i <= 300; i++) {
+    const X = xMin + (i / 300) * (xMax - xMin);
+    pts.push(sx(X).toFixed(1) + ',' + sy(icY(u, X)).toFixed(1));
+  }
+  document.getElementById(id).setAttribute('d', 'M' + pts.join(' L'));
+}
+genIC(U0, 'ic0', 1.3, 9.3);
+genIC(U1, 'ic1', 1.6, 9.3);
+
+
+const rriY = (e, p, X) => e.qy + p * (e.qx - X);
+function setLine(id, e, p, x1, x2) {
+  const el = document.getElementById(id);
+  el.setAttribute('x1', sx(x1)); el.setAttribute('y1', sy(rriY(e, p, x1)));
+  el.setAttribute('x2', sx(x2)); el.setAttribute('y2', sy(rriY(e, p, x2)));
+}
+const r0a = E0.qx - (8.1 - E0.qy) / P0, r0b = E0.qx - (0.8 - E0.qy) / P0;
+setLine('rri0', E0, P0, r0a, r0b);
+setLine('rri1', E1, P1, 1.2, 9.4);
+
+[['q0', E0.qx, E0.qy], ['c0', E0.cx, E0.cy], ['q1', E1.qx, E1.qy], ['c1', E1.cx, E1.cy]]
+.forEach(([id, X, Y]) => {
+  document.getElementById(id).setAttribute('cx', sx(X));
+  document.getElementById(id).setAttribute('cy', sy(Y));
+});
+
+
+(function () {
+  const Y = 0.35, x0 = sx(A0 * Math.sqrt(1 - (Y / B0) ** 2)), x1 = sx(A1 * Math.sqrt(1 - (Y / B1) ** 2));
+  const L = document.getElementById('shift');
+  L.setAttribute('x1', x0 + 5); L.setAttribute('y1', sy(Y));
+  L.setAttribute('x2', x1 - 5); L.setAttribute('y2', sy(Y));
+})();
+
+const labels = [
+  {id: 'lbl-x',    tex: 'X', x: 571, y: 462, a: 'lt', s: '17px'},
+  {id: 'lbl-y',    tex: 'Y', x: 97,  y: 46,  a: 'rt', s: '17px'},
+  {id: 'lbl-o',    tex: 'O', x: 99,  y: 466, a: 'rt'},
+  {id: 'lbl-fpp1', tex: '\\text{FPP}_1', x: 111, y: sy(B1) - 4, a: 'lb', c: '#0F6E56'},
+  {id: 'lbl-fpp0', tex: '\\text{FPP}_0', x: 111, y: sy(B0) + 5, a: 'lt', c: '#0F6E56'},
+  {id: 'lbl-q0',   tex: 'P^0', x: sx(E0.qx) - 7, y: sy(E0.qy) + 6, a: 'rt', c: '#000', s: '15px'},
+  {id: 'lbl-c0',   tex: 'C^0', x: sx(E0.cx) + 7, y: sy(E0.cy) - 6, a: 'lb', c: '#000', s: '15px'},
+  {id: 'lbl-q1',   tex: 'P^1', x: sx(E1.qx) + 7, y: sy(E1.qy) - 6, a: 'lb', c: '#000', s: '15px'},
+  {id: 'lbl-c1',   tex: 'C^1', x: sx(E1.cx) - 6, y: sy(E1.cy) + 8, a: 'rt', c: '#000', s: '15px'},
+  {id: 'lbl-u0',   tex: '\\text{CIS}_0', x: sx(9.3) + 6, y: sy(icY(U0, 9.3)) - 2, a: 'lm', c: '#534AB7'},
+  {id: 'lbl-u1',   tex: '\\text{CIS}_1', x: sx(9.3) + 6, y: sy(icY(U1, 9.3)) + 2, a: 'lm', c: '#534AB7'},
+  {id: 'lbl-rri0', tex: '\\text{RRI}_0', x: sx(r0a), y: sy(8.1) - 3, a: 'cb', c: '#185FA5'},
+  {id: 'lbl-rri1', tex: '\\text{RRI}_1', x: sx(9.4) + 6, y: sy(rriY(E1, P1, 9.4)), a: 'lm', c: '#185FA5'},
+  {id: 'lbl-shift', tex: '\\text{crecimiento}', x: sx(A1) + 6, y: sy(0.35), a: 'lm', c: '#0F6E56', s: '14px'}
+];
+const cont = document.querySelector('.graph-container');
+labels.forEach(l => {
+  let e = document.getElementById(l.id);
+  if (!e) { e = document.createElement('div'); e.className = 'katex-label'; e.id = l.id; cont.appendChild(e); }
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = pct(l.x, W); e.style.top = pct(l.y, H);
+  e.style.color = l.c || 'black'; e.style.fontSize = l.s || '16px';
+  const a = l.a || 'lt';
+  e.style.transform = `translate(${{l: 0, c: -50, r: -100}[a[0]]}%, ${{t: 0, m: -50, b: -100}[a[1]]}%)`;
+  if (l.bg) { e.style.background = '#fff'; e.firstChild.style.padding = '0 2px'; }
+});
+</script>
+</body>
+</html>

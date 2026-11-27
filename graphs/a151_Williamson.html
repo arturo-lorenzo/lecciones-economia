@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="125" y1="440" x2="565" y2="440" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="125" y1="440" x2="125" y2="50"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <path id="profit-curve" fill="none" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <path id="ic-u0" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-dasharray="8 4" stroke-linecap="round"/>
+
+
+    <path id="ic-u1" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <circle id="pt0" r="5" fill="#000"/>
+
+
+    <circle id="pt1" r="5" fill="#000"/>
+
+
+    <line id="dash-0v" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-0h" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+
+    <line id="dash-1v" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-1h" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+
+    <line id="tick-S0" stroke="black" stroke-width="1"/>
+    <line id="tick-S1" stroke="black" stroke-width="1"/>
+    <line id="tick-pi0" stroke="black" stroke-width="1"/>
+    <line id="tick-pi1" stroke="black" stroke-width="1"/>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-piD"></div>
+  <div class="katex-label" id="lbl-S"></div>
+  <div class="katex-label" id="lbl-profit"></div>
+  <div class="katex-label" id="lbl-U0"></div>
+  <div class="katex-label" id="lbl-U1"></div>
+  <div class="katex-label" id="lbl-E0"></div>
+  <div class="katex-label" id="lbl-E1"></div>
+  <div class="katex-label" id="lbl-S0"></div>
+  <div class="katex-label" id="lbl-S1"></div>
+  <div class="katex-label" id="lbl-pi0v"></div>
+  <div class="katex-label" id="lbl-pi1v"></div>
+
+</div>
+
+<script>
+const OX = 125, OY = 440;
+
+
+
+const a_pr = 3.2, b_pr = 0.35;
+const S_peak = a_pr / (2 * b_pr);
+function piD(S) { return a_pr * S - b_pr * S * S; }
+function piD_prime(S) { return a_pr - 2 * b_pr * S; }
+
+
+function toSvgX(S) { return OX + S * 45.8; }
+function toSvgY(pi) { return OY - pi * 45; }
+
+
+const S0 = S_peak;
+const pi0 = piD(S0);
+const sx0 = toSvgX(S0), sy0 = toSvgY(pi0);
+
+
+
+
+const S1 = 6.2;
+const pi1 = piD(S1);
+const sx1 = toSvgX(S1), sy1 = toSvgY(pi1);
+const slope1 = piD_prime(S1);
+
+
+const profPts = [];
+for (let i = 0; i <= 300; i++) {
+  const S = (i / 300) * 9.0;
+  const pi = piD(S);
+  if (pi >= -0.2) {
+    const sx = toSvgX(S), sy = toSvgY(pi);
+    if (sy <= OY + 5 && sy >= 55) profPts.push(sx.toFixed(1) + ',' + sy.toFixed(1));
+  }
+}
+document.getElementById('profit-curve').setAttribute('d', 'M' + profPts.join(' L'));
+
+
+
+
+
+const g = -slope1 * S1 / pi1;
+const K1 = pi1 * Math.pow(S1, g);
+const K0 = pi0 * Math.pow(S0, g);
+function icPi(K, S) { return K / Math.pow(S, g); }
+function genIC(K, Smin, Smax) {
+  const pts = [];
+  for (let i = 0; i <= 300; i++) {
+    const S = Smin + (i / 300) * (Smax - Smin);
+    const pi = icPi(K, S);
+    const sx = toSvgX(S), sy = toSvgY(pi);
+    if (sy >= 60 && sy <= OY - 5) pts.push(sx.toFixed(1) + ',' + sy.toFixed(1));
+  }
+  return 'M' + pts.join(' L');
+}
+const S_ICmax = 9.2;
+document.getElementById('ic-u1').setAttribute('d', genIC(K1, 2.0, S_ICmax));
+document.getElementById('ic-u0').setAttribute('d', genIC(K0, 2.0, S_ICmax));
+
+
+const $ = (id) => document.getElementById(id);
+function setL(id, x1, y1, x2, y2) {
+  const e = $(id); e.setAttribute('x1',x1); e.setAttribute('y1',y1); e.setAttribute('x2',x2); e.setAttribute('y2',y2);
+}
+
+$('pt0').setAttribute('cx', sx0); $('pt0').setAttribute('cy', sy0);
+$('pt1').setAttribute('cx', sx1); $('pt1').setAttribute('cy', sy1);
+
+
+setL('dash-0v', sx0, sy0, sx0, OY);
+setL('dash-0h', sx0, sy0, OX, sy0);
+setL('dash-1v', sx1, sy1, sx1, OY);
+setL('dash-1h', sx1, sy1, OX, sy1);
+
+
+setL('tick-S0', sx0, OY, sx0, OY + 4);
+setL('tick-S1', sx1, OY, sx1, OY + 4);
+setL('tick-pi0', OX - 4, sy0, OX, sy0);
+setL('tick-pi1', OX - 4, sy1, OX, sy1);
+
+
+const W = 680, H = 520;
+function pct(v, t) { return (v / t * 100).toFixed(1) + '%'; }
+
+const labels = [
+  {id:'lbl-piD',    tex:'\\pi^D',          left: pct(OX-7,W),    top: pct(45,H),    color:'black', align:'right'},
+  {id:'lbl-S',      tex:'G',                left: pct(OX+442,W),   top: pct(440,H),   color:'black'},
+  {id:'lbl-profit', tex:'\\pi^D(G)',        left: pct(toSvgX(9.0)+8,W), top: pct(toSvgY(piD(9.0))-24,H), color:'#185FA5'},
+  {id:'lbl-U0',     tex:'u_0',             left: pct(toSvgX(S_ICmax)+6,W), top: pct(toSvgY(icPi(K0,S_ICmax))-6,H), color:'#1D9E75'},
+  {id:'lbl-U1',     tex:'u_1',             left: pct(toSvgX(S_ICmax)+6,W), top: pct(toSvgY(icPi(K1,S_ICmax))-18,H), color:'#1D9E75'},
+  {id:'lbl-E0',     tex:'0',               left: pct(sx0-5,W),  top: pct(sy0-30,H), color:'#000'},
+  {id:'lbl-E1',     tex:'1',               left: pct(sx1+8,W),  top: pct(sy1-26,H), color:'#000'},
+  {id:'lbl-S0',     tex:'G_0',             left: pct(sx0-6,W),  top: pct(OY+8,H),  color:'black'},
+  {id:'lbl-S1',     tex:'G_1',             left: pct(sx1-6,W),  top: pct(OY+8,H),  color:'black'},
+  {id:'lbl-pi0v',   tex:'\\pi^D_0',        left: pct(OX-7,W),     top: pct(sy0-15,H), color:'black', align:'right'},
+  {id:'lbl-pi1v',   tex:'\\pi^D_1',        left: pct(OX-7,W),     top: pct(sy1-15,H), color:'black', align:'right'}
+];
+
+labels.forEach(l => {
+  const e = document.getElementById(l.id);
+  if (!e) return;
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = typeof l.left === 'string' && l.left.includes('%') ? l.left : l.left + '%';
+  e.style.top = typeof l.top === 'string' && l.top.includes('%') ? l.top : l.top + '%';
+  if (l.color) e.style.color = l.color;
+  if (l.align === 'right') e.classList.add('right-of-axis');
+  if (l.size) e.style.fontSize = l.size;
+});
+</script>
+</body>
+</html>

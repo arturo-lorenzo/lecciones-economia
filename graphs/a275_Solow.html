@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+  .katex-label .katex { font-size: 1em; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 1070">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="146" y1="460" x2="583" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="146" y1="460" x2="146" y2="55"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="ray" stroke="#534AB7" stroke-width="1.4" stroke-dasharray="7 5"/>
+
+
+    <path id="ew" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line id="d-estar" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+
+    <line id="d-wstar" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line id="d-wstar2" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+
+    <line id="eps-arrow-1" stroke="#555" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="eps-arrow-2" stroke="#555" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line x1="146" y1="1010" x2="583" y2="1010" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="146" y1="1010" x2="146" y2="605"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <path id="we" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <line id="d-westar" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+
+    <g id="ticks"></g>
+
+
+    <circle id="pt-top" r="5" fill="#000"/>
+    <circle id="pt-bot" r="5" fill="#000"/>
+  </svg>
+
+
+  <div class="katex-label" id="lbl-we"></div>
+  <div class="katex-label" id="lbl-w2"></div>
+  <div class="katex-label" id="lbl-o2"></div>
+  <div class="katex-label" id="lbl-westar"></div>
+  <div class="katex-label" id="lbl-wstar2"></div>
+  <div class="katex-label" id="lbl-eps2"></div>
+</div>
+
+<script>
+
+
+
+
+
+const E = 8, s = 5;
+const ew = w => E * w * w / (w * w + s * s);
+const we = w => (w * w + s * s) / (E * w);
+const wStar = s, eStar = E / 2, weStar = 2 * s / E;
+
+
+const VBW = 680, VBH = 1070;
+const wmax = 10, emax = 8.5, vmax = 3.5;
+const sx  = w => 146 + w * 42.9;
+const syT = e => 460 - e * (390 / emax);
+const syB = v => 1010 - v * (390 / vmax);
+const pctX = x => (x / VBW * 100).toFixed(1) + '%';
+const pctY = y => (y / VBH * 100).toFixed(1) + '%';
+
+function drawPath(id, f, sy, w1, w2, n = 220) {
+  const pts = [];
+  for (let i = 0; i <= n; i++) {
+    const w = w1 + (i/n)*(w2 - w1);
+    pts.push(sx(w).toFixed(1) + ',' + sy(f(w)).toFixed(1));
+  }
+  document.getElementById(id).setAttribute('d', 'M' + pts.join(' L'));
+}
+function setLine(id, x1, y1, x2, y2) {
+  const el = document.getElementById(id);
+  el.setAttribute('x1', x1); el.setAttribute('y1', y1);
+  el.setAttribute('x2', x2); el.setAttribute('y2', y2);
+}
+
+
+drawPath('ew', ew, syT, 0, 9.6);
+setLine('ray', sx(0), syT(0), sx(9.6), syT((eStar / wStar) * 9.6));
+setLine('d-estar', sx(0), syT(eStar), sx(wStar), syT(eStar));
+setLine('d-wstar', sx(wStar), syT(eStar), sx(wStar), 460);
+setLine('d-wstar2', sx(wStar), 492, sx(wStar), 1010);
+
+
+drawPath('we', we, syB, 0.95, 9.6);
+setLine('d-westar', sx(0), syB(weStar), sx(wStar), syB(weStar));
+
+
+setLine('eps-arrow-1', sx(3.35), syT(6.35), sx(4.75), syT(4.45));
+setLine('eps-arrow-2', sx(6.55), syB(0.82), sx(5.35), syB(1.17));
+
+
+const ticksG = document.getElementById('ticks');
+function addTick(x1, y1, x2, y2) {
+  const t = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  t.setAttribute('x1', x1); t.setAttribute('y1', y1);
+  t.setAttribute('x2', x2); t.setAttribute('y2', y2);
+  t.setAttribute('stroke', 'black'); t.setAttribute('stroke-width', '1');
+  ticksG.appendChild(t);
+}
+addTick(142, syT(eStar), 146, syT(eStar));
+addTick(sx(wStar), 460, sx(wStar), 464);
+addTick(142, syB(weStar), 146, syB(weStar));
+addTick(sx(wStar), 1010, sx(wStar), 1014);
+
+
+document.getElementById('pt-top').setAttribute('cx', sx(wStar));
+document.getElementById('pt-top').setAttribute('cy', syT(eStar));
+document.getElementById('pt-bot').setAttribute('cx', sx(wStar));
+document.getElementById('pt-bot').setAttribute('cy', syB(weStar));
+
+
+const cont = document.querySelector('.graph-container');
+function put(id, tex, x, y, o = {}) {
+  const e = document.createElement('div');
+  e.className = 'katex-label'; e.id = id;
+  katex.render(tex, e, {throwOnError: false});
+  e.style.left = (x/VBW*100).toFixed(2) + '%';
+  e.style.top = (y/VBH*100).toFixed(2) + '%';
+  e.style.color = o.c || 'black';
+  if (o.s) e.style.fontSize = o.s + 'px';
+  const tx = {l: '0', c: '-50%', r: '-100%'}[o.ha || 'l'], ty = {t: '0', m: '-50%', b: '-100%'}[o.va || 't'];
+  e.style.transform = `translate(${tx},${ty})`;
+  if (o.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  cont.appendChild(e);
+}
+const G = '#1D9E75', P = '#534AB7', T = '#555';
+
+put('lbl-e', 'e', 136, 40, {ha: 'r', s: 18});
+put('lbl-w1', 'w', 589, 468, {s: 17});
+put('lbl-o1', 'O', 138, 468, {ha: 'r'});
+put('lbl-estar', 'e^{*}', 138, syT(eStar), {ha: 'r', va: 'm'});
+put('lbl-wstar1', 'w^{*}', sx(wStar), 468, {ha: 'c'});
+put('lbl-ew', 'e(w)', sx(9.6) + 6, syT(ew(9.6)), {va: 'm', c: G});
+put('lbl-ray', '\\text{rayo vector}', sx(9.6) - 4, syT(0.8*9.6) - 6, {ha: 'r', va: 'b', c: P, s: 14});
+put('lbl-eps1', '\\varepsilon_{ew} = 1', sx(3.35), syT(6.35) - 4, {ha: 'c', va: 'b', c: T, s: 14});
+
+put('lbl-we', '\\dfrac{w}{e}', 136, 596, {ha: 'r', s: 18});
+put('lbl-w2', 'w', 589, 1018, {s: 17});
+put('lbl-o2', 'O', 138, 1018, {ha: 'r'});
+put('lbl-westar', '\\left(\\dfrac{w}{e}\\right)^{*}', 138, syB(weStar), {ha: 'r', va: 'm'});
+put('lbl-wstar2', 'w^{*}', sx(wStar), 1018, {ha: 'c'});
+put('lbl-wecurve', '\\dfrac{w}{e(w)}', sx(9.6) + 6, syB(we(9.6)), {va: 'm', c: G});
+put('lbl-eps2', '\\varepsilon_{ew} = 1', sx(6.55) + 4, syB(0.82), {va: 'm', c: T, s: 14});
+</script>
+</body>
+</html>

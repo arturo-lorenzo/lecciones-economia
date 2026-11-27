@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 500">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="130" y1="460" x2="570" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="130" y1="460" x2="130" y2="60"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line x1="142.7" y1="132.6" x2="539.7" y2="403.4" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+    <line x1="142.7" y1="403.4" x2="539.7" y2="132.6" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+
+
+
+    <line x1="235.6" y1="460" x2="235.6" y2="196" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+    <line x1="130" y1="196" x2="235.6" y2="196" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line x1="130" y1="340" x2="235.6" y2="340" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+    <circle cx="235.6" cy="196" r="3.5" fill="#1D9E75"/>
+    <circle cx="235.6" cy="340" r="3.5" fill="#534AB7"/>
+
+    <line x1="242.6" y1="445" x2="321.8" y2="445" stroke="#5a5a5a" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+
+
+    <line x1="341.2" y1="268" x2="341.2" y2="460" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line x1="130" y1="268" x2="341.2" y2="268" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+
+    <line x1="126" y1="196" x2="130" y2="196" stroke="black" stroke-width="1"/>
+    <line x1="126" y1="268" x2="130" y2="268" stroke="black" stroke-width="1"/>
+    <line x1="126" y1="340" x2="130" y2="340" stroke="black" stroke-width="1"/>
+    <line x1="235.6" y1="460" x2="235.6" y2="464" stroke="black" stroke-width="1"/>
+    <line x1="341.2" y1="460" x2="341.2" y2="464" stroke="black" stroke-width="1"/>
+
+
+    <circle cx="341.2" cy="268" r="5" fill="#000"/>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-x"></div>
+  <div class="katex-label" id="lbl-p"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-d"></div>
+  <div class="katex-label" id="lbl-s"></div>
+  <div class="katex-label" id="lbl-pt0"></div>
+  <div class="katex-label" id="lbl-p0"></div>
+  <div class="katex-label" id="lbl-x0"></div>
+  <div class="katex-label" id="lbl-pd"></div>
+  <div class="katex-label" id="lbl-ps"></div>
+  <div class="katex-label" id="lbl-x1"></div>
+
+</div>
+
+<script>
+
+
+
+
+
+
+
+const labels = [
+  {id: 'lbl-x',   tex: 'x',            left: '84.5%',   top: '91%', color: 'black'},
+  {id: 'lbl-p',   tex: 'p',            left: '14.4%',   top: '7%',  color: 'black'},
+  {id: 'lbl-o',   tex: 'O',             left: '16.4%',   top: '92%', color: 'black'},
+  {id: 'lbl-d',   tex: 'D(x)',         left: '80.1%',   top: '84%', color: '#0F6E56'},
+  {id: 'lbl-s',   tex: 'S(x)',         left: '80.1%',   top: '21%', color: '#534AB7'},
+  {id: 'lbl-pt0', tex: '0',             left: '51.5%', top: '48%', color: '#000'},
+  {id: 'lbl-p0',  tex: 'p_0',          left: '17.6%', top: '51%', color: 'black', align: 'right'},
+  {id: 'lbl-x0',  tex: 'x_0',          left: '48.9%', top: '93%', color: 'black'},
+  {id: 'lbl-pd',  tex: 'p^d(x_1)',     left: '17.6%', top: '37%', color: '#0F6E56', align: 'right'},
+  {id: 'lbl-ps',  tex: 'p^s(x_1)',     left: '17.6%', top: '66%', color: '#534AB7', align: 'right'},
+  {id: 'lbl-x1',  tex: 'x_1',          left: '33.0%', top: '93%', color: 'black'}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = l.left;
+  el.style.top = l.top;
+  if (l.color) el.style.color = l.color;
+  if (l.align === 'right') el.classList.add('right-of-axis');
+});
+</script>
+<script>(function(){var N={"lbl-pt0": [-0.74, -1.32, 0]};for(var id in N){var e=document.getElementById(id);if(!e)continue;e.style.marginLeft=N[id][0]+"%";e.style.marginTop=N[id][1]+"%";if(N[id][2]){var k=e.querySelector(".katex")||e;k.style.background="#fff";k.style.padding="0 2px";k.style.borderRadius="2px";}}})();</script>
+</body>
+</html>

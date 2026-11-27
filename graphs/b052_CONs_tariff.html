@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container > svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+
+
+  <svg viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <line x1="100" y1="480" x2="600" y2="480" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="100" y1="480" x2="100" y2="40"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="ray0" stroke="#888" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <line id="ray1" stroke="#888" stroke-width="1.4"/>
+
+
+    <path id="con-a0" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="con-a1" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-dasharray="7 5" stroke-linecap="round"/>
+    <path id="con-b"  fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line id="shift" stroke="#1D9E75" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="dash-v0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-h0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-v1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-h1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <g id="ticks"></g>
+
+
+    <circle id="pt-eq0" r="5" fill="#000"/>
+    <circle id="pt-eq1" r="5" fill="#000"/>
+  </svg>
+
+  <div class="katex-label" id="lbl-x"></div>
+  <div class="katex-label" id="lbl-y"></div>
+  <div class="katex-label" id="lbl-cona0"></div>
+  <div class="katex-label" id="lbl-cona1"></div>
+  <div class="katex-label" id="lbl-conb"></div>
+  <div class="katex-label" id="lbl-rri0"></div>
+  <div class="katex-label" id="lbl-rri1"></div>
+  <div class="katex-label" id="lbl-t"></div>
+  <div class="katex-label" id="lbl-eq0"></div>
+  <div class="katex-label" id="lbl-eq1"></div>
+  <div class="katex-label" id="lbl-x0"></div>
+  <div class="katex-label" id="lbl-y0"></div>
+  <div class="katex-label" id="lbl-x1"></div>
+  <div class="katex-label" id="lbl-y1"></div>
+</div>
+
+<script>
+const ox = 100, oy = 480, pw = 480, ph = 420;
+const toSvg = (x, y) => [ox + (x / 10) * pw, oy - (y / 10) * ph];
+const set = (id, attrs) => { const e = document.getElementById(id); for (const k in attrs) e.setAttribute(k, attrs[k]); };
+
+
+
+
+
+
+
+
+
+
+const alpha = 2.5, pA = 0.35, xyStar = 6.0, t = 0.45;
+const bC = (xyStar - pA * xyStar) / Math.pow(xyStar, alpha);
+const fA  = x => pA * x + bC * Math.pow(x, alpha);
+const fA1 = x => fA((1 + t) * x);
+const gB  = y => pA * y + bC * Math.pow(y, alpha);
+
+function path(id, fx, fy, n) {
+  const pts = [];
+  for (let i = 0; i <= n; i++) { const [sx, sy] = toSvg(fx(i / n), fy(i / n)); pts.push(sx.toFixed(1) + ',' + sy.toFixed(1)); }
+  set(id, {d: 'M' + pts.join(' L')});
+}
+const XA0 = 6.8, XA1 = XA0 / (1 + t), YB = 6.8;
+path('con-a0', s => s * XA0, s => fA(s * XA0), 300);
+path('con-a1', s => s * XA1, s => fA1(s * XA1), 300);
+path('con-b',  s => gB(s * YB), s => s * YB, 300);
+
+
+function bisect(f, lo, hi) { for (let i = 0; i < 80; i++) { const m = (lo + hi) / 2; if (f(lo) * f(m) <= 0) hi = m; else lo = m; } return (lo + hi) / 2; }
+const x0 = xyStar, y0 = xyStar;
+const y1 = bisect(y => fA1(gB(y)) - y, 1, xyStar - 1e-6), x1 = gB(y1);
+const E0 = toSvg(x0, y0), E1 = toSvg(x1, y1);
+set('pt-eq0', {cx: E0[0], cy: E0[1]});
+set('pt-eq1', {cx: E1[0], cy: E1[1]});
+
+
+const r1 = y1 / x1;
+const R0 = toSvg(8.8, 8.8), R1 = toSvg(6.2 / r1, 6.2);
+set('ray0', {x1: ox, y1: oy, x2: R0[0], y2: R0[1]});
+set('ray1', {x1: ox, y1: oy, x2: R1[0], y2: R1[1]});
+
+
+set('dash-v0', {x1: E0[0], y1: E0[1], x2: E0[0], y2: oy});
+set('dash-h0', {x1: ox, y1: E0[1], x2: E0[0], y2: E0[1]});
+set('dash-v1', {x1: E1[0], y1: E1[1], x2: E1[0], y2: oy});
+set('dash-h1', {x1: ox, y1: E1[1], x2: E1[0], y2: E1[1]});
+const tg = document.getElementById('ticks');
+[[E0[0], oy, E0[0], oy + 4], [E1[0], oy, E1[0], oy + 4], [ox - 4, E0[1], ox, E0[1]], [ox - 4, E1[1], ox, E1[1]]].forEach(c => {
+  const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  l.setAttribute('x1', c[0]); l.setAttribute('y1', c[1]); l.setAttribute('x2', c[2]); l.setAttribute('y2', c[3]);
+  l.setAttribute('stroke', 'black'); l.setAttribute('stroke-width', '1'); tg.appendChild(l);
+});
+
+
+
+const YS = 6.9;
+const xs0 = bisect(x => fA(x) - YS, 0.1, 9);
+const P = toSvg(xs0, YS);
+const h = 1e-4, d = toSvg(xs0 + h, fA(xs0 + h));
+let tx = d[0] - P[0], ty = d[1] - P[1]; const tn = Math.hypot(tx, ty); tx /= tn; ty /= tn;
+const nx = ty, ny = -tx;
+
+function onA1(s) { const qx = P[0] + nx * s, qy = P[1] + ny * s; const xd = (qx - ox) / pw * 10, yd = (oy - qy) / ph * 10; return fA1(xd) - yd; }
+const sHit = bisect(onA1, 0.5, 200);
+const A0 = [P[0] + nx * 6, P[1] + ny * 6], A1 = [P[0] + nx * (sHit - 6), P[1] + ny * (sHit - 6)];
+set('shift', {x1: A0[0].toFixed(1), y1: A0[1].toFixed(1), x2: A1[0].toFixed(1), y2: A1[1].toFixed(1)});
+
+
+const VBW = 680, VBH = 560;
+const pct = (v, T) => (v / T * 100).toFixed(2) + '%';
+const ea0 = toSvg(XA0, fA(XA0)), ea1 = toSvg(XA1, fA1(XA1)), eb = toSvg(gB(YB), YB);
+const labels = [
+  {id:'lbl-x',     tex:'X', x: 606, y: oy, ax: 0, ay: 0.5, color:'black', size: 17},
+  {id:'lbl-y',     tex:'Y', x: ox, y: 34, ax: 0.5, ay: 1, color:'black', size: 17},
+  {id:'lbl-cona0', tex:'\\text{CON}^A_0', x: ea0[0] + 6, y: ea0[1], ax: 0, ay: 0.5, color:'#0F6E56', bg: true},
+  {id:'lbl-cona1', tex:'\\text{CON}^A_1', x: ea1[0] - 8, y: ea1[1], ax: 1, ay: 0.5, color:'#0F6E56'},
+  {id:'lbl-conb',  tex:'\\text{CON}^B', x: eb[0] + 6, y: eb[1], ax: 0, ay: 0.5, color:'#534AB7'},
+  {id:'lbl-rri0',  tex:'\\text{RRI}_0', x: R0[0] + 4, y: R0[1] + 2, ax: 0, ay: 0.5, color:'#888'},
+  {id:'lbl-rri1',  tex:'\\text{RRI}_1', x: R1[0], y: R1[1] - 3, ax: 0.3, ay: 1, color:'#888'},
+  {id:'lbl-t',     tex:'t > 0', x: (A0[0] + A1[0]) / 2, y: Math.min(A0[1], A1[1]) - 6, ax: 0.2, ay: 1, color:'#1D9E75', size: 14},
+  {id:'lbl-eq0',   tex:'0', x: E0[0] + 9, y: E0[1] + 4, ax: 0, ay: 0, color:'#000'},
+  {id:'lbl-eq1',   tex:'1', x: E1[0] - 8, y: E1[1] - 6, ax: 1, ay: 1, color:'#000'},
+  {id:'lbl-x0',    tex:'X_0', x: E0[0], y: oy + 8, ax: 0.5, ay: 0, color:'black'},
+  {id:'lbl-x1',    tex:'X_1', x: E1[0], y: oy + 8, ax: 0.5, ay: 0, color:'black'},
+  {id:'lbl-y0',    tex:'Y_0', x: ox - 8, y: E0[1], ax: 1, ay: 0.5, color:'black'},
+  {id:'lbl-y1',    tex:'Y_1', x: ox - 8, y: E1[1], ax: 1, ay: 0.5, color:'black'}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = pct(l.x, VBW); el.style.top = pct(l.y, VBH);
+  if (l.size) el.style.fontSize = l.size + 'px';
+  el.style.transform = `translate(${-100*l.ax}%, ${-100*l.ay}%)`;
+  el.style.color = l.color;
+  if (l.bg) {
+    el.style.background = '#fff';
+    el.querySelector('.katex').style.padding = '0 2px';
+  }
+});
+</script>
+</body>
+</html>

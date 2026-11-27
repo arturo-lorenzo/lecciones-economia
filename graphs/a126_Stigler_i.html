@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; }
+  .katex-label .katex { font-size: 1em; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg id="g" viewBox="0 0 680 540" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+</svg>
+</div>
+
+<script>
+
+
+
+
+
+const W = 680, H = 540;
+const k = 3, a = 3.6, b = 6.6, al = 6 / Math.pow(a, 3), be = 0.16;
+const cvme = x => x < a ? k + al * Math.pow(a - x, 3) : x <= b ? k : k + be * Math.pow(x - b, 3);
+const dcvme = x => x < a ? -3 * al * Math.pow(a - x, 2) : x <= b ? 0 : 3 * be * Math.pow(x - b, 2);
+const cmg = x => cvme(x) + x * dcvme(x);
+
+const OX = 124, OY = 430, CMAX = 9.4, XR = OX + 430;
+const sx = q => OX + q * 36.6;
+const sy = c => OY - c * 40;
+
+const svg = document.getElementById('g');
+const NS = 'http://www.w3.org/2000/svg';
+function el(tag, attrs) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+function inv(f, y, lo, hi) { for (let i = 0; i < 80; i++) { const m = (lo + hi) / 2; if ((f(lo) - y) * (f(m) - y) <= 0) hi = m; else lo = m; } return (lo + hi) / 2; }
+function curve(f, q0, q1, color, width, extra) {
+  const pts = [];
+  for (let i = 0; i <= 500; i++) { const q = q0 + (q1 - q0) * i / 500; pts.push(sx(q).toFixed(1) + ',' + sy(f(q)).toFixed(1)); }
+  el('path', Object.assign({d: 'M' + pts.join(' L'), fill: 'none', stroke: color, 'stroke-width': width, 'stroke-linecap': 'round'}, extra || {}));
+  return {x: sx(q1), y: sy(f(q1))};
+}
+
+
+el('line', {x1: OX, y1: OY, x2: XR, y2: OY, stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+el('line', {x1: OX, y1: OY, x2: OX, y2: 40, stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+
+
+[a, b].forEach(q => el('line', {x1: sx(q), y1: sy(k), x2: sx(q), y2: OY, stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '6 4'}));
+
+
+el('path', {d: `M${sx(a)},${sy(k)} L${sx(b)},${sy(k)}`, fill: 'none', stroke: '#D85A30', 'stroke-width': 8, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', opacity: 0.22});
+const qCv = inv(cvme, CMAX, b, 12), qMg = inv(cmg, CMAX, b, 12);
+const eCv = curve(cvme, 0, qCv, '#1D9E75', 2.2);
+const eMg = curve(cmg, 0, qMg, '#534AB7', 2.2, {'stroke-dasharray': '7 4'});
+
+
+const by = OY + 16;
+el('path', {d: `M${sx(a)},${by - 6} L${sx(a)},${by} L${sx(b)},${by} L${sx(b)},${by - 6}`, fill: 'none', stroke: 'black', 'stroke-width': 1.1});
+
+
+const box = document.querySelector('.graph-container');
+function lbl(tex, x, y, color, anchor, size) {
+  const d = document.createElement('div');
+  d.className = 'katex-label';
+  katex.render(tex, d, {throwOnError: false});
+  d.style.left = (x / W * 100).toFixed(2) + '%';
+  d.style.top = (y / H * 100).toFixed(2) + '%';
+  d.style.color = color || 'black';
+  if (size) d.style.fontSize = size;
+  const tx = {l: '0', r: '-100%', c: '-50%'}[anchor[0]], ty = {t: '0', m: '-50%', b: '-100%'}[anchor[1]];
+  d.style.transform = `translate(${tx},${ty})`;
+  box.appendChild(d);
+  return d;
+}
+lbl('C_{\\text{CP}}', OX - 10, 42, 'black', 'rm');
+lbl('x', XR + 4, OY, 'black', 'lm');
+lbl('\\text{CVme}_{\\text{CP}}(x)', eCv.x + 8, eCv.y + 4, '#0F6E56', 'lt');
+lbl('\\text{Cmg}_{\\text{CP}}(x)', eMg.x - 8, eMg.y + 4, '#534AB7', 'rt');
+lbl('\\dfrac{K}{L}\\ \\text{constante (reserva de capacidad)}', (sx(a) + sx(b)) / 2, by + 6, 'black', 'ct', '14px');
+</script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+project:
+  type: book
+  output-dir: _book
+  post-render:
+    - _proyecto/seo_postrender.py
+    - _proyecto/numeracion-figuras.py
+
+lang: es
+google-scholar: true
+author: "Arturo Lorenzo"
+date: 2026-11-28
+# En la web, la fecha de cada página solo con mes y año («noviembre de 2026»).
+date-format: "MMMM [de] YYYY"
+citation:
+  type: book
+  container-title: "Lecciones de economía general e internacional"
+
+resources:
+  - CNAME
+  - robots.txt
+  - tarjeta-redes.jpg
+  - graphs/
+  - descargas/pdf/
+  - descargas/anki/
+
+book:
+  repo-url: https://github.com/arturo-lorenzo/lecciones-economia
+  site-url: https://librovol1.arturolorenzo.com
+  title: "Lecciones de economía general e internacional"
+  author: "Arturo Lorenzo"
+  date: 2026-11-28
+  date-format: "[Edición web 1.0 ·] MMMM [de] YYYY"
+  reader-mode: true
+  search: true
+  open-graph:
+    locale: es_ES
+    site-name: "Lecciones de economía general e internacional"
+    image: /tarjeta-redes.jpg
+  twitter-card:
+    card-style: summary_large_image
+    image: /tarjeta-redes.jpg
+  page-navigation: true
+
+  sidebar:
+    style: docked
+    collapse-level: 1
+
+  chapters:
+    - index.qmd
+    - creditos.qmd
+    - notacion.qmd
+
+    - part: "Parte A: Economía General"
+
+    - part: "Pensamiento Económico"
+      chapters:
+        - chapters/a01-objeto-metodo.qmd
+        - chapters/a02-clasicos-marx.qmd
+        - chapters/a03-neoclasicos.qmd
+        - chapters/a04-keynes.qmd
+        - chapters/a05-monetaristas-snc.qmd
+        - chapters/a06-nmc.qmd
+        - chapters/a07-nek.qmd
+
+    - part: "Microeconomía"
+      chapters:
+        - chapters/a08-consumidor.qmd
+        - chapters/a09-dualidad.qmd
+        - chapters/a10-riesgo-incertidumbre.qmd
+        - chapters/a11-produccion.qmd
+        - chapters/a12-costes.qmd
+        - chapters/a13-informacion.qmd
+        - chapters/a14-juegos.qmd
+        - chapters/a15-toi.qmd
+        - chapters/a16-competencia-perfecta.qmd
+        - chapters/a17-monopolio.qmd
+        - chapters/a18-competencia-monopolistica.qmd
+        - chapters/a19-oligopolio.qmd
+        - chapters/a20-regulacion.qmd
+        - chapters/a21-equilibrio-general.qmd
+        - chapters/a22-eb-i.qmd
+        - chapters/a23-eb-ii.qmd
+        - chapters/a24-eb-iii.qmd
+
+    - part: "Economía Laboral"
+      chapters:
+        - chapters/a25-oferta-trabajo.qmd
+        - chapters/a26-desempleo-friccional.qmd
+        - chapters/a27-salarios.qmd
+        - chapters/a28-tnp-nairu.qmd
+
+    - part: "Macroeconomía"
+      chapters:
+        - chapters/a29-mhi-mgs.qmd
+        - chapters/a30-magnitudes-cn.qmd
+        - chapters/a32-precios-output.qmd
+        - chapters/a33-demanda-consumo.qmd
+        - chapters/a34-demanda-inversion.qmd
+        - chapters/a35-demanda-dinero.qmd
+        - chapters/a36-politica-monetaria-i.qmd
+        - chapters/a37-politica-monetaria-ii.qmd
+        - chapters/a38-politica-fiscal.qmd
+        - chapters/a39-deficit.qmd
+        - chapters/a40-interrelacion.qmd
+        - chapters/a41-inflacion.qmd
+        - chapters/a42-ciclos.qmd
+        - chapters/a43-crecimiento-i.qmd
+        - chapters/a44-crecimiento-ii.qmd
+        - chapters/a45-crecimiento-empirica.qmd
+
+    - part: "Parte B: Economía Internacional"
+
+    - part: "Empresa y Finanzas"
+      chapters:
+        - chapters/b01-estados-ratios.qmd
+        - chapters/b02-inversion.qmd
+        - chapters/b03-financiacion.qmd
+        - chapters/b04-crecimiento-ma.qmd
+        - chapters/b23-renta-variable.qmd
+        - chapters/b24-renta-fija.qmd
+        - chapters/b25-derivados.qmd
+        - chapters/b26-crisis-financieras.qmd
+        - chapters/b27-regulacion-financiera.qmd
+
+    - part: "Comercio Internacional"
+      chapters:
+        - chapters/b05-tnc-comercio.qmd
+        - chapters/b06-nueva-teoria.qmd
+        - chapters/b07-politica-comercial-i.qmd
+        - chapters/b08-politica-comercial-ii.qmd
+        - chapters/b09-comercio-crecimiento.qmd
+        - chapters/b10-integracion.qmd
+        - chapters/b11-balanza-pagos.qmd
+        - chapters/b12-ajuste-bp.qmd
+        - chapters/b13-mercado-divisas.qmd
+        - chapters/b14-tipo-cambio.qmd
+        - chapters/b15-regimenes-cambiarios.qmd
+        - chapters/b16-integracion-monetaria.qmd
+        - chapters/b17-crisis-bp.qmd
+        - chapters/b18-globalizacion.qmd
+        - chapters/b19-coordinacion.qmd
+
+    - part: "Sistema Económico Internacional"
+      chapters:
+        - chapters/b20-sei-hasta-bw.qmd
+        - chapters/b21-sei-despues-bw.qmd
+        - chapters/b22-fmi.qmd
+        - chapters/b28-desarrollo.qmd
+        - chapters/b29-fod-aod.qmd
+        - chapters/b30-gbm-brsd.qmd
+        - chapters/b31-ma-bpg.qmd
+        - chapters/b32-perspectivas.qmd
+        - chapters/b33-omc-gatt.qmd
+        - chapters/b34-gats-trips.qmd
+        - chapters/b35-no-comunitarios.qmd
+
+    - part: "Unión Europea"
+      chapters:
+        - chapters/b36-tratados.qmd
+        - chapters/b37-finanzas-ue.qmd
+        - chapters/b38-pac-ppc.qmd
+        - chapters/b39-miue.qmd
+        - chapters/b41-comercial-ue.qmd
+        - chapters/b42-cooperacion-ue.qmd
+        - chapters/b43-politica-monetaria-ue.qmd
+        - chapters/b44-politica-financiera-ue.qmd
+        - chapters/b45-politica-fiscal-ue.qmd
+
+    - part: "Descargas"
+
+    - part: "Primer Ejercicio"
+      chapters:
+        - descargas/ejercicios.qmd
+        - descargas/flashcards-conceptos.qmd
+        - descargas/guia-dictamen.qmd
+
+    - part: "Segundo Ejercicio"
+      chapters:
+      - descargas/segundo-ejercicio.qmd
+      
+    - part: "Tercer Ejercicio"
+      chapters:
+        - descargas/libro-bloques.qmd
+        - descargas/temas-cortos-3.qmd
+    - part: "Cuarto Ejercicio"
+      chapters:
+        - descargas/temas-cortos-4.qmd
+
+    - part: "Más allá del libro"
+    - descargas/otras-publicaciones.qmd
+    - descargas/enlaces.qmd
+
+    - part: "Bibliografía"
+    - bibliografia.qmd
+    - bibliografia-articulos.qmd
+    - fuentes.qmd
+
+format:
+  html:
+    theme:
+      light: [cosmo, custom.scss]
+    css: styles.css
+    include-after-body:
+      - _proyecto/graph-autosize.html
+    filters:
+      - _proyecto/tablas-ancho.lua
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    link-external-newwindow: true
+    callout-appearance: simple
+    smooth-scroll: true
+    fontsize: "1.05rem"
+    linestretch: 1.6
+    mainfont: "Source Serif Pro, Georgia, serif"
+    monofont: "JetBrains Mono, Fira Code, monospace"
+    grid:
+      sidebar-width: 450px
+      body-width: 1100px
+      margin-width: 250px
+      gutter-width: 1.5em
+
+crossref:
+  fig-title: "Figura"
+  tbl-title: "Tabla"
+  eq-prefix: "Ec."
+  fig-prefix: "Figura"
+  tbl-prefix: "Tabla"
+  sec-prefix: "Sección"

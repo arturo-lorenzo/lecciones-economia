@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<style>
+  body { margin: 0; }
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 15px; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<defs><pattern id="hatch" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="#bbb" stroke-width="1"/></pattern></defs>
+<path d="M116.0,383.9L572.3,193.1L572.3,44.8L116.0,44.8Z" fill="url(#hatch)" stroke="none" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="116.0" y1="490.0" x2="613.0" y2="490.0" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+<line x1="116.0" y1="490.0" x2="116.0" y2="30.0" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+<line x1="116.0" y1="280.0" x2="572.3" y2="280.0" stroke="#378ADD" stroke-width="2.2"/>
+
+<line x1="116.0" y1="383.9" x2="251.5" y2="383.9" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+<path d="M166.0,383.9 A50,50 0 0,0 162.1,364.6" fill="none" stroke="#888" stroke-width="0.9"/>
+<line x1="116.0" y1="383.9" x2="572.3" y2="193.1" stroke="#1D9E75" stroke-width="2.2"/>
+<line x1="112.0" y1="280.0" x2="116.0" y2="280.0" stroke="#000" stroke-width="1"/>
+<circle cx="219.9" cy="317.8" r="4.5" fill="#D85A30"/>
+<circle cx="504.6" cy="248.5" r="4.5" fill="#C62828"/>
+</svg>
+</div>
+<script>
+const LABELS = [{"t": "A", "x": 31.544, "y": 55.857, "a": "-100%,-100%", "c": "#D85A30", "s": null, "bg": true}, {"t": "B", "x": 75.131, "y": 45.089, "a": "0,0", "c": "#C62828", "s": null, "bg": false}, {"t": "\\ln w", "x": 15.589, "y": 6.786, "a": "-100%,-50%", "c": "#000", "s": 17, "bg": false}, {"t": "\\ln h", "x": 89.882, "y": 89.107, "a": "-50%,0", "c": "#000", "s": 17, "bg": false}, {"t": "\\ln \\underline{w}", "x": 15.883, "y": 50.0, "a": "-100%,-50%", "c": "#000", "s": null, "bg": false}, {"t": "u = \\underline{u}", "x": 85.23, "y": 34.475, "a": "0,-50%", "c": "#0F6E56", "s": 16, "bg": false}, {"t": "-b/a", "x": 26.627, "y": 66.339, "a": "0,-50%", "c": "#0F6E56", "s": 14, "bg": false}, {"t": "\\text{ofertas aceptadas}", "x": 34.334, "y": 21.5, "a": "-50%,-50%", "c": "#444", "s": 15, "bg": true}];
+const box = document.querySelector('.graph-container');
+LABELS.forEach((L, i) => {
+  const e = document.createElement('div');
+  e.className = 'katex-label'; e.id = 'lbl-' + i;
+  katex.render(L.t, e, {throwOnError: false});
+  e.style.left = L.x + '%'; e.style.top = L.y + '%';
+  e.style.transform = 'translate(' + L.a + ')';
+  e.style.color = L.c;
+  if (L.s) e.style.fontSize = L.s + 'px';
+  if (L.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  box.appendChild(e);
+});
+</script>
+</body>
+</html>

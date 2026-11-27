@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 560">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="110" y1="460" x2="550" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="110" y1="460" x2="110" y2="60"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="pR"  stroke="#378ADD" stroke-width="2.2"/>
+    <line id="pRt" stroke="#378ADD" stroke-width="1.4" stroke-dasharray="8 4"/>
+
+
+    <line id="demand"   stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+    <line id="demandUA" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="8 5"/>
+
+
+    <path id="pivot" fill="none" stroke="#534AB7" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <path id="cmeA" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="cmeB" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line id="dPA"  stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line id="dPB"  stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+    <line id="dPUA" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+
+    <circle id="pt1" r="5" fill="#000"/>
+    <circle id="pt2" r="5" fill="#000"/>
+    <circle id="pt3" r="5" fill="#000"/>
+    <circle id="pt4" r="5" fill="#000"/>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-q"></div>
+  <div class="katex-label" id="lbl-p"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-cmeA"></div>
+  <div class="katex-label" id="lbl-cmeB"></div>
+  <div class="katex-label" id="lbl-d"></div>
+  <div class="katex-label" id="lbl-dua"></div>
+  <div class="katex-label" id="lbl-pA"></div>
+  <div class="katex-label" id="lbl-pRt"></div>
+  <div class="katex-label" id="lbl-pB"></div>
+  <div class="katex-label" id="lbl-pUA"></div>
+  <div class="katex-label" id="lbl-pR"></div>
+  <div class="katex-label" id="lbl-1"></div>
+  <div class="katex-label" id="lbl-2"></div>
+  <div class="katex-label" id="lbl-3"></div>
+  <div class="katex-label" id="lbl-4"></div>
+
+</div>
+
+<script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+const PR = 4, PRt = 11.8;
+function D(q)    { return 22 - 1.1 * q; }
+function DUA(q)  { return 22 - 0.55 * q; }
+function cmeA(q) { return 5   + 70 / (q + 3); }
+function cmeB(q) { return 3.5 + 55 / (q + 3); }
+
+
+const P1 = {q: 10.859, p: D(10.859)};
+const P2 = {q: 13.849, p: D(13.849)};
+const P3 = {q: (22 - PR) / 1.1, p: PR};
+const P4 = {q: 30.664, p: DUA(30.664)};
+
+
+function toSvgX(q) { return 110 + q * 12.6; }
+function toSvgY(p) { return 460 - p * (400 / 23); }
+const VBH = 560;
+
+
+function setLine(id, x1, y1, x2, y2) {
+  const el = document.getElementById(id);
+  el.setAttribute('x1', x1); el.setAttribute('y1', y1);
+  el.setAttribute('x2', x2); el.setAttribute('y2', y2);
+}
+setLine('pR', toSvgX(0), toSvgY(PR),  toSvgX(34), toSvgY(PR));
+setLine('pRt', toSvgX(0), toSvgY(PRt), toSvgX(34), toSvgY(PRt));
+setLine('demand',   toSvgX(0), toSvgY(D(0)),   toSvgX(18),   toSvgY(D(18)));
+setLine('demandUA', toSvgX(0), toSvgY(DUA(0)), toSvgX(33.5), toSvgY(DUA(33.5)));
+
+
+(function () {
+  const cx = toSvgX(0), cy = toSvgY(22), R = 185;
+  const angD = Math.atan2(toSvgY(D(10)) - cy, toSvgX(10) - cx);
+  const angU = Math.atan2(toSvgY(DUA(10)) - cy, toSvgX(10) - cx);
+  const a0 = angD - 0.05, a1 = angU + 0.05;
+  const p = a => [(cx + R * Math.cos(a)).toFixed(1), (cy + R * Math.sin(a)).toFixed(1)];
+  const [x0, y0] = p(a0), [x1, y1] = p(a1);
+  document.getElementById('pivot').setAttribute('d', `M ${x0} ${y0} A ${R} ${R} 0 0 0 ${x1} ${y1}`);
+  window.PIV = {x: +x1, y: +y1};
+})();
+
+
+function genCurve(fn, id, qMin, qMax) {
+  const pts = [];
+  for (let i = 0; i <= 240; i++) {
+    const q = qMin + (i / 240) * (qMax - qMin);
+    const sx = toSvgX(q), sy = toSvgY(fn(q));
+    if (sy >= 65 && sy <= 456) pts.push(sx.toFixed(1) + ',' + sy.toFixed(1));
+  }
+  document.getElementById(id).setAttribute('d', 'M' + pts.join(' L'));
+}
+genCurve(cmeA, 'cmeA', 2.0, 21);
+genCurve(cmeB, 'cmeB', 1.0, 33.5);
+
+
+setLine('dPA', toSvgX(0), toSvgY(P1.p), toSvgX(P1.q), toSvgY(P1.p));
+setLine('dPB', toSvgX(0), toSvgY(P2.p), toSvgX(P2.q), toSvgY(P2.p));
+setLine('dPUA', toSvgX(0), toSvgY(P4.p), toSvgX(P4.q), toSvgY(P4.p));
+
+
+function setPt(id, pt) {
+  const el = document.getElementById(id);
+  el.setAttribute('cx', toSvgX(pt.q)); el.setAttribute('cy', toSvgY(pt.p));
+}
+setPt('pt1', P1); setPt('pt2', P2); setPt('pt3', P3); setPt('pt4', P4);
+
+
+const W = 680, H = 560;
+function pct(v, t) { return (v / t * 100).toFixed(2) + '%'; }
+const labels = [
+  {id: 'lbl-q', tex: 'y', x: 554, y: 462, a: 'lt', s: '17px'},
+  {id: 'lbl-p', tex: 'p', x: 102,  y: 50,  a: 'rt', s: '17px'},
+  {id: 'lbl-o', tex: 'O', x: 104,  y: 466, a: 'rt'},
+  {id: 'lbl-cmeA', tex: '\\text{Cme}^A(y)', x: toSvgX(21) - 2,   y: toSvgY(cmeA(21)) - 20, a: 'rb', c: '#0F6E56'},
+  {id: 'lbl-cmeB', tex: '\\text{Cme}^B(y)', x: toSvgX(33.5) + 5, y: toSvgY(cmeB(33.5)) - 4, a: 'lb', c: '#0F6E56'},
+  {id: 'lbl-d',    tex: 'D^A(y) = D^B(y)',  x: toSvgX(18) + 4,   y: toSvgY(D(18)) + 2,     a: 'lt', c: '#534AB7'},
+  {id: 'lbl-dua',  tex: 'D^{\\text{UA}}(y)',        x: toSvgX(33.5) + 4, y: toSvgY(DUA(33.5)) + 4, a: 'lt', c: '#534AB7'},
+  {id: 'lbl-piv',  tex: '\\text{unión aduanera}', x: toSvgX((22 - (460 - PIV.y) / (400 / 23)) / 0.55) + 26, y: PIV.y, a: 'lm', c: '#534AB7', s: '14px'},
+  {id: 'lbl-pA',  tex: 'p^A',     x: 103, y: toSvgY(P1.p), a: 'rm', s: '15px'},
+  {id: 'lbl-pRt', tex: 'p^R + t_e', x: 103, y: toSvgY(PRt),  a: 'rm', c: '#185FA5', s: '15px'},
+  {id: 'lbl-pB',  tex: 'p^B',     x: 103, y: toSvgY(P2.p), a: 'rm', s: '15px'},
+  {id: 'lbl-pUA', tex: 'p^{\\text{UA}}',  x: 103, y: toSvgY(P4.p) - 3, a: 'rm', s: '15px'},
+  {id: 'lbl-pR',  tex: 'p^R',     x: 103, y: toSvgY(PR) + 4, a: 'rm', c: '#185FA5', s: '15px'},
+  {id: 'lbl-1', tex: '0^A', x: toSvgX(P1.q) + 8, y: toSvgY(P1.p) - 4, a: 'lb', c: '#000', s: '15px'},
+  {id: 'lbl-2', tex: '0^B', x: toSvgX(P2.q) + 8, y: toSvgY(P2.p) - 4, a: 'lb', c: '#000', s: '15px'},
+  {id: 'lbl-3', tex: '0^R', x: toSvgX(P3.q) - 7, y: toSvgY(P3.p) + 5, a: 'rt', c: '#000', s: '15px'},
+  {id: 'lbl-4', tex: '1', x: toSvgX(P4.q),     y: toSvgY(P4.p) - 9, a: 'cb', c: '#000', s: '15px'}
+];
+const cont = document.querySelector('.graph-container');
+labels.forEach(l => {
+  let e = document.getElementById(l.id);
+  if (!e) { e = document.createElement('div'); e.className = 'katex-label'; e.id = l.id; cont.appendChild(e); }
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = pct(l.x, W); e.style.top = pct(l.y, H);
+  e.style.color = l.c || 'black'; e.style.fontSize = l.s || '16px';
+  const a = l.a || 'lt';
+  e.style.transform = `translate(${{l: 0, c: -50, r: -100}[a[0]]}%, ${{t: 0, m: -50, b: -100}[a[1]]}%)`;
+  if (l.bg) { e.style.background = '#fff'; e.firstChild.style.padding = '0 2px'; }
+});
+</script>
+</body>
+</html>

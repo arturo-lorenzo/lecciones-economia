@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 500">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="110" y1="460" x2="550" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="110" y1="460" x2="110" y2="60"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <path id="c-rp"   fill="none" stroke="#534AB7" stroke-width="2.2"   stroke-linecap="round"/>
+    <path id="c-ra"   fill="none" stroke="#378ADD" stroke-width="2.2"   stroke-linecap="round"/>
+    <path id="c-wacc" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line id="l-dash" stroke="#888" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+
+    <line id="l-tick" stroke="black" stroke-width="1"/>
+
+
+    <circle id="pt-min" r="5" fill="#D85A30"/>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-l"></div>
+  <div class="katex-label" id="lbl-c"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-rp"></div>
+  <div class="katex-label" id="lbl-ra"></div>
+  <div class="katex-label" id="lbl-wacc"></div>
+  <div class="katex-label" id="lbl-lstar"></div>
+
+</div>
+
+<script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+const LMAX = 1.5;
+const kp = L => 8 + 1.2 * L * L + 2.5 * Math.pow(Math.max(0, L - 0.8), 2);
+const ka = L => L <= 0.8 ? 4 : 4 + 6 * (L - 0.8) * (L - 0.8);
+const wacc = L => (ka(L) * L + kp(L)) / (1 + L);
+
+
+let Lstar = 0, best = 1e9;
+for (let L = 0.1; L <= LMAX; L += 0.0005) {
+  const w = wacc(L);
+  if (w < best) { best = w; Lstar = L; }
+}
+
+function toSvgX(L) { return 110 + L * 760 / 3; }
+function toSvgY(c) { return 460 - c * 28; }
+
+function genCurve(fn, id) {
+  const pts = [];
+  for (let i = 0; i <= 300; i++) {
+    const L = (i / 300) * LMAX;
+    pts.push(toSvgX(L).toFixed(1) + ',' + toSvgY(fn(L)).toFixed(1));
+  }
+  document.getElementById(id).setAttribute('d', 'M' + pts.join(' L'));
+}
+genCurve(kp,   'c-rp');
+genCurve(ka,   'c-ra');
+genCurve(wacc, 'c-wacc');
+
+
+const sm = [toSvgX(Lstar), toSvgY(wacc(Lstar))];
+document.getElementById('pt-min').setAttribute('cx', sm[0]);
+document.getElementById('pt-min').setAttribute('cy', sm[1]);
+const ld = document.getElementById('l-dash');
+ld.setAttribute('x1', sm[0]); ld.setAttribute('y1', sm[1]);
+ld.setAttribute('x2', sm[0]); ld.setAttribute('y2', 460);
+const lt = document.getElementById('l-tick');
+lt.setAttribute('x1', sm[0]); lt.setAttribute('y1', 460);
+lt.setAttribute('x2', sm[0]); lt.setAttribute('y2', 464);
+
+
+const pct = (v, t) => (v / t * 100).toFixed(2) + '%';
+
+const xe = toSvgX(LMAX) + 6;
+const labels = [
+  {id: 'lbl-l',     tex: 'L = D_f/E', x: 556, y: 470, ax: 1, ay: 0, color: 'black', size: 17},
+  {id: 'lbl-c',     tex: '\\text{Coste}', x: 110, y: 48, ax: 0.5, ay: 1, color: 'black', size: 17},
+  {id: 'lbl-o',     tex: 'O', x: 104, y: 466, ax: 1, ay: 0, color: 'black'},
+  {id: 'lbl-rp',    tex: 'k_p(L)', x: xe, y: toSvgY(kp(LMAX)), ax: 0, ay: 0.5, color: '#534AB7'},
+  {id: 'lbl-ra',    tex: 'k_a(L)', x: xe, y: toSvgY(ka(LMAX)), ax: 0, ay: 0.5, color: '#185FA5'},
+  {id: 'lbl-wacc',  tex: '\\text{WACC}(L)', x: xe, y: toSvgY(wacc(LMAX)), ax: 0, ay: 0.5, color: '#0F6E56'},
+  {id: 'lbl-lstar', tex: 'L^*', x: sm[0], y: 468, ax: 0.5, ay: 0, color: 'black'}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = pct(l.x, 680);
+  el.style.top = pct(l.y, 500);
+  el.style.fontSize = (l.size || 16) + 'px';
+  el.style.whiteSpace = 'nowrap';
+  el.style.transform = `translate(${-100*l.ax}%, ${-100*l.ay}%)`;
+  if (l.color) el.style.color = l.color;
+});
+</script>
+</body>
+</html>

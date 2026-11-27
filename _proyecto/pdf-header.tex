@@ -1,0 +1,67 @@
+% Cabecera LaTeX común para PDF de capítulos y del libro
+% Los títulos con la misma letra que el texto. KOMA-Script compone por
+% defecto partes, capítulos, apartados y el título del libro en sin serifa; aquí, en la letra del texto y en negrita.
+\ifdefined\setkomafont\setkomafont{disposition}{\normalfont\bfseries}\fi
+\usepackage{enumitem}
+% Listas de primer nivel: marca en el margen, líneas envueltas a ras de margen
+\setlist[enumerate,1]{wide, labelindent=0pt, itemsep=4pt}
+\setlist[itemize,1]{wide, labelindent=0pt, itemsep=4pt}
+% Segundo nivel conserva sangría para marcar jerarquía
+\setlist[enumerate,2]{leftmargin=1.5em, itemsep=4pt}
+\setlist[itemize,2]{leftmargin=1.5em, itemsep=4pt}
+% El tercer nivel, compacto; y las listas «compactas» de Pandoc
+% (\tightlist) conservan el espacio de su nivel en lugar de anularlo
+\setlist[enumerate,3]{itemsep=0pt, parsep=0pt}
+\setlist[itemize,3]{itemsep=0pt, parsep=0pt}
+\AtBeginDocument{\providecommand{\tightlist}{}\renewcommand{\tightlist}{}}
+% Caracteres Unicode sin glifo en Latin Modern (texto): en modo texto se
+% componen con Latin Modern Math (misma familia, incluida en fonts-lmodern),
+% mediante clases de caracteres de XeTeX. No afecta al modo matemático.
+\ifdefined\XeTeXinterchartokenstate
+\newfontfamily\simbolosfont{latinmodern-math.otf}
+\XeTeXinterchartokenstate=1
+\newXeTeXintercharclass\simbclass
+\XeTeXcharclass"03B2=\simbclass % β
+\XeTeXcharclass"2032=\simbclass % ′
+\XeTeXcharclass"2033=\simbclass % ″
+\XeTeXcharclass"2194=\simbclass % ↔
+\XeTeXcharclass"2248=\simbclass % ≈
+\XeTeXcharclass"2264=\simbclass % ≤
+\XeTeXcharclass"2265=\simbclass % ≥
+\XeTeXcharclass"227B=\simbclass % ≻
+\XeTeXcharclass"22C5=\simbclass % ⋅
+\XeTeXcharclass"2713=\simbclass % ✓
+\XeTeXinterchartoks 0 \simbclass = {\begingroup\simbolosfont}
+\XeTeXinterchartoks 4095 \simbclass = {\begingroup\simbolosfont}
+\XeTeXinterchartoks \simbclass 0 = {\endgroup}
+\XeTeXinterchartoks \simbclass 4095 = {\endgroup}
+\fi
+
+% Guionado de la primera palabra en celdas de tabla y altura máxima de figuras
+\renewcommand\arraybackslash{\let\\\tabularnewline\hspace{0pt}}
+\makeatletter\renewcommand*\pandocbounded[1]{\sbox\pandoc@box{#1}\Gscale@div\@tempa{0.78\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}\Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}\ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi\ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}\else\usebox{\pandoc@box}\fi}\makeatother
+
+% Con babel-spanish clásico (spanish.ldf), desactivar los ajustes matemáticos
+% (operadores acentuados y % espaciado), equivalentes a la opción es-minimal. Sin efecto con otras configuraciones.
+\makeatletter
+\AddToHook{begindocument/before}{%
+  \ifdefined\spanishplainpercent\spanishplainpercent\fi
+  \let\es@operators\relax}
+\makeatother
+
+% Pie de página como el de los guiones. A la izquierda, título del libro, licencia, mes de la
+% edición y autor; a la derecha, el número de página. Vale también para la primera página de cada capítulo.
+\usepackage{scrlayer-scrpage}
+\clearpairofpagestyles
+\definecolor{piegris}{RGB}{105,105,105}
+\newcommand{\libropie}{Lecciones de economía general e internacional · CC BY-NC-SA 4.0 · noviembre de 2026 · J. Arturo Lorenzo}
+\ifoot*{\scriptsize\color{piegris}\libropie}
+\ofoot*{\scriptsize\color{piegris}\pagemark}
+\setkomafont{pagefoot}{\normalfont}\setkomafont{pagenumber}{\normalfont}
+\pagestyle{scrheadings}
+% Una figura grande se queda arriba en una página con texto antes que sola en el centro de una página en blanco;
+% si aun así va sola, se coloca arriba.
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.8}
+\makeatletter\setlength{\@fptop}{0pt}\setlength{\@fpsep}{12pt plus 1fil}\setlength{\@fpbot}{0pt plus 1fil}\makeatother

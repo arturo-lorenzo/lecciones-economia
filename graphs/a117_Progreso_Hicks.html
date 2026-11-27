@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: none; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 15px; }
+  .katex-label .katex { font-size: 1em; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg id="g" viewBox="0 0 680 330" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+</svg>
+</div>
+<script>
+
+
+
+
+
+
+
+
+const W = 680, H = 330;
+const svg = document.getElementById('g');
+const NS = 'http://www.w3.org/2000/svg';
+const box = document.querySelector('.graph-container');
+function el(tag, attrs) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+const labels = [];
+const RHO = -0.5, X0 = 5.6, SH = 0.6, R = 0.65;
+const AX = 172, AY = 164, OY = 264, GAP = 212, OX0 = 34, U = 10;
+const DARKG = '#0F6E56', RED = '#D85A30';
+
+const isoK = (a, b) => l => { const d = 2 * (Math.pow(X0, RHO) - 0.5 * Math.pow(a * l, RHO)); return d > 0 ? Math.pow(d, 1 / RHO) / b : Infinity; };
+const isoL = (a, b) => k => isoK(b, a)(k);
+const rmst = (a, b, m) => Math.pow(a / b, RHO) * Math.pow(m, 1 - RHO);
+
+function par(q) { const r = Math.pow(q, 1 / RHO); const a = 1 / (SH * Math.pow(0.5 * (Math.pow(r, -RHO) + 1), 1 / RHO)); return [a, a / r]; }
+const [aN, bN] = par(1), [aK, bK] = par(R), [aL, bL] = par(1 / R);
+
+const PANELS = [
+  {a: aN, b: bN, t1: '\\text{(a) Neutral}', t2: '', sub: '\\text{RMST}_1 = \\text{RMST}_0'},
+  {a: aK, b: bK, t1: '\\text{(b) Intensificador del capital}', t2: '\\text{(ahorrador de trabajo)}', sub: '\\text{RMST}_1 < \\text{RMST}_0'},
+  {a: aL, b: bL, t1: '\\text{(c) Intensificador del trabajo}', t2: '\\text{(ahorrador de capital)}', sub: '\\text{RMST}_1 > \\text{RMST}_0'}
+];
+
+PANELS.forEach((P, i) => {
+  const ox = OX0 + i * GAP, k = AX / U;
+  const sx = l => ox + l * k, sy = q => OY - q * k;
+  const KMAX = AY / k * 0.95, LMAX = 7.3;
+
+  el('line', {x1: ox, y1: OY, x2: ox + AX + 6, y2: OY, stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+  el('line', {x1: ox, y1: OY, x2: ox, y2: OY - AY - 6, stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'});
+
+  const re = 9.0;
+  el('line', {x1: ox, y1: OY, x2: sx(re), y2: sy(re), stroke: '#888', 'stroke-width': 1, 'stroke-dasharray': '5 3'});
+  labels.push({tex: '(K/L)_0', x: sx(re) - 2, y: sy(re) - 4, color: '#888', ax: 0.5, ay: 1, size: '13px'});
+
+  function iso(a, b, lEnd, dashed) {
+    const l0 = isoL(a, b)(KMAX), pts = [];
+    for (let t = 0; t <= 300; t++) { const l = l0 + (lEnd - l0) * t / 300; pts.push(sx(l).toFixed(1) + ',' + sy(isoK(a, b)(l)).toFixed(1)); }
+    const at = {d: 'M' + pts.join(' L'), fill: 'none', stroke: '#1D9E75', 'stroke-width': 2.2, 'stroke-linecap': 'round'};
+    if (dashed) at['stroke-dasharray'] = '7 4';
+    el('path', at);
+    return [sx(lEnd), sy(isoK(a, b)(lEnd))];
+  }
+  const e0 = iso(1, 1, LMAX, false), top0 = [sx(isoL(1, 1)(KMAX)), sy(KMAX)];
+  const e1 = iso(P.a, P.b, 7.6, true);
+  labels.push({tex: 'x_0\\,(t_0)', x: top0[0] + 5, y: top0[1] + 2, color: DARKG, ax: 0, ay: 0.5, size: '13px'});
+  labels.push({tex: 'x_0\\,(t_1)', x: e1[0] + 4, y: e1[1], color: DARKG, ax: 0, ay: 0.5, size: '13px'});
+
+  function tangent(m, s, len) {
+    const n = Math.hypot(1, s), ux = len / n, uy = len * s / n;
+    el('line', {x1: sx(m) - ux, y1: sy(m) - uy, x2: sx(m) + ux, y2: sy(m) + uy, stroke: RED, 'stroke-width': 1.4});
+    el('circle', {cx: sx(m), cy: sy(m), r: 3.8, fill: RED});
+    return [sx(m) + ux, sy(m) + uy];
+  }
+  const m1 = X0 / Math.pow(0.5 * Math.pow(P.b, RHO) + 0.5 * Math.pow(P.a, RHO), 1 / RHO);
+  const t0 = tangent(X0, rmst(1, 1, 1), 30);
+  const t1 = tangent(m1, rmst(P.a, P.b, 1), 30);
+  labels.push({tex: "\\text{RMST}_0", x: t0[0] + 3, y: t0[1] + 3, color: RED, ax: 0, ay: 0, size: '12px'});
+  labels.push({tex: '\\text{RMST}_1', x: t1[0] + 3, y: t1[1] + 1, color: RED, ax: 0, ay: 0, size: '12px'});
+
+  labels.push({tex: P.t1, x: ox - 12, y: 8, color: '#444', ax: 0, ay: 0, size: '13px'});
+  if (P.t2) labels.push({tex: P.t2, x: ox + 8, y: 27, color: '#444', ax: 0, ay: 0, size: '13px'});
+  labels.push({tex: 'L', x: ox + AX + 10, y: OY, ax: 0, ay: 0.5});
+  labels.push({tex: 'K', x: ox, y: OY - AY - 10, ax: 0.5, ay: 1});
+  labels.push({tex: 'O', x: ox - 4, y: OY + 3, ax: 1, ay: 0});
+  labels.push({tex: P.sub, x: ox + AX / 2, y: OY + 28, color: RED, ax: 0.5, ay: 0, size: '14px'});
+});
+
+labels.forEach(l => {
+  const d = document.createElement('div');
+  d.className = 'katex-label';
+  katex.render(l.tex, d, {throwOnError: false});
+  d.style.left = (l.x / W * 100).toFixed(2) + '%';
+  d.style.top = (l.y / H * 100).toFixed(2) + '%';
+  d.style.transform = `translate(${-(l.ax || 0) * 100}%, ${-(l.ay || 0) * 100}%)`;
+  d.style.color = l.color || 'black';
+  if (l.size) d.style.fontSize = l.size;
+  if (l.bg) d.style.background = '#fff';
+  box.appendChild(d);
+});
+</script>
+</body>
+</html>

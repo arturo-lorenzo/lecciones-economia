@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="100" y1="480" x2="600" y2="480" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="100" y1="480" x2="100" y2="40"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="cb" stroke="#1D9E75" stroke-width="2.2"/>
+
+
+    <line id="ca" stroke="#534AB7" stroke-width="2.2"/>
+
+
+    <line id="hline" stroke="black" stroke-width="1.8"/>
+
+
+    <circle id="pt-lo" r="5" fill="black"/>
+    <circle id="pt-hi" r="5" fill="black"/>
+
+
+    <circle id="pt-g1-cb" r="5" fill="#1D9E75"/>
+    <circle id="pt-g1-ca" r="5" fill="#1D9E75"/>
+
+
+    <circle id="pt-r1-cb" r="5" fill="#C62828"/>
+    <circle id="pt-r1-ca" r="5" fill="#C62828"/>
+
+
+    <circle id="pt-r2-cb" r="5" fill="#C62828"/>
+
+
+    <circle id="pt-g2-ca" r="5" fill="#1D9E75"/>
+
+
+    <line id="dash-lo-v" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-hi-v" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+
+    <line id="tick-lo" y1="480" y2="484" stroke="black" stroke-width="1"/>
+    <line id="tick-hi" y1="480" y2="484" stroke="black" stroke-width="1"/>
+    <line id="tick-wy" x1="96" x2="100" stroke="black" stroke-width="1"/>
+  </svg>
+
+  <div class="katex-label" id="lbl-e"></div>
+  <div class="katex-label" id="lbl-w"></div>
+  <div class="katex-label" id="lbl-cb"></div>
+  <div class="katex-label" id="lbl-ca"></div>
+  <div class="katex-label" id="lbl-elo"></div>
+  <div class="katex-label" id="lbl-ehi"></div>
+  <div class="katex-label" id="lbl-wy"></div>
+</div>
+
+<script>
+const ox = 100, oy = 480, pw = 480, ph = 420;
+
+function toSvg(e, w) {
+  return [ox + (e / 10) * pw, oy - (w / 10) * ph];
+}
+
+
+
+
+
+
+
+
+
+const slopeB = Math.tan(60 * Math.PI / 180);
+const slopeA = Math.tan(25 * Math.PI / 180);
+
+
+const cbEmax = Math.min(10, 10 / slopeB);
+const [cbX1, cbY1] = toSvg(0, 0);
+const [cbX2, cbY2] = toSvg(cbEmax, slopeB * cbEmax);
+document.getElementById('cb').setAttribute('x1', cbX1);
+document.getElementById('cb').setAttribute('y1', cbY1);
+document.getElementById('cb').setAttribute('x2', cbX2);
+document.getElementById('cb').setAttribute('y2', cbY2);
+
+
+const caEmax = 10;
+const [caX1, caY1] = toSvg(0, 0);
+const [caX2, caY2] = toSvg(caEmax, slopeA * caEmax);
+document.getElementById('ca').setAttribute('x1', caX1);
+document.getElementById('ca').setAttribute('y1', caY1);
+document.getElementById('ca').setAttribute('x2', caX2);
+document.getElementById('ca').setAttribute('y2', caY2);
+
+
+const hLineY = 2.1;
+const [hlX1, hlY1] = toSvg(0, hLineY);
+const [hlX2, hlY2] = toSvg(10, hLineY);
+document.getElementById('hline').setAttribute('x1', hlX1);
+document.getElementById('hline').setAttribute('y1', hlY1);
+document.getElementById('hline').setAttribute('x2', hlX2);
+document.getElementById('hline').setAttribute('y2', hlY1);
+
+
+const eLo = hLineY / slopeB;
+const eHi = hLineY / slopeA;
+
+const [loSx, loSy] = toSvg(eLo, hLineY);
+const [hiSx, hiSy] = toSvg(eHi, hLineY);
+
+document.getElementById('pt-lo').setAttribute('cx', loSx);
+document.getElementById('pt-lo').setAttribute('cy', loSy);
+document.getElementById('pt-hi').setAttribute('cx', hiSx);
+document.getElementById('pt-hi').setAttribute('cy', hiSy);
+
+
+document.getElementById('dash-lo-v').setAttribute('x1', loSx);
+document.getElementById('dash-lo-v').setAttribute('y1', loSy);
+document.getElementById('dash-lo-v').setAttribute('x2', loSx);
+document.getElementById('dash-lo-v').setAttribute('y2', oy);
+document.getElementById('dash-hi-v').setAttribute('x1', hiSx);
+document.getElementById('dash-hi-v').setAttribute('y1', hiSy);
+document.getElementById('dash-hi-v').setAttribute('x2', hiSx);
+document.getElementById('dash-hi-v').setAttribute('y2', oy);
+
+
+document.getElementById('tick-lo').setAttribute('x1', loSx);
+document.getElementById('tick-lo').setAttribute('x2', loSx);
+document.getElementById('tick-hi').setAttribute('x1', hiSx);
+document.getElementById('tick-hi').setAttribute('x2', hiSx);
+
+
+document.getElementById('tick-wy').setAttribute('y1', hlY1);
+document.getElementById('tick-wy').setAttribute('y2', hlY1);
+
+
+
+
+
+const eGreen1 = eLo / 2;
+const [g1cbSx, g1cbSy] = toSvg(eGreen1, slopeB * eGreen1);
+const [g1caSx, g1caSy] = toSvg(eGreen1, slopeA * eGreen1);
+document.getElementById('pt-g1-cb').setAttribute('cx', g1cbSx);
+document.getElementById('pt-g1-cb').setAttribute('cy', g1cbSy);
+document.getElementById('pt-g1-ca').setAttribute('cx', g1caSx);
+document.getElementById('pt-g1-ca').setAttribute('cy', g1caSy);
+
+
+const eRed1 = eHi + 0.9;
+const [r1cbSx, r1cbSy] = toSvg(eRed1, slopeB * eRed1);
+const [r1caSx, r1caSy] = toSvg(eRed1, slopeA * eRed1);
+document.getElementById('pt-r1-cb').setAttribute('cx', r1cbSx);
+document.getElementById('pt-r1-cb').setAttribute('cy', r1cbSy);
+document.getElementById('pt-r1-ca').setAttribute('cx', r1caSx);
+document.getElementById('pt-r1-ca').setAttribute('cy', r1caSy);
+
+
+const eMid = (eLo + eHi) / 2;
+
+const [r2cbSx, r2cbSy] = toSvg(eMid, slopeB * eMid);
+document.getElementById('pt-r2-cb').setAttribute('cx', r2cbSx);
+document.getElementById('pt-r2-cb').setAttribute('cy', r2cbSy);
+
+const [g2caSx, g2caSy] = toSvg(eMid, slopeA * eMid);
+document.getElementById('pt-g2-ca').setAttribute('cx', g2caSx);
+document.getElementById('pt-g2-ca').setAttribute('cy', g2caSy);
+
+
+const VBW = 680, VBH = 560;
+function pctW(v) { return (v / VBW * 100).toFixed(1) + '%'; }
+function pctH(v) { return (v / VBH * 100).toFixed(1) + '%'; }
+
+const allLabels = [
+  {id:'lbl-e',  tex:'h',              left: pctW(602),        top: pctH(oy + 5),     color:'black'},
+  {id:'lbl-w',  tex:'w,\\ c(h)',     left: pctW(ox - 8),     top: pctH(40),         color:'black', align:'right'},
+  {id:'lbl-cb', tex:'c_B(h)',         left: pctW(cbX2 + 8),   top: pctH(cbY2 - 18),  color:'#0F6E56'},
+  {id:'lbl-ca', tex:'c_A(h)',         left: pctW(caX2 + 8),   top: pctH(caY2 - 17),  color:'#534AB7'},
+  {id:'lbl-elo',tex:'\\underline{h}', left: pctW(loSx - 6),   top: pctH(oy + 8),     color:'black'},
+  {id:'lbl-ehi',tex:'\\overline{h}',  left: pctW(hiSx - 6),   top: pctH(oy + 8),     color:'black'},
+  {id:'lbl-wy', tex:'w_A - w_B', left: pctW(ox - 8),     top: pctH(hlY1 - 14),  color:'black', align:'right'}
+];
+
+allLabels.forEach(l => {
+  const el = document.getElementById(l.id);
+  if (!el) return;
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = l.left;
+  el.style.top  = l.top;
+  if (l.color) el.style.color = l.color;
+  if (l.align === 'right') el.classList.add('right-of-axis');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,614 @@
+---
+description: "Notación del manual. Símbolos, variables, parámetros y siglas de micro, macro, comercio internacional y finanzas."
+---
+
+# Notación {.unnumbered}
+
+Esta página reúne la notación que se repite a lo largo del libro. Los símbolos se agrupan en bloques que siguen, a grandes rasgos, el orden del libro.
+
+## Convenciones generales {.unnumbered}
+
+- *Siglas*: las siglas y abreviaturas de dos o más letras se escriben en redonda, también dentro de las fórmulas, en los gráficos y en los subíndices o superíndices: $\text{IS}$, $\text{LM}$, $\text{OA}$, $\text{CP}$, $\text{VAN}$, $\text{SB}_{\text{CC}}$. El corto y el largo plazo se indican con los subíndices $_{\text{CP}}$ y $_{\text{LP}}$ ($\text{Cme}_{\text{LP}}$, $\text{OA}_{\text{CP}}$). Las letras sueltas van en cursiva: $x$, $Y$, $D(x)$.
+- *Magnitudes marginales y medias*: se abrevian con “mg” y “me” en minúscula, en el texto y en los gráficos: $\text{Cmg}$, $\text{Img}$, $\text{Pmg}$, $\text{Pme}$, $\text{Cme}$, $\text{CVme}$, $\text{CFme}$, $\text{Ime}$, $\text{VPmg}$, $\text{Bmg}$ y $\text{Dmg}$. En los gráficos llevan su argumento: $\text{Cmg}(x)$, $\text{Img}(x)$, $\text{Cme}(x)$.
+- *Equilibrios en los gráficos*: los equilibrios se numeran $0$ (inicial), $0'$ (intermedio; $0''$ si hay dos estados intermedios) y $1$ (final). Las letras ($A$, $B$…) se reservan para los puntos que no son de equilibrio.
+- *Variables de reserva*: se escriben siempre con subrayado: $\underline{w}$ (salario de reserva), $\underline{u}$ (utilidad de reserva), $\underline{r}$ (precio de reserva), $\underline{R}$ (productividad de reserva).
+- *Índices*: el agente o el país va como superíndice ($u^A$, $x_i^h$, $w^A$). El bien, el factor, el estado y el tiempo van como subíndice ($x_1$, $L_0$, $y_t$).
+- *Asterisco y objetivos*: $X^*$ denota la variable correspondiente al resto del mundo ($i^*$, $P^*$, $Y^*$). Como excepción declarada, el asterisco se admite también para los óptimos, los equilibrios y los estados estacionarios cuando el texto lo indica ($x^*$, $k^*$, $g^*$). Los objetivos de la autoridad llevan el superíndice $^T$ ($\pi^T$, $u^T$, $i^T$).
+- *Dinero*: $M^s$ y $M^d$ denotan la oferta y la demanda de dinero. Como excepción declarada, $M$ sin índice se admite para las tenencias de dinero como componente de la riqueza (A33) y en la teoría cuantitativa ($MV = PY$, señoraje).
+- *Expectativas*: el superíndice $^e$ marca el valor esperado de una variable ($\pi^e$, $p_t^e$, $E^e$); $\mathbb{E}_t[\cdot]$ es el operador esperanza condicionada a la información disponible en $t$, y $\mathbb{E}(\cdot)$, la esperanza matemática.
+- *Tasas de crecimiento*: se escriben $g_X \equiv \dot X/X$, siempre con subíndice ($g_Y$, $g_y$, $g_A$, $g_M$).
+- *Funciones*: llevan su argumento: $D(x)$, $u(\mathbf{x})$, $f(K, L)$, $\text{Cmg}(x)$.
+- *Vectores*: se escriben en negrita: $\mathbf{x}$, $\mathbf{p}$, $\mathbf{z}$.
+- *Tiempo*: en tiempo continuo se omite el argumento temporal ($c \equiv c(t)$, $\lambda \equiv \lambda(t)$), salvo en las condiciones inicial y terminal; en tiempo discreto, el subíndice $t$ se escribe siempre.
+- *Mayúsculas y minúsculas en macroeconomía*: la mayúscula denota el agregado en niveles y la minúscula, la magnitud individual o per cápita. En los modelos log-lineales la minúscula es el logaritmo, y así se declara al presentar el modelo.
+- *Símbolos reutilizados*: una misma letra puede tener significados distintos en bloques alejados ($\beta$, $\rho$, $\sigma$, $A$, $\text{EV}$…) y, dentro de un tema, en apartados distintos, siempre que se defina de nuevo en el párrafo “donde …” que sigue a cada programa o ecuación. Dentro de un mismo apartado o modelo, cada símbolo tiene un solo significado y cada concepto un solo símbolo, y dos significados de una letra nunca coinciden en una fórmula, un gráfico o un pasaje que remita al otro.
+
+
+## Notación general {.unnumbered}
+
+Operadores, índices y convenciones de escritura que se usan en todo el libro.
+
+| Símbolo | Significado | Rango | Temas |
+|---|---|---|---|
+| $\Delta X$ | variación discreta de $X$ |  | todo el libro |
+| $\dot X$ | derivada de $X$ respecto del tiempo |  | A05, A21, A26, A28, A29, A34, A38, A39, A41, A43–A45, B09, B14, B31 |
+| $\ln X$ | logaritmo natural de $X$ |  | todo el libro |
+| $g_X$ | tasa de crecimiento de $X$, $\dot X/X$ |  | todo el libro |
+| $\mathbf{x}$ | vector (se escribe en negrita) |  | A03, A08–A12, A14–A18, A20–A25, A29, A39, A42, A45, B05, B23 |
+| $x^*$ | valor óptimo o de equilibrio de $x$ |  | A08–A10, A12–A27, B05–B08 |
+| $X^*$ | variable del resto del mundo |  | A30, A32, B07, B12–B15, B17, B19 |
+| $X^e$ | valor esperado de la variable $X$ |  | todo el libro |
+| $\mathbb{E}_t[\cdot]$ | esperanza condicionada a la información disponible en $t$ |  | A06, A07, A28, A29, A32, A33, A36–A42, B13, B14, B24 |
+| $\mathbb{E}(\cdot)$ | operador esperanza matemática |  | A06–A08, A10, A15, A33, A41, A42, B03, B13, B23, B26 |
+| $\Omega_t$ | conjunto de información disponible en $t$ |  | A06, A39, A41, A42 |
+| $X_0,\ X_{0'},\ X_1$ | valores en los estados inicial, intermedio y final |  | todo el libro |
+| $t$ | tiempo o periodo (índice temporal) |  | todo el libro |
+| $T$ | horizonte temporal o último periodo |  | A07, A14, A19, A29, A33, A34, B02, B24, B25, B31 |
+| $_{\text{CP}},\ _{\text{LP}}$ | corto y largo plazo (subíndices) |  | A03, A05, A06, A12, A16–A18, A25, A28, A32, A33, A37, A41, A42, B16, B19 |
+| $\varepsilon_t$ | perturbación aleatoria |  | A06, A07, A28, A29, A32, A33, A38–A43, A45, B14, B23 |
+| $\sigma^2$ | varianza | $\geq 0$ | A06, A10, A35, A36, A39, A41, A42, B02, B18, B23 |
+| $\sigma$ | desviación típica | $\geq 0$ | A35, B02, B23–B25 |
+| $\rho_{ij}$ | coeficiente de correlación | $[-1, 1]$ | A35, B02, B23 |
+| $N(\cdot)$ | distribución normal |  | A06, A35, A39, A42, B18, B23–B25 |
+| $\mathcal{L}$ | función lagrangiana |  | A03, A04, A08, A09, A12, A15, A25, B23 |
+| $\lambda$ | multiplicador de Lagrange (el de la única restricción o el de la primera; con dos o más, $\lambda$, $\mu$, $\nu$ por orden), con signo positivo y la restricción escrita como recursos menos empleos, como en Chiang y Wainwright (2005), de modo que es no negativo y se lee como precio sombra |  | A03, A04, A08, A09, A12, A13, A15, A20, A25, A27, A37, B23 |
+| $H,\ \mathcal{H}$ | función hamiltoniana ($\mathcal{H}$ cuando $H$ es el capital humano) |  | A29, A34, A38, A43, A44 |
+| $\text{s.a.}$ | sujeto a (restricción de un programa) |  | todo el libro |
+
+## Consumidor y demanda {.unnumbered}
+
+Teoría del consumidor, dualidad y demanda (bloque microeconómico inicial).
+
+| Símbolo | Significado | Rango | Temas |
+|---|---|---|---|
+| $x_i$ | cantidad del bien $i$ |  | A03, A08, A09, A18, A21, B06 |
+| $\mathbf{x} = (x_1, \dots, x_n)$ | cesta de consumo |  | A08, A09 |
+| $\mathbf{x}^0,\ \mathbf{x}^1$ | cestas indexadas por estado (superíndice) |  | A08 |
+| $p_i$ | precio del bien $i$ |  | A03, A08, A09, A18–A21, B06 |
+| $\mathbf{p}$ | vector de precios |  | A08, A09, A12, A21, A23 |
+| $M_0$ | renta o riqueza inicial dada |  | A03, A04, A08–A10, A16, A18, A25, B06 |
+| $M$ | renta como argumento de las funciones de demanda |  | A08, A09 |
+| $\succsim,\ \succ,\ \sim$ | preferencia débil, preferencia estricta e indiferencia |  | A08, A10, A22, A24, A29 |
+| $u(\mathbf{x})$ | función de utilidad |  | A03, A08–A10 |
+| $u_i'$ | utilidad marginal del bien $i$, $u_i' \equiv \partial u/\partial x_i$ |  | A03, A04, A08, A09, A13, A16, A21–A23, A25 |
+| $u_0,\ u_1$ | niveles de utilidad (curvas de indiferencia) |  | A08, A09, A15, A18, A21–A25, A29 |
+| $\text{RMS}_{ji}$ | relación marginal de sustitución, $u_i'/u_j'$ ($\text{RMS}_{21}$ con dos bienes, 1 y 2) | $\geq 0$ | A03, A04, A06, A08, A09, A13, A21–A25, A28, A35, A38, A42, B05, B31 |
+| $v(\mathbf{p}, M)$ | función indirecta de utilidad |  | A08, A09 |
+| $e(\mathbf{p}, u)$ | función de gasto |  | A09 |
+| $x_i^m$ | demanda marshalliana del bien $i$ |  | A08, A09 |
+| $h_i(\mathbf{p}, u)$ | demanda hicksiana o compensada del bien $i$ |  | A08, A09 |
+| $d_i(\mathbf{p}, M)$ | función de demanda marshalliana del bien $i$ |  | A08, A09 |
+| $D(X)$ | demanda de mercado ($D(x)$ en A03, A13 y A23) |  | A03, A13, A16, A17, A19, A21, A23 |
+| $S(X)$ | oferta de mercado ($S(x)$ en A03 y A13) |  | A03, A13, A16, A21 |
+| $\varepsilon_{ab}$ | elasticidad de $a$ respecto de $b$ |  | A08, A09, A11, A12, A15–A20, A22, A25, A27, A44, B06, B07, B12, B28 |
+| $\varepsilon_{ij}$ | elasticidad-precio cruzada del bien $i$ respecto de $p_j$ |  | A08, A09 |
+| $\varepsilon_{iM}$ | elasticidad-renta del bien $i$ |  | A08, A09 |
+| $\varepsilon^c_{ij}$ | elasticidad-precio compensada | propia $\leq 0$ | A08, A09 |
+| $s_i$ | participación del bien $i$ en el gasto | $[0, 1]$ | A08, A09 |
+| $\sigma$ | elasticidad de sustitución | $[0, \infty]$ | A08, A11, A12, A18, A25, A29, A43, A44 |
+| $\text{ES},\ \text{ER},\ \text{ET}$ | efectos sustitución, renta y total |  | A08, A25, A29, A35 |
+| $\text{VC},\ \text{VE}$ | variaciones compensatoria y equivalente |  | A09 |
+| $\text{EC},\ \text{EP}$ | excedentes del consumidor y del productor |  | A03, A16, A17, A20 |
+| $z_i$ | exceso de demanda del bien $i$ |  | A03, A08 |
+| $Z_i(p)$ | función de exceso de demanda de mercado del bien $i$, $D_i(p) - S_i(p)$ |  | A21 |
+| $x_i^d,\ x_i^s$ | cantidades demandada y ofrecida del bien $i$ en un mercado con racionamiento |  | A04 |
+| $u^h$ | utilidad del individuo $h$ |  | A03, A21–A24 |
+| $\mathbf{x}^h$ | cesta del consumidor $h$ |  | A03, A21, A22 |
+
+## Producción y costes {.unnumbered}
+
+Tecnología, productividades y funciones de costes de la empresa.
+
+| Símbolo | Significado | Rango | Temas |
+|---|---|---|---|
+| $x$ | cantidad producida por la empresa |  | A03, A11, A12, A15–A18, A20 |
+| $X$ | cantidad de la industria o del mercado |  | A12, A16, A17, A19–A21 |
+| $\mathbf{z}$ | vector de factores productivos |  | A11, A12, A16, A17, A21, A25 |
+| $z_i$ | cantidad del factor $i$ |  | A11, A12, A16, A21 |
+| $\mathbf{p}^z$ | vector de precios de los factores |  | A12, A16, A17, A21, A23, A25 |
+| $f(K, L)$ | función de producción con dos factores |  | A04, A11, A12, A29, A34, A43, A45, B05, B10, B28 |
+| $f(\mathbf{z})$ | función de producción con varios factores |  | A11, A12, A16, A17, A21, A25 |
+| $\bar K$ | capital fijo a corto plazo |  | A04, A11, A12, B10 |
+| $K_0,\ L_0$ | dotaciones de capital y trabajo |  | A11, A21, A22 |
+| $f_L',\ f_K'$ | productividades marginales del trabajo y del capital |  | A04, A11, A22, A23, A26, A29, A34, A43–A45, B05 |
+| $\text{Pmg}_L$ | productividad marginal del trabajo |  | A02, A07, A11–A13, A21, A27, B05 |
+| $\text{Pme}_L$ | productividad media del trabajo |  | A02, A11 |
+| $\text{VPmg}_i$ | valor de la productividad marginal del factor $i$ |  | A16, A17, A25, B10, B18 |
+| $\text{IPmg}_i$ | ingreso de la productividad marginal del factor $i$ |  | A17 |
+| $\text{RMST}_{ji}$ | relación marginal de sustitución técnica, $f_i'/f_j'$ ($\text{RMST}_{KL} = f_L'/f_K'$ con trabajo y capital) | $\geq 0$ | A08, A11, A12, A16, A17, A21–A23 |
+| $\text{RMT}_{ji}$ | relación marginal de transformación ($\text{RMT}_{yx}$ con los bienes $x$ e $y$) | $\geq 0$ | A11, A21–A24, B05, B31 |
+| $\text{FPP}$ | frontera de posibilidades de producción |  | A11, A21–A24, A29, B05, B07–B09, B12 |
+| $\text{CPP}$ | conjunto de posibilidades de producción |  | A11, A12 |
+| $\varepsilon_{x\lambda}$ | elasticidad de escala | $> 0$ | A11, A12 |
+| $\text{CT}(x)$ | coste total |  | A12, A15–A21, A23, B06–B08 |
+| $\text{CV}(x),\ \text{CF}$ | coste variable y coste fijo |  | A12, A15–A17 |
+| $\text{Cmg}(x)$ | coste marginal |  | A03, A07, A11, A12, A14–A23, A25, A28, B31 |
+| $\text{Cme}(x)$ | coste medio (total) |  | A03, A12, A16–A20, B08, B10 |
+| $\text{CVme}(x)$ | coste variable medio |  | A03, A12, A16, A17 |
+| $\text{CFme}(x)$ | coste fijo medio |  | A12 |
+| $\text{Cmg}_{\text{LP}},\ \text{Cme}_{\text{LP}}$ | costes marginal y medio a largo plazo |  | A12, A16–A18 |
+| $c(\mathbf{p}^z, x)$ | función de costes (enfoque dual) |  | A12, A16 |
+| $c$ | coste marginal constante |  | A15–A19, A29, B06 |
+| $C(\mathbf{z})$ | gasto en factores (recta isocoste) |  | A12 |
+| $z_i^c$ | demanda condicionada del factor $i$ |  | A12 |
+| $\varepsilon_{Cx}$ | elasticidad-producto del coste, $\text{Cmg}/\text{Cme}$ | $> 0$ | A11, A12, A16 |
+| $x_{\text{EME}}$ | escala mínima eficiente ($X_{\text{EME}}$ en A17) |  | A12, A17, A19 |
+| $x_{\text{ME}},\ x_{\text{OE}}$ | mínimo y óptimo de explotación |  | A16 |
+| $p_{\text{c}}$ | precio de cierre, mínimo de $\text{CVme}(x)$ |  | A16 |
+| $w,\ r$ | precios del trabajo y del servicio del capital |  | A11, A12, A20, A21, A23, B05 |
+| $r_K$ | coste de uso del capital cuando $r$ es el tipo de interés |  | A04, A25, A29, A34 |
+
+## Mercados y competencia {.unnumbered}
+
+Estructuras de mercado, poder de mercado y organización industrial.
+
+| Símbolo | Significado | Rango | Temas |
+|---|---|---|---|
+| $p$ | precio de un bien |  | A15–A21, B06–B08 |
+| $p(X)$ | función inversa de demanda |  | A15–A17, A19, A20, B08 |
+| $\text{IT}(x)$ | ingreso total |  | A15–A17, B06 |
+| $\text{Img}(x)$ | ingreso marginal |  | A15–A19, A25 |
+| $\text{Ime}(x)$ | ingreso medio |  | A16, A17 |
+| $\pi$ | beneficio (en microeconomía) |  | A02, A14–A21, A23, A25, A27, B06, B08 |
+| $n$ | número de empresas |  | A15, A16, A18, A19, B06 |
+| $x_i$ | cantidad producida por la empresa $i$ |  | A15, A17, A19, A20, B08 |
+| $x_i^s$ | producción de la empresa o variedad $i$ |  | A16, A18, B06 |
+| $\varepsilon_{Xp}$ | elasticidad-precio de la demanda de mercado |  | A15, A17, A19, A20, A22, A25 |
+| $\varepsilon_D,\ \varepsilon_S$ | elasticidades-precio de la demanda y la oferta |  | A16 |
+| $\lvert\varepsilon\rvert$ | valor absoluto de la elasticidad-precio de la demanda |  | A15–A20, A22 |
+| $I_L$ | índice de Lerner, $(p - \text{Cmg})/p$ | $[0, 1]$ | A15, A17, A20, A28 |
+| $s_i$ | cuota de mercado de la empresa $i$ | $[0, 1]$ | A15, A17, A19, A20 |
+| $\text{HHI}$ | índice de Herfindahl-Hirschman | $[10\,000/n,\ 10\,000]$ | A15, A19, A20 |
+| $_C,\ _M$ | competencia perfecta y monopolio (subíndices) |  | A17, A19 |
+| $_S,\ _{\text{OC}}$ | subíndices de Stackelberg y del oligopolio de Cournot |  | A19 |
+| $p_M,\ X_M$ | precio y cantidad de monopolio |  | A17, A19 |
+| $p_C,\ X_C$ | precio y cantidad de competencia perfecta |  | A17, A19 |
+| $t$ | impuesto unitario o específico |  | A16 |
+| $\text{EC}(p)$ | excedente del consumidor en función del precio |  | A17, A20 |
+| $\varphi_i(x_j)$ | función de reacción de la empresa $i$ |  | A19, B06, B08 |
+| $\gamma$ | grado de sustituibilidad entre productos diferenciados en la demanda lineal $x_i = a - p_i + \gamma\, p_j$ |  | A19 |
+| $p^*,\ \hat p_1,\ \hat p_2$ | precio de Bertrand simultáneo y precios de la líder y de la seguidora en la competencia secuencial en precios |  | A19 |
+| $R_i(\mathbf{s}_{-i})$ | función de mejor respuesta del jugador $i$ |  | A14 |
+| $v_i$ | variación conjetural |  | A15 |
+| $F$ | cuota fija de una tarifa en dos partes |  | A17, A20 |
+| $\varphi$ | tipo de la empresa regulada, parámetro de eficiencia intrínseca no observable (Laffont-Tirole) |  | A15, A20 |
+| $\psi(e)$ | desutilidad del esfuerzo reductor de costes (Laffont-Tirole) |  | A15 |
+| $\lambda$ | coste sombra de los fondos públicos (Laffont-Tirole) |  | A15, A20 |
+| $A$ | gasto en publicidad (Dorfman-Steiner) |  | A17, A18 |
+| $\sigma$ | elasticidad de sustitución entre variedades | $> 1$ | A07, A18, A28, B06 |
+| $P$ | índice de precios CES |  | A07, A18, B06 |
+| $\mu$ | margen neto sobre el coste marginal, $p = (1+\mu)\,\text{Cmg}$ | $\geq 0$ | A07, A17–A19, A28, A32, A41, B06 |
+| $s,\ s_i$ | calidad del producto en la diferenciación vertical (nunca $u$) |  | A18, B06 |
+
+## Incertidumbre, información y juegos {.unnumbered}
+
+Elección con riesgo, información asimétrica y teoría de juegos.
+
+| Símbolo | Significado | Rango | Temas |
+|---|---|---|---|
+| $p_s$ | probabilidad del estado $s$ | $[0, 1]$ | A10 |
+| $u^e$ | utilidad esperada |  | A10, A13, A27 |
+| $x_c$ | equivalente cierto |  | A10 |
+| $\rho$ | prima de riesgo | $\geq 0$ (aversión) | A10, B08, B24 |
+| $\text{CAA},\ \text{CAR}$ | coeficientes de aversión absoluta y relativa al riesgo |  | A10, A13 |
+| $e$ | esfuerzo del agente |  | A13, A15, A27 |
+| $w(x_i)$ | salario contingente al resultado |  | A13, A15 |
+| $v(e)$ | desutilidad del esfuerzo |  | A13 |
+| $\underline{u}$ | utilidad de reserva (restricción de participación) |  | A13, A26, A27 |
+| $h$ | nivel de educación (señal de Spence) |  | A13, A14 |
+| $\mu_0,\ \mu(h)$ | creencia previa y creencia tras observar la educación (Spence) | $[0, 1]$ | A14 |
+| $N$ | conjunto de jugadores |  | A14 |
+| $s_i$ | estrategia del jugador $i$ |  | A14 |
+| $\mathbf{s}_{-i}$ | estrategias de los demás jugadores |  | A14 |
+| $u_i(\mathbf{s})$ | pagos del jugador $i$ |  | A14 |
+| $d$ | punto de desacuerdo en la negociación |  | A14 |
+| $\underline{r}$ | precio de reserva en las subastas |  | A14 |
+
+## Bienestar y fallos de mercado {.unnumbered}
+
+Economía del bienestar, bienes públicos, externalidades y distribución.
+
+| Símbolo | Significado | Rango | Temas |
+|---|---|---|---|
+| $W$ | función de bienestar social |  | A20, A22, A24, B31 |
+| $\text{FPU},\ \text{GFPU}$ | frontera y gran frontera de posibilidades de utilidad |  | A22, A24 |
+| $\text{CIS}$ | curva de indiferencia social |  | A06, A24, A41, B05, B07–B10, B12, B16 |
+| $\text{1TFEB},\ \text{2TFEB}$ | primer y segundo teoremas fundamentales del bienestar |  | A16, A21, A22 |
+| $g$ | cantidad de bien público |  | A23 |
+| $\text{RMS}^h_{xg}$ | relación marginal de sustitución entre bien privado y público |  | A23 |
+| $e(x)$ | daño externo |  | A23, B31 |
+| $\text{Cmg}_P,\ \text{Cmg}_E,\ \text{Cmg}_S$ | costes marginales privado, externo (daño marginal) y social |  | A23, B31 |
+| $\text{Bmg},\ \text{Dmg}$ | beneficio y daño marginales |  | A23, B31 |
+| $\tau$ | impuesto pigouviano por unidad |  | A23 |
+| $A$ | índice de Atkinson | $[0, 1]$ | A24, A45 |
+| $y_e$ | renta equivalente igualmente distribuida |  | A24, A45 |
+| $\varepsilon$ | aversión a la desigualdad | $\geq 0$ | A24, A45 |
+| $G$ | coeficiente de Gini | $[0, 1]$ | A24, A45, B28 |
+| $T$ | índice de Theil | $[0, \ln H]$ | A24, A45 |
+| $\bar y$ | renta media |  | A24, A45 |
+
+## Mercado de trabajo {.unnumbered}
+
+Oferta y demanda de trabajo, salarios y búsqueda de empleo.
+
+| Símbolo | Significado | Rango | Temas |
+|---|---|---|---|
+| $L$ | trabajo o empleo |  | A02, A04, A07, A08, A11, A12, A17, A18, A20–A29, A32, A34, A43–A45, B05, B06, B09, B18, B28 |
+| $w$ | salario |  | A02, A04, A06–A08, A11–A18, A20, A21, A23, A25–A29, A32, A34, A35, A38, A41–A45, B05, B06, B10, B18, B28 |
+| $w/P$ | salario real |  | A04, A07, A28, A32 |
+| $l$ | horas de trabajo individuales |  | A04, A06, A07, A25, A26, A38, A42 |
+| $o$ | ocio |  | A04, A25 |
+| $l_0$ | dotación de tiempo |  | A04, A25 |
+| $c$ | consumo individual |  | A07, A25, A27, A28 |
+| $L^s,\ L^d$ | oferta y demanda de trabajo |  | A04, A25, A27, A28, A32 |
+| $L^*$ | empleo de equilibrio |  | A02, A04, A25–A28 |
+| $C_e$ | coste de la educación (capital humano) |  | A25 |
+| $\underline{w}$ | salario de reserva |  | A25–A27 |
+| $\underline{R}$ | productividad de reserva (Mortensen y Pissarides) |  | A26 |
+| $\bar w$ | salario medio (A14, B18); renta del desempleado en Shapiro-Stiglitz (A27) |  | A14, A27, B18 |
+| $w^*$ | salario de equilibrio o de eficiencia |  | A02, A25–A27 |
+| $\gamma$ | poder de negociación del trabajador | $[0, 1]$ | A26, A27 |
+| $e(w)$ | función de esfuerzo |  | A27 |
+| $U,\ V$ | número de parados y de vacantes |  | A26 |
+| $\theta$ | estrechez del mercado de trabajo, $V/U$ | $\geq 0$ | A26 |
+| $M(V, U)$ | función de emparejamiento |  | A26 |
+| $z$ | factores institucionales o ingresos del parado |  | A07, A26, A28, A32, A41 |
+| $\text{SRN},\ \text{SRP}$ | salario real negociado y pagado (curvas) |  | A07, A28, A32, A41 |
+| $A_L$ | productividad del trabajo |  | A07, A28, A32, A41 |
+
+## Agregados macroeconómicos y contabilidad nacional {.unnumbered}
+
+Magnitudes agregadas básicas, contabilidad nacional y balanza de pagos.
+
+| Símbolo | Significado | Rango | Temas |
+|---|---|---|---|
+| $Y$ | renta o producción real agregada |  | A02–A07, A28, A29, A32–A45, B09, B12, B14–B17, B19, B22, B28, B31, B43 |
+| $P$ | nivel general de precios |  | A04–A07, A28, A30–A33, A35–A37, A39–A42, B12–B14 |
+| $\pi$ | tasa de inflación |  | A05–A07, A28, A32, A35–A42, B12, B14, B16, B17, B19, B22, B43 |
+| $\pi^e$ | inflación esperada |  | A03–A07, A28, A34–A37, A39, A41, A42, B14, B16, B17 |
+| $i$ | tipo de interés nominal |  | A03–A07, A32, A34–A42, B12–B15, B19, B43 |
+| $r$ | tipo de interés real |  | A03–A07, A25, A26, A29, A32–A39, A41–A45, B09, B12, B19, B29, B31 |
+| $K$ | *stock* de capital |  | A04, A05, A11, A12, A20, A22, A29–A34, A42–A45, B05, B09, B12 |
+| $A$ | nivel tecnológico o productividad total de los factores |  | A06, A07, A11, A12, A38, A42–A45, B09, B31 |
+| $\Pi$ | beneficio de la empresa (en macroeconomía) |  | A04, A28, A29, A32, A34, A38, A42–A44, B09 |
+| $\text{PIB}$ | producto interior bruto |  | A30, B11 |
+| $C,\ I,\ G$ | consumo, inversión y gasto público |  | A04, A30, A32, A42, B11, B12 |
+| $X,\ M$ | exportaciones e importaciones |  | A30, A32, B11, B12 |
+| $\text{XN}$ | exportaciones netas |  | A32 |
+| $A$ | absorción interna, $C + I + G$ |  | B11, B12, B22 |
+| $S$ | ahorro nacional |  | A02, A04, A30, A34, A43, B11, B12 |
+| $S_P,\ S_G$ | ahorro privado y público |  | A30, B11 |
+| $I_P,\ I_G$ | inversión privada y pública |  | A30, B11 |
+| $T$ | impuestos netos |  | A30, B11, B22, B43 |
+| $\text{RNB},\ \text{RNBD}$ | renta nacional bruta y renta nacional bruta disponible |  | A30, B11 |
+| $\text{VAB}$ | valor añadido bruto |  | A30 |
+| $\text{CCF}$ | consumo de capital fijo |  | A30 |
+| $I_N$ | inversión neta |  | A30 |
+| $\text{PFis}$ | presión fiscal |  | A30 |
+| $\text{BC}$ | saldo de la balanza comercial |  | A32, B11, B12, B14–B16 |
+| $\text{SBR}_1,\ \text{SBR}_2$ | saldos de rentas primarias y secundarias |  | A30, B11 |
+| $\text{SB}_{\text{CC}}$ | saldo de la cuenta corriente |  | A30, A32, B11, B12, B22 |
+| $\text{SB}_{\text{CK}},\ \text{SB}_{\text{CF}}$ | saldos de las cuentas de capital y financiera |  | A30, B11, B12 |
+| $\text{CIN}$ | capacidad o necesidad de financiación de la nación |  | A30, B11 |
+| $\text{PIIN}$ | posición de inversión internacional neta |  | A30, B11 |
+| $\text{EV}$ | efecto valoración (posición de inversión internacional) |  | B11 |
+| $\text{TA},\ \text{TC},\ \text{TP}$ | tasas de apertura, de cobertura y de penetración de las importaciones |  | B11 |
+| $\text{CLU},\ \text{CLA},\ \text{PAT}$ | costes laborales unitarios, coste laboral por asalariado y productividad aparente del trabajo |  | B11 |
+
+## Consumo e inversión {.unnumbered}
+
+Funciones de consumo, elección intertemporal e inversión.
+
+| Símbolo | Significado | Rango | Temas |
+|---|---|---|---|
+| $C$ | consumo agregado |  | A02, A04, A05, A30–A35, A37, A42, A43, B12, B17 |
+| $C_0$ | consumo autónomo |  | A04, A05, A32, A33, A38, A42, B12 |
+| $c$ | propensión marginal a consumir | $(0, 1)$ | A04, A05, A32–A34, A38–A40, A42, B12 |
+| $s$ | propensión marginal o tasa de ahorro | $(0, 1)$ | A06, A33, A38, A42–A45, B09 |
+| $c_t$ | consumo individual o per cápita en $t$ |  | A06, A07, A25, A28, A29, A33, A35, A38, A39, A42 |
+| $y_t$ | renta individual o per cápita en $t$ |  | A06, A29, A33, A38, A39 |
+| $a_t$ | activos financieros al inicio de $t$ |  | A29, A33 |
+| $W$ | riqueza total |  | A04, A05, A29, A33–A37, B12, B14 |
+| $W_H$ | riqueza humana |  | A05, A33, A35 |
+| $\kappa$ | propensión a consumir la riqueza | $(0, 1)$ | A33 |
+| $Y^P,\ Y^T$ | renta permanente y transitoria |  | A05, A33, A35 |
+| $C^P,\ C^T$ | consumo permanente y transitorio |  | A05, A33 |
+| $k_P$ | proporción consumida de la renta permanente | $(0, 1]$ | A05, A33 |
+| $\beta$ | factor de descuento, $1/(1+\rho)$ | $(0, 1)$ | A06, A07, A14, A19, A25, A28, A29, A32, A33, A35–A42, B12, B19, B31 |
+| $\rho$ | tasa de preferencia temporal | $> 0$ | A07, A25, A29, A33, A35, A38, A43, A44, B09, B12, B19, B31 |
+| $\delta$ | tasa de depreciación del capital | $(0, 1]$ (discreto); $\geq 0$ (continuo) | A06, A29, A33, A34, A38, A42–A45, B09, B28 |
+| $U$ | utilidad intertemporal |  | A29, A38 |
+| $\text{RMSI}$ | relación marginal de sustitución intertemporal |  | A29, A39 |
+| $\theta$ | coeficiente de aversión relativa al riesgo (CRRA) | $> 0$ | A07, A10, A29, A33, A36–A38, A40, A42–A44, B09, B31 |
+| $1/\theta$ | elasticidad de sustitución intertemporal |  | A07, A10, A29, A32, A33, A36–A38, A40, A42–A44, B09 |
+| $I$ | inversión |  | A02, A04, A05, A29–A35, A37, A39, A40, A42, A43, B11, B12, B17 |
+| $I_0$ | inversión autónoma |  | A04, A05, A32–A34, A42, B12 |
+| $v$ | sensibilidad de la inversión al tipo de interés |  | A04, A05, A32, A35, A37–A40, B12 |
+| $v$ | acelerador o ratio capital-producto |  | A34, A42, A43, B29 |
+| $K^*$ | *stock* de capital deseado u óptimo |  | A29, A34, A43 |
+| $q$ | $q$ de Tobin (precio sombra del capital) |  | A05, A29, A34, A42 |
+| $\rho_{\text{fe}}$ | prima de financiación externa (acelerador financiero) |  | A42 |
+| $P_K$ | precio de los bienes de capital |  | A29, A34 |
+| $\text{EMK}$ | eficiencia marginal del capital |  | A04, A34 |
+| $\varphi(I)$ | función de costes de ajuste de la inversión |  | A29, A34 |
+
+## Dinero y políticas monetaria y fiscal {.unnumbered}
+
+Oferta y demanda de dinero, reglas de política monetaria, presupuesto público y deuda.
+
+| Símbolo | Significado | Rango | Temas |
+|---|---|---|---|
+| $M$ | cantidad nominal de dinero (ecuación cuantitativa) |  | A03–A05, A35, A37, A39, A41, B14 |
+| $V$ | velocidad de circulación del dinero |  | A03–A05, A35, A37, A41, B14 |
+| $MV = PY$ | ecuación cuantitativa |  | A04, A05, A35, A37, A39, B14 |
+| $M^s$ | oferta monetaria nominal |  | A02, A04, A05, A32, A35–A40, B12, B14, B15, B19, B22 |
+| $M^d$ | demanda nominal de dinero |  | A02, A04, A05, A35–A37, B12, B14, B15 |
+| $M^d/P$ | demanda de saldos reales |  | A04, A05, A35, A36, B14 |
+| $L(Y, i)$ | función de preferencia por la liquidez |  | A04, A05, A35, A36 |
+| $k$ | sensibilidad de la demanda de dinero a la renta (Cambridge) |  | A03–A05, A32, A35–A41, B14 |
+| $h$ | sensibilidad de la demanda de dinero al tipo de interés |  | A04, A05, A32, A35–A40 |
+| $i^e$ | tipo de interés esperado o crítico (Keynes) |  | A04, A35 |
+| $r_B$ | rentabilidad del bono (en B24, la TIR) |  | A04, A05, A35, B24 |
+| $P_B$ | precio del bono (en macroeconomía) |  | A04, A07 |
+| $H$ | base monetaria |  | A36, A39, A40, B15, B17 |
+| $E$ | efectivo en manos del público |  | A36, A40 |
+| $R^b$ | reservas bancarias, $qD$ |  | A36, B20, B43 |
+| $D$ | depósitos bancarios |  | A36, A40, A42, B26 |
+| $q$ | coeficiente de reservas | $(0, 1]$ | A36, A40 |
+| $c_D$ | coeficiente efectivo-depósitos, $E/D$ | $\geq 0$ | A36, A40 |
+| $m$ | multiplicador monetario | $\geq 1$ | A36, A40 |
+| $M_1,\ M_2,\ M_3$ | agregados monetarios |  | A35, A36, B43 |
+| $\text{CI}$ | crédito interno |  | A36, A39, B12, B15, B17, B22 |
+| $g_M$ | tasa de crecimiento de la cantidad de dinero |  | A05, A35, A36, A39, A41 |
+| $m_t,\ p_t$ | logaritmos del dinero y del nivel de precios |  | A06, A39, A41, A42 |
+| $\text{IS},\ \text{LM}$ | equilibrio del mercado de bienes y del de dinero (curvas) |  | A04–A07, A32, A35–A40, A42, B12, B15, B19 |
+| $\text{OA},\ \text{DA}$ | oferta y demanda agregadas |  | A04–A06, A32, A37, A42, B12, B16, B19 |
+| $\text{OA}_{\text{CP}},\ \text{OA}_{\text{LP}}$ | oferta agregada a corto y largo plazo |  | A06, A32, A37, A42, B16, B19 |
+| $\text{DAD},\ \text{OAD}$ | demanda y oferta agregadas dinámicas |  | A37 |
+| $\text{MR}$ | regla monetaria (curva) |  | A06, A07, A32, A36–A38, A42 |
+| $\pi^T$ | objetivo de inflación |  | A06, A07, A32, A36–A38, A40–A42, B16 |
+| $\bar{i}_t$ | tipo de interés nominal neutral, $\bar r_t + \pi^T$ (término independiente de la regla de Taylor) |  | A06, A07, A32, A36, A38, A40, A42 |
+| $\bar r_t$ | tipo de interés real natural |  | A04, A06, A07, A32, A36–A38, A40, A42 |
+| $\alpha_\pi,\ \alpha_y$ | coeficientes de la regla de Taylor | $\alpha_\pi > 1$; $\alpha_y \geq 0$ | A06, A07, A32, A36, A38, A40, A42 |
+| $\tilde\pi_t$ | desviación de la inflación respecto al objetivo |  | A06, A07, A32, A36, A38, A40, A42 |
+| $L$ | función de pérdida del banco central |  | A06, A36, A37, B16 |
+| $\sigma_t$ | señoraje |  | A39, A41 |
+| $G_0$ | gasto público exógeno |  | A04, A05, A32–A34, A38–A40, B12 |
+| $T_0$ | impuesto de suma fija |  | A04, A05, A33, A38–A40, B12 |
+| $\tau$ | tipo impositivo | $[0, 1)$ | A32, A34, A38–A40, A43, A44 |
+| $A_0$ | gasto autónomo |  | A04, A05, A32, A33, B12 |
+| $M_G$ | multiplicador del gasto público |  | A38, A40 |
+| $B_t$ | *stock* nominal de deuda pública |  | A39 |
+| $b_t$ | ratio deuda-PIB o bonos per cápita |  | A06, A28, A35, A38–A40, B12, B29 |
+| $d1_t$ | déficit primario en proporción del PIB |  | A39 |
+| $T_t$ | recaudación impositiva |  | A06, A38–A40 |
+| $g$ | gasto público real per cápita |  | A07, A38, A39, A43, A44 |
+| $T^\pi_t$ | impuesto inflacionario |  | A39 |
+| $\text{EDD}$ | ecuación dinámica de la deuda |  | A39 |
+| $\text{SE}$ | saldo estructural |  | B43 |
+
+## Inflación, paro y ciclos {.unnumbered}
+
+Curva de Phillips, oferta de Lucas, rigideces nominales y ciclos.
+
+| Símbolo | Significado | Rango | Temas |
+|---|---|---|---|
+| $u_t$ | tasa de desempleo | $[0, 1]$ | A05–A07, A26, A28, A37, A41 |
+| $\bar u$ | tasa natural de paro o NAIRU | $(0, 1)$ | A05–A07, A26, A28, A37, A41 |
+| $u^T$ | objetivo de paro del Gobierno |  | A06, A41, B16 |
+| $\kappa_u$ | pendiente de la curva de Phillips respecto al paro | $> 0$ | A05–A07, A28, A37, A41 |
+| $\kappa$ | pendiente de la curva de Phillips respecto a la brecha | $> 0$ | A07, A28, A32, A36–A38, A40–A42 |
+| $\kappa_{\text{cm}}$ | coeficiente del coste marginal real en la NKPC |  | A07, A28 |
+| $\widehat{\text{cmg}}_t$ | desviación del coste marginal real (en logaritmos) respecto del estado estacionario |  | A07, A28 |
+| $\phi$ | coeficiente de la ley de Okun | $> 0$ | A05, A06, A28 |
+| $\tilde y_t$ | brecha de producción |  | A06, A07, A28, A32, A36–A38, A40–A42 |
+| $\bar y_t$ | producción potencial o natural (logaritmo) |  | A06, A07, A28, A32, A36–A39, A41, A42 |
+| $\bar Y$ | producción potencial o natural (nivel) |  | A04, A06, A37, A42 |
+| $y_t,\ p_t$ | logaritmos de la producción y del nivel de precios |  | A06, A07, A28, A32, A36–A39, A41, A42 |
+| $p_t^e$ | logaritmo del nivel de precios esperado |  | A06, A28, A32, A37, A41, A42 |
+| $\text{CP}$ | curva de Phillips |  | A05–A07, A28, A32, A36–A38, A41, B16 |
+| $\text{CP}_{\text{CP}},\ \text{CP}_{\text{LP}}$ | curvas de Phillips a corto y largo plazo |  | A05, A06, A28, A41, B16 |
+| $\xi$ | probabilidad de no revisar el precio (Calvo) | $[0, 1)$ | A07, A28, A37, A41 |
+| $\zeta$ | coeficiente de la oferta de Lucas | $> 0$ | A06, A28, A32, A37, A41, A42 |
+| $\vartheta$ | peso de los *shocks* específicos en la extracción de señales de Lucas, con $\zeta \equiv \vartheta\eta$ | $[0, 1]$ | A06, A41, A42 |
+| $\varepsilon_t^s,\ \varepsilon_t^d$ | perturbaciones de oferta (oferta de Lucas, $\varepsilon_t^s > 0$ eleva la producción) y de demanda |  | A06, A32, A37, A41, A42 |
+| $\varepsilon_t^\pi$ | perturbación de costes en la curva de Phillips ($\varepsilon_t^\pi > 0$ eleva la inflación) |  | A06, A07, A28, A32, A36 |
+| $\lambda$ | parámetro de las expectativas adaptativas (velocidad de ajuste, también en Cagan) | $(0, 1]$ | A05, A28, A33, A35, A37, A39, A41 |
+| $\rho_A$ | autocorrelación del *shock* tecnológico | $(-1, 1)$ | A06, A38, A42 |
+
+## Crecimiento {.unnumbered}
+
+Modelos de crecimiento exógeno y endógeno y contabilidad del crecimiento.
+
+| Símbolo | Significado | Rango | Temas |
+|---|---|---|---|
+| $y,\ k$ | producción y capital por trabajador |  | A06, A29, A38, A42–A45, B09, B28 |
+| $f(k)$ | función de producción intensiva |  | A29, A38, A43–A45, B28 |
+| $sf(k)$ | ahorro o inversión bruta por trabajador |  | A43–A45, B28 |
+| $(n+\delta)k$ | inversión de reposición por trabajador |  | A38, A43–A45, B09, B28 |
+| $n$ | tasa de crecimiento de la población |  | A29, A35, A38, A43–A45, B09, B28 |
+| $k^*$ | capital por trabajador de estado estacionario |  | A29, A38, A43–A45, B28 |
+| $y^*,\ c^*$ | producción y consumo de estado estacionario |  | A38, A43 |
+| $c_{\text{oro}}$ | consumo de la regla de oro |  | A43 |
+| $\tilde k,\ \tilde y$ | capital y producción por unidad de trabajo efectivo |  | A43, A45 |
+| $AL$ | trabajo efectivo |  | A43, A45 |
+| $\alpha$ | participación del capital en la renta (Cobb-Douglas) | $(0, 1)$ | A06, A29, A38, A42–A45, B09 |
+| $g_A$ | tasa de progreso técnico |  | A06, A38, A42, A43, A45, B31 |
+| $g_Y,\ g_y$ | tasas de crecimiento del producto agregado y per cápita |  | A05, A06, A28, A38, A39, A41, A43–A45, B09, B12, B22, B28, B29, B31 |
+| $g_k,\ g_K$ | tasas de crecimiento del capital per cápita y agregado |  | A38, A43–A45, B09, B28 |
+| $g_c$ | tasa de crecimiento del consumo |  | A38, A43–A45, B09, B31 |
+| $\lambda$ | velocidad de convergencia | $> 0$ | A43, A45 |
+| $\beta$ | coeficiente de $\beta$-convergencia |  | A43, A45 |
+| $H,\ h$ | capital humano agregado y por trabajador |  | A43–A45 |
+| $T$ | tierra (factor de oferta fija) |  | A43, B05, B28, B31 |
+| $T_t$ | aumento de la temperatura media global (DICE) |  | B31 |
+| $L_A$ | trabajo dedicado a I+D |  | A44 |
+| $N$ | número de variedades de bienes de capital |  | A44, B09 |
+| $AK$ | modelo de rendimientos constantes del capital |  | A38, A43, A44, B09 |
+| $\text{PTF}$ | productividad total de los factores |  | A45 |
+
+## Comercio internacional {.unnumbered}
+
+Teorías del comercio, política comercial e integración económica.
+
+| Símbolo | Significado | Rango | Temas |
+|---|---|---|---|
+| $x,\ y$ | bienes exportable e importable |  | B07, B10 |
+| $X,\ Y$ | bienes exportable e importable (equilibrio general) |  | B05, B07–B10 |
+| $A,\ B$ | países |  | B05, B07, B09, B10, B18, B19 |
+| $p_X,\ p_Y$ | precios de los bienes $X$ e $Y$ |  | B05, B07, B09 |
+| $p_X/p_Y$ | precio relativo del exportable |  | B05, B07, B09 |
+| $\text{RRI}$ | relación real de intercambio |  | B05, B07–B11, B28 |
+| $\text{CON}$ | curva de oferta neta |  | B05, B07, B09 |
+| $\text{CISC}$ | curva de indiferencia social comercial (Meade) |  | B07 |
+| $P^0,\ C^0$ | puntos de producción y consumo (estado en superíndice) |  | B05, B07–B09 |
+| $^{\text{aut}}$ | autarquía (superíndice) |  | B05 |
+| $a_{Li}$ | requerimiento unitario de trabajo del bien $i$ (en el continuo de Dornbusch, Fischer y Samuelson, $a_L^A(x)$) |  | B05 |
+| $x \in [0, 1],\ \tilde{x}$ | continuo de bienes y bien frontera (Dornbusch, Fischer y Samuelson) |  | B05 |
+| $\omega \equiv w^A/w^B$ | salario relativo del país A |  | B05 |
+| $C(x),\ D(\tilde{x}; L^B/L^A)$ | curvas de costes relativos y de demanda relativa de trabajo |  | B05 |
+| $\alpha(x),\ G(\tilde{x})$ | participación del bien $x$ en el gasto y fracción acumulada |  | B05 |
+| $\theta_{ji}$ | participación del factor $j$ en el coste del bien $i$ (Jones) | $[0, 1]$ | B05 |
+| $\lambda_{ji}$ | fracción de la dotación del factor $j$ empleada en el sector $i$ (Jones) | $[0, 1]$ | B05 |
+| $\mathbf{F}^A,\ \mathbf{V}^A,\ \mathbf{V}^w,\ s^A$ | contenido factorial neto del comercio, dotaciones del país y del mundo y participación en el consumo mundial (HOV) |  | B05 |
+| $K/L$ | intensidad factorial |  | B05 |
+| $t$ | arancel *ad valorem* | $\geq 0$ | B05, B07 |
+| $t_e$ | arancel específico (por unidad) |  | B07, B10 |
+| $y^s,\ y^d$ | producción y consumo nacionales del importable |  | B07, B10 |
+| $x^s,\ x^d$ | producción y consumo nacionales del exportable |  | B07 |
+| $M_0,\ M_1$ | importaciones antes y después de la medida |  | B07, B10 |
+| $p^*$ | precio mundial |  | B07 |
+| $t_{\text{PE}}$ | tasa de protección efectiva |  | B07 |
+| $z$ | subvención a la exportación (por unidad en B08, *ad valorem* en B07) |  | B07, B08 |
+| $x_1,\ x_2$ | cantidades de las empresas 1 y 2 (comercio estratégico) |  | B08 |
+| $\psi$ | productividad de la empresa (Melitz) |  | B06 |
+| $\bar\psi$ | productividad de corte |  | B06 |
+| $\tau$ | coste iceberg de transporte | $> 1$ | B06 |
+| $c_0$ | coste fijo de producción |  | B06 |
+| $c_0$ | coste medio de la primera unidad (industria naciente) |  | B08 |
+| $\text{IB}_{ik}$ | índice de ventaja comparativa revelada de Balassa | $\geq 0$ | B06 |
+| $\text{IGL}$ | índice de Grubel-Lloyd | $[0, 1]$ | B06 |
+| $d_{ij}$ | distancia entre países (ecuación de gravedad) |  | B06 |
+| $\varphi$ | libertad comercial, de 0 (costes de comercio prohibitivos) a 1 (libre comercio) (centro-periferia) | $[0, 1]$ | B06 |
+| $\varphi_S,\ \varphi_B$ | puntos de sostenimiento y de ruptura (centro-periferia) |  | B06 |
+| $\lambda$ | cuota de la región 1 en la industria (centro-periferia) | $[0, 1]$ | B06 |
+| $_{\text{UA}}$ | unión aduanera (subíndice) |  | B10 |
+| $\mu_D$ | margen de *dumping* |  | B33, B41 |
+| $\text{VN}$ | valor normal (antidumping) |  | B33, B41 |
+| $P_X,\ P_M$ | precios de exportación e importación |  | B11, B12, B28, B33, B41 |
+| $W$ | bienestar nacional |  | B08 |
+
+## Macroeconomía abierta y tipo de cambio {.unnumbered}
+
+Tipo de cambio, paridades, ajuste de la balanza de pagos y crisis cambiarias.
+
+| Símbolo | Significado | Rango | Temas |
+|---|---|---|---|
+| $E$ | tipo de cambio nominal (directo); con subíndice ($E_{A/B}$) solo cuando intervienen varias monedas |  | A32, B11–B15, B17, B19, B43 |
+| $e$ | tipo de cambio real, $EP^*/P$ |  | A32, B11–B14, B17, B19 |
+| $s,\ q$ | logaritmos de los tipos de cambio nominal y real |  | A32, B14 |
+| $E_t^s$ | tipo de cambio de contado |  | B13, B14 |
+| $E_t^f$ | tipo de cambio a plazo |  | B13, B14 |
+| $E^e$ | tipo de cambio esperado |  | A32, B13–B15 |
+| $g_E$ | tasa de depreciación de la moneda nacional |  | B13, B14, B17 |
+| $\mu_f$ | margen a plazo |  | B13, B14 |
+| $\rho$ | prima de riesgo cambiario |  | B13–B15 |
+| $i^*$ | tipo de interés exterior |  | A32, B12–B15, B19 |
+| $P^*$ | nivel de precios exterior |  | A30, A32, B12–B14, B17 |
+| $Y^*$ | renta exterior |  | A32, B14 |
+| $\pi^*$ | inflación exterior |  | B12, B14, B17 |
+| $\text{PDI}$ | paridad descubierta de intereses |  | B13–B15 |
+| $\text{PPA}$ | paridad del poder adquisitivo |  | A30, B14, B21, B22, B28 |
+| $\text{BP}$ | equilibrio de la balanza de pagos (curva) |  | A32, B15, B19 |
+| $R$ | reservas internacionales del banco central |  | A32, A36, B12, B15, B17, B20, B22 |
+| $m$ | propensión marginal a importar | $(0, 1)$ | A32, B12, B16, B17 |
+| $\varepsilon_X,\ \varepsilon_M$ | elasticidades-precio de exportaciones e importaciones |  | A32, B19 |
+| $\omega_M,\ \omega_B,\ \omega_{B^*}$ | proporciones de la riqueza en dinero y bonos | $[0, 1]$, suma 1 | B12, B14 |
+| $B,\ B^*$ | bonos nacionales y extranjeros |  | B12, B14 |
+| $\bar E$ | tipo de cambio oficial (fijo) |  | B17 |
+| $B^{\text{NC}},\ B^{\text{C}}$ | beneficios de devaluar (de impagar, en B16, B19 y B43) si los inversores no confían y si confían (Obstfeld) |  | B16, B17, B19, B26, B43 |
+| $C_D$ | coste fijo de devaluar (de impagar, en B16, B19 y B43) |  | B16, B17, B19, B26, B43 |
+| $\delta_j$ | banda de fluctuación |  | B43 |
+| $\bar R^e(i)$ | rendimiento esperado del banco (Stiglitz-Weiss) |  | A42, B26 |
+| $i^W$ | tipo de interés walrasiano |  | A42, B26 |
+| $L^d,\ L^s$ | demanda y oferta de crédito |  | A42, B26 |
+| $\text{TCEN},\ \text{TCER}$ | tipos de cambio efectivos nominal y real |  | A30 |
+| $\eta$ | velocidad de las expectativas regresivas del tipo de cambio (Dornbusch, Frankel) | $> 0$ | B14 |
+| $\nu$ | velocidad de convergencia hacia el largo plazo (Dornbusch) | $> 0$ | B14 |
+| $\phi$ | sensibilidad de la demanda al tipo de cambio real |  | A32, B14 |
+| $f_t$ | fundamentos del tipo de cambio (Engel y West) |  | B14 |
+
+## Finanzas {.unnumbered}
+
+Finanzas corporativas, valoración, teoría de carteras y mercados de renta fija y derivados.
+
+| Símbolo | Significado | Rango | Temas |
+|---|---|---|---|
+| $A$ | activo total |  | B01, B02, B04 |
+| $\text{PN}$ | patrimonio neto |  | A37, A42, B01, B04, B23 |
+| $E$ | fondos propios |  | B01–B04, B23 |
+| $D_f$ | deuda financiera |  | B01–B04, B23 |
+| $L$ | ratio de apalancamiento, $D_f/E$ |  | B01–B04 |
+| $V$ | ventas o cifra de negocios |  | B01, B02, B04 |
+| $\text{BAIT}$ | beneficio antes de intereses e impuestos |  | B01–B04 |
+| $\text{BN}$ | beneficio neto |  | B01–B04 |
+| $\text{ROA},\ \text{ROE}$ | rentabilidades económica y financiera |  | B01–B04, B23 |
+| $\text{GAO},\ \text{GAF}$ | grados de apalancamiento operativo y financiero |  | B01, B02 |
+| $\text{NOF}$ | necesidades operativas de fondos |  | B01, B02, B04 |
+| $\text{FM}$ | fondo de maniobra |  | B01 |
+| $\text{CAPEX}$ | inversión en activo no corriente |  | B02, B04 |
+| $k_a$ | coste del capital ajeno |  | B01–B03, B23 |
+| $k_p$ | coste del capital propio |  | B01–B04, B23 |
+| $\text{WACC}$ | coste medio ponderado del capital |  | B01–B04, B23 |
+| $w_D$ | peso de la deuda en el WACC | $[0, 1]$ | B03 |
+| $\text{WACC}_U,\ \text{WACC}_{\text{IS}}$ | WACC de la empresa sin deuda y de la endeudada con solo el impuesto de sociedades |  | B03 |
+| $t_{\text{IS}}$ | tipo del impuesto sobre sociedades | $[0, 1)$ | B02, B03, B23 |
+| $k$ | tasa de descuento o rentabilidad exigida |  | B02, B08, B24 |
+| $\text{VAN}$ | valor actual neto |  | B02, B04, B08, B24 |
+| $\text{TIR}$ | tasa interna de rentabilidad |  | B02, B03, B24 |
+| $A_0$ | desembolso inicial de la inversión |  | B02, B08 |
+| $C_I$ | coste de la información necesaria para exportar |  | B08 |
+| $Q_t$ | flujo neto de caja del periodo $t$ |  | B02, B08, B24 |
+| $\text{FC},\ \text{FCL}_t$ | flujo de caja y flujo de caja libre ($\text{CF}$ queda para los costes fijos) |  | B02–B04 |
+| $\text{EV}$ | valor de la empresa |  | B02–B04 |
+| $\text{EV}_U,\ \text{EV}_A$ | valor de la empresa no apalancada y apalancada |  | B02, B03 |
+| $\text{EV}_R$ | valor residual |  | B04 |
+| $\beta_U,\ \beta_A$ | betas no apalancada y apalancada |  | B03 |
+| $\text{DIV}_t$ | dividendo del periodo $t$ |  | B02–B04, B23 |
+| $g_D$ | tasa de crecimiento de los dividendos (Gordon) |  | B02–B04, B23 |
+| $g^*$ | tasa de crecimiento sostenible, $b \cdot \text{ROE}$ |  | B04, B23 |
+| $P_0$ | precio teórico de la acción (en B02 y B03, cotización con la que se estima $k_p$) |  | B02–B04, B23 |
+| $b$ | tasa de retención de beneficios | $[0, 1]$ | B03, B04, B23 |
+| $\text{PER}$ | ratio precio-beneficio |  | B04, B23 |
+| $\text{BPA}$ | beneficio por acción |  | B04, B23 |
+| $\rho_d,\ \rho_p$ | primas de riesgo de la deuda y del capital propio |  | B02, B03 |
+| $r_f$ | tipo de interés libre de riesgo |  | B02, B03, B23–B25 |
+| $R_i$ | rendimiento del activo $i$ |  | B02, B23 |
+| $R^e_i$ | rendimiento esperado del activo $i$ |  | B02, B23 |
+| $R^e_c$ | rendimiento esperado de la cartera |  | A35, B02, B23 |
+| $R^e_m$ | rendimiento esperado de la cartera de mercado |  | B02, B03, B23 |
+| $w_i$ | peso del activo $i$ en la cartera | suma 1 | B02, B23 |
+| $\sigma_i,\ \sigma_c$ | desviaciones típicas del activo y de la cartera |  | A35, B02, B23 |
+| $\sigma_{ij}$ | covarianza entre los activos $i$ y $j$ |  | B02, B23 |
+| $\sigma_m$ | desviación típica de la cartera de mercado |  | B02, B23 |
+| $\beta_i$ | beta del activo (riesgo sistemático) |  | B02, B23 |
+| $\alpha_i$ | alfa de Jensen |  | B23 |
+| $\text{CML},\ \text{SML}$ | rectas del mercado de capitales y del mercado de títulos |  | B02, B23 |
+| $A$ | coeficiente de aversión al riesgo | $> 0$ | B23 |
+| $p_t,\ p_t^m$ | valor teórico y precio de mercado del bono en $t$ |  | B24 |
+| $F_T$ | valor nominal del bono |  | B24 |
+| $C,\ C_t$ | cupón del bono en cada periodo, $c\,F_T/n$ |  | B24 |
+| $c$ | tasa del cupón (en B25, $c$ es la prima de la opción de compra) |  | B24 |
+| $D$ | duración de Macaulay |  | B24 |
+| $D_{\text{mod}}$ | duración modificada |  | B24 |
+| $\text{CV}$ | convexidad |  | B24 |
+| $\text{ETTI}$ | estructura temporal de los tipos de interés |  | A36, A37, B24 |
+| $F_0$ | precio a plazo pactado |  | B25 |
+| $S_t$ | precio de contado del subyacente |  | B25 |
+| $K$ | precio de ejercicio de la opción |  | B25 |
+| $c,\ p$ | primas de las opciones de compra y de venta (en B24, $c$ es la tasa del cupón y $p_t$ el valor del bono) |  | B25 |
+| $\text{VaR}_\alpha$ | valor en riesgo al nivel de confianza $\alpha$ | $\alpha \in (0, 1)$ | B26 |
+| $\text{PD},\ \text{LGD},\ \text{EAD}$ | probabilidad de impago, severidad y exposición | PD, LGD $\in [0, 1]$ | B26 |
+| $\text{CAR}$ | ratio de adecuación de capital |  | B27 |
+| $\text{RC}$ | ratio de capital bancario (capital sobre activos ponderados por riesgo) |  | B27 |
+| $C_{\text{cr}}$ | coste de una crisis bancaria, en producción |  | B27 |

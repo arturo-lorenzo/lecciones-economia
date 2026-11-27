@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<style>
+  body { margin: 0; }
+  .graph-container { position: relative; width: 100%; max-width: none; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 15px; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg viewBox="0 0 680 370" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+
+<line x1="32.0" y1="317.6" x2="324.9" y2="317.6" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+<line x1="32.0" y1="317.6" x2="32.0" y2="30.0" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+<line x1="32.0" y1="113.7" x2="251.6" y2="201.0" stroke="#1D9E75" stroke-width="2.2" id="supply"/>
+<line x1="32.0" y1="84.5" x2="237.0" y2="247.7" stroke="#534AB7" stroke-width="2.2" id="demand"/>
+<line id=" dash-p"x1="32.0" y1="142.8" x2="105.3" y2="142.8" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+<line id=" dash-x"x1="105.3" y1="142.8" x2="105.3" y2="317.6" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+<line x1="27.7" y1="142.8" x2="32.0" y2="142.8" stroke="#000" stroke-width="1"/>
+<line x1="105.3" y1="317.6" x2="105.3" y2="321.8" stroke="#000" stroke-width="1"/>
+<line x1="365.0" y1="317.6" x2="657.9" y2="317.6" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+<line x1="503.4" y1="317.6" x2="503.4" y2="30.0" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+<path id=" zline"d="M367.4,251.0 L371.6,247.7 L375.9,244.3 L380.0,241.0 L384.2,237.7 L388.4,234.4 L392.6,231.1 L396.7,227.7 L401.0,224.4 L405.2,221.1 L409.3,217.7 L413.5,214.4 L417.7,211.1 L421.9,207.7 L426.0,204.4 L430.2,201.0 L434.4,197.7 L438.6,194.4 L442.7,191.0 L447.0,187.7 L451.2,184.4 L455.3,181.1 L459.6,177.8 L463.7,174.4 L467.9,171.1 L472.0,167.8 L476.3,164.4 L480.4,161.1 L484.6,157.8 L488.8,154.5 L493.0,151.2 L497.2,147.8 L501.3,144.5 L505.6,141.2 L509.7,137.8 L513.9,134.5 L518.1,131.2 L522.3,127.9 L526.5,124.6 L530.6,121.2 L534.9,117.9 L539.0,114.6 L543.2,111.2 L547.3,107.9 L551.6,104.6 L555.7,101.2 L559.9,97.9 L564.2,94.5 L568.3,91.2 L572.5,87.9 L576.7,84.5 L580.9,81.2 L585.0,77.9 L589.2,74.6 L593.4,71.3 L597.6,67.9 L601.7,64.6 L605.9,61.3 L610.2,57.9 L614.3,54.6 L618.5,51.3" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<line id=" dash-p-right"x1="105.3" y1="142.8" x2="503.4" y2="142.8" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+<polyline points="532.7,113.1 532.7,92.8 532.7,72.6" fill="none" stroke="#5a5a5a" stroke-width="1.2" stroke-dasharray="5 4" marker-mid="url(#arrow)" marker-end="url(#arrow)"/>
+<polyline points="474.2,177.0 474.2,197.2 474.2,217.4" fill="none" stroke="#5a5a5a" stroke-width="1.2" stroke-dasharray="5 4" marker-mid="url(#arrow)" marker-end="url(#arrow)"/>
+<circle cx="105.3" cy="142.8" r="5" fill="#000"/>
+<circle cx="503.4" cy="142.8" r="5" fill="#000"/>
+</svg>
+</div>
+<script>
+const LABELS = [{"t": "p", "x": 3.453, "y": 8.108, "a": "-100%,0", "c": "#000", "s": null, "bg": false}, {"t": "X", "x": 48.715, "y": 85.824, "a": "0,-50%", "c": "#000", "s": null, "bg": false}, {"t": "p^*", "x": 3.453, "y": 38.601, "a": "-100%,-50%", "c": "#000", "s": null, "bg": false}, {"t": "X^*", "x": 15.474, "y": 88.127, "a": "-50%,0", "c": "#000", "s": null, "bg": false}, {"t": "0", "x": 15.474, "y": 36.011, "a": "-50%,-100%", "c": "#000", "s": null, "bg": false}, {"t": "S(X)", "x": 37.948, "y": 54.342, "a": "0,-50%", "c": "#0F6E56", "s": null, "bg": false}, {"t": "D(X)", "x": 35.795, "y": 66.935, "a": "0,-50%", "c": "#534AB7", "s": null, "bg": false}, {"t": "p", "x": 72.784, "y": 8.108, "a": "-100%,0", "c": "#000", "s": null, "bg": false}, {"t": "Z", "x": 97.53, "y": 85.824, "a": "0,-50%", "c": "#000", "s": null, "bg": false}, {"t": "0", "x": 74.037, "y": 88.127, "a": "-50%,0", "c": "#000", "s": null, "bg": false}, {"t": "Z(p)", "x": 91.897, "y": 13.865, "a": "0,-50%", "c": "#0F6E56", "s": null, "bg": false}, {"t": "\\text{exceso de oferta}", "x": 71.707, "y": 71.605, "a": "-100%,-50%", "c": "#555", "s": 13, "bg": false}, {"t": "\\text{exceso de demanda}", "x": 79.681, "y": 36.748, "a": "0,-50%", "c": "#555", "s": 13, "bg": false}, {"t": "\\Delta p>0", "x": 78.344, "y": 18.47, "a": "-50%,-100%", "c": "#000", "s": 13, "bg": false}, {"t": "\\Delta p<0", "x": 60.439, "y": 53.442, "a": "-100%,-50%", "c": "#000", "s": 13, "bg": false}];
+const box = document.querySelector('.graph-container');
+LABELS.forEach((L, i) => {
+  const e = document.createElement('div');
+  e.className = 'katex-label'; e.id = L.id || ('lbl-' + i);
+  katex.render(L.t, e, {throwOnError: false});
+  e.style.left = L.x + '%'; e.style.top = L.y + '%';
+  e.style.transform = 'translate(' + L.a + ')';
+  e.style.color = L.c;
+  if (L.s) e.style.fontSize = L.s + 'px';
+  if (L.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  box.appendChild(e);
+});
+</script>
+</body>
+</html>

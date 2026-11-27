@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <rect x="110" y="60"  width="236" height="200" fill="rgba(29,158,117,0.12)"/>
+    <rect x="346" y="260" width="236" height="200" fill="rgba(29,158,117,0.12)"/>
+    <rect x="346" y="60"  width="236" height="200" fill="rgba(216,90,48,0.12)"/>
+    <rect x="110" y="260" width="236" height="200" fill="rgba(216,90,48,0.12)"/>
+
+
+    <line x1="110" y1="460" x2="592" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="110" y1="460" x2="110" y2="40"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line x1="346" y1="460" x2="346" y2="60"  stroke="#888" stroke-width="1" stroke-dasharray="5 3"/>
+    <line x1="110" y1="260" x2="582" y2="260" stroke="#888" stroke-width="1" stroke-dasharray="5 3"/>
+    <line x1="346" y1="460" x2="346" y2="464" stroke="black" stroke-width="1"/>
+    <line x1="106" y1="260" x2="110" y2="260" stroke="black" stroke-width="1"/>
+  </svg>
+</div>
+<script>
+const W=680,H=560;
+const pct=(v,t)=>(v/t*100).toFixed(2)+'%';
+
+const cL=228, cR=464, rT=[125,153,178], rB=[325,353,378];
+const G='#0F6E56', O='#D85A30', K='black', S='#666';
+
+const LBL=[
+  ['lbl-x','|\\alpha\\beta|',600,462,K,18,'l',false],
+  ['lbl-y','|\\beta^{-1}-\\gamma_1|',118,40,K,18,'l',false],
+  ['lbl-o','O',102,472,K,16,'r',false],
+  ['lbl-1x','1',346,478,K,16,'c',false],
+  ['lbl-1y','1',102,260,K,16,'r',false],
+
+  ['lbl-II1','\\text{II. Dominancia fiscal}',cL,rT[0],K,16,'c',false],
+  ['lbl-II2','\\text{PM pasiva, PF activa}',cL,rT[1],S,15,'c',false],
+  ['lbl-II3','\\text{(determinado: TFNP)}',cL,rT[2],G,15,'c',false],
+
+  ['lbl-IV1','\\text{IV. Sin equilibrio}',cR,rT[0],K,16,'c',false],
+  ['lbl-IV2','\\text{ambas activas}',cR,rT[1],S,15,'c',false],
+  ['lbl-IV3','\\text{(trayectorias explosivas)}',cR,rT[2],O,15,'c',false],
+
+  ['lbl-III1','\\text{III. Indeterminación}',cL,rB[0],K,16,'c',false],
+  ['lbl-III2','\\text{ambas pasivas}',cL,rB[1],S,15,'c',false],
+  ['lbl-III3','\\text{(manchas solares)}',cL,rB[2],O,15,'c',false],
+
+  ['lbl-I1','\\text{I. Dominancia monetaria}',cR,rB[0],K,16,'c',false],
+  ['lbl-I2','\\text{PM activa, PF pasiva}',cR,rB[1],S,15,'c',false],
+  ['lbl-I3','\\text{(equilibrio determinado)}',cR,rB[2],G,15,'c',false]
+];
+const c=document.querySelector('.graph-container');
+LBL.forEach(([id,tex,x,y,color,size,anc,bg])=>{
+  const e=document.createElement('div');e.className='katex-label';e.id=id;c.appendChild(e);
+  katex.render(tex,e,{throwOnError:false});
+  e.style.left=pct(x,W);e.style.top=pct(y,H);e.style.color=color;e.style.fontSize=size+'px';
+  e.style.transform=(anc==='r'?'translate(-100%,-50%)':anc==='c'?'translate(-50%,-50%)':'translate(0,-50%)');
+  if(bg){e.style.background='#fff';const k=e.querySelector('.katex');if(k)k.style.padding='0 2px';}
+});
+</script>
+</body>
+</html>

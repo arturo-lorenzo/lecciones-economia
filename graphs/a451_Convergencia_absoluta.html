@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+  .katex-label.centered { transform: translateX(-50%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 560">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="110" y1="460" x2="550" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="110" y1="460" x2="110" y2="60"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="dashP" stroke="#888" stroke-width="1" stroke-dasharray="5 3"/>
+    <line id="dashR" stroke="#888" stroke-width="1" stroke-dasharray="5 3"/>
+    <line id="dashS" stroke="#888" stroke-width="1" stroke-dasharray="5 3"/>
+
+
+    <line id="ndline" stroke="#D85A30" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <path id="curve" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line id="gapP" stroke="black" stroke-width="1.2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    <line id="gapR" stroke="black" stroke-width="1.2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+
+    <circle id="ss" r="5" fill="#000"/>
+  </svg>
+
+  <div class="katex-label" id="lbl-k"></div>
+  <div class="katex-label" id="lbl-g"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-curve"></div>
+  <div class="katex-label" id="lbl-nd"></div>
+  <div class="katex-label" id="lbl-kP"></div>
+  <div class="katex-label" id="lbl-kR"></div>
+  <div class="katex-label" id="lbl-ks"></div>
+  <div class="katex-label" id="lbl-gP"></div>
+  <div class="katex-label" id="lbl-gR"></div>
+  <div class="katex-label" id="lbl-0"></div>
+</div>
+<script>
+const VBW = 680, VBH = 560;
+const pct = (v, T) => (v / T * 100).toFixed(1) + '%';
+const OX = 110, SK = 44;
+const toX = k => OX + k * SK;
+const toY = g => 460 - g * 250;
+
+const s = 0.9, nd = 0.3;
+const gc = k => s * Math.pow(k, -2/3);
+const kStar = Math.pow(s / nd, 1.5);
+const kP = 1.2, kR = 2.6;
+
+
+const pts = [];
+for (let i = 0; i <= 260; i++) {
+  const k = 0.47 + (i / 260) * (9.5 - 0.47);
+  pts.push(toX(k).toFixed(1) + ',' + toY(gc(k)).toFixed(1));
+}
+document.getElementById('curve').setAttribute('d', 'M' + pts.join(' L'));
+
+
+const nl = document.getElementById('ndline');
+nl.setAttribute('x1', OX); nl.setAttribute('y1', toY(nd));
+nl.setAttribute('x2', toX(9.5)); nl.setAttribute('y2', toY(nd));
+
+
+function dash(id, k, yTop) {
+  const d = document.getElementById(id);
+  d.setAttribute('x1', toX(k)); d.setAttribute('y1', 460);
+  d.setAttribute('x2', toX(k)); d.setAttribute('y2', yTop);
+}
+dash('dashP', kP, toY(gc(kP)));
+dash('dashR', kR, toY(gc(kR)));
+dash('dashS', kStar, toY(nd));
+
+
+function gap(id, k) {
+  const el = document.getElementById(id);
+  el.setAttribute('x1', toX(k)); el.setAttribute('y1', toY(nd) - 5);
+  el.setAttribute('x2', toX(k)); el.setAttribute('y2', toY(gc(k)) + 5);
+}
+gap('gapP', kP);
+gap('gapR', kR);
+
+
+document.getElementById('ss').setAttribute('cx', toX(kStar));
+document.getElementById('ss').setAttribute('cy', toY(nd));
+
+const labels = [
+  {id:'lbl-k',     tex:'k',              left:pct(OX+452,VBW), top:pct(452,VBH), color:'black', size:'17px'},
+  {id:'lbl-g',     tex:'g_k',            left:pct(OX-8,VBW),  top:pct(52,VBH),  color:'black', align:'right', size:'17px'},
+  {id:'lbl-o',     tex:'O',              left:pct(OX-20,VBW),  top:pct(466,VBH), color:'black', size:'15px'},
+  {id:'lbl-curve', tex:'s\\,f(k)/k',     left:pct(toX(9.5)+8,VBW), top:pct(toY(gc(9.5))-2,VBH), color:'#1D9E75', size:'16px'},
+  {id:'lbl-nd',    tex:'n+\\delta',      left:pct(toX(9.5)+8,VBW), top:pct(toY(nd)-12,VBH), color:'#D85A30', size:'16px'},
+  {id:'lbl-kP',    tex:'k_0^{P}',        left:pct(toX(kP),VBW), top:pct(468,VBH), color:'black', align:'center', size:'15px'},
+  {id:'lbl-kR',    tex:'k_0^{R}',        left:pct(toX(kR),VBW), top:pct(468,VBH), color:'black', align:'center', size:'15px'},
+  {id:'lbl-ks',    tex:'k^{*}',          left:pct(toX(kStar),VBW), top:pct(468,VBH), color:'black', align:'center', size:'15px'},
+  {id:'lbl-0',     tex:'0',              left:pct(toX(kStar)+7,VBW), top:pct(toY(nd)-30,VBH), color:'#000', size:'16px'},
+  {id:'lbl-gP',    tex:'g_k^{P}',        left:pct(toX(kP)+9,VBW), top:pct((toY(nd)+toY(gc(kP)))/2 - 12,VBH), color:'black', size:'15px'},
+  {id:'lbl-gR',    tex:'g_k^{R}',        left:pct(toX(kR)-9,VBW), top:pct((toY(nd)+toY(gc(kR)))/2 - 12,VBH), color:'black', align:'right', size:'15px'}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError:false});
+  el.style.left = l.left; el.style.top = l.top;
+  if (l.color) el.style.color = l.color;
+  if (l.align === 'right') el.classList.add('right-of-axis');
+  if (l.align === 'center') el.classList.add('centered');
+  if (l.size) el.style.fontSize = l.size;
+});
+</script>
+</body>
+</html>

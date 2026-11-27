@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+  .katex-label.centered { transform: translateX(-50%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 560">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+
+    <path id="areaA" fill="rgba(216,90,48,0.15)" stroke="none"/>
+
+
+    <line x1="100" y1="60" x2="500" y2="60"  stroke="#888" stroke-width="1" stroke-dasharray="5 3"/>
+    <line x1="500" y1="60" x2="500" y2="460" stroke="#888" stroke-width="1" stroke-dasharray="5 3"/>
+
+
+    <line x1="100" y1="460" x2="540" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="100" y1="460" x2="100" y2="30"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="500" y1="460" x2="500" y2="465" stroke="black" stroke-width="1"/>
+    <line x1="95" y1="60" x2="100" y2="60" stroke="black" stroke-width="1"/>
+
+
+    <line x1="100" y1="460" x2="500" y2="60" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <path id="lorenz" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+  </svg>
+
+  <div class="katex-label" id="lbl-x"></div>
+  <div class="katex-label" id="lbl-y"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-1x"></div>
+  <div class="katex-label" id="lbl-1y"></div>
+  <div class="katex-label" id="lbl-diag"></div>
+  <div class="katex-label" id="lbl-lorenz"></div>
+  <div class="katex-label" id="lbl-A"></div>
+  <div class="katex-label" id="lbl-B"></div>
+  <div class="katex-label" id="lbl-gini"></div>
+</div>
+<script>
+const VBW = 680, VBH = 560;
+const pct = (v, T) => (v / T * 100).toFixed(1) + '%';
+const toX = p => 100 + p * 400;
+const toY = L => 460 - L * 400;
+
+const L = p => Math.pow(p, 2.3);
+
+
+const pts = [];
+for (let i = 0; i <= 200; i++) {
+  const p = i / 200;
+  pts.push(toX(p).toFixed(1) + ',' + toY(L(p)).toFixed(1));
+}
+document.getElementById('lorenz').setAttribute('d', 'M' + pts.join(' L'));
+
+
+document.getElementById('areaA').setAttribute('d',
+  'M' + toX(0) + ',' + toY(0) +
+  ' L' + toX(1) + ',' + toY(1) +
+  ' L' + pts.slice().reverse().join(' L') + ' Z');
+
+const labels = [
+  {id:'lbl-x',      tex:'p',                         left:pct(548,VBW), top:pct(448,VBH), color:'black', size:'17px'},
+  {id:'lbl-y',      tex:'L(p)',                      left:pct(92,VBW),  top:pct(18,VBH),  color:'black', align:'right', size:'17px'},
+  {id:'lbl-o',      tex:'O',                         left:pct(80,VBW),  top:pct(466,VBH), color:'black', size:'15px'},
+  {id:'lbl-1x',     tex:'1',                         left:pct(500,VBW), top:pct(470,VBH), color:'black', align:'center', size:'15px'},
+  {id:'lbl-1y',     tex:'1',                         left:pct(90,VBW),  top:pct(49,VBH),  color:'black', align:'right', size:'15px'},
+  {id:'lbl-diag',   tex:'\\text{Equidistribución } (45^{\\circ})', left:pct(314,VBW), top:pct(210,VBH), color:'#378ADD', align:'right', size:'16px'},
+  {id:'lbl-lorenz', tex:'\\text{Curva de Lorenz}', left:pct(340,VBW), top:pct(344,VBH), color:'#1D9E75', size:'16px'},
+  {id:'lbl-A',      tex:'A',                         left:pct(318,VBW), top:pct(286,VBH), color:'#D85A30', size:'17px'},
+  {id:'lbl-B',      tex:'B',                         left:pct(445,VBW), top:pct(418,VBH), color:'black', size:'17px'},
+  {id:'lbl-gini',   tex:'G=\\dfrac{A}{A+B}',         left:pct(550,VBW), top:pct(110,VBH), color:'black', size:'17px'}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError:false});
+  el.style.left = l.left; el.style.top = l.top;
+  if (l.color) el.style.color = l.color;
+  if (l.align === 'right') el.classList.add('right-of-axis');
+  if (l.align === 'center') el.classList.add('centered');
+  if (l.size) el.style.fontSize = l.size;
+});
+</script>
+</body>
+</html>

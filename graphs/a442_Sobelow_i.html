@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+  .katex-label.centered { transform: translateX(-50%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+
+    <line x1="150" y1="400" x2="546" y2="400" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="150" y1="400" x2="150" y2="40" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line x1="150" y1="180" x2="506" y2="180" stroke="#1D9E75" stroke-width="1.4" stroke-dasharray="8 4"/>
+
+
+    <path id="sobelow-curve" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <line x1="150" y1="280" x2="506" y2="280" stroke="#D85A30" stroke-width="2.2"/>
+
+
+    <line id="arr-k0" stroke="black" stroke-width="1.2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+
+    <line x1="443" y1="187" x2="443" y2="273" stroke="black" stroke-width="1.2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+
+
+    <line x1="213" y1="280" x2="213" y2="400" stroke="#888" stroke-width="1" stroke-dasharray="5 3"/>
+
+    <g id="chev" fill="none" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></g>
+  </svg>
+
+  <div class="katex-label" id="lbl-gk"></div>
+  <div class="katex-label" id="lbl-k"></div>
+  <div class="katex-label" id="lbl-curve"></div>
+  <div class="katex-label" id="lbl-sA"></div>
+  <div class="katex-label" id="lbl-nd"></div>
+  <div class="katex-label" id="lbl-k0"></div>
+  <div class="katex-label" id="lbl-gk0"></div>
+  <div class="katex-label" id="lbl-glp"></div>
+</div>
+
+<script>
+const OX=150, OY=400, SX=0.792, W=680, H=460;
+const sA_sy=180, nd_sy=280;
+const toSx=k=>OX+SX*(20+(k-0.3)/8*460);
+const cy=k=>sA_sy-80/(k+0.3);
+const pts=[];
+for(let i=0;i<=300;i++){
+  const k=0.3+i/300*(8*(440/460));
+  const sy=cy(k);
+  if(sy>=45)pts.push(toSx(k).toFixed(1)+','+sy.toFixed(1));
+}
+document.getElementById('sobelow-curve').setAttribute('d','M'+pts.join(' L'));
+
+const k0=0.3+(180-100-20)/460*8;
+const a=document.getElementById('arr-k0');
+a.setAttribute('x1',toSx(k0));a.setAttribute('y1',(cy(k0)+7).toFixed(1));a.setAttribute('x2',toSx(k0));a.setAttribute('y2',nd_sy-7);
+
+function dynArrow(xa, xb, y) {
+  const n = Math.max(2, Math.round(Math.abs(xb - xa)/45)), pts = [];
+  for (let i = 0; i <= n; i++) pts.push((xa + (xb - xa)*i/n).toFixed(1) + ',' + y);
+  const p = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+  const at = {points: pts.join(' '), fill: 'none', stroke: '#5a5a5a', 'stroke-width': 1.2, 'stroke-dasharray': '5 4', 'marker-mid': 'url(#arrow)', 'marker-end': 'url(#arrow)'};
+  for (const k in at) p.setAttribute(k, at[k]);
+  document.getElementById('chev').appendChild(p);
+}
+
+dynArrow(245, 380, 388);
+
+function pct(v,t){return(v/t*100).toFixed(1)+'%';}
+const labels=[
+  {id:'lbl-gk',   tex:'g_k',                        left:pct(142,W), top:pct(30,H), color:'black', align:'right', size:'17px'},
+  {id:'lbl-k',    tex:'k',                          left:pct(550,W),top:pct(402,H),color:'black', size:'17px'},
+  {id:'lbl-curve',tex:'sA + sBk^{\\alpha-1}',       left:pct(183,W),top:pct(36,H), color:'#1D9E75', size:'16px'},
+  {id:'lbl-sA',   tex:'sA',                         left:pct(514,W),top:pct(169,H),color:'#1D9E75', size:'16px'},
+  {id:'lbl-nd',   tex:'n+\\delta',                  left:pct(514,W),top:pct(269,H),color:'#D85A30', size:'16px'},
+  {id:'lbl-k0',   tex:'k_0',                        left:pct(213,W),top:pct(408,H),color:'black', align:'center', size:'15px'},
+  {id:'lbl-gk0',  tex:'g_k(k_0)',                   left:pct(221,W),top:pct(214,H),color:'black', size:'15px'},
+  {id:'lbl-glp',  tex:'g_k \\to sA-(n+\\delta)',    left:pct(451,W),top:pct(219,H),color:'black', size:'15px'}
+];
+labels.forEach(l=>{const e=document.getElementById(l.id);if(!e)return;katex.render(l.tex,e,{throwOnError:false});e.style.left=l.left;e.style.top=l.top;if(l.color)e.style.color=l.color;if(l.align==='right')e.classList.add('right-of-axis');if(l.align==='center')e.classList.add('centered');if(l.size)e.style.fontSize=l.size;});
+</script>
+</body>
+</html>

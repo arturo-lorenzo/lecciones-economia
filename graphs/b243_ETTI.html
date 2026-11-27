@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    </defs>
+    <g id="g"></g>
+  </svg>
+</div>
+<script>
+const VBW = 680, VBH = 460;
+const NS = 'http://www.w3.org/2000/svg', G = document.getElementById('g');
+function el(tag, at) { const e = document.createElementNS(NS, tag); for (const k in at) if (at[k] !== null && at[k] !== undefined) e.setAttribute(k, at[k]); G.appendChild(e); return e; }
+function ln(x1, y1, x2, y2, at) { return el('line', Object.assign({x1: (+x1).toFixed(1), y1: (+y1).toFixed(1), x2: (+x2).toFixed(1), y2: (+y2).toFixed(1)}, at)); }
+function path(pts, at) { return el('path', Object.assign({d: 'M' + pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' L'), fill: 'none'}, at)); }
+const AX = {stroke: 'black', 'stroke-width': 1.2, 'marker-end': 'url(#arrow)'};
+const GUIDE = {stroke: '#888', 'stroke-width': 0.8, 'stroke-dasharray': '5 3'};
+const TICK = {stroke: 'black', 'stroke-width': 1};
+const labels = [];
+function L(id, tex, x, y, anchor, color, size, bg) { labels.push({id, tex, x, y, anchor, color, size, bg}); }
+
+const OX = 126, OY = 400, XE = OX + 390;
+const TMAX = 30;
+const X = T => OX + 4 + T * 12.2, Yp = r => OY - r * 45;
+const shapes = [
+  {id: 'normal',    f: T => 1.8 + 5 * (1 - Math.exp(-0.25 * T)),            color: '#378ADD', tex: '\\text{Normal}'},
+  {id: 'plana',     f: T => 4.8 + 0.4 * (1 - Math.exp(-0.3 * T)),            color: '#888',    tex: '\\text{Plana}'},
+  {id: 'jorobada',  f: T => 3.8 + 2.6 * (T / 5) * Math.exp(1 - T / 5),       color: '#1D9E75', tex: '\\text{Jorobada}'},
+  {id: 'invertida', f: T => 6.8 - 4 * (1 - Math.exp(-0.2 * T)),              color: '#534AB7', tex: '\\text{Invertida}'}
+];
+ln(OX, OY, XE, OY, AX); ln(OX, OY, OX, 40, AX);
+shapes.forEach(s => {
+  const pts = [];
+  for (let i = 0; i <= 240; i++) { const T = 0.25 + (TMAX - 0.25) * i / 240; pts.push([X(T), Yp(s.f(T))]); }
+  path(pts, {stroke: s.color, 'stroke-width': 2.2, 'stroke-linecap': 'round'});
+  L('l' + s.id, s.tex, X(TMAX) + 7, Yp(s.f(TMAX)), 'lm', s.color, 15);
+});
+L('ly', 'k', OX - 8, 38, 'rt', 'black', 17);
+L('lx', 'T', XE + 6, OY, 'lm', 'black', 17);
+L('lO', 'O', OX - 8, OY + 6, 'rt', 'black', 16);
+
+const TX = {l: '0', c: '-50%', r: '-100%'}, TY = {t: '0', m: '-50%', b: '-100%'};
+const CONT = document.querySelector('.graph-container');
+labels.forEach(l => {
+  const e = document.createElement('div'); e.className = 'katex-label'; e.id = l.id; CONT.appendChild(e);
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = (l.x / VBW * 100).toFixed(2) + '%';
+  e.style.top = (l.y / VBH * 100).toFixed(2) + '%';
+  e.style.color = l.color || 'black';
+  e.style.fontSize = (l.size || 16) + 'px';
+  const a = l.anchor || 'lt';
+  e.style.transform = 'translate(' + TX[a[0]] + ',' + TY[a[1]] + ')';
+  if (l.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+});
+</script>
+</body>
+</html>

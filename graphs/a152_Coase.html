@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+    <line x1="125" y1="440" x2="565" y2="440" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="125" y1="440" x2="125" y2="50"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <path id="ce-curve" fill="none" stroke="#378ADD" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <path id="ci-curve" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <path id="ct-curve" fill="none" stroke="#D85A30" stroke-width="2.2" stroke-linecap="round"/>
+
+
+    <circle id="pt-opt" r="5" fill="#000"/>
+
+
+    <line id="dash-opt-v" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-opt-h" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+
+    <line id="tick-xopt" stroke="black" stroke-width="1"/>
+    <line id="tick-copt" stroke="black" stroke-width="1"/>
+
+
+    <circle id="pt-cross" r="4" fill="white" stroke="#444" stroke-width="1.5"/>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-C"></div>
+  <div class="katex-label" id="lbl-x"></div>
+  <div class="katex-label" id="lbl-CE"></div>
+  <div class="katex-label" id="lbl-CI"></div>
+  <div class="katex-label" id="lbl-CT"></div>
+  <div class="katex-label" id="lbl-E"></div>
+  <div class="katex-label" id="lbl-xopt"></div>
+  <div class="katex-label" id="lbl-copt"></div>
+
+</div>
+
+<script>
+const OX = 125, OY = 440;
+
+function toSvgX(x) { return OX + x * 51; }
+function toSvgY(C) { return OY - C * 40; }
+
+
+const xmax = 8.0, k = 7.0, p = 1.8, c0 = 0.8;
+const x_star = xmax / 2;
+
+
+
+
+function CE(x) { return c0 + k * Math.pow((xmax - x) / xmax, p); }
+function CI(x) { return c0 + k * Math.pow(x / xmax, p); }
+function CT(x) { return CE(x) + CI(x); }
+
+const ctMin = CT(x_star);
+const sxOpt = toSvgX(x_star);
+const syOpt = toSvgY(ctMin);
+
+
+function genCurve(fn, xMin, xMax, id) {
+  const pts = [];
+  for (let i = 0; i <= 300; i++) {
+    const x = xMin + (i / 300) * (xMax - xMin);
+    const C = fn(x);
+    const sx = toSvgX(x), sy = toSvgY(C);
+    if (sy >= 55 && sy <= OY + 5 && sx <= 590) pts.push(sx.toFixed(1) + ',' + sy.toFixed(1));
+  }
+  document.getElementById(id).setAttribute('d', 'M' + pts.join(' L'));
+}
+
+genCurve(CE, 0.1, 7.9, 'ce-curve');
+genCurve(CI, 0.1, 7.9, 'ci-curve');
+genCurve(CT, 0.1, 7.9, 'ct-curve');
+
+
+const $ = (id) => document.getElementById(id);
+function setL(id, x1, y1, x2, y2) {
+  const e = $(id); e.setAttribute('x1',x1); e.setAttribute('y1',y1); e.setAttribute('x2',x2); e.setAttribute('y2',y2);
+}
+
+$('pt-opt').setAttribute('cx', sxOpt);
+$('pt-opt').setAttribute('cy', syOpt);
+$('pt-cross').setAttribute('cx', sxOpt);
+$('pt-cross').setAttribute('cy', toSvgY(CE(x_star)));
+
+setL('dash-opt-v', sxOpt, syOpt, sxOpt, OY);
+setL('dash-opt-h', sxOpt, syOpt, OX, syOpt);
+setL('tick-xopt', sxOpt, OY, sxOpt, OY + 4);
+setL('tick-copt', OX - 4, syOpt, OX, syOpt);
+
+
+const W = 680, H = 520;
+function pct(v, t) { return (v / t * 100).toFixed(1) + '%'; }
+
+const xEnd = 7.9;
+
+const labels = [
+  {id:'lbl-C',     tex:'C',              left: pct(OX-7,W),    top: pct(45,H),    color:'black', align:'right'},
+  {id:'lbl-x',     tex:'x',              left: pct(OX+442,W),   top: pct(440,H),   color:'black'},
+  {id:'lbl-CE',    tex:'\\text{CE}(x)',   left: pct(toSvgX(xEnd)+8,W), top: pct(toSvgY(CE(xEnd))-12,H), color:'#185FA5'},
+  {id:'lbl-CI',    tex:'\\text{CI}(x)',   left: pct(toSvgX(xEnd)+8,W), top: pct(toSvgY(CI(xEnd))-8,H), color:'#0F6E56'},
+  {id:'lbl-CT',    tex:'\\text{CT}(x)',   left: pct(toSvgX(xEnd)+8,W), top: pct(toSvgY(CT(xEnd))-16,H), color:'#D85A30'},
+  {id:'lbl-E',     tex:'0',              left: pct(sxOpt-5,W), top: pct(syOpt-32,H), color:'#000'},
+  {id:'lbl-xopt',  tex:'x^*',            left: pct(sxOpt-7,W), top: pct(OY+8,H),  color:'black'},
+  {id:'lbl-copt',  tex:'C^*',            left: pct(OX-7,W),     top: pct(syOpt-12,H), color:'black', align:'right'}
+];
+
+labels.forEach(l => {
+  const e = document.getElementById(l.id);
+  if (!e) return;
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = typeof l.left === 'string' && l.left.includes('%') ? l.left : l.left + '%';
+  e.style.top = typeof l.top === 'string' && l.top.includes('%') ? l.top : l.top + '%';
+  if (l.color) e.style.color = l.color;
+  if (l.align === 'right') e.classList.add('right-of-axis');
+  if (l.size) e.style.fontSize = l.size;
+});
+</script>
+</body>
+</html>

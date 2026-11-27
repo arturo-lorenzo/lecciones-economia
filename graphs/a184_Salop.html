@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  body { margin: 0; }
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; display: block; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; font-size: 16px; line-height: 1; }
+</style>
+</head>
+<body>
+<div class="graph-container">
+<svg id="g" viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+</svg>
+</div>
+<script>
+const W = 680, H = 480;
+const CX = 340, CY = 248, R = 165;
+const n = 6, d = 0.6 / n;
+const svg = document.getElementById('g'), NS = 'http://www.w3.org/2000/svg';
+function el(tag, attrs) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+const f1 = v => v.toFixed(1);
+const ang = s => (90 - 360 * s) * Math.PI / 180;
+const P = (s, r) => [CX + r * Math.cos(ang(s)), CY - r * Math.sin(ang(s))];
+
+function arcPath(s0, s1, r) {
+  const a = P(s0, r), b = P(s1, r), large = (s1 - s0) > 0.5 ? 1 : 0;
+  return 'M' + f1(a[0]) + ',' + f1(a[1]) + ' A' + r + ',' + r + ' 0 ' + large + ' 1 ' + f1(b[0]) + ',' + f1(b[1]);
+}
+
+function dimArc(s0, s1, r, color) {
+  const gap = 0.006;
+  el('path', {d: arcPath(s0 + gap, s1 - gap, r), fill: 'none', stroke: color, 'stroke-width': 1.2, 'marker-start': 'url(#arrow)', 'marker-end': 'url(#arrow)'});
+}
+function tick(s, r0, r1, color, w, dash) {
+  const a = P(s, r0), b = P(s, r1);
+  const at = {x1: f1(a[0]), y1: f1(a[1]), x2: f1(b[0]), y2: f1(b[1]), stroke: color, 'stroke-width': w};
+  if (dash) at['stroke-dasharray'] = dash;
+  el('line', at);
+}
+
+
+el('path', {d: arcPath(-d, d, R), fill: 'none', stroke: '#378ADD', 'stroke-opacity': 0.22, 'stroke-width': 16, 'stroke-linecap': 'butt'});
+
+
+el('circle', {cx: CX, cy: CY, r: R, fill: 'none', stroke: 'black', 'stroke-width': 1.2});
+
+
+const rIn = R - 22;
+tick(0, R - 8, rIn - 8, '#888', 0.8, '3 2');
+tick(d, R - 8, rIn - 8, '#888', 0.8, '3 2');
+tick(-d, R - 8, rIn - 8, '#888', 0.8, '3 2');
+tick(1 / n, R - 8, rIn - 8, '#888', 0.8, '3 2');
+dimArc(0, d, rIn, '#000');
+dimArc(-d, 0, rIn, '#000');
+dimArc(d, 1 / n, rIn, '#000');
+
+
+const rOut = R + 24;
+tick(2 / n, R + 8, rOut + 8, '#888', 0.8, '3 2');
+tick(3 / n, R + 8, rOut + 8, '#888', 0.8, '3 2');
+dimArc(2 / n, 3 / n, rOut, '#000');
+
+
+[d, -d].forEach(s => { const q = P(s, R); el('circle', {cx: f1(q[0]), cy: f1(q[1]), r: 4, fill: '#fff', stroke: '#D85A30', 'stroke-width': 1.8}); });
+
+
+for (let k = 0; k < n; k++) { const q = P(k / n, R); el('circle', {cx: f1(q[0]), cy: f1(q[1]), r: 5.5, fill: '#378ADD'}); }
+
+
+const L = (t, x, y, a, c, s, bg) => ({t, x: 100 * x / W, y: 100 * y / H, a, c, s, bg});
+const LABELS = [];
+for (let k = 0; k < n; k++) {
+  const q = P(k / n, R + 16), c = Math.cos(ang(k / n)), s = Math.sin(ang(k / n));
+
+  const ax = c > 0.3 ? '0' : c < -0.3 ? '-100%' : '-50%', ay = s > 0.3 ? '-100%' : s < -0.3 ? '0' : '-50%';
+  if (k === 2 || k === 3) continue;
+  LABELS.push(L(String(k + 1), q[0], q[1], ax + ',' + ay, '#378ADD'));
+}
+
+{ const q = P(2 / n, R); LABELS.push(L('3', q[0] + 14, q[1] - 6, '0,-100%', '#378ADD')); }
+{ const q = P(3 / n, R); LABELS.push(L('4', q[0] - 12, q[1] + 10, '-100%,0', '#378ADD')); }
+
+{ const q = P(0, R + 40); LABELS.push(L('x_1^d = 2d', q[0], q[1], '-50%,-100%', '#378ADD')); }
+
+{ const q = P(d / 2, rIn - 14); LABELS.push(L('d', q[0], q[1], '-50%,0', '#000')); }
+{ const q = P(-d / 2, rIn - 14); LABELS.push(L('d', q[0], q[1], '-50%,0', '#000')); }
+{ const q = P(d + (1 / n - d) / 2, rIn - 16); LABELS.push(L('\\dfrac{1}{n} - d', q[0], q[1], '-100%,0', '#000', 15)); }
+
+{ const q = P(2.5 / n, rOut + 12); LABELS.push(L('\\dfrac{1}{n}', q[0], q[1], '0,0', '#000', 15)); }
+
+const box = document.querySelector('.graph-container');
+LABELS.forEach((Lb, i) => {
+  const e = document.createElement('div');
+  e.className = 'katex-label'; e.id = 'lbl-' + i;
+  katex.render(Lb.t, e, {throwOnError: false});
+  e.style.left = Lb.x + '%'; e.style.top = Lb.y + '%';
+  e.style.transform = 'translate(' + Lb.a + ')';
+  e.style.color = Lb.c;
+  if (Lb.s) e.style.fontSize = Lb.s + 'px';
+  if (Lb.bg) { e.style.background = '#fff'; const k = e.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  box.appendChild(e);
+});
+</script>
+</body>
+</html>

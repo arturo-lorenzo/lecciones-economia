@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 780 420" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+
+
+
+
+    <line id="ax-x-l" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="ax-y-l" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="ms-line" stroke="#D85A30" stroke-width="2.52"/>
+
+
+    <path id="md-y0" fill="none" stroke="#378ADD" stroke-width="2.52" stroke-linecap="round"/>
+
+    <path id="md-y1" fill="none" stroke="#378ADD" stroke-width="2.52" stroke-linecap="round" stroke-dasharray="8 5"/>
+
+
+    <circle id="pt-E0-mm" r="5" fill="#000"/>
+
+    <circle id="pt-E1-mm" r="5" fill="#000"/>
+
+
+    <line id="dash-r0" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-r1" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+
+    <line id="tick-r0-l" stroke="black" stroke-width="1"/>
+    <line id="tick-r1-l" stroke="black" stroke-width="1"/>
+
+
+
+
+
+    <line id="ax-x-r" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="ax-y-r" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <line id="lm-line" stroke="#1D9E75" stroke-width="2.52"/>
+
+
+    <circle id="pt-E0-lm" r="5" fill="#000"/>
+
+    <circle id="pt-E1-lm" r="5" fill="#000"/>
+
+
+    <line id="dash-r0-cross" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-r1-cross" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+
+    <line id="dash-Y0-lm" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="dash-Y1-lm" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+
+    <line id="tick-r0-r" stroke="black" stroke-width="1"/>
+    <line id="tick-r1-r" stroke="black" stroke-width="1"/>
+    <line id="tick-Y0-lm" stroke="black" stroke-width="1"/>
+    <line id="tick-Y1-lm" stroke="black" stroke-width="1"/>
+
+  </svg>
+
+
+
+  <div class="katex-label" id="lbl-r-l"></div>
+  <div class="katex-label" id="lbl-MP"></div>
+  <div class="katex-label" id="lbl-MS"></div>
+  <div class="katex-label" id="lbl-MdY0"></div>
+  <div class="katex-label" id="lbl-MdY1"></div>
+  <div class="katex-label" id="lbl-E0-l"></div>
+  <div class="katex-label" id="lbl-E1-l"></div>
+  <div class="katex-label" id="lbl-r0-l"></div>
+  <div class="katex-label" id="lbl-r1-l"></div>
+
+
+  <div class="katex-label" id="lbl-r-r"></div>
+  <div class="katex-label" id="lbl-Y-r"></div>
+  <div class="katex-label" id="lbl-LM"></div>
+  <div class="katex-label" id="lbl-E0-r"></div>
+  <div class="katex-label" id="lbl-E1-r"></div>
+  <div class="katex-label" id="lbl-r0-r"></div>
+  <div class="katex-label" id="lbl-r1-r"></div>
+  <div class="katex-label" id="lbl-Y0-r"></div>
+  <div class="katex-label" id="lbl-Y1-r"></div>
+
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+function setL(id, x1, y1, x2, y2) {
+  const e = $(id); e.setAttribute('x1',x1); e.setAttribute('y1',y1); e.setAttribute('x2',x2); e.setAttribute('y2',y2);
+}
+
+
+
+
+
+
+
+
+
+const OX_l = 45, OX_r = 425, OY_l = 360, OY_r = 360, LX = 310, LY = 290;
+const KX = LX / 250, KY = LY / 340;
+const XL = x => OX_l + (x - 100) * KX, XR = x => OX_r + (x - 480) * KX, YY = y => OY_l + (y - 370) * KY;
+setL('ax-x-l', OX_l, OY_l, OX_l + LX, OY_l); setL('ax-y-l', OX_l, OY_l, OX_l, OY_l - LY);
+setL('ax-x-r', OX_r, OY_r, OX_r + LX, OY_r); setL('ax-y-r', OX_r, OY_r, OX_r, OY_r - LY);
+const Ms_x = XL(230);
+setL('ms-line', Ms_x, YY(60), Ms_x, YY(360));
+
+
+
+
+
+function genMd(shift, color, id) {
+
+  const pts = [];
+  for (let sx = 115; sx <= 340; sx += 1) {
+    const mReal = sx - 90;
+    const r_econ = 2800 / Math.pow(mReal + shift, 1.3);
+    const sy = 370 - r_econ * 18;
+    if (sy >= 40 && sy <= 365) pts.push(XL(sx).toFixed(1) + ',' + YY(sy).toFixed(1));
+  }
+  $(id).setAttribute('d', 'M' + pts.join(' L'));
+
+
+  const mR = 230 - 90;
+  const r_cross = 2800 / Math.pow(mR + shift, 1.3);
+  return YY(370 - r_cross * 18);
+}
+
+const syR0 = genMd(40, '#378ADD', 'md-y0');
+const syR1 = genMd(-25, '#378ADD', 'md-y1');
+
+
+$('pt-E0-mm').setAttribute('cx', Ms_x);
+$('pt-E0-mm').setAttribute('cy', syR0);
+$('pt-E1-mm').setAttribute('cx', Ms_x);
+$('pt-E1-mm').setAttribute('cy', syR1);
+
+
+setL('dash-r0', OX_l, syR0, Ms_x, syR0);
+setL('dash-r1', OX_l, syR1, Ms_x, syR1);
+setL('tick-r0-l', OX_l - 4, syR0, OX_l, syR0);
+setL('tick-r1-l', OX_l - 4, syR1, OX_l, syR1);
+
+
+
+const Y0_x = XR(560), Y1_x = XR(630), EXT = 40 * KX;
+
+
+
+const lmSlope = (syR1 - syR0) / (Y1_x - Y0_x);
+const lmX1 = Y0_x - EXT, lmY1 = syR0 - lmSlope * EXT;
+const lmX2 = Y1_x + EXT, lmY2 = syR1 + lmSlope * EXT;
+setL('lm-line', lmX1, lmY1, lmX2, lmY2);
+
+
+$('pt-E0-lm').setAttribute('cx', Y0_x);
+$('pt-E0-lm').setAttribute('cy', syR0);
+$('pt-E1-lm').setAttribute('cx', Y1_x);
+$('pt-E1-lm').setAttribute('cy', syR1);
+
+
+setL('dash-r0-cross', Ms_x, syR0, Y0_x, syR0);
+setL('dash-r1-cross', Ms_x, syR1, Y1_x, syR1);
+
+
+setL('dash-Y0-lm', Y0_x, syR0, Y0_x, OY_r);
+setL('dash-Y1-lm', Y1_x, syR1, Y1_x, OY_r);
+
+
+setL('tick-r0-r', OX_r - 4, syR0, OX_r, syR0);
+setL('tick-r1-r', OX_r - 4, syR1, OX_r, syR1);
+setL('tick-Y0-lm', Y0_x, OY_r, Y0_x, OY_r + 4);
+setL('tick-Y1-lm', Y1_x, OY_r, Y1_x, OY_r + 4);
+
+
+const W = 780, H = 420;
+function pct(v, t) { return (t === 1 ? v : v / t * 100).toFixed(1) + '%'; }
+
+const labels = [
+
+  {id:'lbl-r-l',   tex:'i',                     left: pct(OX_l-7,W),  top: pct(YY(25),H),    color:'black', align:'right'},
+  {id:'lbl-MP',    tex:'M/P',                   left: pct(OX_l+LX+2,W), top: pct(OY_l,H),   color:'black'},
+  {id:'lbl-MS',    tex:'\\dfrac{M^s}{P}',        left: pct(Ms_x+2,W), top: pct(YY(30),H),    color:'#D85A30', size:'14px'},
+  {id:'lbl-MdY0',  tex:'\\dfrac{M^d}{P}(Y_0)',        left: pct(XL(346),W), top: pct(YY(316),H),   color:'#378ADD', size:'13px'},
+  {id:'lbl-MdY1',  tex:'\\dfrac{M^d}{P}(Y_1)',        left: pct(XL(132),W), top: pct(YY(5),H),     color:'#378ADD', size:'13px'},
+  {id:'lbl-E0-l',  tex:'0',                     left: pct(Ms_x/W*100-3.6,1), top: pct(syR0/H*100+0.8,1), color:'#000'},
+  {id:'lbl-E1-l',  tex:'1',                     left: pct(Ms_x/W*100+1.2,1), top: pct(syR1/H*100-7.5,1), color:'#000'},
+  {id:'lbl-r0-l',  tex:'i_0',                   left: pct(OX_l-7,W),    top: pct((syR0-12)/H*100,1), color:'black', align:'right'},
+  {id:'lbl-r1-l',  tex:'i_1',                   left: pct(OX_l-7,W),    top: pct((syR1-12)/H*100,1), color:'black', align:'right'},
+
+
+  {id:'lbl-r-r',   tex:'i',                     left: pct(OX_r-7,W),  top: pct(YY(25),H),    color:'black', align:'right'},
+  {id:'lbl-Y-r',   tex:'Y',                     left: pct(OX_r+LX+2,W), top: pct(OY_r,H),   color:'black'},
+  {id:'lbl-LM',    tex:'\\text{LM}',                    left: pct((lmX2+8)/W*100,1), top: pct((lmY2-15)/H*100,1), color:'#1D9E75'},
+  {id:'lbl-E0-r',  tex:'0',                     left: pct((Y0_x+10)/W*100,1), top: pct((syR0-20)/H*100,1), color:'#000'},
+  {id:'lbl-E1-r',  tex:'1',                     left: pct((Y1_x+10)/W*100,1), top: pct((syR1-20)/H*100,1), color:'#000'},
+  {id:'lbl-r0-r',  tex:'i_0',                   left: pct(OX_r-7,W),   top: pct((syR0-12)/H*100,1), color:'black', align:'right'},
+  {id:'lbl-r1-r',  tex:'i_1',                   left: pct(OX_r-7,W),   top: pct((syR1-12)/H*100,1), color:'black', align:'right'},
+  {id:'lbl-Y0-r',  tex:'Y_0',                   left: pct((Y0_x-8)/W*100,1), top: pct((OY_r+8)/H*100,1), color:'black'},
+  {id:'lbl-Y1-r',  tex:'Y_1',                   left: pct((Y1_x-8)/W*100,1), top: pct((OY_r+8)/H*100,1), color:'black'}
+];
+
+labels.forEach(l => {
+  const e = document.getElementById(l.id);
+  if (!e) return;
+  katex.render(l.tex, e, {throwOnError: false});
+  e.style.left = typeof l.left === 'string' && l.left.includes('%') ? l.left : l.left + '%';
+  e.style.top = typeof l.top === 'string' && l.top.includes('%') ? l.top : l.top + '%';
+  if (l.color) e.style.color = l.color;
+  if (l.align === 'right') e.classList.add('right-of-axis');
+  if (l.size) e.style.fontSize = l.size;
+});
+</script>
+<script>(function(){var N={"lbl-MS": [0.29, 0, 0], "lbl-E0-r": [1.47, 0.88, 0], "lbl-E1-r": [1.47, 0.88, 0], "lbl-r0-r": [0, 0, 1], "lbl-r1-r": [0, 0, 1]};for(var id in N){var e=document.getElementById(id);if(!e)continue;e.style.marginLeft=N[id][0]+"%";e.style.marginTop=N[id][1]+"%";if(N[id][2]){var k=e.querySelector(".katex")||e;k.style.background="#fff";k.style.padding="0 2px";k.style.borderRadius="2px";}}})();</script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .graph-container svg {
+    width: 100%;
+    height: auto;
+  }
+  .katex-label {
+    position: absolute;
+    pointer-events: none;
+  }
+  .katex-label.right-of-axis {
+    transform: translateX(-100%);
+  }
+</style>
+</head>
+<body>
+<div class="graph-container">
+
+  <svg viewBox="0 0 680 500">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+      <pattern id="hatch-vc" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+        <line x1="0" y1="0" x2="0" y2="7" stroke="#534AB7" stroke-width="0.9" opacity="0.7"/>
+      </pattern>
+      <pattern id="hatch-ve" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="7" stroke="#555" stroke-width="0.9" opacity="0.6"/>
+      </pattern>
+    </defs>
+
+
+    <line x1="124" y1="460" x2="556" y2="460" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line x1="124" y1="460" x2="124" y2="60"  stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <path id="vec-area" fill="#378ADD" opacity="0.12"/>
+    <path id="ve-area" fill="url(#hatch-ve)"/>
+    <path id="vc-area" fill="url(#hatch-vc)"/>
+
+
+    <g id="legend"></g>
+
+
+    <path id="dm-curve"  fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="dh0-curve" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="dh1-curve" fill="none" stroke="#534AB7" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="8 5"/>
+
+
+    <g id="dashes"></g>
+
+
+    <g id="ticks"></g>
+
+
+    <circle id="pt0" r="5" fill="#000"/>
+    <circle id="pt1" r="5" fill="#000"/>
+
+  </svg>
+
+
+  <div class="katex-label" id="lbl-x1"></div>
+  <div class="katex-label" id="lbl-p1"></div>
+  <div class="katex-label" id="lbl-o"></div>
+  <div class="katex-label" id="lbl-pt0"></div>
+  <div class="katex-label" id="lbl-pt1"></div>
+  <div class="katex-label" id="lbl-p0"></div>
+  <div class="katex-label" id="lbl-p1v"></div>
+  <div class="katex-label" id="lbl-x0"></div>
+  <div class="katex-label" id="lbl-x1v"></div>
+  <div class="katex-label" id="lbl-dm"></div>
+  <div class="katex-label" id="lbl-dh0"></div>
+  <div class="katex-label" id="lbl-dh1"></div>
+  <div class="katex-label" id="lbl-vec"></div>
+  <div class="katex-label" id="lbl-vc"></div>
+  <div class="katex-label" id="lbl-ve"></div>
+  <div class="katex-label" id="lbl-orden"></div>
+
+</div>
+
+<script>
+
+
+
+
+
+
+
+
+
+
+const P0 = 3, P1 = 2;
+const xm  = p => 20 / p;
+const xh0 = p => 11.547 / Math.sqrt(p);
+const xh1 = p => 14.142 / Math.sqrt(p);
+
+function toSvgX(x) { return 124 + x * 19.008; }
+function toSvgY(p) { return 460 - p * 85; }
+
+
+function genCurve(fn, id, pMin, pMax) {
+  const pts = [];
+  for (let i = 0; i <= 300; i++) {
+    const p = pMax - (i / 300) * (pMax - pMin);
+    const sx = toSvgX(fn(p));
+    const sy = toSvgY(p);
+    if (sx >= 129 && sx <= 543 && sy >= 70 && sy <= 430) {
+      pts.push(sx.toFixed(1) + ',' + sy.toFixed(1));
+    }
+  }
+  document.getElementById(id).setAttribute('d', 'M' + pts.join(' L'));
+}
+genCurve(xm,  'dm-curve',  0.9,  4.4);
+genCurve(xh0, 'dh0-curve', 0.35, 4.2);
+genCurve(xh1, 'dh1-curve', 0.42, 3.8);
+
+
+let d = 'M' + toSvgX(0) + ',' + toSvgY(P1) +
+        ' L' + toSvgX(0) + ',' + toSvgY(P0) +
+        ' L' + toSvgX(xm(P0)).toFixed(1) + ',' + toSvgY(P0);
+for (let i = 0; i <= 60; i++) {
+  const p = P0 - (i / 60) * (P0 - P1);
+  d += ' L' + toSvgX(xm(p)).toFixed(1) + ',' + toSvgY(p).toFixed(1);
+}
+d += ' Z';
+document.getElementById('vec-area').setAttribute('d', d);
+
+
+function areaLeftOf(fn) {
+  let a = 'M' + toSvgX(0) + ',' + toSvgY(P1) + ' L' + toSvgX(0) + ',' + toSvgY(P0);
+  for (let i = 0; i <= 60; i++) {
+    const p = P0 - (i / 60) * (P0 - P1);
+    a += ' L' + toSvgX(fn(p)).toFixed(1) + ',' + toSvgY(p).toFixed(1);
+  }
+  return a + ' Z';
+}
+document.getElementById('vc-area').setAttribute('d', areaLeftOf(xh0));
+document.getElementById('ve-area').setAttribute('d', areaLeftOf(xh1));
+
+
+const lg = document.getElementById('legend');
+[['#378ADD', 0.12, null, 150], [null, 1, 'url(#hatch-vc)', 180], [null, 1, 'url(#hatch-ve)', 210]].forEach(([c, op, f, y]) => {
+  const r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+  r.setAttribute('x', 418); r.setAttribute('y', y - 8); r.setAttribute('width', 24); r.setAttribute('height', 16);
+  r.setAttribute('fill', f || c); r.setAttribute('fill-opacity', op);
+  r.setAttribute('stroke', '#888'); r.setAttribute('stroke-width', 0.6);
+  lg.appendChild(r);
+});
+
+
+const s0 = [toSvgX(xm(P0)), toSvgY(P0)];
+const s1 = [toSvgX(xm(P1)), toSvgY(P1)];
+document.getElementById('pt0').setAttribute('cx', s0[0]);
+document.getElementById('pt0').setAttribute('cy', s0[1]);
+document.getElementById('pt1').setAttribute('cx', s1[0]);
+document.getElementById('pt1').setAttribute('cy', s1[1]);
+
+
+const dashG = document.getElementById('dashes');
+function addDash(x1, y1, x2, y2) {
+  const el = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  el.setAttribute('x1', x1); el.setAttribute('y1', y1);
+  el.setAttribute('x2', x2); el.setAttribute('y2', y2);
+  el.setAttribute('stroke', '#888'); el.setAttribute('stroke-width', '0.8');
+  el.setAttribute('stroke-dasharray', '6 4');
+  dashG.appendChild(el);
+}
+addDash(124, s0[1], s0[0], s0[1]);
+addDash(124, s1[1], s1[0], s1[1]);
+addDash(s0[0], s0[1], s0[0], 460);
+addDash(s1[0], s1[1], s1[0], 460);
+
+
+const ticksG = document.getElementById('ticks');
+function addTick(x1, y1, x2, y2) {
+  const t = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  t.setAttribute('x1', x1); t.setAttribute('y1', y1);
+  t.setAttribute('x2', x2); t.setAttribute('y2', y2);
+  t.setAttribute('stroke', 'black'); t.setAttribute('stroke-width', '1');
+  ticksG.appendChild(t);
+}
+addTick(120, s0[1], 124, s0[1]);
+addTick(120, s1[1], 124, s1[1]);
+addTick(s0[0], 460, s0[0], 464);
+addTick(s1[0], 460, s1[0], 464);
+
+
+const labels = [
+  {id: 'lbl-x1',    tex: 'x_1',                left: '82.4%',   top: '91%',  color: 'black'},
+  {id: 'lbl-p1',    tex: 'p_1',                left: '14.2%',   top: '7%',   color: 'black'},
+  {id: 'lbl-o',     tex: 'O',                   left: '15.9%',   top: '92%',  color: 'black'},
+  {id: 'lbl-pt0',   tex: '0',                   left: '32.7%', top: '36%',  color: '#000'},
+  {id: 'lbl-pt1',   tex: '1',                   left: '47.4%', top: '53%',  color: '#000'},
+  {id: 'lbl-p0',    tex: 'p_1^0',              left: '16.9%', top: '39%',  color: 'black', align: 'right'},
+  {id: 'lbl-p1v',   tex: 'p_1^1',              left: '16.9%', top: '56%',  color: 'black', align: 'right'},
+  {id: 'lbl-x0',    tex: 'x_1^0',              left: '34.9%',   top: '93%',  color: 'black'},
+  {id: 'lbl-x1v',   tex: 'x_1^1',              left: '44.4%',   top: '93%',  color: 'black'},
+  {id: 'lbl-dm',    tex: 'x_1^m(\\mathbf{p}, M_0)',              left: '32.3%',   top: '13%',  color: '#0F6E56'},
+  {id: 'lbl-dh0',   tex: 'x_1^h(\\mathbf{p}, u_0)',         left: '36.6%',   top: '19%',  color: '#534AB7'},
+  {id: 'lbl-dh1',   tex: 'x_1^h(\\mathbf{p}, u_1)',         left: '41.8%',   top: '26%',  color: '#534AB7'},
+  {id: 'lbl-vec',   tex: '\\text{VEC}',        left: '66.2%', top: '27.6%',  color: '#185FA5'},
+  {id: 'lbl-vc',    tex: '\\text{VC}',         left: '66.2%', top: '33.6%',  color: '#534AB7'},
+  {id: 'lbl-ve',    tex: '\\text{VE}',         left: '66.2%', top: '39.6%',  color: '#555'},
+  {id: 'lbl-orden', tex: '\\text{VE} > \\text{VEC} > \\text{VC}',      left: '61.5%', top: '47%',  color: '#888'}
+];
+labels.forEach(l => {
+  const el = document.getElementById(l.id);
+  katex.render(l.tex, el, {throwOnError: false});
+  el.style.left = l.left;
+  el.style.top = l.top;
+  if (l.color) el.style.color = l.color;
+  if (l.align === 'right') el.classList.add('right-of-axis');
+});
+</script>
+</body>
+</html>

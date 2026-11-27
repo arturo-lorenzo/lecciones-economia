@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<style>
+  .graph-container { position: relative; width: 100%; max-width: 680px; margin: 0 auto; }
+  .graph-container svg { width: 100%; height: auto; }
+  .katex-label { position: absolute; pointer-events: none; white-space: nowrap; }
+  .katex-label.right-of-axis { transform: translateX(-100%); }
+</style>
+</head>
+<body>
+<div class="graph-container">
+  <svg viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <line id="ax-x" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="ax-y" stroke="black" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <line id="g0h" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="g0v" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="g1h" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+    <line id="g1v" stroke="#888" stroke-width="0.8" stroke-dasharray="5 3"/>
+
+    <path id="cA" fill="none" stroke="#378ADD" stroke-width="2.2"/>
+
+    <path id="cB0" fill="none" stroke="#1D9E75" stroke-width="2.2"/>
+    <path id="cB1" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-dasharray="8 4"/>
+    <line id="shift" stroke="#1D9E75" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <circle id="pt0" r="5" fill="#000"/>
+    <circle id="pt1" r="5" fill="#000"/>
+    <g id="ticks" stroke="black" stroke-width="1"></g>
+  </svg>
+  <div id="labels"></div>
+</div>
+<script>
+const VBW = 680, VBH = 480;
+
+
+
+
+const ZMAX = 1, WMAX = 3.5;
+const X = a => 125 + a * 390, Y = b => 430 - b * 108;
+const A = z => 3.2 * Math.exp(-2 * z), B = (z, r) => r * z / (1 - z);
+function solveZ(r) { let lo = 0, hi = 0.999; for (let i = 0; i < 60; i++) { const m = (lo + hi) / 2; (A(m) - B(m, r) > 0) ? lo = m : hi = m; } return lo; }
+function zcap(r) { return (WMAX - 0.15) / (r + WMAX - 0.15); }
+function main() {
+  set('ax-x', {x1: X(0), y1: Y(0), x2: X(1) + 50, y2: Y(0)});
+  set('ax-y', {x1: X(0), y1: Y(0), x2: X(0), y2: 30});
+  const z0 = solveZ(1), w0 = A(z0), z1 = solveZ(1.5), w1 = A(z1);
+  path('cA', u => [u, A(u)], 0, 1);
+  path('cB0', u => [u, B(u, 1)], 0, zcap(1));
+  path('cB1', u => [u, B(u, 1.5)], 0, zcap(1.5));
+  const ws = 2.6, za = ws / (1 + ws), zb = ws / (1.5 + ws);
+  set('shift', {x1: X(za) - 6, y1: Y(ws), x2: X(zb) + 8, y2: Y(ws)});
+  set('g0h', {x1: X(0), y1: Y(w0), x2: X(z0), y2: Y(w0)});
+  set('g0v', {x1: X(z0), y1: Y(w0), x2: X(z0), y2: Y(0)});
+  set('g1h', {x1: X(0), y1: Y(w1), x2: X(z1), y2: Y(w1)});
+  set('g1v', {x1: X(z1), y1: Y(w1), x2: X(z1), y2: Y(0)});
+  set('pt0', {cx: X(z0), cy: Y(w0)}); set('pt1', {cx: X(z1), cy: Y(w1)});
+  [z0, z1, 1].forEach(u => tick(X(u), Y(0), X(u), Y(0) + 4));
+  [w0, w1].forEach(v => tick(X(0) - 4, Y(v), X(0), Y(v)));
+  render([
+    {tex:'\\omega = w^A/w^B', left: X(0) + 8, top: 18, size:16},
+    {tex:'x', left: X(1) + 56, top: Y(0) - 12, size:17},
+    {tex:'1', left: X(1), top: Y(0) + 6, size:15, center:true},
+    {tex:'C(x)', left: X(1) + 8, top: Y(A(1)) - 14, size:16, color:'#185FA5'},
+    {tex:'D(x;\\,(L^B/L^A)_0)', left: X(zcap(1)) + 8, top: Y(B(zcap(1), 1)) - 4, size:15, color:'#0F6E56'},
+    {tex:'D(x;\\,(L^B/L^A)_1)', left: X(zcap(1.5)) - 10, top: Y(B(zcap(1.5), 1.5)) - 26, size:15, color:'#0F6E56', align:'right'},
+    {tex:'\\Delta(L^B/L^A) > 0', left: X(zb) - 2, top: Y(ws) - 26, size:14, color:'#1D9E75', align:'right'},
+    {tex:'0', left: X(z0) + 10, top: Y(w0) - 4, size:16, color:'#000'},
+    {tex:'1', left: X(z1) - 4, top: Y(w1) - 30, size:16, color:'#000', align:'right'},
+    {tex:'\\omega_0', left: X(0) - 7, top: Y(w0) - 6, size:15, align:'right'},
+    {tex:'\\omega_1', left: X(0) - 7, top: Y(w1) - 20, size:15, align:'right'},
+    {tex:'\\tilde{x}_0', left: X(z0) + 2, top: Y(0) + 6, size:15},
+    {tex:'\\tilde{x}_1', left: X(z1) - 2, top: Y(0) + 6, size:15, align:'right'}
+  ]);
+}
+
+function set(id, a) { const e = document.getElementById(id); for (const k in a) e.setAttribute(k, a[k]); }
+function seg(id, a, b) { set(id, {x1: X(a[0]), y1: Y(a[1]), x2: X(b[0]), y2: Y(b[1])}); }
+function path(id, f, lo, hi) { const pts = []; for (let i = 0; i <= 240; i++) { const t = lo + (i / 240) * (hi - lo); const [u, v] = f(t); pts.push(X(u).toFixed(1) + ',' + Y(v).toFixed(1)); } set(id, {d: 'M' + pts.join(' L')}); }
+function pt(id, a) { set(id, {cx: X(a[0]), cy: Y(a[1])}); }
+
+function perpArrow(id, L0a, L0b, q, L1a, L1b, gap) {
+  const dx = X(L0b[0]) - X(L0a[0]), dy = Y(L0b[1]) - Y(L0a[1]); const n = Math.hypot(dx, dy);
+  let nx = -dy / n, ny = dx / n;
+  const qx = X(q[0]), qy = Y(q[1]);
+  const ax = X(L1a[0]), ay = Y(L1a[1]), bx = X(L1b[0]), by = Y(L1b[1]);
+
+  const ex = bx - ax, ey = by - ay;
+  const det = nx * (-ey) - ny * (-ex);
+  let lam = ((ax - qx) * (-ey) - (ay - qy) * (-ex)) / det;
+  if (lam < 0) { nx = -nx; ny = -ny; lam = -lam; }
+  const x1 = qx + gap * nx, y1 = qy + gap * ny, x2 = qx + (lam - gap) * nx, y2 = qy + (lam - gap) * ny;
+  set(id, {x1, y1, x2, y2});
+  return {x1, y1, x2, y2};
+}
+const tk = document.getElementById('ticks');
+function tick(x1, y1, x2, y2) { const l = document.createElementNS('http://www.w3.org/2000/svg', 'line'); l.setAttribute('x1', x1); l.setAttribute('y1', y1); l.setAttribute('x2', x2); l.setAttribute('y2', y2); tk.appendChild(l); }
+function guides(id, a) {
+  set(id + 'v', {x1: X(a[0]), y1: Y(a[1]), x2: X(a[0]), y2: Y(0)});
+  set(id + 'h', {x1: X(0), y1: Y(a[1]), x2: X(a[0]), y2: Y(a[1])});
+  tick(X(a[0]), Y(0), X(a[0]), Y(0) + 4); tick(X(0) - 4, Y(a[1]), X(0), Y(a[1]));
+}
+const pw = v => (v / VBW * 100).toFixed(1) + '%', ph = v => (v / VBH * 100).toFixed(1) + '%';
+function render(labels) {
+  const box = document.getElementById('labels');
+  labels.forEach((l, i) => {
+    const el = document.createElement('div');
+    el.className = 'katex-label'; el.id = l.id || ('lbl-' + i);
+    box.appendChild(el);
+    katex.render(l.tex, el, {throwOnError: false});
+    el.style.left = pw(l.left); el.style.top = ph(l.top);
+    el.style.fontSize = (l.size || 16) + 'px';
+    el.style.color = l.color || 'black';
+    if (l.center) el.style.transform = 'translateX(-50%)';
+    if (l.align === 'right') el.classList.add('right-of-axis');
+    if (l.bg) { el.style.background = '#fff'; const k = el.querySelector('.katex'); if (k) k.style.padding = '0 2px'; }
+  });
+}
+
+main();
+</script>
+</body>
+</html>
